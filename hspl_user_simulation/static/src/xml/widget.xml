@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="hspl_user_simulation.UserSimulation" owl="1">
+        <li class="o_user_simulation" style="display: block;">
+            <a href="#"
+               title="Simulate User"
+               t-on-click="_onclickUserSimulation"
+               aria-label="Simulate User"
+               tabindex="-"
+               data-action="manage_filters"
+               role="button"
+               t-ref="UserSimulationRef">
+                <span class="fa fa-users"/>
+            </a>
+        </li>
+    </t>
+</templates>
