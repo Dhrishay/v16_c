@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="dynamic_blogpost" name="Dynamic Blog Post">
+        <t t-if="homepage_blogs">
+            <t t-set="blogs" t-value="request.env['blog.post'].sudo().search([('is_published', '=', True)],order='id desc', limit=3)"/>
+            <t t-set="opt_posts_loop_show_cover" t-value="is_view_active('website_blog.opt_posts_loop_show_cover')"/>
+            <t t-if="blogs">
+                <section class="mp-blogs-section ">
+                    <div class="container">
+                        <div class="row">
+                            <div class="mp-center-header-box mt-4">
+                                <h5 class="mp-center-sub-heading">WHAT'S NEW</h5>
+                                <h2 class="mp-center-main-heading">Our
+                                    <span class="mp_blog_header_underline">Blogs</span>
+                                </h2>
+                            </div>
+                        </div>
+                        <div class="row" id="dynamic-blogpost-row">
+                            <t t-foreach="blogs" t-as="blog">
+                                <a t-attf-href="/blog/#{slug(blog.blog_id)}/#{slug(blog)}"
+                                   class="mp_blog_rectangle col-12">
+                                    <t t-set="_record" t-value="blog"/>
+                                    <t t-call="cr_web_portal.mechpower_blog_record_cover">
+                                        <t t-set="_record" t-value="blog"/>
+                                        <t t-set="additionnal_classes"
+                                           t-value="'o_list_cover o_not_editable ' + (not opt_blog_cards_design and ' rounded overflow-hidden shadow mb-3' or '')"/>
+                                    </t>
+                                    <p class="blog_blog_name" t-field="blog.blog_id.name" />
+                                    <p class="blog_post_name" t-out="blog.name"/>
+                                    <p class="blog_post_post_date" t-out="blog.post_date.strftime('%d %B, %Y')"/>
+                                </a>
+                            </t>
+                        </div>
+                    </div>
+                </section>
+            </t>
+        </t>
+        <t t-elif="web_blog_id">
+            <t t-set="blogs" t-value="request.env['blog.post'].sudo().search([('blog_id.id','=',web_blog_id),('is_published', '=', True)],order='id desc', limit=3)"/>
+            <t t-set="opt_posts_loop_show_cover" t-value="is_view_active('website_blog.opt_posts_loop_show_cover')"/>
+            <t t-if="blogs">
+                <section class="mp-blogs-section with_detail_blog_page">
+                    <div class="container">
+                        <div class="row">
+                            <div class="mp-center-header-box mt-4">
+                                <h5 class="mp-center-sub-heading">WHAT'S NEW</h5>
+                                <h2 class="mp-center-main-heading">Our
+                                    <span class="mp_blog_header_underline">Blogs</span>
+                                </h2>
+                            </div>
+                        </div>
+                        <div class="row" id="dynamic-blogpost-row">
+                            <t t-foreach="blogs" t-as="blog">
+                                <a t-attf-href="/blog/#{slug(blog.blog_id)}/#{slug(blog)}"
+                                   class="col-12 mp_blog_rectangle">
+                                    <t t-set="_record" t-value="blog"/>
+                                    <t t-call="cr_web_portal.mechpower_blog_record_cover">
+                                        <t t-set="_record" t-value="blog"/>
+                                        <t t-set="additionnal_classes"
+                                           t-value="'o_list_cover o_not_editable ' + (not opt_blog_cards_design and ' rounded overflow-hidden shadow mb-3' or '')"/>
+                                    </t>
+                                    <p class="blog_blog_name" t-field="blog.blog_id.name" />
+                                    <p class="blog_post_name" t-out="blog.name"/>
+                                    <p class="blog_post_post_date" t-out="blog.post_date.strftime('%d %B, %Y')"/>
+                                </a>
+                            </t>
+                        </div>
+                    </div>
+                </section>
+            </t>
+        </t>
+        <t t-else="">
+            <t t-set="blogs"
+               t-value="request.env['blog.post'].sudo().search([('service_id.id','=',request.env.ref('cr_web_portal.'+service_id).id),('is_published', '=', True)],order='id desc', limit=3)"/>
+            <t t-set="opt_posts_loop_show_cover" t-value="is_view_active('website_blog.opt_posts_loop_show_cover')"/>
+            <t t-if="blogs">
+                <section class="mp-blogs-section ">
+                    <div class="container">
+                        <div class="row">
+                            <div class="mp-center-header-box mt-4">
+                                <h5 class="mp-center-sub-heading">WHAT'S NEW</h5>
+                                <h2 class="mp-center-main-heading">Our
+                                    <span class="mp_blog_header_underline">Blogs</span>
+                                </h2>
+                            </div>
+                        </div>
+                        <div class="row" id="dynamic-blogpost-row">
+                            <t t-foreach="blogs" t-as="blog">
+                                <a t-attf-href="/blog/#{slug(blog.blog_id)}/#{slug(blog)}"
+                                   class="mp_blog_rectangle col-12">
+                                    <t t-set="_record" t-value="blog"/>
+                                    <t t-call="cr_web_portal.mechpower_blog_record_cover">
+                                        <t t-set="_record" t-value="blog"/>
+                                        <t t-set="additionnal_classes"
+                                           t-value="'o_list_cover o_not_editable ' + (not opt_blog_cards_design and ' rounded overflow-hidden shadow mb-3' or '')"/>
+                                    </t>
+                                    <p class="blog_blog_name" t-field="blog.blog_id.name" />
+                                    <p class="blog_post_name" t-out="blog.name"/>
+                                    <p class="blog_post_post_date" t-out="blog.post_date.strftime('%d %B, %Y')"/>
+                                </a>
+                            </t>
+                        </div>
+                    </div>
+                </section>
+            </t>
+        </t>
+    </template>
+</odoo>

@@ -1,0 +1,197 @@
+.o_portal_my_home{
+    padding: 24px 24px 24px 24px;
+    border-radius: 12px !important;
+    display: flex;
+    background: #FFFFFF;
+    // width: 307px !important;
+}
+
+a.list-group-item span{
+    display: none !important;
+}
+
+
+.list-group {
+    width: -webkit-fill-available !important;
+}
+
+.list-group-item {
+    gap: 0.5rem !important;
+    padding: 0.625rem 0.5rem !important;
+    border-radius: 8px !important;
+    border: 0px;
+}
+
+
+.o_portal_my_home .list-group-item.active {
+    border: 1px solid #DEF4E7;
+    background: #F4FBF7;
+    gap: 8px;
+    font-family: 'Poppins-medium';
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+    color: #197E41;
+    svg{
+        path{
+            stroke: #197E41;
+        }
+    }
+}
+
+.o_portal_my_home .list-group-item {
+    font-family: 'Poppins-medium';
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0.20000000298023224px;
+    text-align: left;
+    color: #787878;
+
+}
+.delivery_items{
+    border-bottom: 1px solid #E6E6E6 !important;
+    .extra_products{
+        padding: 22px;
+        border: 1px solid #E6E6E6;
+        border-radius: 8px;
+        background: #F9F9F9;
+        height: 66px !important;
+        width: 70px !important;
+    }
+    .col-4{
+        margin: auto;
+    }
+
+    .delivery_product_img{
+        border: 1px solid #E6E6E6;
+        border-radius: 8px;
+        background: #F9F9F9;
+
+        img{
+            border-radius: 8px;
+            height: 66px !important;
+            width: 70px !important;
+        }
+    }
+    .card-header{
+        background-color: #fff;
+        padding: 16px;
+        border-bottom: none !important;
+    }
+    .collapsed{
+        background: #F9F9F9 !important;
+    }
+    .custom-accordion{
+        margin: 16px 0px;
+    }
+    .delivery_label{
+        color: #9D9D9D;
+        font-family: 'Poppins-medium';
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 140%;
+        letter-spacing: 0px;
+
+    }
+    .delivery_value{
+        color: #282828;;
+        font-family: 'Poppins-medium';
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 150%;
+        letter-spacing: 0px;
+
+    }
+    td{
+        font-family: 'Poppins-regular';
+    }
+}
+
+.re-order-popup{
+    .modal-header{
+        padding: 24px 40px;
+    }
+    .modal-body{
+        padding: 24px 40px !important;
+    }
+    .quantity-control button {
+        width: 30px;
+        height: 30px;
+        padding: 0;
+    }
+    .quantity-control span {
+        min-width: 20px;
+        text-align: center;
+    }
+    .bg-white{
+        border: 1px solid #E6E6E6;
+        border-radius: 0.3rem;
+    }
+    img{
+        width: 54px;
+        height: 54px;
+    }
+    button img{
+        width: 20px;
+        height: 20px;
+    }
+    .reorder_product_name{
+        font-family: 'Poppins-medium';
+        font-weight: 500;
+        font-size: 16px;
+    }
+    .quantity-control{
+        border: 1px solid #CECECE;
+        padding: 8px;
+        border-radius: 8px;
+        button{
+            background-color: #E6E6E6;
+            width: 24px;
+            height: 24px;
+            border: none;
+            border-radius: 4px;
+        }
+        input{
+            border: none;
+            text-align: center;
+            width: 35px;
+        }
+    }
+    .col-1 {
+        padding: 0;
+        img{
+            height: 24px;
+            width: 24px;
+        }
+        a {
+            background: #F23C2F0D;
+            padding: 10px;
+            border-radius: 8px;
+        }
+    }
+    .align-items-center{
+        align-items: center;
+        border: 1px solid #E6E6E6;
+        border-radius: 8px;
+        padding: 16px 16px 16px 0px;
+        margin: 0px;
+    }
+    .cart_summary_card{
+        max-height: 130px;
+    }
+
+    .modal-footer {
+        justify-content: start;
+        padding: 0px 40px 24px 34px;
+        border-top: none;
+    }
+    .popupSubmitBtn{
+        img {
+            width: 16px;
+            height: 16px;
+        }
+    }
+
+}

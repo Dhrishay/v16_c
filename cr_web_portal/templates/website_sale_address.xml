@@ -1,0 +1,414 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="cr_web_portal.address_form_custom_btn" inherit_id="website_sale.address">
+        <xpath expr="//div[@id='wrap']" position="replace">
+            <div id="wrap">
+                <div class="container oe_website_sale py-2">
+                    <div class="row">
+                        <div class="col-12">
+                            <t t-call="website_sale.wizard_checkout">
+                                <t t-set="step" t-value="20" />
+                            </t>
+                        </div>
+                    </div>
+                    <div class="row">
+
+                        <div class="col-12 col-xl-8 oe_cart">
+                            <div>
+                                <t t-if="mode == ('new', 'billing')">
+                                    <h2 class="o_page_header mt8">
+                                        <span t-if="account_on_checkout != 'mandatory'">Fill in your address</span>
+                                        <small class="text-muted" t-if="account_on_checkout == 'optional'"> or </small>
+                                        <t t-if="account_on_checkout != 'disabled'" style="margin-top: -11px"> Add Billing Address</t>
+                                    </h2>
+                                </t>
+                                <t t-if="mode == ('edit', 'billing')">
+                                    <h2 class="o_page_header mt8">Your Address</h2>
+                                </t>
+                                <t t-if="mode[1] == 'shipping'">
+                                    <h2 class="o_page_header mt8">Shipping Address </h2>
+                                </t>
+                                <t t-if="partner_id == website_sale_order.partner_shipping_id.id == website_sale_order.partner_invoice_id.id">
+                                    <div class="alert alert-warning mb-3" role="alert" t-if="not only_services" groups="account.group_delivery_invoice_address">
+                                        <h4 class="alert-heading">Be aware!</h4>
+                                        <p>
+                                            You are editing your <b>billing and shipping</b> addresses at the same time!<br/>
+                                            If you want to modify your shipping address, create a <a href='/shop/address'>new address</a>.
+                                        </p>
+                                    </div>
+                                </t>
+                                <t t-if="error" t-foreach="error.get('error_message', [])" t-as="err">
+                                    <h5 class="alert alert-danger mt-2 mb-3 text-danger" style="font-size:16px;font-family:'Jost-medium' ,sans-serif;font-weight:100;" t-esc="err" />
+                                </t>
+                                <section class="s_website_form" t-if="account_on_checkout != 'mandatory' or not is_public_user" data-vcss="001" data-snippet="s_website_form">
+                                    <div class="container">
+                                        <form action="/website/form/" method="post" enctype="multipart/form-data"
+                                              class="o_mark_required shop_address checkout_autoformat" data-mark="*" data-model_name="res.partner"
+                                              data-success-mode="redirect" data-success-page="/render/address"
+                                              data-pre-fill="true">
+                                            <input type="hidden" name="form_name" value="website_sale_address_form"/>
+                                            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                            <div class="row">
+                                                <t t-if="mode == ('new', 'billing')">
+                                                    <input type="hidden" name="new_billing_partner_id" class="form-control s_website_form_input" value="True"/>
+                                                </t>
+                                                <div t-attf-class="mb-3 o_has_error col-lg-12 div_name ">
+                                                    <div class="mp_input_field">
+                                                        <input type="text" name="name" required="required"
+                                                               t-attf-class="form-control s_website_form_input form_input #{error.get('name') and 'is-invalid' or ''}"
+                                                               t-att-value="'name' in checkout and checkout['name']" placeholder=""/>
+                                                        <label class="col-form-label form_label o_input_required" for="name">Name</label>
+                                                    </div>
+                                                </div>
+                                                <div class="w-100"/>
+                                                <div t-attf-class="mb-3 o_has_error col-lg-6" id="div_email">
+                                                    <div class="mp_input_field">
+                                                    <input type="email" name="email"
+                                                           t-attf-class="form-control s_website_form_input form_input #{error.get('email') and 'is-invalid' or ''}"
+                                                           t-att-value="'email' in checkout and checkout['email']" placeholder=""/>
+                                                    <label t-attf-class="col-form-label form_label #{mode[1] == 'billing' and 'label-optional o_input_required' or ''}"
+                                                           for="email">Email
+                                                    </label>
+                                                    </div>
+                                                </div>
+                                                <t t-set="partner"
+                                                   t-value="request.env['res.partner'].sudo().search([('id','=',partner_id)])"/>
+                                                <div t-attf-class="mb-3 o_has_error col-lg-6" id="">
+                                                    <div t-attf-class="d-flex mp_phone #{error.get('phone') and 'is-invalid' or ''}" style="overflow: visible !important; position: relative;">
+                                                        <t t-set="default_country"
+                                                           t-value="request.env['res.country'].sudo().search([('phone_code','=','+91')])"/>
+                                                        <t t-if="partner.phone">
+                                                            <t t-set="default_country"
+                                                               t-value="request.env['res.country'].sudo().search([('id','=',partner.country_id.id)])"/>
+                                                        </t>
+                                                        <div class="input-group js_country_dropdown pr-0" style="width: auto;">
+                                                            <div class="input-group-prepend flag-button">
+                                                                <button type="button"
+                                                                        id="btn_vat_code"
+                                                                        t-att-disabled="readonly"
+                                                                        class="btn dropdown btn-outline-secondary dropdown-toggle js_btn_country_code form-control country_button"
+                                                                        data-bs-toggle="dropdown"
+                                                                        data-bs-target="#dropdown-countries">
+
+                                                                    <div id="img_code_vat"
+                                                                         class="js_img_country_code country_img ">
+                                                                        +
+                                                                        <t t-esc="default_country.phone_code"/>
+                                                                        <i class="fa fa-chevron-down"></i>
+                                                                    </div>
+                                                                </button>
+                                                                <div class="dropdown-menu scrollable-menu"
+                                                                     id="dropdown-countries" style="height: 200px;">
+                                                                    <div class="country_id_searchbar">
+                                                                        <input class="search_country input_control s_website_form_input" type="text"
+                                                                               placeholder="Search..."/>
+                                                                    </div>
+                                                                    <div id="country_id_list">
+                                                                        <t t-foreach="countries" t-as="backend_country">
+                                                                            <a href="#"
+                                                                               t-att-id="backend_country.code"
+                                                                               t-att-data-country_id="backend_country.id"
+                                                                               t-att-data-country_code="backend_country.code"
+                                                                               t-att-data-phone_code="backend_country.phone_code"
+                                                                               class="dropdown-item js_select_country_code">
+                                                                                <img t-att-src="backend_country.image_url"
+                                                                                     class="country_name_img"/>
+                                                                                <span class="form-country-name">
+                                                                                    <t t-esc="backend_country.name"/>
+                                                                                    (<t t-esc="backend_country.code"/>) +
+                                                                                    <t t-esc="backend_country.phone_code"/>
+                                                                                </span>
+                                                                            </a>
+                                                                        </t>
+                                                                    </div>
+                                                                </div>
+                                                                <input id="country_code_field"
+                                                                       type="hidden"
+                                                                       size="2"
+                                                                       tabindex="-1"
+                                                                       class="input-group-text js_country_code_field"
+                                                                       name="selected_phone_country_id"
+                                                                       t-att-value="default_country.id"
+                                                                       readonly="1"/>
+                                                            </div>
+                                                        </div>
+                                                        <t t-if="partner.phone">
+                                                            <t t-set="old_phone"
+                                                               t-value="'+' + str(partner.country_id.phone_code)"/>
+                                                            <t t-set="old_phone1"
+                                                               t-value="partner.phone.replace(old_phone, '')"/>
+                                                            <input type="tel" id="phone" name="phone"
+                                                                   t-att-value="old_phone1.replace(' ','')"
+                                                                   placeholder="Mobile Number"
+                                                                   class="elem s_website_form_input check_digits" style="width:100%; border-radius: 8px;"
+                                                                   maxlength="15" required="required"/>
+                                                        </t>
+                                                        <t t-else="">
+                                                            <input type="tel" id="phone" name="phone"
+                                                                   placeholder="Mobile Number"
+                                                                   class="elem s_website_form_input check_digits" style="width:100%; border-radius: 8px;"
+                                                                   maxlength="15" required="required"/>
+                                                        </t>
+                                                        <label class="col-form-label form_label o_input_required" style="z-index: 11111111; top: -11px;" for="phone">Mobile</label>
+                                                    </div>
+                                                </div>
+                                                <t t-if="website._display_partner_b2b_fields()">
+                                                    <div class="w-100"/>
+                                                    <t t-set='vat_warning'
+                                                       t-value="'vat' in checkout and checkout['vat'] and not can_edit_vat"/>
+                                                    <t t-if="mode == ('new', 'billing') or mode == ('edit', 'billing') or mode == ('edit', 'shipping') or mode == ('new', 'shipping')">
+                                                        <div t-attf-class="mb-3 col-lg-6 mb-0 {{'o_has_error' if request.env.user.partner_id.company_type != 'person' else ''}}">
+                                                            <div class="mp_input_field">
+                                                            <input type="text" name="company_name"
+                                                                   t-attf-class="form-control s_website_form_input form_input #{error.get('company_name') and 'is-invalid' or ''}"
+                                                                   t-att-value="'commercial_company_name' in checkout and checkout['commercial_company_name'] or 'company_name' in checkout and checkout['company_name']"
+                                                                   t-att-required="'required' if request.env.user.partner_id.company_type != 'person' else ''"
+                                                                   t-att-readonly="'readonly' if request.env.user.partner_id.company_type != 'person' else None"
+                                                                   placeholder=""
+                                                            />
+                                                            <label class="col-form-label form_label fw-normal label-optional"
+                                                                   for="company_name">Company Name
+                                                            </label>
+                                                            </div>
+                                                        </div>
+                                                        <div t-attf-class="mb-3 col-lg-6 div_vat mb-0 {{'o_has_error' if request.env.user.partner_id.company_type != 'person' else ''}}">
+                                                            <div class="mp_input_field">
+                                                            <input type="text" name="vat"
+                                                                   t-attf-class="form-control s_website_form_input form_input #{error.get('vat') and 'is-invalid' or ''}"
+                                                                   t-att-value="'vat' in checkout and checkout['vat']"
+                                                                   t-att-required="'required' if request.env.user.partner_id.company_type != 'person' else ''"
+                                                                   placeholder=""
+                                                            />
+                                                            <label class="col-form-label form_label fw-normal label-optional" for="vat">GST
+                                                                Number
+                                                            </label>
+                                                            </div>
+                                                        </div>
+                                                    </t>
+                                                </t>
+                                                <div class="w-100"/>
+                                                <t t-set="industry_segments"
+                                                   t-value="request.env['industry.segment'].sudo().search([])"/>
+                                                <span class="mt-4 mb-4">Please update your category segmentation to proceed with
+                                                    placing your order or
+                                                    inquiry. Please ignore it if it is already updated.
+                                                </span>
+                                                 <div class="mb-3 col-lg-12 ">
+                                                     <div class="mp_input_field_web mp_select_web">
+                                                    <select id="industry_id"
+                                                            t-attf-class="form_input form-select s_website_form_input #{error.get('industry_id') and 'is-invalid' or ''}"
+                                                            name="industry_id" t-att-value="industry" placeholder=" "
+                                                            required="required">
+                                                        <option value="">Select Industry Affiliation Category</option>
+                                                        <t t-foreach="industry_segments" t-as="industry">
+                                                            <t t-if="partner.industry_main_category">
+                                                                <option t-att-value="industry.main_category.id"
+                                                                        t-att-selected="industry.main_category.id == int(industry_id) if industry_id else industry.main_category.id == partner.industry_main_category.id">
+                                                                    <t t-esc="industry.main_category.name"/>
+                                                                </option>
+                                                            </t>
+                                                            <t t-else="">
+                                                                <option t-att-value="industry.main_category.id">
+                                                                    <t t-esc="industry.main_category.name"/>
+                                                                </option>
+                                                            </t>
+                                                        </t>
+                                                    </select>
+                                                    <label for="industry_id" class="form_label o_input_required">Industry
+                                                    </label>
+                                                     </div>
+                                                </div>
+                                                <div class="col-lg-12 mb-3">
+                                                    <t t-set="industry_id"
+                                                       t-value="partner.industry_main_category.id if partner.industry_main_category else False"/>
+
+                                                    <t t-if="industry_id">
+                                                        <t t-set="industry_id_obj"
+                                                           t-value="request.env['industry.segment'].sudo().search([('main_category','=',int(industry_id))])"/>
+                                                    </t>
+                                                    <div class="mp_input_field_web mp_select_web">
+                                                    <select id="sub_category_id"
+                                                            t-attf-class="form_input form-select s_website_form_input #{error.get('sub_industry_id') and 'is-invalid' or ''}"
+                                                            name="sub_category_id" placeholder=" "
+                                                            required="required">
+                                                        <option value="">Select Industry Affiliation Sub-category</option>
+                                                        <t t-if="industry_id">
+                                                            <t t-foreach="industry_id_obj.sub_category" t-as="sub_category">
+                                                                <option t-att-value="sub_category.id"
+                                                                        t-att-selected="sub_category.id == partner.industry_sub_category.id if partner.industry_sub_category else False">
+                                                                    <t t-esc="sub_category.name"/>
+                                                                </option>
+                                                            </t>
+                                                        </t>
+                                                    </select>
+                                                    <label for="industry_id" class="form_label o_input_required">Category
+                                                    </label>
+                                                        </div>
+                                                </div>
+                                                <div class="w-100"/>
+                                                <div t-attf-class="mb-3 o_has_error col-lg-12 div_street">
+                                                    <div class="mp_input_field">
+                                                    <input type="text" name="street" required="required"
+                                                           t-attf-class="form-control form_input s_website_form_input #{error.get('street') and 'is-invalid' or ''}"
+                                                           placeholder=""
+                                                           t-att-value="'street' in checkout and checkout['street']"/>
+                                                    <label class="col-form-label form_label o_input_required" for="street">Address
+                                                        <span class="d-none d-md-inline">Line 1</span>
+                                                    </label>
+                                                    </div>
+                                                </div>
+                                                <div t-attf-class="mb-3 col-lg-12 div_street2">
+                                                    <div class="mp_input_field">
+                                                    <input type="text" name="street2"
+                                                           t-attf-class="form-control form_input s_website_form_input #{error.get('street2') and 'is-invalid' or ''}"
+                                                           placeholder=""
+                                                           t-att-value="'street2' in checkout and checkout['street2']"/>
+                                                    <label class="col-form-label form_label label-optional" for="street2">Address Line 2
+                                                    </label>
+                                                    </div>
+                                                </div>
+                                                <div class="w-100"/>
+                                                <div t-attf-class="mb-3  o_has_error col-lg-6 div_country">
+                                                    <div class="mp_input_field_web mp_select_web">
+                                                    <select id="country_id" name="country_id" required="required"
+                                                            t-attf-class="form_input country_onchange form-select #{error.get('country_id') and 'is-invalid' or ''}"
+                                                            t-att-mode="mode[1]" placeholder=" "
+                                                            >
+                                                        <option value="">Country...</option>
+                                                        <t t-foreach="countries" t-as="c">
+                                                            <option t-att-value="c.id"
+                                                                    t-att-selected="c.id == partner.country_id.id if partner and partner.country_id else False">
+                                                                <t t-esc="c.name"/>
+                                                            </option>
+                                                        </t>
+                                                    </select>
+                                                    <label class="col-form-label form_label o_input_required" for="country_id">Country</label>
+                                                    </div>
+                                                </div>
+                                                <div t-attf-class="mb-3 o_has_error col-lg-6 div_state"
+                                                     t-att-style="(not country or not country.state_ids) and 'display: none'">
+                                                    <div class="mp_input_field_web mp_select_web">
+                                                    <select name="state_id" id="state_id" required="required"
+                                                            t-attf-class="form_input form-select #{error.get('state_id') and 'is-invalid' or ''}"
+                                                            data-init="1"
+                                                            >
+                                                        <option value="">State / Province...</option>
+                                                        <t t-foreach="country_states" t-as="s">
+                                                            <option t-att-value="s.id"
+                                                                    t-att-selected="s.id == ('state_id' in checkout and country and checkout['state_id'] != '' and int(checkout['state_id']))">
+                                                                <t t-esc="s.name"/>
+                                                            </option>
+                                                        </t>
+                                                    </select>
+                                                    <label class="col-form-label form_label o_input_required" for="state_id">State / Province</label>
+                                                    </div>
+                                                </div>
+                                                <div class="w-100"/>
+                                                <t t-if="partner.city_id">
+                                                    <input type="hidden" id="selected_city" t-att-value="partner.city_id.id"/>
+                                                </t>
+                                                <div t-attf-class="mb-3 o_has_error col-md-6 div_city">
+                                                    <div class="mp_input_field_web mp_select_web">
+                                                    <select name="city_id" id="city_id" required="required"
+                                                            t-attf-class="form_input form-select #{error.get('city_id') and 'is-invalid' or ''}"
+                                                            data-init="1"
+                                                            >
+                                                        <option value="">Select City...</option>
+                                                    </select>
+                                                    <label class="col-form-label form_label o_input_required" for="city_id">City</label>
+                                                    </div>
+                                                </div>
+                                                <t t-set='zip_city'
+                                                   t-value='country and [x for x in country.get_address_fields() if x in ["zip", "city"]] or ["city", "zip"]'/>
+                                                <t t-if="'zip' in zip_city and zip_city.index('zip') &lt; zip_city.index('city')">
+                                                    <div t-attf-class="mb-3 o_has_error col-md-6 div_zip mp_input_field">
+                                                        <div class="mp_input_field">
+                                                        <input type="text" name="zip"
+                                                               t-attf-class="form_input s_website_form_input form-control #{error.get('zip') and 'is-invalid' or ''}"
+                                                               t-att-value="'zip' in checkout and checkout['zip']"
+                                                               placeholder=""
+                                                        />
+                                                            <label t-attf-class="col-form-label form_label label-optional #{mode[1] == 'shipping' and 'o_input_required' or ''}" for="zip">Pincode</label>
+                                                        </div>
+                                                    </div>
+                                                </t>
+                                                <t t-if="'zip' in zip_city and zip_city.index('zip') &gt; zip_city.index('city')">
+                                                    <div t-attf-class="mb-3 o_has_error col-md-6 div_zip mp_input_field">
+                                                        <div class="mp_input_field">
+                                                        <input type="text" name="zip"
+                                                               t-attf-class="form_input s_website_form_input form-control #{error.get('zip') and 'is-invalid' or ''}"
+                                                               t-att-value="'zip' in checkout and checkout['zip']"
+                                                               placeholder=""
+                                                        />
+                                                        <label t-attf-class="col-form-label form_label label-optional #{mode[1] == 'shipping' and 'o_input_required' or ''}" for="zip">Pincode</label>
+                                                        </div>
+                                                    </div>
+                                                </t>
+                                                <div class="w-100"/>
+                                                <t t-if="mode == ('new', 'billing') and not only_services">
+                                                    <div class="col-lg-12">
+                                                        <div class="checkbox">
+                                                            <label>
+                                                                <input type="checkbox" id='shipping_use_same' class="mr8"
+                                                                       name='use_same' value="1"
+                                                                       checked='checked'/>Ship to the same address
+                                                                <span class='ship_to_other text-muted' style="display: none">
+                                                                    &amp;nbsp;(
+                                                                    <i>Your shipping address will be requested later)</i>
+                                                                </span>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </t>
+                                            </div>
+                                            <input type="hidden" name="submitted" value="1"/>
+                                            <input type="hidden" name="partner_id" t-att-value="partner_id or '0'"/>
+                                            <input type="hidden" name="callback" t-att-value="callback"/>
+                                            <!-- Example -->
+                                            <input type="hidden" name="field_required" t-att-value="'phone,name'"/>
+                                            <div class="col-12 s_website_form_recaptcha" data-name="Recaptcha Legal">
+                                                <div class="col-sm">
+                                                    <small class="o_recaptcha_legal_terms">
+                                                        Protected by reCAPTCHA,
+                                                        <a href="https://policies.google.com/privacy" target="_blank">
+                                                            Privacy Policy
+                                                        </a>
+                                                        &amp;
+                                                        <a href="https://policies.google.com/terms" target="_blank">
+                                                            Terms of Service
+                                                        </a>
+                                                        apply.
+                                                    </small>
+                                                </div>
+                                                <span id="s_website_form_result"/>
+                                            </div>
+                                            <div class="d-flex justify-content-between custom-address-footer">
+                                                <a role="button"
+                                                   t-att-href="mode == ('new', 'billing') and '/shop/cart' or '/shop/checkout'"
+                                                   class="btn custom-btn-green-round mb32">
+                                                    <i class="fa fa-chevron-left"/>
+                                                    <span>Back</span>
+                                                </a>
+                                                <a role="button" href="#"
+                                                   class="btn custom-btn-green-round mb32 a-submit a-submit-disable a-submit-loading">
+                                                    <span>Next</span>
+                                                    <i class="fa fa-chevron-right"/>
+                                                </a>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+                        <div class="d-none d-xl-block col-xl-4">
+                            <t t-call="website_sale.cart_summary">
+                                <t t-set="hide_promotions">True</t>
+                                <t t-set="redirect" t-valuef="/shop/address"/>
+                            </t>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </xpath>
+    </template>
+</odoo>

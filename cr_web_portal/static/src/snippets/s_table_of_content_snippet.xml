@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="mp_s_table_of_content" inherit_id="website.s_table_of_content" name="Mechpower Table of Content">
+        <xpath expr="//div[hasclass('s_table_of_content_navbar_wrap')]" position="replace">
+            <div class="col-lg-3 s_table_of_content_navbar_relative">
+                <div class="s_table_of_content_navbar_wrap s_table_of_content_vertical_navbar d-print-none d-none d-lg-block o_not_editable o_cc o_cc1" data-name="Navbar">
+                    <h3 class="mp_s_table_of_content_header">Table of Contents</h3>
+                    <hr/>
+                    <div class="s_table_of_content_navbar list-group o_no_link_popover"/>
+                </div>
+            </div>
+        </xpath>
+    </template>
+</odoo>

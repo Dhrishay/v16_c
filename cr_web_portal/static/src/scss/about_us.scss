@@ -1,0 +1,559 @@
+.section-description {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--mp-color-dark-3);
+    margin: 16px auto 64px;
+    max-width: 892px;
+	font-family: 'Jost-light';
+	letter-spacing: 0.2px;
+}
+
+
+@media (max-width: 768px) {
+	.about-us .s_parallax_no_overflow_hidden{
+		padding-top: 66.5px !important;
+		padding-bottom: 66.5px !important;
+	}
+	.section-description {
+		text-align: left;
+	}
+}
+
+
+.aboutus-content{
+	.section-title {
+		color: var(--pbmit-heading-color);
+		margin-bottom: 16px;
+		margin-top: 8px;
+	}
+
+	.about-section {
+		margin-top: 140px;
+	    display: flex;
+	    flex-wrap: wrap;
+	    align-items: center;
+	    gap: 60px;
+	}
+
+	.about-image {
+	    flex: 1;
+	    min-width: 300px;
+	    text-align: center;
+	}
+
+	.about-image img {
+	    max-width: 100%;
+	    height: auto;
+	    border-radius: 5px;
+	}
+
+	.about-content {
+	    flex: 1;
+	    min-width: 300px;
+
+		p {
+		    font-size: 16px;
+		    margin-bottom: 20px;
+		}
+
+		.mp_underline_custom {
+		    background-position: center bottom 13%;
+		}
+
+	}
+}
+
+
+@media (max-width: 768px) {
+    .about-section {
+        margin-top: 64px !important;
+
+        .about-content {
+			padding: 12px !important;
+
+			p {
+				font-size: 16px;
+			}
+		}
+
+		.about-image {
+			padding: 0px !important;
+		}
+    }
+}
+
+
+/* Design Journey */
+.design-journey-section {
+	margin-top: 140px;
+    text-align: center;
+
+	.container {
+	  max-width: 1200px;
+	  margin: 0 auto;
+	}
+
+	.section-title {
+	  font-weight: bold;
+	  margin-bottom: 20px;
+	  color: #000;
+	}
+
+	.mission-vision-wrapper {
+	    display: flex;
+	    gap: 16px;
+	}
+
+	.card {
+	    position: relative;
+	    border-radius: 8px;
+	    padding: 24px;
+	    text-align: left;
+	    z-index: 1;
+	    border: transparent;
+
+	    &:hover {
+			background: linear-gradient(104.27deg, rgba(255, 255, 255, 0.1) -0.44%, rgba(35, 179, 93, 0.1) 99.53%);
+			border-image-source: linear-gradient(104.27deg, rgba(255, 255, 255, 0.5) -0.44%, rgba(35, 179, 93, 0.5) 99.53%);
+			box-shadow: 0px 0px 20px 0px #0000001A;
+			border-image-slice: 1;
+		}
+	}
+
+	.card::before {
+
+	    content: '';
+	    position: absolute;
+	    top: 0;
+	    left: 0;
+	    right: 0;
+	    bottom: 0;
+	    border-radius: 8px;
+	    padding: 1px;
+	    background: linear-gradient(
+	      104deg,
+	      rgba(255, 255, 255, 0.1) -0.44%,
+	      rgba(35, 179, 93, 0.1) 99.53%
+	    );
+	    -webkit-mask:
+	      linear-gradient(#fff 0 0) content-box,
+	      linear-gradient(#fff 0 0);
+	    -webkit-mask-composite: xor;
+	    mask-composite: exclude;
+	    pointer-events: none;
+	    z-index: 0;
+
+	    &:hover {
+			background: linear-gradient(104.27deg, rgba(255, 255, 255, 0.1) -0.44%, rgba(35, 179, 93, 0.1) 99.53%);
+			border-image-source: linear-gradient(104.27deg, rgba(255, 255, 255, 0.5) -0.44%, rgba(35, 179, 93, 0.5) 99.53%);
+			box-shadow: 0px 0px 20px 0px #0000001A;
+			border-image-slice: 1;
+		}
+	}
+
+	.card:hover::before {
+	  background: linear-gradient(104.27deg, rgba(255, 255, 255, 0.5) -0.44%, rgba(35, 179, 93, 0.5) 99.53%);
+	  box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.1); /* Optional shadow effect */
+	}
+
+	.icon img {
+	  width: 50.7px;
+	  height: 63px;
+	  margin-bottom: 20px;
+	}
+
+	.card-title {
+	  font-size: 20px;
+	  font-weight: bold;
+	  margin-top: 16px;
+	  margin-bottom: 8px;
+	  color: #000;
+	}
+
+	.card-text {
+	  font-size: 16px;
+	  line-height: 1.5;
+	  overflow: hidden;
+	}
+}
+
+@media (max-width: 768px) {
+
+	.design-journey-section {
+		margin-top: 64px;
+
+		.section-description {
+			text-align: left !important;
+			margin-top: 12px;
+			margin-bottom: 32px;
+		}
+
+		.mission-vision-wrapper {
+			flex-wrap: wrap;
+		}
+
+		.card {
+			width: 100%;
+			padding: 20px;
+			height: 243px;
+		}
+
+		.card-text {
+			overflow: hidden;
+			font-size: 14px;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			display: -webkit-box;
+			-webkit-line-clamp: 3;
+			-webkit-box-orient: vertical;
+		}
+
+		.card-title {
+			line-height: 27px;
+		}
+	}
+}
+
+
+/* Our Values Section */
+.our-values {
+    padding-top: 82px;
+    padding-bottom: 82px;
+}
+
+.our-values-wrapper{
+	display: flex;
+	margin-top: 64px;
+	margin-bottom: 82px;
+	gap: 24px;
+
+	.our-values-content {
+	    flex: 0 0 auto;
+	    padding: 24px;
+	    text-align: left;
+	    border: 1px solid #DEF4E7;
+	    border-radius: 8px;
+	    transition: transform 0.7s ease, box-shadow 0.7s ease;
+
+	    &:hover{
+			background-color: white;
+
+			.inner-content {
+	            background-color: white;
+	            transform: translateY(-10px);
+	            transition: transform 0.7s ease;
+	        }
+
+			h4 {
+				color: var(--primary-color);
+			}
+		}
+	}
+
+	.customer-centricity:hover  svg path {
+		stroke: var(--primary-color);
+	}
+
+	.customer-centricity:hover svg .icon-seven{
+		fill: var(--primary-color);
+	}
+
+	.ethical-integrity:hover svg path {
+		fill: var(--primary-color);
+	}
+
+	.pursuit-excellence:hover svg path {
+		fill: var(--primary-color);
+	}
+
+	.inner-content {
+        transition: transform 0.7s ease, box-shadow 0.7s ease;
+    }
+
+	svg .our-values-content{
+      margin: 13px;
+    }
+
+    h4 {
+        font-size: 30px;
+        font-weight: 600;
+        margin-top: 24px;
+        margin-bottom: 16px;
+    }
+
+    p {
+		font-size: 20px;
+        line-height: 1.6;
+        letter-spacing: 0.2px;
+        margin-bottom: 0px;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		display: -webkit-box;
+		-webkit-line-clamp: 4;
+		-webkit-box-orient: vertical;
+    }
+}
+
+@media (max-width: 768px) {
+	.our-values-container {
+		margin-top: 64px !important;
+
+		.our-values {
+			padding-top: 64px;
+			padding-bottom: 12px;
+		}
+
+		.our-values-wrapper {
+			margin-top: 32px;
+			flex-wrap: wrap;
+			line-height: 27px;
+				
+			h4 {
+				font-size: 18px;
+				margin-bottom: 8px;
+			}
+
+			p {
+				font-size: 18px;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				display: -webkit-box;
+				-webkit-line-clamp: 3;
+				-webkit-box-orient: vertical;
+			}
+		}
+
+		.our-values-content {
+			width: 100%;
+		}
+	}
+
+}
+
+/* Why choose MechPower */
+.why-choose-mechpower-aboutus {
+	margin-top: 64px !important;
+
+	.feature-container {
+		justify-content: center;
+		flex-wrap: wrap;
+		gap: 23px !important;
+	}
+
+	.feature-box {
+		width: 32%;
+	}
+}
+
+@media (max-width: 768px) {
+	#why-choose-mechpower {
+		margin-top: 64px;
+		
+		.section-description{
+			margin-bottom: 32px;
+		}
+
+		.feature-box {
+			padding: 20px;
+			width: 300px;
+
+			h4 {
+				font-size: 18px;
+				line-height: 27px;
+				margin-top: 24px;
+			    margin-bottom: 12px;
+			}
+		}
+	}
+}
+
+/* Our Team */
+
+.leadership-team {
+    text-align: center;
+    margin-bottom: 140px;
+    margin-top: 140px;
+//     padding: 62px;
+    padding-top: 82px;
+    padding-bottom: 82px;
+    .mp_underline_custom{
+		background-position: center bottom 16%;
+	}
+
+	.team-layout {
+	    display: flex;
+	    flex-wrap: wrap;
+	    justify-content: center;
+	    align-items: flex-start;
+	    gap: 20px;
+	    margin-top: 64px;
+	}
+    .img-fluid {
+        max-width: none;
+        height: auto;
+    }
+	.team-member {
+	    padding: 20px;
+	    border-radius: 8px;
+	    text-align: center;
+		border: 1px solid #DEF4E7;
+// 	    box-shadow: 0px 0px 20px 0px #0000000D;
+	}
+
+	.team-member img {
+	    width: 100px;
+	    height: 100px;
+	    border-radius: 50%;
+	}
+
+	.team-member h3 {
+	    font-size: 24px;
+	    margin-top: 24px;
+		line-height: 31.5px;
+	}
+
+	.role {
+	  font-size: 16px;
+	  margin-bottom: 8px;
+	  line-height: 25.6px;
+	}
+
+	/* Larger box for CEO */
+	.team-member.large {
+	    flex: 1 1 45%;
+	    padding: 24px;
+	}
+
+	.team-member.large img {
+	    width: 383px;
+	    height: 383px;
+	}
+
+	.team-member.large .description {
+	    font-size: 16px;
+	    margin-top: 12px;
+		margin-bottom: 0px;
+	}
+
+	/* Smaller boxes for other members */
+	.team-group {
+	    display: grid;
+	    grid-template-columns: repeat(5, 1fr);
+	    gap: 24px;
+	    flex: 1 1 50%;
+	}
+
+	.team-member.small {
+	    flex: 1 1 auto;
+	    padding: 24px;
+	    background: white;
+	}
+
+	.team-member.small img {
+	    width: 200px;
+	    height: 200px;
+	}
+}
+
+
+.team-member.large {
+    transition: opacity 0.5s ease-in-out;
+    height: 718px;
+    overflow: hidden;
+}
+
+.team-member.small .description {
+    display: none;  /* Hide description in small boxes */
+}
+
+@media (max-width: 768px){
+
+	.leadership-team {
+		margin-top: 64px;
+		margin-bottom: 64px;
+        padding-top: 64px;
+        padding-bottom: 12px;
+		.team-layout {
+			margin-top: 32px;
+		}
+
+		.mp_underline_custom {
+			background-position: center bottom 0;
+		}
+
+		.team-member {
+			h3 {
+				font-size: 16px;
+				line-height: 30px;
+			}
+
+			img {
+				height: 100px !important;
+				width: 100px !important;
+			}
+		}
+
+		.role{
+			font-size: 14px;
+		}
+
+		.member-info {
+		    display: flex;
+		    align-items: center;
+		    gap: 20px;
+
+			i {
+				height: fit-content;
+			}
+		}
+
+		.team-member.large {
+			padding: 20px;
+			height: fit-content !important;
+		}
+
+		.description {
+			text-align: left;
+			margin-top: 24px;
+		}
+
+		.team-group {
+			gap: 24px;
+			grid-template-columns: repeat(3, 1fr);
+		}
+
+		.team-member.small {
+			padding: 16px;
+
+			h3 {
+				font-size: 14px;
+				line-height: 25px;
+				text-wrap: nowrap;
+			}
+		}
+
+	}
+}
+@media (max-width: 1024px) {
+    .team-group {
+        gap: 24px;
+        grid-template-columns: repeat(3, 1fr) !important;
+    }
+}
+@media (max-width: 440px) {
+    .team-group {
+        gap: 24px;
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+
+    .mobile-section-title {
+		text-align: left;
+	}
+    .title{
+		float: left;
+	}
+}
+
+
+
+

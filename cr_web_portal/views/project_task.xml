@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="project_task_view_search_mechpower" model="ir.ui.view">
+        <field name="name">project_task_view_search_mechpower</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_search_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='description']" position='replace'>
+            </xpath>
+            <xpath expr="//field[@name='name']" position='after'>
+                <field name="description"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

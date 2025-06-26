@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<data>
+    <record id="mech_custom_attribute" model="product.attribute">
+        <field name="name">Custom</field>
+        <field name="create_variant">no_variant</field>
+        <field name="visibility">hidden</field>
+    </record>
+<!--    Blog Post Service Demo Data-->
+    <record id="mech_custom_service_enclosure_design" model="blog.post.service">
+        <field name="name">Enclosure Design</field>
+    </record>
+    <record id="mech_custom_service_3d_printing" model="blog.post.service">
+        <field name="name">3D Printing</field>
+    </record>
+    <record id="mech_custom_service_sheet_metal_fabrication" model="blog.post.service">
+        <field name="name">Sheet Metal Fabrication</field>
+    </record>
+    <record id="mech_custom_service_injection_molding" model="blog.post.service">
+        <field name="name">Injection Molding</field>
+    </record>
+    <record id="mech_custom_service_cnc_machining" model="blog.post.service">
+        <field name="name">CNC Machining</field>
+    </record>
+
+<!--    Payment Terms-->
+    <record id="mech_advance_payment_term" model="account.payment.term">
+        <field name="name">100% Advance</field>
+    </record>
+
+    <record id="delivery_rule_for_own_docs" model="ir.rule">
+        <field name="name">Delivery rule for Own Document Only</field>
+        <field name="model_id" ref="stock.model_stock_picking"/>
+        <field name="domain_force">[('sale_id.user_id', '=', user.id)]</field>
+        <field name="perm_read">True</field>
+        <field name="perm_write">True</field>
+        <field name="perm_create">True</field>
+        <field name="perm_unlink">True</field>
+        <field name="groups" eval="[(4, ref('sales_team.group_sale_salesman'))]"/>
+    </record>
+
+    <record id="delivery_rule_for_all_docs_and_admin" model="ir.rule">
+        <field name="name">Delivery rule for All Docs and Admin</field>
+        <field name="model_id" ref="stock.model_stock_picking"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="perm_read">True</field>
+        <field name="perm_write">True</field>
+        <field name="perm_create">True</field>
+        <field name="perm_unlink">True</field>
+        <field name="groups" eval="[(4, ref('sales_team.group_sale_salesman_all_leads')),(4, ref('sales_team.group_sale_manager'))]"/>
+    </record>
+
+    <record id="incomplete_registration_tag" model="res.partner.category">
+        <field name="name">Incomplete Registration</field>
+    </record>
+    </data>
+  
+<!--    Service Cost-->
+     <record id="service_cost_fdm" model="service.cost">
+        <field name="name">FDM</field>
+        <field name="service">fdm_modeling</field>
+     </record>
+
+    <record id="service_cost_projection" model="service.cost">
+        <field name="name">Projection Printing</field>
+        <field name="service">projection_printing</field>
+    </record>
+
+    <record id="service_cost_freight" model="service.cost">
+        <field name="name">Freight</field>
+        <field name="service">delivery</field>
+    </record>
+
+    <record id="service_cost_uv_printing" model="service.cost">
+        <field name="name">UV Printing</field>
+        <field name="service">uv_printing</field>
+    </record>
+</odoo>

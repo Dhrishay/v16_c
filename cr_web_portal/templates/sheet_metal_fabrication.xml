@@ -1,0 +1,889 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="sheet_metal_fabrication" name="Sheet Metal Fabrication">
+        <t t-call="web.frontend_layout">
+
+            <div class="oe_structure oe_empty">
+                <section class="s_cover parallax bg-black-50 s_parallax_no_overflow_hidden o_colored_level pt72 pb72" data-scroll-background-ratio="1" data-snippet="s_cover" data-name="Cover" style="background-image: none;">
+                    <span class="s_parallax_bg oe_img_bg o_bg_img_center" style="background-image: url(&quot;cr_web_portal/static/src/images/mech-custom/sheet_metal.webp&quot;);" data-original-id="12118" data-original-src="/web/image/12118-15d9585a/Enclosure.png" data-mimetype="image/png" data-resize-width="1855"/>
+                    <div class="o_we_bg_filter bg-black-50"/>
+
+                    <div class="container s_allow_columns container-fluid">
+                        <div class="row">
+                            <div class="col o_colored_level col-lg-10 custom-banner-mp">
+                                <div class="header-box-custom mt-4">
+                                    <h5 class="sub-heading-custom mp-caption-custom">SERVICES</h5>
+                                    <h2 class="main-heading-custom" style="color: white;"><span class="mp_underline_custom">Sheet Metal F</span>abrication</h2>
+                                    <p class="sub-heading-lines-custom mp-body-1-rg" style="color: white;">Get a custom quote for Sheet Metal Fabrication project
+                                    </p>
+                                </div>
+                                <p class="submit-inquiry" style="text-align: left;">
+                                    <a class="btn btn-primary btn-lg mb-2 o_default_snippet_text" href="/contactus" data-bs-original-title="" title="" style="border-radius: 10px; !important">Submit your inquiry​
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <div class="oe_structure oe_empty">
+                <section class="fdm">
+                    <div class="container">
+                        <div class="header-box-custom">
+                            <div>
+                                <h5 class="sub-heading-custom mp-caption-custom">WHAT IS</h5>
+                                <h2 class="main-heading-custom">Sheet Metal<br/><span class="mp_underline_custom">Fabrication Ser</span>vice</h2>
+                            </div>
+                            <p class="sub-heading-lines-custom fdm-sheet w-50 mp-body-1-rg">At Mech Power, we bridge the gap between your enclosure concepts and reality. Our tailored design solutions seamlessly blend functionality and aesthetics, making your visions tangible. <br/><br/><strong class="metal-strong">Sheet Metal Fabrication Capabilities
+                            </strong><br/>Explore our diverse Sheet Metal Fabrication capabilities, from high-speed CNC Punching to precise Laser Welding, and experience craftsmanship at its finest.</p>
+                        </div>
+                            <div class="fdm-capabilities">
+                            <div class="fdm-contents row">
+                                <div class="fdm-content">
+                                    <h3>CNC Punching</h3>
+                                    <ul>
+                                        <li>
+                                            <strong>Stroke Rate (Punching):</strong>
+                                            600 strokes per minute, ensuring swift and accurate metal shaping.
+                                        </li>
+                                        <li>
+                                            <strong>Stroke Rate (Marking):</strong>
+                                            1300 strokes per minute for intricate detailing and precision marking.
+                                        </li>
+                                        <li>
+                                            <strong>Maximum Sheet Size:</strong>
+                                            Handling sheets up to 2500 x 1250 mm for larger creations.
+                                        </li>
+                                        <li>
+                                            <strong>Maximum Thickness:</strong>
+                                            Molding metal sheets up to 6.4 mm in thickness.
+                                        </li>
+                                        <li>
+                                            <strong>Tool Arsenal: </strong>
+                                            Equipped with 18 tools for versatility and precision.
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="fdm-content">
+                                    <h3>CNC Press Brake</h3>
+                                    <ul>
+                                        <li>
+                                            <strong>Bending Force:</strong>
+                                            1000KN, guaranteeing accurate and powerful bending.
+                                        </li>
+                                        <li>
+                                            <strong>Bending Length:</strong>
+                                            Extending up to 3100mm for seamless shaping.
+                                        </li>
+                                        <li>
+                                            <strong>Throat Depth:</strong>
+                                            410mm for flexibility in shaping intricate forms.
+                                        </li>
+                                        <li>
+                                            <strong>Maximum Thickness:</strong>
+                                            Molding metal sheets up to 6.4 mm in thickness.
+                                        </li>
+                                        <li>
+                                            <strong>Tool Arsenal: </strong>
+                                            Equipped with 18 tools for versatility and precision.
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="fdm-content">
+                                    <h3>CNC Punching</h3>
+                                    <ul>
+                                        <li>
+                                            <strong>Stroke Rate (Punching):</strong>
+                                            600 strokes per minute, ensuring swift and accurate metal shaping.
+                                        </li>
+                                        <li>
+                                            <strong>Stroke Rate (Marking):</strong>
+                                            1300 strokes per minute for intricate detailing and precision marking.
+                                        </li>
+                                        <li>
+                                            <strong>Maximum Sheet Size:</strong>
+                                            Handling sheets up to 2500 x 1250 mm for larger creations.
+                                        </li>
+                                        <li>
+                                            <strong>Maximum Thickness:</strong>
+                                            Molding metal sheets up to 6.4 mm in thickness.
+                                        </li>
+                                        <li>
+                                            <strong>Tool Arsenal: </strong>
+                                            Equipped with 18 tools for versatility and precision.
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="fdm-image">
+                                <img src="cr_web_portal/static/src/images/mech-custom/fdm.png" alt="FDM"/>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <div class="oe_structure oe_empty">
+                <section class="printing-material">
+                    <div class="container">
+                        <div class="header-box-custom service-3d mt-4">
+                            <h5 class="sub-heading-custom mp-caption-custom">MATERIALS</h5>
+                            <h2 class="main-heading-custom">Sheet <span class="mp_underline_custom">Metal Fabricatio</span>n Materials</h2>
+                            <p class="sub-heading-lines-custom mp-body-1-rg">Explore our range of versatile Projection Printing Materials printing materials: </p>
+                        </div>
+                        <div class="material-grid row">
+                            <div class="material-card">
+                                <div class="material-card-content">
+                                    <h3>PRO-BLK 10</h3>
+                                    <p>
+                                        Hendrerit commodo facilisis viverra turpis vulputate scelerisque. Aenean commodo
+                                        lorem ante elementum sagittis nisl lectus.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="material-card">
+                                <div class="material-card-content">
+                                    <h3>Rigid White</h3>
+                                    <p>
+                                        Hendrerit commodo facilisis viverra turpis vulputate scelerisque. Aenean commodo
+                                        lorem ante elementum sagittis nisl lectus.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="material-card">
+                                <div class="material-card-content">
+                                    <h3>Tough 60C White</h3>
+                                    <p>
+                                        Hendrerit commodo facilisis viverra turpis vulputate scelerisque. Aenean commodo
+                                        lorem ante elementum sagittis nisl lectus.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="material-card">
+                                <div class="material-card-content">
+                                    <h3>Rigid Gray</h3>
+                                    <p>
+                                        Hendrerit commodo facilisis viverra turpis vulputate scelerisque. Aenean commodo
+                                        lorem ante elementum sagittis nisl lectus.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="material-card">
+                                <div class="material-card-content">
+                                    <h3>Rubber-65A BLK</h3>
+                                    <p>
+                                        Hendrerit commodo facilisis viverra turpis vulputate scelerisque. Aenean commodo
+                                        lorem ante elementum sagittis nisl lectus.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="material-card">
+                                <div class="material-card-content">
+                                    <h3>Flex-BLK 20</h3>
+                                    <p>
+                                        Hendrerit commodo facilisis viverra turpis vulputate scelerisque. Aenean commodo
+                                        lorem ante elementum sagittis nisl lectus.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="material-card">
+                                <div class="material-card-content">
+                                    <h3>High Temp 150°C FR Black</h3>
+                                    <p>
+                                        Hendrerit commodo facilisis viverra turpis vulputate scelerisque. Aenean commodo
+                                        lorem ante elementum sagittis nisl lectus.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="material-card">
+                                <div class="material-card-content">
+                                    <h3>Tough 65C Black</h3>
+                                    <p>
+                                        Hendrerit commodo facilisis viverra turpis vulputate scelerisque. Aenean commodo
+                                        lorem ante elementum sagittis nisl lectus.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <div class="oe_structure oe_empty">
+                <section class="plastic-metal">
+                    <div class="container">
+                        <div class="header-box-custom service-3d mt-4" style="max-width: 100% !important;">
+                            <h5 class="sub-heading-custom mp-caption-custom text-center">OPTIONS</h5>
+                            <h2 class="main-heading-custom text-center">Surface<span class="mp_underline_custom"> Finish Options</span> </h2>
+                            <p class="sub-heading-lines-custom mp-body-1-rg text-center">Explore our array of surface finish options to add both beauty and durability to your sheet metal creations.
+                            </p>
+                        </div>
+                        <div class="surface-finish sheet-metal-febric">
+                                <div class="card">
+                                    <div class="surface-finish-img">
+                                            <img src="cr_web_portal/static/src/images/mech-custom/anodizing.png" alt="Anodizing" class="card-image" />
+                                    </div>
+                                    <h3 class="card-title">Anodizing</h3>
+                                    <p class="card-description">
+                                        Anodizing adds a tough, corrosion-resistant layer to metals, allowing color options.
+                                    </p>
+                                </div>
+                                <div class="card">
+                                    <div class="surface-finish-img">
+                                        <img src="cr_web_portal/static/src/images/mech-custom/powder-coating.png" alt="Powder Coating" class="card-image" />
+                                    </div>
+                                    <h3 class="card-title">Powder Coating</h3>
+                                    <p class="card-description">
+                                        Powder coating is a tough, heat-cured finish applied as a dry powder.
+                                    </p>
+                                </div>
+                                <div class="card">
+                                    <div class="surface-finish-img">
+                                        <img src="cr_web_portal/static/src/images/mech-custom/black-oxidizing.png" alt="Black Oxidizing" class="card-image" />
+                                    </div>
+                                    <h3 class="card-title">Black Oxidizing</h3>
+                                    <p class="card-description">
+                                        Black oxidizing is a process that creates a black, protective oxide layer on metal.
+                                    </p>
+                                </div>
+                            <div class="card">
+                                <div class="surface-finish-img">
+                                    <img src="cr_web_portal/static/src/images/mech-custom/chromotizing.png"
+                                         alt="Black Oxidizing" class="card-image"/>
+                                </div>
+                                <h3 class="card-title">Chromotizing</h3>
+                                <p class="card-description">
+                                   Protects metals with corrosion resistance and improved adhesion.
+                                </p>
+                            </div>
+
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <div class="oe_structure oe_empty">
+                <section class="prototype-offering">
+                    <div class="container">
+                        <div class="header-box-custom service-3d mt-4" style="max-width: 100% !important;">
+                            <h5 class="sub-heading-custom mp-caption-custom text-center">SERVICES</h5>
+                            <h2 class="main-heading-custom text-center">Cust<span class="mp_underline_custom">omization offeri</span>ngs</h2>
+                            <p class="sub-heading-lines-custom mp-body-1-rg text-center">Customization offerings allow products to be tailored to specific customer preferences or requirements, enhancing personalization and functionality.</p>
+                        </div>
+                        <div class="customization-offering">
+                            <div class="card">
+                                    <img src="cr_web_portal/static/src/images/mech-custom/uv-printing.png" alt="3D Printing" class="card-image" />
+                                <div class="customization-card">
+                                    <h4 class="card-title">UV Printing</h4>
+                                    <p class="card-description">
+                                        Cum ante sagittis facilisis sit in ultricies quam. Montes lacus risus in et sodales semper non sollicitudin lacus. Vel velit tristique commodo dis massa consectetur nisl. Pretium pharetra blandit aliquam commodo duis urna sit fringilla. In eu tristique ultrices eu risus lorem sollicitudin et cum. Elit in tellus urna eu mi sapien sit. Velit commodo eu arcu condimentum. Elementum praesent erat sollicitudin nec lectus sem duis. Feugiat enim risus turpis scelerisque facilisis. Tincidunt nulla hendrerit hac integer pellentesque. Proin morbi tincidunt varius id lorem neque consequat mauris eu. Donec iaculis in porta vel vulputate. Placerat magnis id volutpat purus lectus dignissim.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <section id="powervis-section" class="container">
+                <div class="powervis-card col-12">
+                    <div class="powervis-content col-6">
+                        <span class="title">INSTANT QUOTE <sup>BETA</sup></span><br/>
+                        <h3 class="powervis-subtitle">PowerVis</h3>
+                        <p class="powervis-description">
+                            Powerviz is a nextgen tool where you can check your actual file. we can extended this
+                            line for more discription.
+                        </p>
+                        <div class="powervis-action">
+                            <a href="/" class="button button--primary powervis-btn">Submit your request</a>
+                        </div>
+                    </div>
+                    
+                    <div class="powervis-summary col-6">
+                        <img src="/cr_web_portal/static/src/images/mech-custom/powervis.svg"
+                                 alt="Powervis Summary" class="laptop_view "/>
+                    </div>
+                
+                </div>
+            </section>
+
+            <div class="oe_structure oe_empty">
+                <section class="design-journey">
+                    <div class="container">
+                        <div class="header-box-custom">
+                            <h5 class="sub-heading-custom mp-caption-custom">FROM QUOTE TO INSTALLATION</h5>
+                            <h2 class="main-heading-custom"><span class="mp_underline_custom">Ordering Process</span></h2>
+                            <p class="mt-4">Lorem ipsum dolor sit amet consectetur. </p>
+                        </div>
+                        <div>
+                            <div class="design-journey-container">
+                                <div class="journey-progressbar">
+                                    <svg width="1167" height="91" viewBox="0 0 1167 91" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M355.471 90.3532C355.276 90.5484 354.96 90.5484 354.764 90.3532L351.582 87.1712C351.387 86.9759 351.387 86.6593 351.582 86.4641C351.778 86.2688 352.094 86.2688 352.289 86.4641L355.118 89.2925L357.946 86.4641C358.142 86.2688 358.458 86.2688 358.653 86.4641C358.849 86.6593 358.849 86.9759 358.653 87.1712L355.471 90.3532ZM306.473 57.5035L306.473 58.0035L306.471 58.0035L306.473 57.5035ZM101.501 56.4996L306.474 57.0035L306.471 58.0035L101.499 57.4996L101.501 56.4996ZM306.473 57.0035L345.118 57.0035L345.118 58.0035L306.473 58.0035L306.473 57.0035ZM355.618 67.5035L355.618 89.9996L354.618 89.9996L354.618 67.5035L355.618 67.5035ZM345.118 57.0035C350.917 57.0035 355.618 61.7046 355.618 67.5035L354.618 67.5035C354.618 62.2568 350.365 58.0035 345.118 58.0035L345.118 57.0035Z" fill="#49B958"/>
+                                        <path d="M108.854 90.3535C108.658 90.5488 108.342 90.5488 108.146 90.3535L104.964 87.1716C104.769 86.9763 104.769 86.6597 104.964 86.4645C105.16 86.2692 105.476 86.2692 105.672 86.4645L108.5 89.2929L111.328 86.4645C111.524 86.2692 111.84 86.2692 112.036 86.4645C112.231 86.6597 112.231 86.9763 112.036 87.1716L108.854 90.3535ZM91.4293 57.5039L91.4293 58.0039L91.4258 58.0039L91.4293 57.5039ZM19.5035 56.5L91.4328 57.0039L91.4258 58.0039L19.4965 57.5L19.5035 56.5ZM91.4293 57.0039L98.5 57.0039L98.5 58.0039L91.4293 58.0039L91.4293 57.0039ZM109 67.5039L109 90L108 90L108 67.5039L109 67.5039ZM98.5 57.0039C104.299 57.0039 109 61.7049 109 67.5039L108 67.5039C108 62.2572 103.747 58.0039 98.5 58.0039L98.5 57.0039Z" fill="#49B958"/>
+                                        <path d="M629.592 90.3531C629.396 90.5484 629.08 90.5484 628.885 90.3531L625.703 87.1712C625.507 86.9759 625.507 86.6593 625.703 86.4641C625.898 86.2688 626.215 86.2688 626.41 86.4641L629.238 89.2925L632.067 86.4641C632.262 86.2688 632.578 86.2688 632.774 86.4641C632.969 86.6593 632.969 86.9759 632.774 87.1712L629.592 90.3531ZM530.86 57.5035L530.86 58.0035L530.86 58.0035L530.86 57.5035ZM96.5006 56.4996L530.861 57.0035L530.86 58.0035L96.4994 57.4996L96.5006 56.4996ZM530.86 57.0035L619.238 57.0035L619.238 58.0035L530.86 58.0035L530.86 57.0035ZM629.738 67.5035L629.738 89.9996L628.738 89.9996L628.738 67.5035L629.738 67.5035ZM619.238 57.0035C625.037 57.0035 629.738 61.7045 629.738 67.5035L628.738 67.5035C628.738 62.2568 624.485 58.0035 619.238 58.0035L619.238 57.0035Z" fill="#49B958"/>
+                                        <path d="M890.231 90.3531C890.035 90.5484 889.719 90.5484 889.524 90.3531L886.342 87.1711C886.146 86.9759 886.146 86.6593 886.342 86.464C886.537 86.2688 886.854 86.2688 887.049 86.464L889.877 89.2925L892.706 86.464C892.901 86.2688 893.217 86.2688 893.413 86.464C893.608 86.6593 893.608 86.9759 893.413 87.1711L890.231 90.3531ZM744.213 57.5035L744.213 58.0035L744.213 58.0035L744.213 57.5035ZM96.5004 56.4996L744.213 57.0035L744.213 58.0035L96.4996 57.4996L96.5004 56.4996ZM744.213 57.0035L879.877 57.0035L879.877 58.0035L744.213 58.0035L744.213 57.0035ZM890.377 67.5035L890.377 89.9996L889.377 89.9996L889.377 67.5035L890.377 67.5035ZM879.877 57.0035C885.676 57.0035 890.377 61.7045 890.377 67.5035L889.377 67.5035C889.377 62.2568 885.124 58.0035 879.877 58.0035L879.877 57.0035Z" fill="#49B958"/>
+                                        <path d="M1162.85 90.3535C1162.66 90.5487 1162.34 90.5487 1162.15 90.3535L1158.96 87.1715C1158.77 86.9762 1158.77 86.6596 1158.96 86.4644C1159.16 86.2691 1159.48 86.2691 1159.67 86.4644L1162.5 89.2928L1165.33 86.4644C1165.52 86.2691 1165.84 86.2691 1166.04 86.4644C1166.23 86.6596 1166.23 86.9762 1166.04 87.1715L1162.85 90.3535ZM952.591 57.5039L952.591 58.0039L952.59 58.0039L952.591 57.5039ZM15.4949 56.5054L952.591 57.0039L952.59 58.0039L15.4944 57.5054L15.4949 56.5054ZM952.591 57.0039L1152.5 57.0039L1152.5 58.0039L952.591 58.0039L952.591 57.0039ZM1163 67.5039L1163 89.9999L1162 89.9999L1162 67.5039L1163 67.5039ZM5 47.0054L5 6.00008L6 6.00008L6 47.0054L5 47.0054ZM1152.5 57.0039C1158.3 57.0039 1163 61.7049 1163 67.5039L1162 67.5039C1162 62.2572 1157.75 58.0039 1152.5 58.0039L1152.5 57.0039ZM15.4944 57.5054C9.6976 57.5023 5 52.8022 5 47.0054L6 47.0054C6 52.2501 10.2502 56.5026 15.4949 56.5054L15.4944 57.5054Z" fill="#49B958"/>
+                                        <circle cx="5" cy="5" r="5" transform="matrix(4.37114e-08 1 1 -4.37114e-08 0.5 0)" fill="#49B958"/>
+                                    </svg>
+                                </div>
+                                <div class="journey-progressbar-mbl d-none">
+                                    <svg width="39" height="1111" viewBox="0 0 39 1111" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M38.3536 135.354C38.5488 135.158 38.5488 134.842 38.3536 134.646L35.1716 131.464C34.9763 131.269 34.6597 131.269 34.4645 131.464C34.2692 131.66 34.2692 131.976 34.4645 132.172L37.2929 135L34.4645 137.828C34.2692 138.024 34.2692 138.34 34.4645 138.536C34.6597 138.731 34.9763 138.731 35.1716 138.536L38.3536 135.354ZM5.50393 110.641L6.00393 110.641L6.00392 110.638L5.50393 110.641ZM4.5 8.00246L5.00393 110.643L6.00392 110.638L5.49999 7.99755L4.5 8.00246ZM5.00393 110.641L5.00393 125L6.00393 125L6.00393 110.641L5.00393 110.641ZM15.5039 135.5L38 135.5L38 134.5L15.5039 134.5L15.5039 135.5ZM5.00393 125C5.00393 130.799 9.70494 135.5 15.5039 135.5L15.5039 134.5C10.2572 134.5 6.00393 130.247 6.00393 125L5.00393 125Z" fill="#49B958"/>
+                                        <path d="M38.3536 375.354C38.5488 375.158 38.5488 374.842 38.3536 374.646L35.1716 371.464C34.9763 371.269 34.6597 371.269 34.4645 371.464C34.2692 371.66 34.2692 371.976 34.4645 372.172L37.2929 375L34.4645 377.828C34.2692 378.024 34.2692 378.34 34.4645 378.536C34.6597 378.731 34.9763 378.731 35.1716 378.536L38.3536 375.354ZM5.50392 326.473L6.00392 326.473L6.00392 326.472L5.50392 326.473ZM4.49999 122.001L5.00392 326.474L6.00392 326.472L5.49999 121.999L4.49999 122.001ZM5.00392 326.473L5.00392 365L6.00392 365L6.00392 326.473L5.00392 326.473ZM15.5039 375.5L38 375.5L38 374.5L15.5039 374.5L15.5039 375.5ZM5.00392 365C5.00392 370.799 9.70493 375.5 15.5039 375.5L15.5039 374.5C10.2572 374.5 6.00392 370.247 6.00392 365L5.00392 365Z" fill="#49B958"/>
+                                        <path d="M38.3536 616.354C38.5488 616.158 38.5488 615.842 38.3536 615.646L35.1716 612.464C34.9763 612.269 34.6597 612.269 34.4645 612.464C34.2692 612.66 34.2692 612.976 34.4645 613.172L37.2929 616L34.4645 618.828C34.2692 619.024 34.2692 619.34 34.4645 619.536C34.6597 619.731 34.9763 619.731 35.1716 619.536L38.3536 616.354ZM5.50393 568.726L6.00393 568.726L6.00393 568.725L5.50393 568.726ZM4.49999 360.001L5.00393 568.727L6.00393 568.725L5.49999 359.999L4.49999 360.001ZM5.00393 568.726L5.00393 606L6.00393 606L6.00393 568.726L5.00393 568.726ZM15.5039 616.5L38 616.5L38 615.5L15.5039 615.5L15.5039 616.5ZM5.00393 606C5.00393 611.799 9.70494 616.5 15.5039 616.5L15.5039 615.5C10.2572 615.5 6.00393 611.247 6.00393 606L5.00393 606Z" fill="#49B958"/>
+                                        <path d="M38.3536 860.354C38.5488 860.158 38.5488 859.842 38.3536 859.646L35.1716 856.464C34.9763 856.269 34.6597 856.269 34.4645 856.464C34.2692 856.66 34.2692 856.976 34.4645 857.172L37.2929 860L34.4645 862.828C34.2692 863.024 34.2692 863.34 34.4645 863.536C34.6597 863.731 34.9763 863.731 35.1716 863.536L38.3536 860.354ZM5.50394 812.998L6.00394 812.998L6.00394 812.997L5.50394 812.998ZM4.49999 604.001L5.00394 813L6.00394 812.997L5.49999 603.999L4.49999 604.001ZM5.00394 812.998L5.00394 850L6.00394 850L6.00394 812.998L5.00394 812.998ZM15.5039 860.5L38 860.5L38 859.5L15.5039 859.5L15.5039 860.5ZM5.00394 850C5.00394 855.799 9.70495 860.5 15.5039 860.5L15.5039 859.5C10.2572 859.5 6.00394 855.247 6.00394 850L5.00394 850Z" fill="#49B958"/>
+                                        <path d="M38.3536 1107.35C38.5488 1107.16 38.5488 1106.84 38.3536 1106.65L35.1716 1103.46C34.9763 1103.27 34.6597 1103.27 34.4645 1103.46C34.2692 1103.66 34.2692 1103.98 34.4645 1104.17L37.2929 1107L34.4645 1109.83C34.2692 1110.02 34.2692 1110.34 34.4645 1110.54C34.6597 1110.73 34.9763 1110.73 35.1716 1110.54L38.3536 1107.35ZM5.50392 1060.01L6.00392 1060.01L6.00392 1060.01L5.50392 1060.01ZM4.49999 848.001L5.00392 1060.01L6.00392 1060.01L5.49999 847.999L4.49999 848.001ZM5.00392 1060.01L5.00392 1097L6.00392 1097L6.00392 1060.01L5.00392 1060.01ZM15.5039 1107.5L38 1107.5L38 1106.5L15.5039 1106.5L15.5039 1107.5ZM5.00392 1097C5.00392 1102.8 9.70493 1107.5 15.5039 1107.5L15.5039 1106.5C10.2572 1106.5 6.00392 1102.25 6.00392 1097L5.00392 1097Z" fill="#49B958"/>
+                                        <circle cx="5" cy="5" r="5" transform="matrix(4.37114e-08 1 1 -4.37114e-08 0 0)" fill="#49B958"/>
+                                    </svg>
+                                </div>
+                                <div class="journey-steps">
+                                    <div class="step">
+                                        <div class="content">
+                                            <h3>Get Your Instant Quote</h3>
+                                            <p>Start by using our Instant Quote tool to receive an accurate estimate based on your power system needs.</p>
+                                        </div>
+                                        <div class="background">
+                                            <svg width="94" height="79" viewBox="0 0 94 79" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M0.84375 73.4062V5.71875C0.84375 2.76722 3.23597 0.375 6.1875 0.375H98.8125C101.764 0.375 104.156 2.76722 104.156 5.71875V73.4062C104.156 76.3578 101.764 78.75 98.8125 78.75H6.1875C3.23597 78.75 0.84375 76.3578 0.84375 73.4062ZM100.594 18.1875V5.71875C100.594 4.7355 99.7958 3.9375 98.8125 3.9375H6.1875C5.20425 3.9375 4.40625 4.7355 4.40625 5.71875V18.1875H100.594ZM4.40625 21.75V73.4062C4.40625 74.3895 5.20425 75.1875 6.1875 75.1875H98.8125C99.7958 75.1875 100.594 74.3895 100.594 73.4062V21.75H4.40625ZM32.9062 7.5C34.8727 7.5 36.4688 9.096 36.4688 11.0625C36.4688 13.029 34.8727 14.625 32.9062 14.625C30.9398 14.625 29.3438 13.029 29.3438 11.0625C29.3438 9.096 30.9398 7.5 32.9062 7.5ZM22.2188 7.5C24.1852 7.5 25.7812 9.096 25.7812 11.0625C25.7812 13.029 24.1852 14.625 22.2188 14.625C20.2523 14.625 18.6562 13.029 18.6562 11.0625C18.6562 9.096 20.2523 7.5 22.2188 7.5ZM11.5312 7.5C13.4978 7.5 15.0938 9.096 15.0938 11.0625C15.0938 13.029 13.4978 14.625 11.5312 14.625C9.56475 14.625 7.96875 13.029 7.96875 11.0625C7.96875 9.096 9.56475 7.5 11.5312 7.5ZM32.4716 32.7278L32.4788 33.5276C33.2251 33.7734 33.9501 34.0745 34.6501 34.4272L35.2219 33.8678C35.8239 33.2765 36.7573 33.1892 37.4591 33.6577C39.4043 34.958 41.0733 36.627 42.3736 38.5721C42.8421 39.2757 42.7548 40.2073 42.1634 40.8094L41.6041 41.3812C41.9568 42.0812 42.2578 42.8062 42.5018 43.5525L43.3034 43.5596C44.1459 43.5685 44.8691 44.167 45.033 44.9935C45.489 47.2878 45.489 49.6497 45.033 51.944C44.8691 52.7705 44.1459 53.369 43.3034 53.3779L42.5036 53.385C42.2578 54.1313 41.9568 54.8563 41.6041 55.5563L42.1634 56.1281C42.7548 56.7302 42.8421 57.6636 42.3736 58.3654C41.0733 60.3105 39.4043 61.9795 37.4591 63.2798C36.7573 63.7483 35.8239 63.661 35.2219 63.0697L34.6501 62.5103C33.9501 62.863 33.2251 63.1641 32.4788 63.4081L32.4716 64.2097C32.4627 65.0522 31.8642 65.7754 31.0377 65.9392C28.7435 66.3952 26.3815 66.3952 24.0873 65.9392C23.2608 65.7754 22.6623 65.0522 22.6534 64.2097L22.6462 63.4099C21.8999 63.1641 21.1749 62.863 20.4749 62.5103L19.9031 63.0697C19.3011 63.661 18.3677 63.7483 17.6659 63.2798C15.7208 61.9795 14.0517 60.3105 12.7514 58.3654C12.2829 57.6636 12.3702 56.7302 12.9616 56.1281L13.5209 55.5563C13.1682 54.8563 12.8672 54.1313 12.6232 53.385L11.8216 53.3779C10.9791 53.369 10.2559 52.7705 10.092 51.944C9.636 49.6497 9.636 47.2878 10.092 44.9935C10.2559 44.167 10.9791 43.5685 11.8216 43.5596L12.6214 43.5525C12.8672 42.8062 13.1682 42.0812 13.5209 41.3812L12.9616 40.8094C12.3702 40.2073 12.2829 39.2757 12.7514 38.5721C14.0517 36.627 15.7208 34.958 17.6659 33.6577C18.3677 33.1892 19.3011 33.2765 19.9031 33.8678L20.4749 34.4272C21.1749 34.0745 21.8999 33.7734 22.6462 33.5294L22.6534 32.7278C22.6623 31.8853 23.2608 31.1621 24.0873 30.9982C26.3815 30.5422 28.7435 30.5422 31.0377 30.9982C31.8642 31.1621 32.4627 31.8853 32.4716 32.7278ZM28.9252 34.2847C28.0185 34.1974 27.1065 34.1974 26.1998 34.2847L26.1945 34.8992C26.1856 35.7221 25.6156 36.4311 24.8158 36.6163C23.5102 36.9191 22.2615 37.4357 21.1251 38.1464C20.4268 38.5828 19.5219 38.4831 18.9359 37.9059L18.4959 37.4749C17.7941 38.0556 17.1475 38.7004 16.5686 39.4022L16.9997 39.8422C17.575 40.4282 17.6748 41.3331 17.2402 42.0313C16.5294 43.1678 16.0129 44.4164 15.7101 45.7221C15.5248 46.5218 14.8159 47.0918 13.9929 47.1007L13.3784 47.1079C13.2911 48.0127 13.2911 48.9247 13.3784 49.8314L13.9929 49.8368C14.8159 49.8457 15.5248 50.4157 15.7101 51.2154C16.0129 52.5211 16.5294 53.7697 17.2402 54.9062C17.6748 55.6044 17.575 56.5093 16.9997 57.0953L16.5686 57.5353C17.1493 58.2371 17.7941 58.8837 18.4959 59.4626L18.9359 59.0316C19.5219 58.4562 20.4268 58.3565 21.1251 58.7911C22.2615 59.5018 23.5102 60.0184 24.8158 60.3212C25.6156 60.5064 26.1856 61.2154 26.1945 62.0383L26.2016 62.6528C27.1065 62.7401 28.0185 62.7401 28.9252 62.6528L28.9305 62.0383C28.9394 61.2154 29.5094 60.5064 30.3092 60.3212C31.6148 60.0184 32.8635 59.5018 33.9999 58.7911C34.6982 58.3565 35.6031 58.4562 36.1891 59.0316L36.6291 59.4626C37.3309 58.8819 37.9775 58.2371 38.5564 57.5353L38.1253 57.0953C37.55 56.5093 37.4502 55.6044 37.8848 54.9062C38.5956 53.7697 39.1121 52.5211 39.4149 51.2154C39.6002 50.4157 40.3091 49.8457 41.1321 49.8368L41.7466 49.8296C41.8339 48.9248 41.8339 48.0128 41.7466 47.1061L41.1321 47.1007C40.3091 47.0918 39.6002 46.5218 39.4149 45.7221C39.1121 44.4164 38.5956 43.1678 37.8848 42.0313C37.4502 41.3331 37.55 40.4282 38.1253 39.8422L38.5564 39.4022C37.9757 38.7004 37.3309 38.0538 36.6291 37.4749L36.1891 37.9059C35.6031 38.4831 34.6982 38.5828 33.9999 38.1464C32.8635 37.4357 31.6148 36.9191 30.3092 36.6163C29.5094 36.4311 28.9394 35.7221 28.9305 34.8992L28.9252 34.2847ZM27.5625 41.3438C31.4955 41.3438 34.6875 44.5358 34.6875 48.4688C34.6875 52.4017 31.4955 55.5938 27.5625 55.5938C23.6295 55.5938 20.4375 52.4017 20.4375 48.4688C20.4375 44.5358 23.6295 41.3438 27.5625 41.3438ZM27.5625 44.9062C25.596 44.9062 24 46.5023 24 48.4688C24 50.4352 25.596 52.0312 27.5625 52.0312C29.529 52.0312 31.125 50.4352 31.125 48.4688C31.125 46.5023 29.529 44.9062 27.5625 44.9062ZM95.25 37.7812V62.7188C95.25 64.687 93.6558 66.2812 91.6875 66.2812H86.3438C84.3755 66.2812 82.7812 64.687 82.7812 62.7188V37.7812C82.7812 35.813 84.3755 34.2188 86.3438 34.2188H91.6875C93.6558 34.2188 95.25 35.813 95.25 37.7812ZM86.3438 37.7812V62.7188H91.6875V37.7812H86.3438ZM63.1875 52.0312V62.7188C63.1875 64.687 61.5933 66.2812 59.625 66.2812H54.2812C53.3372 66.2812 52.4305 65.9054 51.7626 65.2374C51.0946 64.5695 50.7188 63.6628 50.7188 62.7188V52.0312C50.7188 50.063 52.313 48.4688 54.2812 48.4688H59.625C60.5691 48.4688 61.4757 48.8446 62.1437 49.5126C62.8117 50.1805 63.1875 51.0872 63.1875 52.0312ZM54.2812 62.7188H59.625V52.0312H54.2812V62.7188ZM79.2188 44.9062V62.7188C79.2188 63.6628 78.8429 64.5695 78.1749 65.2374C77.507 65.9054 76.6003 66.2812 75.6562 66.2812H70.3125C69.3684 66.2812 68.4618 65.9054 67.7938 65.2374C67.1258 64.5695 66.75 63.6628 66.75 62.7188V44.9062C66.75 43.9622 67.1258 43.0555 67.7938 42.3876C68.4618 41.7196 69.3684 41.3438 70.3125 41.3438H75.6562C76.6003 41.3438 77.507 41.7196 78.1749 42.3876C78.8429 43.0555 79.2188 43.9622 79.2188 44.9062ZM70.3125 44.9062V62.7188H75.6562V44.9062H70.3125Z" fill="url(#paint0_linear_3733_3912)"/>
+                                                <defs>
+                                                <linearGradient id="paint0_linear_3733_3912" x1="0.84375" y1="39.5625" x2="104.156" y2="39.5625" gradientUnits="userSpaceOnUse">
+                                                <stop stop-color="#E6E6E6"/>
+                                                <stop offset="1" stop-color="#646464"/>
+                                                </linearGradient>
+                                                </defs>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="step">
+                                        <div class="content">
+                                            <h3>Review and Customize Your Quote</h3>
+                                            <p>Once you receive your quote, you’ll have the option to review the details.</p>
+                                        </div>
+                                        <div class="background">
+                                            <svg width="94" height="94" viewBox="0 0 94 94" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M6.2445 40.0933H6.1875C3.23775 40.0933 0.84375 37.6993 0.84375 34.7496C0.84375 31.7998 3.23775 29.4058 6.1875 29.4058C9.13725 29.4058 11.5312 31.7998 11.5312 34.7496C11.5312 35.8486 11.1982 36.8711 10.6282 37.7207L19.8586 42.6922L25.1827 28.8483C23.4264 27.9719 22.2188 26.1568 22.2188 24.0621C22.2188 21.1123 24.6127 18.7183 27.5625 18.7183C30.5123 18.7183 32.9062 21.1123 32.9062 24.0621C32.9062 25.7543 32.1189 27.263 30.8899 28.2427L40.5621 37.0349L49.4487 26.6681C48.0629 25.7008 47.1562 24.0959 47.1562 22.2808C47.1562 19.3311 49.5503 16.9371 52.5 16.9371C55.4497 16.9371 57.8438 19.3311 57.8438 22.2808C57.8438 24.0959 56.9371 25.7008 55.5531 26.6663L64.4397 37.0349L74.1101 28.2427C72.8811 27.263 72.0938 25.7543 72.0938 24.0621C72.0938 21.1123 74.4877 18.7183 77.4375 18.7183C80.3873 18.7183 82.7812 21.1123 82.7812 24.0621C82.7812 26.1568 81.5736 27.9719 79.8172 28.8483L85.1414 42.6922L94.3718 37.7207C93.8018 36.8711 93.4688 35.8486 93.4688 34.7496C93.4688 31.7998 95.8627 29.4058 98.8125 29.4058C101.76 29.4058 104.156 31.7998 104.156 34.7496C104.156 37.6993 101.76 40.0933 98.8125 40.0933H98.7555L97.0312 93.5308V98.8746C97.0312 100.292 96.4684 101.652 95.4655 102.653C94.4645 103.655 93.1054 104.218 91.6875 104.218H13.3125C11.8946 104.218 10.5355 103.655 9.53447 102.653C8.53163 101.652 7.96875 100.292 7.96875 98.8746V93.5308L6.2445 40.0933ZM19.9281 46.7748C15.1098 44.1795 9.84797 41.3473 9.84797 41.3473L11.4743 91.7496H93.5257L95.152 41.3473C95.152 41.3473 85.0434 46.7908 85.0292 46.798L77.2469 50.9892C75.0346 52.1791 72.2897 51.6697 70.6545 49.762C70.6545 49.762 66.9958 45.4905 62.9613 40.7845C62.9381 40.7577 62.915 40.731 62.8936 40.7043C57.9613 34.9509 52.5018 28.5811 52.5018 28.5811L42.1082 40.7043C42.085 40.7328 42.0619 40.7595 42.0387 40.7845L34.3455 49.762C32.7103 51.6697 29.9672 52.1809 27.7549 50.9892C27.7549 50.9892 24.0249 48.98 19.9708 46.798C19.9566 46.7908 19.9423 46.7819 19.9281 46.7748ZM38.2429 39.7407L28.291 30.6937L23.0203 44.3933L29.4435 47.8525C30.1809 48.2497 31.0947 48.0787 31.6398 47.4428L38.2429 39.7407ZM27.5625 25.8433C28.5457 25.8433 29.3438 25.0453 29.3438 24.0621C29.3438 23.0788 28.5457 22.2808 27.5625 22.2808C26.5793 22.2808 25.7812 23.0788 25.7812 24.0621C25.7812 25.0453 26.5793 25.8433 27.5625 25.8433ZM52.5 24.0621C53.4815 24.0621 54.2812 23.2641 54.2812 22.2808C54.2812 21.2976 53.4815 20.4996 52.5 20.4996C51.5168 20.4996 50.7188 21.2976 50.7188 22.2808C50.7188 23.2641 51.5168 24.0621 52.5 24.0621ZM81.9797 44.3933C80.5155 40.5903 76.709 30.6937 76.709 30.6937L66.7589 39.7407L73.3602 47.4428C73.9053 48.0787 74.8191 48.2497 75.5565 47.8525L81.9797 44.3933ZM77.4375 25.8433C78.4208 25.8433 79.2188 25.0453 79.2188 24.0621C79.2188 23.0788 78.4208 22.2808 77.4375 22.2808C76.4542 22.2808 75.6562 23.0788 75.6562 24.0621C75.6562 25.0453 76.4542 25.8433 77.4375 25.8433ZM93.4688 95.3121H11.5312V98.8746C11.5312 99.3466 11.7183 99.8008 12.0532 100.134C12.3863 100.469 12.8405 100.656 13.3125 100.656H91.6875C92.1595 100.656 92.6138 100.469 92.9468 100.134C93.2817 99.8008 93.4688 99.3466 93.4688 98.8746V95.3121ZM98.8125 32.9683C97.8292 32.9683 97.0312 33.7663 97.0312 34.7496C97.0312 35.7328 97.8292 36.5308 98.8125 36.5308C99.7958 36.5308 100.594 35.7328 100.594 34.7496C100.594 33.7663 99.7958 32.9683 98.8125 32.9683ZM6.1875 32.9683C5.20425 32.9683 4.40625 33.7663 4.40625 34.7496C4.40625 35.7328 5.20425 36.5308 6.1875 36.5308C7.17075 36.5308 7.96875 35.7328 7.96875 34.7496C7.96875 33.7663 7.17075 32.9683 6.1875 32.9683ZM48.038 54.908C49.0283 53.4082 50.7045 52.5087 52.5 52.5087C54.2955 52.5087 55.9717 53.4082 56.962 54.908L60.5049 60.282C61.6806 62.0668 61.6806 64.3807 60.5049 66.1655L56.962 71.5395C55.9717 73.0393 54.2955 73.9424 52.5 73.9424C50.7045 73.9424 49.0283 73.0393 48.038 71.5395L44.4951 66.1655C43.3194 64.3807 43.3194 62.0668 44.4951 60.282L48.038 54.908ZM51.0127 56.8692L47.4697 62.2432C47.0779 62.8381 47.0779 63.6094 47.4697 64.2043L51.0127 69.5784C51.3422 70.0789 51.9015 70.3799 52.5 70.3799C53.0967 70.3799 53.6578 70.0789 53.9873 69.5784L57.5303 64.2043C57.9221 63.6094 57.9221 62.8381 57.5303 62.2432L53.9873 56.8692C53.6578 56.3686 53.0967 56.0694 52.5 56.0694C51.9015 56.0694 51.3422 56.3704 51.0127 56.8692ZM53.7593 1.42775L55.6314 3.29984L57.9916 4.50218C58.868 4.94928 59.2153 6.02159 58.77 6.89797L57.5677 9.25634L57.1526 11.8712C56.9994 12.8438 56.0874 13.5064 55.1149 13.3532L52.5 12.9382L49.8851 13.3532C48.9126 13.5064 48.0006 12.8438 47.8474 11.8712L47.4323 9.25634L46.23 6.89797C45.7847 6.02159 46.132 4.94928 47.0084 4.50218L49.3686 3.29984L51.2407 1.42775C51.9353 0.731278 53.0647 0.731278 53.7593 1.42775ZM52.5 5.20578L51.6878 6.01803C51.5559 6.14984 51.4028 6.26028 51.2371 6.34578L50.2129 6.86768L50.7348 7.89012C50.8203 8.05756 50.8773 8.23568 50.9076 8.42093L51.0875 9.55559L52.2221 9.37568C52.4056 9.34718 52.5944 9.34718 52.7761 9.37568L53.9125 9.55559L54.0924 8.42093C54.1227 8.23568 54.1797 8.05756 54.2652 7.89012L54.7871 6.86768L53.7629 6.34578C53.5972 6.26028 53.4423 6.14984 53.3123 6.01803L52.5 5.20578ZM78.6968 1.42775L80.5689 3.29984L82.9291 4.50218C83.8055 4.94928 84.1528 6.02159 83.7075 6.89797L82.5052 9.25634L82.0901 11.8712C81.9369 12.8438 81.0249 13.5064 80.0524 13.3532L77.4375 12.9382L74.8226 13.3532C73.8501 13.5064 72.9381 12.8438 72.7849 11.8712L72.3698 9.25634L71.1675 6.89797C70.7222 6.02159 71.0695 4.94928 71.9459 4.50218L74.3061 3.29984L76.1782 1.42775C76.8728 0.731278 78.0022 0.731278 78.6968 1.42775ZM77.4375 5.20578L76.6252 6.01803C76.4934 6.14984 76.3402 6.26028 76.1746 6.34578L75.1504 6.86768L75.6723 7.89012C75.7578 8.05756 75.8148 8.23568 75.8451 8.42093L76.025 9.55559L77.1596 9.37568C77.3431 9.34718 77.5319 9.34718 77.7154 9.37568L78.85 9.55559L79.0299 8.42093C79.0602 8.23568 79.1172 8.05756 79.2027 7.89012L79.7246 6.86768L78.7004 6.34578C78.5348 6.26028 78.3816 6.14984 78.2498 6.01803L77.4375 5.20578ZM28.8218 1.42775L30.6939 3.29984L33.0541 4.50218C33.9305 4.94928 34.2778 6.02159 33.8325 6.89797L32.6302 9.25634L32.2151 11.8712C32.0619 12.8438 31.1499 13.5064 30.1774 13.3532L27.5625 12.9382L24.9476 13.3532C23.9751 13.5064 23.0631 12.8438 22.9099 11.8712L22.4948 9.25634L21.2925 6.89797C20.8472 6.02159 21.1945 4.94928 22.0709 4.50218L24.4311 3.29984L26.3032 1.42775C26.9978 0.731278 28.1272 0.731278 28.8218 1.42775ZM27.5625 5.20578L26.7503 6.01803C26.6184 6.14984 26.4653 6.26028 26.2996 6.34578L25.2754 6.86768L25.7973 7.89012C25.8828 8.05756 25.9398 8.23568 25.9701 8.42093L26.15 9.55559L27.2846 9.37568C27.4681 9.34718 27.6569 9.34718 27.8404 9.37568L28.975 9.55559L29.1549 8.42093C29.1852 8.23568 29.2422 8.05756 29.3277 7.89012L29.8496 6.86768L28.8254 6.34578C28.6597 6.26028 28.5066 6.14984 28.3747 6.01803L27.5625 5.20578Z" fill="url(#paint0_linear_3733_19024)"/>
+                                                <defs>
+                                                <linearGradient id="paint0_linear_3733_19024" x1="0.84375" y1="52.5619" x2="104.156" y2="52.5619" gradientUnits="userSpaceOnUse">
+                                                <stop stop-color="#E6E6E6"/>
+                                                <stop offset="1" stop-color="#646464"/>
+                                                </linearGradient>
+                                                </defs>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                
+                                    <div class="step">
+                                        <div class="content">
+                                            <h3>Confirm Your Order</h3>
+                                            <p>After finalizing your selections, proceed to confirm the order by clicking Place Order.</p>
+                                        </div>
+                                        <div class="background">
+                                            <svg width="94" height="79" viewBox="0 0 94 79" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M0.84375 73.4062V5.71875C0.84375 2.76722 3.23597 0.375 6.1875 0.375H98.8125C101.764 0.375 104.156 2.76722 104.156 5.71875V73.4062C104.156 76.3578 101.764 78.75 98.8125 78.75H6.1875C3.23597 78.75 0.84375 76.3578 0.84375 73.4062ZM100.594 18.1875V5.71875C100.594 4.7355 99.7958 3.9375 98.8125 3.9375H6.1875C5.20425 3.9375 4.40625 4.7355 4.40625 5.71875V18.1875H100.594ZM4.40625 21.75V73.4062C4.40625 74.3895 5.20425 75.1875 6.1875 75.1875H98.8125C99.7958 75.1875 100.594 74.3895 100.594 73.4062V21.75H4.40625ZM22.2188 7.5C24.1852 7.5 25.7812 9.096 25.7812 11.0625C25.7812 13.029 24.1852 14.625 22.2188 14.625C20.2523 14.625 18.6562 13.029 18.6562 11.0625C18.6562 9.096 20.2523 7.5 22.2188 7.5ZM32.9062 7.5C34.8727 7.5 36.4688 9.096 36.4688 11.0625C36.4688 13.029 34.8727 14.625 32.9062 14.625C30.9398 14.625 29.3438 13.029 29.3438 11.0625C29.3438 9.096 30.9398 7.5 32.9062 7.5ZM11.5312 7.5C13.4978 7.5 15.0938 9.096 15.0938 11.0625C15.0938 13.029 13.4978 14.625 11.5312 14.625C9.56475 14.625 7.96875 13.029 7.96875 11.0625C7.96875 9.096 9.56475 7.5 11.5312 7.5ZM68.6435 59.1562H22.2205C19.269 59.1562 16.8768 56.764 16.8768 53.8125V32.4375C16.8768 29.486 19.269 27.0938 22.2205 27.0938H72.0955C75.0471 27.0938 77.4393 29.486 77.4393 32.4375V50.3604L85.1788 52.9415C86.7748 53.4723 87.9166 54.8866 88.1001 56.561C88.2835 58.2336 87.4766 59.8616 86.0338 60.7273L81.8051 63.2656C81.7 63.3279 81.611 63.417 81.5468 63.5221L79.0103 67.7526C78.1447 69.1936 76.5166 70.0023 74.844 69.8188C73.1696 69.6336 71.7553 68.4936 71.2227 66.8958L68.6435 59.1562ZM73.8768 49.1741V32.4375C73.8768 31.4543 73.0788 30.6562 72.0955 30.6562H22.2205C21.2373 30.6562 20.4393 31.4543 20.4393 32.4375V53.8125C20.4393 54.7957 21.2373 55.5938 22.2205 55.5938H67.4554L66.9727 54.1438C66.4561 52.5941 66.8604 50.8859 68.0147 49.7317C69.1689 48.5774 70.8772 48.1731 72.4268 48.6896L73.8768 49.1741ZM71.6288 56.846L74.6035 65.7682C74.6962 66.0461 74.942 66.2456 75.2323 66.2759C75.5227 66.308 75.8059 66.169 75.9555 65.9179L78.4938 61.6892C78.8572 61.0818 79.3648 60.5741 79.9722 60.2107L84.2009 57.6725C84.4503 57.5228 84.591 57.2396 84.5589 56.9493C84.5269 56.6589 84.3292 56.4131 84.0513 56.3205C84.0513 56.3205 75.0845 53.3316 75.0613 53.3244L71.2993 52.0704C71.0303 51.9796 70.7347 52.0508 70.5334 52.2503C70.3321 52.4516 70.2626 52.7473 70.3517 53.0163C70.3517 53.0163 71.6217 56.8228 71.6288 56.846ZM45.3768 48.4688H50.7205V36C50.7205 35.0168 51.5185 34.2188 52.5018 34.2188C53.485 34.2188 54.283 35.0168 54.283 36V48.4688C54.283 50.437 52.687 52.0312 50.7205 52.0312H45.3768C44.4309 52.0312 43.5261 51.6554 42.8581 50.9874C42.1901 50.3195 41.8143 49.4128 41.8143 48.4688V36C41.8143 35.0168 42.6123 34.2188 43.5955 34.2188C44.5788 34.2188 45.3768 35.0168 45.3768 36V48.4688ZM24 48.4688V37.7812C24 35.813 25.596 34.2188 27.5643 34.2188H32.908C34.8745 34.2188 36.4705 35.813 36.4705 37.7812V41.3438C36.4705 41.5005 36.4598 41.6537 36.4403 41.8033C36.7199 41.9618 36.9782 42.1578 37.208 42.3876C37.8759 43.0555 38.2518 43.9622 38.2518 44.9062V48.4688C38.2518 49.4128 37.8759 50.3195 37.208 50.9874C36.54 51.6554 35.6333 52.0312 34.6893 52.0312H27.5643C26.6184 52.0312 25.7136 51.6554 25.0456 50.9874C24.3776 50.3195 24 49.4128 24 48.4688ZM32.908 41.3438V37.7812H27.5643V41.3438H32.908ZM34.6893 44.9062H27.5643V48.4688H34.6893V44.9062ZM66.2067 43.0805L61.1373 51.1941C60.6154 52.0277 59.5163 52.2824 58.6827 51.7605C57.8491 51.2386 57.5944 50.1396 58.1163 49.3059L62.5213 42.2575L58.2588 37.14C57.6282 36.3848 57.7315 35.2608 58.4868 34.632C59.242 34.0014 60.366 34.1048 60.9948 34.86L64.5092 39.078L67.0225 35.0559C67.5427 34.2223 68.6435 33.9676 69.4771 34.4895C70.3107 35.0114 70.5637 36.1104 70.0435 36.9441C70.0435 36.9441 66.2192 43.0609 66.2067 43.0805Z" fill="url(#paint0_linear_3733_4519)"/>
+                                                <defs>
+                                                <linearGradient id="paint0_linear_3733_4519" x1="0.84375" y1="39.5625" x2="104.156" y2="39.5625" gradientUnits="userSpaceOnUse">
+                                                <stop stop-color="#E6E6E6"/>
+                                                <stop offset="1" stop-color="#646464"/>
+                                                </linearGradient>
+                                                </defs>
+                                            </svg>
+                                            </div>
+                                    </div>
+                                
+                                    <div class="step">
+                                        <div class="content">
+                                            <h3>Secure Payment Options</h3>
+                                            <p>You will be guided through secure payment options to complete your purchase.</p>
+                                        </div>
+                                        <div class="background">
+                                            <svg width="65" height="94" viewBox="0 0 65 94" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M55.6723 15.3787L62.1917 19.7428C63.6737 20.7349 64.5625 22.4004 64.5625 24.1834V98.8748C64.5625 100.293 63.9996 101.652 62.9968 102.653C61.9957 103.656 60.6366 104.219 59.2188 104.219H5.78125C4.36337 104.219 3.00428 103.656 2.00322 102.653C1.00037 101.652 0.4375 100.293 0.4375 98.8748V24.1834C0.4375 22.4004 1.32634 20.7349 2.80834 19.7428L29.5271 1.85366C31.3262 0.64953 33.6738 0.64953 35.4729 1.85366L40.8719 5.46781C44.7158 3.70794 48.5989 3.18959 51.5327 3.77028C54.0211 4.26369 55.8843 5.5355 56.8194 7.39156C57.7546 9.2494 57.6655 11.5027 56.5807 13.7952C56.3313 14.3206 56.0285 14.8514 55.6723 15.3787ZM44.4718 7.87784L52.7172 13.3997C52.9666 13.0239 53.1821 12.648 53.3602 12.2704C53.9177 11.0948 54.1173 9.94765 53.6381 8.99469C53.1572 8.04172 52.1169 7.51803 50.8415 7.26509C49.0407 6.90884 46.8034 7.12081 44.4718 7.87784ZM50.3 16.068L33.4904 4.81409C32.8919 4.41153 32.1081 4.41153 31.5096 4.81409L4.79088 22.7032C4.29569 23.0327 4 23.5885 4 24.1834V98.8748C4 99.3468 4.18703 99.801 4.52012 100.134C4.855 100.469 5.30922 100.656 5.78125 100.656H59.2188C59.6908 100.656 60.145 100.469 60.4781 100.134C60.813 99.801 61 99.3468 61 98.8748V24.1834C61 23.5885 60.7043 23.0327 60.2091 22.7032L53.3424 18.104C51.9067 19.4684 50.1362 20.7296 48.0984 21.7556C45.5851 23.0203 43.0272 23.7488 40.7009 23.9786C39.3453 27.167 36.1818 29.406 32.5 29.406C27.5837 29.406 23.5938 25.416 23.5938 20.4998C23.5938 15.5835 27.5837 11.5935 32.5 11.5935C37.3486 11.5935 41.2994 15.4784 41.4045 20.3021C43.0343 20.0188 44.7746 19.4399 46.4953 18.5742C47.9327 17.8493 49.217 16.9943 50.3 16.068ZM37.8438 20.4178C37.8117 18.2821 36.5221 16.4474 34.6838 15.6209C34.2207 16.695 34.1031 17.7264 34.5467 18.6063C35.0258 19.5611 36.0661 20.083 37.3432 20.3359C37.5071 20.368 37.6727 20.3965 37.8438 20.4178ZM31.0216 15.3644C28.7897 16.0057 27.1562 18.063 27.1562 20.4998C27.1562 23.4495 29.5502 25.8435 32.5 25.8435C34.1886 25.8435 35.6938 25.0598 36.6735 23.8343C36.6663 23.8325 36.6592 23.8325 36.6503 23.8307C34.1637 23.3373 32.3005 22.0673 31.3653 20.2094C30.6457 18.7809 30.5371 17.1065 31.0216 15.3644ZM52.0938 41.8748V88.1873C52.0938 89.6052 51.5309 90.9642 50.528 91.9653C49.527 92.9681 48.1679 93.531 46.75 93.531H18.25C16.8321 93.531 15.473 92.9681 14.472 91.9653C13.4691 90.9642 12.9062 89.6052 12.9062 88.1873V41.8748C12.9062 40.4569 13.4691 39.0978 14.472 38.0967C15.473 37.0939 16.8321 36.531 18.25 36.531H46.75C48.1679 36.531 49.527 37.0939 50.528 38.0967C51.5309 39.0978 52.0938 40.4569 52.0938 41.8748ZM48.5312 41.8748C48.5312 41.4027 48.3442 40.9485 48.0093 40.6154C47.6763 40.2806 47.222 40.0935 46.75 40.0935H18.25C17.778 40.0935 17.3237 40.2806 16.9907 40.6154C16.6558 40.9485 16.4688 41.4027 16.4688 41.8748V88.1873C16.4688 88.6593 16.6558 89.1135 16.9907 89.4466C17.3237 89.7815 17.778 89.9685 18.25 89.9685H46.75C47.222 89.9685 47.6763 89.7815 48.0093 89.4466C48.3442 89.1135 48.5312 88.6593 48.5312 88.1873V41.8748ZM44.9688 47.2185V57.906C44.9688 59.8743 43.3745 61.4685 41.4062 61.4685H37.8438C35.8755 61.4685 34.2812 59.8743 34.2812 57.906V47.2185C34.2812 45.2502 35.8755 43.656 37.8438 43.656H41.4062C43.3745 43.656 44.9688 45.2502 44.9688 47.2185ZM37.8438 47.2185V57.906H41.4062V47.2185H37.8438ZM27.1562 54.3435H23.5938C21.6255 54.3435 20.0312 52.7493 20.0312 50.781V47.2185C20.0312 45.2502 21.6255 43.656 23.5938 43.656H28.9375C29.9207 43.656 30.7188 44.454 30.7188 45.4373C30.7188 46.4205 29.9207 47.2185 28.9375 47.2185H23.5938V50.781H27.1562C29.1245 50.781 30.7188 52.3752 30.7188 54.3435V57.906C30.7188 59.8743 29.1245 61.4685 27.1562 61.4685H21.8125C20.8293 61.4685 20.0312 60.6705 20.0312 59.6873C20.0312 58.704 20.8293 57.906 21.8125 57.906H27.1562V54.3435ZM26.2656 66.8123C28.2321 66.8123 29.8281 68.4083 29.8281 70.3748C29.8281 72.3413 28.2321 73.9373 26.2656 73.9373C24.2991 73.9373 22.7031 72.3413 22.7031 70.3748C22.7031 68.4083 24.2991 66.8123 26.2656 66.8123ZM38.7344 79.281C40.7009 79.281 42.2969 80.877 42.2969 82.8435C42.2969 84.81 40.7009 86.406 38.7344 86.406C36.7679 86.406 35.1719 84.81 35.1719 82.8435C35.1719 80.877 36.7679 79.281 38.7344 79.281ZM38.2944 67.4108C38.9463 66.6751 40.0739 66.6092 40.8078 67.2629C41.5434 67.9149 41.6093 69.0424 40.9556 69.7763L26.7056 85.8075C26.0537 86.5432 24.9261 86.6091 24.1923 85.9554C23.4566 85.3034 23.3907 84.1759 24.0444 83.442L38.2944 67.4108Z" fill="url(#paint0_linear_3733_5764)"/>
+                                                <defs>
+                                                <linearGradient id="paint0_linear_3733_5764" x1="0.4375" y1="52.5846" x2="64.5625" y2="52.5846" gradientUnits="userSpaceOnUse">
+                                                <stop stop-color="#E6E6E6"/>
+                                                <stop offset="1" stop-color="#646464"/>
+                                                </linearGradient>
+                                                </defs>
+                                            </svg>
+                                        </div>
+                                    </div>
+
+                                    <div class="step">
+                                        <div class="content">
+                                            <h3>Schedule Delivery and Installation</h3>
+                                            <p>After payment, we’ll work with you to schedule delivery and installation (if applicable).</p>
+                                        </div>
+                                        <div class="background">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="98" height="98" viewBox="0 0 64 64" fill="none">
+                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M58 36C59.657 36 61 37.343 61 39V40C61 41.657 59.657 43 58 43H54.196C54.707 43.883 55 44.908 55 46C55 49.312 52.311 52 49 52C45.689 52 43 49.312 43 46C43 44.908 43.293 43.883 43.804 43H21.196C21.707 43.883 22 44.908 22 46C22 49.312 19.311 52 16 52C12.689 52 10 49.312 10 46C10 44.908 10.293 43.883 10.804 43H6C4.343 43 3 41.657 3 40V39C3 37.694 3.835 36.583 5 36.171V15C5 13.343 6.343 12 8 12H40C41.657 12 43 13.343 43 15H46.015C46.536 15 47.04 15.135 47.483 15.384C47.488 15.387 47.493 15.389 47.498 15.392C47.841 15.587 48.146 15.85 48.393 16.171L57.378 27.851C57.563 28.092 57.709 28.358 57.813 28.639C57.819 28.653 57.824 28.668 57.829 28.683C57.942 29.001 58 29.338 58 29.68V36ZM6 38C5.448 38 5 38.448 5 39V40C5 40.552 5.448 41 6 41H12.684C13.634 40.368 14.774 40 16 40C17.226 40 18.366 40.368 19.316 41H45.684C46.634 40.368 47.774 40 49 40C50.226 40 51.366 40.368 52.316 41H58C58.552 41 59 40.552 59 40V39C59 38.448 58.552 38 58 38H6ZM41 36V15C41 14.448 40.552 14 40 14H8C7.448 14 7 14.448 7 15V36H41ZM46 17H43V36H56V30H49C47.343 30 46 28.657 46 27V17ZM54.969 28L48 18.94V27C48 27.552 48.448 28 49 28H54.969ZM35 22H34C33.448 22 33 21.552 33 21C33 20.448 33.448 20 34 20H38C38.552 20 39 20.448 39 21C39 21.552 38.552 22 38 22H37V29C37 29.552 36.552 30 36 30C35.448 30 35 29.552 35 29V22ZM9 29V22C9 20.895 9.895 20 11 20H14C14.552 20 15 20.448 15 21C15 21.552 14.552 22 14 22H11V24H14C14.552 24 15 24.448 15 25C15 25.552 14.552 26 14 26H11V29C11 29.552 10.552 30 10 30C9.448 30 9 29.552 9 29ZM19.031 29L18.97 29.243C18.836 29.778 18.293 30.104 17.757 29.97C17.222 29.836 16.896 29.293 17.03 28.758C17.03 28.758 17.281 27.751 17.285 27.738L19.03 20.758C19.141 20.312 19.541 20 20 20C20.459 20 20.859 20.312 20.97 20.758C20.97 20.758 22.722 27.763 22.725 27.776L22.97 28.758C23.104 29.293 22.778 29.836 22.243 29.97C21.707 30.104 21.164 29.778 21.03 29.243L20.969 29H19.031ZM20.469 27L20 25.123L19.531 27H20.469ZM27 22V24H29C30.105 24 31 24.895 31 26V28C31 29.105 30.105 30 29 30H26C25.448 30 25 29.552 25 29C25 28.448 25.448 28 26 28H29V26H27C25.895 26 25 25.105 25 24V22C25 20.895 25.895 20 27 20H30C30.552 20 31 20.448 31 21C31 21.552 30.552 22 30 22H27ZM16 42C13.792 42 12 43.792 12 46C12 48.208 13.792 50 16 50C18.208 50 20 48.208 20 46C20 43.792 18.208 42 16 42ZM16 44C17.104 44 18 44.896 18 46C18 47.104 17.104 48 16 48C14.896 48 14 47.104 14 46C14 44.896 14.896 44 16 44ZM49 42C46.792 42 45 43.792 45 46C45 48.208 46.792 50 49 50C51.208 50 53 48.208 53 46C53 43.792 51.208 42 49 42ZM49 44C50.104 44 51 44.896 51 46C51 47.104 50.104 48 49 48C47.896 48 47 47.104 47 46C47 44.896 47.896 44 49 44Z" fill="url(#paint0_linear_1611_20257)"/>
+                                                <defs>
+                                                <linearGradient id="paint0_linear_1611_20257" x1="3" y1="32" x2="61" y2="32" gradientUnits="userSpaceOnUse">
+                                                <stop stop-color="#E6E6E6"/>
+                                                <stop offset="1" stop-color="#646464"/>
+                                                </linearGradient>
+                                            </defs>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <div class="oe_structure oe_empty">
+                <section class="customization-offerings">
+                    <div class="container">
+                        <div class="header-box-custom mt-4" style="max-width: 100% !important;">
+                            <h5 class="sub-heading-custom mp-caption-custom text-center">PROCESS</h5>
+                            <h2 class="main-heading-custom text-center">Sheet Metal Fabrication’s<br/><span class="mp_underline_custom">‘Application Ver</span>satility’</h2>
+                            <p class="sub-heading-lines-custom mp-body-1-rg text-center">Our versatile solutions and commitment to precision ensure we meet your industry-specific needs with excellence.</p>
+                        </div>
+                        <div class="customization-offerings-info">
+                            <div class="feature-cards sheet-metal-feb-cards">
+                                <div class="feature-card">
+                                    <div class="feature-card-info sheet-metal-feb">
+                                        <div class="icon">
+                                            <img src="/cr_web_portal/static/src/images/mech-custom/icon_4.png"/>
+                                        </div>
+                                        <div class="icon-desc">
+                                            <h3>Electronics</h3>
+                                            <p>FDM creates prototypes mirroring functionality.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="feature-card">
+                                    <div class="feature-card-info sheet-metal-feb">
+                                        <div class="icon">
+                                            <img src="/cr_web_portal/static/src/images/mech-custom/icon_6.png"/>
+                                        </div>
+                                        <div class="icon-desc">
+                                            <h3>Medical</h3>
+                                            <p>From electronics to robotics, FDM crafts enclosures for diverse industries.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="feature-card">
+                                    <div class="feature-card-info sheet-metal-feb">
+                                        <div class="icon">
+                                            <img src="/cr_web_portal/static/src/images/mech-custom/icon_6.png"/>
+                                        </div>
+                                        <div class="icon-desc">
+                                            <h3>Automotive</h3>
+                                            <p>FDM crafts jigs, fixtures for streamlined manufacturing.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="feature-card">
+                                    <div class="feature-card-info sheet-metal-feb">
+                                        <div class="icon">
+                                            <img src="/cr_web_portal/static/src/images/mech-custom/icon_10.png"/>
+                                        </div>
+                                        <div class="icon-desc">
+                                            <h3>Aerospace</h3>
+                                            <p>FDM speeds design iteration and innovation cycles.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="feature-card">
+                                    <div class="feature-card-info sheet-metal-feb">
+                                        <div class="icon">
+                                            <img src="/cr_web_portal/static/src/images/mech-custom/icon_13.png"/>
+                                        </div>
+                                        <div class="icon-desc">
+                                            <h3>Power Equipment</h3>
+                                            <p>Our components power machinery with precision and durability.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="feature-card">
+                                    <div class="feature-card-info sheet-metal-feb">
+                                        <div class="icon">
+                                            <img src="/cr_web_portal/static/src/images/mech-custom/icon_12.png"/>
+                                        </div>
+                                        <div class="icon-desc">
+                                            <h3>Industrial Machinery</h3>
+                                            <p>Crafted for the rigors of industrial use, our parts are built to last in demanding environments.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+                <section class="italtronics-products oe_structure oe_empty">
+                    <div class="container">
+                        <div class="header-box-custom service-3d" style="max-width: 100% !important;">
+                            <h5 class="sub-heading-custom mp-caption-custom" style="text-align: center;">SERVICES</h5>
+                            <h2 class="main-heading-custom" style="text-align: center;">Mech Power's S<span class="mp_underline_custom">heet Metal Fab</span>rication</h2>
+                        </div>
+                    </div>
+                </section>
+                <section class="italtronics-products oe_structure oe_empty personal-port-1-testimonial mt-0">
+                        <div class="swiper-container container">
+                            <div class="swiper-slider pbmit-element-viewtype-carousel-1 "
+                                 data-arrows-class="digital-mrkt-arrow-testimonial" data-loop="true"
+                                 data-autoplay="true" data-dots="false" data-arrows="true" data-columns="4"
+                                 clickable="true" data-margin="30" data-effect="slide">
+                                <div class="swiper-wrapper italtronics-products-carousel-new">
+                                    <div class="swiper-slide carousel-item-italtronics">
+                                        <div class="italtronic-img">
+                                            <img src="cr_web_portal/static/src/images/mech-custom/eyebox.png" alt="Mech Flex Rack"/>
+                                        </div>
+                                        <div class="italtronics-info">
+                                            <div>
+                                                <p class="italtronics-sub-header service-3d-sub d-none">19" Rack Mount Enclosure</p>
+                                                <h3 class="text-center">Mech Flexi Rack</h3>
+                                            </div>
+                                            <div class="service-3d-sub d-none">
+                                                <p>Starting from $1,415.00</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide carousel-item-italtronics">
+                                        <div class="italtronic-img">
+                                            <img src="cr_web_portal/static/src/images/mech-custom/eyebox.png" alt="Mech Flex Rack"/>
+                                        </div>
+                                        <div class="italtronics-info">
+                                            <div>
+                                                <p class="italtronics-sub-header service-3d-sub d-none">19" Rack Mount Enclosure</p>
+                                                <h3 class="text-center">Mech Flexi Rack</h3>
+                                            </div>
+                                            <div class="service-3d-sub d-none">
+                                                <p>Starting from $1,415.00</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide carousel-item-italtronics">
+                                        <div class="italtronic-img">
+                                            <img src="cr_web_portal/static/src/images/mech-custom/eyebox.png" alt="Mech Flex Rack"/>
+                                        </div>
+                                        <div class="italtronics-info">
+                                            <div>
+                                                <p class="italtronics-sub-header service-3d-sub d-none">19" Rack Mount Enclosure</p>
+                                                <h3 class="text-center">Mech Flexi Rack</h3>
+                                            </div>
+                                            <div class="service-3d-sub d-none">
+                                                <p>Starting from $1,415.00</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide carousel-item-italtronics">
+                                        <div class="italtronic-img">
+                                            <img src="cr_web_portal/static/src/images/mech-custom/eyebox.png" alt="Mech Flex Rack"/>
+                                        </div>
+                                        <div class="italtronics-info">
+                                            <div>
+                                                <p class="italtronics-sub-header service-3d-sub d-none">19" Rack Mount Enclosure</p>
+                                                <h3 class="text-center">Mech Flexi Rack</h3>
+                                            </div>
+                                            <div class="service-3d-sub d-none">
+                                                <p>Starting from $1,415.00</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row italtronics-footer-sec g-0">
+                                    <div class="col-md-2">
+                                    </div>
+                                    <div class="col-md-8">
+                                    </div>
+                                    <div class="col-md-2 o_colored_level mt-4">
+                                        <div class="personal-port-1-arrow-testimonial swiper-btn-custom d-flex flex-row-reverse">
+                                            <div class="swiper-buttons"/>
+                                            <div class="swiper-button-next swiper-button-next-1" tabindex="0"
+                                                 role="button"
+                                                 aria-label="Next slide"
+                                                 aria-controls="swiper-wrapper-3a252b2b574f9f85"/>
+                                            <div class="swiper-button-prev swiper-button-prev-1" tabindex="0"
+                                                 role="button"
+                                                 aria-label="Previous slide"
+                                                 aria-controls="swiper-wrapper-3a252b2b574f9f85"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <span class="swiper-notification" aria-live="assertive" aria-atomic="true"/>
+                            </div>
+                        </div>
+                </section>
+
+            <div class="oe_structure oe_empty">
+                <section class="why-choose-enclosure ">
+                    <div class="container">
+                        <div class="header-box-custom service-3d" style="max-width: 100% !important;">
+                            <h5 class="sub-heading-custom mp-caption-custom text-center">UNMATCHED SOLUTIONS</h5>
+                            <h2 class="main-heading-custom text-center">Why choose MechPower for<br/><span class="mp_underline_custom">Sheet Metal F</span>abrication?</h2>
+                        </div>
+                        <div class="why-choose-enclosure-info why-choose-metal-info">
+                            <div class="card">
+                                <img src="/cr_web_portal/static/src/images/mech-custom/badge_1.png"/>
+                                <p>Advanced Machinery</p>
+                            </div>
+                            <div class="card">
+                                <img src="/cr_web_portal/static/src/images/mech-custom/render_1.png"/>
+                                <p>Fast Turnaround</p>
+                            </div>
+                            <div class="card">
+                                <img src="/cr_web_portal/static/src/images/mech-custom/support_1.png"/>
+                                <p>No Minimum Order</p>
+                            </div>
+                            <div class="card">
+                                <img src="/cr_web_portal/static/src/images/mech-custom/3d-model_1.png"/>
+                                <p>Custom Assemblies</p>
+                            </div>
+                            <div class="card">
+                                <img src="/cr_web_portal/static/src/images/mech-custom/render_1.png"/>
+                                <p>Material Variety</p>
+                            </div>
+                            <div class="card">
+                                <img src="/cr_web_portal/static/src/images/mech-custom/icon_14.png"/>
+                                <p>Enhanced Functionality</p>
+                            </div>
+                            <div class="card">
+                                <img src="/cr_web_portal/static/src/images/mech-custom/icon_15.png"/>
+                                <p>Aesthetic Flourish</p>
+                            </div>
+                            <div class="card">
+                                <img src="/cr_web_portal/static/src/images/mech-custom/icon_15.png"/>
+                                <p>Personalized Branding</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <t t-if="request.env.user._is_public()">
+                <div class="oe_structure oe_empty mp-service-lead-section">
+                    <section class="container">
+                        <div class="loader-modal d-none">
+                            <div class="loader-content">
+                                <div class="loader-icon">
+                                    <img src="/cr_web_portal/static/src/img/spin.gif"/>
+                                </div>
+                                <h5>Processing Your Request...</h5>
+                            </div>
+                        </div>
+                        <div class="confirmation-modal d-none">
+                            <div class="confirmation-content">
+                                <div class="confirmation-icon">
+                                    <img src="/cr_web_portal/static/src/img/done.gif"/>
+                                </div>
+                                <h5>Your Request Has Been Submitted!</h5>
+                                <p>Thank you for your interest in our Sheet Metal Fabrication service! Our team will get back to you shortly to discuss your requirements further.
+                                </p>
+                                <a href="/sheet-metal-fabrication" class="mp-btn-light-font-green">Continue to website</a>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="mp-service-lead-header-box sheet_metal_service_form_header">
+                                    <h5 class="mp-service-lead-sub-heading">CONTACT US</h5>
+                                    <h2 class="mp-service-lead-main-heading">Interested in our <br/><span
+                                            class="mp_service_lead_header_underline">Sheet Metal Fabrication
+                                    </span> Service?
+                                    </h2>
+                                    <p class="mp-service-lead-sub-heading-lines">Share your contact details, and our
+                                        dedicated team will be in touch shortly to discuss your requirements further.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="s_website_form service_mobile_form" data-snippet="s_website_form">
+                                    <form action="/website/form/" method="post" enctype="multipart/form-data"
+                                          class="o_mark_required" data-mark="*" data-model_name="crm.lead"
+                                          data-success-mode="redirect" data-success-page="/service/request/thank-you"
+                                          data-pre-fill="true" novalidate="novalidate">
+                                        <input type="hidden" name="form_name" value="service_request"/>
+                                        <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                        <div class="s_website_form_rows ">
+                                            <div class="mp_input_field_web">
+                                                <input id="customer_name"
+                                                       class="form-control form_input s_website_form_input"
+                                                       name="customer_name"
+                                                       placeholder=" " type="text" required="required"/>
+                                                <label for="customer_name" class="form_label o_input_required">Name</label>
+                                            </div>
+                                            <div class="mp_input_field_web">
+                                                <input id="customer_email"
+                                                       class="form-control form_input check_email s_website_form_input"
+                                                       name="customer_email"
+                                                       placeholder=" " type="email" required="required"/>
+                                                <label for="customer_email" class="form_label o_input_required">E-mail</label>
+                                            </div>
+                                            <div class="email-validate-message d-none">
+                                                <p class="email-validate-line"></p>
+                                            </div>
+                                            <div class='d-flex mp_phone' style="position: relative; overflow: visible !important;">
+                                                <t t-set="countries"
+                                                   t-value="request.env['res.country'].sudo().search([])"/>
+                                                <t t-set="default_country"
+                                                   t-value="request.env['res.country'].sudo().search([('phone_code','=','+91')])"/>
+                                                <div class="input-group js_country_dropdown pr-0">
+                                                    <div class="input-group-prepend flag-button">
+                                                        <button type="button"
+                                                                id="btn_vat_code"
+                                                                t-att-disabled="readonly"
+                                                                class="btn dropdown btn-outline-secondary dropdown-toggle js_btn_country_code form-control country_button"
+                                                                data-bs-toggle="dropdown"
+                                                                data-bs-target="#dropdown-countries">
+
+                                                            <div id="img_code_vat"
+                                                                 class="js_img_country_code country_img ">
+                                                                +
+                                                                <t t-esc="default_country.phone_code"/>
+                                                                <i class="fa fa-angle-down"></i>
+                                                            </div>
+                                                        </button>
+                                                        <div class="dropdown-menu scrollable-menu"
+                                                             id="dropdown-countries">
+                                                            <div class="country_id_searchbar">
+                                                                <input class="search_country s_website_form_input input_control"
+                                                                       type="text"
+                                                                       placeholder="Search..."/>
+                                                            </div>
+                                                            <div id="country_id_list">
+                                                                <t t-foreach="countries" t-as="country">
+                                                                    <a href="#"
+                                                                       t-att-id="country.code"
+                                                                       t-att-data-country_id="country.id"
+                                                                       t-att-data-country_code="country.code"
+                                                                       t-att-data-phone_code="country.phone_code"
+                                                                       class="dropdown-item js_select_country_code">
+                                                                        <img t-att-src="country.image_url"
+                                                                             class="country_name_img"/>
+                                                                        <span class="form-country-name">
+                                                                            <t t-esc="country.name"/>
+                                                                            (<t t-esc="country.code"/>) +
+                                                                            <t t-esc="country.phone_code"/>
+                                                                        </span>
+                                                                    </a>
+                                                                </t>
+                                                            </div>
+                                                        </div>
+                                                        <input id="country_code_field"
+                                                               type="hidden"
+                                                               size="2"
+                                                               tabindex="-1"
+                                                               class="input-group-text js_country_code_field s_website_form_input"
+                                                               name="country_id"
+                                                               t-att-value="default_country.id"
+                                                               readonly="1"/>
+                                                    </div>
+                                                </div>
+                                                <input type="tel" id="phone" name="customer_contact_no"
+                                                       placeholder="Contact Number"
+                                                       required="required" maxlength="15"
+                                                       class="elem check_digits s_website_form_input"/>
+                                                <label for="phone" class="form_label o_input_required" style="z-index: 111111111; top:-11px">Phone
+                                                </label>
+                                            </div>
+                                            <div class="mp_input_field_web">
+                                                <input id="service_name"
+                                                       class="form-control form_input"
+                                                       name="" t-att-value="'Sheet Metal Fabrication'" readonly="readonly"
+                                                       placeholder=" " type="text" required="required"/>
+                                                <label for="service_name" class="form_label o_input_required">Services</label>
+                                            </div>
+                                            <input type="hidden" name="service" class="s_website_form_input" t-att-value="'sheet_metal_fabrication'"/>
+                                            <div class="mp_input_field_web">
+                                                <input id="customer_subject"
+                                                       class="form-control form_input s_website_form_input"
+                                                       name="customer_subject"
+                                                       placeholder=" " type="text" required="required"/>
+                                                <label for="customer_subject" class="form_label o_input_required">Subject</label>
+                                            </div>
+                                            <div class="mp_input_field_web">
+                                                <textarea id="customer_message" style="height: 5rem !important;"
+                                                       class="form-control form_input s_website_form_input"
+                                                       name="customer_message"
+                                                       placeholder=" " type="text" />
+
+                                                <label for="customer_message" class="form_label">Message</label>
+                                            </div>
+                                            <button type="submit" class="mp-primary-btn">Submit your request</button>
+                                            <span id="s_website_form_result"/>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                 </div>
+            </t>
+            <!-- Blog Start -->
+            <t t-call="cr_web_portal.dynamic_blogpost">
+                <t t-set="service_id" t-value="'mech_custom_service_sheet_metal_fabrication'"/>
+            </t>
+
+
+            <div class="oe_structure oe_empty">
+                <section class="asked-questions s_faq_collapse pt32 pb32 o_colored_level s_faq_collapse_big"
+                         data-snippet="s_faq_collapse" data-name="Accordion" style="background-image: none;">
+                    <div class="container">
+                        <div class="header-box-custom service-3d" style="max-width: 100% !important;">
+                            <h5 class="sub-heading-custom mp-caption-custom text-center">FAQS</h5>
+                            <h2 class="main-heading-custom text-center">Frequently Asked<span class="mp_underline_custom"> Questions  </span></h2>
+                        </div>
+                        <div id="myCollapse" class="accordion custom-accordion" role="tablist">
+                            <div class="card bg-white" data-name="Item">
+                                <a href="#" role="tab" data-bs-toggle="collapse" aria-expanded="false"
+                                   class="card-header s_faq_collapse_right_icon collapsed"
+                                   data-bs-target="#myCollapseTab553786_2">Wondering whether our designs are suitable
+                                    for both indoor and outdoor
+                                    enclosures?
+                                </a>
+                                <div class="collapse" data-bs-parent="#myCollapse" role="tabpanel"
+                                     id="myCollapseTab553786_2">
+                                    <div class="card-body">
+                                        <p class="card-text">Yes, our designs are tailored for both indoor and outdoor
+                                            enclosures, ensuring
+                                            durability and functionality in any environment.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card bg-white" data-name="Item">
+                                <a href="#" role="tab" data-bs-toggle="collapse" aria-expanded="true"
+                                   class="card-header s_faq_collapse_right_icon"
+                                   data-bs-target="#myCollapseTab553786_3">You might be curious about project timelines?
+                                </a>
+                                <div class="collapse show" data-bs-parent="#myCollapse" role="tabpanel"
+                                     id="myCollapseTab553786_3">
+                                    <div class="card-body">
+                                        <p class="card-text">The duration varies due to factors like communication
+                                            responsiveness, design
+                                            iterations, and unforeseen challenges. At Mech Power, we’re dedicated to
+                                            turning
+                                            your vision into a reality, creating functional and aesthetically pleasing
+                                            enclosures.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <div class="oe_structure oe_empty">
+                <section id="contact-us" class="contact-section">
+                    <div class="contactus1"></div>
+                    <div class="contact-info text-center" style="margin: 5%;">
+                        <span class="title float-none" style="color: #F4FBF7;">CONTACT US</span><br/>
+                        <h2 style="color: #F9F9F9;">Step into the future with advanced<br/>enclosure solution</h2>
+                        <a href="/contact-us?have" class="btn">
+                            Contact Us
+                        </a>
+                    </div>
+                    <div class="contactus2"></div>
+                </section>
+            </div>
+        </t>
+    </template>
+</odoo>

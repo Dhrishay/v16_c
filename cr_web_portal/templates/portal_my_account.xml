@@ -1,0 +1,1932 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Invoice Portal Template -->
+    <template id="mp_portal_my_invoices" inherit_id="account.portal_my_invoices">
+        <!--  Hide Default Odoo's breadcumb    -->
+        <xpath expr="//t[@t-call='portal.portal_searchbar']" position="replace">
+
+            <!--            New Mechpower Portal Layout-->
+            <div class="my_details_con row">
+                <div class=" col-12 col-md col-lg-3">
+                    <t t-call="cr_web_portal.portal_sidebar_custom"/>
+                </div>
+                <div class="col-12 col-lg-9 col-md quotation_portal">
+                    <!--  Portal Breadcumb  -->
+                    <t t-call="portal.portal_searchbar">
+                        <t t-set="title">Invoices</t>
+                    </t>
+                    <!-- Portal Table -->
+                    <div t-if="invoices">
+                        <t t-foreach="invoices" t-as="invoice">
+                            <t t-set="invoice_products" t-value="invoice.get_invoiceline_product()"/>
+                            <t t-set="get_invoiceline_product_qty" t-value="invoice.get_invoiceline_product_qty()"/>
+
+                            <div class="quote-container">
+                                <div class="quote-details">
+                                    <div class="quote-item">
+                                        <div class="label">
+                                            <span class="portal_grey">Invoice Date</span>
+                                            <br/>
+                                            <a t-att-href="invoice.get_portal_url()" class="portal_value">
+                                                <span t-field="invoice.invoice_date"/>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="quote-item-lable">
+                                        <div class="label">
+                                            <span class="portal_grey">Invoice</span>
+                                            <br/>
+                                            <span class="portal_value">
+                                                <a t-att-href="invoice.get_portal_url()">
+                                                    <t t-out="invoice.name"/>
+                                                </a>
+                                            </span>
+                                        </div>
+                                        <div class="quote-actions">
+                                            <div class="modal fade" t-att-id="'pay_with%s'%invoice.id" role="dialog">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h3 class="modal-title">Pay with</h3>
+                                                            <button type="button" data-bs-dismiss="modal"
+                                                                    aria-label="Close">
+                                                                <img src="/cr_web_portal/static/src/images/new_design_resource/black-close-circle.svg"
+                                                                     width="20" height="20"/>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <t t-if="order_pp and order_pp.get(invoice.id) and order_pp.get(invoice.id).get('providers')">
+                                                                <t t-set="providers"
+                                                                   t-value="order_pp.get(invoice.id).get('providers')"/>
+                                                            </t>
+                                                            <div t-if="providers or tokens" id="payment_method"
+                                                                 class="text-start payment_provider_section">
+                                                                <t t-call="payment.checkout">
+                                                                    <t t-set="order" t-value="invoice"/>
+                                                                    <t t-set="providers" t-value="providers"/>
+                                                                    <t t-set="transaction_route"
+                                                                       t-value="order_pp.get(invoice.id).get('transaction_route')"/>
+                                                                    <t t-set="access_token"
+                                                                       t-value="order_pp.get(invoice.id).get('access_token')"/>
+                                                                    <t t-set="landing_route"
+                                                                       t-value="order_pp.get(invoice.id).get('landing_route')"/>
+                                                                    <t t-set="currency"
+                                                                       t-value="order_pp.get(invoice.id).get('currency')"/>
+                                                                    <t t-set="amount"
+                                                                       t-value="order_pp.get(invoice.id).get('amount')"/>
+                                                                </t>
+                                                            </div>
+                                                            <div t-else="" class="alert alert-warning">
+                                                                <strong>No suitable payment option could be found.
+                                                                </strong>
+                                                                <br/>
+                                                                If you believe that it is an error, please contact the
+                                                                website administrator.
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <a t-if="invoice.state == 'posted' and invoice.payment_state in ('not_paid', 'partial') and invoice.amount_total and invoice.move_type == 'out_invoice' and (pending_manual_txs or not tx_ids or invoice.amount_paid &lt; invoice.amount_total)"
+                                               t-att-href="invoice.get_portal_url(anchor='portal_pay')" title="Pay Now"
+                                               aria-label="Pay now" data-bs-toggle="modal" t-att-data-bs-target="'#pay_with%s'%invoice.id"
+                                               class="action d-flex align-center text-center pay-now pay_now_btn"><img
+                                                    src="/cr_web_portal/static/src/images/new_design_resource/white_arrow_right.svg"
+                                                    width="20" height="20"/>Pay Now
+                                            </a>
+                                            <a href="#"
+                                               class="action completed-button align-center text-center message-item-portal"
+                                               t-att-data-res-model="invoice._name" t-att-data-res-id="invoice.id"
+                                               t-att-data-user-id="request.env.user.partner_id.id">
+                                                <img src="/cr_web_portal/static/src/images/new_design_resource/message-green.svg"
+                                                     width="20" height="20"/>
+                                            </a>
+                                        </div>
+                                        <main class="message-details d-none" t-att-data-res-model="invoice._name"
+                                              t-att-data-res-id="invoice.id">
+                                            <header>
+                                                <div class="d-flex" style="gap: 10px; align-items:center;">
+                                                    <div class="back-img close-message">
+                                                        <img src="/cr_web_portal/static/src/images/mech-custom/arrow-left.png"/>
+                                                    </div>
+                                                    <div class="header-info">
+                                                        <span class="category">Invoices &amp; Bills</span>
+                                                        <span class="message-id">
+                                                            <t t-esc="invoice.name"/>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <a class="helpdesk-button" href="">
+                                                    <img src="/cr_web_portal/static/src/images/mech-custom/document-text.png"/>
+                                                </a>
+                                            </header>
+                                            <div class="chat-content">
+                                                <div class="chat-message incoming">
+                                                    <div class="user-img">
+                                                        <img src="/cr_web_portal/static/src/images/mech-custom/user-msg.png"/>
+                                                    </div>
+                                                    <div class="msg-details">
+                                                        <div class="sender"></div>
+                                                        <p></p>
+                                                    </div>
+                                                </div>
+                                                <div class="chat-message outgoing">
+                                                    <div class="user-img">
+                                                        <img src="/cr_web_portal/static/src/images/mech-custom/user-msg.png"/>
+                                                    </div>
+                                                    <div class="msg-details">
+                                                        <div class="sender"></div>
+                                                        <p></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <footer class="message-input">
+                                                <div class="file-card d-none">
+                                                    <div class="file-card-content">
+                                                        <span class="file-icon">
+                                                            <img src="/cr_web_portal/static/src/images/mech-custom/link.png"/>
+                                                        </span>
+                                                        <span class="file-name"></span>
+                                                        <img class="remove-file" style="margin-left: 8px;"
+                                                             src="/cr_web_portal/static/src/images/new_design_resource/black_cross_btn.svg"/>
+                                                    </div>
+                                                </div>
+                                                <input type="text" placeholder="Enter a message"/>
+                                                <input type="file" id="attachment-input" style="display: none;"/>
+                                                <div class="msg-options">
+                                                    <a class="link-button">
+                                                        <img src="/cr_web_portal/static/src/images/mech-custom/link.png"/>
+                                                    </a>
+                                                    <a class="send-button-portal"
+                                                       t-attf-data-action="/mail/chatter_post">
+                                                        <img src="/cr_web_portal/static/src/images/mech-custom/send-2.png"/>
+                                                    </a>
+                                                </div>
+                                            </footer>
+                                        </main>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-between order_product_details invoice_list_product">
+                                    <div class="text-left w-50 portal_value">
+                                        <a t-att-href="invoice.get_portal_url()" class="overflow_dot">
+                                            <t t-if="invoice_products" t-foreach="invoice_products"
+                                               t-as="invoice_product">
+                                                <t t-if="invoice_product != invoice_products[-1] and invoice_product != False and invoice_product != ''">
+                                                    <t
+                                                            t-out="invoice_product"/>
+                                                    <t t-if="invoice_products[-1]"/>
+                                                </t>
+                                                <t t-elif="invoice_product == invoice_products[-1] and invoice_product != False and invoice_product != ''">
+                                                    <t
+                                                            t-out="invoice_product"/>
+                                                </t>
+                                            </t>
+                                        </a>
+                                    </div>
+                                    <div class="text-right portal_value">
+                                        <div>
+                                            <div t-if="invoice.get_portal_order_status()" class="status_link text-bg-info">
+                                                <t t-esc="invoice.get_portal_order_status()"/>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <span class="portal_qty" t-if="get_invoiceline_product_qty">
+                                                <span t-out="get_invoiceline_product_qty"/>
+                                                Qty.
+                                            </span>
+                                            <span t-esc="invoice.amount_residual if invoice.move_type == 'out_refund' else invoice.amount_residual"
+                                                  t-options='{"widget": "monetary", "display_currency": invoice.currency_id}'/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </div>
+                    <t t-else="">
+                        <p>There are currently no invoices and payments for your account.</p>
+                    </t>
+                    <div t-if="pager" class="o_portal_pager mt-3 d-flex justify-content-center">
+                        <t t-call="portal.pager"/>
+                    </div>
+                </div>
+            </div>
+        </xpath>
+    </template>
+    <!-- Prurchase Order Portal Template -->
+    <template id="mp_portal_my_purchase_orders" inherit_id="purchase.portal_my_purchase_orders">
+        <!--  Hide Default Odoo's breadcumb    -->
+        <xpath expr="//t[@t-call='portal.portal_searchbar']" position="replace">
+
+            <!--            New Mechpower Portal Layout-->
+            <div class="my_details_con row">
+                <div class=" col-12 col-md col-lg-3">
+                    <t t-call="cr_web_portal.portal_sidebar_custom"/>
+                </div>
+                <div class="col-12 col-lg-9 col-md">
+                    <!--                    Portal Breadcumb  -->
+                    <t t-call="portal.portal_searchbar">
+                        <t t-set="title">Purchase Orders</t>
+                    </t>
+                    <!--                    Portal Table -->
+                    <div t-if="orders">
+                        <t t-foreach="orders" t-as="order">
+                            <t t-set="order_products" t-value="order.get_orderline_product()"/>
+                            <t t-set="orederline_product_qty" t-value="order.get_orederline_product_qty()"/>
+                            <div class="quote-container">
+                                <div class="quote-details">
+                                    <div class="quote-item">
+                                        <div class="label">
+                                            <span class="portal_grey">Confirmation Date</span>
+                                            <br/>
+                                            <a t-att-href="order.get_portal_url()" class="portal_value">
+                                                <span t-field="order.date_approve"/>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="quote-item-lable">
+                                        <div class="label">
+                                            <span class="portal_grey">Purchase Order</span>
+                                            <br/>
+                                            <span class="portal_value">
+                                                <a t-att-href="order.get_portal_url()">
+                                                    <t t-out="order.name"/>
+                                                </a>
+                                            </span>
+                                        </div>
+                                        <div class="quote-actions">
+                                            <a href="#" class="action completed-button align-center text-center">
+                                                <img src="/cr_web_portal/static/src/images/new_design_resource/message-green.svg"
+                                                     width="20" height="20"/>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-between order_product_details">
+                                    <div class="text-left w-75 portal_value">
+                                        <a t-att-href="order.get_portal_url()" class="overflow_dot">
+                                            <t t-if="order_products" t-foreach="order_products" t-as="order_product">
+                                                <t t-if="order_product != order_products[-1]">
+                                                    <t t-out="order_product"/>
+                                                    ,
+                                                </t>
+                                                <t t-elif="order_product == order_products[-1]">
+                                                    <t
+                                                            t-out="order_product"/>
+                                                </t>
+                                            </t>
+                                        </a>
+                                    </div>
+                                    <div class="text-right portal_value">
+                                        <span class="portal_qty" t-if="orederline_product_qty">
+                                            <span t-out="orederline_product_qty"/>
+                                            Qty.
+                                        </span>
+                                        <span t-field="order.amount_total"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </div>
+                    <div t-else="">
+                        <p>There are currently no purchase orders for your account.</p>
+                    </div>
+                    <div t-if="pager" class="o_portal_pager mt-3 d-flex justify-content-center">
+                        <t t-call="portal.pager"/>
+                    </div>
+                </div>
+            </div>
+        </xpath>
+    </template>
+    <!-- Sale Order Portal Template -->
+    <template id="mp_portal_my_orders" inherit_id="sale.portal_my_orders">
+        <!--  Hide Default Odoo's breadcumb    -->
+        <xpath expr="//t[@t-call='portal.portal_searchbar']" position="replace">
+            <!--            New Mechpower Portal Layout-->
+            <div class="my_details_con row">
+                <div class=" col-12 col-md col-lg-3">
+                    <t t-call="cr_web_portal.portal_sidebar_custom"/>
+                </div>
+                <div class="col-12 col-lg-9 col-md quotation_portal">
+                    <!--  Portal Breadcumb  -->
+                    <t t-call="portal.portal_searchbar">
+                        <t t-set="title">Sales Orders</t>
+                    </t>
+                    <!-- Portal Table -->
+                    <div t-if="orders">
+                        <t t-foreach="orders" t-as="order">
+
+                            <t t-set="order_products" t-value="order.get_orderline_product()"/>
+                            <div class="quote-container">
+                                <div class="quote-details">
+                                    <div class="quote-item">
+                                        <div class="label">
+                                            <span class="portal_grey">Date</span>
+                                            <br/>
+                                            <a t-att-href="order.get_portal_url()" class="portal_value">
+                                                <span t-field="order.date_order"/>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="quote-item-lable">
+                                        <div class="label">
+                                            <span class="portal_grey">Sale Order</span>
+                                            <br/>
+                                            <span class="portal_value">
+                                                <a t-att-href="order.get_portal_url()">
+                                                    <t t-out="order.name"/>
+                                                </a>
+                                            </span>
+                                        </div>
+                                        <div class="quote-actions">
+                                            <t t-if="order.payment_term_id and order.payment_term_id.is_advance_payment">
+                                                <a t-if="order._has_to_be_signed(True)"
+                                                   role="button"
+                                                   class="pay_now_btn" data-bs-toggle="modal"
+                                                   t-att-data-bs-target="'#modalaccept_%s'%order.id"
+                                                   href="#">
+                                                    Accept &amp; Pay
+                                                    <img src="/cr_web_portal/static/src/images/new_design_resource/shopping-cart.svg"
+                                                         width="16"
+                                                         height="16"/>
+                                                </a>
+                                                <a t-elif="order._has_to_be_paid(True)"
+                                                   role="button" id="o_sale_portal_paynow"
+                                                   data-bs-toggle="modal" t-att-data-bs-target="'#modalaccept_%s'%order.id"
+                                                   href="#"
+                                                   class="pay_now_btn">
+                                                    <t t-if="not order.signature">Accept &amp; Pay</t>
+                                                    <t t-else="">Pay Now</t>
+                                                    <img src="/cr_web_portal/static/src/images/new_design_resource/shopping-cart.svg"
+                                                         width="16"
+                                                         height="16"/>
+                                                </a>
+                                                <a t-elif="order.state == 'sent' and not order._has_to_be_paid(True) and not order._has_to_be_signed(True)"
+                                                   role="button" id="o_sale_portal_paynow"
+                                                   data-bs-toggle="modal" t-att-data-bs-target="'#modalaccept1_%s'%order.id"
+                                                   href="#"
+                                                   class="pay_now_btn">
+                                                    <t t-if="not order.signature">Accept &amp; Pay</t>
+                                                    <t t-else="">Pay Now</t>
+                                                    <img src="/cr_web_portal/static/src/images/new_design_resource/shopping-cart.svg"
+                                                         width="16"
+                                                         height="16"/>
+                                                </a>
+                                                <a t-elif="not order.is_remaining_amount() and order.state == 'sale' and (not order.get_portal_last_transaction() or (order.get_portal_last_transaction() and order.get_portal_last_transaction().state != 'done'))"
+                                                   data-bs-toggle="modal" t-att-data-bs-target="'#modalaccept1_%s'%order.id"
+                                                   href="#"
+                                                   class="pay_now_btn">
+                                                    Pay Now
+                                                    <img src="/cr_web_portal/static/src/images/new_design_resource/shopping-cart.svg"
+                                                         width="16"
+                                                         height="16"/>
+                                                </a>
+                                                <a t-if="order.is_remaining_amount()"
+                                                   role="button" id="o_sale_portal_paynow"
+                                                   data-bs-toggle="modal" t-att-data-bs-target="'#modalaccept1_%s'%order.id" href="#"
+                                                   class="pay_now_btn">
+                                                    Pay Now
+                                                    <img src="/cr_web_portal/static/src/images/new_design_resource/shopping-cart.svg"
+                                                         width="16"
+                                                         height="16"/>
+                                                </a>
+                                            </t>
+                                            <t t-else="">
+                                                <a t-if="order._has_to_be_signed(True)"
+                                                   role="button" class="pay_now_btn"
+                                                   data-bs-toggle="modal" t-att-data-bs-target="'#modalaccept_%s'%order.id"
+                                                   href="#">
+                                                    <t t-if="order._has_to_be_paid(True)">Sign &amp; Pay</t>
+                                                    <t t-else="">Accept &amp; Pay</t>
+                                                    <img src="/cr_web_portal/static/src/images/new_design_resource/shopping-cart.svg"
+                                                         width="16"
+                                                         height="16"/>
+                                                </a>
+                                                <a t-elif="order._has_to_be_paid(True)"
+                                                   role="button" id="o_sale_portal_paynow"
+                                                   data-bs-toggle="modal" t-att-data-bs-target="'#modalaccept_%s'%order.id"
+                                                   href="#"
+                                                   class="pay_now_btn">
+                                                    Pay Now
+                                                    <img src="/cr_web_portal/static/src/images/new_design_resource/shopping-cart.svg"
+                                                         width="16"
+                                                         height="16"/>
+                                                </a>
+                                                <a t-elif="not order.is_remaining_amount() and order.state == 'sale' and (not order.get_portal_last_transaction() or (order.get_portal_last_transaction() and order.get_portal_last_transaction().state != 'done'))"
+                                                   data-bs-toggle="modal" t-att-data-bs-target="'#modalaccept1_%s'%order.id"
+                                                   href="#"
+                                                   class="pay_now_btn">
+                                                    Pay Now
+                                                    <img src="/cr_web_portal/static/src/images/new_design_resource/shopping-cart.svg"
+                                                         width="16"
+                                                         height="16"/>
+                                                </a>
+                                            </t>
+
+                                            <div role="dialog" class="modal fade" t-att-id="'modalaccept_%s'%order.id">
+                                                <div class="modal-dialog" t-if="order._has_to_be_signed(True)">
+                                                    <form id="accept" method="POST" t-att-data-order-id="order.id"
+                                                          t-att-data-token="order.access_token"
+                                                          class="js_accept_json modal-content js_website_submit_form">
+                                                        <input type="hidden" name="csrf_token"
+                                                               t-att-value="request.csrf_token()"/>
+                                                        <header class="modal-header">
+                                                            <h5 class="modal-title">Validate Order</h5>
+                                                            <button type="button" data-bs-dismiss="modal"
+                                                                    aria-label="Close">
+                                                                <img src="/cr_web_portal/static/src/images/new_design_resource/black-close-circle.svg"
+                                                                     width="20" height="20"/>
+                                                            </button>
+                                                        </header>
+                                                        <main class="modal-body" id="sign-dialog">
+                                                            <p>
+                                                                <div class="portal_obj_value">By signing this proposal,
+                                                                    I agree to the following terms:
+                                                                </div>
+                                                                <ul>
+                                                                    <li>
+                                                                        <div class="portal_grey">Accepted on the behalf
+                                                                            of:
+                                                                        </div>
+                                                                        <div class="portal_obj_value">
+                                                                            <b t-field="order.partner_id.commercial_partner_id"/>
+                                                                        </div>
+                                                                    </li>
+                                                                    <li>
+                                                                        <div class="portal_grey">For an amount of:</div>
+                                                                        <div class="portal_obj_value">
+                                                                            <b data-id="total_amount"
+                                                                               t-field="order.amount_total"/>
+                                                                        </div>
+                                                                    </li>
+                                                                    <li t-if="order.payment_term_id">
+                                                                        <div class="portal_grey">With payment terms:
+                                                                        </div>
+                                                                        <div class="portal_obj_value">
+                                                                            <b t-field="order.payment_term_id.name"/>
+                                                                        </div>
+                                                                    </li>
+                                                                    <li t-if="order.client_order_ref">
+                                                                        <div class="portal_grey">Purchase Order No:
+                                                                        </div>
+                                                                        <div class="portal_obj_value">
+                                                                            <b t-field="order.client_order_ref"/>
+                                                                        </div>
+                                                                    </li>
+                                                                    <li t-else="">
+                                                                        <div class="portal_grey">Purchase Order No:
+                                                                        </div>
+                                                                        <input type="text" id="purchase_order_no"
+                                                                               name="Purchase_order_no"
+                                                                               required="required"/>
+                                                                    </li>
+                                                                    <li t-if="order.x_studio_purchase_order_copy">
+                                                                        <div class="portal_grey">
+                                                                            <span class="o_input_required">Purchase
+                                                                                Order:
+                                                                            </span>
+                                                                        </div>
+                                                                        <a t-attf-href="/web/content/sale.order/#{order.id}/x_studio_purchase_order_copy?download=true"
+                                                                           aria-label="Download Purchase Order"
+                                                                           class="file-button"
+                                                                           title="download" href="">
+                                                                            <img src="/cr_web_portal/static/src/images/mech-custom/link.png"/>
+                                                                            <span class="portal_obj_value">
+                                                                                <t t-esc="order.x_studio_purchase_order_copy_filename"/>
+                                                                            </span>
+                                                                        </a>
+                                                                    </li>
+                                                                    <li t-else="">
+                                                                        <div class="portal_grey">Upload Purchase
+                                                                            Order:
+                                                                        </div>
+                                                                        <input type="file" multiple="true"
+                                                                               accept="application/pdf, application/x-pdf, application/vnd.cups-pdf"
+                                                                               id="purchase_order" required="required"/>
+                                                                        <a t-attf-href="/web/content/sale.order/#{order.id}/x_studio_purchase_order_copy?download=true"
+                                                                           aria-label="Download Purchase Order"
+                                                                           class="file-button"
+                                                                           title="download" href="">
+                                                                            <img src="/cr_web_portal/static/src/images/mech-custom/link.png"/>
+                                                                            <span class="portal_obj_value">
+                                                                                <t t-esc="order.x_studio_purchase_order_copy_filename"/>
+                                                                            </span>
+                                                                        </a>
+                                                                    </li>
+                                                                </ul>
+                                                            </p>
+                                                            <t t-call="portal.signature_form">
+                                                                <t t-if="order.payment_term_id and order.payment_term_id.is_advance_payment">
+                                                                    <t t-set="send_label">Accept &amp; Pay</t>
+                                                                </t>
+                                                                <t t-if="order.payment_term_id and not order.payment_term_id.is_advance_payment">
+                                                                    <t t-set="send_label">Accept &amp; Pay</t>
+                                                                </t>
+                                                                <t t-set="call_url"
+                                                                   t-value="order.get_portal_url(suffix='/accept')"/>
+                                                                <t t-set="default_name"
+                                                                   t-value="order.partner_id.name"/>
+                                                            </t>
+                                                        </main>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                            <div role="dialog" class="modal fade" t-att-id="'modalaccept1_%s'%order.id">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <header class="modal-header">
+                                                            <h5 class="modal-title">Validate Order</h5>
+                                                            <button type="button" data-bs-dismiss="modal"
+                                                                    aria-label="Close">
+                                                                <img src="/cr_web_portal/static/src/images/new_design_resource/black-close-circle.svg"
+                                                                     width="20" height="20"/>
+                                                            </button>
+                                                        </header>
+                                                        <main class="modal-body" id="sign-dialog">
+                                                            <p>
+                                                                <div class="portal_obj_value">By paying this proposal, I
+                                                                    agree to the following terms:
+                                                                </div>
+                                                                <ul>
+                                                                    <li>
+                                                                        <div class="portal_grey">Accepted on the behalf
+                                                                            of:
+                                                                        </div>
+                                                                        <div class="portal_obj_value">
+                                                                            <b t-field="order.partner_id.commercial_partner_id"/>
+                                                                        </div>
+                                                                    </li>
+                                                                    <li>
+                                                                        <div class="portal_grey">For an amount of:</div>
+                                                                        <div class="portal_obj_value">
+                                                                            <t t-if="order.is_remaining_amount()">
+                                                                                <b data-id="total_amount"
+                                                                                   t-esc="order.is_remaining_amount()"/>
+                                                                            </t>
+                                                                            <t t-else="">
+                                                                                <b data-id="total_amount"
+                                                                                   t-field="order.amount_total"/>
+                                                                            </t>
+                                                                        </div>
+                                                                    </li>
+                                                                </ul>
+                                                            </p>
+                                                            <div t-if="order and order.payment_term_id and order.payment_term_id.is_advance_payment and not order.is_remaining_amount()"
+                                                                 class="amount_of_payable mb-3">
+                                                                <div class="d-grid justify-content-between">
+                                                                    <div class="text-start portal_grey border-bottom-0">
+                                                                        Advance payment
+                                                                        <div t-if="not (order.is_customisable or order.is_place_inquiry)">
+                                                                            <div class="summary_payment_term">
+                                                                                <t t-esc="order.payment_term_id.name"/>
+                                                                                . As per payment terms.
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="text-start mp_input_field_web border-bottom-0 p-0">
+                                                                        <input type="number"
+                                                                               name="payable_amount"
+                                                                               step="0.01"
+                                                                               style="text-align: left !important;"
+                                                                               class="check_digits_quantity portal_payable_amount form_input s_website_form_input"
+                                                                               t-att-min="'%.2f' % (order_pp[order.id]['payable_amount']['min'])"
+                                                                               t-att-max="'%.2f' % (order_pp[order.id]['payable_amount']['max'])"
+                                                                               t-att-value="'%.2f' % order_pp[order.id]['payable_amount']['min']"/>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <t t-if="order_pp and order_pp.get(order.id) and order_pp.get(order.id).get('providers')">
+                                                                <t t-set="providers"
+                                                                   t-value="order_pp.get(order.id).get('providers')"/>
+                                                            </t>
+                                                            <div t-if="providers or tokens" id="payment_method"
+                                                                 class="text-start payment_provider_section">
+                                                                <h5 class="modal-title">Pay with</h5>
+                                                                <t t-call="payment.checkout">
+                                                                    <t t-set="order" t-value="order"/>
+                                                                    <t t-set="providers" t-value="providers"/>
+                                                                    <t t-set="transaction_route"
+                                                                       t-value="order_pp.get(order.id).get('transaction_route')"/>
+                                                                    <t t-set="access_token"
+                                                                       t-value="order_pp.get(order.id).get('access_token')"/>
+                                                                    <t t-set="landing_route"
+                                                                       t-value="order_pp.get(order.id).get('landing_route')"/>
+                                                                    <t t-set="currency"
+                                                                       t-value="order_pp.get(order.id).get('currency')"/>
+                                                                    <t t-if="order.is_remaining_amount()">
+                                                                        <t t-set="amount" t-value="order.is_remaining_amount()"/>
+                                                                    </t>
+                                                                    <t t-elif="order.payment_term_id.is_advance_payment">
+                                                                        <t t-set="amount" t-value="order_pp[order.id]['payable_amount']['min']"/>
+                                                                    </t>
+                                                                    <t t-else="">
+                                                                        <t t-set="amount" t-value="order_pp.get(order.id).get('amount')"/>
+                                                                    </t>
+                                                                </t>
+                                                            </div>
+                                                            <div t-else="" class="alert alert-warning">
+                                                                <strong>No suitable payment option could be found.
+                                                                </strong>
+                                                                <br/>
+                                                                If you believe that it is an error, please contact the
+                                                                website administrator.
+                                                            </div>
+                                                        </main>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <a href="#"
+                                               class="action completed-button align-center text-center message-item-portal"
+                                               t-att-data-res-model="order._name" t-att-data-res-id="order.id"
+                                               t-att-data-user-id="request.env.user.partner_id.id">
+                                                <img src="/cr_web_portal/static/src/images/new_design_resource/message-green.svg"
+                                                     width="20" height="20"/>
+                                            </a>
+                                        </div>
+                                        <main class="message-details d-none" t-att-data-res-model="order._name"
+                                              t-att-data-res-id="order.id">
+                                            <header>
+                                                <div class="d-flex" style="gap: 10px; align-items:center;">
+                                                    <div class="back-img close-message">
+                                                        <img src="/cr_web_portal/static/src/images/mech-custom/arrow-left.png"/>
+                                                    </div>
+                                                    <div class="header-info">
+                                                        <span class="category">Sales Order</span>
+                                                        <span class="message-id">
+                                                            <t t-esc="order.name"/>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <a class="helpdesk-button" href="">
+                                                    <img src="/cr_web_portal/static/src/images/mech-custom/document-text.png"/>
+                                                </a>
+                                            </header>
+                                            <div class="chat-content">
+                                                <div class="chat-message incoming">
+                                                    <div class="user-img">
+                                                        <img src="/cr_web_portal/static/src/images/mech-custom/user-msg.png"/>
+                                                    </div>
+                                                    <div class="msg-details">
+                                                        <div class="sender"></div>
+                                                        <p></p>
+                                                    </div>
+                                                </div>
+                                                <div class="chat-message outgoing">
+                                                    <div class="user-img">
+                                                        <img src="/cr_web_portal/static/src/images/mech-custom/user-msg.png"/>
+                                                    </div>
+                                                    <div class="msg-details">
+                                                        <div class="sender"></div>
+                                                        <p></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <footer class="message-input">
+                                                <div class="file-card d-none">
+                                                    <div class="file-card-content">
+                                                        <span class="file-icon">
+                                                            <img src="/cr_web_portal/static/src/images/mech-custom/link.png"/>
+                                                        </span>
+                                                        <span class="file-name"></span>
+                                                        <img class="remove-file" style="margin-left: 8px;"
+                                                             src="/cr_web_portal/static/src/images/new_design_resource/black_cross_btn.svg"/>
+                                                    </div>
+                                                </div>
+                                                <input type="text" placeholder="Enter a message"/>
+                                                <input type="file" id="attachment-input" style="display: none;"/>
+                                                <div class="msg-options">
+                                                    <a class="link-button">
+                                                        <img src="/cr_web_portal/static/src/images/mech-custom/link.png"/>
+                                                    </a>
+                                                    <a class="send-button-portal"
+                                                       t-attf-data-action="/mail/chatter_post">
+                                                        <img src="/cr_web_portal/static/src/images/mech-custom/send-2.png"/>
+                                                    </a>
+                                                </div>
+                                            </footer>
+                                        </main>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-between order_product_details invoice_list_product">
+                                    <div class="text-left w-50 portal_value">
+                                        <a t-att-href="order.get_portal_url()" class="overflow_dot">
+                                            <t t-if="order_products" t-foreach="order_products" t-as="order_product">
+                                                <t t-if="order_product != order_products[-1]">
+                                                    <t t-out="order_product"/>
+                                                    ,
+                                                </t>
+                                                <t t-elif="order_product == order_products[-1]">
+                                                    <t t-out="order_product"/>
+                                                </t>
+                                            </t>
+                                        </a>
+                                    </div>
+                                    <div class="text-right portal_value">
+                                        <div>
+                                            <div t-if="order.get_portal_order_status()" class="status_link text-bg-info">
+                                                <t t-esc="order.get_portal_order_status()"/>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <span class="portal_qty" t-if="order.cart_quantity">
+                                                <span t-field="order.cart_quantity"/>
+                                                Qty.
+                                            </span>
+                                            <span t-field="order.amount_total"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </div>
+                    <t t-else="">
+                        <p>There are currently no orders for your account.</p>
+                    </t>
+                    <div t-if="pager" class="o_portal_pager mt-3 d-flex justify-content-center">
+                        <t t-call="portal.pager"/>
+                    </div>
+                </div>
+            </div>
+        </xpath>
+    </template>
+    <!-- Quotation Portal Template -->
+    <template id="mp_portal_my_quotations" inherit_id="sale.portal_my_quotations">
+        <!--  Hide Default Odoo's breadcumb    -->
+        <xpath expr="//t[@t-call='portal.portal_searchbar']" position="replace">
+            <!--  New Mechpower Portal Layout-->
+            <div class="my_details_con row">
+                <div class=" col-12 col-md col-lg-3">
+                    <t t-call="cr_web_portal.portal_sidebar_custom"/>
+                </div>
+                <div class="col-12 col-lg-9 col-md quotation_portal">
+                    <!--  Portal Breadcumb  -->
+                    <t t-call="portal.portal_searchbar">
+                        <t t-set="title">Quotations</t>
+                    </t>
+                    <!-- Portal Table -->
+                    <div t-if="quotations">
+                        <t t-foreach="quotations" t-as="quotation">
+                            <t t-set="quotation_products" t-value="quotation.get_orderline_product()"/>
+                            <div class="quote-container">
+                                <div class="quote-details">
+                                    <div class="quote-item">
+                                        <div class="label">
+                                            <span class="portal_grey">Date</span>
+                                            <br/>
+                                            <a t-att-href="quotation.get_portal_url()" class="portal_value">
+                                                <span t-field="quotation.date_order"/>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="quote-item-lable">
+                                        <div class="label">
+                                            <span class="portal_grey">Quotation</span>
+                                            <br/>
+                                            <span class="portal_value">
+                                                <a t-att-href="quotation.get_portal_url()">
+                                                    <t t-out="quotation.name"/>
+                                                </a>
+                                            </span>
+                                        </div>
+                                        <div class="quote-actions">
+                                            <t t-if="quotation.payment_term_id and quotation.payment_term_id.is_advance_payment">
+                                                <a t-if="quotation._has_to_be_signed(True)"
+                                                   role="button"
+                                                   class="pay_now_btn" data-bs-toggle="modal"
+                                                   t-att-data-bs-target="'#modalaccept_%s'%quotation.id"
+                                                   href="#">
+                                                    Accept &amp; Pay
+                                                    <img src="/cr_web_portal/static/src/images/new_design_resource/shopping-cart.svg"
+                                                         width="16"
+                                                         height="16"/>
+                                                </a>
+                                                <a t-elif="quotation._has_to_be_paid(True)"
+                                                   role="button" id="o_sale_portal_paynow"
+                                                   data-bs-toggle="modal" t-att-data-bs-target="'#modalaccept_%s'%quotation.id"
+                                                   href="#"
+                                                   class="pay_now_btn">
+                                                    <t t-if="not quotation.signature">Accept &amp; Pay</t>
+                                                    <t t-else="">Pay Now</t>
+                                                    <img src="/cr_web_portal/static/src/images/new_design_resource/shopping-cart.svg"
+                                                         width="16"
+                                                         height="16"/>
+                                                </a>
+                                                <a t-elif="quotation.state == 'sent' and not quotation._has_to_be_paid(True) and not quotation._has_to_be_signed(True)"
+                                                   role="button" id="o_sale_portal_paynow"
+                                                   data-bs-toggle="modal" t-att-data-bs-target="'#modalaccept1_%s'%quotation.id"
+                                                   href="#"
+                                                   class="pay_now_btn">
+                                                    <t t-if="not quotation.signature">Accept &amp; Pay</t>
+                                                    <t t-else="">Pay Now</t>
+                                                    <img src="/cr_web_portal/static/src/images/new_design_resource/shopping-cart.svg"
+                                                         width="16"
+                                                         height="16"/>
+                                                </a>
+                                                <a t-elif="not quotation.is_remaining_amount() and quotation.state == 'sale' and (not quotation.get_portal_last_transaction() or (quotation.get_portal_last_transaction() and quotation.get_portal_last_transaction().state != 'done'))"
+                                                   data-bs-toggle="modal" t-att-data-bs-target="'#modalaccept1_%s'%quotation.id"
+                                                   href="#"
+                                                   class="pay_now_btn">
+                                                    Pay Now
+                                                    <img src="/cr_web_portal/static/src/images/new_design_resource/shopping-cart.svg"
+                                                         width="16"
+                                                         height="16"/>
+                                                </a>
+                                                <a t-if="quotation.is_remaining_amount()"
+                                                   role="button" id="o_sale_portal_paynow"
+                                                   data-bs-toggle="modal" t-att-data-bs-target="'#modalaccept1_%s'%quotation.id" href="#"
+                                                   class="pay_now_btn">
+                                                    Pay Now
+                                                    <img src="/cr_web_portal/static/src/images/new_design_resource/shopping-cart.svg"
+                                                         width="16"
+                                                         height="16"/>
+                                                </a>
+                                            </t>
+                                            <t t-else="">
+                                                <a t-if="quotation._has_to_be_signed(True)"
+                                                   role="button" class="pay_now_btn"
+                                                   data-bs-toggle="modal" t-att-data-bs-target="'#modalaccept_%s'%quotation.id"
+                                                   href="#">
+                                                    <t t-if="quotation._has_to_be_paid(True)">Sign &amp; Pay</t>
+                                                    <t t-else="">Accept &amp; Pay</t>
+                                                    <img src="/cr_web_portal/static/src/images/new_design_resource/shopping-cart.svg"
+                                                         width="16"
+                                                         height="16"/>
+                                                </a>
+                                                <a t-elif="quotation._has_to_be_paid(True)"
+                                                   role="button" id="o_sale_portal_paynow"
+                                                   data-bs-toggle="modal" t-att-data-bs-target="'#modalaccept_%s'%quotation.id"
+                                                   href="#"
+                                                   class="pay_now_btn">
+                                                    Pay Now
+                                                    <img src="/cr_web_portal/static/src/images/new_design_resource/shopping-cart.svg"
+                                                         width="16"
+                                                         height="16"/>
+                                                </a>
+                                                <a t-elif="not quotation.is_remaining_amount() and quotation.state == 'sale' and (not quotation.get_portal_last_transaction() or (quotation.get_portal_last_transaction() and quotation.get_portal_last_transaction().state != 'done'))"
+                                                   data-bs-toggle="modal" t-att-data-bs-target="'#modalaccept1_%s'%quotation.id"
+                                                   href="#"
+                                                   class="pay_now_btn">
+                                                    Pay Now
+                                                    <img src="/cr_web_portal/static/src/images/new_design_resource/shopping-cart.svg"
+                                                         width="16"
+                                                         height="16"/>
+                                                </a>
+                                            </t>
+                                            <div role="dialog" class="modal fade" t-att-id="'modalaccept_%s'%quotation.id">
+                                                <div class="modal-dialog" t-if="quotation._has_to_be_signed(True)">
+                                                    <form id="accept" method="POST" t-att-data-order-id="quotation.id"
+                                                          t-att-data-token="quotation.access_token"
+                                                          class="js_accept_json modal-content js_website_submit_form">
+                                                        <input type="hidden" name="csrf_token"
+                                                               t-att-value="request.csrf_token()"/>
+                                                        <header class="modal-header">
+                                                            <h5 class="modal-title">Validate Order</h5>
+                                                            <button type="button" data-bs-dismiss="modal"
+                                                                    aria-label="Close">
+                                                                <img src="/cr_web_portal/static/src/images/new_design_resource/black-close-circle.svg"
+                                                                     width="20" height="20"/>
+                                                            </button>
+                                                        </header>
+                                                        <main class="modal-body" id="sign-dialog">
+                                                            <p>
+                                                                <div class="portal_obj_value">By signing this proposal,
+                                                                    I agree to the following terms:
+                                                                </div>
+                                                                <ul>
+                                                                    <li>
+                                                                        <div class="portal_grey">Accepted on the behalf
+                                                                            of:
+                                                                        </div>
+                                                                        <div class="portal_obj_value">
+                                                                            <b t-field="quotation.partner_id.commercial_partner_id"/>
+                                                                        </div>
+                                                                    </li>
+                                                                    <li>
+                                                                        <div class="portal_grey">For an amount of:</div>
+                                                                        <div class="portal_obj_value">
+                                                                            <b data-id="total_amount"
+                                                                               t-field="quotation.amount_total"/>
+                                                                        </div>
+                                                                    </li>
+                                                                    <li t-if="quotation.client_order_ref">
+                                                                        <div class="portal_grey">Purchase Order No:
+                                                                        </div>
+                                                                        <div class="portal_obj_value">
+                                                                            <b t-field="quotation.client_order_ref"/>
+                                                                        </div>
+                                                                    </li>
+                                                                    <li t-else="">
+                                                                        <div class="portal_grey">Purchase Order No:
+                                                                        </div>
+                                                                        <input type="text" id="purchase_order_no"
+                                                                               name="Purchase_order_no"
+                                                                               required="required"/>
+                                                                    </li>
+                                                                    <li t-if="quotation.x_studio_purchase_order_copy">
+                                                                        <div class="portal_grey">
+                                                                            <span class="o_input_required">Purchase
+                                                                                Order:
+                                                                            </span>
+                                                                        </div>
+                                                                        <a t-attf-href="/web/content/sale.order/#{quotation.id}/x_studio_purchase_order_copy?download=true"
+                                                                           aria-label="Download Purchase Order"
+                                                                           class="file-button"
+                                                                           title="download" href="">
+                                                                            <img src="/cr_web_portal/static/src/images/mech-custom/link.png"/>
+                                                                            <span class="portal_obj_value">
+                                                                                <t t-esc="quotation.x_studio_purchase_order_copy_filename"/>
+                                                                            </span>
+                                                                        </a>
+                                                                    </li>
+                                                                    <li t-else="">
+                                                                        <div class="portal_grey">Upload Purchase
+                                                                            Order:
+                                                                        </div>
+                                                                        <input type="file" multiple="true"
+                                                                               accept="application/pdf, application/x-pdf, application/vnd.cups-pdf"
+                                                                               id="purchase_order" required="required"/>
+                                                                    </li>
+                                                                </ul>
+                                                            </p>
+                                                            <t t-call="portal.signature_form">
+                                                                <t t-if="quotation.payment_term_id and quotation.payment_term_id.is_advance_payment">
+                                                                    <t t-set="send_label">Accept &amp; Pay</t>
+                                                                </t>
+                                                                <t t-if="quotation.payment_term_id and not quotation.payment_term_id.is_advance_payment">
+                                                                    <t t-set="send_label">Accept &amp; Pay</t>
+                                                                </t>
+                                                                <t t-set="call_url"
+                                                                   t-value="quotation.get_portal_url(suffix='/accept')"/>
+                                                                <t t-set="default_name"
+                                                                   t-value="quotation.partner_id.name"/>
+                                                            </t>
+                                                        </main>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                            <div role="dialog" class="modal fade" t-att-id="'modalaccept1_%s'%quotation.id">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <header class="modal-header">
+                                                            <h5 class="modal-title">Validate Order</h5>
+                                                            <button type="button" data-bs-dismiss="modal"
+                                                                    aria-label="Close">
+                                                                <img src="/cr_web_portal/static/src/images/new_design_resource/black-close-circle.svg"
+                                                                     width="20" height="20"/>
+                                                            </button>
+                                                        </header>
+                                                        <main class="modal-body" id="sign-dialog">
+                                                            <p>
+                                                                <div class="portal_obj_value">By paying this proposal, I
+                                                                    agree to the following terms:
+                                                                </div>
+                                                                <ul>
+                                                                    <li>
+                                                                        <div class="portal_grey">Accepted on the behalf
+                                                                            of:
+                                                                        </div>
+                                                                        <div class="portal_obj_value">
+                                                                            <b t-field="quotation.partner_id.commercial_partner_id"/>
+                                                                        </div>
+                                                                    </li>
+                                                                    <li>
+                                                                        <div class="portal_grey">For an amount of:</div>
+                                                                        <div class="portal_obj_value">
+                                                                            <b data-id="total_amount"
+                                                                               t-field="quotation.amount_total"/>
+                                                                        </div>
+                                                                    </li>
+                                                                </ul>
+                                                            </p>
+                                                            <div t-if="quotation and quotation.payment_term_id and quotation.payment_term_id.is_advance_payment"
+                                                                 class="amount_of_payable mb-3">
+                                                                <div class="d-grid justify-content-between">
+                                                                    <div class="text-start portal_grey border-bottom-0">
+                                                                        Advance payment
+                                                                        <div t-if="not (quotation.is_customisable or quotation.is_place_inquiry)">
+                                                                            <div class="summary_payment_term">
+                                                                                <t t-esc="quotation.payment_term_id.name"/>
+                                                                                . As per payment terms.
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="text-start mp_input_field_web border-bottom-0 p-0">
+                                                                        <input type="number"
+                                                                               name="payable_amount"
+                                                                               step="0.01"
+                                                                               style="text-align: left !important;"
+                                                                               class="check_digits_quantity portal_payable_amount form_input s_website_form_input"
+                                                                               t-att-min="'%.2f' % (order_pp[quotation.id]['payable_amount']['min'])"
+                                                                               t-att-max="'%.2f' % (order_pp[quotation.id]['payable_amount']['max'])"
+                                                                               t-att-value="'%.2f' % order_pp[quotation.id]['payable_amount']['min']"/>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <t t-if="order_pp and order_pp.get(quotation.id) and order_pp.get(quotation.id).get('providers')">
+                                                                <t t-set="providers"
+                                                                   t-value="order_pp.get(quotation.id).get('providers')"/>
+                                                            </t>
+                                                            <div t-if="providers or tokens" id="payment_method"
+                                                                 class="text-start payment_provider_section">
+                                                                <h5 class="modal-title">Pay with</h5>
+                                                                <t t-call="payment.checkout">
+
+                                                                    <t t-set="order" t-value="quotation"/>
+                                                                    <t t-set="providers" t-value="providers"/>
+                                                                    <t t-set="transaction_route"
+                                                                       t-value="order_pp.get(quotation.id).get('transaction_route')"/>
+                                                                    <t t-set="access_token"
+                                                                       t-value="order_pp.get(quotation.id).get('access_token')"/>
+                                                                    <t t-set="landing_route"
+                                                                       t-value="order_pp.get(quotation.id).get('landing_route')"/>
+                                                                    <t t-set="currency"
+                                                                       t-value="order_pp.get(quotation.id).get('currency')"/>
+                                                                    <t t-if="order.payment_term_id.is_advance_payment">
+                                                                        <t t-set="amount" t-value="order_pp[quotation.id]['payable_amount']['min']"/>
+                                                                    </t>
+                                                                    <t t-else="">
+                                                                        <t t-set="amount" t-value="order_pp.get(quotation.id).get('amount')"/>
+                                                                    </t>
+                                                                </t>
+                                                            </div>
+                                                            <div t-else="" class="alert alert-warning">
+                                                                <strong>No suitable payment option could be found.
+                                                                </strong>
+                                                                <br/>
+                                                                If you believe that it is an error, please contact the
+                                                                website administrator.
+                                                            </div>
+                                                        </main>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <a href="#"
+                                               class="action completed-button align-center text-center message-item-portal"
+                                               t-att-data-res-model="quotation._name" t-att-data-res-id="quotation.id"
+                                               t-att-data-user-id="request.env.user.partner_id.id">
+                                                <img src="/cr_web_portal/static/src/images/new_design_resource/message-green.svg"
+                                                     width="20" height="20"/>
+                                            </a>
+                                        </div>
+                                        <main class="message-details d-none" t-att-data-res-model="quotation._name"
+                                              t-att-data-res-id="quotation.id">
+                                            <header>
+                                                <div class="d-flex" style="gap: 10px; align-items:center;">
+                                                    <div class="back-img close-message">
+                                                        <img src="/cr_web_portal/static/src/images/mech-custom/arrow-left.png"/>
+                                                    </div>
+                                                    <div class="header-info">
+                                                        <span class="category">Quotation</span>
+                                                        <span class="message-id">
+                                                            <t t-esc="quotation.name"/>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <a class="helpdesk-button" href="">
+                                                    <img src="/cr_web_portal/static/src/images/mech-custom/document-text.png"/>
+                                                </a>
+                                            </header>
+                                            <div class="chat-content">
+                                                <div class="chat-message incoming">
+                                                    <div class="user-img">
+                                                        <img src="/cr_web_portal/static/src/images/mech-custom/user-msg.png"/>
+                                                    </div>
+                                                    <div class="msg-details">
+                                                        <div class="sender"></div>
+                                                        <p></p>
+                                                    </div>
+                                                </div>
+                                                <div class="chat-message outgoing">
+                                                    <div class="user-img">
+                                                        <img src="/cr_web_portal/static/src/images/mech-custom/user-msg.png"/>
+                                                    </div>
+                                                    <div class="msg-details">
+                                                        <div class="sender"></div>
+                                                        <p></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <footer class="message-input">
+                                                <div class="file-card d-none">
+                                                    <div class="file-card-content">
+                                                        <span class="file-icon">
+                                                            <img src="/cr_web_portal/static/src/images/mech-custom/link.png"/>
+                                                        </span>
+                                                        <span class="file-name"></span>
+                                                        <img class="remove-file" style="margin-left: 8px;"
+                                                             src="/cr_web_portal/static/src/images/new_design_resource/black_cross_btn.svg"/>
+                                                    </div>
+                                                </div>
+                                                <input type="text" placeholder="Enter a message"/>
+                                                <input type="file" id="attachment-input" style="display: none;"/>
+                                                <div class="msg-options">
+                                                    <a class="link-button">
+                                                        <img src="/cr_web_portal/static/src/images/mech-custom/link.png"/>
+                                                    </a>
+                                                    <a class="send-button-portal"
+                                                       t-attf-data-action="/mail/chatter_post">
+                                                        <img src="/cr_web_portal/static/src/images/mech-custom/send-2.png"/>
+                                                    </a>
+                                                </div>
+                                            </footer>
+                                        </main>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-between order_product_details invoice_list_product">
+                                    <div class="text-left w-50 portal_value">
+                                        <a t-att-href="quotation.get_portal_url()" class="overflow_dot">
+                                            <t t-if="quotation_products" t-foreach="quotation_products"
+                                               t-as="quotation_product">
+                                                <t t-if="quotation_product != quotation_products[-1]"><t
+                                                        t-out="quotation_product"/>,
+                                                </t>
+                                                <t t-elif="quotation_product == quotation_products[-1]">
+                                                    <t
+                                                            t-out="quotation_product"/>
+                                                </t>
+                                            </t>
+                                        </a>
+                                    </div>
+
+                                    <div class="text-right portal_value">
+                                        <div t-if="quotation.get_portal_order_status()"
+                                             class="status_link text-bg-info">
+                                            <t t-esc="quotation.get_portal_order_status()"/>
+                                        </div>
+                                        <div>
+                                            <span class="portal_qty" t-if="quotation.cart_quantity">
+                                                <span t-field="quotation.cart_quantity"/>
+                                                Qty.
+                                            </span>
+                                            <span t-field="quotation.amount_total"/>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </t>
+                    </div>
+                    <t t-else="">
+                        <p>There are currently no quotations for your account.</p>
+                    </t>
+                    <div t-if="pager" class="o_portal_pager mt-3 d-flex justify-content-center">
+                        <t t-call="portal.pager"/>
+                    </div>
+                </div>
+            </div>
+        </xpath>
+    </template>
+
+
+    <template id="mp_portal_table" inherit_id="portal.portal_table">
+        <xpath expr="//div[1]" position="replace">
+        </xpath>
+        <xpath expr="//div[hasclass('o_portal_pager')]" position="replace">
+        </xpath>
+    </template>
+
+    <template id="portal.portal_my_details_fields">
+        <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+
+        <div class="col-xl-1 d-flex" id="s2u_portal_avatar">
+            <input type="file" class="d-none s2u_portal_avatar_upload" name="image_1920" accept="image/*"/>
+            <img t-if="partner.image_1920"
+                 class="s2u_portal_avatar_img"
+                 t-att-src="website.image_url(partner, 'image_1920')"/>
+            <img t-else=""
+                 class="s2u_portal_avatar_img"
+                 src="/cr_web_portal/static/src/images/mech-custom/input-field-bg.png"/>
+            <div class="add-dyn-text d-none" style="color:#666666;">
+                <span></span>
+            </div>
+            <div class="text-left portal_avatar_div">
+                <a href="#" class="s2u_portal_avatar_edit" aria-label="Edit">
+                    <img src="/cr_web_portal/static/src/images/mech-custom/edit_avatar.png" title="Edit"/>
+                </a>
+            </div>
+        </div>
+        <div t-attf-class="#{error.get('name') and 'o_has_error' or ''} col-xl-5">
+            <div class="mp_input_field">
+                <input type="text" name="name"
+                       t-attf-class="#{error.get('name') and 'is-invalid' or ''} s_website_form_input form_input valid"
+                       t-att-value="name or partner.name" placeholder=" "/>
+                <label class="form_label o_input_required" for="name">Name</label>
+            </div>
+        </div>
+        <div t-attf-class="#{error.get('email') and 'o_has_error' or ''} col-xl-6">
+            <div class="mp_input_field">
+                <input type="email" name="email"
+                       t-attf-class="#{error.get('email') and 'is-invalid' or ''} s_website_form_input form_input valid"
+                       t-att-value="email or partner.email" t-att-readonly="'readonly' if partner.email else None"
+                       placeholder=""/>
+                <label class="col-form-label form_label o_input_required" for="email">Email</label>
+            </div>
+        </div>
+        <div class="clearfix"/>
+        <div t-attf-class="#{error.get('company_name') and 'o_has_error' or ''} col-xl-6">
+            <div class="mp_input_field">
+                <input type="text" name="company_name"
+                       t-attf-class="#{error.get('company_name') and 'is-invalid' or ''} s_website_form_input form_input"
+                       placeholder=""
+                       t-att-value="company_name or partner.commercial_company_name"/>
+                <label class="label-optional form_label" for="company_name">Company Name</label>
+            </div>
+        </div>
+        <div t-attf-class="#{error.get('vat') and 'o_has_error' or ''} col-xl-6">
+            <div class="mp_input_field">
+                <input type="text" name="vat"
+                       t-attf-class="#{error.get('vat') and 'is-invalid' or ''} s_website_form_input form_input"
+                       placeholder=""
+                       t-att-value="vat or partner.vat"/>
+                <label class="label-optional form_label" for="vat">GST Number</label>
+            </div>
+        </div>
+        <div t-attf-class="#{error.get('phone') and 'o_has_error' or ''} mp_input_field col-xl-6 mp_phone_container">
+            <div style="overflow: visible !important; position: relative;" class="d-flex mp_phone mb-4">
+                <t t-set="countries" t-value="request.env['res.country'].sudo().search([])"/>
+                <t t-set="default_country"
+                   t-value="request.env['res.country'].sudo().search([('phone_code','=','+91')])"/>
+                <t t-if="partner.phone">
+                    <t t-set="default_country"
+                       t-value="request.env['res.country'].sudo().search([('id','=',partner.country_id.id)])"/>
+                </t>
+                <div class="input-group js_country_dropdown pr-0">
+                    <div class="input-group-prepend flag-button">
+                        <button type="button"
+                                id="btn_vat_code"
+                                t-att-disabled="readonly"
+                                class="btn dropdown btn-outline-secondary dropdown-toggle js_btn_country_code country_button"
+                                data-bs-toggle="dropdown"
+                                data-bs-target="#dropdown-countries">
+                            <!---->
+                            <div id="img_code_vat" class="js_img_country_code country_img ">
+                                +
+                                <t t-esc="default_country.phone_code"/>
+                                <i class="fa fa-chevron-down"></i>
+                            </div>
+                        </button>
+                        <div class="dropdown-menu scrollable-menu" id="dropdown-countries">
+                            <div class="country_id_searchbar">
+                                <input class="search_country input_control" type="text" placeholder="Search..."/>
+                            </div>
+                            <div id="country_id_list">
+                                <t t-foreach="countries" t-as="country">
+                                    <a href="#"
+                                       t-att-id="country.code"
+                                       t-att-data-country_id="country.id"
+                                       t-att-data-country_code="country.code"
+                                       t-att-data-phone_code="country.phone_code"
+                                       class="dropdown-item js_select_country_code">
+                                        <img t-att-src="country.image_url" class="country_name_img"/>
+                                        <span class="form-country-name">
+                                            <t t-esc="country.name"/>
+                                            (<t t-esc="country.code"/>) +
+                                            <t t-esc="country.phone_code"/>
+                                        </span>
+                                    </a>
+                                </t>
+                            </div>
+                        </div>
+                        <input id="country_code_field"
+                               type="hidden"
+                               size="2"
+                               tabindex="-1"
+                               class="input-group-text js_country_code_field "
+                               name="selected_phone_country_id"
+                               t-att-value="default_country.id"
+                               placeholder=""
+                               readonly="1"/>
+                    </div>
+                </div>
+                <t t-if="partner.phone">
+                    <t t-set="old_phone" t-value="'+' + str(partner.country_id.phone_code)"/>
+                    <t t-set="old_phone1" t-value="partner.phone.replace(old_phone, '')"/>
+                    <input type="tel" id="phone" name="phone" t-att-value="old_phone1.replace(' ','')"
+                           t-attf-class="check_digits #{error.get('phone') and 'is-invalid' or ''} "
+                           maxlength="15" placeholder=""/>
+                </t>
+                <t t-else="">
+                    <input type="tel" id="phone" name="phone"
+                           t-attf-class="check_digits #{error.get('phone') and 'is-invalid' or ''} "
+                           maxlength="15" placeholder=""/>
+                </t>
+                <label class="col-form-label form_label" for="phone">Phone</label>
+            </div>
+        </div>
+
+        <div t-attf-class="col-xl-6 mp_input_field mp_phone_container">
+            <div style="overflow: visible !important; position: relative;" class="d-flex mp_phone mb-4">
+                <t t-set="countries" t-value="request.env['res.country'].sudo().search([])"/>
+                <t t-set="default_country"
+                   t-value="request.env['res.country'].sudo().search([('phone_code','=','+91')])"/>
+                <t t-if="partner.mobile">
+                    <t t-set="default_country"
+                       t-value="request.env['res.country'].sudo().search([('id','=',partner.country_id.id)])"/>
+                </t>
+                <div class="input-group js_country_dropdown pr-0">
+                    <div class="input-group-prepend flag-button">
+                        <button type="button"
+                                id="btn_vat_code"
+                                t-att-disabled="readonly"
+                                class="btn dropdown btn-outline-secondary dropdown-toggle js_btn_country_code country_button"
+                                data-bs-toggle="dropdown"
+                                data-bs-target="#dropdown-countries">
+                            <div id="img_code_vat" class="js_img_country_code country_img ">
+                                +
+                                <t t-esc="default_country.phone_code"/>
+                                <i class="fa fa-chevron-down"></i>
+                            </div>
+                        </button>
+                        <div class="dropdown-menu scrollable-menu" id="dropdown-countries">
+                            <div class="country_id_searchbar">
+                                <input class="search_country input_control s_website_form_input input_control"
+                                       type="text" placeholder="Search..."/>
+                            </div>
+                            <div id="country_id_list">
+                                <t t-foreach="countries" t-as="country">
+                                    <a href="#"
+                                       t-att-id="country.code"
+                                       t-att-data-country_id="country.id"
+                                       t-att-data-country_code="country.code"
+                                       t-att-data-phone_code="country.phone_code"
+                                       class="dropdown-item js_select_country_code">
+                                        <img t-att-src="country.image_url" class="country_name_img"/>
+                                        <span class="form-country-name">
+                                            <t t-esc="country.name"/>
+                                            (<t t-esc="country.code"/>) +
+                                            <t t-esc="country.phone_code"/>
+                                        </span>
+                                    </a>
+                                </t>
+                            </div>
+                        </div>
+                        <input id="country_code_field"
+                               type="hidden"
+                               size="2"
+                               tabindex="-1"
+                               class="input-group-text js_country_code_field s_website_form_input input_control"
+                               name="selected_mobile_country_id"
+                               t-att-value="default_country.id"
+                               placeholder=""
+                               readonly="1"/>
+                    </div>
+                </div>
+                <t t-if="partner.mobile">
+                    <t t-set="old_mobile" t-value="'+' + str(partner.country_id.phone_code)"/>
+                    <t t-set="old_mobile1" t-value="partner.mobile.replace(old_mobile, '')"/>
+                    <input type="tel" id="mobile" name="mobile"
+                           t-attf-class="s_website_form_input input_control check_digits #{error.get('mobile') and 'is-invalid' or ''} "
+                           required="required" t-att-value="old_mobile1.replace(' ','')" maxlength="15" placeholder=""/>
+                </t>
+                <t t-else="">
+                    <input type="tel" id="mobile" name="mobile"
+                           t-attf-class="s_website_form_input input_control check_digits #{error.get('mobile') and 'is-invalid' or ''} "
+                           required="required" maxlength="15" placeholder=""/>
+                </t>
+                <label class="label-optional form_label o_input_required" for="mobile">Mobile</label>
+            </div>
+        </div>
+
+        <div t-attf-class="col-md-4 col-sm-12 col-xl-4">
+            <div class="mp_input_field">
+                <t t-if="not partner.company_type">
+                    <select name="registration_type" t-attf-class="form_input form-select s_website_form_input"
+                            required="required">
+                        <option value="">Select Registration Type</option>
+                        <option value="person" t-att-selected="partner.company_type == 'person'">Individual</option>
+                        <option value="company" t-att-selected="partner.company_type == 'company'">Company</option>
+                        <option value="educational_institution"
+                                t-att-selected="partner.company_type == 'educational_institution'">Educational
+                            Institution
+                        </option>
+                        <option value="government_organisation"
+                                t-att-selected="partner.company_type == 'government_organisation'">Government
+                            Organisation
+                        </option>
+                    </select>
+                </t>
+                <t t-else="">
+                    <input name="registration_type" t-attf-class="s_website_form_input form_input" placeholder=""
+                           t-att-value="partner.company_type"
+                           required="required" readonly="True"/>
+                </t>
+                <label class="form_label o_input_required" for="registration_type">Registration Type</label>
+            </div>
+        </div>
+        <div t-attf-class="col-md-4 col-sm-12 col-xl-4">
+            <div class="mp_input_field_web mp_select_web">
+                <t t-if="not partner.industry_main_category">
+                    <select name="industry_id" id="industry_id"
+                            t-attf-class="form_input form-select s_website_form_input"
+                            required="required">
+                        <option value="">Select Industry Affiliation Category</option>
+                        <t t-foreach="industry_segments" t-as="industry">
+                            <t t-if="partner.industry_main_category">
+                                <option t-att-value="industry.main_category.id"
+                                        t-att-selected="industry.main_category.id == int(industry_id) if industry_id else industry.main_category.id == partner.industry_main_category.id">
+                                    <t t-esc="industry.main_category.name"/>
+                                </option>
+                            </t>
+                            <t t-else="">
+                                <option t-att-value="industry.main_category.id">
+                                    <t t-esc="industry.main_category.name"/>
+                                </option>
+                            </t>
+
+                        </t>
+                    </select>
+                </t>
+                <t t-else="">
+                    <input t-attf-class="s_website_form_input form_input"
+                           t-att-value="partner.industry_main_category.name"
+                           required="required" readonly="True"/>
+                    <select name="industry_id" id="industry_id"
+                            t-attf-class="d-none form_input form-select s_website_form_input"
+                            required="required">
+                        <option value="">Select Industry Affiliation Category</option>
+                        <t t-foreach="industry_segments" t-as="industry">
+                            <t t-if="partner.industry_main_category">
+                                <option t-att-value="industry.main_category.id"
+                                        t-att-selected="industry.main_category.id == int(industry_id) if industry_id else industry.main_category.id == partner.industry_main_category.id">
+                                    <t t-esc="industry.main_category.name"/>
+                                </option>
+                            </t>
+                            <t t-else="">
+                                <option t-att-value="industry.main_category.id">
+                                    <t t-esc="industry.main_category.name"/>
+                                </option>
+                            </t>
+                        </t>
+                    </select>
+
+                </t>
+                <label class="form_label o_input_required" for="industry_id">Industry Affiliation Category</label>
+            </div>
+        </div>
+        <div t-attf-class="col-md-4 col-sm-12 col-xl-4">
+            <div class="mp_input_field_web mp_select_web">
+                <t t-set="industry_id_obj"
+                   t-value="request.env['industry.segment'].sudo().search([('main_category','=',int(industry_id))])"/>
+                <t t-if="not partner.industry_sub_category">
+                    <select name="sub_category_id" id="sub_category_id"
+                            t-attf-class="form_input form-select s_website_form_input"
+                            required="required">
+                        <option value="">Select Industry Affiliation Sub-category</option>
+                        <t t-if="industry_id">
+                            <t t-foreach="industry_id_obj.sub_category" t-as="sub_category">
+                                <option t-att-value="sub_category.id"
+                                        t-att-selected="sub_category.id == partner.industry_sub_category.id">
+                                    <t t-esc="sub_category.name"/>
+                                </option>
+                            </t>
+                        </t>
+                    </select>
+                </t>
+                <t t-else="">
+                    <input t-attf-class="s_website_form_input form_input"
+                           t-att-value="partner.industry_sub_category.name"
+                           required="required" readonly="True"/>
+                    <select name="sub_category_id" id="sub_category_id"
+                            t-attf-class="d-none form_input form-select s_website_form_input"
+                            required="required">
+                        <option value="">Select Industry Affiliation Sub-category</option>
+                        <t t-if="industry_id">
+                            <t t-foreach="industry_id_obj.sub_category" t-as="sub_category">
+                                <option t-att-value="sub_category.id"
+                                        t-att-selected="sub_category.id == partner.industry_sub_category.id">
+                                    <t t-esc="sub_category.name"/>
+                                </option>
+                            </t>
+                        </t>
+                    </select>
+                </t>
+                <label class="form_label o_input_required" for="sub_category_id">Industry Affiliation Sub-category
+                </label>
+            </div>
+        </div>
+
+        <div t-attf-class="#{error.get('street') and 'o_has_error' or ''} col-xl-6">
+            <div class="mp_input_field">
+                <input type="text" name="street" required="required"
+                       t-attf-class="s_website_form_input form_input form-control #{error.get('street') and 'is-invalid' or ''}"
+                       t-att-value="street or partner.street"/>
+                <label class="form_label o_input_required" for="street">Street</label>
+            </div>
+        </div>
+
+        <div t-attf-class="#{error.get('city') and 'o_has_error' or ''} col-xl-6">
+            <div class="mp_input_field_web mp_select_web">
+                <t t-if="partner.city_id">
+                    <input class="s_website_form_input form_input" type="hidden" id="selected_city"
+                           t-att-value="partner.city_id.id"/>
+                </t>
+                <t t-if="not partner.city_id">
+                    <select name="city_id" id="city_id"
+                            class="form-select form_input" required="required"
+                            data-init="1">
+                        <option value="">Select City...</option>
+                    </select>
+                </t>
+                <t t-else="">
+                    <input t-attf-class="s_website_form_input form_input" t-att-value="partner.city_id.name"
+                           required="required"
+                           readonly="True"/>
+                    <select name="city_id" id="city_id"
+                            class="d-none form-select form_input"
+                            data-init="1">
+                        <option value="">Select City...</option>
+                    </select>
+                </t>
+                <label class="form_label o_input_required" for="city">City</label>
+            </div>
+        </div>
+
+        <div t-attf-class="#{error.get('country_id') and 'o_has_error' or ''} col-md-4 col-sm-12 col-xl-4">
+            <div class="mp_input_field">
+                <t t-if="not partner.country_id">
+                    <select name="country_id" id="country_id"
+                            t-attf-class="form_input form-select s_website_form_input #{error.get('country_id') and 'is-invalid' or ''}">
+                        <option value="">Country...</option>
+                        <t t-foreach="countries or []" t-as="country">
+                            <option t-att-value="country.id"
+                                    t-att-selected="country.id == int(country_id) if country_id else country.id == partner.country_id.id">
+                                <t t-esc="country.name"/>
+                            </option>
+                        </t>
+                    </select>
+                </t>
+                <t t-else="">
+                    <input t-attf-class="s_website_form_input form_input" placeholder=""
+                           t-att-value="partner.country_id.name" required="required"
+                           readonly="True"/>
+                    <select name="country_id" id="country_id"
+                            t-attf-class="d-none form_input form-select s_website_form_input #{error.get('country_id') and 'is-invalid' or ''}">
+                        <option value="">Country...</option>
+                        <t t-foreach="countries or []" t-as="country">
+                            <option t-att-value="country.id"
+                                    t-att-selected="country.id == int(country_id) if country_id else country.id == partner.country_id.id">
+                                <t t-esc="country.name"/>
+                            </option>
+                        </t>
+                    </select>
+                </t>
+                <label class="form_label o_input_required" for="country_id">Country</label>
+            </div>
+        </div>
+        <div t-attf-class="#{error.get('state_id') and 'o_has_error' or ''} col-md-4 col-sm-12 col-xl-4">
+            <div class="mp_input_field">
+                <t t-if="not partner.state_id">
+                    <select name="state_id" id="state_id"
+                            t-attf-class="form_input form-select s_website_form_input cc #{error.get('state_id') and 'is-invalid' or ''}">
+                        <option value="">select...</option>
+                        <t t-foreach="states or []" t-as="state">
+                            <option t-att-value="state.id" style="display:none;"
+                                    t-att-data-country_id="state.country_id.id"
+                                    t-att-selected="state.id == int(state_id) if state_id else state.id == partner.state_id.id">
+                                <t t-esc="state.name"/>
+                            </option>
+                        </t>
+                    </select>
+                </t>
+                <t t-else="">
+                    <input t-attf-class="s_website_form_input form_input" placeholder=""
+                           t-att-value="partner.state_id.name" required="required"
+                           readonly="True"/>
+                    <select name="state_id" id="state_id"
+                            t-attf-class="d-none form_input form-select s_website_form_input cc #{error.get('state_id') and 'is-invalid' or ''}">
+                        <option value="">select...</option>
+                        <t t-foreach="states or []" t-as="state">
+                            <option t-att-value="state.id" style="display:none;"
+                                    t-att-data-country_id="state.country_id.id"
+                                    t-att-selected="state.id == int(state_id) if state_id else state.id == partner.state_id.id">
+                                <t t-esc="state.name"/>
+                            </option>
+                        </t>
+                    </select>
+                </t>
+                <label class="form_label o_input_required" for="state_id">State / Province</label>
+            </div>
+        </div>
+        <div t-attf-class="#{error.get('zip') and 'o_has_error' or ''} col-md-4 col-sm-12 col-xl-4">
+            <div class="mp_input_field">
+                <input type="text" name="zipcode"
+                       t-attf-class="s_website_form_input form_input #{error.get('zip') and 'is-invalid' or ''} "
+                       t-att-value="zipcode or partner.zip"
+                       t-att-readonly="'readonly' if partner.zip else None" placeholder=""/>
+                <label class="form_label" for="zipcode">Pin Code</label>
+            </div>
+        </div>
+        <div class=' col-12 mt-2 mb-2' style="text-align: left;" t-if="mailing_list">
+            <div class="ind-container">
+                <div class="checkboxes__row">
+                    <input type="hidden" name="mailing_contact_id" t-att-value="mailing_contact_id"/>
+                    <t t-foreach="mailing_list" t-as="list_mail">
+                        <div class="checkboxes__item">
+                            <label class="checkbox style-e">
+                                <input type="checkbox" t-att-checked="'checked' if not list_mail.opt_out else None" t-att-name="'opt_check_%s'%list_mail.id"/>
+                                <div class="checkbox__checkmark"></div>
+                                <div class="checkbox__body">Opt. in <t t-esc="list_mail.list_id.name"/>.</div>
+                            </label>
+                        </div>
+                    </t>
+                </div>
+            </div>
+        </div>
+
+        <div t-if="error_message" class="alert alert-danger mb-2" role="alert">
+            <div class="col-lg-12">
+                <t t-foreach="error_message" t-as="err">
+                    <t t-esc="err"/>
+                    <br/>
+                </t>
+            </div>
+        </div>
+    </template>
+
+    <template id="portal.portal_my_details">
+        <t t-call="portal.portal_layout">
+            <t t-set="additional_title">Contact Details</t>
+            <t t-set="breadcrumbs_searchbar" t-value="True"/>
+            <div class="my_details_con row">
+                <h2 class="dashboard-title d-none">
+                    <a href="/my" class="title-img">
+                        <img src="/cr_web_portal/static/src/images/mech-custom/arrow-left.png"/>
+                    </a>
+                    Profile Details
+                </h2>
+                <div class=" col-12 col-md col-lg-3">
+                    <t t-call="cr_web_portal.portal_sidebar_custom"/>
+                </div>
+                <div class=" col-12 col-md col-lg-9 profile-details">
+                    <form action="/my/account" method="post">
+                        <div class="row o_portal_details">
+                            <div class="row" style="justify-content: space-around;">
+                                <t t-call="portal.portal_my_details_fields"/>
+                                <input type="hidden" name="redirect" t-att-value="redirect"/>
+                            </div>
+                            <div class="clearfix">
+                                <button type="submit" class="btn btn-primary portal-submit float-start mb32 mt32">
+                                    Save Change
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <template id="cr_web_portal.portal_my_details_custom" inherit_id="portal.portal_my_details">
+        <xpath expr="//form" position="attributes">
+            <attribute name="enctype">multipart/form-data</attribute>
+        </xpath>
+        <xpath expr="//div[hasclass('o_portal_details')]" position="attributes">
+            <attribute name="class">o_portal_details my-account-form-control</attribute>
+        </xpath>
+        <xpath expr="//form" position="after">
+            <div class="col-12 col-xl-auto order-xl-2 d-none d-xl-block">
+            </div>
+            <div class="col-lg-12 col-xl order-xl-1">
+                <div class="address-header">
+                    <div class="col-lg-8">
+                        <h3 class="mt8">Billing Address</h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="row mt8">
+                            <t t-set="billings"
+                               t-value="request.env['res.partner'].sudo().search([('id', 'child_of', partner.commercial_partner_id.ids),'|', ('type', 'in', ['invoice']), ('id', '=', partner.commercial_partner_id.id)], order='id desc')"/>
+                            <t t-foreach="billings.filtered(lambda b: b.id != request.env.user.partner_id.id)"
+                               t-as="billing">
+                                <div class="col-md-12 col-lg-12 mb-2">
+                                    <t t-set='contact' t-value="billing"/>
+                                    <div class="card border border-primary" style="border-radius: 8px; height: auto;">
+                                        <div class='card-body contact-details'>
+                                            <div class="float-end">
+                                                <a t-attf-href="/my/billing_address/edit/{{billing.id}}"
+                                                   t-if="billing.id != request.env.user.partner_id.id"
+                                                   class="btn btn-link p-0 no-decoration edit-address-button"
+                                                   role="button" title="Edit this address"
+                                                   aria-label="Edit this address">Edit
+                                                    <img src="/cr_web_portal/static/src/images/new_design_resource/edit-2.svg"/>
+                                                </a>
+                                                <a t-attf-href="/billing_address/delete/{{billing.id}}"
+                                                   t-if="billing.id != request.env.user.partner_id.id"
+                                                   class="btn btn-link p-0 no-decoration"
+                                                   role="button" title="Delete this address"
+                                                   aria-label="Delete this address">
+                                                    <img src="/cr_web_portal/static/src/images/mech-custom/bx-trash.png"/>
+                                                </a>
+                                            </div>
+                                            <t t-esc="contact.name"/>
+                                            <t t-esc="contact"
+                                               t-options="dict(widget='contact', fields=['address'], no_marker=True)"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </t>
+                            <div class="col-md-8 col-lg-12">
+                                <a role="button" href="/my/billing_address/edit"
+                                   class='btn button--secondary mb-2 mt24 btn-block w-100'>
+                                    <img src="/cr_web_portal/static/src/images/mech-custom/add.png"/>
+                                    <span>Add New Address</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row address-header">
+                    <div class="col-lg-8">
+                        <h3 class="mt16 mb4">Shipping Address</h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="row mt8">
+                            <t t-set="shippings"
+                               t-value="request.env['res.partner'].sudo().search([('id', 'child_of', partner.commercial_partner_id.ids),'|', ('type', 'in', ['delivery', 'other']), ('id', '=', partner.commercial_partner_id.id)], order='id desc')"/>
+                            <t t-foreach="shippings.filtered(lambda b: b.id != request.env.user.partner_id.id)"
+                               t-as="ship">
+                                <div class="col-md-12 col-lg-12 mb-2">
+                                    <t t-set='contact' t-value="ship"/>
+                                    <div class="card border border-primary" style="border-radius: 8px; height: auto;">
+                                        <div class='card-body contact-details'>
+                                            <div class="float-end">
+                                                <a t-attf-href="/my/shipping_address/edit/{{ship.id}}"
+                                                   t-if="ship.id != request.env.user.partner_id.id"
+                                                   class="btn btn-link p-0 no-decoration edit-address-button"
+                                                   role="button" title="Edit this address"
+                                                   aria-label="Edit this address">Edit
+                                                    <img src="/cr_web_portal/static/src/images/new_design_resource/edit-2.svg"/>
+                                                </a>
+                                                <a t-attf-href="/shipping_address/delete/{{ship.id}}"
+                                                   t-if="ship.id != request.env.user.partner_id.id"
+                                                   class="btn btn-link p-0 no-decoration"
+                                                   role="button" title="Delete this address"
+                                                   aria-label="Delete this address">
+                                                    <img src="/cr_web_portal/static/src/images/mech-custom/bx-trash.png"/>
+                                                </a>
+                                            </div>
+                                            <t t-esc="contact.name"/>
+                                            <t t-esc="contact"
+                                               t-options="dict(widget='contact', fields=['address'], no_marker=True)"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </t>
+                            <div class="col-md-8 col-lg-12">
+                                <a role="button" href="/my/shipping_address/edit"
+                                   class='btn button--secondary mb-2 mt24 btn-block w-100'>
+                                    <img src="/cr_web_portal/static/src/images/mech-custom/add.png"/>
+                                    <span>Add New Address</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="row address-header mb4">
+                    <div class="col-lg-8">
+                        <h3 class="mt16 mb4">Documents</h3>
+                    </div>
+                </div>
+
+                <div class="custom-document-card-container">
+                    <div class="custom-document-card">
+                        <div class="custom-card-header">
+                            <div class="custom-pdf-icon">
+                                <img src="/cr_web_portal/static/src/images/mech-custom/bxs-file-pdf.png"/>
+                            </div>
+                            <span t-if="partner.nda_file" class="custom-status custom-active">Active</span>
+                            <span t-else="" class="custom-status custom-inactive">Inactive</span>
+                        </div>
+                        <div class="custom-card-content">
+                            <h3>NDA (Non-Disclosure agreement)</h3>
+                            <p>Last updated:
+                                <t t-if="partner.nda_last_update_date and partner.nda_file">
+                                    <t t-esc="partner.nda_last_update_date" t-options="{'widget': 'date'}"/>
+                                </t>
+                                <t t-else="">-</t>
+                            </p>
+                        </div>
+                        <div class="custom-card-footer">
+                            <t t-if="partner.nda_file">
+                                <a t-attf-href="/web/content/res.partner/#{partner.id}/nda_file/#{partner.nda_filename}"
+                                   target="_blank" class="custom-view-btn">View
+                                </a>
+                            </t>
+                            <t t-else="">-</t>
+                        </div>
+                    </div>
+
+                    <div class="custom-document-card">
+                        <div class="custom-card-header">
+                            <div class="custom-pdf-icon">
+                                <img src="/cr_web_portal/static/src/images/mech-custom/bxs-file-pdf.png"/>
+                            </div>
+                            <span t-if="partner.mou_file" class="custom-status custom-active">Active</span>
+                            <span t-else="" class="custom-status custom-inactive">Inactive</span>
+                        </div>
+                        <div class="custom-card-content">
+                            <h3>MOU (Memorandum of understanding)</h3>
+                            <p>Last updated:
+                                <t t-if="partner.mou_last_update_date and partner.mou_file">
+                                    <t t-esc="partner.mou_last_update_date" t-options="{'widget': 'date'}"/>
+                                </t>
+                                <t t-else="">-</t>
+                            </p>
+                        </div>
+                        <div class="custom-card-footer">
+                            <t t-if="partner.mou_file">
+                                <a t-attf-href="/web/content/res.partner/#{partner.id}/mou_file/#{partner.mou_filename}"
+                                   target="_blank" class="custom-view-btn">View
+                                </a>
+                            </t>
+                            <t t-else="">-</t>
+                        </div>
+                    </div>
+
+                    <div class="custom-document-card gst-card">
+                        <div class="custom-card-header d-flex justify-content-between">
+                            <div class="d-flex">
+                                <div class="custom-pdf-icon">
+                                    <img src="/cr_web_portal/static/src/images/mech-custom/bxs-file-pdf.png"/>
+                                </div>
+                                <span t-if="partner.gst_certificate_file"
+                                      class="custom-status custom-upload custom-uploaded">Uploaded
+                                </span>
+                                <span t-else="" class="custom-status custom-inactive custom-inactive-gst">Not Uploaded</span>
+                                <span class="custom-status custom-upload custom-edit d-none">Edit</span>
+                            </div>
+
+                            <div class="d-flex" style="gap:8px;">
+                                <div class="custom-save-icon d-none">
+                                    <img src="/cr_web_portal/static/src/images/mech-custom/bx-upload.png"/>
+                                </div>
+                                <div class="custom-delete-icon d-none">
+                                    <img src="/cr_web_portal/static/src/images/mech-custom/bx-trash.png"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="custom-card-content gst-content">
+                            <h3>GST Certificate</h3>
+                            <p>Last updated:
+                                <t t-if="partner.gst_last_update_date and partner.gst_certificate_file">
+                                    <t t-esc="partner.gst_last_update_date" t-options="{'widget': 'date'}"/>
+                                </t>
+                                <t t-else="">-</t>
+                            </p>
+                        </div>
+                        <div class="custom-card-footer">
+                            <form action="/upload/gst/certificate" id="upload_gst_certificate" method="post"
+                                  enctype="multipart/form-data">
+                                <input class="current_partner d-none" name="partner_id" t-att-value="partner.id"/>
+                                <input type="file" class="new_gst_file" name="gst_file" style="display: none;"/>
+                            </form>
+                            <t t-if="partner.gst_certificate_file">
+                                <a t-attf-href="/web/content/res.partner/#{partner.id}/gst_certificate_file/#{partner.gst_certificate_filename}"
+                                   target="_blank" class="custom-view-btn gst-view">View
+                                </a>
+                                <a class="gst_edit custom-view-btn custom-edit-btn">Edit</a>
+                            </t>
+                            <t t-else=""><a class="gst_edit custom-upload-btn">Upload</a></t>
+                            <!-- Save and Cancel buttons -->
+                            <div class="gst-actions" style="display: none;">
+                                <a class="gst-save custom-save-btn">Save</a>
+                                <a class="gst-cancel custom-cancel-btn">Cancel</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-none gst_warning">Upload failed: Only PDF files are permitted. Kindly select a valid PDF
+                    file.
+                </div>
+            </div>
+        </xpath>
+    </template>
+
+    <template id="cr_web_portal.portal_my_purchase_order_custom" inherit_id="purchase.portal_my_purchase_order">
+        <xpath expr="//div[hasclass('o_download_pdf')]" position="replace">
+            <div class="o_download_pdf btn-toolbar flex-sm-nowrap">
+                <div class="btn-group flex-grow-1 me-1 mb-1">
+                    <a class="btn custom-btn-green-round-without-margin btn-block o_download_btn"
+                       t-att-href="order.get_portal_url(report_type='pdf', download=True)" title="Download">
+                        <i class="fa fa-download"/>
+                        Download
+                    </a>
+                </div>
+                <div class="btn-group flex-grow-1 mb-1">
+                    <a class="btn custom-btn-green-round-without-margin btn-block o_print_btn o_portal_invoice_print"
+                       t-att-href="order.get_portal_url(report_type='pdf')" id="print_invoice_report" title="Print"
+                       target="_blank">
+                        <i class="fa fa-print"/>
+                        Print
+                    </a>
+                </div>
+            </div>
+        </xpath>
+    </template>
+
+</odoo>

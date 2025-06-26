@@ -1,0 +1,1762 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="portal_my_inquiries_portal_list_template" name="My Inquiries List">
+        <t t-call="portal.portal_layout">
+            <t t-set="breadcrumbs_searchbar" t-value="True"/>
+
+            <t t-call="portal.portal_searchbar">
+                <t t-set="title">Your Inquiry List</t>
+            </t>
+            <t t-if="not lead_inquiry">
+                <p>There are currently no inquiry for your account.</p>
+            </t>
+            <t t-if="lead_inquiry" t-call="portal.portal_table">
+                <thead>
+                    <tr class="active">
+                        <th>Lead Number #</th>
+                        <th>Lead</th>
+                        <th>Customer</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <t t-foreach="lead_inquiry" t-as="inq">
+                        <tr>
+                            <td style="display:none;">
+                                <span t-field="inq.id"/>
+                            </td>
+                            <td>
+                                <a t-att-href="inq.get_portal_url()">
+                                    <span t-field="inq.code"/>
+                                </a>
+                            </td>
+                            <td>
+                                <span t-field="inq.name"/>
+                            </td>
+                            <td>
+                                <span t-field="inq.partner_id.name"/>
+
+                            </td>
+                            <td>
+                                <span t-field="inq.email_from"/>
+                            </td>
+                            <td>
+                                <span t-field="inq.phone"/>
+                            </td>
+                        </tr>
+                    </t>
+                </tbody>
+            </t>
+        </t>
+    </template>
+    <template id="portal_my_home_inherit" name="Inquiry Portal" customize_show="True"
+              inherit_id="portal.portal_my_home" priority="11">
+        <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
+            <t t-call="portal.portal_docs_entry">
+                <t t-set="title">Inquiries</t>
+                <t t-set="url" t-value="'/my/inquiry/quotes'"/>
+                <t t-set="placeholder_count" t-value="'inquiry_quotation_count'"/>
+            </t>
+        </xpath>
+
+    </template>
+
+    <!--    PORTAL INQUIRY VIEW PAGE-->
+    <template id="inquiry_portal_template" name="Inquiry Portal Template" inherit_id="portal.portal_sidebar"
+              primary="True">
+        <xpath expr="//div[hasclass('o_portal_sidebar')]" position="inside">
+            <t t-set="o_portal_fullwidth_alert">
+                <!-- Uses backend_url provided in rendering values -->
+                <t t-call="portal.portal_back_in_edit_mode"/>
+            </t>
+
+            <div class="row mt16 o_portal_sale_sidebar">
+                <!-- Sidebar -->
+                <t t-call="portal.portal_record_sidebar">
+                    <t t-set="classes" t-value="'col-lg-auto d-print-none'"/>
+
+                    <t t-set="title">
+                        <h2 class="mb-0">
+                            <b t-field="lead.code"/>
+                        </h2>
+                    </t>
+                    <t t-set="entries">
+                        <ul class="list-group list-group-flush flex-wrap flex-row flex-lg-column">
+                            <li t-if="lead.user_id" class="list-group-item flex-grow-1">
+                                <div class="small mb-1">
+                                    <strong class="text-muted">Salesperson</strong>
+                                </div>
+                                <div class="row flex-nowrap">
+                                    <div class="col flex-grow-0 pe-2">
+                                        <img class="rounded-circle mr4 float-start o_portal_contact_img"
+                                             t-att-src="image_data_uri(lead.user_id.avatar_1024)"
+                                             alt="Contact"/>
+                                    </div>
+                                    <div class="col ps-0" style="min-width: 150px">
+                                        <span t-field="lead.user_id"
+                                              t-options='{"widget": "contact", "fields": ["name", "phone"], "no_marker": True}'/>
+                                        <a href="#discussion" class="small">
+                                            <i class="fa fa-comment"></i>
+                                            Send message
+                                        </a>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </t>
+                </t>
+
+                <!-- Page content -->
+                <div id="lead_content" class="col-12 col-lg justify-content-end">
+                    <!-- main content -->
+                    <div t-attf-class="card #{'pb-5' if report_type == 'html' else ''}" id="portal_lead_content">
+                        <div t-call="cr_web_portal.lead_detail_portal_content"/>
+                    </div>
+
+                    <!-- chatter -->
+                    <div id="lead_communication" class="mt-4">
+                        <h2>History</h2>
+                        <t t-call="portal.message_thread"/>
+                    </div>
+                </div><!-- // #quote_content -->
+            </div>
+        </xpath>
+    </template>
+    <!--    LEAD DETAIL PORTAL PAGE-->
+    <template id="lead_detail_portal_content" name="Lead Portal Content">
+        <!-- Intro -->
+        <div id="introduction" t-attf-class="pb-2 pt-3 #{'card-header bg-white' if report_type == 'html' else ''}">
+            <div class="row">
+                <div class="mb-3 col-8" style="padding-top:28px;">
+                    Expected Revenue
+                    <strong>
+                        <span t-esc="lead.company_id.currency_id.symbol"/>
+                    </strong>
+                    <strong>
+                        <span t-esc="lead.expected_revenue"/>
+                    </strong>
+                    At Probability
+                    <strong>
+                        <span t-esc="lead.probability"/>
+                        %
+                    </strong>
+                </div>
+                <div class="mb-3 col-4 text-right">
+                    <a t-attf-href="/customer/questions/{{ lead.id }}" class="btn round-black-btn "
+                       t-if="show_inquiry_button" style="padding: 7px 35px !important;">
+                        Inquiry Form
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div t-attf-class="#{'card-body' if report_type == 'html' else ''}">
+            <!-- Informations -->
+            <div id="informations">
+                <div class="row" id="lead_date">
+                    <div class="mb-3 col-6">
+                        <strong>Lead Code:</strong>
+
+                        <span t-field="lead.code"/>
+                    </div>
+                    <div class="mb-3 col-6" t-if="lead.name">
+                        <strong>Title:</strong>
+                        <span t-field="lead.name"/>
+                    </div>
+                </div>
+                <div class="row" id="lead_customer_info">
+                    <div class="col-lg-6">
+                        <strong class="d-block mb-1">
+                            <span>
+                                Customer:
+                            </span>
+                        </strong>
+                        <address t-field="lead.partner_id"
+                                 t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": True}'/>
+                    </div>
+                    <div t-if="lead.email_from" id="email_address"
+                         class="col-lg-3">
+                        <strong class="d-block mb-1">
+                            Email:
+                        </strong>
+                        <span t-field="lead.email_from"/>
+
+                    </div>
+                    <div t-if="lead.phone" id="lead_phone"
+                         class="col-lg-3">
+                        <strong class="d-block mb-1">
+                            Phone:
+                        </strong>
+                        <span t-field="lead.phone"/>
+
+                    </div>
+                </div>
+            </div>
+
+            <section id="details" style="page-break-inside: auto;" class="mt32">
+                <h3 id="details">Pricing</h3>
+
+                <div class="table-responsive">
+                    <table class="table table-sm" id="lead_table">
+                        <thead class="bg-100">
+                            <tr t-if="lead.lead_product_ids">
+                                <th class="text-start" id="lead_product">Product</th>
+                                <th class="text-start" id="lead_product_desc">Description</th>
+                                <th class="text-end">Order Quantity</th>
+                                <th class="text-start" id="lead_product_uom">Unit of measure</th>
+                                <th class="text-end">Unit Price</th>
+
+                            </tr>
+                        </thead>
+                        <tbody class="lead_tbody">
+
+                            <t t-set="current_subtotal" t-value="0"/>
+
+                            <t t-foreach="lead.lead_product_ids" t-as="line">
+                                <tr>
+                                    <td>
+                                        <span t-field="line.product_id.name"/>
+                                    </td>
+                                    <td>
+                                        <span t-field="line.name"/>
+                                    </td>
+                                    <td class="text-end">
+                                        <div id="quote_qty">
+                                            <span t-field="line.product_uom_quantity"/>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <span t-field="line.product_uom.name"/>
+                                    </td>
+                                    <td class="text-end">
+                                        <div id="quote_price">
+                                            <span t-field="line.price_unit"/>
+                                        </div>
+                                    </td>
+
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+
+            <section t-if="not is_html_empty(lead.description)" id="terms" class="mt-5">
+                <h3 class="">Notes</h3>
+                <hr class="mt-0 mb-1"/>
+                <em t-field="lead.description"/>
+            </section>
+
+        </div>
+    </template>
+
+<!--    Mechpower Re-order workflow -->
+    <template id="portal_my_orders_inherited" inherit_id="sale.portal_my_orders" name="My Sales Orders Inherited">
+        <xpath expr="//thead/tr/th[last()]" position="after">
+            <th class="text-center"></th>
+            <th class="text-center">Re-Order:</th>
+        </xpath>
+        <xpath expr="//t[@t-foreach='orders']/tr/td[last()]" position="after">
+            <td class="text-center">
+                <a t-if="not order.get_portal_last_transaction() or (order.get_portal_last_transaction() and order.get_portal_last_transaction().state != 'done')"
+                    t-attf-href="/my/orders/{{ order.id }}" title="Pay Now" aria-label="Pay now" class="btn round-black-btn" role="button">
+                    <i class="fa fa-arrow-circle-right"/><span class='d-none d-md-inline'> Pay Now</span>
+                </a>
+            </td>
+            <td class="text-center">
+                <t t-if="order.can_reorder()">
+                    <a class="btn round-black-btn" data-bs-toggle="modal" t-attf-data-bs-target="#reorder_popup_{{order.id}}" t-att-id="order.id">
+                        Re-Order
+                    </a>
+                    <div role="dialog" class="modal fade" t-attf-id="reorder_popup_{{order.id}}">
+                        <div class="modal-dialog popup_responsive" >
+                            <form method="POST" action="/make/reorder" class="modal-content" t-att-data-id="order.id" t-att-id="order.id">
+                                <div class="bg-white">
+                                    <div class="modal-header">
+                                        <h4 style="line-height: 30px;" class="modal-title">Re-Order</h4>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                    </div>
+                                    <main class="modal-body">
+                                        <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                        <div class="table-responsive">
+                                            <t t-set="display_discount" t-value="True in [line.discount > 0 for line in order.order_line]"/>
+                                            <table class="table table-sm" >
+                                                <thead class="bg-100">
+                                                    <tr>
+                                                        <th class="text-start" id="product_name_header">Products</th>
+                                                        <th class="text-end">Quantity</th>
+                                                        <th class="text-end">Unit Price</th>
+                                                         <th t-if="display_discount" t-attf-class="text-end">
+                                                            Disc.%
+                                                        </th>
+                                                        <th class="text-end">Taxes</th>
+                                                        <th class="text-end" >Amount</th>
+                                                        <th class=""></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody class="sale_tbody">
+                                                    <t t-set="orderline_ids" t-value="order.get_reorderable_orederline()"/>
+                                                    <t t-foreach="orderline_ids" t-if="orderline_ids" t-as="line">
+                                                        <tr t-attf-id="line_{{line.id}}">
+                                                            <td class="text-start popup_product_name" style="white-space: normal !important;">
+                                                                <t t-esc="line.product_id.display_name" />
+                                                            </td>
+                                                            <td class="text-end">
+                                                                <div id="quote_qty">
+                                                                    <input type="text" t-attf-name="orderline_qty_{{line.id}}" style="width:50px;border:1px solid #dee2e6;border-radius:14px;" class="text-center jsOnchangeQty" t-att-id="line.id" t-att-value="int(line.product_uom_qty)"/>
+                                                                </div>
+                                                            </td>
+                                                            <td class="text-end" t-attf-id="price_unit_{{line.id}}">
+                                                                 <t t-if="line.price_unit" t-esc="line.price_unit"/>
+                                                            </td>
+                                                            <td t-if="display_discount" t-attf-class="text-end">
+                                                                <t t-if="line.discount &gt; 0" t-out="((line.discount % 1) and '%s' or '%d') % line.discount"/>%
+                                                            </td>
+                                                            <td t-attf-class="text-end">
+                                                                <t t-out="', '.join(map(lambda x: (x.description or x.name), line.tax_id))"/>
+                                                            </td>
+                                                            <td class="text-end" t-attf-id="price_subtotal_{{line.id}}">
+                                                                <t t-if="line.price_subtotal" t-out="line.price_subtotal" t-options='{"widget": "monetary", "display_currency": order.pricelist_id.currency_id}'/>
+                                                            </td>
+                                                            <td>
+                                                                <a href="#" aria-label="Remove from Order" title="Remove from Order" class="js_delete_product_from_reorder no-decoration" t-att-id="order.id"> <small><i class="fa fa-trash-o" t-att-id="line.id"></i></small></a>
+                                                            </td>
+                                                        </tr>
+                                                    </t>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </main>
+                                    <footer class="modal-footer">
+                                        <a class="btn btn-primary popup_btn popupSubmitBtn" t-attf-id="submitBtn{{order.id}}" href="#">Submit Order</a>
+                                        <button type="button" class="btn btn-primary popup_btn" data-bs-dismiss="modal">Cancel</button>
+                                    </footer>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </t>
+            </td>
+        </xpath>
+    </template>
+    <!--    DOCUMENT FOR PORTAL INQUIRY TEMPLATE-->
+    <template id="portal_my_inquiry_quotations" name="My Inquiry Quotations">
+        <t t-call="portal.portal_layout">
+            <t t-set="breadcrumbs_searchbar" t-value="True"/>
+
+            <!--            New Mechpower Portal Layout-->
+            <div class="my_details_con row">
+                <div class=" col-12 col-md col-lg-3">
+                    <t t-call="cr_web_portal.portal_sidebar_custom"/>
+                </div>
+                <div class="col-12 col-lg-9 col-md quotation_portal">
+                    <!--  Portal Breadcumb  -->
+                    <t t-call="portal.portal_searchbar">
+                        <t t-set="title">Inquiries</t>
+                    </t>
+                    <!-- Portal Table -->
+                    <div t-if="inquiry_quotations" >
+                        <t t-foreach="inquiry_quotations" t-as="inquiry_quotation">
+                            <t t-set="inquiry_quotation_products" t-value="inquiry_quotation.get_orderline_product()"/>
+                            <div class="quote-container inquiry_portal_view">
+                                <div class="quote-details desktop-view">
+                                    <div class="quote-item">
+                                        <div class="label"> <span class="portal_grey">Date</span> <br/>
+                                            <a t-att-href="inquiry_quotation.get_portal_url()" class="portal_value"><span t-field="inquiry_quotation.date_order"/></a>
+                                        </div>
+                                    </div>
+                                    <div class="quote-item">
+                                        <div class="label"> <span class="portal_grey">Valid Until</span> <br/>
+                                            <a t-att-href="inquiry_quotation.get_portal_url()" class="portal_value"><span t-field="inquiry_quotation.validity_date"/></a>
+                                        </div>
+                                    </div>
+                                    <div class="quote-item">
+                                        <div class="label"> <span class="portal_grey">Inquiry</span> <br/>
+                                            <span class="portal_value">
+                                                <a t-att-href="inquiry_quotation.get_portal_url()">
+                                                    <t t-out="inquiry_quotation.name"/>
+                                                </a>
+                                            </span>
+                                        </div>
+                                         <div class="quote-actions">
+                                            <a href="#" class="action completed-button align-center text-center message-item-portal" t-att-data-res-model="inquiry_quotation._name" t-att-data-res-id="inquiry_quotation.id" t-att-data-user-id="request.env.user.partner_id.id"><img src="/cr_web_portal/static/src/images/new_design_resource/message-green.svg" width="20" height="20"/></a>
+                                        </div>
+                                        <main class="message-details d-none" t-att-data-res-model="inquiry_quotation._name" t-att-data-res-id="inquiry_quotation.id">
+                                            <header>
+                                                <div class="d-flex" style="gap: 10px; align-items:center;">
+                                                    <div class="back-img close-message">
+                                                        <img src="/cr_web_portal/static/src/images/mech-custom/arrow-left.png"/>
+                                                    </div>
+                                                    <div class="header-info">
+                                                        <span class="category">Inquiries</span>
+                                                        <span class="message-id"><t t-esc="inquiry_quotation.name"/></span>
+                                                    </div>
+                                                </div>
+                                                <a class="helpdesk-button" href="">
+                                                    <img src="/cr_web_portal/static/src/images/mech-custom/document-text.png"/>
+                                                </a>
+                                            </header>
+                                            <div class="chat-content">
+                                                <div class="chat-message incoming">
+                                                    <div class="user-img">
+                                                        <img src="/cr_web_portal/static/src/images/mech-custom/user-msg.png"/>
+                                                    </div>
+                                                    <div class="msg-details">
+                                                        <div class="sender"></div>
+                                                        <p></p>
+                                                    </div>
+                                                </div>
+                                                <div class="chat-message outgoing">
+                                                    <div class="user-img">
+                                                        <img src="/cr_web_portal/static/src/images/mech-custom/user-msg.png"/>
+                                                    </div>
+                                                    <div class="msg-details">
+                                                        <div class="sender"></div>
+                                                        <p></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <footer class="message-input">
+                                                <div class="file-card d-none">
+                                                    <div class="file-card-content">
+                                                        <span class="file-icon">
+                                                            <img src="/cr_web_portal/static/src/images/mech-custom/link.png"/>
+                                                        </span>
+                                                        <span class="file-name"></span>
+                                                        <img class="remove-file" style="margin-left: 8px;" src="/cr_web_portal/static/src/images/new_design_resource/black_cross_btn.svg"/>
+                                                    </div>
+                                                </div>
+                                                <input type="text" placeholder="Enter a message"/>
+                                                <input type="file" id="attachment-input" style="display: none;"/>
+                                                <div class="msg-options">
+                                                    <a class="link-button">
+                                                        <img src="/cr_web_portal/static/src/images/mech-custom/link.png"/>
+                                                    </a>
+                                                    <a class="send-button-portal" t-attf-data-action="/mail/chatter_post">
+                                                        <img src="/cr_web_portal/static/src/images/mech-custom/send-2.png"/>
+                                                    </a>
+                                                </div>
+                                            </footer>
+                                        </main>
+                                    </div>
+                                </div>
+                                <div class="quote-details quote-details-mbl d-none mobile_view">
+                                    <div class="quote-item">
+                                        <div class="label"> <span class="portal_grey">Date</span> <br/>
+                                            <a t-att-href="inquiry_quotation.get_portal_url()" class="portal_value"><span t-field="inquiry_quotation.date_order"/></a>
+                                        </div>
+                                    </div>
+                                    <div class="quote-item">
+                                        <div class="label"> <span class="portal_grey">Inquiry</span> <br/>
+                                            <span class="portal_value">
+                                                <a t-att-href="inquiry_quotation.get_portal_url()">
+                                                    <t t-out="inquiry_quotation.name"/>
+                                                </a>
+                                            </span>
+                                        </div>
+
+                                    </div>
+                                    <div class="quote-item">
+                                        <div class="label"> <span class="portal_grey">Valid Until</span> <br/>
+                                            <a t-att-href="inquiry_quotation.get_portal_url()" class="portal_value"><span t-field="inquiry_quotation.validity_date"/></a>
+                                        </div>
+                                    </div>
+                                    <div class="quote-item" style="justify-content: flex-end;">
+                                        <div class="quote-actions">
+                                            <a href="#" class="action completed-button align-center text-center message-item-portal" t-att-data-res-model="inquiry_quotation._name" t-att-data-res-id="inquiry_quotation.id" t-att-data-user-id="request.env.user.partner_id.id"><img src="/cr_web_portal/static/src/images/new_design_resource/message-green.svg" width="20" height="20"/></a>
+                                        </div>
+                                        <main class="message-details d-none" t-att-data-res-model="inquiry_quotation._name" t-att-data-res-id="inquiry_quotation.id">
+                                            <header>
+                                                <div class="d-flex" style="gap: 10px; align-items:center;">
+                                                    <div class="back-img close-message">
+                                                        <img src="/cr_web_portal/static/src/images/mech-custom/arrow-left.png"/>
+                                                    </div>
+                                                    <div class="header-info">
+                                                        <span class="category">Inquiries</span>
+                                                        <span class="message-id"><t t-esc="inquiry_quotation.name"/></span>
+                                                    </div>
+                                                </div>
+                                                <a class="helpdesk-button" href="">
+                                                    <img src="/cr_web_portal/static/src/images/mech-custom/document-text.png"/>
+                                                </a>
+                                            </header>
+                                            <div class="chat-content">
+                                                <div class="chat-message incoming">
+                                                    <div class="user-img">
+                                                        <img src="/cr_web_portal/static/src/images/mech-custom/user-msg.png"/>
+                                                    </div>
+                                                    <div class="msg-details">
+                                                        <div class="sender"></div>
+                                                        <p></p>
+                                                    </div>
+                                                </div>
+                                                <div class="chat-message outgoing">
+                                                    <div class="user-img">
+                                                        <img src="/cr_web_portal/static/src/images/mech-custom/user-msg.png"/>
+                                                    </div>
+                                                    <div class="msg-details">
+                                                        <div class="sender"></div>
+                                                        <p></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <footer class="message-input">
+                                                <div class="file-card d-none">
+                                                    <div class="file-card-content">
+                                                        <span class="file-icon">
+                                                            <img src="/cr_web_portal/static/src/images/mech-custom/link.png"/>
+                                                        </span>
+                                                        <span class="file-name"></span>
+                                                        <img class="remove-file" style="margin-left: 8px;" src="/cr_web_portal/static/src/images/new_design_resource/black_cross_btn.svg"/>
+                                                    </div>
+                                                </div>
+                                                <input type="text" placeholder="Enter a message"/>
+                                                <input type="file" id="attachment-input" style="display: none;"/>
+                                                <div class="msg-options">
+                                                    <a class="link-button">
+                                                        <img src="/cr_web_portal/static/src/images/mech-custom/link.png"/>
+                                                    </a>
+                                                    <a class="send-button-portal" t-attf-data-action="/mail/chatter_post">
+                                                        <img src="/cr_web_portal/static/src/images/mech-custom/send-2.png"/>
+                                                    </a>
+                                                </div>
+                                            </footer>
+                                        </main>
+                                    </div>
+                                </div>
+                                <div class="justify-content-between quote-details-product order_product_details desktop-view">
+                                    <div class="text-left  portal_value quote-item">
+                                        <a t-att-href="inquiry_quotation.get_portal_url()" class="overflow_dot">
+                                            <t t-if="inquiry_quotation_products" t-foreach="inquiry_quotation_products" t-as="inquiry_quotation_product">
+                                                <t t-if="inquiry_quotation_product != inquiry_quotation_products[-1]"><t t-out="inquiry_quotation_product" />,</t>
+                                                <t t-elif="inquiry_quotation_product == inquiry_quotation_products[-1]"><t t-out="inquiry_quotation_product" /></t>
+                                            </t>
+                                        </a>
+                                    </div>
+                                        <div>
+                                            <div t-if="inquiry_quotation.get_portal_order_status()" class="quote-item status_link text-bg-info">
+                                                <t t-esc="inquiry_quotation.get_portal_order_status()"/>
+                                            </div>
+                                        </div>
+                                        <div class="quote-item text-right portal_value"> <span class="portal_qty" t-if="inquiry_quotation.cart_quantity" > <span t-field="inquiry_quotation.cart_quantity"/> Qty.</span></div>
+                                </div>
+                                <div class="justify-content-between quote-details-product order_product_details d-none mobile_view">
+                                    <div class="text-left  portal_value quote-item">
+                                        <a t-att-href="inquiry_quotation.get_portal_url()" class="overflow_dot">
+                                            <t t-if="inquiry_quotation_products" t-foreach="inquiry_quotation_products" t-as="inquiry_quotation_product">
+                                                <t t-if="inquiry_quotation_product != inquiry_quotation_products[-1]"><t t-out="inquiry_quotation_product" />,</t>
+                                                <t t-elif="inquiry_quotation_product == inquiry_quotation_products[-1]"><t t-out="inquiry_quotation_product" /></t>
+                                            </t>
+                                        </a>
+                                    </div>
+                                    <div class="status-value">
+                                        <div>
+                                            <div t-if="inquiry_quotation.get_portal_order_status()" class="quote-item status_link text-bg-info">
+                                                <t t-esc="inquiry_quotation.get_portal_order_status()"/>
+                                            </div>
+                                        </div>
+                                        <div class="quote-item text-right portal_value"> <span class="portal_qty" t-if="inquiry_quotation.cart_quantity" > <span t-field="inquiry_quotation.cart_quantity"/> Qty.</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </div>
+                    <t t-else="">
+                        <p>There are currently no inquiries for your account.</p>
+                    </t>
+                    <div t-if="pager" class="o_portal_pager mt-3 d-flex justify-content-center">
+                        <t t-call="portal.pager"/>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <template id="portal_document_history" name="Document History">
+        <t t-call="portal.portal_layout">
+            <t t-set="breadcrumbs_searchbar" t-value="True"/>
+
+            <t t-call="portal.portal_searchbar">
+                <t t-set="title">Document History</t>
+            </t>
+            <t t-if="doc_history" t-call="portal.portal_table">
+                <thead>
+                    <tr class="active">
+                        <th>User #</th>
+                        <th class="text-center">Document</th>
+                        <th class="text-center">Created On</th>
+                        <th class="text-center">Last Updated On</th>
+                    </tr>
+                </thead>
+                <t t-foreach="doc_history" t-as="history">
+                    <tr>
+                        <td>
+                            <span t-field="history.user_id.name"/>
+                        </td>
+                        <td class="text-center">
+                            <t t-set="download_url_cus" t-value="'/web/content/%s/%s/%s/%s?%s' % ('document.history',history.id, 'document',history.name,'download=true')"/>
+                            <div class="col-6">
+                                <a t-att-href="download_url_cus" t-att-download="history.name" style="color:#57BB56"><i class="fa fa-download me-2"/> </a><span style="color:#70b96fd6" t-out="history.name"/>
+                            </div>
+                        </td>
+                        <td class="text-center">
+                            <span t-field="history.create_date"/>
+                        </td>
+                        <td class="text-center">
+                            <span t-field="history.write_date"/>
+                        </td>
+                    </tr>
+                </t>
+            </t>
+            <p t-else="">There are currently no Document History.</p>
+        </t>
+    </template>
+    <!--    INQUIRY TEMPLATE PORTAL TEMPLATE FULL PAGE-->
+    <template id="inquiry_quotation_portal_template" name="Inquiry Quotation Portal Template"
+              inherit_id="portal.portal_sidebar" primary="True">
+        <xpath expr="//div[hasclass('o_portal_sidebar')]" position="inside">
+
+            <div class="row mt16 o_portal_sale_sidebar">
+                <!--         New Portal Sidebar Layout-->
+                <div class=" col-12 col-md col-lg-3">
+                    <t t-call="cr_web_portal.portal_sidebar_custom">
+                        <t t-set="salesperson" t-value="sale_order.user_id"/>
+                    </t>
+                </div>
+
+                <!-- Page content -->
+                <div id="quote_inquirycontent" class="col-12 col-lg justify-content-end">
+                    <h2 class="dashboard-title d-none">
+                            <a href="/my/inquiry/quotes" class="title-img">
+                                <img src="/cr_web_portal/static/src/images/mech-custom/arrow-left.png"/>
+                            </a>
+                       <t t-esc="sale_order.name"/>
+                    </h2>
+                    <!-- Portal Object Detail Page Breabcumb -->
+                    <nav class="navbar navbar-light navbar-expand-lg border py-0 o_portal_navbar rounded">
+                        <ol class="o_portal_submenu breadcrumb mb-0 py-2 flex-grow-1">
+                            <li class="breadcrumb-item ms-1">
+                                <a href="/my/home" aria-label="Dashboard" title="Dashboard">
+                                    Dashboard
+                                </a>
+                            </li>
+                            <img src="/cr_web_portal/static/src/images/new_design_resource/black-arrow-right.svg"
+                                 width="20" height="20" style="margin: 0px 10px;" loading="lazy"/>
+                            <li class="breadcrumb-item">
+                                <t t-if="request.httprequest.referrer is not None">
+                                    <a t-att-href="request.httprequest.referrer" t-att-aria-label="order_breadcumb_name"
+                                       t-att-title="order_breadcumb_name">
+                                        Inquiry
+                                    </a>
+                                </t>
+                                <t t-else="">
+                                    <a href="/my" t-att-aria-label="order_breadcumb_name"
+                                       t-att-title="order_breadcumb_name">
+                                        Inquiry
+                                    </a>
+                                </t>
+                            </li>
+                            <img src="/cr_web_portal/static/src/images/new_design_resource/black-arrow-right.svg"
+                                 width="20" height="20" style="margin: 0px 10px;" loading="lazy"/>
+                            <li class="breadcrumb-item active">
+                                <t t-out="sale_order.name"/>
+                            </li>
+                        </ol>
+                    </nav>
+
+                    <!-- modal relative to the actions sign and pay -->
+                    <div role="dialog" class="modal fade" id="modalaccept">
+                        <div class="modal-dialog" t-if="sale_order._has_to_be_signed(True)">
+                            <form id="accept" method="POST" t-att-data-order-id="sale_order.id"
+                                  t-att-data-token="sale_order.access_token"
+                                  class="js_accept_json modal-content js_website_submit_form">
+                                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                <header class="modal-header">
+                                    <h4 class="modal-title">Validate Order</h4>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                </header>
+                                <main class="modal-body" id="sign-dialog">
+                                    <p>
+                                        <span>By signing this proposal, I agree to the following terms:</span>
+                                        <ul>
+                                            <li>
+                                                <span>Accepted on the behalf of:</span>
+                                                <b t-field="sale_order.partner_id.commercial_partner_id"/>
+                                            </li>
+                                            <li>
+                                                <span>For an amount of:</span>
+                                                <b data-id="total_amount" t-field="sale_order.amount_total"/>
+                                            </li>
+                                        </ul>
+                                    </p>
+                                    <t t-call="portal.signature_form">
+                                        <t t-set="call_url" t-value="sale_order.get_portal_url(suffix='/accept')"/>
+                                        <t t-set="default_name" t-value="sale_order.partner_id.name"/>
+                                    </t>
+                                </main>
+                            </form>
+                        </div>
+
+                        <div class="modal-dialog"
+                             t-if="not sale_order._has_to_be_signed(True) and sale_order._has_to_be_paid(True)">
+                            <div class="modal-content">
+                                <header class="modal-header">
+                                    <h4 class="modal-title">Validate Order</h4>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                </header>
+                                <main class="modal-body" id="sign-dialog">
+                                    <p>
+                                        <span>By paying this proposal, I agree to the following terms:</span>
+                                        <ul>
+                                            <li>
+                                                <span>Accepted on the behalf of:</span>
+                                                <b t-field="sale_order.partner_id.commercial_partner_id"/>
+                                            </li>
+                                            <li>
+                                                <span>For an amount of:</span>
+                                                <b data-id="total_amount" t-field="sale_order.amount_total"/>
+                                            </li>
+                                        </ul>
+                                    </p>
+                                    <div t-if="providers or tokens" id="payment_method" class="text-start">
+                                        <h3 class="mb24">Pay with</h3>
+                                        <t t-call="payment.checkout"/>
+                                    </div>
+                                    <div t-else="" class="alert alert-warning">
+                                        <strong>No suitable payment option could be found.</strong>
+                                        <br/>
+                                        If you believe that it is an error, please contact the website administrator.
+                                    </div>
+                                </main>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- modal relative to the action reject -->
+                    <div role="dialog" class="modal fade" id="modaldecline">
+                        <div class="modal-dialog">
+                            <form id="decline" method="POST"
+                                  t-attf-action="/my/orders/#{sale_order.id}/decline?access_token=#{sale_order.access_token}"
+                                  class="modal-content">
+                                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                <header class="modal-header">
+                                    <h4 class="modal-title">Reject This Inquiry</h4>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                </header>
+                                <main class="modal-body">
+                                    <p>
+                                        Tell us why you are refusing this inquiry, this will help us improve our
+                                        services.
+                                    </p>
+                                    <textarea rows="4" name="decline_message" required="" placeholder="Your feedback..."
+                                              class="form-control"/>
+                                </main>
+                                <footer class="modal-footer">
+                                    <button type="submit" t-att-id="sale_order.id" class="btn btn-danger">
+                                        <i class="fa fa-times"></i>
+                                        Reject
+                                    </button>
+                                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">
+                                        Cancel
+                                    </button>
+                                </footer>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- status messages -->
+                    <div t-if="message == 'sign_ok'" class="alert alert-success alert-dismissible d-print-none"
+                         role="status">
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        <strong>Thank You!</strong>
+                        <br/>
+                        <t t-if="message == 'sign_ok' and sale_order.state in ['sale', 'done']">
+                            Your order has been confirmed.
+                        </t>
+                        <t t-elif="message == 'sign_ok' and sale_order._has_to_be_paid()">
+                            Your order has been signed but still needs to be paid to be confirmed.
+                        </t>
+                        <t t-else="">Your order has been signed.</t>
+                    </div>
+
+                    <div t-if="message == 'cant_reject'" class="alert alert-danger alert-dismissible d-print-none"
+                         role="alert">
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        Your order is not in a state to be rejected.
+                    </div>
+
+                    <div t-if="sale_order.state == 'cancel'" class="alert alert-danger alert-dismissible d-print-none"
+                         role="alert">
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
+                        <strong>This Inquiry has been canceled.</strong>
+                        <a role="button" href="#discussion">
+                            <i class="fa fa-comment"/>
+                            Contact us to get a new inquiry.
+                        </a>
+                    </div>
+
+                    <div id="o_payment_status_alert" t-if="sale_order.is_expired" class="alert alert-warning alert-dismissible d-print-none"
+                         role="alert">
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
+                        <strong>This offer expired!</strong>
+                        <a role="button" href="#discussion">
+                            <i class="fa fa-comment"/>
+                            Contact us to get a new inquiry.
+                        </a>
+                    </div>
+
+                    <!-- main content -->
+                    <div t-attf-class="card #{'pb-5' if report_type == 'html' else ''}"
+                         id="portal_my_inquiry_quotations">
+                        <div t-call="cr_web_portal.inquiry_quotations_portal_content"/>
+                    </div>
+
+                </div><!-- // #quote_content -->
+            </div>
+        </xpath>
+    </template>
+
+    <template id="inquiry_quotations_portal_content" name="Inquiry Quotaions Portal Content">
+        <!-- Intro -->
+        <div class="header-section">
+            <h5>
+                Inquiry
+                <t t-out="sale_order.name"/>
+            </h5>
+            <button class="send_quey_btn message-item-portal" t-att-data-res-model="sale_order._name" t-att-data-res-id="sale_order.id" t-att-data-user-id="request.env.user.partner_id.id">
+                <img src="/cr_web_portal/static/src/images/new_design_resource/message-green.svg" width="16"
+                     height="16"/>
+                Send query
+            </button>
+            <main class="message-details d-none" t-att-data-res-model="sale_order._name" t-att-data-res-id="sale_order.id">
+                <header>
+                    <div class="d-flex" style="gap: 10px; align-items:center;">
+                        <div class="back-img close-message">
+                            <img src="/cr_web_portal/static/src/images/mech-custom/arrow-left.png"/>
+                        </div>
+                        <div class="header-info">
+                            <span class="category">Inquiries</span>
+                            <span class="message-id"><t t-esc="sale_order.name"/></span>
+                        </div>
+                    </div>
+                    <a class="helpdesk-button" href="">
+                    </a>
+                </header>
+                <div class="chat-content">
+                    <div class="chat-message incoming">
+                        <div class="user-img">
+                            <img src="/cr_web_portal/static/src/images/mech-custom/user-msg.png"/>
+                        </div>
+                        <div class="msg-details">
+                            <div class="sender"></div>
+                            <p></p>
+                        </div>
+                    </div>
+                    <div class="chat-message outgoing">
+                        <div class="user-img">
+                            <img src="/cr_web_portal/static/src/images/mech-custom/user-msg.png"/>
+                        </div>
+                        <div class="msg-details">
+                            <div class="sender"></div>
+                            <p></p>
+                        </div>
+                    </div>
+                </div>
+                <footer class="message-input">
+                    <div class="file-card d-none">
+                        <div class="file-card-content">
+                            <span class="file-icon">
+                                <img src="/cr_web_portal/static/src/images/mech-custom/link.png"/>
+                            </span>
+                            <span class="file-name"></span>
+                            <img class="remove-file" style="margin-left: 8px;" src="/cr_web_portal/static/src/images/new_design_resource/black_cross_btn.svg"/>
+                        </div>
+                    </div>
+                    <input type="text" placeholder="Enter a message"/>
+                    <input type="file" id="attachment-input" style="display: none;"/>
+                    <div class="msg-options">
+                        <a class="link-button">
+                            <img src="/cr_web_portal/static/src/images/mech-custom/link.png"/>
+                        </a>
+                        <a class="send-button-portal" t-attf-data-action="/mail/chatter_post">
+                            <img src="/cr_web_portal/static/src/images/mech-custom/send-2.png"/>
+                        </a>
+                    </div>
+                </footer>
+            </main>
+        </div>
+        <div t-attf-class="content-box">
+            <!-- Informations -->
+            <div id="informations">
+                <div t-if="sale_order.transaction_ids and not invoices and sale_order.state in ('inquiry','engineering_review', 'prepared_for_pricing', 'data_feedback') and portal_confirmation == 'pay' and not success and not error"
+                     t-att-data-order-id="sale_order.id">
+                    <t t-if="sale_order.transaction_ids">
+                        <t t-call="payment.transaction_status">
+                            <t t-set="tx" t-value="sale_order.get_portal_last_transaction()"/>
+                        </t>
+                    </t>
+                </div>
+                <div class="row content-details" id="so_date">
+                    <div class="col-6">
+                        <div class="portal_grey">
+                            <t t-if="sale_order.state in ['inquiry','engineering_review', 'prepared_for_pricing', 'data_feedback']">
+                                <strong>Inquiry Date</strong>
+                            </t>
+
+                        </div>
+                        <div class="portal_obj_value">
+                            <span t-field="sale_order.date_order" t-options='{"widget": "date"}'/>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="portal_grey"
+                             t-if="sale_order.validity_date">Expiration Date
+                        </div>
+                        <div class="portal_obj_value"
+                             t-if="sale_order.validity_date">
+                            <span t-field="sale_order.validity_date" t-options='{"widget": "date"}'/>
+                        </div>
+                    </div>
+                </div>
+                <div class="row content-details" id="invoicing_shipping_address">
+                    <div class="col-6" t-if="sale_order.partner_shipping_id == sale_order.partner_invoice_id" style="margin-bottom: 16px;">
+                        <div class="portal_grey">Invoicing and Shipping Address</div>
+                        <div class="address_obj_value" t-out="sale_order.partner_invoice_id.name"/>
+                        <t t-esc="sale_order.partner_invoice_id"
+                           t-options="dict(widget='contact', fields=['address'], no_marker=True)"/>
+                    </div>
+                    <div class="col-6" t-else="" style="margin-bottom: 16px;">
+                        <div class="portal_grey">Invoicing Address</div>
+                        <div class="address_obj_value" t-out="sale_order.partner_invoice_id.name"/>
+                        <t t-esc="sale_order.partner_invoice_id"
+                           t-options="dict(widget='contact', fields=['address'], no_marker=True)"/>
+                    </div>
+                    <div class="col-6" t-if="sale_order.partner_shipping_id != sale_order.partner_invoice_id" style="margin-bottom: 16px;">
+                        <div class="portal_grey">Shipping Address</div>
+                        <div class="address_obj_value" t-out="sale_order.partner_shipping_id.name"/>
+                        <t t-esc="sale_order.partner_shipping_id"
+                           t-options="dict(widget='contact', fields=['address'], no_marker=True)"/>
+                    </div>
+                    <div class="col-6" t-if="sale_order.service">
+                        <div class="portal_grey">
+                            Services
+                        </div>
+                        <div class="portal_obj_value">
+                            <t t-esc="dict(sale_order._fields['service'].selection).get(sale_order.service)"/>
+                        </div>
+                        <div class="portal_grey" t-if="sale_order.get_portal_order_status()" style="margin-top: 16px;">
+                            Status
+                        </div>
+                        <div class="line_value portal_obj_value" t-if="sale_order.get_portal_order_status()">
+                            <div class="status_link text-bg-info">
+                                <t t-esc="sale_order.get_portal_order_status()"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <t t-set="invoices"
+                       t-value="sale_order.invoice_ids.filtered(lambda i: i.state not in ['draft', 'cancel'])"/>
+                    <div class="content-details row" t-if="invoices">
+                        <div class="col">
+                            <div class="portal_grey">Invoices </div>
+                            <ul class="list-group mb-4">
+                                <t t-foreach="invoices" t-as="i">
+                                    <t t-set="report_url" t-value="i.get_portal_url(report_type='pdf', download=True)"/>
+                                    <t t-set="authorized_tx_ids"
+                                       t-value="i.transaction_ids.filtered(lambda tx: tx.state == 'authorized')"/>
+                                    <div class="d-flex mb-2 mt-2 align-center gap-3">
+                                         <div class="portal_obj_value">
+                                            <a t-att-href="report_url">
+                                                <span t-out="i.name"/>
+                                            </a>
+                                        </div>
+                                        <div class="portal_obj_value"> Date: <span class="text-muted" t-field="i.invoice_date"/> </div>
+                                    </div>
+                                </t>
+                            </ul>
+                        </div>
+                    </div>
+            </div>
+
+        </div>
+        <section id="details" style="page-break-inside: auto;" class="mt32" t-if="not sale_order.service in ['enclosure_design','fdm_modeling','projection_printing','sheet_metal_fabrication','cnc_machining','injection_molding'] and not any((line.product_id.is_enclosure_service or line.product_id.is_fdm_service or line.product_id.is_projection_service or line.product_id.is_metal_feb_service or line.product_id.is_cnc_machining_service or line.product_id.is_injection_mold_service) for line in sale_order.order_line)">
+                <t t-set="lines_to_report" t-value="sale_order._get_order_lines_to_report()[0]"/>
+                <t t-set="display_discount" t-value="True in [line.discount > 0 for line in sale_order.order_line]"/>
+
+                <div class="table-responsive">
+                    <table t-att-data-order-id="sale_order.id" t-att-data-token="sale_order.access_token"
+                           class="table table-sm" id="sales_order_table">
+                        <thead class="bg-100">
+                            <tr>
+                                <th class="text-start" id="product_name_header">Products</th>
+                                <th class="text-end">Quantity</th>
+                            </tr>
+                        </thead>
+                        <tbody class="sale_tbody">
+                            <t t-set="current_subtotal" t-value="0"/>
+                            <t t-set="lines_to_report" t-value="sale_order._get_order_lines_to_report()"/>
+                            <t t-foreach="lines_to_report" t-as="line">
+                                <t t-set="current_subtotal" t-value="current_subtotal + line.price_subtotal"
+                                   groups="account.group_show_line_subtotals_tax_excluded"/>
+                                <t t-set="current_subtotal" t-value="current_subtotal + line.price_total"
+                                   groups="account.group_show_line_subtotals_tax_included"/>
+
+                                <tr t-att-class="'bg-200 fw-bold o_line_section' if line.display_type == 'line_section' else 'fst-italic o_line_note' if line.display_type == 'line_note' else ''">
+                                    <t t-if="not line.display_type">
+                                        <td id="product_name">
+                                            <span t-field="line.name"/>
+                                        </td>
+                                        <td class="text-end">
+                                            <div id="quote_qty">
+                                                <span t-field="line.product_uom_qty"/>
+                                                <span t-field="line.product_uom"/>
+                                            </div>
+                                        </td>
+                                    </t>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        <section t-if="sale_order.signature" id="signature" name="Signature">
+            <div class="row mt-4" name="signature">
+                <div t-attf-class="#{'col-3' if report_type != 'html' else 'col-sm-7 col-md-4'} ms-auto text-center">
+                    <h5>Signature</h5>
+                    <img t-att-src="image_data_uri(sale_order.signature)"
+                         style="max-height: 6rem; max-width: 100%;"/>
+                    <p t-field="sale_order.signed_by"/>
+                </div>
+            </div>
+        </section>
+        <section id="inquiry_details" style="page-break-inside: auto;"
+                 t-if="sale_order.service in ['enclosure_design','fdm_modeling','projection_printing','sheet_metal_fabrication','cnc_machining','injection_molding'] and any((line.product_id.is_enclosure_service or line.product_id.is_fdm_service or line.product_id.is_projection_service or line.product_id.is_metal_feb_service or line.product_id.is_cnc_machining_service or line.product_id.is_injection_mold_service) for line in sale_order.order_line)">
+            <h5 class="portal_title_section">Inquiry Details</h5>
+            <t t-set="lines_to_report" t-value="sale_order.order_line[0]"/>
+            <div t-if="sale_order.service == 'enclosure_design'" name="enc_inquriy">
+                <br/>
+                <div t-if="lines_to_report.product_template_id.product_variant_ids[0].name" class="portal_grey">Product Name?:</div>
+                <div t-if="lines_to_report.product_template_id.product_variant_ids[0].name" class="portal_obj_value">
+                    <span t-field="lines_to_report.product_template_id.product_variant_ids[0].name"/>
+                </div>
+                <br/>
+                <div t-if="lines_to_report.product_template_id.product_variant_ids[0].enclosure_design_product_purpose" class="portal_grey">What is the purpose of the electronic product?:</div>
+                <div t-if="lines_to_report.product_template_id.product_variant_ids[0].enclosure_design_product_purpose" class="portal_obj_value">
+                    <span t-field="lines_to_report.product_template_id.product_variant_ids[0].enclosure_design_product_purpose"/>
+                </div>
+                <br/>
+                <div t-if="lines_to_report.product_template_id.product_variant_ids[0].enclosure_design_product_features" class="portal_grey">What are the main functionalities and features of the product?:</div>
+                <div t-if="lines_to_report.product_template_id.product_variant_ids[0].enclosure_design_product_features" class="portal_obj_value">
+                    <span t-field="lines_to_report.product_template_id.product_variant_ids[0].enclosure_design_product_features"/>
+                </div>
+                <br/>
+                <div t-if="lines_to_report.product_template_id.product_variant_ids[0].enclosure_design_product_dimensions" class="portal_grey">What are the dimensions of the electronic components that will be housed inside
+                    the
+                    enclosure?:
+                </div>
+                <div t-if="lines_to_report.product_template_id.product_variant_ids[0].enclosure_design_product_dimensions" class="portal_obj_value">
+                    <span t-field="lines_to_report.product_template_id.product_variant_ids[0].enclosure_design_product_dimensions"/>
+                </div>
+                <br/>
+                <div t-if="lines_to_report.product_template_id.product_variant_ids[0].enclosure_design_product_temperatures" class="portal_grey">What are the maximum and minimum operating temperatures for the product?:</div>
+                <div t-if="lines_to_report.product_template_id.product_variant_ids[0].enclosure_design_product_temperatures" class="portal_obj_value">
+                    <span t-field="lines_to_report.product_template_id.product_variant_ids[0].enclosure_design_product_temperatures"/>
+                </div>
+                <br/>
+                <div t-if="lines_to_report.product_template_id.product_variant_ids[0].enclosure_design_specific_environmental" class="portal_grey">Are there any specific environmental conditions the enclosure needs to
+                    withstand?:
+                </div>
+                <div t-if="lines_to_report.product_template_id.product_variant_ids[0].enclosure_design_specific_environmental" class="portal_obj_value">
+                    <span t-field="lines_to_report.product_template_id.product_variant_ids[0].enclosure_design_specific_environmental"/>
+                </div>
+                <br/>
+                <div t-if="lines_to_report.product_template_id.product_variant_ids[0].enclosure_design_product_mounted" class="portal_grey">How will the enclosure be mounted or installed ?:</div>
+                <span t-if="lines_to_report.product_template_id.product_variant_ids[0].enclosure_design_product_mounted" t-field="lines_to_report.product_template_id.product_variant_ids[0].enclosure_design_product_mounted"/>
+                <br/>
+
+                <div t-if="lines_to_report.product_template_id.product_variant_ids[0].enclosure_design_product_placed" class="portal_grey">Where will the enclosure be placed (indoor, outdoor, harsh environment,
+                    etc.)?:
+                </div>
+                <div t-if="lines_to_report.product_template_id.product_variant_ids[0].enclosure_design_product_placed" class="portal_obj_value">
+                    <span t-field="lines_to_report.product_template_id.product_variant_ids[0].enclosure_design_product_placed"/>
+                </div>
+                <br/>
+                <div t-if="lines_to_report.product_template_id.product_variant_ids[0].enclosure_design_product_connectors" class="portal_grey">Are there any connectors, buttons, displays, or other interfaces that need to
+                    be
+                    accessible
+                    from the outside of the enclosure?:
+                </div>
+                <div t-if="lines_to_report.product_template_id.product_variant_ids[0].enclosure_design_product_connectors" class="portal_obj_value">
+                    <span t-field="lines_to_report.product_template_id.product_variant_ids[0].enclosure_design_product_connectors"/>
+                </div>
+                <br/>
+
+                <div t-if="lines_to_report.product_template_id.product_variant_ids[0].enclosure_design_product_interact" class="portal_grey">How will the user interact with the product?:</div>
+                <div t-if="lines_to_report.product_template_id.product_variant_ids[0].enclosure_design_product_interact" class="portal_obj_value">
+                    <span t-field="lines_to_report.product_template_id.product_variant_ids[0].enclosure_design_product_interact"/>
+                </div>
+                <br/>
+                <div t-if="lines_to_report.product_template_id.product_variant_ids[0].enclosure_design_product_materials" class="portal_grey">Are there any specific materials or material properties preferred for the
+                    enclosure?:
+                </div>
+                <div t-if="lines_to_report.product_template_id.product_variant_ids[0].enclosure_design_product_materials" class="portal_obj_value">
+                    <span t-field="lines_to_report.product_template_id.product_variant_ids[0].enclosure_design_product_materials"/>
+                </div>
+                <br/>
+                <div t-if="lines_to_report.product_template_id.product_variant_ids[0].enclosure_design_product_specific_design" class="portal_grey">Are there any specific design elements, colors, or branding requirements for
+                    the
+                    enclosure?:
+                </div>
+                <div t-if="lines_to_report.product_template_id.product_variant_ids[0].enclosure_design_product_specific_design" class="portal_obj_value">
+                    <span t-field="lines_to_report.product_template_id.product_variant_ids[0].enclosure_design_product_specific_design"/>
+                </div>
+                <br/>
+                <div t-if="lines_to_report.product_template_id.product_variant_ids[0].enclosure_design_product_significant_heat" class="portal_grey">Does the product generate significant heat? If so, how will it be cooled?:
+                </div>
+                <div t-if="lines_to_report.product_template_id.product_variant_ids[0].enclosure_design_product_significant_heat" class="portal_obj_value">
+                    <span t-field="lines_to_report.product_template_id.product_variant_ids[0].enclosure_design_product_significant_heat"/>
+                </div>
+                <br/>
+
+                <div t-if="lines_to_report.product_template_id.product_variant_ids[0].enclosure_design_product_specific_ventilation_requirements" class="portal_grey">Are there any specific ventilation requirements for the enclosure?:</div>
+                <div t-if="lines_to_report.product_template_id.product_variant_ids[0].enclosure_design_product_specific_ventilation_requirements" class="portal_obj_value">
+                    <span t-field="lines_to_report.product_template_id.product_variant_ids[0].enclosure_design_product_specific_ventilation_requirements"/>
+                </div>
+                <br/>
+                <div t-if="lines_to_report.product_template_id.product_variant_ids[0].enclosure_design_product_safety_standards" class="portal_grey">Are there any safety standards or certifications that the enclosure needs to
+                    comply
+                    with?:
+                </div>
+                <div t-if="lines_to_report.product_template_id.product_variant_ids[0].enclosure_design_product_safety_standards" class="portal_obj_value">
+                    <span t-field="lines_to_report.product_template_id.product_variant_ids[0].enclosure_design_product_safety_standards"/>
+                </div>
+                <br/>
+
+                <div t-if="lines_to_report.product_template_id.product_variant_ids[0].enclosure_design_product_existing_enclosure_designs" class="portal_grey">Do you have any existing enclosure designs or samples that can serve as a
+                    reference or
+                    starting point?:
+                </div>
+                <div t-if="lines_to_report.product_template_id.product_variant_ids[0].enclosure_design_product_existing_enclosure_designs" class="portal_obj_value">
+                    <span t-field="lines_to_report.product_template_id.product_variant_ids[0].enclosure_design_product_existing_enclosure_designs"/>
+                </div>
+                <br/>
+                <br/>
+
+                <div class="portal_grey">Who will be the main point of contact for communication during the design
+                    process?
+                </div>
+                <br/>
+                <div t-if="lines_to_report.product_template_id.product_variant_ids[0].enclosure_design_product_communicater_name" class="portal_grey">Name:</div>
+                <div t-if="lines_to_report.product_template_id.product_variant_ids[0].enclosure_design_product_communicater_name" class="portal_obj_value">
+                    <span t-field="lines_to_report.product_template_id.product_variant_ids[0].enclosure_design_product_communicater_name"/>
+                </div>
+                <br/>
+                <div t-if="lines_to_report.product_template_id.product_variant_ids[0].enclosure_design_product_communicater_email" class="portal_grey">Email:</div>
+                <div t-if="lines_to_report.product_template_id.product_variant_ids[0].enclosure_design_product_communicater_email" class="portal_obj_value">
+                    <span t-field="lines_to_report.product_template_id.product_variant_ids[0].enclosure_design_product_communicater_email"/>
+                </div>
+                <br/>
+                <div t-if="lines_to_report.product_template_id.product_variant_ids[0].enclosure_design_product_communicater_phone" class="portal_grey">Phone Number:</div>
+                <div t-if="lines_to_report.product_template_id.product_variant_ids[0].enclosure_design_product_communicater_phone" class="portal_obj_value">
+                    <span t-field="lines_to_report.product_template_id.product_variant_ids[0].enclosure_design_product_communicater_phone"/>
+                </div>
+                <br/>
+                    <t t-foreach="service_file" t-as="file">
+                        <div class="col-6" t-if="file">
+                            <t t-set="file_name" t-att-value="file['name']"/>
+                            <div class="portal_grey"><span t-esc="file['title']"/></div>
+                            <div class="portal_obj_value">
+                                <a t-att-href="file['download_url']" t-att-download="file['name']"
+                                   class="file-button">
+                                    <img src="/cr_web_portal/static/src/images/mech-custom/link.png"/>
+                                    <t t-out="file['name']"/>
+                                </a>
+                            </div>
+                        </div>
+                    </t>
+                    <br/>
+
+            </div>
+            <t t-if="sale_order.service == 'fdm_modeling'">
+                <br/>
+                <div class="row" name="enc_inquriy">
+                    <div t-if="lines_to_report.product_template_id.product_variant_ids[0].fdm_product_name" class="col-6">
+                        <div class="portal_grey">Product Name</div>
+                        <div class="portal_obj_value">
+                            <span t-field="lines_to_report.product_template_id.product_variant_ids[0].fdm_product_name"/>
+                        </div>
+                        <br/>
+
+                    </div>
+                    <div t-if="lines_to_report.product_template_id.product_variant_ids[0].fdm_quantity" class="col-6">
+                        <div class="portal_grey">Quantity</div>
+                        <div class="portal_obj_value">
+                            <span t-field="lines_to_report.product_template_id.product_variant_ids[0].fdm_quantity"/>
+                        </div>
+                        <br/>
+                    </div>
+                    <div t-if="lines_to_report.product_template_id.product_variant_ids[0].fdm_material" class="col-6">
+                        <div class="portal_grey">Choose Material</div>
+                        <div class="portal_obj_value">
+                            <span t-field="lines_to_report.product_template_id.product_variant_ids[0].fdm_material"/>
+                        </div>
+                        <br/>
+
+                    </div>
+                    <div t-if="lines_to_report.product_template_id.product_variant_ids[0].fdm_print_quality" class="col-6">
+                        <div class="portal_grey">Print Quality</div>
+                        <div class="portal_obj_value">
+                            <span t-field="lines_to_report.product_template_id.product_variant_ids[0].fdm_print_quality"/>
+                        </div>
+                        <br/>
+
+                    </div>
+                    <div t-if="lines_to_report.product_template_id.product_variant_ids[0].fdm_color" class="col-6">
+                        <div class="portal_grey">Color</div>
+                        <div class="portal_obj_value">
+                            <span t-field="lines_to_report.product_template_id.product_variant_ids[0].fdm_color"/>
+                        </div>
+                        <br/>
+
+                    </div>
+                    <div t-if="lines_to_report.product_template_id.product_variant_ids[0].fdm_infill" class="col-6">
+                        <div class="portal_grey">InFill</div>
+                        <div class="portal_obj_value">
+                            <span t-field="lines_to_report.product_template_id.product_variant_ids[0].fdm_infill"/>
+                        </div>
+                        <br/>
+
+                    </div>
+                    <div t-if="lines_to_report.product_template_id.product_variant_ids[0].fdm_extra_note" class="col-6">
+                        <div class="portal_grey">Extra Note</div>
+                        <div class="portal_obj_value">
+                            <t t-if="lines_to_report.product_template_id.product_variant_ids[0].fdm_extra_note">
+                                <span t-field="lines_to_report.product_template_id.product_variant_ids[0].fdm_extra_note"/>
+                            </t>
+                            <t t-else="">
+                                -
+                            </t>
+                        </div>
+                    </div>
+                </div>
+                <t t-foreach="service_file" t-as="file">
+                    <div class="col-6">
+                        <t t-set="file_name" t-att-value="file['name']"/>
+                        <div class="portal_grey">
+                            <span t-esc="file['title']"/>
+                        </div>
+                        <div class="portal_obj_value">
+                            <a t-att-href="file['download_url']" t-att-download="file['name']"
+                               class="file-button">
+                                <img src="/cr_web_portal/static/src/images/mech-custom/link.png"/>
+                                <t t-out="file['name']"/>
+                            </a>
+                        </div>
+                    </div>
+                </t>
+                <br/>
+            </t>
+            <t t-if="sale_order.service == 'projection_printing'">
+                <br/>
+                <div class="row" name="enc_inquriy">
+                    <div t-if="lines_to_report.product_template_id.product_variant_ids[0].projection_product_name" class="col-6">
+                        <div class="portal_grey">Product Name</div>
+                        <div class="portal_obj_value">
+                            <span t-field="lines_to_report.product_template_id.product_variant_ids[0].projection_product_name"/>
+                        </div>
+                        <br/>
+
+                    </div>
+                    <div t-if="lines_to_report.product_template_id.product_variant_ids[0].projection_quantity" class="col-6">
+                        <div class="portal_grey">Quantity</div>
+                        <div class="portal_obj_value">
+                            <span t-field="lines_to_report.product_template_id.product_variant_ids[0].projection_quantity"/>
+                        </div>
+                        <br/>
+
+                    </div>
+                    <div t-if="lines_to_report.product_template_id.product_variant_ids[0].projection_material" class="col-6">
+                        <div class="portal_grey">Choose Material</div>
+                        <div class="portal_obj_value">
+                            <span t-field="lines_to_report.product_template_id.product_variant_ids[0].projection_material"/>
+                        </div>
+                        <br/>
+
+                    </div>
+                    <div t-if="lines_to_report.product_template_id.product_variant_ids[0].projection_print_quality" class="col-6">
+                        <div class="portal_grey">Print Quality</div>
+                        <div class="portal_obj_value">
+                            <span t-field="lines_to_report.product_template_id.product_variant_ids[0].projection_print_quality"/>
+                        </div>
+                        <br/>
+
+                    </div>
+                    <div t-if="lines_to_report.product_template_id.product_variant_ids[0].projection_extra_note" class="col-6">
+                        <div class="portal_grey">Extra Note</div>
+                        <div class="portal_obj_value">
+                            <t t-if="lines_to_report.product_template_id.product_variant_ids[0].projection_extra_note">
+                                <span t-field="lines_to_report.product_template_id.product_variant_ids[0].projection_extra_note"/>
+                            </t>
+                            <t t-else="">
+                                -
+                            </t>
+                        </div>
+                    </div>
+                </div>
+
+                <t t-foreach="service_file" t-as="file">
+                        <div class="col-6">
+                            <t t-set="file_name" t-att-value="file['name']"/>
+                            <div class="portal_grey">
+                                <span t-esc="file['title']"/>
+                            </div>
+                            <div class="portal_obj_value">
+                                <a t-att-href="file['download_url']" t-att-download="file['name']"
+                                   class="file-button">
+                                    <img src="/cr_web_portal/static/src/images/mech-custom/link.png"/>
+                                    <t t-out="file['name']"/>
+                                </a>
+                            </div>
+                        </div>
+                    </t>
+            </t>
+            <t t-if="sale_order.service == 'sheet_metal_fabrication'">
+                <br/>
+                <div class="row" name="enc_inquriy">
+                    <div t-if="lines_to_report.product_template_id.product_variant_ids[0].metal_feb_product_name" class="col-6">
+                        <div class="portal_grey">Product Name</div>
+                        <div class="portal_obj_value">
+                            <span t-field="lines_to_report.product_template_id.product_variant_ids[0].metal_feb_product_name"/>
+                        </div>
+                        <br/>
+
+                    </div>
+                    <div t-if="lines_to_report.product_template_id.product_variant_ids[0].metal_feb_quantity" class="col-6">
+                        <div class="portal_grey">Quantity</div>
+                        <div class="portal_obj_value">
+                            <span t-field="lines_to_report.product_template_id.product_variant_ids[0].metal_feb_quantity"/>
+                        </div>
+                        <br/>
+
+                    </div>
+                    <div t-if="lines_to_report.product_template_id.product_variant_ids[0].metal_feb_material or lines_to_report.product_template_id.product_variant_ids[0].metal_feb_material_other" class="col-6">
+                        <div class="portal_grey">Select Material</div>
+                        <div class="portal_obj_value">
+                            <t t-if="lines_to_report.product_template_id.product_variant_ids[0].metal_feb_material">
+                                <span t-field="lines_to_report.product_template_id.product_variant_ids[0].metal_feb_material"/>
+                            </t>
+                            <t t-else="">
+                                <span t-field="lines_to_report.product_template_id.product_variant_ids[0].metal_feb_material_other"/>
+                            </t>
+                        </div>
+                        <br/>
+
+                    </div>
+                    <div t-if="lines_to_report.product_template_id.product_variant_ids[0].metal_feb_thickness or lines_to_report.product_template_id.product_variant_ids[0].metal_feb_thickness_other" class="col-6">
+                        <div class="portal_grey">Thickness</div>
+                        <div class="portal_obj_value">
+                            <t t-if="lines_to_report.product_template_id.product_variant_ids[0].metal_feb_thickness">
+                                <span t-field="lines_to_report.product_template_id.product_variant_ids[0].metal_feb_thickness"/>
+                            </t>
+                            <t t-else="">
+                                <span t-field="lines_to_report.product_template_id.product_variant_ids[0].metal_feb_thickness_other"/>
+                            </t>
+                        </div>
+                        <br/>
+
+                    </div>
+                    <div t-if="lines_to_report.product_template_id.product_variant_ids[0].metal_feb_is_welding" class="col-6">
+                        <div class="portal_grey">Welding</div>
+                        <div class="portal_obj_value">
+                            <span t-field="lines_to_report.product_template_id.product_variant_ids[0].metal_feb_is_welding"/>
+                        </div>
+                        <br/>
+                    </div>
+                    <div t-if="lines_to_report.product_template_id.product_variant_ids[0].metal_feb_surface_finish or lines_to_report.product_template_id.product_variant_ids[0].metal_feb_surface_finish_other" class="col-6">
+                        <div class="portal_grey">Surface finish</div>
+                        <div class="portal_obj_value">
+                            <t t-if="lines_to_report.product_template_id.product_variant_ids[0].metal_feb_surface_finish">
+                                <span t-field="lines_to_report.product_template_id.product_variant_ids[0].metal_feb_surface_finish"/>
+                            </t>
+                            <t t-else="">
+                                <span t-field="lines_to_report.product_template_id.product_variant_ids[0].metal_feb_surface_finish_other"/>
+                            </t>
+                        </div>
+                        <br/>
+                    </div>
+                    <div t-if="lines_to_report.product_template_id.product_variant_ids[0].metal_feb_color or lines_to_report.product_template_id.product_variant_ids[0].metal_feb_color_other" class="col-6">
+                        <div class="portal_grey">Colour</div>
+                        <div class="portal_obj_value">
+                            <t t-if="lines_to_report.product_template_id.product_variant_ids[0].metal_feb_color">
+                                <span t-field="lines_to_report.product_template_id.product_variant_ids[0].metal_feb_color"/>
+                            </t>
+                            <t t-else="">
+                                <span t-field="lines_to_report.product_template_id.product_variant_ids[0].metal_feb_color_other"/>
+                            </t>
+                        </div>
+                        <br/>
+                    </div>
+                    <div t-if="lines_to_report.product_template_id.product_variant_ids[0].metal_feb_extra_note" class="col-6">
+                        <div class="portal_grey">Extra Note</div>
+                        <div class="portal_obj_value">
+                            <t t-if="lines_to_report.product_template_id.product_variant_ids[0].metal_feb_extra_note">
+                                <span t-field="lines_to_report.product_template_id.product_variant_ids[0].metal_feb_extra_note"/>
+                            </t>
+                            <t t-else="">
+                                -
+                            </t>
+                        </div>
+                    </div>
+                    <t t-foreach="service_file" t-as="file">
+                    <div class="col-6">
+                        <t t-set="file_name" t-att-value="file['name']"/>
+                        <div class="portal_grey">
+                            <span t-esc="file['title']"/>
+                        </div>
+                        <div class="portal_obj_value">
+                            <a t-att-href="file['download_url']" t-att-download="file['name']"
+                               class="file-button">
+                                <img src="/cr_web_portal/static/src/images/mech-custom/link.png"/>
+                                <t t-out="file['name']"/>
+                            </a>
+                        </div>
+                    </div>
+                </t>
+                </div>
+            </t>
+            <t t-if="sale_order.service == 'cnc_machining'">
+                <br/>
+                <div class="row" name="enc_inquriy">
+                    <div t-if="lines_to_report.product_template_id.product_variant_ids[0].cnc_machining_product_name" class="col-6">
+                        <div class="portal_grey">Product Name</div>
+                        <div class="portal_obj_value">
+                            <span t-field="lines_to_report.product_template_id.product_variant_ids[0].cnc_machining_product_name"/>
+                        </div>
+                        <br/>
+                    </div>
+                    <div t-if="lines_to_report.product_template_id.product_variant_ids[0].cnc_machining_quantity" class="col-6">
+                        <div class="portal_grey">Quantity</div>
+                        <div class="portal_obj_value">
+                            <span t-field="lines_to_report.product_template_id.product_variant_ids[0].cnc_machining_quantity"/>
+                        </div>
+                        <br/>
+
+                    </div>
+                    <div t-if="lines_to_report.product_template_id.product_variant_ids[0].cnc_machining_material" class="col-6">
+                        <div class="portal_grey">Material</div>
+                        <div class="portal_obj_value">
+                            <span t-field="lines_to_report.product_template_id.product_variant_ids[0].cnc_machining_material"/>
+                        </div>
+                        <br/>
+
+                    </div>
+                    <div t-if="lines_to_report.product_template_id.product_variant_ids[0].cnc_machining_additional_notes" class="col-6">
+                        <div class="portal_grey">Additional notes</div>
+                        <div class="portal_obj_value">
+                            <span t-field="lines_to_report.product_template_id.product_variant_ids[0].cnc_machining_additional_notes"/>
+                        </div>
+                        <br/>
+                    </div>
+                    <br/>
+                    <t t-foreach="service_file" t-as="file">
+                        <div class="col-6">
+                            <t t-set="file_name" t-att-value="file['name']"/>
+                            <div class="portal_grey">
+                                <span t-esc="file['title']"/>
+                            </div>
+                            <div class="portal_obj_value">
+                                <a t-att-href="file['download_url']" t-att-download="file['name']"
+                                   class="file-button">
+                                    <img src="/cr_web_portal/static/src/images/mech-custom/link.png"/>
+                                    <t t-out="file['name']"/>
+                                </a>
+                            </div>
+                        </div>
+                    </t>
+                    <br/>
+                </div>
+            </t>
+            <t t-if="sale_order.service == 'injection_molding'">
+                <br/>
+                <div class="row" name="enc_inquriy">
+                    <div t-if="lines_to_report.product_template_id.product_variant_ids[0].injection_mold_product_name" class="col-6">
+                        <div class="portal_grey">Product Name</div>
+                        <div class="portal_obj_value">
+                            <span t-field="lines_to_report.product_template_id.product_variant_ids[0].injection_mold_product_name"/>
+                        </div>
+                        <br/>
+                    </div>
+                    <div t-if="lines_to_report.product_template_id.product_variant_ids[0].injection_mold_quantity" class="col-6">
+                        <div class="portal_grey">Quantity</div>
+                        <div class="portal_obj_value">
+                            <span t-field="lines_to_report.product_template_id.product_variant_ids[0].injection_mold_quantity"/>
+                        </div>
+                        <br/>
+
+                    </div>
+                    <div t-if="lines_to_report.product_template_id.product_variant_ids[0].injection_mold_material or lines_to_report.product_template_id.product_variant_ids[0].injection_mold_material_other" class="col-6">
+                        <div class="portal_grey">Material</div>
+                        <div class="portal_obj_value">
+                            <t t-if="lines_to_report.product_template_id.product_variant_ids[0].injection_mold_material">
+                                <span t-field="lines_to_report.product_template_id.product_variant_ids[0].injection_mold_material"/>
+                            </t>
+                            <t t-else="">
+                                <span t-field="lines_to_report.product_template_id.product_variant_ids[0].injection_mold_material_other"/>
+                            </t>
+                        </div>
+                        <br/>
+
+                    </div>
+                    <div t-if="lines_to_report.product_template_id.product_variant_ids[0].injection_mold_colour or lines_to_report.product_template_id.product_variant_ids[0].injection_mold_colour_other" class="col-6">
+                        <div class="portal_grey">colour</div>
+                        <div class="portal_obj_value">
+                            <t t-if="lines_to_report.product_template_id.product_variant_ids[0].injection_mold_colour">
+                                <span t-field="lines_to_report.product_template_id.product_variant_ids[0].injection_mold_colour"/>
+                            </t>
+                            <t t-else="">
+                                <span t-field="lines_to_report.product_template_id.product_variant_ids[0].injection_mold_colour_other"/>
+                            </t>
+                        </div>
+                        <br/>
+
+                    </div>
+                    <div t-if="lines_to_report.product_template_id.product_variant_ids[0].injection_mold_surface_finish" class="col-6">
+                        <div class="portal_grey">Surface Finish</div>
+                        <div class="portal_obj_value">
+                            <span t-field="lines_to_report.product_template_id.product_variant_ids[0].injection_mold_surface_finish"/>
+                        </div>
+                        <br/>
+
+                    </div>
+                    <div t-if="lines_to_report.product_template_id.product_variant_ids[0].injection_mold_mold_requirements" class="col-6">
+                        <div class="portal_grey">Mold Requirements</div>
+                        <div class="portal_obj_value">
+                            <span t-field="lines_to_report.product_template_id.product_variant_ids[0].injection_mold_mold_requirements"/>
+                        </div>
+                        <br/>
+
+                    </div>
+                    <div t-if="lines_to_report.product_template_id.product_variant_ids[0].injection_mold_no_of_cavity" class="col-6">
+                        <div class="portal_grey">No. of cavity</div>
+                        <div class="portal_obj_value">
+                            <span t-field="lines_to_report.product_template_id.product_variant_ids[0].injection_mold_no_of_cavity"/>
+                        </div>
+                        <br/>
+
+                    </div>
+                    <div t-if="lines_to_report.product_template_id.product_variant_ids[0].injection_mold_runner" class="col-6">
+                        <div class="portal_grey">Runner</div>
+                        <div class="portal_obj_value">
+                            <span t-field="lines_to_report.product_template_id.product_variant_ids[0].injection_mold_runner"/>
+                        </div>
+                        <br/>
+
+                    </div>
+                    <div t-if="lines_to_report.product_template_id.product_variant_ids[0].injection_mold_size_of_the_mold" class="col-6">
+                        <div class="portal_grey">Size of the mold[LxWxH, in mm]</div>
+                        <div class="portal_obj_value">
+                            <span t-field="lines_to_report.product_template_id.product_variant_ids[0].injection_mold_size_of_the_mold"/>
+                        </div>
+                        <br/>
+                    </div>
+                    <div t-if="lines_to_report.product_template_id.product_variant_ids[0].injection_mold_size_of_the_article" class="col-6">
+                        <div class="portal_grey">Size of the article</div>
+                        <div class="portal_obj_value">
+                            <span t-field="lines_to_report.product_template_id.product_variant_ids[0].injection_mold_size_of_the_article"/>
+                        </div>
+                        <br/>
+
+                        <!--                <h3 id="details">Pricing</h3>-->
+                    </div>
+                    <div t-if="lines_to_report.product_template_id.product_variant_ids[0].injection_mold_weight_of_the_article" class="col-6">
+                        <div class="portal_grey">Weight of the article</div>
+                        <div class="portal_obj_value">
+                            <span t-field="lines_to_report.product_template_id.product_variant_ids[0].injection_mold_weight_of_the_article"/>
+                        </div>
+                        <br/>
+                    </div>
+                    <div t-if="lines_to_report.product_template_id.product_variant_ids[0].injection_mold_additional_notes" class="col-6">
+                        <div class="portal_grey">Additional notes</div>
+                        <div class="portal_obj_value">
+                            <span t-field="lines_to_report.product_template_id.product_variant_ids[0].injection_mold_additional_notes"/>
+                        </div>
+                        <br/>
+                    </div>
+
+                    <t t-foreach="service_file" t-as="file">
+                        <div class="col-6">
+                            <t t-set="file_name" t-att-value="file['name']"/>
+                            <div class="portal_grey">
+                                <span t-esc="file['title']"/>
+                            </div>
+                            <div class="portal_obj_value">
+                                <a t-att-href="file['download_url']" t-att-download="file['name']"
+                                   class="file-button">
+                                    <img src="/cr_web_portal/static/src/images/mech-custom/link.png"/>
+                                    <t t-out="file['name']"/>
+                                </a>
+                            </div>
+                        </div>
+                    </t>
+
+                </div>
+            </t>
+        </section>
+        <section id="extrainfo" name="ExtraInfo" t-if="sale_order.service not in ['enclosure_design','fdm_modeling','projection_printing','sheet_metal_fabrication','cnc_machining','injection_molding']">
+                <div class="row mt-2 d-flex" name="Extrainfo div">
+                    <t t-foreach="files" t-as="file">
+                        <t t-if="file['type'] == 'file'">
+                            <div class="col-6 mb-1 file_info">
+                                <t t-set="file_name" t-att-value="file['name']"/>
+                                <div class="portal_grey" style="font: 500 14px / 19.6px 'Poppins-semibold' !important; color: #787878 !important;">
+                                    <t t-esc="file['title']"/>
+                                </div>
+                                <a t-att-href="file['download_url']" t-att-download="file['name']" class="file-button"><img src="/cr_web_portal/static/src/images/mech-custom/link.png"/> <t t-out="file['name']"/></a>
+                            </div>
+                        </t>
+                        <t t-else="">
+                            <div class="col-12 mb-1 file_info">
+                                <div class="portal_grey" style="font: 500 14px / 19.6px 'Poppins-semibold' !important; color: #787878 !important;">
+                                    <t t-esc="file['title']"/>
+                                </div>
+                                <t t-esc="file['note']"/>
+                            </div>
+                        </t>
+                    </t>
+                    <t t-if="backendfiles">
+                    </t>
+                    <t t-foreach="backendfiles" t-as="bfile">
+                        <div class="col-6 mt-1 file_info">
+                            <t t-set="file_name" t-att-value="bfile['name']"/>
+                            <div class="portal_grey" style="font: 500 14px / 19.6px 'Poppins-semibold' !important; color: #787878 !important;">
+                                <t t-esc="bfile['title']"/>
+                            </div>
+                            <a t-att-href="bfile['download_url']" t-att-download="bfile['name']" class="file-button"><img src="/cr_web_portal/static/src/images/mech-custom/link.png"/> <t t-out="bfile['name']"/></a>
+                        </div>
+                    </t>
+                </div>
+            </section>
+        <section id="terms" class="mt-2">
+                <h5 class="portal_title_section">Terms &amp; Conditions</h5>
+                <span>
+                    <ol>
+                        <li>Pricing: The pricing stated is Ex-works, Ahmedabad, Gujarat, reflecting our competitive
+                            rates
+                            for the products and services offered.
+                        </li>
+                        <li>Freight: Please note that freight charges will be calculated separately based on actual
+                            transportation costs incurred.
+                        </li>
+                        <li>Validity: This quotation is valid for a period of 30 days from the date of issuance.
+                            After
+                            this
+                            period, pricing and availability are subject to review and confirmation.
+                        </li>
+                        <li>Taxes: All prices indicated are exclusive of taxes. <a>An additional 18% tax</a> will be
+                            applicable, as specified in the calculation, in accordance with the prevailing tax
+                            regulations.
+                        </li>
+                        <li>Payment Terms: To proceed with the order, we kindly request <a>full payment in
+                            advance.</a> This
+                            helps streamline the process and ensures prompt delivery of your requested products and
+                            services.
+                        </li>
+                        <li>Mode of Dispatch: For efficient and reliable transportation, we utilize a trusted
+                            network of
+                            standard courier services that align with industry best practices.
+                        </li>
+                        <li>Warranty: Our products are accompanied by a comprehensive one-year warranty. However, it
+                            is
+                            important to note that the warranty does not cover damages resulting from improper
+                            handling
+                            or
+                            usage beyond recommended guidelines.
+                        </li>
+                        <li>Delivery Time: The delivery time mentioned in this quotation pertains to the dispatch
+                            from
+                            our
+                            premises. Please be aware that the duration required for safe transportation is excluded
+                            and
+                            subject to potential changes based on logistical considerations.
+                        </li>
+                        <li>Delivery Schedule: Delivery will be scheduled based on the availability of stock at the
+                            time
+                            of
+                            order placement. Our team will promptly communicate any deviations or adjustments to the
+                            estimated delivery timeline.
+                        </li>
+                        <li>Delivery Time Deviations: While our dedicated team is committed to ensuring timely
+                            delivery
+                            of
+                            your orders, it is important to acknowledge that unforeseen circumstances and external
+                            factors
+                            beyond our direct control can occasionally impact logistics. Consequently, we cannot
+                            accept
+                            liability or claims for minor deviations from the stated delivery schedule.
+                        </li>
+                        <li>Order Placement: We kindly request that all orders be addressed exclusively to Mech
+                            Power
+                            Technology Private Limited. This ensures accurate processing and enables us to provide
+                            you
+                            with
+                            the utmost attention and service.
+                        </li>
+                        <li>We request you place all your orders addressing Mech Power Technology Private Limited.
+                            <br/>
+                        </li>
+                    </ol>
+
+                </span>
+            </section>
+        <section t-if="sale_order.payment_term_id and sale_order.payment_term_id.name"
+                 class="mt-2 portal_payment_section">
+            <h5 class="portal_title_section">Payment Terms</h5>
+            <div class="portal_payment_description">
+                <span t-field="sale_order.payment_term_id.name"/>
+            </div>
+        </section>
+    </template>
+
+
+    <!--    INHERIT SALE TEMPLATE BREADCRUMB-->
+    <template id="sale.portal_my_home_menu_sale" name="Portal layout : sales menu entries"
+              inherit_id="portal.portal_breadcrumbs" priority="10000">
+        <xpath expr="//ol[hasclass('o_portal_submenu')]" position="inside">
+            <li t-if="page_name == 'quote' or sale_order and sale_order.state in ('sent', 'cancel')"
+                t-attf-class="breadcrumb-item #{'active ' if not sale_order else ''}">
+                <a t-if="sale_order" t-attf-href="/my/quotes?{{ keep_query() }}">Quotations</a>
+                <t t-else="">Quotations</t>
+            </li>
+            <li t-if="page_name == 'inquiry_quote' or sale_order and sale_order.state in ('inquiry', 'engineering_review', 'prepared_for_pricing', 'data_feedback')"
+                t-attf-class="breadcrumb-item #{'active ' if not sale_order else ''}">
+                <a t-if="sale_order" t-attf-href="/my/inquiry/quotes?{{ keep_query() }}">Inquiries</a>
+                <t t-else="">Inquiries</t>
+            </li>
+            <li t-if="page_name == 'order' or sale_order and sale_order.state not in ('inquiry','engineering_review', 'data_feedback', 'prepared_for_pricing' ,'sent', 'cancel')"
+                t-attf-class="breadcrumb-item #{'active ' if not sale_order else ''}">
+                <a t-if="sale_order" t-attf-href="/my/orders?{{ keep_query() }}">Sales Orders</a>
+                <t t-else="">Sales Orders</t>
+            </li>
+            <li t-if="sale_order" class="breadcrumb-item active">
+                <span t-field="sale_order.type_name"
+                      t-if="sale_order.state not in ('inquiry','engineering_review', 'data_feedback', 'prepared_for_pricing')"/>
+                <t t-out="sale_order.name"/>
+            </li>
+             <li t-if="page_name == 'document_history'" t-attf-class="breadcrumb-item active">
+                Document History
+            </li>
+        </xpath>
+        <xpath expr="//a[@href='/my/home']" position="replace">
+            <a href="/my/home" aria-label="Dashboard" title="Dashboard">Dashboard</a>
+        </xpath>
+        <xpath expr="//li[1]" position="after">
+            <img src="/cr_web_portal/static/src/images/new_design_resource/black-arrow-right.svg" width="20" height="20" style="margin: 0px 10px;"/>
+        </xpath>
+    </template>
+</odoo>

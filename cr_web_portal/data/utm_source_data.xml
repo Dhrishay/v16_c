@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="utm.source" id="utm_source_by_customer">
+        <field name="name">By Customer</field>
+    </record>
+    <record model="utm.source" id="utm_source_by_mech_power">
+        <field name="name">By Mech Power</field>
+    </record>
+</odoo>
+

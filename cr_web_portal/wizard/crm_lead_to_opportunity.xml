@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="lead2opportunity_form_inherit" model="ir.ui.view">
+        <field name="name">lead2opportunity_form</field>
+        <field name="model">crm.lead2opportunity.partner</field>
+        <field name="inherit_id" ref="crm.view_crm_lead2opportunity_partner"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_id']" position="after">
+                <field name="email" attrs="{'required': [('action', '=', 'create')], 'invisible':[('action','!=','create')]}" widget="email"/>
+                <field name="partner_company_type" attrs="{'required': [('action', '=', 'create')], 'invisible':[('action','!=','create')]}"/>
+                <field name="partner_industry_main_category" widget="many2one" attrs="{'required': [('action', '=', 'create')], 'invisible':[('action','!=','create')]}"/>
+                <field name="partner_industry_sub_category" widget="many2one" attrs="{'required': [('action', '=', 'create')], 'invisible':[('action','!=','create')]}" domain="[('industry_segment.main_category', '=', partner_industry_main_category)]"/>
+                <field name="partner_lead_source" attrs="{'required': [('action', '=', 'create')], 'invisible':[('action','!=','create')]}"/>
+            </xpath>
+            <field name="action" nolabel="1" widget="radio"/>
+            <xpath expr="//field[@name='action']" position="replace">
+                <field name="action" invisible="1"/>
+                <field name="user_action" nolabel="1" widget="radio"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

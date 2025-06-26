@@ -1,0 +1,799 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="mechpower_privacy_policy" name="Privacy Policy">
+        <t t-call="web.frontend_layout">
+            <div class="oe_structure oe_empty" id="tc-header">
+                <section class="s_cover parallax bg-black-50 s_parallax_no_overflow_hidden o_colored_level"
+                         data-scroll-background-ratio="1" data-snippet="s_cover" data-name="Cover"
+                         style="background-image: none;">
+                    <span class="s_parallax_bg oe_img_bg o_bg_img_center"
+                          style="background-image: url(&quot;/cr_web_portal/static/src/images/privacy_policy/privacy_policy.webp&quot;); z-index: -1;"/>
+                    
+                    <div class="container s_allow_columns container-fluid">
+                        <div class="col o_colored_level" style="padding-left: 0px; padding-right: 0px;">
+                            <div class="header-box-custom">
+                                <h5 class="sub-heading-custom mp-caption-custom" style="font-size: 14px;">POLICY
+                                </h5>
+                                <h2 class="main-heading-custom desktop-view"
+                                    style="color: white; font-size: 54px; text-wrap: nowrap;">
+                                    <span class="mp_underline_custom">Privacy Policy</span>
+                                </h2>
+                                <h2 class="main-heading-custom mobile_view d-none"
+                                    style="color: white; text-wrap: nowrap;">
+                                    <span class="mp_underline_custom">Privacy Policy</span>
+                                </h2>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            
+            
+            <div class="oe_structure oe_empty container">
+                <div class="content-container">
+                    <!-- Sidebar with Table of Contents -->
+                    <aside class="table-of-contents desktop-view">
+                        <h3>Table of Contents</h3>
+                        <hr/>
+                        <ul>
+                            <li>
+                                <a href="#section-intro" class="toc-link active">Introduction</a>
+                            </li>
+                            <li>
+                                <a href="#info-we-collect" class="toc-link">Information We Collect</a>
+                            </li>
+                            <li>
+                                <a href="#use-your-info" class="toc-link">How We Use Your Information</a>
+                            </li>
+                            <li>
+                                <a href="#sharing-info" class="toc-link">Sharing Your Information
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#section-security" class="toc-link">Security of Your Information</a>
+                            </li>
+                            <li>
+                                <a href="#your-rights" class="toc-link">Your Rights</a>
+                            </li>
+                            <li>
+                                <a href="#cookie-tracking" class="toc-link">Cookies and Tracking</a>
+                            </li>
+                            <li>
+                                <a href="#privacy-policy" class="toc-link">Changes to Our Privacy Policy</a>
+                            </li>
+                        </ul>
+                    </aside>
+                    
+                    <!-- Main Content -->
+                    <div class="content">
+                        <p>We as <strong>Mechpower</strong> commitment to protecting customer data, detailing how personal
+                            information
+                            is collected, used, and safeguarded.
+                        </p>
+                        <section id="section-intro">
+                            <h2>1. Introduction</h2>
+                            <p>
+                                <strong>MechPower</strong>
+                                values the privacy of our customers and is committed to protecting your
+                                personal information. This Privacy Policy outlines how we collect, use, share, and
+                                protect your information when you interact with our products, services, and website.
+                            </p>
+                        </section>
+                        
+                        <section id="info-we-collect">
+                            <h2>2. Information We Collect</h2>
+                            <p>
+                                We may collect the following types of information:
+                                
+                                <ol>
+                                    <li>
+                                        <strong>Personal Information:</strong>
+                                        Name, contact details (email, phone number), billing and shipping addresses, and
+                                        payment information.
+                                    </li>
+                                    <li>
+                                        <strong>Order and Purchase Information:</strong>
+                                        Details related to the products you purchase, order history, and preferences.
+                                    </li>
+                                    <li>
+                                        <strong>Website and Usage Data:</strong>
+                                        Information collected automatically when you visit our website, including IP
+                                        address, browser type, pages visited, and interactions.
+                                    </li>
+                                </ol>
+                            </p>
+                        </section>
+                        
+                        <section id="use-your-info">
+                            <h2>3. How We Use Your Information</h2>
+                            <p>We use your personal information for purposes such as:
+                                <ol>
+                                    <li>Processing and fulfilling orders.</li>
+                                    <li>Communicating with you regarding orders, promotions, and customer support.</li>
+                                    <li>Improving our products, services, and website functionality.</li>
+                                    <li>Conducting analytics to understand customer preferences and trends.</li>
+                                </ol>
+                            </p>
+                        </section>
+                        
+                        <section id="sharing-info">
+                            <h2>4. Sharing Your Information</h2>
+                            <p>We may share your information with:
+                                <ol>
+                                    <li>
+                                        <strong>Service Providers:</strong>
+                                        Third-party vendors that assist in order processing, shipping, payment
+                                        processing, and marketing activities.
+                                    </li>
+                                    <li>
+                                        <strong>Compliance with Law:</strong>
+                                        If required by law or legal processes to protect our rights, your safety, or
+                                        others.
+                                    </li>
+                                    <li>
+                                        <strong>Service Providers:</strong>
+                                        In case of mergers, acquisitions, or other business transactions, your
+                                        information may be transferred to relevant parties.
+                                    </li>
+                                </ol>
+                            </p>
+                        </section>
+                        
+                        <section id="section-security">
+                            <h2>5. Security of Your Information</h2>
+                            <p>We implement reasonable security measures to protect your information against
+                                unauthorized access, alteration, disclosure, or destruction. Despite these measures, no
+                                data transmission over the internet is entirely secure, and we cannot guarantee absolute
+                                security.
+                            </p>
+                        </section>
+                        
+                        <section id="your-rights">
+                            <h2>6. Your Rights</h2>
+                            <p>
+                                Depending on your location, you may have the right to access, correct, or delete your
+                                personal information. To exercise these rights, please contact us through the contact
+                                information provided below.
+                            </p>
+                        </section>
+                        
+                        <section id="cookie-tracking">
+                            <h2>7. Cookies and Tracking</h2>
+                            <p>
+                                We use cookies and similar technologies to improve your experience, understand usage
+                                patterns, and provide personalized content. You can manage your cookie preferences in
+                                your browser settings.
+                            </p>
+                        </section>
+                        
+                        <section id="privacy-policy">
+                            <h2>8. Changes to Our Privacy Policy</h2>
+                            <p>
+                                We may update this Privacy Policy periodically. Any changes will be posted on this page
+                                with an updated effective date.
+                            </p>
+                        </section>
+                    
+                    </div>
+                </div>
+            </div>
+
+             <section id="contact-us" class="contact-section">
+                <div class="contactus1"></div>
+                <div class="contact-info text-center" style="margin: 5%;">
+                    <span class="title float-none" style="color: #F4FBF7;">CONTACT US</span><br/>
+                    <h2 class="mt-20" style="color: #F9F9F9; font-size: 30px;">Step into the future with advanced</h2>
+                    <h2 style="color: #F9F9F9; font-size: 30px;">enclosure solution</h2>
+                    <a href="/contactus" class="btn mt-30">
+                        Contact Us
+                    </a>
+                </div>
+                <div class="contactus2"></div>
+            </section>
+        </t>
+    </template>
+    
+    
+    <template id="mechpower_term_and_conditions" name="Terms &amp; Conditions">
+        <t t-call="web.frontend_layout">
+            <div class="oe_structure oe_empty" id="tc-header">
+                <section class="s_cover parallax bg-black-50 s_parallax_no_overflow_hidden o_colored_level"
+                         data-scroll-background-ratio="1" data-snippet="s_cover" data-name="Cover"
+                         style="background-image: none;">
+                    <span class="s_parallax_bg oe_img_bg o_bg_img_center"
+                          style="background-image: url(&quot;/cr_web_portal/static/src/images/privacy_policy/terms-and-condition_banner.webp&quot;); z-index: -1;"/>
+                    
+                    <div class="container s_allow_columns container-fluid">
+                        <div class="col o_colored_level">
+                            <div class="header-box-custom">
+                                <h5 class="sub-heading-custom mp-caption-custom" style="font-size: 14px;">CONDITIONS
+                                </h5>
+                                <h2 class="main-heading-custom desktop-view"
+                                    style="color: white; font-size: 54px; text-wrap: nowrap;">
+                                    <span class="mp_underline_custom">Terms &amp; Con</span>ditions
+                                </h2>
+                                <h2 class="main-heading-custom mobile_view d-none"
+                                    style="color: white; text-wrap: nowrap;">
+                                    Te<span class="mp_underline_custom">rms &amp; Conditio</span>n
+                                </h2>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            
+            
+            <div class="oe_structure oe_empty container">
+                <div class="content-container">
+                    <!-- Sidebar with Table of Contents -->
+                    <aside class="table-of-contents desktop-view">
+                        <h3>Table of Contents</h3>
+                        <hr/>
+                        <ul>
+                            <li>
+                                <a href="#section-introduction" class="toc-link active">Introduction</a>
+                            </li>
+                            <li>
+                                <a href="#section-products" class="toc-link">Products and Services</a>
+                            </li>
+                            <li>
+                                <a href="#section-ordering" class="toc-link">Ordering and Payment</a>
+                            </li>
+                            <li>
+                                <a href="#section-shipping" class="toc-link">Shipping and Delivery</a>
+                            </li>
+                            <li>
+                                <a href="#section-returns" class="toc-link">Returns and Refunds</a>
+                            </li>
+                            <li>
+                                <a href="#section-warranty" class="toc-link">Warranty and Liability</a>
+                            </li>
+                            <li>
+                                <a href="#section-intellectual" class="toc-link">Intellectual Property</a>
+                            </li>
+                            <li>
+                                <a href="#section-user-conduct" class="toc-link">User Conduct</a>
+                            </li>
+                            <li>
+                                <a href="#section-privacy" class="toc-link">Privacy</a>
+                            </li>
+                            <li>
+                                <a href="#section-terms" class="toc-link">Changes to Terms and Conditions</a>
+                            </li>
+                            <li>
+                                <a href="#section-law" class="toc-link">Governing Law</a>
+                            </li>
+                        </ul>
+                    </aside>
+                    
+                    <!-- Main Content -->
+                    <div class="content">
+                        <section id="section-introduction">
+                            <h2>1. Introduction</h2>
+                            <p>Welcome to <strong>MechPower!</strong> By accessing our website, purchasing our products,
+                                or
+                                using
+                                our
+                                services, you agree to comply with and be bound by these Terms and Conditions. Please
+                                read these terms carefully. If you do not agree with any part, please do not use our
+                                services or purchase our products.
+                            </p>
+                        </section>
+                        
+                        <section id="section-products">
+                            <h2>2. Products and Services</h2>
+                            <ol>
+                                <li>
+                                    <strong>Product Descriptions:</strong>
+                                    We strive to provide accurate descriptions and images of our products. However,
+                                    actual product details may vary slightly due to manufacturing variations.
+                                </li>
+                                <li>
+                                    <strong>Pricing:</strong>
+                                    All prices are listed in [currency] and are subject to change without prior notice.
+                                    Sales, discounts, and promotions may be applied at our discretion.
+                                </li>
+                            </ol>
+                        </section>
+                        
+                        <section id="section-ordering">
+                            <h2>3. Ordering and Payment</h2>
+                            <ol>
+                                <li>
+                                    <strong>Order Acceptance:</strong>
+                                    Orders are considered accepted once payment has been processed and we have sent an
+                                    order confirmation email. We reserve the right to cancel or refuse any order due to
+                                    suspected fraud, pricing errors, or stock limitations.
+                                </li>
+                                <li>
+                                    <strong>Payment:</strong>
+                                    We accept [list accepted payment methods, e.g., credit card, debit card, bank
+                                    transfers]. Payment must be made in full before we ship the products.
+                                </li>
+                                <li>
+                                    <strong>Taxes:</strong>
+                                    All applicable taxes, fees, and duties (based on shipping destination) are the
+                                    buyer's responsibility and are calculated at checkout.
+                                </li>
+                            </ol>
+                        </section>
+                        
+                        <section id="section-shipping">
+                            <h2>4. Shipping and Delivery</h2>
+                            <ol>
+                                <li>
+                                    <strong>Shipping Policy:</strong>
+                                    Orders will be shipped within [specify processing time, e.g., 2-5 business days]
+                                    after payment is received. Delivery times may vary based on location, shipping
+                                    method, and availability.
+                                </li>
+                                <li>
+                                    <strong>Shipping Fees:</strong>
+                                    Shipping fees are calculated based on order size, weight, and delivery location and
+                                    will be added at checkout.
+                                </li>
+                                <li>
+                                    <strong>Risk of Loss:</strong>
+                                    The risk of loss and title for products passes to you upon our delivery to the
+                                    carrier.
+                                </li>
+                            </ol>
+                        </section>
+                        
+                        <section id="section-returns">
+                            <h2>5. Returns and Refunds</h2>
+                            <ol>
+                                <li>
+                                    <strong>Return Policy:</strong>
+                                    We accept returns within [specify return period, e.g., 30 days] of delivery for
+                                    unused and undamaged products in their original packaging. Please contact us to
+                                    initiate a return.
+                                </li>
+                                <li>
+                                    <strong>Refunds:</strong>
+                                    Refunds are issued to the original payment method upon receiving and inspecting the
+                                    returned items. Shipping fees are non-refundable, and restocking fees may apply.
+                                </li>
+                                <li>
+                                    <strong>Exchange Policy:</strong>
+                                    Exchanges are subject to product availability. If the desired product is
+                                    unavailable, we will issue a refund as per the conditions above.
+                                </li>
+                            </ol>
+                        </section>
+                        
+                        <section id="section-warranty">
+                            <h2>6. Warranty and Liability</h2>
+                            <ol>
+                                <li>
+                                    <strong>Product Warranty:</strong>
+                                    Our products are warranted against manufacturing defects for [specify warranty
+                                    period, e.g., 1 year] from the date of purchase. Please refer to the warranty card
+                                    or contact us for warranty claims.
+                                </li>
+                                <li>
+                                    <strong>Limitation of Liability:</strong>
+                                    To the fullest extent permitted by law, [Company Name] shall not be liable for any
+                                    indirect, incidental, or consequential damages arising from the use of our products
+                                    or services.
+                                </li>
+                            </ol>
+                        </section>
+                        
+                        <section id="section-intellectual">
+                            <h2>7. Intellectual Property</h2>
+                            <p>All content on our website, including text, graphics, logos, and images, is the property
+                                of [Company Name] and is protected by copyright, trademark, and other intellectual
+                                property laws. You may not reproduce, distribute, or use any content without our written
+                                permission.
+                            </p>
+                        </section>
+                        
+                        <section id="section-user-conduct">
+                            <h2>8. User Conduct</h2>
+                            <p>
+                                By using our website and services, you agree not to:
+                                <ol>
+                                    <li>Use our services or products for unlawful purposes.</li>
+                                    <li>Misrepresent your identity or impersonate others.</li>
+                                    <li>Interfere with or disrupt our website, servers, or networks.</li>
+                                </ol>
+                            </p>
+                        </section>
+                        
+                        <section id="section-privacy">
+                            <h2>9. Privacy</h2>
+                            <p>Please refer to our Privacy Policy to understand how we collect, use, and protect your
+                                personal information.
+                            </p>
+                        </section>
+                        
+                        <section id="section-terms">
+                            <h2>10. Changes to Terms and Conditions</h2>
+                            <p>We reserve the right to modify these Terms and Conditions at any time. Any changes will
+                                be posted on this page, and the date of the latest revision will be updated. Your
+                                continued use of our website or services following such changes constitutes your
+                                acceptance of the revised terms.
+                            </p>
+                        </section>
+                        
+                        <section id="section-law">
+                            <h2>11. Governing Law</h2>
+                            <p>These Terms and Conditions shall be governed by and construed in accordance with the laws
+                                of [Country/State/Province], without regard to its conflict of law provisions.
+                            </p>
+                        </section>
+                    </div>
+                </div>
+            </div>
+
+             <section id="contact-us" class="contact-section">
+                <div class="contactus1"></div>
+                <div class="contact-info text-center" style="margin: 5%;">
+                    <span class="title float-none" style="color: #F4FBF7;">CONTACT US</span><br/>
+                    <h2 class="mt-20" style="color: #F9F9F9; font-size: 30px;">Step into the future with advanced</h2>
+                    <h2 style="color: #F9F9F9; font-size: 30px;">enclosure solution</h2>
+                    <a href="/contactus" class="btn mt-30">
+                        Contact Us
+                    </a>
+                </div>
+                <div class="contactus2"></div>
+            </section>
+        </t>
+    </template>
+    
+    
+    <template id="mechpower_shipping_policy" name="Shipping Policy">
+        <t t-call="web.frontend_layout">
+            <div class="oe_structure oe_empty" id="tc-header">
+                <section class="s_cover parallax bg-black-50 s_parallax_no_overflow_hidden o_colored_level"
+                         data-scroll-background-ratio="1" data-snippet="s_cover" data-name="Cover"
+                         style="background-image: none;">
+                    <span class="s_parallax_bg oe_img_bg o_bg_img_center"
+                          style="background-image: url(&quot;/cr_web_portal/static/src/images/privacy_policy/shipping_policy.webp&quot;); z-index: -1;"/>
+                    
+                    <div class="container s_allow_columns container-fluid">
+                        <div class="col o_colored_level">
+                            <div class="header-box-custom">
+                                <h5 class="sub-heading-custom mp-caption-custom" style="font-size: 14px;">POLICY
+                                </h5>
+                                <h2 class="main-heading-custom desktop-view"
+                                    style="color: white; font-size: 54px; text-wrap: nowrap;">
+                                    <span class="mp_underline_custom">Shipping Poli</span>cy
+                                </h2>
+                                <h2 class="main-heading-custom mobile_view d-none"
+                                    style="color: white; text-wrap: nowrap;">
+                                    <span class="mp_underline_custom">Shipping</span>
+                                    Policy
+                                </h2>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            
+            
+            <div class="oe_structure oe_empty container">
+                <div class="content-container">
+                    <!-- Sidebar with Table of Contents -->
+                    <aside class="table-of-contents desktop-view">
+                        <h3>Table of Contents</h3>
+                        <hr/>
+                        <ul>
+                            <li>
+                                <a href="#section-processing" class="toc-link active">Processing Time</a>
+                            </li>
+                            <li>
+                                <a href="#section-shipping-rates" class="toc-link">Shipping Rates and Methods</a>
+                            </li>
+                            <li>
+                                <a href="#section-delivery" class="toc-link">Delivery Times</a>
+                            </li>
+                            <li>
+                                <a href="#section-shipping-confirmation" class="toc-link">Shipping Confirmation and
+                                    Order Tracking
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#section-shipping" class="toc-link">Shipping Restrictions</a>
+                            </li>
+                            <li>
+                                <a href="#section-packages" class="toc-link">Lost, Stolen, or Damaged Packages</a>
+                            </li>
+                            <li>
+                                <a href="#section-order" class="toc-link">Order Changes and Cancellations</a>
+                            </li>
+                            <li>
+                                <a href="#section-undeliverable-packages" class="toc-link">Undeliverable Packages</a>
+                            </li>
+                        </ul>
+                    </aside>
+                    
+                    <!-- Main Content -->
+                    <div class="content">
+                        <section id="section-processing">
+                            <h2>1. Processing Time</h2>
+                            <p>Orders are processed and prepared for shipping within [specify time, e.g., 1-3 business
+                                days] from the date of purchase. Orders placed on weekends or holidays will be processed
+                                on the following business day.
+                            </p>
+                        </section>
+                        
+                        <section id="section-shipping-rates">
+                            <h2>2. Shipping Rates and Methods</h2>
+                            <ol>
+                                <li>
+                                    <strong>Domestic Shipping:</strong>
+                                    We offer various shipping options for domestic orders, including [list standard and
+                                    expedited shipping options, e.g., Standard Shipping, Expedited Shipping]. Shipping
+                                    costs are calculated at checkout based on the delivery location, shipping method
+                                    selected, and order size.
+                                </li>
+                                <li>
+                                    <strong>International Shipping:</strong>
+                                    International shipping rates are calculated based on destination and package weight.
+                                    Please note that international orders may be subject to import duties, taxes, and
+                                    fees, which are the responsibility of the buyer and will be due upon delivery.
+                                </li>
+                            </ol>
+                        </section>
+                        
+                        <section id="section-delivery">
+                            <h2>3. Delivery Times</h2>
+                            <p>Estimated delivery times vary depending on the shipping method and location:
+                                <ol>
+                                    <li>
+                                        <strong>Standard Shipping</strong>
+                                        Typically [e.g., 5-7 business days].
+                                    </li>
+                                    <li>
+                                        <strong>Expedited Shipping:</strong>
+                                        Typically [e.g., 2-3 business days].
+                                    </li>
+                                    <li>
+                                        <strong>International Shipping:</strong>
+                                        Typically [e.g., 10-15 business days], but may vary depending on customs
+                                        processing times.
+                                    </li>
+                                </ol>
+                            </p>
+                            <p>Please note that these are estimated times, and actual delivery may vary due to
+                                factors such as carrier delays, inclement weather, or customs clearance for
+                                international
+                                orders.
+                            </p>
+                        </section>
+                        
+                        <section id="section-shipping-confirmation">
+                            <h2>4. Shipping Confirmation and Order Tracking</h2>
+                            <p>Once your order has shipped, you will receive a shipping confirmation email with tracking
+                                information. This allows you to track your order status and estimated delivery date. If
+                                you do not receive a confirmation email, please check your spam folder or contact us at
+                                [Customer Service Email].
+                            </p>
+                        </section>
+                        
+                        <section id="section-shipping">
+                            <h2>5. Shipping Restrictions</h2>
+                            <p>We currently do not ship to [list any restricted locations, e.g., PO Boxes, certain
+                                regions, or specific countries]. For assistance with a specific location or alternative
+                                arrangements, please contact our support team at [Customer Service Email].
+                            </p>
+                        </section>
+                        
+                        <section id="section-packages">
+                            <h2>6. Lost, Stolen, or Damaged Packages</h2>
+                            <ol>
+                                <li>
+                                    <strong>Lost Packages:</strong>
+                                    If your package is lost in transit, please contact us, and we will work with the
+                                    carrier to locate your package.
+                                </li>
+                                <li>
+                                    <strong>Stolen Packages:</strong>
+                                    Once a package is marked as delivered, [Company Name] is not responsible for stolen
+                                    items. We recommend checking with neighbors or contacting the carrier if you cannot
+                                    locate your package.
+                                </li>
+                                <li>
+                                    <strong>Damaged Packages:</strong>
+                                    If your package arrives damaged, please notify us within [e.g., 48 hours] of
+                                    delivery with photos of the damage. We will assess the situation and determine a
+                                    solution, such as a replacement or refund.
+                                </li>
+                            </ol>
+                        </section>
+                        
+                        <section id="section-order">
+                            <h2>7. Order Changes and Cancellations</h2>
+                            <p>If you need to modify or cancel your order, please contact us immediately at [Customer
+                                Service Email]. We will do our best to accommodate your request, but once an order has
+                                shipped, we cannot make any changes.
+                            </p>
+                        </section>
+                        
+                        <section id="section-undeliverable-packages">
+                            <h2>8. Undeliverable Packages</h2>
+                            <p>
+                                If a package is returned to us as undeliverable (due to incorrect address, refusal,
+                                etc.), we will contact you to arrange reshipment. Additional shipping fees may apply.
+                            </p>
+                        </section>
+                    </div>
+                </div>
+            </div>
+
+             <section id="contact-us" class="contact-section">
+                <div class="contactus1"></div>
+                <div class="contact-info text-center" style="margin: 5%;">
+                    <span class="title float-none" style="color: #F4FBF7;">CONTACT US</span><br/>
+                    <h2 class="mt-20" style="color: #F9F9F9; font-size: 30px;">Step into the future with advanced</h2>
+                    <h2 style="color: #F9F9F9; font-size: 30px;">enclosure solution</h2>
+                    <a href="/contactus" class="btn mt-30">
+                        Contact Us
+                    </a>
+                </div>
+                <div class="contactus2"></div>
+            </section>
+        </t>
+    </template>
+    
+    
+    <template id="mechpower_cancellation_policy" name="Cancellation Policy">
+        <t t-call="web.frontend_layout">
+            <div class="oe_structure oe_empty" id="tc-header">
+                <section class="s_cover parallax bg-black-50 s_parallax_no_overflow_hidden o_colored_level"
+                         data-scroll-background-ratio="1" data-snippet="s_cover" data-name="Cover"
+                         style="background-image: none;">
+                    <span class="s_parallax_bg oe_img_bg o_bg_img_center"
+                          style="background-image: url(&quot;/cr_web_portal/static/src/images/privacy_policy/cancellation_policy.webp&quot;); z-index: -1;"/>
+                    
+                    <div class="container s_allow_columns container-fluid">
+                        <div class="col o_colored_level" style="padding-left: 0px; padding-right: 0px;">
+                            <div class="header-box-custom">
+                                <h5 class="sub-heading-custom mp-caption-custom" style="font-size: 14px;">POLICY
+                                </h5>
+                                <h2 class="main-heading-custom desktop-view"
+                                    style="color: white; font-size: 54px; text-wrap: nowrap;">
+                                    <span class="mp_underline_custom">Cancellation</span>
+                                    Policy
+                                </h2>
+                                <h2 class="main-heading-custom mobile_view d-none"
+                                    style="color: white; text-wrap: nowrap;">
+                                    <span class="mp_underline_custom">Cancellation</span>
+                                    Policy
+                                </h2>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            
+            
+            <div class="oe_structure oe_empty container">
+                <div class="content-container">
+                    <!-- Sidebar with Table of Contents -->
+                    <aside class="table-of-contents desktop-view">
+                        <h3>Table of Contents</h3>
+                        <hr/>
+                        <ul>
+                            <li>
+                                <a href="#order-cancellation" class="toc-link active">Order Cancellations</a>
+                            </li>
+                            <li>
+                                <a href="#special-orders" class="toc-link">Custom or Special Orders</a>
+                            </li>
+                            <li>
+                                <a href="#cancel-orders" class="toc-link">Refunds for Canceled Orders</a>
+                            </li>
+                            <li>
+                                <a href="#cancellation-fees" class="toc-link">Cancellation Fees
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#how-to-cancel" class="toc-link">How to Cancel an Order</a>
+                            </li>
+                            <li>
+                                <a href="#cancellation-policy" class="toc-link">Changes to the Cancellation Policy</a>
+                            </li>
+                        </ul>
+                    </aside>
+                    
+                    <!-- Main Content -->
+                    <div class="content">
+                        <section id="order-cancellation">
+                            <h2>1. Order Cancellations</h2>
+                            <p>We understand that sometimes plans change, and you may need to cancel your order. Our
+                                cancellation policy is as follows:
+                            </p>
+                            <ol>
+                                <li>
+                                    <strong>Before Processing:</strong>
+                                    If your order has not yet been processed or shipped, you may cancel it by contacting
+                                    us at [Customer Service Email] or calling [Customer Service Phone Number]. There are
+                                    no cancellation fees for orders canceled before processing.
+                                </li>
+                                <li>
+                                    <strong>After Processing:</strong>
+                                    Once an order has been processed or shipped, it cannot be canceled. However, you may
+                                    be eligible to return the items under our
+                                    <strong>Return Policy.</strong>
+                                </li>
+                            </ol>
+                        </section>
+                        
+                        <section id="special-orders">
+                            <h2>2. Custom or Special Orders</h2>
+                            <p>
+                                For custom-made or personalized items, cancellations must be requested within [e.g., 24
+                                hours] of placing the order. After this period, production will begin, and we may not be
+                                able to cancel or modify the order. Custom or special orders may be non-refundable;
+                                please refer to our Return Policy or contact us for more details.
+                            </p>
+                        </section>
+                        
+                        <section id="cancel-orders">
+                            <h2>3. Refunds for Canceled Orders</h2>
+                            <p>If your order is successfully canceled before processing, any payments made will be
+                                refunded to the original payment method within [e.g., 5-7 business days]. Please note
+                                that depending on your financial institution, it may take additional time for the refund
+                                to reflect in your account.
+                            
+                            </p>
+                        </section>
+                        
+                        <section id="cancellation-fees">
+                            <h2>4. Cancellation Fees</h2>
+                            <p>There are no fees for standard order cancellations made before processing. However,
+                                custom or special orders that are canceled after production has begun may be subject to
+                                a restocking or cancellation fee to cover material and production costs. We will notify
+                                you of any applicable fees at the time of cancellation.
+                            </p>
+                        </section>
+                        
+                        <section id="how-to-cancel">
+                            <h2>5. How to Cancel an Order</h2>
+                            <p>To cancel an order, please contact us promptly with your order number and any relevant
+                                details:
+                                <ol>
+                                    <li>
+                                        <strong>Email:</strong>
+                                        [Customer Service Email]
+                                    </li>
+                                    <li>
+                                        <strong>Phone:</strong>
+                                        [Customer Service Phone Number]
+                                    </li>
+                                </ol>
+                            </p>
+                        </section>
+                        
+                        <section id="cancellation-policy">
+                            <h2>6. Changes to the Cancellation Policy</h2>
+                            <p>
+                                <strong>MechPower</strong>
+                                reserves the right to update or change this Cancellation Policy at any time.
+                                Any changes will be posted on our website and will be effective immediately upon
+                                posting.
+                            </p>
+                        </section>
+                    
+                    </div>
+                </div>
+            </div>
+
+             <section id="contact-us" class="contact-section">
+                <div class="contactus1"></div>
+                <div class="contact-info text-center" style="margin: 5%;">
+                    <span class="title float-none" style="color: #F4FBF7;">CONTACT US</span><br/>
+                    <h2 class="mt-20" style="color: #F9F9F9; font-size: 30px;">Step into the future with advanced</h2>
+                    <h2 style="color: #F9F9F9; font-size: 30px;">enclosure solution</h2>
+                    <a href="/contactus" class="btn mt-30">
+                        Contact Us
+                    </a>
+                </div>
+                <div class="contactus2"></div>
+            </section>
+        </t>
+    </template>
+</odoo>

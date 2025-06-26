@@ -1,0 +1,406 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="mechpower_blog_record_cover" name="Mechpower Blog Record Cover">
+        <t t-set="_cp" t-value="_cp or json.loads(_record.cover_properties)"/>
+        <t t-set="_name" t-value="_name or _record._name"/>
+        <t t-set="_id" t-value="_id or _record.id"/>
+        <t t-if="_record.blog_box_image">
+            <t t-set="_bg" t-value="_record._get_box_image(_id)"/>
+        </t>
+        <t t-else="">
+            <t t-set="_bg" t-value="_bg or _record._get_background(height=_resize_height, width=_resize_width)"/>
+        </t>
+        <t t-set="default_cover_name">Cover</t>
+        <div t-att-data-name="display_opt_name or default_cover_name"
+             t-att-style="_cp.get('background_color_style')"
+             t-att-data-use_size="use_size"
+             t-att-data-use_filters="use_filters"
+             t-att-data-use_text_align="use_text_align"
+             t-att-data-res-model="_name"
+             t-att-data-res-id="_id"
+             t-attf-class="o_record_cover_container d-flex flex-column h-100 o_colored_level o_cc #{_cp.get('background_color_class')} #{use_size and _cp.get('resize_class')} #{use_text_align and _cp.get('text_align_class')} #{additionnal_classes}">
+            <div t-attf-class="o_record_cover_component o_record_cover_image #{snippet_autofocus and 'o_we_snippet_autofocus'}" t-attf-style="background-image: #{_bg};"/>
+            <div t-if="use_filters" t-attf-class="o_record_cover_component o_record_cover_filter oe_black" t-attf-style="opacity: #{_cp.get('opacity', 0.0)};"/>
+            <t t-out="0"/>
+        </div>
+    </template>
+
+    <template id="blog_post_short_custom" inherit_id="website_blog.blog_post_short" name="Customise Blog Topbar Page">
+        <xpath expr="//div[@id='o_wblog_blog_top']" position="before">
+            <div class="oe_structure" id="oe_structure_blog_all_header" >
+                <section class="s_cover parallax bg-black-50 pt160 s_parallax_no_overflow_hidden o_colored_level pb192" data-scroll-background-ratio="1" style="background-image: none;">
+                    <span class="s_parallax_bg oe_img_bg main_blogs_header_bg"  data-resize-width="1920"></span>
+                    <div class="o_we_bg_filter bg-black-50"></div>
+                    <div class="s_allow_columns container-fluid">
+                        <div class="row">
+                            <div class="col col-lg-12">
+                                <p class="text-center blogs_sub_header">Blog</p>
+                                <h1 class="text-center blogs_main_header o_default_snippet_text">
+                                    <span class="blogs_main_header_underline">Our Blogs</span>
+                                </h1>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </xpath>
+        <xpath expr="//div[@id='o_wblog_blog_top']" position="attributes">
+            <attribute name="class">d-none</attribute>
+        </xpath>
+        <xpath expr="//t[@t-call='website.pager']" position="replace"></xpath>
+    </template>
+    <template id="post_teaser_custom" inherit_id="website_blog.post_teaser" name="Customise Post Teaser">
+        <xpath expr="//div[hasclass('o_wblog_post_short_tag_section')]" position="attributes">
+            <attribute name="class">d-none</attribute>
+        </xpath>
+    </template>
+
+    <!--   hide blog post author -->
+    <template id="post_info_custom" inherit_id="website_blog.post_info" name="Customise Post Info">
+        <xpath expr="//b[hasclass('text-truncate')]" position="attributes">
+            <attribute name="class">d-none</attribute>
+        </xpath>
+    </template>
+
+    <template id="posts_loop_custom" inherit_id="website_blog.posts_loop" name="Customise Blog Posts loop Page">
+        <xpath expr="//t[@t-foreach='posts']" position="replace">
+            <div class="col-lg-3 blog-left-col">
+                <aside class="left-sidebar">
+                    <div class="blog-filters-header-box">
+                        <h2>Filter</h2>
+                        <a href="/blog">Clear all</a>
+                    </div>
+                    <div t-if="blogs" class="blog-filter-section">
+                        <div class="accordion-item " >
+                            <div class="box-label d-flex align-items-center jus_con_bet ">
+                                <h3 class="o_products_attributes_title d-lg-block blog-filter-section-heading">Blogs</h3>
+                                <button class="btn ml-auto outer-filter blog-filter-section-btn" type="button">
+                                    <img src="/cr_web_portal/static/src/images/new_design_resource/arrow-down.svg"/>
+                                </button>
+                            </div>
+                            <div class="collapse show">
+                                <div class="search-container">
+                                    <button class="search-btn">
+                                        <img src="/cr_web_portal/static/src/images/new_design_resource/search-normal.svg"/>
+                                    </button>
+                                    <input type="text" class="search_filter_input search-input" placeholder="Search"/>
+                                </div>
+                                <div id="inner-size" class="mt-2 mr-1 ">
+                                    <div class="flex-column mb-3">
+                                        <t t-foreach="blogs" t-as="blog_category">
+                                            <label class="mp-checkbox form-check">
+                                                <input type="checkbox" t-att-checked="'checked' if blog_category.id in active_blog_ids else False"
+                                                       class="blog_checkmark_onchange s_website_form_input"
+                                                       id="u_blog_category" t-attf-href="#{slug(blog_category)}"/>
+                                                <span t-att-id="blog_category.id" class="checkmark"/>
+                                                <span class="mp-service-name form-check-label" t-out="blog_category.name"/>
+                                            </label>
+                                        </t>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <t t-set="blog_tags" t-value="request.env['blog.tag'].search([])"/>
+                    <div t-if="blog_tags" class="blog-filter-section">
+                        <div class="accordion-item " >
+                            <div class="box-label d-flex align-items-center jus_con_bet ">
+                                <h3 class="o_products_attributes_title d-lg-block blog-filter-section-heading">Tags</h3>
+                                <button class="btn ml-auto outer-filter blog-filter-section-btn" type="button">
+                                    <img src="/cr_web_portal/static/src/images/new_design_resource/arrow-down.svg"/>
+                                </button>
+                            </div>
+                            <div class="collapse show">
+                                <div class="search-container">
+                                    <button class="search-btn">
+                                        <img src="/cr_web_portal/static/src/images/new_design_resource/search-normal.svg"/>
+                                    </button>
+                                    <input type="text" class="search_filter_input search-input" placeholder="Search"/>
+                                </div>
+                                <div id="inner-size" class="mt-2 mr-1 ">
+                                    <div class="flex-column mb-3">
+                                        <t t-foreach="blog_tags" t-as="b_tag">
+                                            <label class="mp-checkbox form-check">
+                                                <input type="checkbox" t-att-checked="'checked' if b_tag.id in active_tag_ids else False"
+                                                       class="blog_checkmark_onchange s_website_form_input"
+                                                       id="u_tag_category" t-attf-href="#{slug(b_tag)}"/>
+                                                <span t-att-id="b_tag.id" class="checkmark"/>
+                                                <span class="mp-service-name form-check-label" t-out="b_tag.name"/>
+                                            </label>
+                                        </t>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+                <div class="mobile_blog_btns">
+                    <button class="blog_section_cancel_btn auth-secondary-btn">Cancel</button>
+                    <button class="blog_filter_apply_btn auth-primary-btn">Apply</button>
+                </div>
+            </div>
+            <t t-if="posts">
+                <div class="col-md-9 col-lg-9 blog-right-col">
+                    <section class="main-blog-posts">
+                        <div class="container">
+                            <div class="row " id="main_blog_search_box">
+                                <div class="main_search_bar_blog">
+                                    <t t-call="website.website_search_box_input">
+                                        <t t-set="_form_classes"
+                                           t-valuef="#{not len(blogs) &gt; 1 and 'ms-auto'} flex-grow-1 flex-sm-grow-0"/>
+                                        <t t-set="_classes" t-valuef=""/>
+                                        <t t-set="search_type" t-valuef="blogs"/>
+                                        <t t-set="action" t-value="blog_url(tag=tag,search=search)"/>
+                                        <t t-set="display_description" t-valuef="true"/>
+                                        <t t-set="display_detail" t-valuef="false"/>
+                                        <input type="hidden" name="tag" t-att-value="tag"/>
+                                        <input type="hidden" name="date_begin" t-att-value="date_begin"/>
+                                        <input type="hidden" name="date_end" t-att-value="date_end"/>
+                                    </t>
+                                </div>
+                                <div class="mobile_blog_filters_options">
+                                    <button class="websiteblog_filter_btn">
+                                        <img src="/cr_web_portal/static/src/images/new_design_resource/blog_filter_icon.svg"/>
+                                        <p>Filter</p>
+                                    </button>
+                                </div>
+                                <div class="blog_pagination">
+                                    <t t-call="website.pager">
+                                        <t t-set="classname" t-valuef="justify-content-center"/>
+                                        <t t-set="extraLinkClass" t-valuef="post_link"/>
+                                    </t>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="container">
+                            <div class="row" id="dynamic-blogpost-row">
+                                <t t-foreach="posts" t-as="blog_post">
+                                    <a t-attf-href="/blog/#{slug(blog_post.blog_id)}/#{slug(blog_post)}"
+                                       class="mp_blog_rectangle col-12">
+                                        <t t-set="_record" t-value="blog_post"/>
+                                        <t t-call="cr_web_portal.mechpower_blog_record_cover">
+                                            <t t-set="_record" t-value="blog_post"/>
+                                            <t t-set="additionnal_classes"
+                                               t-value="'o_list_cover o_not_editable ' + (not opt_blog_cards_design and ' rounded overflow-hidden shadow mb-3' or '')"/>
+                                        </t>
+                                        <p class="blog_blog_name" t-field="blog_post.blog_id.name"/>
+                                        <p class="blog_post_name" t-out="blog_post.name"/>
+                                        <h5 class="blog_post_post_date"
+                                            t-out="blog_post.post_date.strftime('%d %B, %Y')"/>
+                                        <span t-if="not blog_post.website_published"
+                                              style="color: white;border-radius: 4px;background: var(--mp-notification-color-4);font-size: 12px;padding: 4px 8px;">
+                                            unpublished
+                                        </span>
+                                    </a>
+                                </t>
+                            </div>
+                            <div class="blog_pagination">
+                                <t t-call="website.pager">
+                                    <t t-set="classname" t-valuef="justify-content-center"/>
+                                    <t t-set="extraLinkClass" t-valuef="post_link"/>
+                                </t>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </t>
+            <div t-if="not posts" class="col">
+                <div class="container mb-2">
+                    <div class="row " id="main_blog_search_box">
+                        <div class="main_search_bar_blog">
+                            <t t-call="website.website_search_box_input">
+                            <t t-set="_form_classes" t-valuef="#{not len(blogs) &gt; 1 and 'ms-auto'} flex-grow-1 flex-sm-grow-0"/>
+                                <t t-set="_classes" t-valuef=""/>
+                                <t t-set="search_type" t-valuef="blogs"/>
+                                <t t-set="action" t-value="blog_url(tag=tag,search=search)"/>
+                                <t t-set="display_description" t-valuef="true"/>
+                                <t t-set="display_detail" t-valuef="false"/>
+                                <input type="hidden" name="tag" t-att-value="tag"/>
+                                <input type="hidden" name="date_begin" t-att-value="date_begin"/>
+                                <input type="hidden" name="date_end" t-att-value="date_end"/>
+                            </t>
+                        </div>
+                        <div class="mobile_blog_filters_options">
+                            <button class="websiteblog_filter_btn">
+                                <img src="/cr_web_portal/static/src/images/new_design_resource/blog_filter_icon.svg"/>
+                                <p>Filter</p>
+                            </button>
+                        </div>
+                        <div class="blog_pagination">
+                            <t t-call="website.pager">
+                                <t t-set="classname" t-valuef="justify-content-center"/>
+                                <t t-set="extraLinkClass" t-valuef="post_link"/>
+                            </t>
+                        </div>
+                    </div>
+                </div>
+                <t t-set="no_results_str">No results for "%s".</t>
+                <h2 t-if="search" t-esc="no_results_str % search" class="fw-bold"/>
+                <h2 t-else="">No blog post yet.</h2>
+                <div class="alert alert-info" groups="website.group_website_designer">
+                    Click on "<b>New</b>" in the top-right corner to write your first blog post.
+                </div>
+            </div>
+        </xpath>
+        <xpath expr="//div[@t-if='not posts']" position="replace"></xpath>
+        <xpath expr="//div[@t-if='tag or date_begin or search']" position="replace"></xpath>
+
+    </template>
+
+    <template id="cr_web_portal.snippet_options_inherited" inherit_id="website_blog.snippet_options" name="Blog Post Header Options Hide">
+        <xpath expr="//div[2]" position="replace">
+            <div data-selector="main:has(#o_wblog_index_content)" data-page-options="true" groups="website.group_website_designer" data-no-check="true" string="Blogs Page">
+                <we-select string="Layout" data-no-preview="true" data-reload="/">
+                    <we-button data-customize-website-views="">Grid</we-button>
+                    <we-button data-customize-website-views="website_blog.opt_blog_list_view">List</we-button>
+                </we-select>
+                <we-checkbox string="Cards"
+                             class="o_we_sublevel_1"
+                             data-customize-website-views="website_blog.opt_blog_cards_design"
+                             data-no-preview="true"
+                             data-reload="/"/>
+                <we-checkbox string="Increase Readability"
+                             class="o_we_sublevel_1"
+                             data-customize-website-views="website_blog.opt_blog_readable"
+                             data-no-preview="true"
+                             data-reload="/"/>
+                <we-checkbox string="Sidebar"
+                             data-name="blog_posts_sidebar_opt"
+                             data-customize-website-views="website_blog.opt_blog_sidebar_show"
+                             data-no-preview="true"
+                             data-reload="/"/>
+                <we-checkbox string="Archives"
+                             class="o_we_sublevel_1"
+                             data-dependencies="blog_posts_sidebar_opt"
+                             data-customize-website-views="website_blog.opt_sidebar_blog_index_archives"
+                             data-no-preview="true"
+                             data-reload="/"/>
+                <we-checkbox string="Follow us"
+                             class="o_we_sublevel_1"
+                             data-dependencies="blog_posts_sidebar_opt"
+                             data-customize-website-views="website_blog.opt_sidebar_blog_index_follow_us"
+                             data-no-preview="true"
+                             data-reload="/"/>
+                <we-checkbox string="Tags List"
+                             class="o_we_sublevel_1"
+                             data-dependencies="blog_posts_sidebar_opt"
+                             data-customize-website-views="website_blog.opt_sidebar_blog_index_tags"
+                             data-no-preview="true"
+                             data-reload="/"/>
+                <we-select string="Posts List" data-no-preview="true" data-reload="/">
+                    <we-button data-customize-website-views="">No Cover</we-button>
+                    <we-button data-customize-website-views="website_blog.opt_posts_loop_show_cover">Cover</we-button>
+                </we-select>
+                <we-checkbox string="Author"
+                             class="o_we_sublevel_1"
+                             data-customize-website-views="website_blog.opt_posts_loop_show_author"
+                             data-no-preview="true"
+                             data-reload="/"/>
+                <we-checkbox string="Comments/Views Stats"
+                             class="o_we_sublevel_1"
+                             data-customize-website-views="website_blog.opt_posts_loop_show_stats"
+                             data-no-preview="true"
+                             data-reload="/"/>
+                <we-checkbox string="Teaser &amp; Tags"
+                             class="o_we_sublevel_1"
+                             data-customize-website-views="website_blog.opt_posts_loop_show_teaser"
+                             data-no-preview="true"
+                             data-reload="/"/>
+            </div>
+        </xpath>
+    </template>
+    <template id="cr_web_portal.blog_post_complete" inherit_id="website_blog.blog_post_complete"
+              name="Blog Post Complete Footer">
+        <xpath expr="//section[@id='o_wblog_post_footer']" position="replace">
+            <t t-if="blog_post.blog_id">
+                <t t-call="cr_web_portal.dynamic_blogpost">
+                    <t t-set="web_blog_id" t-value="blog_post.blog_id.id"/>
+                </t>
+            </t>
+            <section id="contact-us" class="contact-section o_wblog_post_footer">
+                <div class="contactus1"></div>
+                <div class="contact-info text-center" style="margin: 5%;">
+                    <span class="title float-none" style="color: #F4FBF7;">CONTACT US</span>
+                    <br/>
+                    <h2 class="mt-20" style="color: #F9F9F9; font-size: 36px;">Step into the future with advanced
+                    </h2>
+                    <h2 style="color: #F9F9F9; font-size: 36px;">enclosure solution</h2>
+                    <a href="/contactus" class="btn mt-10">
+                        Contact Us
+                    </a>
+                </div>
+                <div class="contactus2"></div>
+            </section>
+        </xpath>
+    </template>
+
+    <!--    Hide Blog post author and Image Opacity changes -->
+    <template id="cr_web_portal.post_cover_image_hide_authorname" inherit_id="website_blog.post_cover_image">
+        <xpath expr="//a" position="replace">
+            <a t-attf-href="/blog/#{slug(blog_post.blog_id)}/#{slug(blog_post)}"
+               t-attf-class="text-decoration-none d-block #{classes or 'mb-2'}"
+               t-att-style="not blog_post.website_published and 'opacity:1;'">
+
+                <t t-call="cr_web_portal.mechpower_blog_record_cover">
+                    <t t-set="_record" t-value="blog_post"/>
+                    <t t-set="additionnal_classes"
+                       t-value="'o_list_cover o_not_editable ' + (not opt_blog_cards_design and ' rounded overflow-hidden shadow mb-3' or '')"/>
+                    <div style="visibility:hidden;">
+                        <t t-if="is_view_active('website_blog.opt_posts_loop_show_author')"
+                           t-call="website_blog.post_author">
+                            <t t-set="additionnal_classes"
+                               t-value="'o_wblog_post_list_author o_list_cover d-flex text-white w-100 o_not_editable ' + ('p-3 h5 m-0' if opt_blog_list_view else 'px-2 pb-2 pt-3') "/>
+                            <t t-set="hide_date" t-value="True"/>
+                        </t>
+                    </div>
+                </t>
+            </a>
+        </xpath>
+    </template>
+
+    <template id="cr_web_portal.post_teaser_word_wrap" inherit_id="website_blog.post_teaser">
+        <xpath expr="//a[hasclass('text-decoration-none')]" position="replace">
+            <a t-attf-href="/blog/#{slug(blog_post.blog_id)}/#{slug(blog_post)}" class="text-reset text-decoration-none"
+               style="word-wrap: break-word;color:#000 !important;">
+                <div t-if="opt_blog_list_view" t-field="blog_post.teaser" class="mt-2 o_wblog_read_text"/>
+                <div t-else="" t-field="blog_post.teaser"
+                     t-attf-class="mt-2 #{opt_blog_readable and 'o_wblog_normalize_font'}"/>
+            </a>
+        </xpath>
+    </template>
+
+    <template id="cr_web_portal.post_breadcrumbs_mechpower_custom" inherit_id="website_blog.post_breadcrumbs">
+        <xpath expr="//nav" position="replace">
+            <nav aria-label="breadcrumb" t-attf-class="breadcrumb flex-nowrap py-0 px-0 css_editable_mode_hidden #{additionnal_classes or ''}">
+                <li t-if="len(blogs) &gt; 1" class="breadcrumb-item text-truncate"><a href="/blog">All Blogs</a></li>
+                <li class="breadcrumb-item text-truncate">
+                    <img src="/cr_web_portal/static/src/images/new_design_resource/arrow-down.svg" loading="lazy" class="breadcrumb-item-images" />
+                    <a t-attf-href="#{blog_url(tag=None, date_begin=None, date_end=None)}" t-out="blog[0].name if len(blog) >= 1 else ''"/>
+                </li>
+                <li class="breadcrumb-item text-truncate">
+                    <img src="/cr_web_portal/static/src/images/new_design_resource/arrow-down.svg" loading="lazy" class="breadcrumb-item-images" />
+                    <a href="#" class="current_blog_post_name" t-out="blog_post.name"/>
+                </li>
+            </nav>
+        </xpath>
+    </template>
+
+        <!--    changes for Blog spesific page background color.-->
+    <template id="cr_web_portal.blogs_nav_custom" inherit_id="website_blog.blogs_nav">
+        <xpath expr="//nav" position="replace">
+        </xpath>
+    </template>
+
+    <template id="mechpower_blogs_index_custom"  inherit_id="website_blog.blog_post_content">
+        <xpath expr="//div[hasclass('css_editable_mode_hidden')]" position="replace">
+            <div t-if="len(blogs) > 1 or len(blog_post.tag_ids) > 0" class="css_editable_mode_hidden text-muted">
+                <div t-if="len(blogs) > 1">in <a t-attf-href="#{blog_url(blog=blog_post.blog_id)}"><b t-field="blog.name"/></a></div>
+                <div t-if="len(blog_post.tag_ids) > 0" class="mp_blog_tags_box">
+                    <t t-foreach="blog_post.tag_ids" t-as="one_tag">
+                        <a class="website_blog_tag_badge" t-attf-href="#{blog_url(tag=slug(one_tag), date_begin=False, date_end=False)}" t-esc="one_tag.name"/>
+                    </t>
+                </div>
+            </div>
+        </xpath>
+    </template>
+</odoo>

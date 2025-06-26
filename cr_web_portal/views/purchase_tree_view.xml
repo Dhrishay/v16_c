@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<odoo>
+<record id="purchase_order_kpis_tree_inherit_cr_web" model="ir.ui.view">
+        <field name="name">purchase.order.kpis.tree.inherit.cr.web</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_kpis_tree"/>
+        <field name="arch" type="xml">
+            <field name="name" position="after">
+                <field name="date_order" string="Date"/>
+            </field>
+        </field>
+    </record>
+</odoo>

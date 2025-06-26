@@ -1,0 +1,437 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!--    inherit for Maximise the length of My Account div -->
+    <template id="portal.portal_docs_entry" name="My Portal Docs Entry">
+        <a t-att-href="url" t-att-title="title"
+           t-att-class="'list-group-item list-group-item-action d-flex align-items-center active d-none' if request.httprequest.path == url else 'list-group-item list-group-item-action d-flex align-items-center d-none'">
+            <t t-if="url == '/my'">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M14.6169 6.9252C15.7491 6.9252 16.6669 6.00738 16.6669 4.8752C16.6669 3.74301 15.7491 2.8252 14.6169 2.8252C13.4847 2.8252 12.5669 3.74301 12.5669 4.8752C12.5669 6.00738 13.4847 6.9252 14.6169 6.9252Z"
+                          stroke="#787878" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"
+                          stroke-linejoin="round"/>
+                    <path d="M5.3835 6.9252C6.51569 6.9252 7.43349 6.00738 7.43349 4.8752C7.43349 3.74301 6.51569 2.8252 5.3835 2.8252C4.25132 2.8252 3.3335 3.74301 3.3335 4.8752C3.3335 6.00738 4.25132 6.9252 5.3835 6.9252Z"
+                          stroke="#787878" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"
+                          stroke-linejoin="round"/>
+                    <path d="M14.6169 17.1752C15.7491 17.1752 16.6669 16.2574 16.6669 15.1252C16.6669 13.993 15.7491 13.0752 14.6169 13.0752C13.4847 13.0752 12.5669 13.993 12.5669 15.1252C12.5669 16.2574 13.4847 17.1752 14.6169 17.1752Z"
+                          stroke="#787878" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"
+                          stroke-linejoin="round"/>
+                    <path d="M5.3835 17.1752C6.51569 17.1752 7.43349 16.2574 7.43349 15.1252C7.43349 13.993 6.51569 13.0752 5.3835 13.0752C4.25132 13.0752 3.3335 13.993 3.3335 15.1252C3.3335 16.2574 4.25132 17.1752 5.3835 17.1752Z"
+                          stroke="#787878" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"
+                          stroke-linejoin="round"/>
+                </svg>
+
+                <t t-esc="title"/>
+                <t t-if='count'>
+                    <span class="badge text-bg-secondary rounded-pill" t-esc="count"/>
+                </t>
+                <t t-elif="placeholder_count">
+                    <span class="badge text-bg-secondary rounded-pill" t-att-data-placeholder_count="placeholder_count">
+                        <i class="fa fa-spin fa-circle-o-notch"></i>
+                    </span>
+                </t>
+            </t>
+            <t t-elif="url == '/my/inquiry/quotes'">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M14.1667 15.3584H10.8334L7.12501 17.825C6.57501 18.1917 5.83335 17.8001 5.83335 17.1334V15.3584C3.33335 15.3584 1.66669 13.6917 1.66669 11.1917V6.19169C1.66669 3.69169 3.33335 2.02502 5.83335 2.02502H14.1667C16.6667 2.02502 18.3334 3.69169 18.3334 6.19169V11.1917C18.3334 13.6917 16.6667 15.3584 14.1667 15.3584Z"
+                          stroke="#787878" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"
+                          stroke-linejoin="round"/>
+                    <path d="M10 9.46668V9.29171C10 8.72504 10.35 8.42503 10.7 8.18336C11.0417 7.95003 11.3833 7.65004 11.3833 7.10004C11.3833 6.33337 10.7667 5.71667 10 5.71667C9.23334 5.71667 8.6167 6.33337 8.6167 7.10004"
+                          stroke="#787878" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M9.99623 11.4583H10.0037" stroke="#787878" stroke-width="1.5" stroke-linecap="round"
+                          stroke-linejoin="round"/>
+                </svg>
+
+                <t t-esc="title"/>
+                <t t-if='count'>
+                    <span class="badge text-bg-secondary rounded-pill" t-esc="count"/>
+                </t>
+                <t t-elif="placeholder_count">
+                    <span class="badge text-bg-secondary rounded-pill" t-att-data-placeholder_count="placeholder_count">
+                        <i class="fa fa-spin fa-circle-o-notch"></i>
+                    </span>
+                </t>
+            </t>
+            <t t-elif="url == '/my/quotes'">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M8.33333 18.3333H11.6667C15.8333 18.3333 17.5 16.6666 17.5 12.5V7.49996C17.5 3.33329 15.8333 1.66663 11.6667 1.66663H8.33333C4.16667 1.66663 2.5 3.33329 2.5 7.49996V12.5C2.5 16.6666 4.16667 18.3333 8.33333 18.3333Z"
+                          stroke="#787878" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M13.75 6.31665V7.14998C13.75 7.83332 13.1917 8.39998 12.5 8.39998H7.5C6.81667 8.39998 6.25 7.84165 6.25 7.14998V6.31665C6.25 5.63332 6.80833 5.06665 7.5 5.06665H12.5C13.1917 5.06665 13.75 5.62498 13.75 6.31665Z"
+                          stroke="#787878" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M6.7801 11.6667H6.78973" stroke="#787878" stroke-width="2" stroke-linecap="round"
+                          stroke-linejoin="round"/>
+                    <path d="M9.99604 11.6667H10.0057" stroke="#787878" stroke-width="2" stroke-linecap="round"
+                          stroke-linejoin="round"/>
+                    <path d="M13.2119 11.6667H13.2216" stroke="#787878" stroke-width="2" stroke-linecap="round"
+                          stroke-linejoin="round"/>
+                    <path d="M6.7801 14.5833H6.78973" stroke="#787878" stroke-width="2" stroke-linecap="round"
+                          stroke-linejoin="round"/>
+                    <path d="M9.99604 14.5833H10.0057" stroke="#787878" stroke-width="2" stroke-linecap="round"
+                          stroke-linejoin="round"/>
+                    <path d="M13.2119 14.5833H13.2216" stroke="#787878" stroke-width="2" stroke-linecap="round"
+                          stroke-linejoin="round"/>
+                </svg>
+
+                <t t-esc="title"/>
+                <t t-if='count'>
+                    <span class="badge text-bg-secondary rounded-pill" t-esc="count"/>
+                </t>
+                <t t-elif="placeholder_count">
+                    <span class="badge text-bg-secondary rounded-pill" t-att-data-placeholder_count="placeholder_count">
+                        <i class="fa fa-spin fa-circle-o-notch"></i>
+                    </span>
+                </t>
+            </t>
+            <t t-elif="url == '/my/orders'">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M16.0833 6.59999V10.8917C16.0833 13.4583 14.6167 14.5583 12.4167 14.5583H5.09165C4.71665 14.5583 4.35832 14.525 4.02498 14.45C3.81665 14.4167 3.61666 14.3584 3.43332 14.2917C2.18332 13.825 1.42499 12.7417 1.42499 10.8917V6.59999C1.42499 4.03332 2.89165 2.93335 5.09165 2.93335H12.4167C14.2833 2.93335 15.625 3.72501 15.9833 5.53335C16.0417 5.86668 16.0833 6.20832 16.0833 6.59999Z"
+                          stroke="#787878" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"
+                          stroke-linejoin="round"/>
+                    <path d="M18.5842 9.10009V13.3918C18.5842 15.9584 17.1176 17.0584 14.9176 17.0584H7.59254C6.97588 17.0584 6.41755 16.9751 5.93422 16.7918C4.94255 16.4251 4.26755 15.6668 4.02588 14.4501C4.35921 14.5251 4.71754 14.5584 5.09254 14.5584H12.4176C14.6176 14.5584 16.0842 13.4584 16.0842 10.8918V6.60009C16.0842 6.20842 16.0509 5.85845 15.9842 5.53345C17.5676 5.86678 18.5842 6.98342 18.5842 9.10009Z"
+                          stroke="#787878" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"
+                          stroke-linejoin="round"/>
+                    <path d="M8.74872 10.95C9.96374 10.95 10.9487 9.96497 10.9487 8.74994C10.9487 7.53491 9.96374 6.54993 8.74872 6.54993C7.53369 6.54993 6.54871 7.53491 6.54871 8.74994C6.54871 9.96497 7.53369 10.95 8.74872 10.95Z"
+                          stroke="#787878" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"
+                          stroke-linejoin="round"/>
+                    <path d="M3.98334 6.91663V10.5833" stroke="#787878" stroke-width="1.5" stroke-miterlimit="10"
+                          stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M13.5181 6.91687V10.5836" stroke="#787878" stroke-width="1.5" stroke-miterlimit="10"
+                          stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+
+                <t t-esc="title"/>
+                <t t-if='count'>
+                    <span class="badge text-bg-secondary rounded-pill" t-esc="count"/>
+                </t>
+                <t t-elif="placeholder_count">
+                    <span class="badge text-bg-secondary rounded-pill" t-att-data-placeholder_count="placeholder_count">
+                        <i class="fa fa-spin fa-circle-o-notch"></i>
+                    </span>
+                </t>
+            </t>
+            <t t-elif="url == '/my/invoice'">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M18.3333 5.00008V7.01675C18.3333 8.33342 17.5 9.16675 16.1833 9.16675H13.3333V3.34175C13.3333 2.41675 14.0917 1.66675 15.0167 1.66675C15.925 1.67508 16.7583 2.04175 17.3583 2.64175C17.9583 3.25008 18.3333 4.08341 18.3333 5.00008Z"
+                          stroke="#787878" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"
+                          stroke-linejoin="round"/>
+                    <path d="M1.66669 5.83341V17.5001C1.66669 18.1917 2.45 18.5834 3 18.1667L4.42502 17.1001C4.75835 16.8501 5.22502 16.8834 5.52502 17.1834L6.90834 18.5751C7.23334 18.9001 7.76671 18.9001 8.09171 18.5751L9.4917 17.1751C9.78337 16.8834 10.25 16.8501 10.575 17.1001L12 18.1667C12.55 18.5751 13.3334 18.1834 13.3334 17.5001V3.33341C13.3334 2.41675 14.0834 1.66675 15 1.66675H5.83335H5.00002C2.50002 1.66675 1.66669 3.15841 1.66669 5.00008V5.83341Z"
+                          stroke="#787878" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"
+                          stroke-linejoin="round"/>
+                    <path opacity="0.4" d="M5 7.5H10" stroke="#787878" stroke-width="1.5" stroke-linecap="round"
+                          stroke-linejoin="round"/>
+                    <path opacity="0.4" d="M5.625 10.8333H9.375" stroke="#787878" stroke-width="1.5"
+                          stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+
+                <t t-esc="title"/>
+                <t t-if='count'>
+                    <span class="badge text-bg-secondary rounded-pill" t-esc="count"/>
+                </t>
+                <t t-elif="placeholder_count">
+                    <span class="badge text-bg-secondary rounded-pill" t-att-data-placeholder_count="placeholder_count">
+                        <i class="fa fa-spin fa-circle-o-notch"></i>
+                    </span>
+                </t>
+            </t>
+            <t t-elif="url == '/my/invoices'">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M18.3333 5.00008V7.01675C18.3333 8.33342 17.5 9.16675 16.1833 9.16675H13.3333V3.34175C13.3333 2.41675 14.0917 1.66675 15.0167 1.66675C15.925 1.67508 16.7583 2.04175 17.3583 2.64175C17.9583 3.25008 18.3333 4.08341 18.3333 5.00008Z"
+                          stroke="#787878" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"
+                          stroke-linejoin="round"/>
+                    <path d="M1.66669 5.83341V17.5001C1.66669 18.1917 2.45 18.5834 3 18.1667L4.42502 17.1001C4.75835 16.8501 5.22502 16.8834 5.52502 17.1834L6.90834 18.5751C7.23334 18.9001 7.76671 18.9001 8.09171 18.5751L9.4917 17.1751C9.78337 16.8834 10.25 16.8501 10.575 17.1001L12 18.1667C12.55 18.5751 13.3334 18.1834 13.3334 17.5001V3.33341C13.3334 2.41675 14.0834 1.66675 15 1.66675H5.83335H5.00002C2.50002 1.66675 1.66669 3.15841 1.66669 5.00008V5.83341Z"
+                          stroke="#787878" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"
+                          stroke-linejoin="round"/>
+                    <path opacity="0.4" d="M5 7.5H10" stroke="#787878" stroke-width="1.5" stroke-linecap="round"
+                          stroke-linejoin="round"/>
+                    <path opacity="0.4" d="M5.625 10.8333H9.375" stroke="#787878" stroke-width="1.5"
+                          stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+
+                <t t-esc="title"/>
+                <t t-if='count'>
+                    <span class="badge text-bg-secondary rounded-pill" t-esc="count"/>
+                </t>
+                <t t-elif="placeholder_count">
+                    <span class="badge text-bg-secondary rounded-pill" t-att-data-placeholder_count="placeholder_count">
+                        <i class="fa fa-spin fa-circle-o-notch"></i>
+                    </span>
+                </t>
+            </t>
+            <t t-elif="url == '/my/account'">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M10.1333 9.05841C10.05 9.05008 9.94999 9.05008 9.85832 9.05841C7.87499 8.99175 6.29999 7.36675 6.29999 5.36675C6.29999 3.32508 7.94999 1.66675 9.99999 1.66675C12.0417 1.66675 13.7 3.32508 13.7 5.36675C13.6917 7.36675 12.1167 8.99175 10.1333 9.05841Z"
+                          stroke="#787878" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M5.96666 12.1333C3.95 13.4833 3.95 15.6833 5.96666 17.0249C8.25833 18.5583 12.0167 18.5583 14.3083 17.0249C16.325 15.6749 16.325 13.4749 14.3083 12.1333C12.025 10.6083 8.26666 10.6083 5.96666 12.1333Z"
+                          stroke="#787878" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+
+                <t t-esc="title"/>
+                <t t-if='count'>
+                    <span class="badge text-bg-secondary rounded-pill" t-esc="count"/>
+                </t>
+                <t t-elif="placeholder_count">
+                    <span class="badge text-bg-secondary rounded-pill" t-att-data-placeholder_count="placeholder_count">
+                        <i class="fa fa-spin fa-circle-o-notch"></i>
+                    </span>
+                </t>
+            </t>
+            <t t-elif="url == '/my/security'">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M8.74167 1.8583L4.58334 3.42497C3.62501 3.7833 2.84167 4.91663 2.84167 5.9333V12.125C2.84167 13.1083 3.49167 14.4 4.28334 14.9916L7.86667 17.6666C9.04167 18.55 10.975 18.55 12.15 17.6666L15.7333 14.9916C16.525 14.4 17.175 13.1083 17.175 12.125V5.9333C17.175 4.9083 16.3917 3.77497 15.4333 3.41663L11.275 1.8583C10.5667 1.59997 9.43334 1.59997 8.74167 1.8583Z"
+                          stroke="#787878" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M9.99998 10.4166C10.9205 10.4166 11.6666 9.67039 11.6666 8.74992C11.6666 7.82944 10.9205 7.08325 9.99998 7.08325C9.07951 7.08325 8.33331 7.82944 8.33331 8.74992C8.33331 9.67039 9.07951 10.4166 9.99998 10.4166Z"
+                          stroke="#787878" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"
+                          stroke-linejoin="round"/>
+                    <path d="M10 10.4167V12.9167" stroke="#787878" stroke-width="1.5" stroke-miterlimit="10"
+                          stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+
+                <t t-esc="title"/>
+                <t t-if='count'>
+                    <span class="badge text-bg-secondary rounded-pill" t-esc="count"/>
+                </t>
+                <t t-elif="placeholder_count">
+                    <span class="badge text-bg-secondary rounded-pill" t-att-data-placeholder_count="placeholder_count">
+                        <i class="fa fa-spin fa-circle-o-notch"></i>
+                    </span>
+                </t>
+            </t>
+        </a>
+    </template>
+
+    <template id="portal_my_home" name="Productions" customize_show="True" inherit_id="portal.portal_my_home"
+              priority="20">
+        <xpath expr="//h3" position="replace"/>
+        <xpath expr="//p[hasclass('o_portal_no_doc_message')]" position="replace">
+        </xpath>
+    </template>
+
+    <template id="portal_my_home_dashboard" name="Dashboard" inherit_id="portal.portal_my_home" priority="1">
+        <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
+            <t t-call="portal.portal_docs_entry">
+                <t t-set="title">Dashboard</t>
+                <t t-set="url" t-value="'/my'"/>
+                <t t-set="placeholder_count" t-value="'dashboard_count'"/>
+            </t>
+        </xpath>
+    </template>
+
+    <template id="portal_my_home_account" name="Dashboard" inherit_id="portal.portal_my_home" priority="1000">
+        <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
+            <t t-call="portal.portal_docs_entry">
+                <t t-set="title">Profile</t>
+                <t t-set="url" t-value="'/my/account'"/>
+                <t t-set="placeholder_count" t-value="'account_count'"/>
+            </t>
+            <p class="o_support_header">Support</p>
+            <a href="/my/messages" title="Messages"
+               t-attf-class="list-group-item list-group-item-action d-flex align-items-center">
+                <img src="/cr_web_portal/static/src/images/new_design_resource/message.svg"/>
+                Messages
+            </a>
+        </xpath>
+    </template>
+
+    <template id="portal_my_home_account_security" name="Dashboard" inherit_id="portal.portal_my_home" priority="999">
+        <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
+            <t t-call="portal.portal_docs_entry">
+                <t t-set="title">Account Security</t>
+                <t t-set="url" t-value="'/my/security'"/>
+                <t t-set="placeholder_count" t-value="'security_count'"/>
+            </t>
+        </xpath>
+    </template>
+
+    <template id="portal_layout_portal_inquiry_portal_my_home" name="My Sidebar Inquiry" customize_show="True"
+              inherit_id="portal.portal_layout">
+        <!--        Hide old breadcumb in detail sale order page-->
+        <xpath expr="//div[1]" position="replace">
+        </xpath>
+        <xpath expr="//div[hasclass('o_portal_wrap')]" position="replace">
+            <div id="wrap" class='o_portal_wrap'>
+                <div class="container mb64">
+                    <t t-if="my_details">
+                        <div class="row justify-content-between my-home">
+                            <h2 class="dashboard-title d-none">
+                                Dashboard
+                            </h2>
+                            <div t-attf-class="col-12 col-md col-lg-3">
+                                <t t-out="0"/>
+                            </div>
+                            <div id="o_my_sidebar" class="pt-lg-0 col-12 col-md col-lg-9 col-xl-9 o_my_sidebar">
+                                <div class="d-flex portal_inquiry_sec">
+                                    <div class="col inquiry-section">
+                                        <div class="inquiry-content">
+                                            <h2>Get started with your Inquiry</h2>
+                                            <p>
+                                                Select from our range of services below to begin. Whether it's enclosure designing, 3D printing.
+                                            </p>
+                                            <div class="d-flex">
+                                                <a href="/instant-quote" class="inquiry-button">Get Instant Quote
+                                                </a>
+                                                <a href="/instant-quote" class="inquiry-button-sec">Submit
+                                                    Request
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col inquiry-section inquiry-section-2">
+                                        <div class="inquiry-content">
+                                            <h2>Explore our range of plastic</h2>
+                                            <p>
+                                                Discover durable and versatile plastic &amp; metal enclosures designed
+                                                for all your needs.
+                                            </p>
+                                            <div class="d-flex">
+                                                <a href="/shop" class="inquiry-button">View Products
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="documents-section">
+                                    <h2>Documents</h2>
+                                    <p>Summary of Key Metrics and Recent Activities</p>
+                                    <div class="document-cards">
+                                        <div class="document-card">
+                                            <a href="/my/inquiry/quotes">
+                                                <div class="icon">
+                                                    <img src="/cr_web_portal/static/src/images/mech-custom/icon_20.png" alt="Inquiries"/>
+                                                </div>
+                                                <div class="doc-desc">
+                                                    <div class="doc-desc-info">
+                                                        <h3>Inquiries</h3>
+                                                        <p>Initial requests or queries about products and services.</p>
+                                                    </div>
+                                                    <div class="arrow">
+                                                        <span class="icon">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                                                <path d="M14.43 18.0701L20.5 12.0001L14.43 5.93007" stroke="#23B35D" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                                                <path d="M3.49813 12L20.3281 12" stroke="#23B35D" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                                            </svg>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="document-card">
+                                            <a href="/my/quotes">
+                                                <div class="icon">
+                                                    <img src="/cr_web_portal/static/src/images/mech-custom/icon_5.png" alt="Quotations"/>
+                                                </div>
+                                                <div class="doc-desc">
+                                                    <div class="doc-desc-info">
+                                                        <h3>Quotations</h3>
+                                                        <p>Price estimates provided for your requested products or services.</p>
+                                                    </div>
+                                                    <div class="arrow">
+                                                        <span class="icon">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                                                <path d="M14.43 18.0701L20.5 12.0001L14.43 5.93007" stroke="#23B35D" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                                                <path d="M3.49813 12L20.3281 12" stroke="#23B35D" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                                            </svg>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="document-card">
+                                            <a href="/my/orders">
+                                                <div class="icon">
+                                                    <img src="/cr_web_portal/static/src/images/mech-custom/icon_23.png" alt="Sales Orders"/>
+                                                </div>
+                                                <div class="doc-desc">
+                                                    <div class="doc-desc-info">
+                                                        <h3>Sales Orders</h3>
+                                                        <p>Confirmed orders that are processed for fulfillment.</p>
+                                                    </div>
+                                                    <div class="arrow">
+                                                        <span class="icon">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                                                <path d="M14.43 18.0701L20.5 12.0001L14.43 5.93007" stroke="#23B35D" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                                                <path d="M3.49813 12L20.3281 12" stroke="#23B35D" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                                            </svg>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="document-card">
+                                            <a href="/my/invoices">
+                                                <div class="icon">
+                                                    <img src="/cr_web_portal/static/src/images/mech-custom/icon_22.png" alt="Invoices &amp; Bills"/>
+                                                </div>
+                                                <div class="doc-desc">
+                                                    <div class="doc-desc-info">
+                                                        <h3>Invoices &amp; Bills</h3>
+                                                        <p>Invoice details for completed transactions.</p>
+                                                    </div>
+                                                    <div class="arrow">
+                                                        <span class="icon">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                                                <path d="M14.43 18.0701L20.5 12.0001L14.43 5.93007" stroke="#23B35D" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                                                <path d="M3.49813 12L20.3281 12" stroke="#23B35D" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                                            </svg>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="document-card">
+                                            <a href="/my/security">
+                                                <div class="icon">
+                                                    <img src="/cr_web_portal/static/src/images/mech-custom/icon_4.png" alt="Account Security"/>
+                                                </div>
+                                                <div class="doc-desc">
+                                                    <div class="doc-desc-info">
+                                                        <h3>Account Security</h3>
+                                                        <p>Manage your credentials.</p>
+                                                    </div>
+                                                    <div class="arrow">
+                                                        <span class="icon">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                                                <path d="M14.43 18.0701L20.5 12.0001L14.43 5.93007" stroke="#23B35D" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                                                <path d="M3.49813 12L20.3281 12" stroke="#23B35D" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                                            </svg>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="document-card">
+                                            <a href="/my/account">
+                                                <div class="icon">
+                                                    <img src="/cr_web_portal/static/src/images/mech-custom/icon_21.png" alt="Profile"/>
+                                                </div>
+                                                <div class="doc-desc">
+                                                    <div class="doc-desc-info">
+                                                        <h3>Profile</h3>
+                                                        <p>Your account details and preferences.</p>
+                                                    </div>
+                                                    <div class="arrow">
+                                                        <span class="icon">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                                                <path d="M14.43 18.0701L20.5 12.0001L14.43 5.93007" stroke="#23B35D" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                                                <path d="M3.49813 12L20.3281 12" stroke="#23B35D" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                                            </svg>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </t>
+                    <t t-else="">
+                        <t t-out="0"/>
+                    </t>
+                </div>
+            </div>
+        </xpath>
+    </template>
+</odoo>

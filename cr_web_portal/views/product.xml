@@ -1,0 +1,546 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="product_normal_form_view_customisable" model="ir.ui.view">
+        <field name="name">product.product.common.form.customisable</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_normal_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='barcode']" position="before">
+                <field name="source_internal_ref"/>
+            </xpath>
+            <xpath expr="//field[@name='product_template_variant_value_ids']" position="after">
+                <div name="options">
+                    <span class="d-inline-block">
+                        <field name="is_customisable"/>
+                        <label for="is_customisable" string="Can be customized"/>
+                    </span>
+                </div>
+                <div name="options">
+                    <span class="d-inline-block">
+                        <field name="is_home_page_product"/>
+                        <label for="is_home_page_product"/>
+                        <field name="is_mech_product"/>
+                        <label for="is_mech_product"/>
+                        <field name="is_ital_product"/>
+                        <label for="is_ital_product"/>
+                    </span>
+                </div>
+
+                <div name="options_1">
+                    <b>Select Service Type:</b>
+                    <span class="d-inline-block" style="margin-left:10px;">
+                        <field name="is_enclosure_service"/>
+                        <label for="is_enclosure_service" string="Enclosure Design"/>
+                        <field name="is_fdm_service"/>
+                        <label for="is_fdm_service" string="3D Printing"/>
+<!--                        <field name="is_projection_service"/>-->
+<!--                        <label for="is_projection_service" string="Projection"/>-->
+                        <field name="is_metal_feb_service"/>
+                        <label for="is_metal_feb_service" string="Sheet Metal Fabrication"/>
+                        <field name="is_injection_mold_service"/>
+                        <label for="is_injection_mold_service" string="Injection Moulding"/>
+                        <field name="is_cnc_machining_service"/>
+                        <label for="is_cnc_machining_service" string="CNC Machining"/>
+                    </span>
+                </div>
+            </xpath>
+        </field>
+    </record>
+    <record id="product_template_view_form_common__cr" model="ir.ui.view">
+        <field name="name">product.template.common.web.form.cr</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="mrp_plm.product_template_only_form_inherit_version_plm"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='default_code']" position="attributes">
+                <attribute name="attrs">{'readonly':[('default_code','ilike','CFGX')]}</attribute>
+            </xpath>
+        </field>
+    </record>
+    <record id="product_product_view_form_common__cr" model="ir.ui.view">
+        <field name="name">product.product.common.web.form.cr</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="mrp_plm.product_normal_form_view_inherit_version_plm"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='default_code']" position="attributes">
+                <attribute name="attrs">{'readonly':[('default_code','ilike','CFGX')]}</attribute>
+            </xpath>
+        </field>
+    </record>
+    <record id="mech_view_product_tree" model="ir.ui.view">
+        <field name="name">product.tree.inherit</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_product_tree_view"/>
+        <field name="arch" type="xml">
+            <field name="default_code" position="after">
+                <field name="source_internal_ref" optional="show" readonly="1"/>
+            </field>
+        </field>
+    </record>
+    <record id="product_template_search_view_website_product_category" model="ir.ui.view">
+        <field name="name">product_template_search_view_website_product_category</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_search_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='categ_id']" position="replace">
+                <field name="categ_id" filter_domain="['|',('categ_id', 'child_of', raw_value),('public_categ_ids.name', 'ilike', raw_value)]"/>
+            </xpath>
+        </field>
+    </record>
+
+<!--    <record id="mechpower_product_template_only_form_view" model="ir.ui.view">-->
+<!--        <field name="name">product.template.only.form.view</field>-->
+<!--        <field name="model">product.template</field>-->
+<!--        <field name="inherit_id" ref="product.product_template_only_form_view"/>-->
+<!--        <field name="arch" type="xml">-->
+<!--            <xpath expr="//form[@name='Product Template']/sheet[@name='product_form']/notebook[1]" position="inside">-->
+<!--                <page string="Enclosure Designing" name="enclosure_designing">-->
+<!--                    <group>-->
+<!--                        <group>-->
+<!--                            <field name="enclosure_design_product_name" />-->
+<!--                        </group>-->
+<!--                    </group>-->
+<!--                    <group>-->
+<!--                        <group string="Product description:">-->
+<!--                            <field name="enclosure_design_product_purpose"/>-->
+<!--                            <field name="enclosure_design_product_features"/>-->
+<!--                        </group>-->
+<!--                        <group string="Product specifications:">-->
+<!--                            <field name="enclosure_design_product_dimensions"/>-->
+<!--                            <field name="enclosure_design_product_temperatures"/>-->
+<!--                            <field name="enclosure_design_specific_environmental"/>-->
+<!--                        </group>-->
+<!--                        <group string="Mounting &amp; placement:">-->
+<!--                            <field name="enclosure_design_product_mounted"/>-->
+<!--                            <field name="enclosure_design_product_placed"/>-->
+<!--                        </group>-->
+<!--                        <group string="Access &amp; interfaces:">-->
+<!--                            <field name="enclosure_design_product_connectors"/>-->
+<!--                            <field name="enclosure_design_product_interact"/>-->
+<!--                        </group>-->
+<!--                        <group string="Material preferences:">-->
+<!--                            <field name="enclosure_design_product_materials"/>-->
+<!--                        </group>-->
+<!--                        <group string="Aesthetics &amp; branding:">-->
+<!--                            <field name="enclosure_design_product_specific_design"/>-->
+<!--                        </group>-->
+<!--                        <group string="Cooling &amp; ventilation:">-->
+<!--                            <field name="enclosure_design_product_significant_heat"/>-->
+<!--                            <field name="enclosure_design_product_specific_ventilation_requirements"/>-->
+<!--                        </group>-->
+
+<!--                        <group string="Protection &amp; safety:">-->
+<!--                            <field name="enclosure_design_product_safety_standards"/>-->
+<!--                        </group>-->
+<!--                        <group string="Existing designs or samples or design files:">-->
+<!--                            <field name="enclosure_design_product_existing_enclosure_designs"/>-->
+<!--                        </group>-->
+<!--                        <group string="Collaboration &amp; communication:">-->
+<!--                            <field name="enclosure_design_product_communicater_name"/>-->
+<!--                            <field name="enclosure_design_product_communicater_email"/>-->
+<!--                            <field name="enclosure_design_product_communicater_phone"/>-->
+<!--                        </group>-->
+<!--                        <group string="File(s):">-->
+<!--                            <field name="enclosure_design_product_file" filename="enclosure_design_product_filename"/>-->
+<!--                            <field name="enclosure_design_product_filename" invisible="1"/>-->
+<!--                        </group>-->
+<!--                    </group>-->
+<!--                </page>-->
+<!--                <page string="3D Printing" name="3d_printing">-->
+<!--                    <h2 class="mb-3">FDM Printing</h2>-->
+<!--                    <group>-->
+<!--                        <group>-->
+<!--                            <field name="fdm_product_name"/>-->
+<!--                        </group>-->
+<!--                    </group>-->
+<!--                    <group>-->
+<!--                        <group>-->
+<!--                            <field name="fdm_quantity"/>-->
+<!--                            <field name="fdm_material"/>-->
+<!--                            <field name="fdm_print_quality"/>-->
+<!--                            <field name="fdm_infill"/>-->
+<!--                            <field name="fdm_color"/>-->
+<!--                        </group>-->
+<!--                        <group>-->
+<!--                            <field name="fdm_technical_drawings" filename="fdm_technical_drawings_filename"/>-->
+<!--                            <field name="fdm_technical_drawings_filename" invisible="1"/>-->
+<!--                            <field name="fdm_is_uv_printing"/>-->
+<!--                            <field name="fdm_uv_printing_file" filename="fdm_uv_printing_filename"/>-->
+<!--                            <field name="fdm_uv_printing_filename" invisible="1"/>-->
+<!--                            <field name="fdm_extra_note"/>-->
+<!--                        </group>-->
+<!--                    </group>-->
+<!--                    <h2 class="mt-3 mb-3">Projection Printing</h2>-->
+<!--                    <group>-->
+<!--                        <group>-->
+<!--                            <field name="projection_product_name"/>-->
+<!--                        </group>-->
+<!--                    </group>-->
+<!--                    <group>-->
+<!--                        <group>-->
+<!--                            <field name="projection_quantity"/>-->
+<!--                            <field name="projection_material"/>-->
+<!--                            <field name="projection_print_quality"/>-->
+<!--                        </group>-->
+<!--                        <group>-->
+<!--                            <field name="projection_technical_drawings" filename="projection_technical_drawings_filename"/>-->
+<!--                            <field name="projection_technical_drawings_filename" invisible="1"/>-->
+<!--                            <field name="projection_is_uv_printing"/>-->
+<!--                            <field name="projection_uv_printing_file" filename="projection_uv_printing_filename"/>-->
+<!--                            <field name="projection_uv_printing_filename" invisible="1"/>-->
+<!--                            <field name="projection_extra_note"/>-->
+<!--                        </group>-->
+<!--                    </group>-->
+<!--                </page>-->
+<!--                <page string="Sheet Metal Fabrication" name="sheet_metal_fabrication">-->
+<!--                    <group>-->
+<!--                        <group>-->
+<!--                            <field name="metal_feb_product_name"/>-->
+<!--                        </group>-->
+<!--                    </group>-->
+<!--                    <group>-->
+<!--                        <group>-->
+<!--                            <field name="metal_feb_quantity"/>-->
+<!--                            <field name="metal_feb_material"/>-->
+<!--                            <field name="metal_feb_material_other"/>-->
+<!--                            <field name="metal_feb_thickness"/>-->
+<!--                            <field name="metal_feb_thickness_other"/>-->
+<!--                            <field name="metal_feb_is_welding"/>-->
+<!--                            <field name="metal_feb_surface_finish"/>-->
+<!--                            <field name="metal_feb_surface_finish_other"/>-->
+<!--                        </group>-->
+<!--                        <group>-->
+<!--                            <field name="metal_feb_color"/>-->
+<!--                            <field name="metal_feb_color_other"/>-->
+<!--                            <field name="metal_feb_is_uv_printing"/>-->
+<!--                            <field name="metal_feb_uv_printing_file" filename="metal_feb_uv_printing_filename"/>-->
+<!--                            <field name="metal_feb_uv_printing_filename" invisible="1"/>-->
+<!--                            <field name="metal_feb_technical_drawings" filename="metal_feb_technical_drawings_filename"/>-->
+<!--                            <field name="metal_feb_technical_drawings_filename" invisible="1"/>-->
+<!--                            <field name="metal_feb_extra_note"/>-->
+<!--                        </group>-->
+<!--                    </group>-->
+<!--                </page>-->
+<!--                <page string="Injection Molding" name="injection_molding">-->
+<!--                    <group>-->
+<!--                        <group>-->
+<!--                            <field name="injection_mold_product_name"/>-->
+<!--                        </group>-->
+<!--                    </group>-->
+<!--                    <group>-->
+<!--                        <group>-->
+<!--                            <field name="injection_mold_quantity"/>-->
+<!--                            <field name="injection_mold_material"/>-->
+<!--                            <field name="injection_mold_material_other"/>-->
+<!--                            <field name="injection_mold_colour"/>-->
+<!--                            <field name="injection_mold_colour_other"/>-->
+<!--                            <field name="injection_mold_surface_finish"/>-->
+<!--                            <field name="injection_mold_mold_requirements"/>-->
+<!--                            <field name="injection_mold_no_of_cavity"/>-->
+<!--                        </group>-->
+<!--                        <group>-->
+<!--                            <field name="injection_mold_runner"/>-->
+<!--                            <field name="injection_mold_size_of_the_mold"/>-->
+<!--                            <field name="injection_mold_size_of_the_article"/>-->
+<!--                            <field name="injection_mold_weight_of_the_article"/>-->
+<!--                            <field name="injection_mold_upload_technical_drawing" filename="injection_mold_upload_technical_drawing_filename"/>-->
+<!--                            <field name="injection_mold_upload_technical_drawing_filename" invisible="1"/>-->
+<!--                            <field name="injection_is_uv_printing"/>-->
+<!--                            <field name="injection_uv_printing_file" filename="injection_uv_printing_filename"/>-->
+<!--                            <field name="injection_uv_printing_filename" invisible="1"/>-->
+<!--                            <field name="injection_mold_additional_notes"/>-->
+<!--                        </group>-->
+<!--                    </group>-->
+<!--                </page>-->
+<!--                <page string="CNC Machining" name="cnc_machining">-->
+<!--                    <group>-->
+<!--                        <group>-->
+<!--                            <field name="cnc_machining_product_name"/>-->
+<!--                        </group>-->
+<!--                    </group>-->
+<!--                    <group>-->
+<!--                        <group>-->
+<!--                            <field name="cnc_machining_quantity"/>-->
+<!--                            <field name="cnc_machining_material"/>-->
+<!--                            <field name="cnc_machining_upload_technical_drawing" filename="cnc_machining_upload_technical_drawing_filename"/>-->
+<!--                            <field name="cnc_machining_upload_technical_drawing_filename" invisible="1"/>-->
+<!--                            <field name="cnc_machining_additional_notes"/>-->
+<!--                            <field name="cnc_is_uv_printing"/>-->
+<!--                            <field name="cnc_uv_printing_file" filename="cnc_uv_printing_filename"/>-->
+<!--                            <field name="cnc_uv_printing_filename" invisible="1"/>-->
+<!--                        </group>-->
+<!--                    </group>-->
+<!--                </page>-->
+<!--            </xpath>-->
+<!--        </field>-->
+<!--    </record>-->
+    <record id="mechpower_product_product_normal_form_view" model="ir.ui.view">
+        <field name="name">product.product.normal.form.view</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_normal_form_view"/>
+        <field name="arch" type="xml">
+        <xpath expr="//notebook" position="inside">
+                <page string="Enclosure Designing" name="enclosure_designing" attrs="{'invisible':[('is_enclosure_service','=',False)]}">
+                    <group>
+                        <group>
+                            <field name="enclosure_design_product_name" readonly="1"/>
+                            <field name="is_enclosure_service" invisible="1"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group string="Product description:">
+                            <field name="enclosure_design_product_purpose" readonly="1"/>
+                            <field name="enclosure_design_product_features" readonly="1"/>
+                        </group>
+                        <group string="Product specifications:">
+                            <field name="enclosure_design_product_dimensions" readonly="1"/>
+                            <field name="enclosure_design_product_dimensions_length" readonly="1"/>
+                            <field name="enclosure_design_product_dimensions_width" readonly="1"/>
+                            <field name="enclosure_design_product_dimensions_height" readonly="1"/>
+                            <field name="enclosure_design_product_temperatures" readonly="1"/>
+                            <field name="enclosure_design_specific_environmental" readonly="1"/>
+                        </group>
+                        <group string="Mounting &amp; placement:">
+                            <field name="enclosure_design_product_mounted" readonly="1"/>
+                            <field name="enclosure_design_product_placed" readonly="1"/>
+                        </group>
+                        <group string="Access &amp; interfaces:">
+                            <field name="enclosure_design_product_connectors" readonly="1"/>
+                            <field name="enclosure_design_product_interact" readonly="1"/>
+                        </group>
+                        <group string="Material preferences:">
+                            <field name="enclosure_design_product_materials" readonly="1"/>
+                        </group>
+                        <group string="Aesthetics &amp; branding:">
+                            <field name="enclosure_design_product_specific_design" readonly="1"/>
+                        </group>
+                        <group string="Cooling &amp; ventilation:">
+                            <field name="enclosure_design_product_significant_heat" readonly="1"/>
+                            <field name="enclosure_design_product_specific_ventilation_requirements" readonly="1"/>
+                        </group>
+
+                        <group string="Protection &amp; safety:">
+                            <field name="enclosure_design_product_safety_standards" readonly="1"/>
+                        </group>
+                        <group string="Existing designs or samples or design files:">
+                            <field name="enclosure_design_product_existing_enclosure_designs" readonly="1"/>
+                        </group>
+                        <group string="Collaboration &amp; communication:">
+                            <field name="enclosure_design_product_communicater_name" readonly="1"/>
+                            <field name="enclosure_design_product_communicater_email" readonly="1"/>
+                            <field name="enclosure_design_product_communicater_phone" readonly="1"/>
+                        </group>
+                        <group string="File(s):">
+                            <field name="enclosure_design_product_file" filename="enclosure_design_product_filename" readonly="1"/>
+                            <field name="enclosure_design_product_filename" invisible="1"/>
+                        </group>
+                    </group>
+                </page>
+                <page string="3D Printing" name="3d_printing" attrs="{'invisible':[('is_fdm_service','=',False),('is_projection_service','=',False)]}">
+                    <h2 class="mb-3">FDM Printing</h2>
+                    <group>
+                        <group>
+                            <field name="fdm_product_name" readonly="1"/>
+                            <field name="is_fdm_service" invisible="1" />
+                            <field name="is_projection_service" invisible="1"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="fdm_quantity" readonly="1"/>
+                            <field name="fdm_material" readonly="1"/>
+                            <field name="fdm_print_quality" readonly="1"/>
+                            <field name="fdm_infill" readonly="1"/>
+                            <field name="fdm_color" readonly="1"/>
+                        </group>
+                        <group>
+                            <field name="fdm_technical_drawings" filename="fdm_technical_drawings_filename" readonly="1"/>
+                            <field name="fdm_technical_drawings_filename" invisible="1"/>
+                            <field name="fdm_is_uv_printing" readonly="1"/>
+                            <field name="fdm_uv_printing_file" filename="fdm_uv_printing_filename" readonly="1"/>
+                            <field name="uv_printing_side" readonly="1"/>
+                            <field name="fdm_uv_printing_filename" invisible="1"/>
+                            <field name="fdm_extra_note" readonly="1"/>
+                        </group>
+                    </group>
+                    <h2 class="mt-3 mb-3">Projection Printing</h2>
+                    <group>
+                        <group>
+                            <field name="projection_product_name" readonly="1"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="projection_quantity" readonly="1"/>
+                            <field name="projection_material" readonly="1"/>
+                            <field name="projection_print_quality" readonly="1"/>
+                        </group>
+                        <group>
+                            <field name="projection_technical_drawings" filename="projection_technical_drawings_filename" readonly="1"/>
+                            <field name="projection_technical_drawings_filename" invisible="1"/>
+                            <field name="projection_is_uv_printing" readonly="1"/>
+                            <field name="projection_uv_printing_file" filename="projection_uv_printing_filename" readonly="1"/>
+                            <field name="uv_printing_side" readonly="1"/>
+                            <field name="projection_uv_printing_filename" invisible="1"/>
+                            <field name="projection_extra_note" readonly="1"/>
+                        </group>
+                    </group>
+                </page>
+                <page string="Sheet Metal Fabrication" name="sheet_metal_fabrication" attrs="{'invisible':[('is_metal_feb_service','=',False)]}">
+                    <group>
+                        <group>
+                            <field name="metal_feb_product_name" readonly="1"/>
+                            <field name="is_metal_feb_service" invisible="1"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="metal_feb_quantity" readonly="1"/>
+                            <field name="metal_feb_material" readonly="1"/>
+                            <field name="metal_feb_material_other" readonly="1"/>
+                            <field name="metal_feb_thickness"/>
+                            <field name="metal_feb_thickness_other" readonly="1"/>
+                            <field name="metal_feb_is_welding" readonly="1"/>
+                            <field name="metal_feb_surface_finish" readonly="1"/>
+                            <field name="metal_feb_surface_finish_other" readonly="1"/>
+                        </group>
+                        <group>
+                            <field name="metal_feb_color" readonly="1"/>
+                            <field name="metal_feb_color_other" readonly="1"/>
+                            <field name="metal_feb_is_uv_printing" readonly="1"/>
+                            <field name="metal_feb_uv_printing_file" filename="metal_feb_uv_printing_filename" readonly="1"/>
+                            <field name="metal_feb_uv_printing_filename" invisible="1"/>
+                            <field name="metal_feb_technical_drawings" filename="metal_feb_technical_drawings_filename" readonly="1"/>
+                            <field name="metal_feb_technical_drawings_filename" invisible="1"/>
+                            <field name="metal_feb_extra_note" readonly="1"/>
+                        </group>
+                    </group>
+                </page>
+                <page string="Injection Molding" name="injection_molding" attrs="{'invisible':[('is_injection_mold_service','=',False)]}">
+                    <group>
+                        <group>
+                            <field name="injection_mold_product_name" readonly="1"/>
+                            <field name="is_injection_mold_service" invisible="1"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="injection_mold_quantity" readonly="1"/>
+                            <field name="injection_mold_material" readonly="1"/>
+                            <field name="injection_mold_material_other" readonly="1"/>
+                            <field name="injection_mold_colour" readonly="1"/>
+                            <field name="injection_mold_colour_other" readonly="1"/>
+                            <field name="injection_mold_surface_finish" readonly="1"/>
+                            <field name="injection_mold_mold_requirements" readonly="1"/>
+                            <field name="injection_mold_no_of_cavity" readonly="1"/>
+                        </group>
+                        <group>
+                            <field name="injection_mold_runner" readonly="1"/>
+                            <field name="injection_mold_size_of_the_mold" readonly="1"/>
+                            <field name="injection_mold_size_of_the_mold_length" readonly="1"/>
+                            <field name="injection_mold_size_of_the_mold_width" readonly="1"/>
+                            <field name="injection_mold_size_of_the_mold_height" readonly="1"/>
+                            <field name="injection_mold_size_of_the_article" readonly="1"/>
+                            <field name="injection_mold_weight_of_the_article" readonly="1"/>
+                            <field name="injection_mold_upload_technical_drawing" filename="injection_mold_upload_technical_drawing_filename" readonly="1"/>
+                            <field name="injection_mold_upload_technical_drawing_filename" invisible="1"/>
+                            <field name="injection_is_uv_printing" readonly="1"/>
+                            <field name="injection_uv_printing_file" filename="injection_uv_printing_filename" readonly="1"/>
+                            <field name="injection_uv_printing_filename" invisible="1"/>
+                            <field name="injection_mold_additional_notes" readonly="1"/>
+                        </group>
+                    </group>
+                </page>
+                <page string="CNC Machining" name="cnc_machining" attrs="{'invisible':[('is_cnc_machining_service','=',False)]}">
+                    <group>
+                        <group>
+                            <field name="cnc_machining_product_name" readonly="1"/>
+                            <field name="is_cnc_machining_service" invisible="1"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="cnc_machining_quantity" readonly="1"/>
+                            <field name="cnc_machining_material" readonly="1"/>
+                            <field name="cnc_machining_upload_technical_drawing" filename="cnc_machining_upload_technical_drawing_filename" readonly="1"/>
+                            <field name="cnc_machining_upload_technical_drawing_filename" invisible="1"/>
+                            <field name="cnc_machining_additional_notes" readonly="1"/>
+                            <field name="cnc_is_uv_printing" readonly="1"/>
+                            <field name="cnc_uv_printing_file" filename="cnc_uv_printing_filename" readonly="1"/>
+                            <field name="cnc_uv_printing_filename" invisible="1"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+     <record id="product_template_form_view_cr_web" model="ir.ui.view">
+        <field name="name">product_template_form_cr_web</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_form_view" />
+        <field name="arch" type="xml">
+             <xpath expr="//field[@name='standard_price']" position="attributes">
+                     <attribute name="groups">purchase.group_purchase_manager,stock.group_stock_manager,account.group_account_manager,account.group_account_invoice,account.group_account_user
+                     </attribute>
+             </xpath>
+             <xpath expr="//span[@groups='uom.group_uom']" position="attributes">
+                     <attribute name="groups">purchase.group_purchase_manager,stock.group_stock_manager,account.group_account_manager,account.group_account_invoice,account.group_account_user
+                    </attribute>
+            </xpath>
+            <field name="alternative_product_ids" position="attributes">
+                <attribute name="string">Similar Product(s)</attribute>
+            </field>
+        </field>
+    </record>
+    <record id="product_variant_easy_edit_view_cr_web" model="ir.ui.view">
+        <field name="name">product_variant_easy_edit_view_cr</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_variant_easy_edit_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//label[@for='standard_price']" position="attributes">
+                    <attribute name="groups">purchase.group_purchase_manager,stock.group_stock_manager,account.group_account_manager,account.group_account_invoice,account.group_account_user
+                     </attribute>
+            </xpath>
+             <xpath expr="//group[@name='pricing']//div[2]" position="attributes">
+                     <attribute name="groups">purchase.group_purchase_manager,stock.group_stock_manager,account.group_account_manager,account.group_account_invoice,account.group_account_user
+                     </attribute>
+            </xpath>
+        </field>
+    </record>
+    <record id="product_product_easy_bom_form_view_cr_web" model="ir.ui.view">
+        <field name="name">product.product.product.view.form.easy.bom.inherit.cr.web</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="mrp_account.product_variant_easy_edit_view_bom_inherit" />
+        <field name="arch" type="xml">
+             <xpath expr="//t/button[@name='button_bom_cost']" position="attributes">
+                     <attribute name="groups">purchase.group_purchase_manager,stock.group_stock_manager,account.group_account_manager,account.group_account_invoice,account.group_account_user
+                        </attribute>
+            </xpath>
+        </field>
+    </record>
+    <record id="product_product_ext_form_view_cr_web" model="ir.ui.view">
+        <field name="name">product_product_ext_form_cr_web</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="mrp_account.product_product_ext_form_view2" />
+        <field name="arch" type="xml">
+             <xpath expr="//t/button[@name='button_bom_cost']" position="attributes">
+                     <attribute name="groups">purchase.group_purchase_manager,stock.group_stock_manager,account.group_account_manager,account.group_account_invoice,account.group_account_user
+                        </attribute>
+            </xpath>
+        </field>
+    </record>
+    <record id="product_public_category_form_view_custom" model="ir.ui.view">
+        <field name="name">product.public.category.form.view</field>
+        <field name="model">product.public.category</field>
+        <field name="inherit_id" ref="website_sale.product_public_category_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='parent_id']" position="after">
+                <field name="is_publish"/>
+                <field name="description"/>
+                <field name="redirect_url"/>
+            </xpath>
+        </field>
+    </record>
+
+
+</odoo>

@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="extra_info_inherit" inherit_id="website_sale.extra_info">
+        <xpath expr="//div[hasclass('order-xl-1')]" position="attributes">
+            <attribute name="class" add="col-12 col-xl-8 oe_cart customization_info" separator=" "/>
+        </xpath>
+        <xpath expr="//div[hasclass('order-xl-2')]" position="attributes">
+            <attribute name="class" add="d-none d-xl-block col-xl-4" separator=" "/>
+        </xpath>
+        <xpath expr="//div[hasclass('s_website_form_rows')]" position="attributes">
+            <attribute name="class" add="d-none" separator=" "/>
+        </xpath>
+        <xpath expr="//section[hasclass('s_website_form')]" position="attributes">
+            <attribute name="class" add="s_website_form cart_order_line" separator=" "/>
+        </xpath>
+        <xpath expr="//form" position="inside">
+            <h4>Customization</h4>
+            <div class="website_required_lines">
+                <p>Please Share technical drawings &amp; specifications for UV printing, cutouts, mounting options, environment protections and other additional features.</p>
+            </div>
+            <div class="s_website_form_rows row s_col_no_bgcolor extra-info-customization">
+                <div class="mb-0 col-12 s_website_form_field" data-type="binary" data-name="Field">
+                    <div class="s_col_no_resize s_col_no_bgcolor ">
+                        <label class=" col-sm-auto s_website_form_label " style="font-size:14px;" for="input_technical_drawing">
+                            <span class="o_input_required">Upload Technical drawing (.zip, .stl, .step, .stp, .obj, .3MF, .pdf, .dxf, .dwg, .iges, .sldprt)</span>
+                        </label>
+                        <div class="col-sm">
+                            <t t-if="website_sale_order and not website_sale_order.technical_drawing_file">
+                                <div class="warning-modal d-none">
+                                    <div class="warning-content">
+                                        <div class="warning-icon">
+                                            <img src="/cr_web_portal/static/src/img/mp_form_warning.png"  />
+                                        </div>
+                                        <h5>Some thing went wrong</h5>
+                                        <p> We are not able to access your file. Please contact our team at sales@mechpowertech.com or (+91) 9898412126.</p>
+                                        <a href="#" class="mp-btn-light-font-green warning-retry">Retry</a>
+                                    </div>
+                                </div>
+                                <div class="file-upload">
+                                    <label for="file-input" >
+                                        <div class="upload-icon"/>
+                                        <input type="file" class="hidden-file-input s_website_form_input" id="input_technical_drawing" accept=".zip, .stl .step, .stp, .obj, .3MF, .pdf, .zip, .dxf, .dwg, .iges, .sldprt" name="technical_drawing_document" required="required"/>
+                                        <div class="upload-text"><img src="/cr_web_portal/static/src/images/mech-custom/add-circle.png"/> Drag &amp; drop or <span class="highlighted-green">click to choose files</span>
+                                        </div>
+                                        <div class="file-types">Max file size : 10MB
+                                        </div>
+                                    </label>
+                                </div>
+                                <div class="file-uploading  d-none">
+                                    <div class="file-uploading-section d-flex">
+                                        <div class="d-flex">
+                                            <div class="file-uploading-progress-icon-box">
+                                                <svg xmlns="http://www.w3.org/2000/svg"
+                                                     viewBox="-1 -1 34 34">
+                                                    <circle cx="16" cy="16" r="16"
+                                                            class="progress-bar__background"/>
+                                                    <circle cx="16" cy="16" r="16"
+                                                            class="progress-bar__progress js-progress-bar"/>
+                                                </svg>
+                                            </div>
+                                            <div class="file-uploading-completed-icon-box d-none">
+                                                <img src="/cr_web_portal/static/src/img/mp_file_saved.png"/>
+                                            </div>
+                                            <div class="uploading-file-section">
+                                                <p class="uploading-file-name"></p>
+                                                <div class="d-flex">
+                                                    <div class="file-uploading-completed">
+                                                        <span class="file-percentage"></span>
+                                                        <span>% Completed</span>
+                                                    </div>
+                                                    <div class="uploading-file-progress">
+                                                        <span class="file-size-uploading"></span>
+                                                        <span class="file-size"></span>
+                                                        <span class="total-file-size"></span>
+                                                        <span class="file-size"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="uploading-cancel-icon-box">
+                                            <img src="/cr_web_portal/static/src/img/mp-file-upload-cancel.png"
+                                                 class="uploading-cancel-icon"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </t>
+                            <t t-else="">
+                                <div class="warning-modal d-none">
+                                    <div class="warning-content">
+                                        <div class="warning-icon">
+                                            <img src="/cr_web_portal/static/src/img/mp_form_warning.png"  />
+                                        </div>
+                                        <h5>Some thing went wrong</h5>
+                                        <p> We are not able to access your file. Please contact our team at sales@mechpowertech.com or (+91) 9898412126.</p>
+                                        <a href="#" class="mp-btn-light-font-green warning-retry">Retry</a>
+                                    </div>
+                                </div>
+                                <div class="file-uploading-re-upload">
+                                    <div class="file-uploading-section-re-upload d-flex">
+                                        <div class="d-flex">
+                                            <div class="file-uploading-completed-icon-box">
+                                                <img src="/cr_web_portal/static/src/img/mp_file_saved.png"/>
+                                            </div>
+                                            <div class="uploading-file-section">
+                                                <t t-esc="website_sale_order.technical_drawing_file_name"/>
+                                            </div>
+                                        </div>
+                                        <input id="input_technical_drawing" type="file"
+                                       class="s_website_form_input_1 check-file-type-extra d-none"
+                                       name="technical_drawing_document" accept=".zip, .stl .step, .stp, .obj, .3MF, .pdf, .zip, .dxf, .dwg, .iges, .sldprt" style="font-size:14px;"
+                                       required="required"/>
+                                        <div class="uploading-cancel-icon-box-re-upload">
+                                            <a class="upload_file_1" style=""><img src="/cr_web_portal/static/src/images/new_design_resource/edit-2.svg"/>Change</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </t>
+                        </div>
+                        <div class="add-dyn-text">
+                            <span ></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-0 col-12 s_website_form_field" data-type="selection" data-name="Field">
+                    <div class=" s_col_no_resize s_col_no_bgcolor">
+                        <label class=" col-sm-auto s_website_form_label" style="font-size:14px;" for="selection_is_uv_printing">
+                            <span class="o_input_required">UV Printing (Flat Surface):</span>
+                        </label>
+                        <div class="col-sm">
+                            <select type="selection" class="form-control input_control s_website_form_input"
+                                                        name="fdm_is_uv_printing" id="selection_is_uv_printing">
+                                <option value="Yes" t-att-selected="website_sale_order and website_sale_order.is_uv_printing">Yes</option>
+                                <option value="No" t-att-selected="website_sale_order and not website_sale_order.is_uv_printing">No</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-0 col-12 s_website_form_field d-none" data-type="binary" data-name="Field" id="uv_print_div">
+                    <div class=" s_col_no_resize s_col_no_bgcolor" id="div_uv_printing_uploder">
+                        <label class=" col-sm-auto s_website_form_label" style="font-size:14px;" for="input_uv_printing">
+                            <span class="o_input_required">Upload UV Printing File (.tiff, .png, .jpeg, .jpg)</span>
+                        </label>
+                        <div class="col-sm">
+                            <t t-if="website_sale_order and not website_sale_order.uv_printing_file">
+                                <div class="file-upload">
+                                    <label for="file-input" >
+                                        <div class="upload-icon"/>
+                                        <input type="file" class="hidden-file-input s_website_form_input" id="input_uv_printing" accept=".tiff, .png, .jpeg, .jpg" name="uv_printing_document"/>
+                                        <div class="upload-text"><img src="/cr_web_portal/static/src/images/mech-custom/add-circle.png"/> Drag &amp; drop or <span class="highlighted-green">click to choose files</span>
+                                        </div>
+                                        <div class="file-types">Max file size : 10MB
+                                        </div>
+                                    </label>
+                                </div>
+                                <div class="file-uploading  d-none">
+                                    <div class="file-uploading-section d-flex">
+                                        <div class="d-flex">
+                                            <div class="file-uploading-progress-icon-box">
+                                                <svg xmlns="http://www.w3.org/2000/svg"
+                                                     viewBox="-1 -1 34 34">
+                                                    <circle cx="16" cy="16" r="16"
+                                                            class="progress-bar__background"/>
+                                                    <circle cx="16" cy="16" r="16"
+                                                            class="progress-bar__progress js-progress-bar"/>
+                                                </svg>
+                                            </div>
+                                            <div class="file-uploading-completed-icon-box d-none">
+                                                <img src="/cr_web_portal/static/src/img/mp_file_saved.png"/>
+                                            </div>
+                                            <div class="uploading-file-section">
+                                                <p class="uploading-file-name"></p>
+                                                <div class="d-flex">
+                                                    <div class="file-uploading-completed">
+                                                        <span class="file-percentage"></span>
+                                                        <span>% Completed</span>
+                                                    </div>
+                                                    <div class="uploading-file-progress">
+                                                        <span class="file-size-uploading"></span>
+                                                        <span class="file-size"></span>
+                                                        <span class="total-file-size"></span>
+                                                        <span class="file-size"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="uploading-cancel-icon-box">
+                                            <img src="/cr_web_portal/static/src/img/mp-file-upload-cancel.png"
+                                                 class="uploading-cancel-icon"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </t>
+                            <t t-else="">
+                                 <div class="file-uploading-re-upload">
+                                    <div class="file-uploading-section-re-upload d-flex">
+                                        <div class="d-flex">
+                                            <div class="file-uploading-completed-icon-box">
+                                                <img src="/cr_web_portal/static/src/img/mp_file_saved.png"/>
+                                            </div>
+                                            <div class="uploading-file-section">
+                                                <t t-if="website_sale_order and website_sale_order.uv_printing_file_name" t-esc="website_sale_order.uv_printing_file_name"/>
+                                            </div>
+                                        </div>
+                                        <input id="input_uv_printing" type="file" class="s_website_form_input_2 check-file-type_uv d-none" accept=".tiff, .png, .jpeg, .jpg" name="uv_printing_document" style="font-size:14px;" required="required"/>
+                                        <div class="uploading-cancel-icon-box-re-upload">
+                                            <a class="upload_file_2" style=""><img src="/cr_web_portal/static/src/images/new_design_resource/edit-2.svg"/>Change</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </t>
+                        </div>
+                        <div class="add-dyn-text-uv">
+                            <span ></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-0 col-12 s_website_form_field s_website_form_custom" data-type="text" data-name="Field">
+                    <div class="s_col_no_resize s_col_no_bgcolor">
+                        <label class=" col-sm-auto s_website_form_label" style="font-size:14px;" for="additional_notes">
+                            <span class="addition_note">Additional Notes</span>
+                        </label>
+                        <div class="col-sm">
+                            <textarea id="additional_notes" class="form-control s_website_form_input" style="height:150px !important;" name="text_additional_notes"><t t-if="website_sale_order.additional_notes"><t t-esc="website_sale_order.additional_notes.strip()"/></t></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-0 col-12 s_website_form_submit s_website_form_no_submit_options">
+                    <a role="button" class="btn btn-primary s_website_form_send customisation-product-form" href="/shop/confirm_order">Next <img src="/cr_web_portal/static/src/images/mech-custom/arrow-right_2.png"/></a>
+                    <span id="s_website_form_result"></span>
+                </div>
+            </div>
+        </xpath>
+    </template>
+</odoo>

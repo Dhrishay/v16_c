@@ -1,0 +1,1309 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="enclosure_design_service_questions" name="Enclosure Design">
+        <t t-call="web.frontend_layout">
+            <section class="enc_form1 pb-60">
+                <h4 class="mt-4 text-center">Enclosure Design Inquiry Form</h4>
+                <p class="text-center">Share your enclosure requirements with us to receive a custom quote.</p>
+                <div class="container">
+                    <div class="row m0auto">
+                        <section class="s_website_form" data-snippet="s_website_form">
+                            <p class="css_not_available_msg alert alert-warning industry-segmat-warning mb-4 mb-4 mb-4"></p>
+                            <p class="css_not_available_msg alert alert-warning mb-4 form-fields-warning">
+                                Some Required field is not filled.
+                            </p>
+                        </section>
+                        <section class="s_website_form" data-vcss="001" data-snippet="s_website_form">
+                            <div class="container">
+                                <form action="/website/form/" method="post"
+                                      enctype="multipart/form-data"
+                                      class="o_mark_required enc_form industry_segment_validation"
+                                      data-mark="*"
+                                      data-model_name="sale.order" data-success-mode="redirect"
+                                      data-success-page="/create/product/thankyou" data-pre-fill="true">
+                                    <input type="hidden" name="form_name" value="create_enclosure_design"/>
+                                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                    <div class="s_website_form_rows row s_col_no_bgcolor">
+                                        <div class="pbmit-ihbox-style-12">
+                                            <div class="pbmit-ihbox-headingicon">
+                                                <div class="pbmit-ihbox-contents pb-0">
+                                                    <div class="pbmit-heading-desc text-justify">
+                                                        <p class="o_input_required">Product Name:</p>
+                                                        <input type="text"
+                                                               class="form-control s_website_form_input input_control"
+                                                               name="enclosure_design_product_name"
+                                                               required="required"/>
+
+                                                        <p class="o_input_required">What is the purpose of the
+                                                            electronic product?
+                                                        </p>
+                                                        <input type="text"
+                                                               class="form-control s_website_form_input input_control"
+                                                               name="enclosure_design_product_purpose"
+                                                               required="required"/>
+
+                                                        <p class="o_input_required">What are the main functionalities
+                                                            and features
+                                                            of the product?
+                                                        </p>
+                                                        <input type="text"
+                                                               class="form-control s_website_form_input input_control"
+                                                               name="enclosure_design_product_features"
+                                                               required="required"/>
+
+                                                        <p class="o_input_required">What are the dimensions of the
+                                                            electronic
+                                                            components that will be housed
+                                                            inside the enclosure?
+                                                        </p>
+                                                        <input type="text"
+                                                               class="form-control s_website_form_input input_control"
+                                                               name="enclosure_design_product_dimensions"
+                                                               required="required"/>
+
+                                                        <p class="o_input_required">What are the maximum and minimum
+                                                            operating
+                                                            temperatures for the
+                                                            product?
+                                                        </p>
+                                                        <input type="text"
+                                                               class="form-control s_website_form_input input_control"
+                                                               name="enclosure_design_product_temperatures"
+                                                               required="required"/>
+
+                                                        <p class="o_input_required">Are there any specific environmental
+                                                            conditions
+                                                            the enclosure needs to
+                                                            withstand (e.g., water resistance, dust resistance, etc.)?
+                                                        </p>
+                                                        <input type="text"
+                                                               class="form-control s_website_form_input input_control"
+                                                               name="enclosure_design_specific_environmental"
+                                                               required="required"/>
+
+
+                                                        <p class="o_input_required">How will the enclosure be mounted or
+                                                            installed
+                                                            (e.g., wall-mounted, DIN
+                                                            rail, panel-mounted)?
+                                                        </p>
+                                                        <input type="text"
+                                                               class="form-control s_website_form_input input_control"
+                                                               name="enclosure_design_product_mounted"
+                                                               required="required"/>
+
+                                                        <p class="o_input_required">Where will the enclosure be placed
+                                                            (indoor,
+                                                            outdoor, harsh environment,
+                                                            etc.)?
+                                                        </p>
+                                                        <input type="text"
+                                                               class="form-control s_website_form_input input_control"
+                                                               name="enclosure_design_product_placed"
+                                                               required="required"/>
+
+                                                        <p class="o_input_required">Are there any connectors, buttons,
+                                                            displays, or
+                                                            other interfaces that
+                                                            need to be accessible from the outside of the enclosure?
+                                                        </p>
+                                                        <input type="text"
+                                                               class="form-control s_website_form_input input_control"
+                                                               name="enclosure_design_product_connectors"
+                                                               required="required"/>
+
+                                                        <p class="o_input_required">How will the user interact with the
+                                                            product?
+                                                        </p>
+                                                        <input type="text"
+                                                               class="form-control s_website_form_input input_control"
+                                                               name="enclosure_design_product_interact"
+                                                               required="required"/>
+
+                                                        <p class="o_input_required">Are there any specific materials or
+                                                            material
+                                                            properties preferred for the
+                                                            enclosure (e.g., plastic, metal, ABS, polycarbonate, etc.)?
+                                                        </p>
+                                                        <input type="text"
+                                                               class="form-control s_website_form_input input_control"
+                                                               name="enclosure_design_product_materials"
+                                                               required="required"/>
+
+                                                        <p class="o_input_required">Are there any specific design
+                                                            elements, colors,
+                                                            or branding requirements
+                                                            for the enclosure?
+                                                        </p>
+                                                        <input type="text"
+                                                               class="form-control s_website_form_input input_control"
+                                                               name="enclosure_design_product_specific_design"
+                                                               required="required"/>
+
+                                                        <p class="o_input_required">Does the product generate
+                                                            significant heat? If
+                                                            so, how will it be
+                                                            cooled?
+                                                        </p>
+                                                        <input type="text"
+                                                               class="form-control s_website_form_input input_control"
+                                                               name="enclosure_design_product_significant_heat"
+                                                               required="required"/>
+
+                                                        <p class="o_input_required">Are there any specific ventilation
+                                                            requirements
+                                                            for the enclosure?
+                                                        </p>
+                                                        <input type="text"
+                                                               class="form-control s_website_form_input input_control"
+                                                               name="enclosure_design_product_specific_ventilation_requirements"
+                                                               required="required"/>
+
+                                                        <p class="o_input_required">Are there any safety standards or
+                                                            certifications
+                                                            that the enclosure needs to comply with
+                                                        </p>
+                                                        <input type="text"
+                                                               class="form-control s_website_form_input input_control"
+                                                               name="enclosure_design_product_safety_standards"
+                                                               required="required"/>
+
+                                                        <p class="o_input_required">Do you have any existing enclosure
+                                                            designs or
+                                                            samples that can serve as a
+                                                            reference or starting point?
+                                                        </p>
+                                                        <input type="text"
+                                                               class="form-control s_website_form_input input_control"
+                                                               name="enclosure_design_product_existing_enclosure_designs"
+                                                               required="required"/>
+
+                                                        <div class="mt-4 mb-2">
+                                                            <b>Who will be the main point of contact for communication
+                                                                during the
+                                                                design process?
+                                                            </b>
+                                                        </div>
+
+                                                        <p class="o_input_required">Name:</p>
+                                                        <input type="text"
+                                                               class="form-control s_website_form_input input_control"
+                                                               name="enclosure_design_product_communicater_name"
+                                                               required="required"/>
+                                                        <div class="d-flex">
+                                                            <div class="col-6" style="margin-right: 5px">
+                                                                <p class="o_input_required">Email:</p>
+                                                                <input type="text"
+                                                                       class="check_email s_website_form_input form-control input_control"
+                                                                       name="enclosure_design_product_communicater_email"
+                                                                       required="required"/>
+                                                                <div class="email-validate-message d-none">
+                                                                    <span style="margin-left: 8px;word-break: break-all;"></span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-6 mobile-responsive-div" style="margin-left: 5px;">
+                                                                <p class="o_input_required">Phone Number:</p>
+                                                                <div class="phone-container mobile-style">
+                                                                    <t t-set="countries"
+                                                                       t-value="request.env['res.country'].sudo().search([])"/>
+                                                                    <t t-set="default_country"
+                                                                       t-value="request.env['res.country'].sudo().search([('phone_code','=','+91')])"/>
+                                                                    <div class="input-group js_country_dropdown pr-0">
+                                                                        <div class="input-group-prepend flag-button">
+                                                                            <button type="button" id="btn_vat_code"
+                                                                                    t-att-disabled="readonly"
+                                                                                    class="btn dropdown btn-outline-secondary dropdown-toggle js_btn_country_code form-control country_button"
+                                                                                    data-bs-toggle="dropdown"
+                                                                                    data-bs-target="#dropdown-countries">
+
+                                                                                <div id="img_code_vat"
+                                                                                     class="js_img_country_code country_img ">
+                                                                                    +
+                                                                                    <t t-esc="default_country.phone_code"/>
+                                                                                    <i class="fa fa-chevron-down"/>
+                                                                                </div>
+                                                                            </button>
+                                                                            <div class="dropdown-menu scrollable-menu"
+                                                                                 id="dropdown-countries">
+                                                                                <div class="country_id_searchbar">
+                                                                                    <input class="search_country input_control"
+                                                                                           type="text"
+                                                                                           placeholder="Search..."/>
+                                                                                </div>
+                                                                                <div id="country_id_list">
+                                                                                    <t t-foreach="countries" t-as="country">
+                                                                                        <a href="#" t-att-id="country.code"
+                                                                                           t-att-data-country_id="country.id"
+                                                                                           t-att-data-country_code="country.code"
+                                                                                           t-att-data-phone_code="country.phone_code"
+                                                                                           class="dropdown-item js_select_country_code">
+                                                                                            <img t-att-src="country.image_url"
+                                                                                                 class="country_name_img"/>
+                                                                                            <span class="form-country-name">
+                                                                                                <t t-esc="country.name"/>
+                                                                                                (<t t-esc="country.code"/>) +
+                                                                                                <t t-esc="country.phone_code"/>
+                                                                                            </span>
+                                                                                        </a>
+                                                                                    </t>
+                                                                                </div>
+                                                                            </div>
+                                                                            <input id="country_code_field" type="hidden"
+                                                                                   size="2"
+                                                                                   tabindex="-1"
+                                                                                   class="input-group-text s_website_form_input js_country_code_field"
+                                                                                   name="country_id"
+                                                                                   t-att-value="default_country.id"
+                                                                                   readonly="1"/>
+                                                                        </div>
+                                                                    </div>
+                                                                    <input type="tel" id="phone"
+                                                                           name="enclosure_design_product_communicater_phone"
+                                                                           class="elem check_digits s_website_form_input"  required="required"
+                                                                           maxlength="15"/>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="mb-2 ">
+                                                            <p class="mobile-responsive-p o_input_required">File:[.zip,.dxf, .dwg,.step,.stp,.iges,.sldprt,.pdf,.png,.jpg,.jpeg,.doc]</p>
+                                                            <input type="file"
+                                                                   name="enclosure_design_product_file"
+                                                                   class="s_website_form_input" required="required"/>
+                                                        </div>
+                                                        <div class="add-dyn-text">
+                                                            <span></span>
+                                                        </div>
+                                                        <div class="col-12 s_website_form_recaptcha"
+                                                             data-name="Recaptcha Legal">
+                                                            <div class="col-sm">
+                                                                <small class="o_recaptcha_legal_terms">
+                                                                    Protected by reCAPTCHA,
+                                                                    <a href="https://policies.google.com/privacy"
+                                                                       target="_blank">
+                                                                        Privacy Policy
+                                                                    </a>
+                                                                    &amp;
+                                                                    <a href="https://policies.google.com/terms"
+                                                                       target="_blank">
+                                                                        Terms of Service
+                                                                    </a>
+                                                                    apply.
+                                                                </small>
+                                                            </div>
+                                                        </div>
+                                                        <div id="s_website_form_result"></div>
+                                                        <div class="text-center">
+                                                            <a class="pbmit-btn pbmit-global-white-bg mt-3 industry_segment_btn">
+                                                                <span class="pbmit-header-button2-text">Submit Your
+                                                                    Request
+                                                                </span>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </section>
+        </t>
+    </template>
+
+    <template id="injection_molding_service_questions" name="Injection Molding">
+        <t t-call="web.frontend_layout">
+            <section class="enc_form1 pb-60">
+                <h4 class="mt-4 text-center">Injection Molding Inquiry Form</h4>
+                <p class="text-center">Share your injection molding project details with us to receive a custom quote.
+                </p>
+                <div class="container">
+                    <div class="row m0auto">
+                        <section class="s_website_form" data-snippet="s_website_form">
+                            <p class="css_not_available_msg alert alert-warning industry-segmat-warning mb-4 mb-4 mb-4"></p>
+                            <p class="css_not_available_msg alert alert-warning form-fields-warning mb-4">
+                                Some Required field is not filled.
+                            </p>
+                        </section>
+                        <section class="s_website_form" data-vcss="001" data-snippet="s_website_form">
+                            <div class="container">
+                                <form action="/website/form/" method="post"
+                                      enctype="multipart/form-data"
+                                      class="o_mark_required enc_form industry_segment_validation"
+                                      data-mark="*"
+                                      data-model_name="sale.order" data-success-mode="redirect"
+                                      data-success-page="/create/product/thankyou" data-pre-fill="true">
+                                    <input type="hidden" name="form_name" value="create_injection_molding_product"/>
+                                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                    <div class="s_website_form_rows row s_col_no_bgcolor">
+                                        <div class="pbmit-ihbox-style-12">
+                                            <div class="pbmit-ihbox-headingicon">
+                                                <div class="pbmit-ihbox-contents pb-0">
+                                                    <div class="pbmit-heading-desc text-justify row">
+                                                        <div class="col-6">
+                                                            <p class="o_input_required">Product Name:</p>
+                                                            <input type="text"
+                                                                   class="form-control s_website_form_input input_control"
+                                                                   name="injection_mold_product_name"
+                                                                   required="required"/>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <p class="o_input_required">Quantity:</p>
+                                                            <input type="number"
+                                                                   class="check_digits_quantity s_website_form_input check_digits_quantity form-control input_control"
+                                                                   name="injection_mold_quantity" min="1"
+                                                                   required="required"/>
+                                                            <div class="check-digit-message d-none">
+                                                                <span></span>
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <p class="o_input_required">Material:</p>
+                                                            <select type="selection"
+                                                                    class="form-control s_website_form_input input_control form-select"
+                                                                    id="injection_mold_material"
+                                                                    name="injection_mold_material" required="required">
+                                                                 <option value="">Select Material</option>
+                                                                <option value="ABS">ABS</option>
+                                                                <option value="Polycarbonate">Polycarbonate</option>
+                                                                <option value="ABS + Polycarbonate">ABS +
+                                                                    Polycarbonate
+                                                                </option>
+                                                                <option value="Nylon">Nylon</option>
+                                                                <option value="Polypropylene">Polypropylene</option>
+                                                                <option value="Polyphenylene Ether">Polyphenylene
+                                                                    Ether
+                                                                </option>
+                                                                <option value="Polyoxymethylene">Polyoxymethylene
+                                                                </option>
+                                                                <option value="Other">Other</option>
+                                                            </select>
+                                                        </div>
+
+                                                        <div class="col-6 d-none"
+                                                             id="injection_mold_material_other_div_other">
+                                                            <p class=" injection_mold_material_other_p">Please Specify
+                                                                Material:
+                                                            </p>
+                                                            <input type="text"
+                                                                   class="form-control s_website_form_input input_control injection_mold_material_other_input"
+                                                                   name="injection_mold_material_other"/>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <p class="o_input_required">Colour:</p>
+                                                            <select type="selection"
+                                                                    class="form-control s_website_form_input input_control form-select"
+                                                                    id="injection_mold_colour"
+                                                                    name="injection_mold_colour" required="required">
+                                                                 <option value="">Select Color</option>
+                                                                <option value="Black">Black</option>
+                                                                <option value="White">White</option>
+                                                                <option value="Other">Other</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-6 d-none"
+                                                             id="injection_mold_colour_other_div_other">
+                                                            <p class=" injection_mold_colour_other_p">Please Specify
+                                                                Colour:
+                                                            </p>
+                                                            <input type="text"
+                                                                   class="form-control s_website_form_input input_control injection_mold_colour_other_input"
+                                                                   name="injection_mold_colour_other"/>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <p class="o_input_required">Surface Finish:</p>
+                                                            <input type="text"
+                                                                   class="form-control s_website_form_input input_control restrict_numbers"
+                                                                   name="injection_mold_surface_finish"
+                                                                   required="required"/>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <p class="o_input_required">Mold Requirements:</p>
+                                                            <select type="selection"
+                                                                    class="form-control s_website_form_input input_control form-select"
+                                                                    name="injection_mold_mold_requirements"
+                                                                    required="required">
+                                                                 <option value="">Select Mold Requirements</option>
+                                                                <!--                                                    <option value="">Select Mold Requirements</option>-->
+                                                                <option value="Mold by Mech Power">Mold by Mech Power
+                                                                </option>
+                                                                <option value="Mold by customer">Mold by customer
+                                                                </option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <p class="o_input_required">No. of cavity:</p>
+                                                            <input type="text"
+                                                                   class="form-control s_website_form_input input_control restrict_alphabets"
+                                                                   name="injection_mold_no_of_cavity"
+                                                                   required="required"/>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <p class="o_input_required">Runner:</p>
+                                                            <select type="selection"
+                                                                    class="form-control s_website_form_input input_control form-select" required="required"
+                                                                    name="injection_mold_runner">
+                                                                 <option value="">Select No. of cavity</option>
+                                                                <!--                                                    <option value="">Select Runner</option>-->
+                                                                <option value="Hot">Hot</option>
+                                                                <option value="Cold">Cold</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <p>Size of the mold[LxWxH, in mm]:</p>
+                                                            <input type="text"
+                                                                   class="form-control s_website_form_input input_control"
+                                                                   name="injection_mold_size_of_the_mold"/>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <p>Size of the article:</p>
+                                                            <input type="text"
+                                                                   class="form-control s_website_form_input input_control"
+                                                                   name="injection_mold_size_of_the_article"/>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <p>Weight of the article:</p>
+                                                            <input type="text"
+                                                                   class="form-control s_website_form_input input_control"
+                                                                   name="injection_mold_weight_of_the_article"/>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <p class="o_input_required">UV Printing (Flat Surface):</p>
+                                                            <select type="selection"
+                                                                    class="form-control s_website_form_input input_control form-select"
+                                                                    id="injection_is_uv_printing" required="required"
+                                                                    name="injection_is_uv_printing">
+                                                                 <option value=""></option>
+                                                                <option value="No">No</option>
+                                                                <option value="Yes">Yes</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <p class="o_input_required">Upload Technical
+                                                                Drawing:[.zip,.dxf, .dwg,
+                                                                .step,.stp,.iges,.sldprt,.pdf]
+                                                            </p>
+                                                            <input type="file"
+                                                                   class="check-file-type_two s_website_form_input"
+                                                                   name="injection_mold_upload_technical_drawing"
+                                                                   required="required"/>
+                                                            <div class="add-dyn-text">
+                                                                <span></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <p class="injection_uv_printing_file_div_p">UV Printing
+                                                                File:[.tiff,.png, .jpeg,.jpg,pdf]
+                                                            </p>
+                                                            <input type="file" id="injection_uv_printing_file"
+                                                                   class="check-file-type_uv s_website_form_input"
+                                                                   name="injection_uv_printing_file"
+                                                                   disabled="disabled"/>
+                                                            <div class="add-dyn-text-uv">
+                                                                <span></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12 col-6 col-3 mt-3">
+                                                            <p class="">Additional notes:</p>
+                                                            <textarea
+                                                                    class="form-control s_website_form_input input_control"
+                                                                    style="height:150px; border-radius:25px;"
+                                                                    name="injection_mold_additional_notes"/>
+                                                        </div>
+                                                        <div class="col-12 s_website_form_recaptcha"
+                                                             data-name="Recaptcha Legal">
+                                                            <div class="col-sm">
+                                                                <small class="o_recaptcha_legal_terms">
+                                                                    Protected by reCAPTCHA,
+                                                                    <a href="https://policies.google.com/privacy"
+                                                                       target="_blank">
+                                                                        Privacy Policy
+                                                                    </a>
+                                                                    &amp;
+                                                                    <a href="https://policies.google.com/terms"
+                                                                       target="_blank">
+                                                                        Terms of Service
+                                                                    </a>
+                                                                    apply.
+                                                                </small>
+                                                            </div>
+                                                        </div>
+                                                        <div id="s_website_form_result"></div>
+                                                        <div class="text-center">
+                                                            <a class="pbmit-btn pbmit-global-white-bg mt-3 industry_segment_btn">
+                                                                <span class="pbmit-header-button2-text">Submit Your
+                                                                    Request
+                                                                </span>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </section>
+        </t>
+    </template>
+
+    <template id="cnc_machining_service_questions" name="CNC Machining">
+        <t t-call="website.layout">
+            <section class="enc_form1 pb-60">
+                <h4 class="mt-4 text-center">CNC Machining Inquiry Form</h4>
+                <p class="text-center">Share your CNC machining project details with us to receive a custom quote.</p>
+                <div class="container">
+                    <div class="row m0auto">
+                        <section class="s_website_form" data-snippet="s_website_form">
+                            <p class="css_not_available_msg alert alert-warning industry-segmat-warning mb-4 mb-4 mb-4"></p>
+                            <p class="css_not_available_msg alert alert-warning form-fields-warning mb-4">
+                                Some Required field is not filled.
+                            </p>
+                        </section>
+                        <section class="s_website_form" data-vcss="001" data-snippet="s_website_form">
+                            <div class="container">
+                                <form action="/website/form/" method="post"
+                                      enctype="multipart/form-data"
+                                      class="o_mark_required enc_form industry_segment_validation"
+                                      data-mark="*"
+                                      data-model_name="sale.order" data-success-mode="redirect"
+                                      data-success-page="/create/product/thankyou" data-pre-fill="true">
+                                    <input type="hidden" name="form_name" value="create_cnc_product"/>
+                                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                    <div class="s_website_form_rows row s_col_no_bgcolor">
+                                        <div class="pbmit-ihbox-style-12">
+                                            <div class="pbmit-ihbox-headingicon">
+                                                <div class="pbmit-ihbox-contents pb-0">
+                                                    <div class="pbmit-heading-desc text-justify row">
+                                                        <div class="col-6">
+                                                            <p class="o_input_required">Product Name:</p>
+                                                            <input type="text"
+                                                                   class="form-control s_website_form_input input_control"
+                                                                   name="cnc_machining_product_name"
+                                                                   required="required"/>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <p class="o_input_required">Quantity:</p>
+                                                            <input type="number"
+                                                                   class="check_digits_quantity s_website_form_input form-control input_control"
+                                                                   min="1" name="cnc_machining_quantity"
+                                                                   required="required"/>
+                                                            <div class="check-digit-message d-none">
+                                                                <span></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <p class="o_input_required">Material:</p>
+                                                            <input type="text"
+                                                                   class="form-control s_website_form_input input_control"
+                                                                   name="cnc_machining_material" required="required"/>
+                                                        </div>
+
+                                                        <div class="col-6">
+                                                            <p class="o_input_required">UV Printing (Flat Surface):</p>
+                                                            <select type="selection"
+                                                                    class="form-control input_control s_website_form_input form-select"
+                                                                    id="cnc_is_uv_printing" required="required"
+                                                                    name="cnc_is_uv_printing">
+                                                                 <option value=""></option>
+                                                                <option value="No">No</option>
+                                                                <option value="Yes">Yes</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <p class="o_input_required">Upload Technical
+                                                                Drawing:[.zip,.dxf,
+                                                                .dwg, .step,.stp,.iges,.sldprt,.pdf]
+                                                            </p>
+                                                            <input type="file"
+                                                                   class="check-file-type_two s_website_form_input"
+                                                                   name="cnc_machining_upload_technical_drawing"
+                                                                   required="required"/>
+                                                            <div class="add-dyn-text">
+                                                                <span></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <p class="cnc_uv_printing_file_div_p">
+                                                                <p class="injection_uv_printing_file_div_p">UV Printing
+                                                                    File:[.tiff,.png, .jpeg,.jpg,.pdf]
+                                                                </p>
+                                                            </p>
+                                                            <input type="file" id="cnc_uv_printing_file"
+                                                                   class="check-file-type_uv s_website_form_input"
+                                                                   name="cnc_uv_printing_file" disabled="disabled"/>
+                                                            <div class="add-dyn-text-uv">
+                                                                <span></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12 col-6 col-3 mt-3">
+                                                            <p>Additional notes:</p>
+                                                            <textarea
+                                                                    class="form-control input_control s_website_form_input"
+                                                                    style="height:150px; border-radius:25px;"
+                                                                    name="cnc_machining_additional_notes"/>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 s_website_form_recaptcha"
+                                                         data-name="Recaptcha Legal">
+                                                        <div class="col-sm">
+                                                            <small class="o_recaptcha_legal_terms">
+                                                                Protected by reCAPTCHA,
+                                                                <a href="https://policies.google.com/privacy"
+                                                                   target="_blank">
+                                                                    Privacy Policy
+                                                                </a>
+                                                                &amp;
+                                                                <a href="https://policies.google.com/terms"
+                                                                   target="_blank">
+                                                                    Terms of Service
+                                                                </a>
+                                                                apply.
+                                                            </small>
+                                                        </div>
+                                                    </div>
+                                                    <div id="s_website_form_result"></div>
+
+                                                    <div class="text-center">
+                                                        <a class="pbmit-btn pbmit-global-white-bg mt-3 industry_segment_btn">
+                                                            <span class="pbmit-header-button2-text">Submit Your
+                                                                Request
+                                                            </span>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </section>
+        </t>
+    </template>
+
+    <template id="fdm_printing_service_questions" name="FDM Printing">
+        <t t-call="web.frontend_layout">
+            <section class="enc_form1 pb-60">
+                <h4 class="mt-4 text-center">3D Printing(FDM) Inquiry Form</h4>
+                <p class="text-center">Share your 3D Printing project details with us to receive a custom quote.</p>
+                <div class="container">
+                    <div class="row m0auto">
+                        <section class="s_website_form" data-snippet="s_website_form">
+                            <p class="css_not_available_msg alert alert-warning  industry-segmat-warning mt-4 mb-4"></p>
+                            <p class="css_not_available_msg alert alert-warning form-fields-warning mb-4">
+                                Some Required field is not filled.
+                            </p>
+                        </section>
+                        <section class="s_website_form" data-vcss="001" data-snippet="s_website_form">
+                            <div class="container">
+                                <form action="/website/form/" method="post"
+                                      enctype="multipart/form-data"
+                                      class="o_mark_required enc_form industry_segment_validation"
+                                      data-mark="*"
+                                      data-model_name="sale.order" data-success-mode="redirect"
+                                      data-success-page="/create/product/thankyou" data-pre-fill="true">
+                                    <input type="hidden" name="form_name" value="create_fdm_product"/>
+                                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                    <div class="s_website_form_rows row s_col_no_bgcolor">
+                                        <div class="pbmit-ihbox-style-12">
+                                            <div class="pbmit-ihbox-headingicon">
+                                                <div class="pbmit-ihbox-contents pb-0">
+                                                    <div class="pbmit-heading-desc text-justify row">
+                                                        <div class="col-6">
+                                                            <p class="o_input_required ">Product Name:</p>
+                                                            <input type="text"
+                                                                   class="form-control input_control s_website_form_input"
+                                                                   name="fdm_product_name" required="required"/>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <p class="o_input_required">Quantity:</p>
+                                                            <input type="number"
+                                                                   class="check_digits_quantity form-control input_control s_website_form_input"
+                                                                   min="1" name="fdm_quantity" required="required"/>
+                                                            <div class="check-digit-message d-none">
+                                                                <span></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <p class="o_input_required">Choose Material:</p>
+                                                            <select type="selection"
+                                                                    class="form-control input_control s_website_form_input form-select"
+                                                                    name="fdm_material" required="required"
+                                                                    id="fdm_material">
+                                                                <option value="">Select Material</option>
+                                                                <option value="ABS">ABS</option>
+                                                                <option value="PLA">PLA</option>
+                                                                <option value="PETG">PETG</option>
+                                                                <option value="ASA">ASA</option>
+                                                                <option value="TPU">TPU</option>
+                                                                <option value="TPE">TPE</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <p class="o_input_required">Print Quality:</p>
+                                                            <select type="selection"
+                                                                    class="form-control s_website_form_input input_control form-select"
+                                                                    name="fdm_print_quality" required="required">
+                                                                <option value="">Select Print Quality</option>
+                                                                <option value="0.15 mm">0.15 mm</option>
+                                                                <option value="0.05 mm">0.05 mm</option>
+                                                                <option value="0.1 mm">0.1 mm</option>
+                                                                <option value="0.2 mm">0.2 mm</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <p class="o_input_required">Color:</p>
+                                                            <select type="selection"
+                                                                    class="form-control s_website_form_input input_control form-select"
+                                                                    name="fdm_color" required="required" id="fdm_color">
+                                                                <option value="">Select Color</option>
+                                                                <option value="black">Black</option>
+                                                                <option value="blue">Blue</option>
+                                                                <option value="white">White</option>
+                                                                <option value="orange">Orange</option>
+                                                                <option value="green">Green</option>
+                                                                <option value="grey">Grey</option>
+                                                                <option value="red">Red</option>
+                                                                <option value="natural">Natural</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <p class="o_input_required">InFill:</p>
+                                                            <select type="selection"
+                                                                    class="form-control s_website_form_input input_control form-select"
+                                                                    name="fdm_infill" required="required">
+                                                                 <option value="">Select Infill</option>
+                                                                <option value="30%">30%</option>
+                                                                <option value="10%">10%</option>
+                                                                <option value="20%">20%</option>
+                                                                <option value="40%">40%</option>
+                                                                <option value="50%">50%</option>
+                                                                <option value="60%">60%</option>
+                                                                <option value="70%">70%</option>
+                                                                <option value="80%">80%</option>
+                                                                <option value="90%">90%</option>
+                                                                <option value="100%">100%</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <p class="o_input_required">UV Printing (Flat Surface):</p>
+                                                            <select type="selection"
+                                                                    class="form-control s_website_form_input input_control form-select"
+                                                                    id="fdm_is_uv_printing"
+                                                                    name="fdm_is_uv_printing" required="required">
+                                                                 <option value=""></option>
+                                                                <option value="No">No</option>
+                                                                <option value="Yes">Yes</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <p class="fdm_uv_printing_file_div_p">UV Printing File:
+                                                                [.tiff,.png,.jpeg,.jpg,.pdf]
+                                                            </p>
+                                                            <input type="file" id="fdm_uv_printing_file"
+                                                                   class="check-file-type_uv s_website_form_input"
+                                                                   name="fdm_uv_printing_file" disabled="disabled"/>
+                                                            <div class="add-dyn-text-uv">
+                                                                <span></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <p class="o_input_required">Upload Technical Drawing:
+                                                                [.stl,.step,.stp,.zip]
+                                                            </p>
+                                                            <input type="file"
+                                                                   class="check-file-type_one s_website_form_input"
+                                                                   name="fdm_technical_drawings" required="required"/>
+                                                            <div class="add-dyn-text">
+                                                                <span></span>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-12 col-6 col-3 mt-3">
+                                                            <p>Additional notes:</p>
+                                                            <textarea
+                                                                    class="form-control input_control s_website_form_input"
+                                                                    style="height:150px; border-radius:25px;"
+                                                                    placeholder="Message...."
+                                                                    name="fdm_extra_note"/>
+                                                        </div>
+                                                        <div class="col-12 s_website_form_recaptcha"
+                                                             data-name="Recaptcha Legal">
+                                                            <div class="col-sm">
+                                                                <small class="o_recaptcha_legal_terms">
+                                                                    Protected by reCAPTCHA,
+                                                                    <a href="https://policies.google.com/privacy"
+                                                                       target="_blank">
+                                                                        Privacy Policy
+                                                                    </a>
+                                                                    &amp;
+                                                                    <a href="https://policies.google.com/terms"
+                                                                       target="_blank">
+                                                                        Terms of Service
+                                                                    </a>
+                                                                    apply.
+                                                                </small>
+                                                            </div>
+                                                        </div>
+                                                        <div id="s_website_form_result"></div>
+                                                        <div class="text-center">
+                                                            <a class="pbmit-btn pbmit-global-white-bg mt-3 industry_segment_btn">
+                                                                <span class="pbmit-header-button2-text">Submit Your
+                                                                    Request
+                                                                </span>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </section>
+        </t>
+    </template>
+
+    <template id="projection_printing_service_questions" name="Projection Printing">
+        <t t-call="web.frontend_layout">
+            <section class="enc_form1 pb-60">
+                <h4 class="mt-4 text-center">3D Printing(Projection) Inquiry Form</h4>
+                <p class="text-center">Share your 3D Printing project details with us to receive a custom quote.</p>
+                <div class="container">
+                    <div class="row m0auto">
+                        <section class="s_website_form" data-snippet="s_website_form">
+                            <p class="css_not_available_msg alert alert-warning  industry-segmat-warning mt-4 mb-4"></p>
+                            <p class="css_not_available_msg alert alert-warning form-fields-warning mb-4">
+                                Some Required field is not filled.
+                            </p>
+                        </section>
+                        <section class="s_website_form" data-vcss="001" data-snippet="s_website_form">
+                            <div class="container">
+                                <form action="/website/form/" method="post"
+                                      enctype="multipart/form-data"
+                                      class="o_mark_required enc_form industry_segment_validation"
+                                      data-mark="*"
+                                      data-model_name="sale.order" data-success-mode="redirect"
+                                      data-success-page="/create/product/thankyou" data-pre-fill="true">
+                                    <input type="hidden" name="form_name" value="create_projection_product"/>
+                                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                    <div class="s_website_form_rows row s_col_no_bgcolor">
+                                        <div class="pbmit-ihbox-style-12">
+                                            <div class="pbmit-ihbox-headingicon">
+                                                <div class="pbmit-ihbox-contents pb-0">
+                                                    <div class="pbmit-heading-desc text-justify row">
+                                                        <div class="col-6">
+                                                            <p class="o_input_required">Product Name:</p>
+                                                            <input type="text"
+                                                                   class="form-control s_website_form_input input_control"
+                                                                   name="projection_product_name" required="required"/>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <p class="o_input_required">Quantity:</p>
+                                                            <input type="number"
+                                                                   class="check_digits_quantity form-control s_website_form_input input_control"
+                                                                   min="1" name="projection_quantity"
+                                                                   required="required"/>
+                                                            <div class="check-digit-message d-none">
+                                                                <span></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <p class="o_input_required">Choose Material:</p>
+                                                            <select type="selection"
+                                                                    class="form-control input_control s_website_form_input form-select"
+                                                                    name="projection_material" required="required">
+                                                                 <option value="">Select Material</option>
+                                                                <option value="PRO-BLK 10">PRO-BLK 10</option>
+                                                                <option value="Rigid White">Rigid White</option>
+                                                                <option value="Tough 60C White">Tough 60C White</option>
+                                                                <option value="Rigid Gray">Rigid Gray</option>
+                                                                <option value="Rubber-65A BLK">Rubber-65A BLK</option>
+                                                                <option value="Flex-BLK 20">Flex-BLK 20</option>
+                                                                <option value="High Temp 150°C FR Black">High Temp 150°C FR Black</option>
+                                                                <option value="Tough 65C Black">Tough 65C Black</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <p class="o_input_required">Print Quality:</p>
+                                                            <select type="selection"
+                                                                    class="form-control input_control s_website_form_input form-select"
+                                                                    name="projection_print_quality" required="required">
+                                                                 <option value="">Select Print Quality</option>
+                                                                <option value="40 micron">40 micron</option>
+                                                                <option value="20 micron">20 micron</option>
+                                                                <option value="30 micron">30 micron</option>
+                                                                <option value="50 micron">50 micron</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <p class="o_input_required">UV Printing (Flat Surface):</p>
+                                                            <select type="selection"
+                                                                    class="form-control input_control s_website_form_input form-select"
+                                                                    id="projection_is_uv_printing" required="required"
+                                                                    name="projection_is_uv_printing">
+                                                                 <option value=""></option>
+                                                                <option value="No">No</option>
+                                                                <option value="Yes">Yes</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <p class="o_input_required">Upload Technical Drawing:
+                                                                [.stl,.step,.stp,.zip]
+                                                            </p>
+                                                            <input type="file"
+                                                                   class="check-file-type_one s_website_form_input"
+                                                                   name="projection_technical_drawings"
+                                                                   required="required"/>
+                                                            <div class="add-dyn-text">
+                                                                <span></span>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-6">
+                                                            <p class="projection_uv_printing_file_div_p">UV Printing
+                                                                File:
+                                                                [.tiff,.png,.jpeg,.jpg,.pdf]
+                                                            </p>
+                                                            <input type="file"
+                                                                   class="check-file-type_uv s_website_form_input"
+                                                                   id="projection_uv_printing_file" disabled="disabled"
+                                                                   name="projection_uv_printing_file"/>
+                                                            <div class="add-dyn-text-uv">
+                                                                <span style="margin-left: 0px;color: red;"></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <p>Additional notes:</p>
+                                                            <textarea
+                                                                    class=" s_website_form_input form-control input_control"
+                                                                    style="height:150px; border-radius:25px;"
+                                                                    placeholder="Message...."
+                                                                    name="projection_extra_note"/>
+                                                        </div>
+                                                        <div class="col-12 s_website_form_recaptcha"
+                                                             data-name="Recaptcha Legal">
+                                                            <div class="col-sm">
+                                                                <small class="o_recaptcha_legal_terms">
+                                                                    Protected by reCAPTCHA,
+                                                                    <a href="https://policies.google.com/privacy"
+                                                                       target="_blank">
+                                                                        Privacy Policy
+                                                                    </a>
+                                                                    &amp;
+                                                                    <a href="https://policies.google.com/terms"
+                                                                       target="_blank">
+                                                                        Terms of Service
+                                                                    </a>
+                                                                    apply.
+                                                                </small>
+                                                            </div>
+                                                        </div>
+                                                        <div id="s_website_form_result"></div>
+                                                        <div class="text-center">
+                                                            <a class="pbmit-btn pbmit-global-white-bg mt-3 industry_segment_btn">
+                                                                <span class="pbmit-header-button2-text">Submit Your
+                                                                    Request
+                                                                </span>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </section>
+        </t>
+    </template>
+
+    <template id="sheet_metal_fabrication_service_questions" name="Sheet Metal Fabrication">
+        <t t-call="web.frontend_layout">
+            <section class="enc_form1 pb-60">
+                <h4 class="mt-4 text-center">Sheet Metal Fabrication Inquiry Form</h4>
+                <p class="text-center">Share your sheet metal fabrication project details with us to receive a custom
+                    quote.
+                </p>
+                <div class="container">
+                    <div class="row m0auto">
+                        <section class="s_website_form" data-snippet="s_website_form">
+                            <p class="css_not_available_msg alert alert-warning industry-segmat-warning mt-4 mb-4"></p>
+                            <p class="css_not_available_msg alert alert-warning form-fields-warning mb-4">
+                                Some Required field is not filled.
+                            </p>
+                        </section>
+                        <section class="s_website_form" data-vcss="001" data-snippet="s_website_form">
+                            <div class="container">
+                                <form action="/website/form/" method="post"
+                                      enctype="multipart/form-data"
+                                      class="o_mark_required enc_form industry_segment_validation"
+                                      data-mark="*"
+                                      data-model_name="sale.order" data-success-mode="redirect"
+                                      data-success-page="/create/product/thankyou" data-pre-fill="true">
+                                    <input type="hidden" name="form_name" value="create_metal_fab_product"/>
+                                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                    <div class="s_website_form_rows row s_col_no_bgcolor">
+                                        <div class="pbmit-ihbox-style-12">
+                                            <div class="pbmit-ihbox-headingicon">
+                                                <div class="pbmit-ihbox-contents pb-0">
+                                                    <div class="pbmit-heading-desc text-justify row">
+                                                        <div class="col-6">
+                                                            <p class="o_input_required">Product Name:</p>
+                                                            <input type="text"
+                                                                   class="form-control s_website_form_input input_control"
+                                                                   name="metal_feb_product_name" required="required"/>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <p class="o_input_required">Quantity:</p>
+                                                            <input type="number"
+                                                                   class="check_digits_quantity s_website_form_input form-control input_control"
+                                                                   name="metal_feb_quantity" required="required"
+                                                                   min="1"/>
+                                                            <div class="check-digit-message d-none">
+                                                                <span></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <p class="o_input_required">Select Material</p>
+                                                            <select name="metal_feb_material"
+                                                                    class="form-control s_website_form_input input_control form-select"
+                                                                    id="metal_feb_material"
+                                                                    required="required">
+                                                                 <option value="">Select Material</option>
+                                                                <option value="Aluminum 5052">Aluminum 5052</option>
+                                                                <option value="Stainless steel 304">Stainless steel
+                                                                    304
+                                                                </option>
+                                                                <option value="Stainless steel 316">Stainless steel
+                                                                    316
+                                                                </option>
+                                                                <option value="Stainless steel 316L">Stainless steel
+                                                                    316L
+                                                                </option>
+                                                                <option value="Stainless steel 3012">Stainless steel 3012
+                                                                </option>
+                                                                <option value="Mild steel (CR)">GI regular sprinkle
+                                                                </option>
+                                                                <option value="GI regular sprinkle">Aluminum 5052
+                                                                </option>
+                                                                <option value="GI zero sprinkle">GI zero sprinkle
+                                                                </option>
+                                                                <option value="Other">Other</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-6 d-none" id="metal_feb_material_div_other">
+                                                            <p class=" metal_feb_material_div_other_p">Please Specify
+                                                                Material:
+                                                            </p>
+                                                            <input type="text"
+                                                                   class="form-control s_website_form_input input_control metal_feb_material_div_other_input"
+                                                                   name="metal_feb_material_other"/>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <p class="o_input_required">Thickness</p>
+                                                            <select name="metal_feb_thickness" id="metal_feb_thickness"
+                                                                    class="form-control s_website_form_input form-select input_control"
+                                                                    required="required">
+                                                                <option value="">Select Thickness</option>
+                                                                <option value="0.8 mm">0.8 mm</option>
+                                                                <option value="1 mm">1 mm</option>
+                                                                <option value="1.2 mm">1.2 mm</option>
+                                                                <option value="1.5 mm">1.5 mm</option>
+                                                                <option value="2 mm">2 mm</option>
+                                                                <option value="2.5 mm">2.5 mm</option>
+                                                                <option value="3 mm">3 mm</option>
+                                                                <option value="4 mm">4 mm</option>
+                                                                <option value="Other">Other</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-6 d-none" id="metal_feb_thickness_div_other">
+                                                            <p class=" metal_feb_thickness_div_other_p">Please Specify
+                                                                Thickness:
+                                                            </p>
+                                                            <input type="text"
+                                                                   class="form-control input_control s_website_form_input metal_feb_thickness_div_other_input"
+                                                                   name="metal_feb_thickness_other"/>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <p class="o_input_required">Welding</p>
+                                                            <select type="selection"
+                                                                    class="form-control s_website_form_input input_control form-select" required="required"
+                                                                    name="metal_feb_is_welding">
+                                                                <option value=""></option>
+                                                                <option value="Yes">Yes</option>
+                                                                <option value="No">No</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <p class="o_input_required">Surface finish:</p>
+                                                            <select name="metal_feb_surface_finish"
+                                                                    id="metal_feb_surface_finish"
+                                                                    class="form-control s_website_form_input form-select input_control"
+                                                                    required="required">
+                                                                 <option value="">Select Surface finish</option>
+                                                                <option value="Powder coated epoxy (Structure)">Powder
+                                                                    coated
+                                                                    epoxy
+                                                                    (Structure)
+                                                                </option>
+                                                                <option value="Powder coated epoxy (Texture)">Powder
+                                                                    coated
+                                                                    epoxy
+                                                                    (Texture)
+                                                                </option>
+                                                                <option value="Powder coated epoxy (Matt)">Powder coated
+                                                                    epoxy
+                                                                    (Matt)
+                                                                </option>
+                                                                <option value="Powder coated PP (Matt)">Powder coated PP
+                                                                    (Matt)
+                                                                </option>
+                                                                <option value="Powder coated PP (Structure)">Powder
+                                                                    coated PP
+                                                                    (Structure)
+                                                                </option>
+                                                                <option value="Powder coated PP (Texture)">Powder coated
+                                                                    PP
+                                                                    (Texture)
+                                                                </option>
+                                                                <option value="Anodized">Anodized</option>
+                                                                <option value="None">None</option>
+                                                                <option value="Other">Other</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-6 d-none"
+                                                             id="metal_feb_surface_finish_div_other">
+                                                            <p class=" metal_feb_surface_finish_div_other_p">Please
+                                                                Specify
+                                                                Surface
+                                                                Finish:
+                                                            </p>
+                                                            <input type="text"
+                                                                   class="form-control s_website_form_input input_control metal_feb_surface_finish_div_other_input"
+                                                                   name="metal_feb_surface_finish_other"/>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <p class="o_input_required">Colour:</p>
+                                                            <select name="metal_feb_color" id="metal_feb_color"
+                                                                    class="form-control s_website_form_input form-select input_control"
+                                                                    required="required">
+                                                                 <option value="">Select Colour</option>
+                                                                <option value="Light grey (RAL 7035)">Light grey (RAL
+                                                                    7035)
+                                                                </option>
+                                                                <option value="Jet black (RAL 9005)">Jet black (RAL
+                                                                    9005)
+                                                                </option>
+                                                                <option value="None">None</option>
+                                                                <option value="Other">Other</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-6 d-none" id="metal_feb_color_div_other">
+                                                            <p class=" metal_feb_color_div_other_p">Please Specify
+                                                                Colour:
+                                                            </p>
+                                                            <input type="text"
+                                                                   class="form-control s_website_form_input input_control metal_feb_color_div_other_input"
+                                                                   name="metal_feb_color_other"/>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <p class="o_input_required">UV Printing</p>
+                                                            <select type="selection"
+                                                                    class="form-control s_website_form_input input_control form-select"
+                                                                    id="metal_feb_is_uv_printing" required="required"
+                                                                    name="metal_feb_is_uv_printing">
+                                                                 <option value=""></option>
+                                                                <option value="No">No</option>
+                                                                <option value="Yes">Yes</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <p>Upload Technical Drawing:
+                                                                [.zip,.dxf,.dwg,.step,.stp,.iges,.sldprt,.pdf]
+                                                            </p>
+                                                            <input type="file"
+                                                                   class="check-file-type_two s_website_form_input"
+                                                                   name="metal_feb_technical_drawings"/>
+                                                            <div class="add-dyn-text">
+                                                                <span style="margin-left: 0px;color: red;"></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <p class="metal_feb_uv_printing_file_div_p">UV Printing
+                                                                File:
+                                                                [.tiff,.png,.jpeg,.jpg,.pdf]
+                                                            </p>
+                                                            <input type="file"
+                                                                   class="check-file-type_uv s_website_form_input"
+                                                                   name="metal_feb_uv_printing_file"
+                                                                   id="metal_feb_uv_printing_file"
+                                                                   disabled="disabled"/>
+                                                            <div class="add-dyn-text-uv">
+                                                                <span style="margin-left: 0px;color: red;"></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12 col-6 col-3 mt-3">
+                                                            <p>Extra Note:</p>
+                                                            <textarea
+                                                                    class="form-control input_control s_website_form_input"
+                                                                    style="height:150px; border-radius:25px;"
+                                                                    placeholder="Message...."
+                                                                    name="metal_feb_extra_note"/>
+                                                        </div>
+                                                        <div class="col-12 s_website_form_recaptcha"
+                                                             data-name="Recaptcha Legal">
+                                                            <div class="col-sm">
+                                                                <small class="o_recaptcha_legal_terms">
+                                                                    Protected by reCAPTCHA,
+                                                                    <a href="https://policies.google.com/privacy"
+                                                                       target="_blank">
+                                                                        Privacy Policy
+                                                                    </a>
+                                                                    &amp;
+                                                                    <a href="https://policies.google.com/terms"
+                                                                       target="_blank">
+                                                                        Terms of Service
+                                                                    </a>
+                                                                    apply.
+                                                                </small>
+                                                            </div>
+                                                        </div>
+                                                        <div id="s_website_form_result"></div>
+                                                        <div class="text-center">
+                                                            <a class="pbmit-btn pbmit-global-white-bg mt-3 industry_segment_btn">
+                                                                <span class="pbmit-header-button2-text">Submit Your
+                                                                    Request
+                                                                </span>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </section>
+        </t>
+    </template>
+
+</odoo>

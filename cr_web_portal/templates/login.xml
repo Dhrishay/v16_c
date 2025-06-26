@@ -1,0 +1,941 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="login" inherit_id="web.login" name="Mechpower Log In">
+        <xpath expr="//form[hasclass('oe_login_form')]" position="after">
+            <div class="container user-authonticate-page">
+                <div class="user-authonticate-section">
+                    <div class="user-review-section">
+                        <div class="user-review-card"
+                             data-bg="url('/cr_web_portal/static/src/images/homepage/testmonial1.jpg')">
+                            <div class="user-review-card-header">
+                                <div class="user-review-tag">
+                                    <img src="/cr_web_portal/static/src/images/new_design_resource/review_tick.svg"
+                                         class="status-indicator-green"/>
+                                    <span>Top Rated Enclosure Service</span>
+                                </div>
+                            </div>
+                            <div class="user-review-card-body">
+                                <div class="user-review-rating-section">
+                                    <img src="/cr_web_portal/static/src/images/new_design_resource/user_review_ratings.svg"
+                                         class="user-review-rating-star"/>
+                                    <img src="/cr_web_portal/static/src/images/new_design_resource/user_review_ratings.svg"
+                                         class="user-review-rating-star"/>
+                                    <img src="/cr_web_portal/static/src/images/new_design_resource/user_review_ratings.svg"
+                                         class="user-review-rating-star"/>
+                                    <img src="/cr_web_portal/static/src/images/new_design_resource/user_review_ratings.svg"
+                                         class="user-review-rating-star"/>
+                                    <img src="/cr_web_portal/static/src/images/new_design_resource/user_review_ratings.svg"
+                                         class="user-review-rating-star"/>
+                                </div>
+                                <h3>Quality Product &amp; Exceptional Service</h3>
+                                <p>My experience working with Mech Power has been exceptional. The team
+                                        is highly skilled, proactive, and a pleasure to collaborate with. The quality
+                                        and finish of the products are unmatched, setting them apart as a leader in
+                                        their field.
+                                </p>
+                                <div class="user-review-author">
+                                    <i class="mr8 fa fa-regular fa-comment"></i>
+                                    <span>Omni Automation</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="user-review-card"
+                             data-bg="url('/cr_web_portal/static/src/images/homepage/testimonial2.jpg')">
+                            <div class="user-review-card-header">
+                                <div class="user-review-tag">
+                                    <img src="/cr_web_portal/static/src/images/new_design_resource/review_tick.svg"
+                                         class="status-indicator-green"/>
+                                    <span>Top Rated Enclosure Service</span>
+                                </div>
+                            </div>
+                            <div class="user-review-card-body">
+                                <div class="user-review-rating-section">
+                                    <img src="/cr_web_portal/static/src/images/new_design_resource/user_review_ratings.svg"
+                                         class="user-review-rating-star"/>
+                                    <img src="/cr_web_portal/static/src/images/new_design_resource/user_review_ratings.svg"
+                                         class="user-review-rating-star"/>
+                                    <img src="/cr_web_portal/static/src/images/new_design_resource/user_review_ratings.svg"
+                                         class="user-review-rating-star"/>
+                                    <img src="/cr_web_portal/static/src/images/new_design_resource/user_review_ratings.svg"
+                                         class="user-review-rating-star"/>
+                                    <img src="/cr_web_portal/static/src/images/new_design_resource/user_review_ratings.svg"
+                                         class="user-review-rating-star"/>
+                                </div>
+                                <h3>Commitment to Quality &amp; Customer-Centric Service</h3>
+                                <p>I appreciate your dedication to continuous improvement and your
+                                        proactive approach to addressing customer feedback. Your commitment to meeting
+                                        challenges and enhancing product supply is truly commendable. Keep up the
+                                        outstanding work!
+                                </p>
+                                <div class="user-review-author">
+                                    <i class="mr8 fa fa-regular fa-comment"></i>
+                                    <span>ZERA India Private Limited</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="user-authonticate-form">
+                        <div class="signup_confirmation-modal login-required d-none">
+                            <div class="signup_confirmation-content">
+                                <div>
+                                    <h5>Access Required</h5>
+                                    <p>Please log in or register to proceed with your inquiry or order
+                                    </p>
+                                </div>
+                                <div class="justify-center row mt-20">
+                                        <a class="col-lg-5 col-sm-12 btn btn-primary login_signup_confirmation-close">Log In</a>
+                                        <a href="/web/sign/up" class="col-lg-5 col-sm-12 btn btn-secondary">Register here</a>
+                                </div>
+                            </div>
+                        </div>
+                        <form class="" role="form" t-attf-action="/web/login" method="post"
+                              onsubmit="this.action = '/web/login' + location.hash" novalidate="novalidate">
+                            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                            <input type="hidden" name="redirect_to_add_to_cart" class="redirect_to_add_to_cart"
+                                   value="False"/>
+                            <div class="auth-header-box mt-4">
+                                <h5 class="auth-sub-heading">LOG IN</h5>
+                                <h2 class="auth-main-heading">
+                                    <span class="auth_mp_underline">Welcome Back</span>
+                                </h2>
+                            </div>
+                            <p class="alert alert-danger mb-3" t-if="error" role="alert">
+                                <t t-esc="error"/>
+                            </p>
+                            <p class="alert alert-success" t-if="message" role="status">
+                                <t t-esc="message"/>
+                            </p>
+                            <div style="display: flow-root !important;" class="flat-root-section">
+                                <div class="mp_input_field_web">
+                                    <input id="login"
+                                           t-att-class="'form-control form_input error-input' if login_error else 'form-control form_input'"
+                                           name="login" autocapitalize="off"
+                                           placeholder=" " type="email" required="required"/>
+                                    <label for="login" class="form_label o_input_required">E-mail</label>
+                                </div>
+                                <div t-if="login_error" class="error-message mb-2 mx-3 mt-lg-n2"><t t-esc="login_error"/></div>
+                                <div class="mp_input_field_web">
+                                    <input id="password"
+                                           t-att-class="'form-control form_input error-input' if pass_error else 'form-control form_input'"
+                                           name="password" autocapitalize="off"
+                                           placeholder=" " type="password" required="required" maxlength="4096"/>
+                                    <label for="login" class="form_label o_input_required">Password</label>
+                                </div>
+                                <div t-if="pass_error" style="margin-bottom: 0px !important;margin-top: 103px;" class="error-message mp_input_field_web mx-3"><t t-esc="pass_error"/></div>
+                            </div>
+                            <div t-att-class="'forget_pswd' if pass_error or login_error else 'forget_pswd no_error_login_page'">
+                                <a class="forget_pswd_link" t-attf-href="/web/reset_password?{{ keep_query() }}">Forgot
+                                    Password ?
+                                </a>
+                            </div>
+                            <div class="auth-btns">
+                                <button type="submit" class="auth-primary-btn login-form-submit">Log In</button>
+                                <div class="or-container">
+                                    <div class="or-line"></div>
+                                    <div class="or-text">Or</div>
+                                    <div class="or-line"></div>
+                                </div>
+                                <a href="/web/sign/up" class="auth-secondary-btn">Sign Up</a>
+                                <div class="col-12 auth_recaptcha">
+                                    <div class="col-sm">
+                                        <img class="secure_img"
+                                             src="/cr_web_portal/static/src/images/new_design_resource/shield-security.svg"/>
+                                        <small class="o_recaptcha_legal_terms">
+                                            Protected by reCAPTCHA,
+                                            <a href="https://policies.google.com/privacy" class="recaptcha_url"
+                                               target="_blank">
+                                                Privacy Policy
+                                            </a>
+                                            &amp;
+                                            <a href="https://policies.google.com/terms" class="recaptcha_url"
+                                               target="_blank">
+                                                Terms of Service
+                                            </a>
+                                            apply.
+                                        </small>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="oe_structure oe_empty">
+                <section id="contact-us" class="contact-section">
+                    <div class="contactus1"></div>
+                    <div class="contact-info text-center" style="margin: 5%;">
+                        <span class="title float-none" style="color: #F4FBF7;">CONTACT US</span>
+                        <br/>
+                        <h2 class="mt-20" style="color: #F9F9F9; font-size: 36px;">Step into the future with advanced
+                        </h2>
+                        <h2 style="color: #F9F9F9; font-size: 36px;">enclosure solution</h2>
+                        <a href="/contactus" class="btn mt-10">
+                            Contact Us
+                        </a>
+                    </div>
+                    <div class="contactus2"></div>
+                </section>
+            </div>
+        </xpath>
+        <xpath expr="//form[hasclass('oe_login_form')]" position="attributes">
+            <attribute name="class">d-none</attribute>
+        </xpath>
+    </template>
+
+    <template id="mech_signup" name="Mechpower Sign up">
+        <t t-call="web.frontend_layout">
+            <div class="container user-authonticate-page">
+                <div class="user-authonticate-section">
+                    <div class="user-review-section">
+                        <div class="user-review-card"
+                             data-bg="url('/cr_web_portal/static/src/images/homepage/testmonial1.jpg')">
+                            <div class="user-review-card-header">
+                                <div class="user-review-tag">
+                                    <img src="/cr_web_portal/static/src/images/new_design_resource/review_tick.svg"
+                                         class="status-indicator-green"/>
+                                    <span>Top Rated Enclosure Service</span>
+                                </div>
+                            </div>
+                            <div class="user-review-card-body">
+                                <div class="user-review-rating-section">
+                                    <img src="/cr_web_portal/static/src/images/new_design_resource/user_review_ratings.svg"
+                                         class="user-review-rating-star"/>
+                                    <img src="/cr_web_portal/static/src/images/new_design_resource/user_review_ratings.svg"
+                                         class="user-review-rating-star"/>
+                                    <img src="/cr_web_portal/static/src/images/new_design_resource/user_review_ratings.svg"
+                                         class="user-review-rating-star"/>
+                                    <img src="/cr_web_portal/static/src/images/new_design_resource/user_review_ratings.svg"
+                                         class="user-review-rating-star"/>
+                                    <img src="/cr_web_portal/static/src/images/new_design_resource/user_review_ratings.svg"
+                                         class="user-review-rating-star"/>
+                                </div>
+                                <h3>Quality Product &amp; Exceptional Service</h3>
+                                <p>My experience working with Mech Power has been exceptional. The team
+                                        is highly skilled, proactive, and a pleasure to collaborate with. The quality
+                                        and finish of the products are unmatched, setting them apart as a leader in
+                                        their field.
+                                </p>
+                                <div class="user-review-author">
+                                    <i class="mr8 fa fa-regular fa-comment"></i>
+                                    <span>Omni Automation</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="user-review-card"
+                             data-bg="url('/cr_web_portal/static/src/images/homepage/testimonial2.jpg')">
+                            <div class="user-review-card-header">
+                                <div class="user-review-tag">
+                                    <img src="/cr_web_portal/static/src/images/new_design_resource/review_tick.svg"
+                                         class="status-indicator-green"/>
+                                    <span>Top Rated Enclosure Service</span>
+                                </div>
+                            </div>
+                            <div class="user-review-card-body">
+                                <div class="user-review-rating-section">
+                                    <img src="/cr_web_portal/static/src/images/new_design_resource/user_review_ratings.svg"
+                                         class="user-review-rating-star"/>
+                                    <img src="/cr_web_portal/static/src/images/new_design_resource/user_review_ratings.svg"
+                                         class="user-review-rating-star"/>
+                                    <img src="/cr_web_portal/static/src/images/new_design_resource/user_review_ratings.svg"
+                                         class="user-review-rating-star"/>
+                                    <img src="/cr_web_portal/static/src/images/new_design_resource/user_review_ratings.svg"
+                                         class="user-review-rating-star"/>
+                                    <img src="/cr_web_portal/static/src/images/new_design_resource/user_review_ratings.svg"
+                                         class="user-review-rating-star"/>
+                                </div>
+                                <h3>Commitment to Quality &amp; Customer-Centric Service</h3>
+                                <p>I appreciate your dedication to continuous improvement and your
+                                        proactive approach to addressing customer feedback. Your commitment to meeting
+                                        challenges and enhancing product supply is truly commendable. Keep up the
+                                        outstanding work!
+                                </p>
+                                <div class="user-review-author">
+                                    <i class="mr8 fa fa-regular fa-comment"></i>
+                                    <span>ZERA India Private Limited</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="user-authonticate-form s_website_form">
+                        <div class="loader-modal d-none">
+                            <div class="loader-content">
+                                <div class="loader-icon">
+                                    <img src="/cr_web_portal/static/src/img/spin.gif"/>
+                                </div>
+                                <h5>Processing Your Request...</h5>
+                            </div>
+                        </div>
+                        <div class="signup_confirmation-modal d-none">
+                            <div class="signup_confirmation-content">
+                                <button class="signup_confirmation-close">&amp;times;</button> <!-- Close button -->
+                                <div>
+                                    <h5>Successfully Signed Up!</h5>
+                                    <p>Thank you for registering with us! Please check your email inbox for a
+                                        verification link to activate your account. If you don't receive the email
+                                        within a few minutes, please check your spam folder. For any assistance, feel
+                                        free to contact our team.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <form action="/website/form/" data-mark="*" class="o_mark_required"
+                              enctype="multipart/form-data"
+                              data-model_name="res.partner" data-success-mode="redirect"
+                              data-success-page="/partner/signup/thankyou" data-pre-fill="true" novalidate="novalidate">
+                            <input type="hidden" class="s_website_form_input" name="form_name" value="sign_up_form"/>
+                            <input type="hidden" class="s_website_form_input" name="csrf_token"
+                                   t-att-value="request.csrf_token()"/>
+                            <div class="signup-header-box">
+                                <h5 class="auth-sub-heading">SIGN UP</h5>
+                                <h2 class="auth-main-heading sign_up_heading">Create an
+                                    <span class="auth_signup_mp_underline">account</span>
+                                </h2>
+                            </div>
+                            <div class="registration_type_section">
+                                <select name="registration_type"
+                                        class="onchange-registration-type d-none s_website_form_input"
+                                        required="required">
+                                    <option value="person" selected="True">Individual</option>
+                                    <option value="company">Company</option>
+                                    <option value="educational_institution">Educational Institution</option>
+                                    <option value="government_organisation">Government Organisation</option>
+                                </select>
+                                <h5 class="auth-signup-field-label o_input_required">Select Registration Type</h5>
+                                <div class="registration_type_options">
+                                    <span class="registration_type_option active" value="person">Individual</span>
+                                    <span class="registration_type_option" value="company">Company</span>
+                                    <span class="registration_type_option" value="educational_institution">Educational
+                                        Institution
+                                    </span>
+                                    <span class="registration_type_option" value="government_organisation">Government
+                                        Organisation
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="signup_user_details_section">
+                                <div class="d-flex row dimentions signup_user_personal_details_section">
+                                    <div class="col-6 odd_side">
+                                        <div class="mp_input_field_web">
+                                            <input id="name"
+                                                   class="form-control form_input s_website_form_input"
+                                                   t-att-value="name"
+                                                   name="name"
+                                                   placeholder=" " type="text" required="required"/>
+                                            <label for="name" class="form_label o_input_required">Full Name</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 even_side">
+                                        <div class="mp_input_field_web">
+                                            <input id="cname"
+                                                   class="form-control form_input s_website_form_input"
+                                                   t-att-value="cname"
+                                                   name="cname"
+                                                   placeholder=" " type="text"/>
+                                            <label for="cname" class="form_label ">Company Name</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 odd_side">
+                                        <div class="mp_input_field_web">
+                                            <input id="login"
+                                                   class="form-control form_input check_email s_website_form_input"
+                                                   name="login" autocapitalize="off" t-att-value="login"
+                                                   placeholder=" " type="email" required="required"/>
+                                            <label for="login" class="form_label o_input_required">E-mail</label>
+                                        </div>
+                                        <div class="email-validate-message">
+                                            <p></p>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 even_side">
+                                        <div class='d-flex mp_phone'>
+                                            <t t-set="countries"
+                                               t-value="request.env['res.country'].sudo().search([])"/>
+                                            <t t-set="default_country"
+                                               t-value="request.env['res.country'].sudo().search([('phone_code','=','+91')])"/>
+                                            <div class="input-group js_country_dropdown pr-0">
+                                                <div class="input-group-prepend flag-button">
+                                                    <button type="button"
+                                                            id="btn_vat_code"
+                                                            t-att-disabled="readonly"
+                                                            class="btn dropdown btn-outline-secondary dropdown-toggle js_btn_country_code form-control country_button"
+                                                            data-bs-toggle="dropdown"
+                                                            data-bs-target="#dropdown-countries">
+
+                                                        <div id="img_code_vat"
+                                                             class="js_img_country_code country_img ">
+                                                            +
+                                                            <t t-esc="default_country.phone_code"/>
+                                                            <i class="fa fa-angle-down"></i>
+                                                        </div>
+                                                    </button>
+                                                    <div class="dropdown-menu scrollable-menu"
+                                                         id="dropdown-countries">
+                                                        <div class="country_id_searchbar">
+                                                            <input class="search_country s_website_form_input input_control"
+                                                                   type="text"
+                                                                   placeholder="Search..."/>
+                                                        </div>
+                                                        <div id="country_id_list">
+                                                            <t t-foreach="countries" t-as="country">
+                                                                <a href="#"
+                                                                   t-att-id="country.code"
+                                                                   t-att-data-country_id="country.id"
+                                                                   t-att-data-country_code="country.code"
+                                                                   t-att-data-phone_code="country.phone_code"
+                                                                   class="dropdown-item js_select_country_code">
+                                                                    <img t-att-src="country.image_url"
+                                                                         class="country_name_img"/>
+                                                                    <span class="form-country-name">
+                                                                        <t t-esc="country.name"/>
+                                                                        (<t t-esc="country.code"/>) +
+                                                                        <t t-esc="country.phone_code"/>
+                                                                    </span>
+                                                                </a>
+                                                            </t>
+                                                        </div>
+                                                    </div>
+                                                    <input id="country_code_field"
+                                                           type="hidden"
+                                                           size="2"
+                                                           tabindex="-1"
+                                                           class="input-group-text js_country_code_field s_website_form_input"
+                                                           name="country_id"
+                                                           t-att-value="default_country.id"
+                                                           readonly="1"/>
+                                                </div>
+                                            </div>
+                                            <input type="text" id="phone" name="phone"
+                                                   placeholder="Mobile Number"
+                                                   required="required" maxlength="15"
+                                                   class="elem check_digits s_website_form_input w-100"/>
+                                            <label for="phone" class="form_label o_input_required">Mobile</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="industry_segmantation_section">
+                                    <t t-set="industry_segments"
+                                       t-value="request.env['industry.segment'].sudo().search([])"/>
+                                    <t t-if="industry_segments">
+                                        <div class="mp_input_field_web mp_select_web">
+                                            <select id="industry_id"
+                                                    class="form_input form-select s_website_form_input"
+                                                    name="industry" t-att-value="industry" placeholder=" "
+                                                    required="required">
+                                                <option value="">Select Industry Affiliation Category</option>
+                                                <t t-foreach="industry_segments" t-as="industry">
+                                                    <option t-att-value="industry.main_category.id">
+                                                        <t t-esc="industry.main_category.name"/>
+                                                    </option>
+                                                </t>
+                                            </select>
+                                            <label for="industry_id" class="form_label o_input_required">Industry
+                                            </label>
+                                        </div>
+                                        <div class="mp_input_field_web mp_select_web">
+                                            <select id="sub_category_id"
+                                                    class="form_input form-select s_website_form_input"
+                                                    name="sub_category" t-att-value="industry" placeholder=" "
+                                                    required="required">
+                                                <option value="">Select Industry Affiliation Sub-category</option>
+                                            </select>
+                                            <label for="industry_id" class="form_label o_input_required">Category
+                                            </label>
+
+                                        </div>
+                                    </t>
+                                </div>
+                            </div>
+                            <div class="signup_user_refral_section mt-2">
+                                <select name="lead_source" class="s_website_form_input d-none lead_source_input"
+                                        required="required">
+                                    <option value="search_engine">Search Engine</option>
+                                    <option value="social_media">Social Media</option>
+                                    <option value="referral" selected="True">Referral</option>
+                                    <option value="advertisement">Advertisement</option>
+                                    <option value="events">Events</option>
+                                    <option value="other">Other</option>
+                                </select>
+                                <h5 class="auth-signup-field-label">Where did you find us ?</h5>
+                                <div class="lead_source_options">
+                                    <span class="lead_source_option " value="search_engine">Search Engine</span>
+                                    <span class="lead_source_option" value="social_media">Social Media</span>
+                                    <span class="lead_source_option active" value="referral">Referral</span>
+                                    <span class="lead_source_option" value="advertisement">Advertisement</span>
+                                    <span class="lead_source_option" value="events">Events</span>
+                                    <span class="lead_source_option" value="other">Other</span>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-between mt-3 ">
+                                <div class="">
+                                    <h6 class="mp_boolean_fields_heading">
+                                        Yes, I’d like to sign up for updates!
+                                    </h6>
+                                </div>
+                                <label class="mb-2 o_switch o_switch_danger_success mp_o_switch">
+
+                                    <input type="checkbox" checked="checked" name="opt_check"
+                                           class="s_website_form_input mp_form_checkbox_web"/>
+                                    <span style="margin:auto;"></span>
+                                </label>
+                            </div>
+                            <div class="auth-btns">
+                                <button type="submit" class="auth-primary-btn">Sign Up</button>
+                                <div class="or-container">
+                                    <div class="or-line"></div>
+                                    <div class="or-text">Or</div>
+                                    <div class="or-line"></div>
+                                </div>
+                                <a href="/web/login" class="auth-secondary-btn">Log In</a>
+                                <div class="col-12 auth_recaptcha">
+                                    <div class="col-sm">
+                                        <img class="secure_img"
+                                             src="/cr_web_portal/static/src/images/new_design_resource/shield-security.svg"/>
+                                        <small class="o_recaptcha_legal_terms">
+                                            Protected by reCAPTCHA,
+                                            <a href="https://policies.google.com/privacy" class="recaptcha_url"
+                                               target="_blank">
+                                                Privacy Policy
+                                            </a>
+                                            &amp;
+                                            <a href="https://policies.google.com/terms" class="recaptcha_url"
+                                               target="_blank">
+                                                Terms of Service
+                                            </a>
+                                            apply.
+                                        </small>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="oe_structure oe_empty">
+                <section id="contact-us" class="contact-section">
+                    <div class="contactus1"></div>
+                    <div class="contact-info text-center" style="margin: 5%;">
+                        <span class="title float-none" style="color: #F4FBF7;">CONTACT US</span>
+                        <br/>
+                        <h2 class="mt-20" style="color: #F9F9F9; font-size: 36px;">Step into the future with advanced
+                        </h2>
+                        <h2 style="color: #F9F9F9; font-size: 36px;">enclosure solution</h2>
+                        <a href="/contactus" class="btn mt-10">
+                            Contact Us
+                        </a>
+                    </div>
+                    <div class="contactus2"></div>
+                </section>
+            </div>
+        </t>
+    </template>
+
+    <template id="signup" inherit_id="auth_signup.signup" name="Mechpower Sign up &amp; Set Password">
+        <xpath expr="//form[hasclass('oe_signup_form')]" position="replace">
+                <div class="container user-authonticate-page">
+                    <div class="user-authonticate-section">
+                        <div class="user-review-section">
+                            <div class="user-review-card"
+                                 data-bg="url('/cr_web_portal/static/src/images/homepage/testmonial1.jpg')">
+                                <div class="user-review-card-header">
+                                    <div class="user-review-tag">
+                                        <img src="/cr_web_portal/static/src/images/new_design_resource/review_tick.svg"
+                                             class="status-indicator-green"/>
+                                        <span>Top Rated Enclosure Service</span>
+                                    </div>
+                                </div>
+                                <div class="user-review-card-body">
+                                    <div class="user-review-rating-section">
+                                        <img src="/cr_web_portal/static/src/images/new_design_resource/user_review_ratings.svg"
+                                             class="user-review-rating-star"/>
+                                        <img src="/cr_web_portal/static/src/images/new_design_resource/user_review_ratings.svg"
+                                             class="user-review-rating-star"/>
+                                        <img src="/cr_web_portal/static/src/images/new_design_resource/user_review_ratings.svg"
+                                             class="user-review-rating-star"/>
+                                        <img src="/cr_web_portal/static/src/images/new_design_resource/user_review_ratings.svg"
+                                             class="user-review-rating-star"/>
+                                        <img src="/cr_web_portal/static/src/images/new_design_resource/user_review_ratings.svg"
+                                             class="user-review-rating-star"/>
+                                    </div>
+                                    <h3>Quality Product &amp; Exceptional Service</h3>
+                                    <p>My experience working with Mech Power has been exceptional. The team
+                                        is highly skilled, proactive, and a pleasure to collaborate with. The quality
+                                        and finish of the products are unmatched, setting them apart as a leader in
+                                        their field.
+                                    </p>
+                                    <div class="user-review-author">
+                                        <i class="mr8 fa fa-regular fa-comment"></i>
+                                        <span>Omni Automation</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="user-review-card"
+                                 data-bg="url('/cr_web_portal/static/src/images/homepage/testimonial2.jpg')">
+                                <div class="user-review-card-header">
+                                    <div class="user-review-tag">
+                                        <img src="/cr_web_portal/static/src/images/new_design_resource/review_tick.svg"
+                                             class="status-indicator-green"/>
+                                        <span>Top Rated Enclosure Service</span>
+                                    </div>
+                                </div>
+                                <div class="user-review-card-body">
+                                    <div class="user-review-rating-section">
+                                        <img src="/cr_web_portal/static/src/images/new_design_resource/user_review_ratings.svg"
+                                             class="user-review-rating-star"/>
+                                        <img src="/cr_web_portal/static/src/images/new_design_resource/user_review_ratings.svg"
+                                             class="user-review-rating-star"/>
+                                        <img src="/cr_web_portal/static/src/images/new_design_resource/user_review_ratings.svg"
+                                             class="user-review-rating-star"/>
+                                        <img src="/cr_web_portal/static/src/images/new_design_resource/user_review_ratings.svg"
+                                             class="user-review-rating-star"/>
+                                        <img src="/cr_web_portal/static/src/images/new_design_resource/user_review_ratings.svg"
+                                             class="user-review-rating-star"/>
+                                    </div>
+                                    <h3>Commitment to Quality &amp; Customer-Centric Service</h3>
+                                    <p>I appreciate your dedication to continuous improvement and your
+                                        proactive approach to addressing customer feedback. Your commitment to meeting
+                                        challenges and enhancing product supply is truly commendable. Keep up the
+                                        outstanding work!
+                                    </p>
+                                    <div class="user-review-author">
+                                        <i class="mr8 fa fa-regular fa-comment"></i>
+                                        <span>ZERA India Private Limited</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="user-authonticate-form signup-form-submit">
+                            <form class="oe_signup_form row" role="form"
+                                  method="post" t-if="not message">
+                                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                <div class="reset-password-header-box mt-4">
+                                    <h5 class="auth-sub-heading">Sign Up</h5>
+                                    <h2 class="auth-main-heading reset-pwd-heading">Set your account password to
+                                        activate your account.
+                                    </h2>
+                                </div>
+                                <p class="alert alert-danger mt-2" t-if="success" role="alert" style="width:75%;">
+                                    <t t-esc="success"/>
+                                </p>
+                                <p class="alert alert-danger mt-2" t-if="error" role="alert">
+                                    <t t-if="invalid_token">
+                                        Your registration is already complete.
+                                        <br/>
+                                        You can now log in using your credentials.
+                                        <br/>
+                                        If you want to reset your password,
+                                        <a href="https://mechpowertech.com/web/reset_password">click here.</a>
+                                        <br/>
+                                    </t>
+                                    <t t-else="" t-esc="error"/>
+                                </p>
+                                <div class="fname-container col-12">
+                                    <div class="mp_input_field_web">
+                                        <input type="text" name="name" t-att-value="name" id="name"
+                                               class="form-control form-control-sm s_website_form_input form_input"
+                                               placeholder="Full Name"
+                                               required="required" readonly="readonly"/>
+                                        <label for="name" class="form_label o_input_required">Full Name</label>
+                                    </div>
+
+                                </div>
+                                <div class='email-container col-12'>
+                                    <div class="mp_input_field_web">
+                                        <input type="text" name="login" t-att-value="login" id="login"
+                                               placeholder="Email"
+                                               class="check_email form-control form-control-sm s_website_form_input form_input"
+                                               autocapitalize="off" required="required" readonly="readonly"
+                                        />
+                                        <label for='email' class="form_label o_input_required">Email</label>
+                                    </div>
+                                </div>
+                                <div class="email-validate-message d-none">
+                                    <span style="margin-left: 8px;"></span>
+                                </div>
+                                <div class="pass-container col-12">
+                                    <div class="mp_input_field_web">
+                                        <input type="password" name="password" id="password"
+                                               class="form-control form-control-sm s_website_form_input form_input"
+                                               placeholder=""
+                                               required="required"
+                                               t-att-autofocus="'autofocus' if only_passwords else None"/>
+                                        <label for="password" class="form_label o_input_required">Password</label>
+                                    </div>
+                                </div>
+
+                                <div class="conf-pass-container col-12">
+                                    <div class="mp_input_field_web">
+                                        <input type="password" name="confirm_password" id="confirm_password"
+                                               placeholder=""
+                                               class="form-control form-control-sm s_website_form_input form_input"
+                                               required="required"/>
+                                        <label for="confirm_password" class="form_label o_input_required">Confirm
+                                            Password
+                                        </label>
+                                    </div>
+
+                                </div>
+
+                                <input type="hidden" name="redirect" t-att-value="redirect"/>
+                                <input type="hidden" name="token" t-att-value="token"/>
+                                <div class="auth-btns">
+                                    <button type="submit" class="auth-primary-btn">Sign Up</button>
+                                    <div class="or-container">
+                                        <div class="or-line"></div>
+                                        <div class="or-text">Or</div>
+                                        <div class="or-line"></div>
+                                    </div>
+                                    <a href="/web/login" class="auth-secondary-btn">Log in</a>
+                                    <div class="col-12 auth_recaptcha">
+                                        <div class="col-sm">
+                                            <img class="secure_img"
+                                                 src="/cr_web_portal/static/src/images/new_design_resource/shield-security.svg"/>
+                                            <small class="o_recaptcha_legal_terms">
+                                                Protected by reCAPTCHA,
+                                                <a href="https://policies.google.com/privacy" class="recaptcha_url"
+                                                   target="_blank">
+                                                    Privacy Policy
+                                                </a>
+                                                &amp;
+                                                <a href="https://policies.google.com/terms" class="recaptcha_url"
+                                                   target="_blank">
+                                                    Terms of Service
+                                                </a>
+                                                apply.
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="oe_structure oe_empty">
+                    <section id="contact-us" class="contact-section">
+                        <div class="contactus1"></div>
+                        <div class="contact-info text-center" style="margin: 5%;">
+                            <span class="title float-none" style="color: #F4FBF7;">CONTACT US</span>
+                            <br/>
+                            <h2 class="mt-20" style="color: #F9F9F9; font-size: 36px;">Step into the future with
+                                advanced
+                            </h2>
+                            <h2 style="color: #F9F9F9; font-size: 36px;">enclosure solution</h2>
+                            <a href="/contactus" class="btn mt-10">
+                                Contact Us
+                            </a>
+                        </div>
+                        <div class="contactus2"></div>
+                    </section>
+                </div>
+        </xpath>
+
+    </template>
+
+    <template id="cr_web_portal.reset_password_custom_form" inherit_id="auth_signup.reset_password"
+              name="Mechpower reset password">
+        <xpath expr="//t[@t-call='web.login_layout']" position="replace">
+            <t t-call="web.login_layout">
+                <div class="container user-authonticate-page">
+                    <div class="user-authonticate-section">
+                        <div class="user-review-section">
+                        <div class="user-review-card"
+                             data-bg="url('/cr_web_portal/static/src/images/homepage/testmonial1.jpg')">
+                            <div class="user-review-card-header">
+                                <div class="user-review-tag">
+                                    <img src="/cr_web_portal/static/src/images/new_design_resource/review_tick.svg"
+                                         class="status-indicator-green"/>
+                                    <span>Top Rated Enclosure Service</span>
+                                </div>
+                            </div>
+                            <div class="user-review-card-body">
+                                <div class="user-review-rating-section">
+                                    <img src="/cr_web_portal/static/src/images/new_design_resource/user_review_ratings.svg"
+                                         class="user-review-rating-star"/>
+                                    <img src="/cr_web_portal/static/src/images/new_design_resource/user_review_ratings.svg"
+                                         class="user-review-rating-star"/>
+                                    <img src="/cr_web_portal/static/src/images/new_design_resource/user_review_ratings.svg"
+                                         class="user-review-rating-star"/>
+                                    <img src="/cr_web_portal/static/src/images/new_design_resource/user_review_ratings.svg"
+                                         class="user-review-rating-star"/>
+                                    <img src="/cr_web_portal/static/src/images/new_design_resource/user_review_ratings.svg"
+                                         class="user-review-rating-star"/>
+                                </div>
+                                <h3>Quality Product &amp; Exceptional Service</h3>
+                                <p>My experience working with Mech Power has been exceptional. The team
+                                        is highly skilled, proactive, and a pleasure to collaborate with. The quality
+                                        and finish of the products are unmatched, setting them apart as a leader in
+                                        their field.
+                                </p>
+                                <div class="user-review-author">
+                                    <i class="mr8 fa fa-regular fa-comment"></i>
+                                    <span>Omni Automation</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="user-review-card"
+                             data-bg="url('/cr_web_portal/static/src/images/homepage/testimonial2.jpg')">
+                            <div class="user-review-card-header">
+                                <div class="user-review-tag">
+                                    <img src="/cr_web_portal/static/src/images/new_design_resource/review_tick.svg"
+                                         class="status-indicator-green"/>
+                                    <span>Top Rated Enclosure Service</span>
+                                </div>
+                            </div>
+                            <div class="user-review-card-body">
+                                <div class="user-review-rating-section">
+                                    <img src="/cr_web_portal/static/src/images/new_design_resource/user_review_ratings.svg"
+                                         class="user-review-rating-star"/>
+                                    <img src="/cr_web_portal/static/src/images/new_design_resource/user_review_ratings.svg"
+                                         class="user-review-rating-star"/>
+                                    <img src="/cr_web_portal/static/src/images/new_design_resource/user_review_ratings.svg"
+                                         class="user-review-rating-star"/>
+                                    <img src="/cr_web_portal/static/src/images/new_design_resource/user_review_ratings.svg"
+                                         class="user-review-rating-star"/>
+                                    <img src="/cr_web_portal/static/src/images/new_design_resource/user_review_ratings.svg"
+                                         class="user-review-rating-star"/>
+                                </div>
+                                <h3>Commitment to Quality &amp; Customer-Centric Service</h3>
+                                <p>I appreciate your dedication to continuous improvement and your
+                                        proactive approach to addressing customer feedback. Your commitment to meeting
+                                        challenges and enhancing product supply is truly commendable. Keep up the
+                                        outstanding work!
+                                </p>
+                                <div class="user-review-author">
+                                    <i class="mr8 fa fa-regular fa-comment"></i>
+                                    <span>ZERA India Private Limited</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                        <div class="user-authonticate-form">
+                            <div t-if="message" class="clearfix mt-4 mb-4">
+                                <p class="alert alert-success mb-3" t-if="message" role="status">
+                                    <t t-esc="message"/>
+                                </p>
+                                <a href="/web/login" class="auth-secondary-btn">Back to Log In</a>
+                            </div>
+                            <form t-if="not message" class="oe_reset_password_form auth_reset" role="form"
+                                  method="post">
+                                <div class="reset-password-header-box mt-4">
+                                    <h5 class="auth-sub-heading">Forgot Password</h5>
+                                    <h2 class="auth-main-heading reset-pwd-heading">No Worries! Reset Your <span
+                                            class="auth_mp_reset_underline">Password
+                                    </span> Here
+                                    </h2>
+                                </div>
+                                <div t-if="error" role="alert" class="reset-pwd-error">
+                                    <p class="alert alert-danger">
+                                        <t t-esc="error"/>
+                                    </p>
+                                </div>
+                                <t t-if="token and not invalid_token">
+                                    <t t-set="only_passwords" t-value="1"/>
+
+                                    <div class="mp_input_field_web" style="margin-top: 0rem; margin-bottom: 0px;">
+                                        <input id="login"
+                                               class="form-control form_input" t-att-value="login"
+                                               name="login" autocapitalize="off" autofocus="autofocus"
+                                               placeholder=" " type="text" required="required"
+                                               t-att-readonly="'readonly' if only_passwords else None"/>
+                                        <label for="login" class="form_label o_input_required">E-mail</label>
+                                    </div>
+                                    <div class="mp_input_field_web" style="margin-top: 4rem;">
+                                        <input id="name"
+                                               class="form-control form_input" t-att-value="name"
+                                               name="name" autocapitalize="off"
+                                               t-att-autofocus="'autofocus' if login and not only_passwords else None"
+                                               placeholder=" " type="text" required="required"
+                                               t-att-readonly="'readonly' if only_passwords else None"/>
+                                        <label for="name" class="form_label o_input_required">Name</label>
+                                    </div>
+                                    <div class="mp_input_field_web" style="margin-top: 8rem;">
+                                        <input id="password"
+                                               class="form-control form_input"
+                                               name="password" autocapitalize="off"
+                                               t-att-autofocus="'autofocus' if only_passwords else None"
+                                               placeholder=" " type="password" required="required"/>
+                                        <label for="password" class="form_label o_input_required">Password</label>
+                                    </div>
+                                    <div class="mp_input_field_web" style="margin-top: 12rem;">
+                                        <input id="confirm_password"
+                                               class="form-control form_input" name="confirm_password"
+                                               placeholder=" " type="password" required="required"/>
+                                        <label for="confirm_password" class="form_label o_input_required">Confirm
+                                            Password
+                                        </label>
+                                    </div>
+                                    <button type="submit" t-att-class="'auth-primary-btn set-password-btn mp_mt' if token else 'auth-primary-btn set-password-btn'">Set Password
+                                    </button>
+
+                                </t>
+                                <t t-if="not token">
+                                    <div class="mp_input_field_web">
+                                        <input id="login"
+                                               class="form-control form_input" t-att-value="login"
+                                               name="login" autocapitalize="off" autofocus="autofocus"
+                                               placeholder=" " type="text" required="required"/>
+                                        <label for="login" class="form_label o_input_required">E-mail</label>
+                                    </div>
+                                </t>
+                                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                <input type="hidden" name="redirect" t-att-value="redirect"/>
+                                <input type="hidden" name="token" t-att-value="token"/>
+                                <div class="auth-btns">
+                                    <button t-if="not token" type="submit" class="auth-primary-btn">Reset Password
+                                    </button>
+                                    <div t-if="not token" class="or-container">
+                                        <div class="or-line"></div>
+                                        <div class="or-text">Or</div>
+                                        <div class="or-line"></div>
+                                    </div>
+                                    <a t-if="invalid_token" href="/web/login" class="auth-secondary-btn">Back to Log
+                                        In
+                                    </a>
+                                    <a t-if="not token" t-attf-href="/web/login?{{keep_query()}}"
+                                       class="auth-secondary-btn">Back to Log In
+                                    </a>
+                                    <div class="col-12 auth_recaptcha">
+                                        <div class="col-sm">
+                                            <img class="secure_img"
+                                                 src="/cr_web_portal/static/src/images/new_design_resource/shield-security.svg"/>
+                                            <small class="o_recaptcha_legal_terms">
+                                                Protected by reCAPTCHA,
+                                                <a href="https://policies.google.com/privacy" class="recaptcha_url"
+                                                   target="_blank">
+                                                    Privacy Policy
+                                                </a>
+                                                &amp;
+                                                <a href="https://policies.google.com/terms" class="recaptcha_url"
+                                                   target="_blank">
+                                                    Terms of Service
+                                                </a>
+                                                apply.
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="oe_structure oe_empty">
+                    <section id="contact-us" class="contact-section">
+                        <div class="contactus1"></div>
+                        <div class="contact-info text-center" style="margin: 5%;">
+                            <span class="title float-none" style="color: #F4FBF7;">CONTACT US</span>
+                            <br/>
+                            <h2 class="mt-20" style="color: #F9F9F9; font-size: 36px;">Step into the future with
+                                advanced
+                            </h2>
+                            <h2 style="color: #F9F9F9; font-size: 36px;">enclosure solution</h2>
+                            <a href="/contactus" class="btn mt-10">
+                                Contact Us
+                            </a>
+                        </div>
+                        <div class="contactus2"></div>
+                    </section>
+                </div>
+            </t>
+        </xpath>
+    </template>
+</odoo>

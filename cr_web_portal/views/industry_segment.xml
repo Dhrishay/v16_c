@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="industry_segment_form_view" model="ir.ui.view">
+        <field name="name">industry_segment_form_view</field>
+        <field name="model">industry.segment</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                         <field name="main_category"/>
+                        <field name="sub_category"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="industry_segment_list_view" model="ir.ui.view">
+        <field name="name">industry.segment.list.view</field>
+        <field name="model">industry.segment</field>
+        <field name="arch" type="xml">
+            <tree editable="bottom">
+                <control>
+                    <create name="add_category" string="Add a Category"/>
+                </control>
+
+                <field name="name" string="Name"  invisible="1"/>
+                <field name="main_category" string="Main Category" />
+                <field name="sub_category" widget="many2many_tags" string="Sub Category"/>
+            </tree>
+        </field>
+    </record>
+    <record id="crm_team_action_industry_segment" model="ir.actions.act_window">
+        <field name="name">Industry Segment</field>
+        <field name="res_model">industry.segment</field>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="industry_segment_list_view"/>
+    </record>
+    <menuitem id="crm_team_action_industry_segment_menu" name="Industry Segment" parent="crm.crm_menu_config" action="cr_web_portal.crm_team_action_industry_segment" sequence="1"/>
+</odoo>

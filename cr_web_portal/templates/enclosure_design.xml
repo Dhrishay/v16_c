@@ -1,0 +1,1667 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="enclosure_design_page" name="Enclosure Design">
+        <t t-call="web.frontend_layout">
+
+            <div class="oe_structure oe_empty">
+                <section class="s_cover parallax bg-black-50 s_parallax_no_overflow_hidden o_colored_level pt96 pb96"
+                         data-scroll-background-ratio="1" data-snippet="s_cover" data-name="Cover"
+                         style="background-image: none; padding-top: 72px; padding-bottom: 72px;">
+                    <span class="s_parallax_bg oe_img_bg o_bg_img_center"
+                          style="background-image: url(&quot;/web/image/59484-2fb71de2/Enclosure.jpg&quot;);"
+                          data-original-id="59483" data-original-src="/web/image/59483-a66d9240/Enclosure.jpg"
+                          data-mimetype="image/jpeg" data-resize-width="1920"/>
+                    <div class="o_we_bg_filter bg-black-50"/>
+
+                    <div class="s_allow_columns container">
+                        <div class="row">
+                            <div class="col o_colored_level col-lg-10 custom-banner-mp">
+                                <div class="header-box-custom">
+                                    <h5 class="sub-heading-custom mp-caption-custom">
+                                        <span style="font-size: 16px;">PRODUCTS</span>
+                                    </h5>
+                                    <h2 class="main-heading-custom" style="color: white;">
+                                        <span class="mp_underline_custom">Reliable Electronic Enclosure&amp;nbsp;</span>
+                                    </h2>
+                                    <p class="sub-heading-lines-custom mp-body-1-rg"
+                                       style="color: white; margin-bottom: 0px;">
+                                        <span style="font-size: 18px;">Enclosures designed for Electronics, Automotive,
+                                            and Medical Applications &amp;amp; more.&amp;nbsp;Ensuring durability and
+                                            compliance with industry standards.&amp;nbsp;
+                                        </span>
+                                        <br/>
+                                    </p>
+                                </div>
+                                <p class="submit-inquiry" style="text-align: left;">
+                                    <a class="btn btn-primary btn-lg" href="/shop" data-bs-original-title="" title=""
+                                       style="border-radius: 10px; !important" target="_blank">View Products
+                                    </a>
+                                    <br/>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <section class="plastic-metal oe_structure oe_empty o_colored_level" style="background-image: none;">
+                <div class="container">
+                    <div class="header-box-custom mt-4">
+                        <h5 class="sub-heading-custom mp-caption-custom">PRODUCTS</h5>
+                        <h2 class="main-heading-custom">
+                            <span style="font-size: 48px;">Plas</span>
+                            <span class="mp_underline_custom">
+                                <span style="font-size: 48px;">tic &amp;amp; Metal
+                                    Encl
+                                </span>
+                            </span>
+                            <span style="font-size: 48px;">osures
+                            </span>
+                        </h2>
+                        <p class="sub-heading-lines-custom mp-body-1-rg" style="text-align: justify;">
+                            <span style="font-size: 18px;">Explore a diverse selection of plastic and metal enclosures,
+                                crafted from materials like stainless steel, aluminum, and ABS, designed for industrial,
+                                automation, and electronic applications. We offer customizations such as cutouts, UV
+                                printing, and surface finishes to suit your specific needs.&amp;nbsp;
+                            </span>
+                            <br/>
+                        </p>
+                    </div>
+                </div>
+            </section>
+            <section class="plastic-metal mt-0 personal-port-1-testimonial italtronics-products oe_structure">
+                <div class="container">
+                    <div class="swiper-container product-cards-carousel mt-0">
+                        <div class="swiper-slider pbmit-element-viewtype-carousel-1"
+                             data-arrows-class="digital-mrkt-arrow-testimonial" data-loop="true" data-autoplay="true"
+                             data-dots="false" data-arrows="true" data-columns="3" clickable="true" data-margin="30"
+                             data-effect="slide">
+                            <t t-set="categories"
+                               t-value="request.env['product.public.category'].sudo().search([('is_publish','=',True)])"/>
+                            <div class="swiper-wrapper italtronics-products-carousel-new">
+                                <t t-foreach="categories" t-as="category">
+                                    <div class="swiper-slide card">
+                                        <div class="product-card-img">
+                                            <img t-att-src="image_data_uri(category.image_1920)"
+                                                 alt="Desktop Enclosures" class="card-image"/>
+                                        </div>
+                                        <h3 class="card-title">
+                                            <t t-esc="category.name"/>
+                                        </h3>
+                                        <p class="card-description">
+                                            <t t-esc="category.description"/>
+                                        </p>
+                                        <a t-attf-href="/shop/category/#{slug(category)}" class="learn-more-button">
+                                            <span class="text">Learn more</span>
+                                            <span class="icon">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                     viewBox="0 0 24 24" fill="none">
+                                                    <path d="M14.43 18.0701L20.5 12.0001L14.43 5.93007" stroke="#23B35D"
+                                                          stroke-width="2" stroke-miterlimit="10" stroke-linecap="round"
+                                                          stroke-linejoin="round"/>
+                                                    <path d="M3.49813 12L20.3281 12" stroke="#23B35D" stroke-width="2"
+                                                          stroke-miterlimit="10" stroke-linecap="round"
+                                                          stroke-linejoin="round"/>
+                                                </svg>
+                                            </span>
+                                        </a>
+                                    </div>
+                                </t>
+                            </div>
+                            <div class="row italtronics-footer-sec g-0">
+                                <div class="col-md-2"/>
+                                <div class="col-md-8"/>
+                                <div class="col-md-2 o_colored_level mt-4">
+                                    <div class="personal-port-1-arrow-testimonial swiper-btn-custom d-flex flex-row-reverse">
+                                        <div class="swiper-buttons"/>
+                                        <div class="swiper-button-next swiper-button-next-1" tabindex="0" role="button"
+                                             aria-label="Next slide" aria-controls="swiper-wrapper-3a252b2b574f9f85"/>
+                                        <div class="swiper-button-prev swiper-button-prev-1" tabindex="0" role="button"
+                                             aria-label="Previous slide"
+                                             aria-controls="swiper-wrapper-3a252b2b574f9f85"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <span class="swiper-notification" aria-live="assertive" aria-atomic="true"/>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="italtronics-products oe_structure oe_empty o_colored_level" style="background-image: none;">
+                <div class="container">
+                    <div class="header-box-custom mt-4" style="max-width: 100% !important;">
+                        <h5 class="sub-heading-custom mp-caption-custom" style="text-align: center;">PRODUCTS</h5>
+                        <h2 class="main-heading-custom" style="text-align: center;">
+                            <span style="font-size: 54px;">lta</span>
+                            <span class="mp_underline_custom">
+                                <span style="font-size: 54px;">ltronics&amp;nbsp;Enclosures</span>
+                            </span>
+                        </h2>
+                        <p class="sub-heading-lines-custom mp-body-1-rg" style="text-align: center;"><span
+                                style="font-size: 18px;">High-quality plastic enclosures &amp;amp; parts for
+                            electronics, designed for both functionality and aesthetic appeal in industrial, automation,
+                            control, and lighting applications. Engineered to perfectly fit your boards.</span>&amp;nbsp;
+                            <br/>
+                        </p>
+                    </div>
+                </div>
+            </section>
+            <section class="italtronics-products mt-0 personal-port-1-testimonial">
+                <div class="container">
+                    <div class="swiper-container">
+                        <div class="swiper-slider pbmit-element-viewtype-carousel-1 "
+                             data-arrows-class="digital-mrkt-arrow-testimonial" data-loop="true" data-autoplay="true"
+                             data-dots="false" data-arrows="true" data-columns="4" clickable="true" data-margin="30"
+                             data-effect="slide">
+
+                            <div class="swiper-wrapper italtronics-products-carousel-new">
+                                <t t-set="products"
+                                   t-value="request.env['product.product'].sudo().search([('is_ital_product','=',True), ('is_published','=',True)])"/>
+                                <t t-foreach="products" t-as="product">
+                                    <t t-set="image_holder" t-value="product._get_image_holder()"/>
+                                    <a t-att-href="product.website_url" class="swiper-slide carousel-item-italtronics">
+                                        <div class="italtronic-img">
+                                            <t t-if="image_holder and image_holder.image_1920">
+                                                <img t-att-src="image_data_uri(image_holder.image_1920)"/>
+                                            </t>
+                                            <t t-else="">
+                                                <img src="/cr_web_portal/static/src/images/placeholder.png"/>
+                                            </t>
+                                        </div>
+                                        <div class="italtronics-info">
+                                            <div>
+                                                <p class="italtronics-sub-header">
+                                                    <t t-if="product.public_categ_ids"
+                                                       t-esc="product.public_categ_ids[0].name"/>
+                                                    <t t-else="">
+                                                        -
+                                                    </t>
+                                                </p>
+                                                <h3>
+                                                    <t t-esc="product.name"/>
+                                                </h3>
+                                            </div>
+                                            <div>
+                                                <p>Starting from
+                                                    <span class="mb-0"
+                                                          t-esc="product._get_sales_prices(website.pricelist_id)"
+                                                          t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </t>
+                            </div>
+                            <div class="row italtronics-footer-sec g-0">
+                                <div class="col-md-2">
+                                </div>
+                                <div class="col-md-8 o_colored_level">
+                                    <a class="mt-4 italtronics-footer d-flex" style="justify-content: center;"
+                                       data-bs-original-title="" title=""
+                                       href="/shop?search=&amp;order=website_sequence+asc&amp;sort_by=&amp;attrib=21-609">
+                                        <button class="view-all-button">View All</button>
+                                    </a>
+                                    <div class="italtronics-footer-mbl d-none">
+                                        <a class="d-flex" style="justify-content: center;">
+                                            <button class="view-all-button">View All</button>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 o_colored_level mt-4">
+                                    <div class="personal-port-1-arrow-testimonial swiper-btn-custom d-flex flex-row-reverse">
+                                        <div class="swiper-buttons"/>
+                                        <div class="swiper-button-next swiper-button-next-1" tabindex="0" role="button"
+                                             aria-label="Next slide" aria-controls="swiper-wrapper-ab3dba9afd4410fe1"/>
+                                        <div class="swiper-button-prev swiper-button-prev-1" tabindex="0" role="button"
+                                             aria-label="Previous slide"
+                                             aria-controls="swiper-wrapper-ab3dba9afd4410fe1"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <span class="swiper-notification" aria-live="assertive" aria-atomic="true"/>
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="italtronics-products oe_structure oe_empty o_colored_level" style="background-image: none;">
+                <div class="container">
+                    <div class="header-box-custom mt-4" style="max-width: 100% !important;">
+                        <h5 class="sub-heading-custom mp-caption-custom" style="text-align: center;">PRODUCTS</h5>
+                        <h2 class="main-heading-custom" style="text-align: center;">
+                            <span style="font-size: 48px;">Me</span>
+                            <span class="mp_underline_custom">
+                                <span style="font-size: 48px;">ch Power&amp;nbsp;Enclosures</span>
+                            </span>
+                        </h2>
+                        <p class="sub-heading-lines-custom mp-body-1-rg" style="text-align: center;">
+                            <span style="font-size: 18px;">Mech Power products offer durable and precision-engineered
+                                enclosures in metal, including 19" Rack Mount, Desktop, and Wall Mount options. Designed
+                                for industrial, automation, and electronic applications, our enclosures ensure reliable
+                                protection and seamless integration for your equipment.&amp;nbsp;
+                            </span>
+                            <br/>
+                        </p>
+                    </div>
+                </div>
+            </section>
+            <section class="italtronics-products mt-0 personal-port-1-testimonial">
+                <div class="container">
+                    <div class="swiper-container">
+                        <div class="swiper-slider pbmit-element-viewtype-carousel-1 "
+                             data-arrows-class="digital-mrkt-arrow-testimonial" data-loop="true" data-autoplay="true"
+                             data-dots="false" data-arrows="true" data-columns="4" clickable="true" data-margin="30"
+                             data-effect="slide">
+
+                            <div class="swiper-wrapper italtronics-products-carousel-new">
+                                <t t-set="products"
+                                   t-value="request.env['product.product'].sudo().search([('is_mech_product','=',True), ('is_published','=',True)])"/>
+                                <t t-foreach="products" t-as="product">
+                                    <t t-set="image_holder" t-value="product._get_image_holder()"/>
+                                    <a t-att-href="product.website_url" class="swiper-slide carousel-item-italtronics">
+                                        <div class="italtronic-img">
+                                            <t t-if="image_holder and image_holder.image_1920">
+                                                <img t-att-src="image_data_uri(image_holder.image_1920)"/>
+                                            </t>
+                                            <t t-else="">
+                                                <img src="/cr_web_portal/static/src/images/placeholder.png"/>
+                                            </t>
+                                        </div>
+                                        <div class="italtronics-info">
+                                            <div>
+                                                <p class="italtronics-sub-header">
+                                                    <t t-if="product.public_categ_ids"
+                                                       t-esc="product.public_categ_ids[0].name"/>
+                                                    <t t-else="">
+                                                        -
+                                                    </t>
+                                                </p>
+                                                <h3>
+                                                    <t t-esc="product.name"/>
+                                                </h3>
+                                            </div>
+                                            <div>
+                                                <p>Starting from
+                                                    <span class="mb-0"
+                                                          t-esc="product._get_sales_prices(website.pricelist_id)"
+                                                          t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </t>
+                            </div>
+                            <div class="row italtronics-footer-sec g-0">
+                                <div class="col-md-2">
+                                </div>
+                                <div class="col-md-8 o_colored_level">
+                                    <a class="mt-4 italtronics-footer d-flex" style="justify-content: center;"
+                                       data-bs-original-title="" title=""
+                                       href="/shop?search=&amp;order=website_sequence+asc&amp;sort_by=&amp;attrib=21-606">
+                                        <button class="view-all-button">View All</button>
+                                    </a>
+                                    <div class="italtronics-footer-mbl d-none">
+                                        <a class="d-flex" style="justify-content: center;">
+                                            <button class="view-all-button">View All</button>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 o_colored_level mt-4">
+                                    <div class="personal-port-1-arrow-testimonial swiper-btn-custom d-flex flex-row-reverse">
+                                        <div class="swiper-buttons"/>
+                                        <div class="swiper-button-next swiper-button-next-1" tabindex="0" role="button"
+                                             aria-label="Next slide" aria-controls="swiper-wrapper-baab1a3d10af1e4fc"/>
+                                        <div class="swiper-button-prev swiper-button-prev-1" tabindex="0" role="button"
+                                             aria-label="Previous slide"
+                                             aria-controls="swiper-wrapper-baab1a3d10af1e4fc"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <span class="swiper-notification" aria-live="assertive" aria-atomic="true"/>
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <div class="oe_structure oe_empty">
+                <section class="prototype-offering o_colored_level" style="background-image: none;">
+                    <div class="container">
+                        <div class="header-box-custom mt-4" style="max-width: 100% !important;">
+                            <h5 class="sub-heading-custom mp-caption-custom text-center">SERVICES</h5>
+                            <h2 class="main-heading-custom text-center">
+                                <span style="font-size: 48px;">Pro</span>
+                                <span class="mp_underline_custom">
+                                    <span style="font-size: 48px;">totyping Offerin</span>
+                                </span>
+                                <span style="font-size: 48px;">g
+                                </span>
+                            </h2>
+                            <p class="sub-heading-lines-custom mp-body-1-rg text-center">
+                                <span style="font-size: 18px;">3D Printing and Sheet Metal Fabrication for fast, precise
+                                    prototyping and functional parts.&amp;nbsp;
+                                </span>
+                                <br/>
+                            </p>
+                        </div>
+                        <div class="prototype-offering-info">
+                            <div class="card">
+                                <div class="prototype-card-img">
+                                    <img src="/web/image/59489-1af4f9fb/ENCLOSURE%20%28PROTOTYPE%203D%29.jpg" alt=""
+                                         class="card-image img img-fluid o_we_custom_image" data-original-id="59485"
+                                         data-original-src="/web/image/59485-9de662c6/ENCLOSURE%20%28PROTOTYPE%203D%29.jpg"
+                                         data-mimetype="image/jpeg" data-resize-width="639" loading="lazy"/>
+                                </div>
+                                <p class="card-subtitle">
+                                    <span style="font-size: 14px;">PRIMARY</span>
+                                </p>
+                                <h4 class="card-title">3D Printing</h4>
+                                <p class="card-description" style="margin-bottom: 0px;">
+                                    FDM &amp;amp; Projection Printing for Rapid Prototyping and Custom Parts.
+                                </p>
+                                <p class="card-description" style="margin-bottom: 0px;">
+                                    <br/>
+                                </p>
+                                <p class="card-description" style="margin-bottom: 0px;">
+                                    <br/>
+                                </p>
+                                <div class="learn-more-button">
+                                    <a href="/3d-printing" data-bs-original-title="" title="">
+                                        <span class="text">
+                                            <span style="font-size: 18px;">Learn more</span>
+                                        </span>
+                                        <span class="icon">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none">
+                                                <path d="M14.43 18.0701L20.5 12.0001L14.43 5.93007" stroke="#23B35D"
+                                                      stroke-width="2" stroke-miterlimit="10" stroke-linecap="round"
+                                                      stroke-linejoin="round"/>
+                                                <path d="M3.49813 12L20.3281 12" stroke="#23B35D" stroke-width="2"
+                                                      stroke-miterlimit="10" stroke-linecap="round"
+                                                      stroke-linejoin="round"/>
+                                            </svg>
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="prototype-card-img">
+                                    <img src="/web/image/59490-986e0d56/ENCLOSURE%20%28%20SHEET%20METAL%29.jpg" alt=""
+                                         class="card-image img img-fluid o_we_custom_image" data-original-id="59486"
+                                         data-original-src="/web/image/59486-bafe23fb/ENCLOSURE%20%28%20SHEET%20METAL%29.jpg"
+                                         data-mimetype="image/jpeg" data-resize-width="639" loading="lazy"/>
+                                </div>
+                                <p class="card-subtitle">
+                                    <span style="font-size: 14px;">PRIMARY</span>
+                                </p>
+                                <h4 class="card-title">Sheet Metal Fabrication</h4>
+                                <p class="card-description">
+                                    Advanced Punching, Bending, Laser Cutting &amp;amp; More for Precise Sheet Metal
+                                    Prototyping.
+                                </p>
+                                <div class="learn-more-button">
+                                    <a href="/sheet-metal-fabrication" data-bs-original-title="" title="">
+                                        <span class="text">
+                                            <span style="font-size: 18px;">Learn more</span>
+                                        </span>
+                                        <span class="icon">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                 viewbox="0 0 24 24" fill="none">
+                                                <path d="M14.43 18.0701L20.5 12.0001L14.43 5.93007" stroke="#23B35D"
+                                                      stroke-width="2" stroke-miterlimit="10" stroke-linecap="round"
+                                                      stroke-linejoin="round"/>
+                                                <path d="M3.49813 12L20.3281 12" stroke="#23B35D" stroke-width="2"
+                                                      stroke-miterlimit="10" stroke-linecap="round"
+                                                      stroke-linejoin="round"/>
+                                            </svg>
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <div class="oe_structure oe_empty">
+                <section class="customization-offerings o_colored_level" style="background-image: none;">
+                    <div class="container">
+                        <div class="header-box-custom mt-4" style="max-width: 100% !important;">
+                            <h5 class="sub-heading-custom mp-caption-custom text-center">SERVICES</h5>
+                            <h2 class="main-heading-custom text-center">
+                                <span style="font-size: 48px;">Cust</span>
+                                <span class="mp_underline_custom">
+                                    <span style="font-size: 48px;">omization Offerin</span>
+                                </span>
+                                <span style="font-size: 48px;">gs
+                                </span>
+                            </h2>
+                            <p class="sub-heading-lines-custom mp-body-1-rg text-center"><span style="font-size: 18px;">
+                                Customization offerings allow products to be tailored to specific customer preferences
+                                or requirements, enhancing personalization and functionality.</span>&amp;nbsp;
+                                <br/>
+                            </p>
+                        </div>
+                        <div class="customization-offerings-info">
+                            <div class="feature-cards">
+                                <div class="feature-card">
+                                    <div class="feature-card-info">
+                                        <div class="icon">
+
+
+                                            <img src="/web/image/61156-1b766445/Cut%20Outs.png" alt=""
+                                                 class="img img-fluid o_we_custom_image" data-original-id="61155"
+                                                 data-original-src="/web/image/61155-a049e981/Cut%20Outs.png"
+                                                 data-mimetype="image/png" data-resize-width="80" loading="lazy"/>
+
+                                        </div>
+                                        <h3>
+                                            <span style="font-size: 24px;">Cut Outs</span>
+                                            <br/>
+                                        </h3>
+                                        <p>
+                                            <span style="font-size: 16px;">Precise cutouts for slots and openings in
+                                                both plastic and metal enclosures, tailored to your specifications.
+                                            </span>
+                                            <span style="font-size: 18px;">&amp;nbsp;</span>
+                                            <br/>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="feature-card">
+                                    <div class="feature-card-info">
+                                        <div class="icon">
+
+
+                                            <img src="/web/image/61158-b2ffc15b/Surface%20Finish.png" alt=""
+                                                 class="img img-fluid o_we_custom_image" data-original-id="61157"
+                                                 data-original-src="/web/image/61157-7ca1f752/Surface%20Finish.png"
+                                                 data-mimetype="image/png" data-resize-width="81" loading="lazy"/>
+                                        </div>
+                                        <h3>
+                                            <span style="font-size: 24px;">Surface Finish</span>
+                                        </h3>
+                                        <p>
+                                            <span style="font-size: 16px;">Enhanced the appearance, durability, and
+                                                performance of your parts.
+                                            </span>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="feature-card">
+                                    <div class="feature-card-info">
+                                        <div class="icon">
+
+
+                                            <img src="/web/image/61160-83b576d8/UV%20Printing.png" alt=""
+                                                 class="img img-fluid o_we_custom_image" data-original-id="61159"
+                                                 data-original-src="/web/image/61159-a9f6ed04/UV%20Printing.png"
+                                                 data-mimetype="image/png" data-resize-width="81" loading="lazy"/>
+                                        </div>
+                                        <h3>
+                                            <span style="font-size: 24px;">UV Printing</span>
+                                        </h3>
+                                        <p>
+                                            <span style="font-size: 16px;">Custom logos, labels, and designs for both
+                                                plastic and metal surfaces.&amp;nbsp;
+                                            </span>
+                                            <br/>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <div class="oe_structure oe_empty">
+                <section class="design-journey o_colored_level" style="background-image: none;">
+                    <div class="container">
+                        <div class="header-box-custom">
+                            <h5 class="sub-heading-custom mp-caption-custom">SERVICE</h5>
+                            <h2 class="main-heading-custom">
+                                <span class="mp_underline_custom">
+                                    <span style="font-size: 48px;">Enclosure Design Service&amp;nbsp;</span>
+                                </span>
+                            </h2>
+                            <p class="mt-4" style="text-align: justify;">
+                                <span style="font-size: 18px;">At Mech Power, we bridge the gap between your enclosure
+                                    concepts and reality. Our tailored design solutions seamlessly blend functionality
+                                    and aesthetics, making your visions tangible.&amp;nbsp;
+                                </span>
+                                <br/>
+                            </p>
+                        </div>
+                        <div>
+                            <div class="design-journey-container">
+                                <div class="journey-progressbar">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="1167" height="91"
+                                         viewbox="0 0 1167 91" fill="none">
+                                        <path d="M355.471 90.3532C355.276 90.5484 354.96 90.5484 354.764 90.3532L351.582 87.1712C351.387 86.9759 351.387 86.6593 351.582 86.4641C351.778 86.2688 352.094 86.2688 352.289 86.4641L355.118 89.2925L357.946 86.4641C358.142 86.2688 358.458 86.2688 358.653 86.4641C358.849 86.6593 358.849 86.9759 358.653 87.1712L355.471 90.3532ZM306.473 57.5035L306.473 58.0035L306.471 58.0035L306.473 57.5035ZM101.501 56.4996L306.474 57.0035L306.471 58.0035L101.499 57.4996L101.501 56.4996ZM306.473 57.0035L345.118 57.0035L345.118 58.0035L306.473 58.0035L306.473 57.0035ZM355.618 67.5035L355.618 89.9996L354.618 89.9996L354.618 67.5035L355.618 67.5035ZM345.118 57.0035C350.917 57.0035 355.618 61.7046 355.618 67.5035L354.618 67.5035C354.618 62.2568 350.365 58.0035 345.118 58.0035L345.118 57.0035Z"
+                                              fill="#49B958"/>
+                                        <path d="M108.854 90.3535C108.658 90.5488 108.342 90.5488 108.146 90.3535L104.964 87.1716C104.769 86.9763 104.769 86.6597 104.964 86.4645C105.16 86.2692 105.476 86.2692 105.672 86.4645L108.5 89.2929L111.328 86.4645C111.524 86.2692 111.84 86.2692 112.036 86.4645C112.231 86.6597 112.231 86.9763 112.036 87.1716L108.854 90.3535ZM91.4293 57.5039L91.4293 58.0039L91.4258 58.0039L91.4293 57.5039ZM19.5035 56.5L91.4328 57.0039L91.4258 58.0039L19.4965 57.5L19.5035 56.5ZM91.4293 57.0039L98.5 57.0039L98.5 58.0039L91.4293 58.0039L91.4293 57.0039ZM109 67.5039L109 90L108 90L108 67.5039L109 67.5039ZM98.5 57.0039C104.299 57.0039 109 61.7049 109 67.5039L108 67.5039C108 62.2572 103.747 58.0039 98.5 58.0039L98.5 57.0039Z"
+                                              fill="#49B958"/>
+                                        <path d="M629.592 90.3531C629.396 90.5484 629.08 90.5484 628.885 90.3531L625.703 87.1712C625.507 86.9759 625.507 86.6593 625.703 86.4641C625.898 86.2688 626.215 86.2688 626.41 86.4641L629.238 89.2925L632.067 86.4641C632.262 86.2688 632.578 86.2688 632.774 86.4641C632.969 86.6593 632.969 86.9759 632.774 87.1712L629.592 90.3531ZM530.86 57.5035L530.86 58.0035L530.86 58.0035L530.86 57.5035ZM96.5006 56.4996L530.861 57.0035L530.86 58.0035L96.4994 57.4996L96.5006 56.4996ZM530.86 57.0035L619.238 57.0035L619.238 58.0035L530.86 58.0035L530.86 57.0035ZM629.738 67.5035L629.738 89.9996L628.738 89.9996L628.738 67.5035L629.738 67.5035ZM619.238 57.0035C625.037 57.0035 629.738 61.7045 629.738 67.5035L628.738 67.5035C628.738 62.2568 624.485 58.0035 619.238 58.0035L619.238 57.0035Z"
+                                              fill="#49B958"/>
+                                        <path d="M890.231 90.3531C890.035 90.5484 889.719 90.5484 889.524 90.3531L886.342 87.1711C886.146 86.9759 886.146 86.6593 886.342 86.464C886.537 86.2688 886.854 86.2688 887.049 86.464L889.877 89.2925L892.706 86.464C892.901 86.2688 893.217 86.2688 893.413 86.464C893.608 86.6593 893.608 86.9759 893.413 87.1711L890.231 90.3531ZM744.213 57.5035L744.213 58.0035L744.213 58.0035L744.213 57.5035ZM96.5004 56.4996L744.213 57.0035L744.213 58.0035L96.4996 57.4996L96.5004 56.4996ZM744.213 57.0035L879.877 57.0035L879.877 58.0035L744.213 58.0035L744.213 57.0035ZM890.377 67.5035L890.377 89.9996L889.377 89.9996L889.377 67.5035L890.377 67.5035ZM879.877 57.0035C885.676 57.0035 890.377 61.7045 890.377 67.5035L889.377 67.5035C889.377 62.2568 885.124 58.0035 879.877 58.0035L879.877 57.0035Z"
+                                              fill="#49B958"/>
+                                        <path d="M1162.85 90.3535C1162.66 90.5487 1162.34 90.5487 1162.15 90.3535L1158.96 87.1715C1158.77 86.9762 1158.77 86.6596 1158.96 86.4644C1159.16 86.2691 1159.48 86.2691 1159.67 86.4644L1162.5 89.2928L1165.33 86.4644C1165.52 86.2691 1165.84 86.2691 1166.04 86.4644C1166.23 86.6596 1166.23 86.9762 1166.04 87.1715L1162.85 90.3535ZM952.591 57.5039L952.591 58.0039L952.59 58.0039L952.591 57.5039ZM15.4949 56.5054L952.591 57.0039L952.59 58.0039L15.4944 57.5054L15.4949 56.5054ZM952.591 57.0039L1152.5 57.0039L1152.5 58.0039L952.591 58.0039L952.591 57.0039ZM1163 67.5039L1163 89.9999L1162 89.9999L1162 67.5039L1163 67.5039ZM5 47.0054L5 6.00008L6 6.00008L6 47.0054L5 47.0054ZM1152.5 57.0039C1158.3 57.0039 1163 61.7049 1163 67.5039L1162 67.5039C1162 62.2572 1157.75 58.0039 1152.5 58.0039L1152.5 57.0039ZM15.4944 57.5054C9.6976 57.5023 5 52.8022 5 47.0054L6 47.0054C6 52.2501 10.2502 56.5026 15.4949 56.5054L15.4944 57.5054Z"
+                                              fill="#49B958"/>
+                                        <circle cx="5" cy="5" r="5"
+                                                transform="matrix(4.37114e-08 1 1 -4.37114e-08 0.5 0)" fill="#49B958"/>
+                                    </svg>
+                                </div>
+                                <div class="journey-progressbar-mbl d-none">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="39" height="1111"
+                                         viewbox="0 0 39 1111" fill="none">
+                                        <path d="M38.3536 135.354C38.5488 135.158 38.5488 134.842 38.3536 134.646L35.1716 131.464C34.9763 131.269 34.6597 131.269 34.4645 131.464C34.2692 131.66 34.2692 131.976 34.4645 132.172L37.2929 135L34.4645 137.828C34.2692 138.024 34.2692 138.34 34.4645 138.536C34.6597 138.731 34.9763 138.731 35.1716 138.536L38.3536 135.354ZM5.50393 110.641L6.00393 110.641L6.00392 110.638L5.50393 110.641ZM4.5 8.00246L5.00393 110.643L6.00392 110.638L5.49999 7.99755L4.5 8.00246ZM5.00393 110.641L5.00393 125L6.00393 125L6.00393 110.641L5.00393 110.641ZM15.5039 135.5L38 135.5L38 134.5L15.5039 134.5L15.5039 135.5ZM5.00393 125C5.00393 130.799 9.70494 135.5 15.5039 135.5L15.5039 134.5C10.2572 134.5 6.00393 130.247 6.00393 125L5.00393 125Z"
+                                              fill="#49B958"/>
+                                        <path d="M38.3536 375.354C38.5488 375.158 38.5488 374.842 38.3536 374.646L35.1716 371.464C34.9763 371.269 34.6597 371.269 34.4645 371.464C34.2692 371.66 34.2692 371.976 34.4645 372.172L37.2929 375L34.4645 377.828C34.2692 378.024 34.2692 378.34 34.4645 378.536C34.6597 378.731 34.9763 378.731 35.1716 378.536L38.3536 375.354ZM5.50392 326.473L6.00392 326.473L6.00392 326.472L5.50392 326.473ZM4.49999 122.001L5.00392 326.474L6.00392 326.472L5.49999 121.999L4.49999 122.001ZM5.00392 326.473L5.00392 365L6.00392 365L6.00392 326.473L5.00392 326.473ZM15.5039 375.5L38 375.5L38 374.5L15.5039 374.5L15.5039 375.5ZM5.00392 365C5.00392 370.799 9.70493 375.5 15.5039 375.5L15.5039 374.5C10.2572 374.5 6.00392 370.247 6.00392 365L5.00392 365Z"
+                                              fill="#49B958"/>
+                                        <path d="M38.3536 616.354C38.5488 616.158 38.5488 615.842 38.3536 615.646L35.1716 612.464C34.9763 612.269 34.6597 612.269 34.4645 612.464C34.2692 612.66 34.2692 612.976 34.4645 613.172L37.2929 616L34.4645 618.828C34.2692 619.024 34.2692 619.34 34.4645 619.536C34.6597 619.731 34.9763 619.731 35.1716 619.536L38.3536 616.354ZM5.50393 568.726L6.00393 568.726L6.00393 568.725L5.50393 568.726ZM4.49999 360.001L5.00393 568.727L6.00393 568.725L5.49999 359.999L4.49999 360.001ZM5.00393 568.726L5.00393 606L6.00393 606L6.00393 568.726L5.00393 568.726ZM15.5039 616.5L38 616.5L38 615.5L15.5039 615.5L15.5039 616.5ZM5.00393 606C5.00393 611.799 9.70494 616.5 15.5039 616.5L15.5039 615.5C10.2572 615.5 6.00393 611.247 6.00393 606L5.00393 606Z"
+                                              fill="#49B958"/>
+                                        <path d="M38.3536 860.354C38.5488 860.158 38.5488 859.842 38.3536 859.646L35.1716 856.464C34.9763 856.269 34.6597 856.269 34.4645 856.464C34.2692 856.66 34.2692 856.976 34.4645 857.172L37.2929 860L34.4645 862.828C34.2692 863.024 34.2692 863.34 34.4645 863.536C34.6597 863.731 34.9763 863.731 35.1716 863.536L38.3536 860.354ZM5.50394 812.998L6.00394 812.998L6.00394 812.997L5.50394 812.998ZM4.49999 604.001L5.00394 813L6.00394 812.997L5.49999 603.999L4.49999 604.001ZM5.00394 812.998L5.00394 850L6.00394 850L6.00394 812.998L5.00394 812.998ZM15.5039 860.5L38 860.5L38 859.5L15.5039 859.5L15.5039 860.5ZM5.00394 850C5.00394 855.799 9.70495 860.5 15.5039 860.5L15.5039 859.5C10.2572 859.5 6.00394 855.247 6.00394 850L5.00394 850Z"
+                                              fill="#49B958"/>
+                                        <path d="M38.3536 1107.35C38.5488 1107.16 38.5488 1106.84 38.3536 1106.65L35.1716 1103.46C34.9763 1103.27 34.6597 1103.27 34.4645 1103.46C34.2692 1103.66 34.2692 1103.98 34.4645 1104.17L37.2929 1107L34.4645 1109.83C34.2692 1110.02 34.2692 1110.34 34.4645 1110.54C34.6597 1110.73 34.9763 1110.73 35.1716 1110.54L38.3536 1107.35ZM5.50392 1060.01L6.00392 1060.01L6.00392 1060.01L5.50392 1060.01ZM4.49999 848.001L5.00392 1060.01L6.00392 1060.01L5.49999 847.999L4.49999 848.001ZM5.00392 1060.01L5.00392 1097L6.00392 1097L6.00392 1060.01L5.00392 1060.01ZM15.5039 1107.5L38 1107.5L38 1106.5L15.5039 1106.5L15.5039 1107.5ZM5.00392 1097C5.00392 1102.8 9.70493 1107.5 15.5039 1107.5L15.5039 1106.5C10.2572 1106.5 6.00392 1102.25 6.00392 1097L5.00392 1097Z"
+                                              fill="#49B958"/>
+                                        <circle cx="5" cy="5" r="5" transform="matrix(4.37114e-08 1 1 -4.37114e-08 0 0)"
+                                                fill="#49B958"/>
+                                    </svg>
+                                </div>
+                                <div class="journey-steps">
+                                    <div class="step">
+                                        <div class="content">
+                                            <h3>3D Models &amp;amp; Rendered Visualizations</h3>
+                                            <p style="text-align: left;">Detailed 3D models and high-quality images
+                                                offer a clear visual of your design.
+                                            </p>
+                                        </div>
+                                        <div class="background">
+                                            <!--<svg xmlns="http://www.w3.org/2000/svg" width="98" height="98" viewbox="0 0 98 98" fill="none">-->
+                                            <!--    <path fill-rule="evenodd" clip-rule="evenodd" d="M69.4687 44.5312H44.5348C43.1169 44.5312 41.7578 43.9684 40.755 42.9655C39.7539 41.9645 39.191 40.6054 39.191 39.1875V35.625C39.191 28.7387 44.7735 23.1562 51.6598 23.1562H62.3437C69.23 23.1562 74.8125 28.7387 74.8125 35.625V39.1875C74.8125 40.6054 74.2496 41.9645 73.2468 42.9655C72.2457 43.9684 70.8866 44.5312 69.4687 44.5312ZM67.6875 40.9688H69.4687C69.9408 40.9688 70.395 40.7817 70.7281 40.4468C71.063 40.1138 71.25 39.6595 71.25 39.1875V35.625C71.25 30.707 67.2618 26.7188 62.3437 26.7188H51.6598C46.74 26.7188 42.7535 30.707 42.7535 35.625V39.1875C42.7535 39.6595 42.9406 40.1138 43.2737 40.4468C43.6085 40.7817 44.061 40.9688 44.5348 40.9688H46.3125V35.625C46.3125 34.6418 47.1105 33.8438 48.0937 33.8438C49.077 33.8438 49.875 34.6418 49.875 35.625V40.9688H64.125V35.625C64.125 34.6418 64.923 33.8438 65.9062 33.8438C66.8895 33.8438 67.6875 34.6418 67.6875 35.625V40.9688ZM35.625 108.656H10.691C9.27316 108.656 7.91407 108.093 6.91123 107.091C5.91017 106.089 5.34729 104.73 5.34729 103.312V99.75C5.34729 92.8637 10.9297 87.2812 17.816 87.2812H28.5C35.3863 87.2812 40.9687 92.8637 40.9687 99.75V103.312C40.9687 104.73 40.4059 106.089 39.403 107.091C38.4019 108.093 37.0429 108.656 35.625 108.656ZM33.8437 105.094H35.625C36.097 105.094 36.5512 104.907 36.8843 104.572C37.2192 104.239 37.4062 103.785 37.4062 103.312V99.75C37.4062 94.832 33.418 90.8438 28.5 90.8438H17.816C12.8962 90.8438 8.90979 94.832 8.90979 99.75V103.312C8.90979 103.785 9.09682 104.239 9.42991 104.572C9.76479 104.907 10.2172 105.094 10.691 105.094H12.4687V99.75C12.4687 98.7667 13.2667 97.9688 14.25 97.9688C15.2332 97.9688 16.0312 98.7667 16.0312 99.75V105.094H30.2812V99.75C30.2812 98.7667 31.0792 97.9688 32.0625 97.9688C33.0457 97.9688 33.8437 98.7667 33.8437 99.75V105.094ZM103.312 108.656H78.3785C76.9607 108.656 75.6016 108.093 74.5987 107.091C73.5977 106.089 73.0348 104.73 73.0348 103.312V99.75C73.0348 92.8637 78.6172 87.2812 85.5035 87.2812H96.1875C103.074 87.2812 108.656 92.8637 108.656 99.75V103.312C108.656 104.73 108.093 106.089 107.091 107.091C106.089 108.093 104.73 108.656 103.312 108.656ZM101.531 105.094H103.312C103.785 105.094 104.239 104.907 104.572 104.572C104.907 104.239 105.094 103.785 105.094 103.312V99.75C105.094 94.832 101.106 90.8438 96.1875 90.8438H85.5035C80.5837 90.8438 76.5973 94.832 76.5973 99.75V103.312C76.5973 103.785 76.7843 104.239 77.1174 104.572C77.4523 104.907 77.9047 105.094 78.3785 105.094H80.1562V99.75C80.1562 98.7667 80.9542 97.9688 81.9375 97.9688C82.9207 97.9688 83.7187 98.7667 83.7187 99.75V105.094H97.9687V99.75C97.9687 98.7667 98.7667 97.9688 99.75 97.9688C100.733 97.9688 101.531 98.7667 101.531 99.75V105.094ZM57.0018 5.34375C60.933 5.34375 64.1268 8.53575 64.1268 12.4688C64.1268 16.4017 60.933 19.5938 57.0018 19.5938C53.0688 19.5938 49.8768 16.4017 49.8768 12.4688C49.8768 8.53575 53.0688 5.34375 57.0018 5.34375ZM57.0018 8.90625C55.0353 8.90625 53.4393 10.5023 53.4393 12.4688C53.4393 14.4353 55.0353 16.0312 57.0018 16.0312C58.9683 16.0312 60.5643 14.4353 60.5643 12.4688C60.5643 10.5023 58.9683 8.90625 57.0018 8.90625ZM23.158 69.4688C27.0892 69.4688 30.283 72.6608 30.283 76.5938C30.283 80.5267 27.0892 83.7188 23.158 83.7188C19.225 83.7188 16.033 80.5267 16.033 76.5938C16.033 72.6608 19.225 69.4688 23.158 69.4688ZM23.158 73.0312C21.1915 73.0312 19.5955 74.6273 19.5955 76.5938C19.5955 78.5602 21.1915 80.1562 23.158 80.1562C25.1245 80.1562 26.7205 78.5602 26.7205 76.5938C26.7205 74.6273 25.1245 73.0312 23.158 73.0312ZM90.8455 69.4688C94.7767 69.4688 97.9705 72.6608 97.9705 76.5938C97.9705 80.5267 94.7767 83.7188 90.8455 83.7188C86.9125 83.7188 83.7205 80.5267 83.7205 76.5938C83.7205 72.6608 86.9125 69.4688 90.8455 69.4688ZM90.8455 73.0312C88.879 73.0312 87.283 74.6273 87.283 76.5938C87.283 78.5602 88.879 80.1562 90.8455 80.1562C92.812 80.1562 94.408 78.5602 94.408 76.5938C94.408 74.6273 92.812 73.0312 90.8455 73.0312ZM79.0519 39.7147C78.2806 39.1056 78.1488 37.9852 78.7579 37.2139C79.3671 36.4426 80.4893 36.3108 81.2606 36.92C89.433 43.3734 94.9762 53.0136 96.0111 63.9576C96.1038 64.9355 95.3859 65.8065 94.4062 65.8991C93.4283 65.9917 92.5573 65.2721 92.4647 64.2924C91.5242 54.3442 86.4815 45.5822 79.0519 39.7147ZM67.178 101.836C68.1203 101.554 69.1143 102.091 69.3939 103.033C69.6754 103.975 69.1392 104.969 68.1969 105.249C64.6487 106.307 60.8902 106.875 57 106.875C53.1097 106.875 49.3513 106.307 45.803 105.249C44.8608 104.969 44.3246 103.975 44.606 103.033C44.8857 102.091 45.8796 101.554 46.8219 101.836C50.0478 102.796 53.4642 103.312 57 103.312C60.5358 103.312 63.9522 102.796 67.178 101.836ZM21.5353 64.2924C21.4427 65.2721 20.5716 65.9917 19.5937 65.8991C18.614 65.8065 17.8962 64.9355 17.9888 63.9576C19.0237 53.0136 24.567 43.3734 32.7394 36.92C33.5106 36.3108 34.6328 36.4426 35.242 37.2139C35.8512 37.9852 35.7194 39.1056 34.9481 39.7147C27.5185 45.5822 22.4758 54.3442 21.5353 64.2924Z" fill="url(#paint0_linear_1611_20263)"/>-->
+                                            <!--    <defs>-->
+                                            <!--        <lineargradient id="paint0_linear_1611_20263" x1="5.34729" y1="57" x2="108.656" y2="57" gradientunits="userSpaceOnUse">-->
+                                            <!--            <stop stop-color="#E6E6E6"/>-->
+                                            <!--            <stop offset="1" stop-color="#646464"/>-->
+                                            <!--        </lineargradient>-->
+                                            <!--    </defs>-->
+                                            <!--</svg>-->
+                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                 xmlns:xlink="http://www.w3.org/1999/xlink" width="98" height="98"
+                                                 id="Layer_1" viewBox="0 0 98 98">
+                                                <defs>
+                                                    <style>
+                                                        .cls-1 {
+                                                        fill: none;
+                                                        stroke: url(#linear-gradient);
+                                                        stroke-miterlimit: 10;
+                                                        stroke-width: 2px;
+                                                        }
+                                                    </style>
+                                                    <linearGradient id="linear-gradient" x1="11.46" y1="49" x2="86.57"
+                                                                    y2="49" gradientUnits="userSpaceOnUse">
+                                                        <stop offset="0" stop-color="#27b25b"/>
+                                                        <stop offset=".35" stop-color="#1a8041"/>
+                                                        <stop offset=".67" stop-color="#104023"/>
+                                                        <stop offset=".67" stop-color="#103f23"/>
+                                                        <stop offset="1" stop-color="#112618"/>
+                                                    </linearGradient>
+                                                </defs>
+                                                <path class="cls-1"
+                                                      d="M80.29,85.55H17.74c-2.91,0-5.27-2.36-5.27-5.27V17.72c0-2.91,2.36-5.27,5.27-5.27h62.56c2.91,0,5.27,2.36,5.27,5.27v62.55c0,2.91-2.36,5.27-5.27,5.27ZM85.57,30.39H12.46M21.61,19.26c-1.27,0-2.29,1.03-2.29,2.29s1.03,2.29,2.29,2.29,2.29-1.03,2.29-2.29-1.03-2.29-2.29-2.29M30.93,19.26c-1.27,0-2.29,1.03-2.29,2.29s1.03,2.29,2.29,2.29,2.29-1.03,2.29-2.29-1.03-2.29-2.29-2.29M40.67,19.26c-1.27,0-2.29,1.03-2.29,2.29s1.03,2.29,2.29,2.29,2.29-1.03,2.29-2.29-1.03-2.29-2.29-2.29M65.6,66.87v-18.13l-16.59-7.51-16.57,7.23v18.41l16.57,7.37,16.59-7.37ZM65.6,48.74l-16.59,7.84v17.66M32.43,48.46l16.57,8.11M49.02,41.21v-10.84M65.61,61.18l19.97,7.9M32.39,61.18l-19.97,7.9"/>
+                                            </svg>
+                                        </div>
+                                    </div>
+
+                                    <div class="step">
+                                        <div class="content">
+                                            <h3>Technical Drawings</h3>
+                                            <p>Precise drawings with dimensions and tolerances for accurate
+                                                production.
+                                            </p>
+                                        </div>
+                                        <div class="background">
+                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                 xmlns:xlink="http://www.w3.org/1999/xlink" id="Layer_1" width="98"
+                                                 height="98" viewBox="0 0 98 98">
+                                                <defs>
+                                                    <style>
+                                                        .cls-1 {
+                                                        fill: none;
+                                                        stroke: url(#linear-gradient);
+                                                        stroke-miterlimit: 10;
+                                                        stroke-width: 2px;
+                                                        }
+                                                    </style>
+                                                    <linearGradient id="linear-gradient" x1="15.13" y1="48.93"
+                                                                    x2="82.87" y2="48.93"
+                                                                    gradientUnits="userSpaceOnUse">
+                                                        <stop offset="0" stop-color="#27b25b"/>
+                                                        <stop offset=".35" stop-color="#1a8041"/>
+                                                        <stop offset=".67" stop-color="#104023"/>
+                                                        <stop offset=".67" stop-color="#103f23"/>
+                                                        <stop offset="1" stop-color="#112618"/>
+                                                    </linearGradient>
+                                                </defs>
+                                                <path class="cls-1"
+                                                      d="M81.87,77.55v10.15c0,.42-.34.77-.77.77H16.9c-.42,0-.77-.34-.77-.77v-10.15c0-.42.34-.77.77-.77h64.2c.42,0,.77.34.77.77ZM24.61,69.1V30.93c0-2.34-1.9-4.24-4.24-4.24h0c-2.34,0-4.24,1.9-4.24,4.24v38.17M81.87,69.1V30.93c0-2.34-1.9-4.24-4.24-4.24h0c-2.34,0-4.24,1.9-4.24,4.24v38.17M24.61,69.1c0-2.34-1.9-4.24-4.24-4.24s-4.24,1.9-4.24,4.24,1.9,4.24,4.24,4.24h57.25c2.34,0,4.24-1.9,4.24-4.24s-1.9-4.24-4.24-4.24-4.24,1.9-4.24,4.24M73.39,30.93h-30.46M24.61,30.93h9.08M20.87,76.78v2.55M24.27,76.78v2.55M27.67,76.78v2.55M31.26,76.82v3.83M34.91,76.78v2.55M38.31,76.78v2.55M41.71,76.78v2.55M45.3,76.82v3.83M48.94,76.78v2.55M52.34,76.78v2.55M55.74,76.78v2.55M59.33,76.82v3.83M62.98,76.78v2.55M66.38,76.78v2.55M69.78,76.78v2.55M73.37,76.82v3.83M77.01,76.78v2.55M30.87,64.86h32.47M63.33,63.15v3.44M30.87,63.15v3.44M67.06,35.48v25.1M68.77,60.58h-3.44M68.77,35.48h-3.44M38.28,57.67l4.62-9.22.04-34.96c0-5.45-9.22-5.46-9.23,0l-.04,34.96,4.61,9.23ZM33.67,17.69h9.26M33.67,48.33h9.26M38.28,57.67V17.69"/>
+                                            </svg>
+                                        </div>
+                                    </div>
+
+                                    <div class="step">
+                                        <div class="content">
+                                            <h3 style="text-align: justify;">Design Documenta-tion</h3>
+                                            <p>Detailed documentation ensures your design is accurately manufactured.
+                                            </p>
+                                        </div>
+                                        <div class="background">
+                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                 xmlns:xlink="http://www.w3.org/1999/xlink" id="Layer_1" width="98"
+                                                 height="98" viewBox="0 0 98 98">
+                                                <defs>
+                                                    <style>
+                                                        .cls-1 {
+                                                        fill: none;
+                                                        stroke: url(#linear-gradient);
+                                                        stroke-linecap: round;
+                                                        stroke-linejoin: round;
+                                                        stroke-width: 2px;
+                                                        }
+                                                    </style>
+                                                    <linearGradient id="linear-gradient" x1="18.87" y1="49.03"
+                                                                    x2="79.13" y2="49.03"
+                                                                    gradientUnits="userSpaceOnUse">
+                                                        <stop offset="0" stop-color="#27b25b"/>
+                                                        <stop offset=".35" stop-color="#1a8041"/>
+                                                        <stop offset=".67" stop-color="#104023"/>
+                                                        <stop offset=".67" stop-color="#103f23"/>
+                                                        <stop offset="1" stop-color="#112618"/>
+                                                    </linearGradient>
+                                                </defs>
+                                                <path class="cls-1"
+                                                      d="M78.13,75.9l-12.95,12.95v-12.95h12.95ZM78.13,75.9V9.22H19.87v79.63h45.32l12.95-12.95ZM26.34,15.69h12.95M26.34,22.16h19.42M53.86,37.7l6.47,6.47,3.24-3.24-6.47-6.47-3.24,3.24ZM38.88,64.81l-5.67-5.67M29.58,68.46l9.71-3.24,29.13-29.13-6.47-6.47-29.13,29.13-3.24,9.71ZM53.86,37.7l6.47,6.47M50.62,40.94l-11.33-11.33-9.71,9.71,11.33,11.33M47.38,57.13l11.33,11.33,9.71-9.71-11.33-11.33M40.1,40.13l4.86-4.86M62.76,53.08l-4.86,4.86"/>
+                                            </svg>
+                                        </div>
+                                    </div>
+
+                                    <div class="step">
+                                        <div class="content">
+                                            <h3>Final Design Files</h3>
+                                            <p>Get design files in the right formats for seamless manufacturing.</p>
+                                        </div>
+                                        <div class="background">
+                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                 xmlns:xlink="http://www.w3.org/1999/xlink" id="Layer_1" width="98"
+                                                 height="98" viewBox="0 0 98 98">
+                                                <defs>
+                                                    <style>
+                                                        .cls-1 {
+                                                        fill: none;
+                                                        stroke: url(#linear-gradient);
+                                                        stroke-miterlimit: 10;
+                                                        stroke-width: 2px;
+                                                        }
+                                                    </style>
+                                                    <linearGradient id="linear-gradient" x1="14.65" y1="49.41"
+                                                                    x2="83.35" y2="49.41"
+                                                                    gradientUnits="userSpaceOnUse">
+                                                        <stop offset="0" stop-color="#27b25b"/>
+                                                        <stop offset=".35" stop-color="#1a8041"/>
+                                                        <stop offset=".67" stop-color="#104023"/>
+                                                        <stop offset=".67" stop-color="#103f23"/>
+                                                        <stop offset="1" stop-color="#112618"/>
+                                                    </linearGradient>
+                                                </defs>
+                                                <path id="g2915" class="cls-1"
+                                                      d="M82.35,36.07v46.69c0,3.67-3,6.67-6.67,6.67H22.32c-3.67,0-6.67-3-6.67-6.67V16.06c0-3.67,3-6.67,6.67-6.67h33.35l26.68,26.68ZM55.67,10.19v19.21c0,3.67,3,6.67,6.67,6.67h19.21M53,53.41h-8s0,8,0,8h8s0-8,0-8ZM68.6,73.39c-1.6-7.83-7.77-13.99-15.6-15.58M45,57.82c-7.84,1.59-14.01,7.77-15.61,15.61M28.99,53.41c-2.21,0-4,1.79-4,4s1.79,4,4,4c2.21,0,4-1.79,4-4s-1.79-4-4-4ZM69.01,53.41c-2.21,0-4,1.79-4,4,0,2.21,1.79,4,4,4,2.21,0,4-1.79,4-4s-1.79-4-4-4ZM32.99,57.41h12.01M53,57.41h12.01"/>
+                                            </svg>
+                                        </div>
+                                    </div>
+
+                                    <div class="step">
+                                        <div class="content">
+                                            <h3>Consultation and Support</h3>
+                                            <p>Our experts assist with any queries or adjustments during design.</p>
+                                        </div>
+                                        <div class="background">
+                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                 xmlns:xlink="http://www.w3.org/1999/xlink" id="Layer_1" width="98"
+                                                 height="98" viewBox="0 0 98 98">
+                                                <defs>
+                                                    <style>
+                                                        .cls-1 {
+                                                        fill: none;
+                                                        stroke: url(#linear-gradient);
+                                                        stroke-miterlimit: 10;
+                                                        stroke-width: 2px;
+                                                        }
+                                                    </style>
+                                                    <linearGradient id="linear-gradient" x1="8.96" y1="49" x2="89.04"
+                                                                    y2="49" gradientUnits="userSpaceOnUse">
+                                                        <stop offset="0" stop-color="#27b25b"/>
+                                                        <stop offset=".35" stop-color="#1a8041"/>
+                                                        <stop offset=".67" stop-color="#104023"/>
+                                                        <stop offset=".67" stop-color="#103f23"/>
+                                                        <stop offset="1" stop-color="#112618"/>
+                                                    </linearGradient>
+                                                </defs>
+                                                <path id="g1513" class="cls-1"
+                                                      d="M22.97,73.24h-6.51c-3.59,0-6.51-2.91-6.51-6.51v-11.39c0-3.59,2.91-6.51,6.51-6.51h6.51v24.4ZM75.03,73.24h6.51c3.59,0,6.51-2.91,6.51-6.51v-11.39c0-3.59-2.91-6.51-6.51-6.51h-6.51v24.4ZM49,9.79c-6.81,0-13.19,1.84-18.7,5.03l4.89,8.46c4.07-2.36,8.78-3.73,13.81-3.73s9.74,1.37,13.81,3.73l4.89-8.46c-5.51-3.19-11.89-5.03-18.7-5.03ZM79.91,73.24v3.58c0,3.59-2.91,6.51-6.51,6.51h-19.52M53.88,83.32c0,2.7-2.19,4.88-4.88,4.88s-4.88-2.19-4.88-4.88,2.19-4.88,4.88-4.88,4.88,2.19,4.88,4.88ZM62.91,57.24c1.49-2.46,2.36-5.32,2.36-8.41,0-8.98-7.28-16.27-16.27-16.27s-16.27,7.28-16.27,16.27,7.28,16.27,16.27,16.27c3.08,0,5.95-.87,8.41-2.36l7.86,2.36-2.36-7.86ZM43.71,53.72h10.57M43.71,43.96h10.57M81.54,48.84v-1.63c0-12.04-6.54-22.55-16.27-28.18M32.73,19.03c-9.72,5.63-16.27,16.14-16.27,28.18v1.63"/>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <div class="oe_structure oe_empty">
+                <section class="why-choose-enclosure o_colored_level" style="background-image: none;">
+                    <div class="container">
+                        <div class="header-box-custom" style="max-width: 100% !important;">
+                            <h5 class="sub-heading-custom mp-caption-custom text-center">UNMATCHED SOLUTIONS</h5>
+                            <h2 class="main-heading-custom text-center">
+                                <span style="font-size: 48px;">Why Choose Mech Power for
+                                </span>
+                                <br/>
+                                <span style="font-size: 48px;">
+                                </span>
+                                <span class="mp_underline_custom">
+                                    <span style="font-size: 48px;">Plastic &amp;amp; Metal Enclosures&amp;nbsp;</span>
+                                </span>
+                                <span style="font-size: 48px;">?
+                                </span>
+                            </h2>
+                        </div>
+                        <div class="why-choose-enclosure-info">
+                            <div class="card">
+                                <img src="/web/image/61162-182f59d5/Custom%20Solutions.png" alt=""
+                                     class="img img-fluid o_we_custom_image" data-original-id="61161"
+                                     data-original-src="/web/image/61161-a69b14d8/Custom%20Solutions.png"
+                                     data-mimetype="image/png" data-resize-width="81" loading="lazy"/>
+                                <p>Custom Solutions</p>
+                            </div>
+                            <div class="card">
+                                <img src="/web/image/61164-2f3f8a27/Experienced%20Team.png" alt=""
+                                     class="img img-fluid o_we_custom_image" data-original-id="61163"
+                                     data-original-src="/web/image/61163-f2bae354/Experienced%20Team.png"
+                                     data-mimetype="image/png" data-resize-width="80" loading="lazy"/>
+                                <p>Experienced Team</p>
+                            </div>
+                            <div class="card">
+                                <img src="/web/image/61170-e5e182bc/High-Quality%20Materials.png" alt=""
+                                     class="img img-fluid o_we_custom_image" data-original-id="61165"
+                                     data-original-src="/web/image/61165-f9f1d2fb/High-Quality%20Materials.png"
+                                     data-mimetype="image/png" data-resize-width="81"/>
+                                <p>High-Quality Materials</p>
+                            </div>
+                            <div class="card">
+                                <img src="/web/image/61168-07724e37/Cost-Effective.png" alt=""
+                                     class="img img-fluid o_we_custom_image" data-original-id="61166"
+                                     data-original-src="/web/image/61166-f0d8de75/Cost-Effective.png"
+                                     data-mimetype="image/png" data-resize-width="81"/>
+                                <p>Cost-Effective</p>
+                            </div>
+                            <div class="card">
+                                <img src="/web/image/61169-6c1fe5be/Fast%20Turnaround.png" alt=""
+                                     class="img img-fluid o_we_custom_image" data-original-id="61167"
+                                     data-original-src="/web/image/61167-40d4b3b9/Fast%20Turnaround.png"
+                                     data-mimetype="image/png" data-resize-width="81"/>
+                                <p>Fast Turnaround</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <t t-if="request.env.user._is_public()">
+                <div class="oe_structure oe_empty mp-service-lead-section">
+                    <section class="container">
+                        <div class="row">
+                            <div class="loader-modal d-none">
+                                <div class="loader-content">
+                                    <div class="loader-icon">
+                                        <img src="/cr_web_portal/static/src/img/spin.gif"/>
+                                    </div>
+                                    <h5>Processing Your Request...</h5>
+                                </div>
+                            </div>
+                            <div class="confirmation-modal d-none">
+                                <div class="confirmation-content">
+                                    <div class="confirmation-icon">
+                                        <img src="/cr_web_portal/static/src/img/done.gif"/>
+                                    </div>
+                                    <h5>Your Request Has Been Submitted!</h5>
+                                    <p>Thank you for your interest in our Enclosure Design service! Our team will get
+                                        back to you shortly to discuss your requirements further.
+                                    </p>
+                                    <a href="/enclosure" class="mp-btn-light-font-green">Continue to website</a>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="mp-service-lead-header-box">
+                                    <h5 class="mp-service-lead-sub-heading">CONTACT US</h5>
+                                    <h2 class="mp-service-lead-main-heading">Interested in our <span
+                                            class="mp_service_lead_header_underline">Enclosure Design
+                                    </span> Service?
+                                    </h2>
+                                    <p class="mp-service-lead-sub-heading-lines">Share your contact details, and our
+                                        dedicated team will be in touch shortly to discuss your requirements further.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="s_website_form service_mobile_form" data-snippet="s_website_form">
+                                    <form action="/website/form/" method="post" enctype="multipart/form-data"
+                                          class="o_mark_required" data-mark="*" data-model_name="crm.lead"
+                                          data-success-mode="redirect" data-success-page="/service/request/thank-you"
+                                          data-pre-fill="true" novalidate="novalidate">
+                                        <input type="hidden" name="form_name" value="service_request"/>
+                                        <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                        <div class="s_website_form_rows ">
+                                            <div class="mp_input_field_web">
+                                                <input id="customer_name"
+                                                       class="form-control form_input s_website_form_input"
+                                                       name="customer_name" placeholder=" " type="text"
+                                                       required="required"/>
+                                                <label for="customer_name" class="form_label o_input_required">Name
+                                                </label>
+                                            </div>
+                                            <div class="mp_input_field_web">
+                                                <input id="customer_email"
+                                                       class="form-control form_input check_email s_website_form_input"
+                                                       name="customer_email" placeholder=" " type="email"
+                                                       required="required"/>
+                                                <label for="customer_email" class="form_label o_input_required">E-mail
+                                                </label>
+                                            </div>
+                                            <div class="email-validate-message d-none">
+                                                <p class="email-validate-line"/>
+                                            </div>
+                                            <div class="d-flex mp_phone"
+                                                 style="position: relative; overflow: visible !important;">
+                                                <t t-set="countries"
+                                                   t-value="request.env['res.country'].sudo().search([])"/>
+                                                <t t-set="default_country"
+                                                   t-value="request.env['res.country'].sudo().search([('phone_code','=','+91')])"/>
+                                                <div class="input-group js_country_dropdown pr-0">
+                                                    <div class="input-group-prepend flag-button">
+                                                        <button type="button" id="btn_vat_code"
+                                                                t-att-disabled="readonly"
+                                                                class="btn dropdown btn-outline-secondary dropdown-toggle js_btn_country_code form-control country_button"
+                                                                data-bs-toggle="dropdown"
+                                                                data-bs-target="#dropdown-countries">
+
+                                                            <div id="img_code_vat"
+                                                                 class="js_img_country_code country_img ">
+                                                                +
+                                                                <t t-esc="default_country.phone_code"/>
+                                                                <i class="fa fa-angle-down"/>
+                                                            </div>
+                                                        </button>
+                                                        <div class="dropdown-menu scrollable-menu"
+                                                             id="dropdown-countries">
+                                                            <div class="country_id_searchbar">
+                                                                <input class="search_country s_website_form_input input_control"
+                                                                       type="text" placeholder="Search..."/>
+                                                            </div>
+                                                            <div id="country_id_list">
+                                                                <t t-foreach="countries" t-as="country">
+                                                                    <a href="#" t-att-id="country.code"
+                                                                       t-att-data-country_id="country.id"
+                                                                       t-att-data-country_code="country.code"
+                                                                       t-att-data-phone_code="country.phone_code"
+                                                                       class="dropdown-item js_select_country_code">
+                                                                        <img t-att-src="country.image_url"
+                                                                             class="country_name_img"/>
+                                                                        <span class="form-country-name">
+                                                                            <t t-esc="country.name"/>
+                                                                            (<t t-esc="country.code"/>) +
+                                                                            <t t-esc="country.phone_code"/>
+                                                                        </span>
+                                                                    </a>
+                                                                </t>
+                                                            </div>
+                                                        </div>
+                                                        <input id="country_code_field" type="hidden" size="2"
+                                                               tabindex="-1"
+                                                               class="input-group-text js_country_code_field s_website_form_input"
+                                                               name="country_id" t-att-value="default_country.id"
+                                                               readonly="1"/>
+                                                    </div>
+                                                </div>
+                                                <input type="tel" id="phone" name="customer_contact_no"
+                                                       placeholder="Contact Number" required="required" maxlength="15"
+                                                       class="elem check_digits s_website_form_input"/>
+                                                <label for="phone" class="form_label o_input_required"
+                                                       style="z-index: 111111111; top:-11px">Phone
+                                                </label>
+                                            </div>
+                                            <div class="mp_input_field_web">
+                                                <input id="service_name" class="form-control form_input" name=""
+                                                       t-att-value="'Enclosure Design'" readonly="readonly"
+                                                       placeholder=" " type="text" required="required"/>
+                                                <label for="service_name" class="form_label o_input_required">Services
+                                                </label>
+                                            </div>
+                                            <input type="hidden" name="service" class="s_website_form_input"
+                                                   t-att-value="'enclosure_design'"/>
+                                            <div class="mp_input_field_web">
+                                                <input id="customer_subject"
+                                                       class="form-control form_input s_website_form_input"
+                                                       name="customer_subject" placeholder=" " type="text"
+                                                       required="required"/>
+                                                <label for="customer_subject" class="form_label o_input_required">
+                                                    Subject
+                                                </label>
+                                            </div>
+                                            <div class="mp_input_field_web">
+                                                <textarea id="customer_message" style="height: 5rem !important;"
+                                                          class="form-control form_input s_website_form_input"
+                                                          name="customer_message" placeholder=" " type="text"/>
+
+                                                <label for="customer_message" class="form_label">Message</label>
+                                            </div>
+                                            <button type="submit" class="mp-primary-btn">Submit your request</button>
+                                            <span id="s_website_form_result"/>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </t>
+            <!-- Blog Start -->
+            <t t-call="cr_web_portal.dynamic_blogpost">
+                <t t-set="service_id" t-value="'mech_custom_service_enclosure_design'"/>
+            </t>
+            <!-- Blog End -->
+
+            <div class="oe_structure oe_empty">
+                <section class="asked-questions s_faq_collapse pt32 pb32 o_colored_level s_faq_collapse_big"
+                         data-snippet="s_faq_collapse" data-name="Accordion" style="background-image: none;">
+                    <div class="container">
+                        <div class="header-box-custom service-3d" style="max-width: 100% !important;">
+                            <h5 class="sub-heading-custom mp-caption-custom text-center">FAQS</h5>
+                            <h2 class="main-heading-custom text-center">
+                                <span style="font-size: 48px;">Frequently Asked</span>
+                                <span class="mp_underline_custom">
+                                    <span style="font-size: 48px;">Questions</span>
+                                </span>
+                            </h2>
+                        </div>
+                        <div id="myCollapse" class="accordion custom-accordion" role="tablist">
+                            <div class="card bg-white" data-name="Item">
+                                <a href="#" role="tab" data-bs-toggle="collapse" aria-expanded="false"
+                                   class="card-header s_faq_collapse_right_icon collapsed"
+                                   data-bs-target="#myCollapseTab553786_2">
+                                    <span style="font-size: 20px;">Can you help with designing enclosures for unique or
+                                        complex components?
+                                    </span>
+                                </a>
+                                <div class="collapse" data-bs-parent="#myCollapse" role="tabpanel"
+                                     id="myCollapseTab553786_2">
+                                    <div class="card-body">
+                                        <p class="card-text">We specialize in creating bespoke enclosures for a wide
+                                            range of industries, including automotive, medical, aerospace, and
+                                            industrial equipment. Our team can design enclosures for even the most
+                                            complex components and applications.&amp;nbsp;
+                                            <br/>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card bg-white" data-name="Item">
+                                <a href="#" role="tab" data-bs-toggle="collapse" aria-expanded="true"
+                                   class="card-header s_faq_collapse_right_icon"
+                                   data-bs-target="#myCollapseTab553786_3">
+                                    <span style="font-size: 20px;">Can you integrate custom features like ventilation,
+                                        cable management, or mounting options into the design?
+                                    </span>
+                                </a>
+                                <div class="collapse show" data-bs-parent="#myCollapse" role="tabpanel"
+                                     id="myCollapseTab553786_3">
+                                    <div class="card-body">
+                                        <p class="card-text" style="margin-bottom: 0px;">Yes, we offer full
+                                            customization options including ventilation systems, cable management
+                                            solutions, mounting options, and more to ensure your enclosure meets both
+                                            functional and operational requirements.&amp;nbsp;
+                                            <br/>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card bg-white" data-name="Item">
+                                <a href="#" role="tab" data-bs-toggle="collapse" aria-expanded="false"
+                                   class="card-header s_faq_collapse_right_icon collapsed"
+                                   data-bs-target="#myCollapseTab1737736719607">
+                                    <span style="font-size: 20px;">Do you offer prototypes of enclosure designs before
+                                        final production?
+                                    </span>
+                                </a>
+                                <div class="collapse" data-bs-parent="#myCollapse" role="tabpanel"
+                                     id="myCollapseTab1737736719607">
+                                    <div class="card-body">
+                                        <p class="card-text" style="margin-bottom: 0px;">Yes, we offer prototype
+                                            enclosures using 3D printing or other rapid prototyping methods to ensure
+                                            the design meets your requirements before full-scale production. Please note
+                                            that prototype services are chargeable.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card bg-white" data-name="Item">
+                                <a href="#" role="tab" data-bs-toggle="collapse" aria-expanded="false"
+                                   class="card-header s_faq_collapse_right_icon collapsed"
+                                   data-bs-target="#myCollapseTab1737736718628">
+                                    <span style="font-size: 20px;">Can you help with designing enclosures for unique or
+                                        complex components?
+                                    </span>
+                                </a>
+                                <div class="collapse" data-bs-parent="#myCollapse" role="tabpanel"
+                                     id="myCollapseTab1737736718628">
+                                    <div class="card-body">
+                                        <p class="card-text" style="margin-bottom: 0px;">We use a wide range of
+                                            materials based on your project needs, including aluminum, stainless steel,
+                                            plastic, and more. Each material is chosen for its strength, durability, and
+                                            suitability for your application.&amp;nbsp;
+                                            <br/>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <div class="oe_structure oe_empty">
+                <section id="contact-us" class="contact-section o_colored_level" style="background-image: none;">
+                    <div class="contactus1"/>
+                    <div class="contact-info text-center" style="margin: 5%;">
+                        <span class="title float-none" style="color: #F4FBF7;">CONTACT US</span>
+                        <h2 class="mt-20" style="color: #F9F9F9; font-size: 36px;">
+                            <span style="font-size: 32px;">Get in touch for custom enclosure designs and
+                                manufacturing.
+                            </span>
+                        </h2>
+                        <a href="/contact-us?have" class="btn mt-10" data-bs-original-title="" title="">&amp;nbsp;Start
+                            Your Project
+                        </a>
+                    </div>
+                    <div class="contactus2"/>
+                </section>
+            </div>
+        </t>
+    </template>
+    <template id="new_enclosure_design_page" name="Enclosure Design Service">
+        <t t-call="web.frontend_layout">
+
+            <div class="oe_structure oe_empty">
+                <section class="s_cover parallax bg-black-50 s_parallax_no_overflow_hidden o_colored_level"
+                         data-scroll-background-ratio="1" data-snippet="s_cover" data-name="Cover"
+                         style="background-image: none; padding-top: 72px; padding-bottom:72px;">
+                    <span class="s_parallax_bg oe_img_bg o_bg_img_center"
+                          style="background-image: url(&quot;cr_web_portal/static/src/images/mech-custom/enclosure-banner.png&quot;);"
+                          data-original-id="12118" data-original-src="/web/image/12118-15d9585a/Enclosure.png"
+                          data-mimetype="image/png" data-resize-width="1855"/>
+                    <div class="o_we_bg_filter bg-black-50"/>
+
+                    <div class="container s_allow_columns container-fluid">
+                        <div class="row">
+                            <div class="col o_colored_level col-lg-10 custom-banner-mp">
+                                <div class="header-box-custom">
+                                    <h5 class="sub-heading-custom mp-caption-custom">SERVICES</h5>
+                                    <h2 class="main-heading-custom" style="color: white;"><span
+                                            class="mp_underline_custom">Enclosure De</span>sign
+                                    </h2>
+                                    <p class="sub-heading-lines-custom mp-body-1-rg" style="color: white;">At Mech
+                                        Power, we are driven by technology and committed to revolutionizing the
+                                        experience of manufacturing enclosures and mechanical products.
+                                    </p>
+                                </div>
+                                <p class="submit-inquiry" style="text-align: left;">
+                                    <a class="btn btn-primary btn-lg o_default_snippet_text" href="/contactus"
+                                       data-bs-original-title="" title="" style="border-radius: 10px; !important">Submit
+                                        your inquiry​
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <div class="oe_structure oe_empty page-content aboutus-content container">
+                <section class="design-journey-section">
+                    <div class="container">
+                        <span class="text-uppercase title">services</span>
+                        <br/>
+                        <h1 class="section-title desktop-view">En
+                            <span class="mp_underline_custom">closure Design S</span>
+                            <span>ervice</span>
+                        </h1>
+                        <h6 class="mobile-section-title d-none">Enclosure
+                            <span class="mp_underline_custom">Design Serv</span>ice
+                        </h6>
+                        <p class="section-description">
+                            Lorem ipsum dolor sit amet consectetur. Vitae mattis ipsum aliquam adipiscing purus
+                            molestie. Ac velit gravida a vel elit elit lectus. Adipiscing phasellus duis massa massa
+                            turpis sit et. Lacus orci adipiscing feugiat eu turpis.
+                        </p>
+                        <div class="enclosure-design-journey mission-vision-wrapper col-12">
+                            <div class="card col-3">
+                                <div class="icon">
+                                    <img
+                                            src="/cr_web_portal/static/src/images/about_us/our_mission.webp"
+                                            alt="Mission Icon"/>
+                                </div>
+                                <h3 class="card-title">Technical Drawings</h3>
+                                <p class="card-text">
+                                    For precise manufacturing, we supply detailed technical drawings that feature exact
+                                    dimensions, tolerances, and essential manufacturing details. These drawings serve as
+                                    a blueprint for turning your concept into a tangible enclosure.
+                                </p>
+                            </div>
+                            <div class="card col-3">
+                                <div class="icon">
+                                    <img
+                                            src="/cr_web_portal/static/src/images/mech-custom/design-doucmentation.webp"
+                                            alt="Vision Icon"/>
+                                </div>
+                                <h3 class="card-title">Design Documentation</h3>
+                                <p class="card-text">
+                                    Our in-depth design documentation captures every feature, specification, and
+                                    technical detail of your enclosure. This documentation ensures that nothing is
+                                    overlooked during the manufacturing process, guaranteeing that your enclosure meets
+                                    your specifications.
+                                </p>
+                            </div>
+                            <div class="card col-3">
+                                <div class="icon">
+                                    <img
+                                            src="/cr_web_portal/static/src/images/mech-custom/design-review.webp"
+                                            alt="Mission Icon"/>
+                                </div>
+                                <h3 class="card-title">Iterative Design Review</h3>
+                                <p class="card-text">
+                                    We value your feedback. Our collaborative approach involves continuous design
+                                    reviews and adjustments to ensure that your vision aligns perfectly with the
+                                    evolving design. This iterative process ensures that your enclosure design meets
+                                    your expectations.
+                                </p>
+                            </div>
+                            <div class="card col-3">
+                                <div class="icon">
+                                    <img
+                                            src="/cr_web_portal/static/src/images/mech-custom/design-files.webp"
+                                            alt="Vision Icon"/>
+                                </div>
+                                <h3 class="card-title">Final Design Files</h3>
+                                <p class="card-text">
+                                    Upon project completion, you'll receive the design files in suitable formats for
+                                    manufacturing. These files are meticulously prepared, making it easier for
+                                    manufacturers to replicate your enclosure precisely as intended.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <div class="oe_structure oe_empty">
+                <section class="design-journey">
+                    <div class="container">
+                        <div class="header-box-custom">
+                            <h5 class="sub-heading-custom mp-caption-custom">PROCESS</h5>
+                            <h2 class="main-heading-custom">
+                                <span class="mp_underline_custom">Our Design Jour</span>
+                                <span>ney</span>
+                            </h2>
+                            <p class="mt-4">Lorem ipsum dolor sit amet consectetur.</p>
+                        </div>
+                        <div>
+                            <div class="design-journey-container">
+                                <div class="journey-progressbar">
+                                    <svg width="1166" height="91" viewBox="0 0 1166 91" fill="none"
+                                         xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M92.3536 90.3536C92.1583 90.5488 91.8417 90.5488 91.6465 90.3536L88.4645 87.1716C88.2692 86.9763 88.2692 86.6597 88.4645 86.4645C88.6597 86.2692 88.9763 86.2692 89.1716 86.4645L92 89.2929L94.8284 86.4645C95.0237 86.2692 95.3403 86.2692 95.5355 86.4645C95.7308 86.6597 95.7308 86.9763 95.5355 87.1716L92.3536 90.3536ZM71.0148 56.5002L87.9869 57.0041L87.9572 58.0037L70.9852 57.4998L71.0148 56.5002ZM92.5 61.5318L92.5 90L91.5 90L91.5 61.5318L92.5 61.5318ZM87.9721 57.0039C90.4728 57.0039 92.5 59.0311 92.5 61.5318L91.5 61.5318C91.5 59.5834 89.9205 58.0039 87.9721 58.0039L87.9721 57.0039Z"
+                                              fill="#49B958"/>
+                                        <path d="M416.354 90.3535C416.158 90.5488 415.842 90.5488 415.646 90.3535L412.464 87.1715C412.269 86.9763 412.269 86.6597 412.464 86.4644C412.66 86.2692 412.976 86.2692 413.172 86.4644L416 89.2929L418.828 86.4644C419.024 86.2692 419.34 86.2692 419.536 86.4644C419.731 86.6597 419.731 86.9763 419.536 87.1715L416.354 90.3535ZM356.907 57.5039L356.907 58.0039L356.906 58.0039L356.907 57.5039ZM96.001 56.5L356.908 57.0039L356.906 58.0039L95.999 57.5L96.001 56.5ZM356.907 57.0039L406 57.0039L406 58.0039L356.907 58.0039L356.907 57.0039ZM416.5 67.5039L416.5 90L415.5 90L415.5 67.5039L416.5 67.5039ZM406 57.0039C411.799 57.0039 416.5 61.7049 416.5 67.5039L415.5 67.5039C415.5 62.2572 411.247 58.0039 406 58.0039L406 57.0039Z"
+                                              fill="#49B958"/>
+                                        <path d="M749.354 90.3535C749.158 90.5488 748.842 90.5488 748.646 90.3535L745.464 87.1715C745.269 86.9763 745.269 86.6597 745.464 86.4644C745.66 86.2692 745.976 86.2692 746.172 86.4644L749 89.2928L751.828 86.4644C752.024 86.2692 752.34 86.2692 752.536 86.4644C752.731 86.6597 752.731 86.9763 752.536 87.1715L749.354 90.3535ZM629.109 57.5039L629.109 58.0039L629.109 58.0039L629.109 57.5039ZM96.0005 56.5L629.109 57.0039L629.109 58.0039L95.9995 57.5L96.0005 56.5ZM629.109 57.0039L739 57.0039L739 58.0039L629.109 58.0039L629.109 57.0039ZM749.5 67.5039L749.5 90L748.5 90L748.5 67.5039L749.5 67.5039ZM739 57.0039C744.799 57.0039 749.5 61.705 749.5 67.5039L748.5 67.5039C748.5 62.2572 744.247 58.0039 739 58.0039L739 57.0039Z"
+                                              fill="#49B958"/>
+                                        <path d="M1162.35 90.3535C1162.16 90.5487 1161.84 90.5487 1161.65 90.3535L1158.46 87.1715C1158.27 86.9762 1158.27 86.6596 1158.46 86.4644C1158.66 86.2691 1158.98 86.2691 1159.17 86.4644L1162 89.2928L1164.83 86.4644C1165.02 86.2691 1165.34 86.2691 1165.54 86.4644C1165.73 86.6596 1165.73 86.9762 1165.54 87.1715L1162.35 90.3535ZM952.091 57.5039L952.091 58.0039L952.09 58.0039L952.091 57.5039ZM14.9949 56.5054L952.091 57.0039L952.09 58.0039L14.9944 57.5054L14.9949 56.5054ZM952.091 57.0039L1152 57.0039L1152 58.0039L952.091 58.0039L952.091 57.0039ZM1162.5 67.5039L1162.5 89.9999L1161.5 89.9999L1161.5 67.5039L1162.5 67.5039ZM4.5 47.0054L4.5 6.00008L5.5 6.00008L5.5 47.0054L4.5 47.0054ZM1152 57.0039C1157.8 57.0039 1162.5 61.7049 1162.5 67.5039L1161.5 67.5039C1161.5 62.2572 1157.25 58.0039 1152 58.0039L1152 57.0039ZM14.9944 57.5054C9.1976 57.5023 4.5 52.8022 4.5 47.0054L5.5 47.0054C5.5 52.2501 9.75021 56.5026 14.9949 56.5054L14.9944 57.5054Z"
+                                              fill="#49B958"/>
+                                        <circle cx="5" cy="5" r="5" transform="matrix(4.37114e-08 1 1 -4.37114e-08 0 0)"
+                                                fill="#49B958"/>
+                                    </svg>
+                                </div>
+                                <div class="journey-progressbar-mbl d-none">
+                                    <svg width="39" height="864" viewBox="0 0 39 864" fill="none"
+                                         xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M38.3536 135.354C38.5488 135.158 38.5488 134.842 38.3536 134.646L35.1716 131.464C34.9763 131.269 34.6597 131.269 34.4645 131.464C34.2692 131.66 34.2692 131.976 34.4645 132.172L37.2929 135L34.4645 137.828C34.2692 138.024 34.2692 138.34 34.4645 138.536C34.6597 138.731 34.9763 138.731 35.1716 138.536L38.3536 135.354ZM5.50393 110.641L6.00393 110.641L6.00392 110.638L5.50393 110.641ZM4.5 8.00246L5.00393 110.643L6.00392 110.638L5.49999 7.99755L4.5 8.00246ZM5.00393 110.641L5.00393 125L6.00393 125L6.00393 110.641L5.00393 110.641ZM15.5039 135.5L38 135.5L38 134.5L15.5039 134.5L15.5039 135.5ZM5.00393 125C5.00393 130.799 9.70494 135.5 15.5039 135.5L15.5039 134.5C10.2572 134.5 6.00393 130.247 6.00393 125L5.00393 125Z"
+                                              fill="#49B958"/>
+                                        <path d="M38.3536 375.354C38.5488 375.158 38.5488 374.842 38.3536 374.646L35.1716 371.464C34.9763 371.269 34.6597 371.269 34.4645 371.464C34.2692 371.66 34.2692 371.976 34.4645 372.172L37.2929 375L34.4645 377.828C34.2692 378.024 34.2692 378.34 34.4645 378.536C34.6597 378.731 34.9763 378.731 35.1716 378.536L38.3536 375.354ZM5.50392 326.473L6.00392 326.473L6.00392 326.472L5.50392 326.473ZM4.49999 122.001L5.00392 326.474L6.00392 326.472L5.49999 121.999L4.49999 122.001ZM5.00392 326.473L5.00392 365L6.00392 365L6.00392 326.473L5.00392 326.473ZM15.5039 375.5L38 375.5L38 374.5L15.5039 374.5L15.5039 375.5ZM5.00392 365C5.00392 370.799 9.70493 375.5 15.5039 375.5L15.5039 374.5C10.2572 374.5 6.00392 370.247 6.00392 365L5.00392 365Z"
+                                              fill="#49B958"/>
+                                        <path d="M38.3536 616.354C38.5488 616.158 38.5488 615.842 38.3536 615.646L35.1716 612.464C34.9763 612.269 34.6597 612.269 34.4645 612.464C34.2692 612.66 34.2692 612.976 34.4645 613.172L37.2929 616L34.4645 618.828C34.2692 619.024 34.2692 619.34 34.4645 619.536C34.6597 619.731 34.9763 619.731 35.1716 619.536L38.3536 616.354ZM5.50393 568.726L6.00393 568.726L6.00393 568.725L5.50393 568.726ZM4.49999 360.001L5.00393 568.727L6.00393 568.725L5.49999 359.999L4.49999 360.001ZM5.00393 568.726L5.00393 606L6.00393 606L6.00393 568.726L5.00393 568.726ZM15.5039 616.5L38 616.5L38 615.5L15.5039 615.5L15.5039 616.5ZM5.00393 606C5.00393 611.799 9.70494 616.5 15.5039 616.5L15.5039 615.5C10.2572 615.5 6.00393 611.247 6.00393 606L5.00393 606Z"
+                                              fill="#49B958"/>
+                                        <path d="M38.3536 860.354C38.5488 860.158 38.5488 859.842 38.3536 859.646L35.1716 856.464C34.9763 856.269 34.6597 856.269 34.4645 856.464C34.2692 856.66 34.2692 856.976 34.4645 857.172L37.2929 860L34.4645 862.828C34.2692 863.024 34.2692 863.34 34.4645 863.536C34.6597 863.731 34.9763 863.731 35.1716 863.536L38.3536 860.354ZM5.50394 812.998L6.00394 812.998L6.00394 812.997L5.50394 812.998ZM4.49999 604.001L5.00394 813L6.00394 812.997L5.49999 603.999L4.49999 604.001ZM5.00394 812.998L5.00394 850L6.00394 850L6.00394 812.998L5.00394 812.998ZM15.5039 860.5L38 860.5L38 859.5L15.5039 859.5L15.5039 860.5ZM5.00394 850C5.00394 855.799 9.70495 860.5 15.5039 860.5L15.5039 859.5C10.2572 859.5 6.00394 855.247 6.00394 850L5.00394 850Z"
+                                              fill="#49B958"/>
+                                        <circle cx="5" cy="5" r="5" transform="matrix(4.37114e-08 1 1 -4.37114e-08 0 0)"
+                                                fill="#49B958"/>
+                                    </svg>
+                                </div>
+                                <div class="journey-steps enclosure-journey-steps">
+                                    <div class="step">
+                                        <div class="content">
+                                            <h3>Consultation</h3>
+                                            <p>We Start by understanding your vision, preferences, and requirement</p>
+                                        </div>
+                                        <div class="background">
+                                            <svg width="99" height="98" viewBox="0 0 99 98" fill="none"
+                                                 xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                                      d="M5.84375 90.8438V23.1562C5.84375 20.2047 8.23597 17.8125 11.1875 17.8125H103.812C106.764 17.8125 109.156 20.2047 109.156 23.1562V90.8438C109.156 93.7953 106.764 96.1875 103.812 96.1875H11.1875C8.23597 96.1875 5.84375 93.7953 5.84375 90.8438ZM105.594 35.625V23.1562C105.594 22.173 104.796 21.375 103.812 21.375H11.1875C10.2042 21.375 9.40625 22.173 9.40625 23.1562V35.625H105.594ZM9.40625 39.1875V90.8438C9.40625 91.827 10.2042 92.625 11.1875 92.625H103.812C104.796 92.625 105.594 91.827 105.594 90.8438V39.1875H9.40625ZM37.9062 24.9375C39.8727 24.9375 41.4688 26.5335 41.4688 28.5C41.4688 30.4665 39.8727 32.0625 37.9062 32.0625C35.9398 32.0625 34.3438 30.4665 34.3438 28.5C34.3438 26.5335 35.9398 24.9375 37.9062 24.9375ZM27.2188 24.9375C29.1852 24.9375 30.7812 26.5335 30.7812 28.5C30.7812 30.4665 29.1852 32.0625 27.2188 32.0625C25.2523 32.0625 23.6562 30.4665 23.6562 28.5C23.6562 26.5335 25.2523 24.9375 27.2188 24.9375ZM16.5312 24.9375C18.4978 24.9375 20.0938 26.5335 20.0938 28.5C20.0938 30.4665 18.4978 32.0625 16.5312 32.0625C14.5647 32.0625 12.9688 30.4665 12.9688 28.5C12.9688 26.5335 14.5647 24.9375 16.5312 24.9375ZM37.4716 50.1653L37.4788 50.9651C38.2251 51.2109 38.9501 51.512 39.6501 51.8647L40.2219 51.3053C40.8239 50.714 41.7573 50.6267 42.4591 51.0952C44.4043 52.3955 46.0733 54.0645 47.3736 56.0096C47.8421 56.7132 47.7548 57.6448 47.1634 58.2469L46.6041 58.8187C46.9568 59.5187 47.2578 60.2437 47.5018 60.99L48.3034 60.9971C49.1459 61.006 49.8691 61.6045 50.033 62.431C50.489 64.7253 50.489 67.0872 50.033 69.3815C49.8691 70.208 49.1459 70.8065 48.3034 70.8154L47.5036 70.8225C47.2578 71.5688 46.9568 72.2938 46.6041 72.9938L47.1634 73.5656C47.7548 74.1677 47.8421 75.1011 47.3736 75.8029C46.0733 77.748 44.4043 79.417 42.4591 80.7173C41.7573 81.1858 40.8239 81.0985 40.2219 80.5072L39.6501 79.9478C38.9501 80.3005 38.2251 80.6016 37.4788 80.8456L37.4716 81.6472C37.4627 82.4897 36.8642 83.2129 36.0377 83.3767C33.7435 83.8327 31.3815 83.8327 29.0873 83.3767C28.2608 83.2129 27.6623 82.4897 27.6534 81.6472L27.6462 80.8474C26.8999 80.6016 26.1749 80.3005 25.4749 79.9478L24.9031 80.5072C24.3011 81.0985 23.3677 81.1858 22.6659 80.7173C20.7208 79.417 19.0517 77.748 17.7514 75.8029C17.2829 75.1011 17.3702 74.1677 17.9616 73.5656L18.5209 72.9938C18.1682 72.2938 17.8672 71.5688 17.6232 70.8225L16.8216 70.8154C15.9791 70.8065 15.2559 70.208 15.092 69.3815C14.636 67.0872 14.636 64.7253 15.092 62.431C15.2559 61.6045 15.9791 61.006 16.8216 60.9971L17.6214 60.99C17.8672 60.2437 18.1682 59.5187 18.5209 58.8187L17.9616 58.2469C17.3702 57.6448 17.2829 56.7132 17.7514 56.0096C19.0517 54.0645 20.7208 52.3955 22.6659 51.0952C23.3677 50.6267 24.3011 50.714 24.9031 51.3053L25.4749 51.8647C26.1749 51.512 26.8999 51.2109 27.6462 50.9669L27.6534 50.1653C27.6623 49.3228 28.2608 48.5996 29.0873 48.4357C31.3815 47.9797 33.7435 47.9797 36.0377 48.4357C36.8642 48.5996 37.4627 49.3228 37.4716 50.1653ZM33.9252 51.7222C33.0185 51.6349 32.1065 51.6349 31.1998 51.7222L31.1945 52.3367C31.1856 53.1596 30.6156 53.8686 29.8158 54.0538C28.5102 54.3566 27.2615 54.8732 26.1251 55.5839C25.4268 56.0203 24.5219 55.9206 23.9359 55.3434L23.4959 54.9124C22.7941 55.4931 22.1475 56.1379 21.5686 56.8397L21.9997 57.2797C22.575 57.8657 22.6748 58.7706 22.2402 59.4688C21.5294 60.6053 21.0129 61.8539 20.7101 63.1596C20.5248 63.9593 19.8159 64.5293 18.9929 64.5382L18.3784 64.5454C18.2911 65.4502 18.2911 66.3622 18.3784 67.2689L18.9929 67.2743C19.8159 67.2832 20.5248 67.8532 20.7101 68.6529C21.0129 69.9586 21.5294 71.2072 22.2402 72.3437C22.6748 73.0419 22.575 73.9468 21.9997 74.5328L21.5686 74.9728C22.1493 75.6746 22.7941 76.3212 23.4959 76.9001L23.9359 76.4691C24.5219 75.8937 25.4268 75.794 26.1251 76.2286C27.2615 76.9393 28.5102 77.4559 29.8158 77.7587C30.6156 77.9439 31.1856 78.6529 31.1945 79.4758L31.2016 80.0903C32.1065 80.1776 33.0185 80.1776 33.9252 80.0903L33.9305 79.4758C33.9394 78.6529 34.5094 77.9439 35.3092 77.7587C36.6148 77.4559 37.8635 76.9393 38.9999 76.2286C39.6982 75.794 40.6031 75.8937 41.1891 76.4691L41.6291 76.9001C42.3309 76.3194 42.9775 75.6746 43.5564 74.9728L43.1253 74.5328C42.55 73.9468 42.4502 73.0419 42.8848 72.3437C43.5956 71.2072 44.1121 69.9586 44.4149 68.6529C44.6002 67.8532 45.3091 67.2832 46.1321 67.2743L46.7466 67.2671C46.8339 66.3623 46.8339 65.4503 46.7466 64.5436L46.1321 64.5382C45.3091 64.5293 44.6002 63.9593 44.4149 63.1596C44.1121 61.8539 43.5956 60.6053 42.8848 59.4688C42.4502 58.7706 42.55 57.8657 43.1253 57.2797L43.5564 56.8397C42.9757 56.1379 42.3309 55.4913 41.6291 54.9124L41.1891 55.3434C40.6031 55.9206 39.6982 56.0203 38.9999 55.5839C37.8635 54.8732 36.6148 54.3566 35.3092 54.0538C34.5094 53.8686 33.9394 53.1596 33.9305 52.3367L33.9252 51.7222ZM32.5625 58.7812C36.4955 58.7812 39.6875 61.9733 39.6875 65.9062C39.6875 69.8392 36.4955 73.0312 32.5625 73.0312C28.6295 73.0312 25.4375 69.8392 25.4375 65.9062C25.4375 61.9733 28.6295 58.7812 32.5625 58.7812ZM32.5625 62.3438C30.596 62.3438 29 63.9398 29 65.9062C29 67.8727 30.596 69.4688 32.5625 69.4688C34.529 69.4688 36.125 67.8727 36.125 65.9062C36.125 63.9398 34.529 62.3438 32.5625 62.3438ZM100.25 55.2188V80.1562C100.25 82.1245 98.6558 83.7188 96.6875 83.7188H91.3438C89.3755 83.7188 87.7812 82.1245 87.7812 80.1562V55.2188C87.7812 53.2505 89.3755 51.6562 91.3438 51.6562H96.6875C98.6558 51.6562 100.25 53.2505 100.25 55.2188ZM91.3438 55.2188V80.1562H96.6875V55.2188H91.3438ZM68.1875 69.4688V80.1562C68.1875 82.1245 66.5933 83.7188 64.625 83.7188H59.2812C58.3372 83.7188 57.4305 83.3429 56.7626 82.6749C56.0946 82.007 55.7188 81.1003 55.7188 80.1562V69.4688C55.7188 67.5005 57.313 65.9062 59.2812 65.9062H64.625C65.5691 65.9062 66.4757 66.2821 67.1437 66.9501C67.8117 67.618 68.1875 68.5247 68.1875 69.4688ZM59.2812 80.1562H64.625V69.4688H59.2812V80.1562ZM84.2188 62.3438V80.1562C84.2188 81.1003 83.8429 82.007 83.1749 82.6749C82.507 83.3429 81.6003 83.7188 80.6562 83.7188H75.3125C74.3684 83.7188 73.4618 83.3429 72.7938 82.6749C72.1258 82.007 71.75 81.1003 71.75 80.1562V62.3438C71.75 61.3997 72.1258 60.493 72.7938 59.8251C73.4618 59.1571 74.3684 58.7812 75.3125 58.7812H80.6562C81.6003 58.7812 82.507 59.1571 83.1749 59.8251C83.8429 60.493 84.2188 61.3997 84.2188 62.3438ZM75.3125 62.3438V80.1562H80.6562V62.3438H75.3125Z"
+                                                      fill="url(#paint0_linear_6505_37872)"/>
+                                                <defs>
+                                                    <linearGradient id="paint0_linear_6505_37872" x1="5.84375" y1="57"
+                                                                    x2="109.156" y2="57" gradientUnits="userSpaceOnUse">
+                                                        <stop stop-color="#E6E6E6"/>
+                                                        <stop offset="1" stop-color="#646464"/>
+                                                    </linearGradient>
+                                                </defs>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <div class="step">
+                                        <div class="content">
+                                            <h3>Drafting &amp; Modeling</h3>
+                                            <p>We transform your ideas into precise digital enclosure models using
+                                                advanced software.
+                                            </p>
+                                        </div>
+                                        <div class="background">
+                                            <svg width="99" height="98" viewBox="0 0 99 98" fill="none"
+                                                 xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                                      d="M11.4945 44.5317H11.4375C8.48775 44.5317 6.09375 42.1377 6.09375 39.1879C6.09375 36.2382 8.48775 33.8442 11.4375 33.8442C14.3872 33.8442 16.7812 36.2382 16.7812 39.1879C16.7812 40.287 16.4482 41.3094 15.8782 42.1591L25.1086 47.1305L30.4327 33.2867C28.6764 32.4103 27.4688 30.5952 27.4688 28.5004C27.4688 25.5507 29.8627 23.1567 32.8125 23.1567C35.7623 23.1567 38.1562 25.5507 38.1562 28.5004C38.1562 30.1926 37.3689 31.7014 36.1399 32.681L45.8121 41.4733L54.6987 31.1064C53.3129 30.1392 52.4062 28.5343 52.4062 26.7192C52.4062 23.7694 54.8003 21.3754 57.75 21.3754C60.6997 21.3754 63.0938 23.7694 63.0938 26.7192C63.0938 28.5343 62.1871 30.1392 60.8031 31.1046L69.6897 41.4733L79.3601 32.681C78.1311 31.7014 77.3438 30.1926 77.3438 28.5004C77.3438 25.5507 79.7377 23.1567 82.6875 23.1567C85.6373 23.1567 88.0312 25.5507 88.0312 28.5004C88.0312 30.5952 86.8236 32.4103 85.0672 33.2867L90.3914 47.1305L99.6218 42.1591C99.0518 41.3094 98.7188 40.287 98.7188 39.1879C98.7188 36.2382 101.113 33.8442 104.062 33.8442C107.01 33.8442 109.406 36.2382 109.406 39.1879C109.406 42.1377 107.01 44.5317 104.062 44.5317H104.006L102.281 97.9692V103.313C102.281 104.731 101.718 106.09 100.716 107.091C99.7145 108.094 98.3554 108.657 96.9375 108.657H18.5625C17.1446 108.657 15.7855 108.094 14.7845 107.091C13.7816 106.09 13.2188 104.731 13.2188 103.313V97.9692L11.4945 44.5317ZM25.1781 51.2132C20.3598 48.6179 15.098 45.7857 15.098 45.7857L16.7243 96.188H98.7757L100.402 45.7857C100.402 45.7857 90.2934 51.2292 90.2792 51.2363L82.4969 55.4276C80.2846 56.6175 77.5397 56.108 75.9045 54.2003C75.9045 54.2003 72.2458 49.9289 68.2113 45.2228C68.1881 45.1961 68.165 45.1694 68.1436 45.1427C63.2113 39.3892 57.7518 33.0195 57.7518 33.0195L47.3582 45.1427C47.335 45.1712 47.3119 45.1979 47.2887 45.2228L39.5955 54.2003C37.9603 56.108 35.2172 56.6193 33.0049 55.4276C33.0049 55.4276 29.2749 53.4184 25.2208 51.2363C25.2066 51.2292 25.1923 51.2203 25.1781 51.2132ZM43.4929 44.179L33.541 35.132L28.2703 48.8316L34.6935 52.2908C35.4309 52.688 36.3447 52.517 36.8898 51.8811L43.4929 44.179ZM32.8125 30.2817C33.7957 30.2817 34.5938 29.4837 34.5938 28.5004C34.5938 27.5172 33.7957 26.7192 32.8125 26.7192C31.8293 26.7192 31.0312 27.5172 31.0312 28.5004C31.0312 29.4837 31.8293 30.2817 32.8125 30.2817ZM57.75 28.5004C58.7315 28.5004 59.5312 27.7024 59.5312 26.7192C59.5312 25.7359 58.7315 24.9379 57.75 24.9379C56.7668 24.9379 55.9688 25.7359 55.9688 26.7192C55.9688 27.7024 56.7668 28.5004 57.75 28.5004ZM87.2297 48.8316C85.7655 45.0287 81.959 35.132 81.959 35.132L72.0089 44.179L78.6102 51.8811C79.1553 52.517 80.0691 52.688 80.8065 52.2908L87.2297 48.8316ZM82.6875 30.2817C83.6708 30.2817 84.4688 29.4837 84.4688 28.5004C84.4688 27.5172 83.6708 26.7192 82.6875 26.7192C81.7042 26.7192 80.9062 27.5172 80.9062 28.5004C80.9062 29.4837 81.7042 30.2817 82.6875 30.2817ZM98.7188 99.7505H16.7812V103.313C16.7812 103.785 16.9683 104.239 17.3032 104.572C17.6363 104.907 18.0905 105.094 18.5625 105.094H96.9375C97.4095 105.094 97.8638 104.907 98.1968 104.572C98.5317 104.239 98.7188 103.785 98.7188 103.313V99.7505ZM104.062 37.4067C103.079 37.4067 102.281 38.2047 102.281 39.1879C102.281 40.1712 103.079 40.9692 104.062 40.9692C105.046 40.9692 105.844 40.1712 105.844 39.1879C105.844 38.2047 105.046 37.4067 104.062 37.4067ZM11.4375 37.4067C10.4542 37.4067 9.65625 38.2047 9.65625 39.1879C9.65625 40.1712 10.4542 40.9692 11.4375 40.9692C12.4208 40.9692 13.2188 40.1712 13.2188 39.1879C13.2188 38.2047 12.4208 37.4067 11.4375 37.4067ZM53.288 59.3464C54.2783 57.8465 55.9545 56.947 57.75 56.947C59.5455 56.947 61.2217 57.8465 62.212 59.3464L65.7549 64.7204C66.9306 66.5052 66.9306 68.819 65.7549 70.6039L62.212 75.9779C61.2217 77.4777 59.5455 78.3808 57.75 78.3808C55.9545 78.3808 54.2783 77.4777 53.288 75.9779L49.7451 70.6039C48.5694 68.819 48.5694 66.5052 49.7451 64.7204L53.288 59.3464ZM56.2627 61.3075L52.7197 66.6815C52.3279 67.2765 52.3279 68.0478 52.7197 68.6427L56.2627 74.0167C56.5922 74.5173 57.1515 74.8183 57.75 74.8183C58.3467 74.8183 58.9078 74.5173 59.2373 74.0167L62.7803 68.6427C63.1721 68.0478 63.1721 67.2765 62.7803 66.6815L59.2373 61.3075C58.9078 60.807 58.3467 60.5077 57.75 60.5077C57.1515 60.5077 56.5922 60.8088 56.2627 61.3075ZM59.0093 5.8661L60.8814 7.73819L63.2416 8.94054C64.118 9.38763 64.4653 10.4599 64.02 11.3363L62.8177 13.6947L62.4026 16.3096C62.2494 17.2821 61.3374 17.9448 60.3649 17.7916L57.75 17.3765L55.1351 17.7916C54.1626 17.9448 53.2506 17.2821 53.0974 16.3096L52.6823 13.6947L51.48 11.3363C51.0347 10.4599 51.382 9.38763 52.2584 8.94054L54.6186 7.73819L56.4907 5.8661C57.1853 5.16963 58.3147 5.16963 59.0093 5.8661ZM57.75 9.64413L56.9378 10.4564C56.8059 10.5882 56.6528 10.6986 56.4871 10.7841L55.4629 11.306L55.9848 12.3285C56.0703 12.4959 56.1273 12.674 56.1576 12.8593L56.3375 13.9939L57.4721 13.814C57.6556 13.7855 57.8444 13.7855 58.0261 13.814L59.1625 13.9939L59.3424 12.8593C59.3727 12.674 59.4297 12.4959 59.5152 12.3285L60.0371 11.306L59.0129 10.7841C58.8472 10.6986 58.6923 10.5882 58.5623 10.4564L57.75 9.64413ZM83.9468 5.8661L85.8189 7.73819L88.1791 8.94054C89.0555 9.38763 89.4028 10.4599 88.9575 11.3363L87.7552 13.6947L87.3401 16.3096C87.1869 17.2821 86.2749 17.9448 85.3024 17.7916L82.6875 17.3765L80.0726 17.7916C79.1001 17.9448 78.1881 17.2821 78.0349 16.3096L77.6198 13.6947L76.4175 11.3363C75.9722 10.4599 76.3195 9.38763 77.1959 8.94054L79.5561 7.73819L81.4282 5.8661C82.1228 5.16963 83.2522 5.16963 83.9468 5.8661ZM82.6875 9.64413L81.8752 10.4564C81.7434 10.5882 81.5902 10.6986 81.4246 10.7841L80.4004 11.306L80.9223 12.3285C81.0078 12.4959 81.0648 12.674 81.0951 12.8593L81.275 13.9939L82.4096 13.814C82.5931 13.7855 82.7819 13.7855 82.9654 13.814L84.1 13.9939L84.2799 12.8593C84.3102 12.674 84.3672 12.4959 84.4527 12.3285L84.9746 11.306L83.9504 10.7841C83.7848 10.6986 83.6316 10.5882 83.4998 10.4564L82.6875 9.64413ZM34.0718 5.8661L35.9439 7.73819L38.3041 8.94054C39.1805 9.38763 39.5278 10.4599 39.0825 11.3363L37.8802 13.6947L37.4651 16.3096C37.3119 17.2821 36.3999 17.9448 35.4274 17.7916L32.8125 17.3765L30.1976 17.7916C29.2251 17.9448 28.3131 17.2821 28.1599 16.3096L27.7448 13.6947L26.5425 11.3363C26.0972 10.4599 26.4445 9.38763 27.3209 8.94054L29.6811 7.73819L31.5532 5.8661C32.2478 5.16963 33.3772 5.16963 34.0718 5.8661ZM32.8125 9.64413L32.0003 10.4564C31.8684 10.5882 31.7153 10.6986 31.5496 10.7841L30.5254 11.306L31.0473 12.3285C31.1328 12.4959 31.1898 12.674 31.2201 12.8593L31.4 13.9939L32.5346 13.814C32.7181 13.7855 32.9069 13.7855 33.0904 13.814L34.225 13.9939L34.4049 12.8593C34.4352 12.674 34.4922 12.4959 34.5777 12.3285L35.0996 11.306L34.0754 10.7841C33.9097 10.6986 33.7566 10.5882 33.6247 10.4564L32.8125 9.64413Z"
+                                                      fill="url(#paint0_linear_6505_29656)"/>
+                                                <defs>
+                                                    <linearGradient id="paint0_linear_6505_29656" x1="6.09375"
+                                                                    y1="57.0002" x2="109.406" y2="57.0002"
+                                                                    gradientUnits="userSpaceOnUse">
+                                                        <stop stop-color="#E6E6E6"/>
+                                                        <stop offset="1" stop-color="#646464"/>
+                                                    </linearGradient>
+                                                </defs>
+                                            </svg>
+                                        </div>
+                                    </div>
+
+                                    <div class="step">
+                                        <div class="content">
+                                            <h3>Review</h3>
+                                            <p>Collaborative feedback and revisions ensure your vision aligns with the
+                                                final design.
+                                            </p>
+                                        </div>
+                                        <div class="background">
+                                            <svg width="99" height="98" viewBox="0 0 99 98" fill="none"
+                                                 xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                                      d="M5.34375 90.8438V23.1562C5.34375 20.2047 7.73597 17.8125 10.6875 17.8125H103.312C106.264 17.8125 108.656 20.2047 108.656 23.1562V90.8438C108.656 93.7953 106.264 96.1875 103.312 96.1875H10.6875C7.73597 96.1875 5.34375 93.7953 5.34375 90.8438ZM105.094 35.625V23.1562C105.094 22.173 104.296 21.375 103.312 21.375H10.6875C9.70425 21.375 8.90625 22.173 8.90625 23.1562V35.625H105.094ZM8.90625 39.1875V90.8438C8.90625 91.827 9.70425 92.625 10.6875 92.625H103.312C104.296 92.625 105.094 91.827 105.094 90.8438V39.1875H8.90625ZM26.7188 24.9375C28.6852 24.9375 30.2812 26.5335 30.2812 28.5C30.2812 30.4665 28.6852 32.0625 26.7188 32.0625C24.7523 32.0625 23.1562 30.4665 23.1562 28.5C23.1562 26.5335 24.7523 24.9375 26.7188 24.9375ZM37.4062 24.9375C39.3727 24.9375 40.9688 26.5335 40.9688 28.5C40.9688 30.4665 39.3727 32.0625 37.4062 32.0625C35.4398 32.0625 33.8438 30.4665 33.8438 28.5C33.8438 26.5335 35.4398 24.9375 37.4062 24.9375ZM16.0312 24.9375C17.9978 24.9375 19.5938 26.5335 19.5938 28.5C19.5938 30.4665 17.9978 32.0625 16.0312 32.0625C14.0647 32.0625 12.4688 30.4665 12.4688 28.5C12.4688 26.5335 14.0647 24.9375 16.0312 24.9375ZM73.1435 76.5938H26.7205C23.769 76.5938 21.3768 74.2015 21.3768 71.25V49.875C21.3768 46.9235 23.769 44.5312 26.7205 44.5312H76.5955C79.5471 44.5312 81.9393 46.9235 81.9393 49.875V67.7979L89.6788 70.379C91.2748 70.9098 92.4166 72.3241 92.6001 73.9985C92.7835 75.6711 91.9766 77.2991 90.5338 78.1648L86.3051 80.7031C86.2 80.7654 86.111 80.8545 86.0468 80.9596L83.5103 85.1901C82.6447 86.6311 81.0166 87.4398 79.344 87.2563C77.6696 87.0711 76.2553 85.9311 75.7227 84.3333L73.1435 76.5938ZM78.3768 66.6116V49.875C78.3768 48.8918 77.5788 48.0938 76.5955 48.0938H26.7205C25.7373 48.0938 24.9393 48.8918 24.9393 49.875V71.25C24.9393 72.2332 25.7373 73.0312 26.7205 73.0312H71.9554L71.4727 71.5813C70.9561 70.0316 71.3604 68.3234 72.5147 67.1692C73.6689 66.0149 75.3772 65.6106 76.9268 66.1271L78.3768 66.6116ZM76.1288 74.2835L79.1035 83.2057C79.1962 83.4836 79.442 83.6831 79.7323 83.7134C80.0227 83.7455 80.3059 83.6065 80.4555 83.3554L82.9938 79.1267C83.3572 78.5193 83.8648 78.0116 84.4722 77.6482L88.7009 75.11C88.9503 74.9603 89.091 74.6771 89.0589 74.3868C89.0269 74.0964 88.8292 73.8506 88.5513 73.758C88.5513 73.758 79.5845 70.7691 79.5613 70.7619L75.7993 69.5079C75.5303 69.4171 75.2347 69.4883 75.0334 69.6878C74.8321 69.8891 74.7626 70.1848 74.8517 70.4538C74.8517 70.4538 76.1217 74.2603 76.1288 74.2835ZM49.8768 65.9062H55.2205V53.4375C55.2205 52.4543 56.0185 51.6562 57.0018 51.6562C57.985 51.6562 58.783 52.4543 58.783 53.4375V65.9062C58.783 67.8745 57.187 69.4688 55.2205 69.4688H49.8768C48.9309 69.4688 48.0261 69.0929 47.3581 68.4249C46.6901 67.757 46.3143 66.8503 46.3143 65.9062V53.4375C46.3143 52.4543 47.1123 51.6562 48.0955 51.6562C49.0788 51.6562 49.8768 52.4543 49.8768 53.4375V65.9062ZM28.5 65.9062V55.2188C28.5 53.2505 30.096 51.6562 32.0643 51.6562H37.408C39.3745 51.6562 40.9705 53.2505 40.9705 55.2188V58.7812C40.9705 58.938 40.9598 59.0912 40.9403 59.2408C41.2199 59.3993 41.4782 59.5953 41.708 59.8251C42.3759 60.493 42.7518 61.3997 42.7518 62.3438V65.9062C42.7518 66.8503 42.3759 67.757 41.708 68.4249C41.04 69.0929 40.1333 69.4688 39.1893 69.4688H32.0643C31.1184 69.4688 30.2136 69.0929 29.5456 68.4249C28.8776 67.757 28.5 66.8503 28.5 65.9062ZM37.408 58.7812V55.2188H32.0643V58.7812H37.408ZM39.1893 62.3438H32.0643V65.9062H39.1893V62.3438ZM70.7067 60.518L65.6373 68.6316C65.1154 69.4652 64.0163 69.7199 63.1827 69.198C62.3491 68.6761 62.0944 67.5771 62.6163 66.7434L67.0213 59.695L62.7588 54.5775C62.1282 53.8223 62.2315 52.6983 62.9868 52.0695C63.742 51.4389 64.866 51.5423 65.4948 52.2975L69.0092 56.5155L71.5225 52.4934C72.0427 51.6598 73.1435 51.4051 73.9771 51.927C74.8107 52.4489 75.0637 53.5479 74.5435 54.3816C74.5435 54.3816 70.7192 60.4984 70.7067 60.518Z"
+                                                      fill="url(#paint0_linear_6505_44462)"/>
+                                                <defs>
+                                                    <linearGradient id="paint0_linear_6505_44462" x1="5.34375" y1="57"
+                                                                    x2="108.656" y2="57" gradientUnits="userSpaceOnUse">
+                                                        <stop stop-color="#E6E6E6"/>
+                                                        <stop offset="1" stop-color="#646464"/>
+                                                    </linearGradient>
+                                                </defs>
+                                            </svg>
+                                        </div>
+                                    </div>
+
+                                    <div class="step">
+                                        <div class="content">
+                                            <h3>Finalization &amp; Production</h3>
+                                            <p>Quality is our constant companion during the production phase, ensuring
+                                                your enclosure meets the highest standards.
+                                            </p>
+                                        </div>
+                                        <div class="background">
+                                            <svg width="99" height="98" viewBox="0 0 99 98" fill="none"
+                                                 xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                                      d="M80.4223 19.8168L86.9417 24.1809C88.4237 25.173 89.3125 26.8385 89.3125 28.6215V103.313C89.3125 104.731 88.7496 106.09 87.7468 107.091C86.7457 108.094 85.3866 108.657 83.9688 108.657H30.5312C29.1134 108.657 27.7543 108.094 26.7532 107.091C25.7504 106.09 25.1875 104.731 25.1875 103.313V28.6215C25.1875 26.8385 26.0763 25.173 27.5583 24.1809L54.2771 6.29177C56.0762 5.08764 58.4238 5.08764 60.2229 6.29177L65.6219 9.90592C69.4658 8.14605 73.3489 7.6277 76.2827 8.20839C78.7711 8.7018 80.6343 9.97361 81.5694 11.8297C82.5046 13.6875 82.4155 15.9408 81.3307 18.2333C81.0813 18.7587 80.7785 19.2895 80.4223 19.8168ZM69.2218 12.316L77.4672 17.8378C77.7166 17.462 77.9321 17.0861 78.1102 16.7085C78.6677 15.5329 78.8673 14.3858 78.3881 13.4328C77.9072 12.4798 76.8669 11.9561 75.5915 11.7032C73.7907 11.347 71.5534 11.5589 69.2218 12.316ZM75.05 20.5061L58.2404 9.2522C57.6419 8.84964 56.8581 8.84964 56.2596 9.2522L29.5409 27.1413C29.0457 27.4708 28.75 28.0266 28.75 28.6215V103.313C28.75 103.785 28.937 104.239 29.2701 104.572C29.605 104.907 30.0592 105.094 30.5312 105.094H83.9688C84.4408 105.094 84.895 104.907 85.2281 104.572C85.563 104.239 85.75 103.785 85.75 103.313V28.6215C85.75 28.0266 85.4543 27.4708 84.9591 27.1413L78.0924 22.5421C76.6567 23.9065 74.8862 25.1677 72.8484 26.1937C70.3351 27.4584 67.7772 28.1869 65.4509 28.4167C64.0953 31.6051 60.9318 33.8441 57.25 33.8441C52.3337 33.8441 48.3438 29.8541 48.3438 24.9379C48.3438 20.0216 52.3337 16.0316 57.25 16.0316C62.0986 16.0316 66.0494 19.9165 66.1545 24.7402C67.7843 24.457 69.5246 23.878 71.2453 23.0124C72.6827 22.2874 73.967 21.4324 75.05 20.5061ZM62.5938 24.856C62.5617 22.7202 61.2721 20.8855 59.4338 20.059C58.9707 21.1331 58.8531 22.1645 59.2967 23.0444C59.7758 23.9992 60.8161 24.5211 62.0932 24.774C62.2571 24.8061 62.4227 24.8346 62.5938 24.856ZM55.7716 19.8025C53.5397 20.4438 51.9062 22.5011 51.9062 24.9379C51.9062 27.8876 54.3002 30.2816 57.25 30.2816C58.9386 30.2816 60.4438 29.4979 61.4235 28.2724C61.4163 28.2706 61.4092 28.2706 61.4003 28.2688C58.9137 27.7754 57.0505 26.5054 56.1153 24.6475C55.3957 23.219 55.2871 21.5446 55.7716 19.8025ZM76.8438 46.3129V92.6254C76.8438 94.0433 76.2809 95.4024 75.278 96.4034C74.277 97.4063 72.9179 97.9691 71.5 97.9691H43C41.5821 97.9691 40.223 97.4063 39.222 96.4034C38.2191 95.4024 37.6562 94.0433 37.6562 92.6254V46.3129C37.6562 44.895 38.2191 43.5359 39.222 42.5349C40.223 41.532 41.5821 40.9691 43 40.9691H71.5C72.9179 40.9691 74.277 41.532 75.278 42.5349C76.2809 43.5359 76.8438 44.895 76.8438 46.3129ZM73.2812 46.3129C73.2812 45.8409 73.0942 45.3866 72.7593 45.0535C72.4263 44.7187 71.972 44.5316 71.5 44.5316H43C42.528 44.5316 42.0737 44.7187 41.7407 45.0535C41.4058 45.3866 41.2188 45.8409 41.2188 46.3129V92.6254C41.2188 93.0974 41.4058 93.5516 41.7407 93.8847C42.0737 94.2196 42.528 94.4066 43 94.4066H71.5C71.972 94.4066 72.4263 94.2196 72.7593 93.8847C73.0942 93.5516 73.2812 93.0974 73.2812 92.6254V46.3129ZM69.7188 51.6566V62.3441C69.7188 64.3124 68.1245 65.9066 66.1562 65.9066H62.5938C60.6255 65.9066 59.0312 64.3124 59.0312 62.3441V51.6566C59.0312 49.6884 60.6255 48.0941 62.5938 48.0941H66.1562C68.1245 48.0941 69.7188 49.6884 69.7188 51.6566ZM62.5938 51.6566V62.3441H66.1562V51.6566H62.5938ZM51.9062 58.7816H48.3438C46.3755 58.7816 44.7812 57.1874 44.7812 55.2191V51.6566C44.7812 49.6884 46.3755 48.0941 48.3438 48.0941H53.6875C54.6707 48.0941 55.4688 48.8921 55.4688 49.8754C55.4688 50.8586 54.6707 51.6566 53.6875 51.6566H48.3438V55.2191H51.9062C53.8745 55.2191 55.4688 56.8134 55.4688 58.7816V62.3441C55.4688 64.3124 53.8745 65.9066 51.9062 65.9066H46.5625C45.5793 65.9066 44.7812 65.1086 44.7812 64.1254C44.7812 63.1421 45.5793 62.3441 46.5625 62.3441H51.9062V58.7816ZM51.0156 71.2504C52.9821 71.2504 54.5781 72.8464 54.5781 74.8129C54.5781 76.7794 52.9821 78.3754 51.0156 78.3754C49.0491 78.3754 47.4531 76.7794 47.4531 74.8129C47.4531 72.8464 49.0491 71.2504 51.0156 71.2504ZM63.4844 83.7191C65.4509 83.7191 67.0469 85.3151 67.0469 87.2816C67.0469 89.2481 65.4509 90.8441 63.4844 90.8441C61.5179 90.8441 59.9219 89.2481 59.9219 87.2816C59.9219 85.3151 61.5179 83.7191 63.4844 83.7191ZM63.0444 71.8489C63.6963 71.1132 64.8239 71.0473 65.5578 71.701C66.2934 72.353 66.3593 73.4805 65.7056 74.2144L51.4556 90.2456C50.8037 90.9813 49.6761 91.0472 48.9423 90.3935C48.2066 89.7415 48.1407 88.614 48.7944 87.8801L63.0444 71.8489Z"
+                                                      fill="url(#paint0_linear_6505_28602)"/>
+                                                <defs>
+                                                    <linearGradient id="paint0_linear_6505_28602" x1="25.1875"
+                                                                    y1="57.0227" x2="89.3125" y2="57.0227"
+                                                                    gradientUnits="userSpaceOnUse">
+                                                        <stop stop-color="#E6E6E6"/>
+                                                        <stop offset="1" stop-color="#646464"/>
+                                                    </linearGradient>
+                                                </defs>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <section id="powervis-section" class="container mt-0 oe_structure oe_empty new-powervis-section">
+                <div class="new-powervis-card col-12">
+                    <div class="new-powervis-content col-6">
+                        <span class="title">INSTANT QUOTE
+                            <sup>BETA</sup>
+                        </span>
+                        <br/>
+                        <h3 class="powervis-subtitle">PowerVis</h3>
+                        <p class="powervis-description">
+                            Powerviz is a nextgen tool where you can check your actual file. we can extended this
+                            line for more discription.
+                        </p>
+                        <div class="new-powervis-action">
+                            <a href="/" class="button button--primary" style="text-wrap: nowrap;">Submit your
+                                request
+                            </a>
+                        </div>
+                    </div>
+                    <div class="new-powervis-summary col-6 text-end">
+                        <img src="/cr_web_portal/static/src/images/mech-custom/powervis.png"
+                             alt="Powervis Summary" class="laptop_view "/>
+                        <div class="svg-background"></div>
+                    </div>
+                </div>
+            </section>
+
+            <div class="oe_structure oe_empty">
+                <section class="why-choose-enclosure">
+                    <div class="container">
+                        <div class="header-box-custom" style="max-width: 100% !important;">
+                            <h5 class="sub-heading-custom mp-caption-custom text-center">UNMATCHED SOLUTIONS</h5>
+                            <h2 class="main-heading-custom text-center">Why choose Mech Power for
+                                <br/>
+                                <span class="mp_underline_custom">Enclosure De</span>sign?
+                            </h2>
+                        </div>
+                        <div class="why-choose-enclosure-info why_choose_enclosure_info">
+                            <div class="card">
+                                <img src="/cr_web_portal/static/src/images/mech-custom/badge_1.png"/>
+                                <p>Custom Solutions</p>
+                            </div>
+                            <div class="card">
+                                <img src="/cr_web_portal/static/src/images/mech-custom/render_1.png"/>
+                                <p>Experienced Team</p>
+                            </div>
+                            <div class="card">
+                                <img src="/cr_web_portal/static/src/images/mech-custom/support_1.png"/>
+                                <p>High-Quality Materials</p>
+                            </div>
+                            <div class="card">
+                                <img src="/cr_web_portal/static/src/images/mech-custom/3d-model_1.png"/>
+                                <p>Cost-Effective</p>
+                            </div>
+                            <!--                            <div class="card">-->
+                            <!--                                <img src="/cr_web_portal/static/src/images/mech-custom/render_1.png"/>-->
+                            <!--                                <p>Fast Turnaround</p>-->
+                            <!--                            </div>-->
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <t t-if="request.env.user._is_public()">
+                <div class="oe_structure oe_empty mp-service-lead-section">
+                    <section class="container">
+                        <div class="loader-modal d-none">
+                            <div class="loader-content">
+                                <div class="loader-icon">
+                                    <img src="/cr_web_portal/static/src/img/spin.gif"/>
+                                </div>
+                                <h5>Processing Your Request...</h5>
+                            </div>
+                        </div>
+                        <div class="confirmation-modal d-none">
+                            <div class="confirmation-content">
+                                <div class="confirmation-icon">
+                                    <img src="/cr_web_portal/static/src/img/done.gif"/>
+                                </div>
+                                <h5>Your Request Has Been Submitted!</h5>
+                                <p>Thank you for your interest in our Enclosure Design service! Our team will get back
+                                    to you shortly to discuss your requirements further.
+                                </p>
+                                <a href="/enclosure" class="mp-btn-light-font-green">Continue to website</a>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="mp-service-lead-header-box">
+                                    <h5 class="mp-service-lead-sub-heading">CONTACT US</h5>
+                                    <h2 class="mp-service-lead-main-heading">Interested in our <span
+                                            class="mp_service_lead_header_underline">Enclosure Design
+                                    </span> Service?
+                                    </h2>
+                                    <p class="mp-service-lead-sub-heading-lines">Share your contact details, and our
+                                        dedicated team will be in touch shortly to discuss your requirements further.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="s_website_form service_mobile_form" data-snippet="s_website_form">
+                                    <form action="/website/form/" method="post" enctype="multipart/form-data"
+                                          class="o_mark_required" data-mark="*" data-model_name="crm.lead"
+                                          data-success-mode="redirect" data-success-page="/service/request/thank-you"
+                                          data-pre-fill="true" novalidate="novalidate">
+                                        <input type="hidden" name="form_name" value="service_request"/>
+                                        <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                        <div class="s_website_form_rows ">
+                                            <div class="mp_input_field_web">
+                                                <input id="customer_name"
+                                                       class="form-control form_input s_website_form_input"
+                                                       name="customer_name"
+                                                       placeholder=" " type="text" required="required"/>
+                                                <label for="customer_name" class="form_label o_input_required">Name
+                                                </label>
+                                            </div>
+                                            <div class="mp_input_field_web">
+                                                <input id="customer_email"
+                                                       class="form-control form_input check_email s_website_form_input"
+                                                       name="customer_email"
+                                                       placeholder=" " type="email" required="required"/>
+                                                <label for="customer_email" class="form_label o_input_required">E-mail
+                                                </label>
+                                            </div>
+                                            <div class="email-validate-message d-none">
+                                                <p class="email-validate-line"></p>
+                                            </div>
+                                            <div class='d-flex mp_phone'
+                                                 style="position: relative; overflow: visible !important;">
+                                                <t t-set="countries"
+                                                   t-value="request.env['res.country'].sudo().search([])"/>
+                                                <t t-set="default_country"
+                                                   t-value="request.env['res.country'].sudo().search([('phone_code','=','+91')])"/>
+                                                <div class="input-group js_country_dropdown pr-0">
+                                                    <div class="input-group-prepend flag-button">
+                                                        <button type="button"
+                                                                id="btn_vat_code"
+                                                                t-att-disabled="readonly"
+                                                                class="btn dropdown btn-outline-secondary dropdown-toggle js_btn_country_code form-control country_button"
+                                                                data-bs-toggle="dropdown"
+                                                                data-bs-target="#dropdown-countries">
+
+                                                            <div id="img_code_vat"
+                                                                 class="js_img_country_code country_img ">
+                                                                +
+                                                                <t t-esc="default_country.phone_code"/>
+                                                                <i class="fa fa-angle-down"></i>
+                                                            </div>
+                                                        </button>
+                                                        <div class="dropdown-menu scrollable-menu"
+                                                             id="dropdown-countries">
+                                                            <div class="country_id_searchbar">
+                                                                <input class="search_country s_website_form_input input_control"
+                                                                       type="text"
+                                                                       placeholder="Search..."/>
+                                                            </div>
+                                                            <div id="country_id_list">
+                                                                <t t-foreach="countries" t-as="country">
+                                                                    <a href="#"
+                                                                       t-att-id="country.code"
+                                                                       t-att-data-country_id="country.id"
+                                                                       t-att-data-country_code="country.code"
+                                                                       t-att-data-phone_code="country.phone_code"
+                                                                       class="dropdown-item js_select_country_code">
+                                                                        <img t-att-src="country.image_url"
+                                                                             class="country_name_img"/>
+                                                                        <span class="form-country-name">
+                                                                            <t t-esc="country.name"/>
+                                                                            (<t t-esc="country.code"/>) +
+                                                                            <t t-esc="country.phone_code"/>
+                                                                        </span>
+                                                                    </a>
+                                                                </t>
+                                                            </div>
+                                                        </div>
+                                                        <input id="country_code_field"
+                                                               type="hidden"
+                                                               size="2"
+                                                               tabindex="-1"
+                                                               class="input-group-text js_country_code_field s_website_form_input"
+                                                               name="country_id"
+                                                               t-att-value="default_country.id"
+                                                               readonly="1"/>
+                                                    </div>
+                                                </div>
+                                                <input type="tel" id="phone" name="customer_contact_no"
+                                                       placeholder="Contact Number"
+                                                       required="required" maxlength="15"
+                                                       class="elem check_digits s_website_form_input"/>
+                                                <label for="phone" class="form_label o_input_required"
+                                                       style="z-index: 111111111; top:-11px">Phone
+                                                </label>
+                                            </div>
+                                            <div class="mp_input_field_web">
+                                                <input id="service_name"
+                                                       class="form-control form_input"
+                                                       name="" t-att-value="'Enclosure Design'" readonly="readonly"
+                                                       placeholder=" " type="text" required="required"/>
+                                                <label for="service_name" class="form_label o_input_required">Services
+                                                </label>
+                                            </div>
+                                            <input type="hidden" name="service" class="s_website_form_input"
+                                                   t-att-value="'enclosure_design'"/>
+                                            <div class="mp_input_field_web">
+                                                <input id="customer_subject"
+                                                       class="form-control form_input s_website_form_input"
+                                                       name="customer_subject"
+                                                       placeholder=" " type="text" required="required"/>
+                                                <label for="customer_subject" class="form_label o_input_required">
+                                                    Subject
+                                                </label>
+                                            </div>
+                                            <div class="mp_input_field_web">
+                                                <textarea id="customer_message" style="height: 5rem !important;"
+                                                          class="form-control form_input s_website_form_input"
+                                                          name="customer_message"
+                                                          placeholder=" " type="text"/>
+
+                                                <label for="customer_message" class="form_label">Message</label>
+                                            </div>
+                                            <button type="submit" class="mp-primary-btn">Submit your request</button>
+                                            <span id="s_website_form_result"/>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </t>
+            <!-- Blog Start -->
+            <t t-call="cr_web_portal.dynamic_blogpost">
+                <t t-set="service_id" t-value="'mech_custom_service_enclosure_design'"/>
+            </t>
+
+            <div class="oe_structure oe_empty">
+                <section id="contact-us" class="contact-section">
+                    <div class="contactus1"></div>
+                    <div class="contact-info text-center" style="margin: 5%;">
+                        <span class="title float-none" style="color: #F4FBF7;">CONTACT US</span>
+                        <br/>
+                        <h2 class="mt-20" style="color: #F9F9F9; font-size: 36px;">Step into the future with advanced
+                        </h2>
+                        <h2 style="color: #F9F9F9; font-size: 36px;">enclosure solution</h2>
+                        <a href="/contact-us?have" class="btn mt-10">
+                            Contact Us
+                        </a>
+                    </div>
+                    <div class="contactus2"></div>
+                </section>
+            </div>
+
+            <!-- Blog End -->
+
+            <div class="oe_structure oe_empty">
+                <section class="asked-questions s_faq_collapse pt32 pb32 o_colored_level s_faq_collapse_big"
+                         data-snippet="s_faq_collapse" data-name="Accordion" style="background-image: none;">
+                    <div class="container">
+                        <div class="header-box-custom service-3d" style="max-width: 100% !important;">
+                            <h5 class="sub-heading-custom mp-caption-custom text-center">FAQS</h5>
+                            <h2 class="main-heading-custom text-center">Frequently Asked
+                                <span class="mp_underline_custom">Questions</span>
+                            </h2>
+                        </div>
+                        <div id="myCollapse" class="accordion custom-accordion" role="tablist">
+                            <div class="card bg-white" data-name="Item">
+                                <a href="#" role="tab" data-bs-toggle="collapse" aria-expanded="false"
+                                   class="card-header s_faq_collapse_right_icon collapsed"
+                                   data-bs-target="#myCollapseTab553786_2">Wondering whether our designs are suitable
+                                    for both indoor and outdoor
+                                    enclosures?
+                                </a>
+                                <div class="collapse" data-bs-parent="#myCollapse" role="tabpanel"
+                                     id="myCollapseTab553786_2">
+                                    <div class="card-body">
+                                        <p class="card-text">Yes, our designs are tailored for both indoor and outdoor
+                                            enclosures, ensuring
+                                            durability and functionality in any environment.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card bg-white" data-name="Item">
+                                <a href="#" role="tab" data-bs-toggle="collapse" aria-expanded="true"
+                                   class="card-header s_faq_collapse_right_icon"
+                                   data-bs-target="#myCollapseTab553786_3">You might be curious about project timelines?
+                                </a>
+                                <div class="collapse show" data-bs-parent="#myCollapse" role="tabpanel"
+                                     id="myCollapseTab553786_3">
+                                    <div class="card-body">
+                                        <p class="card-text">The duration varies due to factors like communication
+                                            responsiveness, design
+                                            iterations, and unforeseen challenges. At Mech Power, we’re dedicated to
+                                            turning
+                                            your vision into a reality, creating functional and aesthetically pleasing
+                                            enclosures.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </t>
+    </template>
+</odoo>

@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="portal_my_messages" name="My Messages">
+        <t t-call="portal.portal_layout">
+            <t t-set="breadcrumbs_searchbar" t-value="True"/>
+            <div class="row portal_my_messages">
+                <div class="col-12 col-md col-lg-3">
+                    <t t-call="cr_web_portal.portal_sidebar_custom"/>
+                </div>
+                <h2 class="dashboard-title d-none">
+                    <a href="/my" class="title-img">
+                        <img src="/cr_web_portal/static/src/images/mech-custom/arrow-left.png"/>
+                    </a>
+                    Messages
+                </h2>
+                <div class="col-12 col-md col-lg-9 message-main-container">
+                    <div class="header-container">
+                        <!-- Help & Support Modal -->
+                        <div class="modal fade" id="helpSupportModal" tabindex="-1" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <header class="modal-header">
+                                        <div class="modal-head">
+                                            <h4 class="modal-title">Help &amp; Support</h4>
+                                            <p class="modal-subtitle">
+                                                Get support and assistance for any issues or questions related to your orders.
+                                            </p>
+                                        </div>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"
+                                                style="display: flex; justify-content: center; align-items: center;">
+                                            <img src="/cr_web_portal/static/src/images/new_design_resource/black-close-circle.svg"
+                                                 width="24" height="24"/>
+                                        </button>
+                                    </header>
+                                    <div class="modal-body">
+
+                                        <form class="support-form" action="/create/ticket" enctype="multipart/form-data" method="post">
+                                            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                            <div class="form-group">
+                                                <t t-set="reasons" t-value="request.env['helpdesk.ticket.type'].sudo().search([])"/>
+                                                <label for="selectReason">Select reason</label>
+                                                <select id="selectReason" class="form-control" required="required" name="type_id">
+                                                    <t t-foreach="reasons" t-as="reason">
+                                                        <option t-att-value="reason.id"><t t-esc="reason.name"/></option>
+                                                    </t>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="subject">Subject</label>
+                                                <input type="text" id="subject" class="form-control" required="required" name="subject"/>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="subject">Attachment</label>
+                                                <input type="file"
+                                                       name="attachment"
+                                                       class="s_website_form_input"/>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="message">Message</label>
+                                                <textarea name="message" id="message" class="form-control" rows="4" required="required"/>
+                                            </div>
+                                            <button type="submit" class="btn btn-success">Submit</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Trigger Button -->
+                        <h2>Messages</h2>
+                        <div class="d-flex custom_filter">
+                            <div class="custom_search_bar">
+                                <form t-if="searchbar_inputs" class="o_portal_search_panel ms-lg-2 ">
+                                    <div class="d-flex input-group-sm w-100">
+                                        <button type="button" class="btn d-none btn-secondary dropdown-toggle"
+                                                data-bs-toggle="dropdown"/>
+                                        <div class="dropdown-menu" role="menu">
+                                            <t t-foreach='searchbar_inputs' t-as='input'>
+                                                <a t-att-href="'#' + input_value['input']"
+                                                   t-attf-class="dropdown-item#{search_in == input_value['input'] and ' active' or ''}">
+                                                    <span t-out="input_value['label']"/>
+                                                </a>
+                                            </t>
+                                        </div>
+                                        <input type="text" class="form-control form-control-sm search_text" placeholder="Search"
+                                               t-att-value='search' name="search"/>
+                                        <button class="btn btn-secondary o_wait_lazy_js" type="submit">
+                                            <img src="/cr_web_portal/static/src/images/homepage/search.svg" width="20" height="20"/>
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="helpdesk-button-header" data-bs-toggle="modal" data-bs-target="#helpSupportModal">
+                                <img src="/cr_web_portal/static/src/images/mech-custom/24-support.png"
+                                     alt="Helpdesk Icon"/>
+                                Helpdesk
+                            </div>
+                            <div t-if="searchbar_filters">
+                                <div class="btn-group">
+                                    <button id="portal_searchbar_filters" data-bs-toggle="dropdown"
+                                            class="btn-secondary-font-small btn-sm dropdown-toggle">
+                                        <img class="mr4"
+                                             src="/cr_web_portal/static/src/images/new_design_resource/sort.svg"/>
+                                        Filter
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="portal_searchbar_filters">
+                                        <t t-foreach="searchbar_filters" t-as="option">
+                                            <a t-att-href="default_url + '?' + keep_query('*', filterby=option)"
+                                               t-attf-class="dropdown-item#{filterby == option and ' active' or ''}">
+                                                <span t-esc="searchbar_filters[option].get('label')"/>
+                                            </a>
+                                        </t>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <t t-if="messages">
+                        <div class="messages-container">
+                        <aside class="message-list">
+                            <div class="message-category">
+                                <t t-foreach="messages" t-as="message">
+                                    <div class="message-item" t-att-data-res-model="message.get('res_model')" t-att-data-res-id="message.get('res_id')" t-att-data-user-id="user">
+                                        <span class="category" t-if="message.get('type') == 'sale_order'">Sales Order</span>
+                                        <span class="category" t-if="message.get('type') == 'quotation'">Quotation</span>
+                                        <span class="category" t-if="message.get('type') == 'inquiry'">Inquiries</span>
+                                        <span class="category" t-if="message.get('type') == 'invoice'">Invoices &amp; Bills</span>
+                                        <span class="category" t-if="message.get('type') == 'ticket'">Ticket</span>
+                                        <span class="message-id" t-esc="message.get('name')"/>
+                                        <div class="message-preview">
+                                                <p t-esc="message.get('sender_name')" style="color: #282828;">:</p> <span class="msg-preview"> <t t-esc="message.get('preview')"/></span>
+                                        </div>
+                                    </div>
+                                </t>
+                            </div>
+                        </aside>
+
+                        <main class="message-detail" data-res-model="" data-res-id="">
+                            <header>
+                                <div class="back-img d-none">
+                                    <img src="/cr_web_portal/static/src/images/mech-custom/arrow-left.png"/>
+                                </div>
+                                <div class="header-info">
+                                    <span class="category"></span>
+                                    <span class="message-id"></span>
+                                </div>
+                                <a class="helpdesk-button" href="">
+                                    <img src="/cr_web_portal/static/src/images/mech-custom/document-text.png"/>
+                                </a>
+                            </header>
+                            <div class="chat-content">
+                                <div class="chat-message incoming">
+                                    <div class="user-img">
+                                        <img src="/cr_web_portal/static/src/images/mech-custom/user-msg.png"/>
+                                    </div>
+                                    <div class="msg-details">
+                                        <div class="sender"></div>
+                                        <p></p>
+                                    </div>
+                                </div>
+                                <div class="chat-message outgoing">
+                                    <div class="user-img">
+                                        <img src="/cr_web_portal/static/src/images/mech-custom/user-msg.png"/>
+                                    </div>
+                                    <div class="msg-details">
+                                        <div class="sender"></div>
+                                        <p></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <footer class="message-input">
+                                <div class="file-card d-none">
+                                    <div class="file-card-content">
+                                        <span class="file-icon">
+                                            <img src="/cr_web_portal/static/src/images/mech-custom/link.png"/>
+                                        </span>
+                                        <span class="file-name"></span>
+                                        <img class="remove-file" style="margin-left: 8px;" src="/cr_web_portal/static/src/images/new_design_resource/black_cross_btn.svg"/>
+                                    </div>
+                                </div>
+                                <input type="text" placeholder="Enter a message"/>
+                                <input type="file" id="attachment-input" style="display: none;" />
+                                <div class="msg-options">
+                                    <a class="link-button"><img src="/cr_web_portal/static/src/images/mech-custom/link.png"/></a>
+                                    <a class="send-button" t-attf-data-action="/mail/chatter_post"><img src="/cr_web_portal/static/src/images/mech-custom/send-2.png"/></a>
+                                </div>
+                            </footer>
+                        </main>
+                    </div>
+                    </t>
+                    <t t-else="">
+                        <hp>There are currently no Messages for your account.</hp>
+                    </t>
+                </div>
+            </div>
+        </t>
+    </template>
+</odoo>

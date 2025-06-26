@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="about_us_page" name="About us">
+        <t t-call="web.frontend_layout">
+            <div class="oe_structure oe_empty about-us">
+                <section
+                    class="s_cover parallax bg-black-50 s_parallax_no_overflow_hidden o_colored_level"
+                    style="background-image: none; padding-top:120px; padding-bottom:120px;">
+                    <span class="s_parallax_bg oe_img_bg o_bg_img_center"
+                        style="background-image: url(&quot;/cr_web_portal/static/src/images/about_us/aboutus_banner.png&quot;);" />
+                    <div class="o_we_bg_filter bg-black-50" />
+
+                    <div class="container s_allow_columns container-fluid">
+                        <div class="row">
+                            <div class="col o_colored_level col-lg-10">
+                                <div class="header-box-custom">
+                                    <h5 class="sub-heading-custom mp-caption-custom">ABOUT</h5>
+                                    <h2 class="main-heading-custom" style="color: white;">
+                                        <span class="mp_underline_custom">Mech Power</span>
+                                    </h2>
+                                    <p class="sub-heading-lines-custom mp-body-1-rg"
+                                        style="color: white;">
+                                        At Mech Power, we are driven by technology and committed to
+                                        revolutionizing the
+                                        experience of manufacturing enclosures and mechanical
+                                        products.
+                                    </p>
+                                </div>
+                            </div>
+                            <p class="submit-inquiry mobile-section-title d-none"
+                                style="text-align: left;">
+                                <a class="btn btn-primary btn-lg mb-2 o_default_snippet_text"
+                                    href="/contactus" data-bs-original-title="" title=""
+                                    style="border-radius: 10px; !important">Submit your inquiry​
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+
+            <div class="oe_structure oe_empty page-content aboutus-content container">
+                <section class="about-section">
+                    <div class="about-content">
+                        <span class="title">About</span>
+                        <br />
+                        <h1 class="section-title desktop-view">
+                            <span class="mp_underline_custom">Mech Power</span>
+                        </h1>
+                        <h6 class="mobile-section-title d-none">
+                            <span class="mp_underline_custom">Mech Power</span>
+                        </h6>
+                        <p>
+                            At Mech Power, we are driven by technology and committed to
+                            revolutionizing the experience
+                            of manufacturing enclosures and mechanical products.
+                        </p>
+                        <p>
+                            With a focus on design, development and manufacturing, we harness
+                            state-of-the-art
+                            technologies to offer a comprehensive range of high-quality products and
+                            services tailored
+                            to meet your needs for your electronics. Mech Power, from the same group
+                            as PCB Power
+                            (pcbpower.com), understands the challenges electronics designers and
+                            engineers face,
+                            allowing us to provide comprehensive solutions that bridge gaps at the
+                            foundational level.
+
+                        </p>
+                        <p>
+                            Our expertise in mechanical products, coupled with knowledge from PCB
+                            Power, ensures
+                            streamlined design processes and optimized product development.
+                        </p>
+                    </div>
+
+                    <div class="about-image">
+                        <img src="/cr_web_portal/static/src/images/about_us/about_mech_power.webp"
+                            alt="Mech Power Workspace" />
+                    </div>
+                </section>
+
+                <section class="design-journey-section">
+                    <div class="container">
+                        <span class="title">VISION &amp; MISSION</span>
+                        <br />
+                        <h1 class="section-title desktop-view">Empowering Your <span
+                                class="mp_underline_custom">Design Journey</span>
+                        </h1>
+                        <h6 class="mobile-section-title d-none">
+                            <span class="mp_underline_custom">Empowering You</span>r Design Journey </h6>
+                        <p class="section-description">
+                            At Mech Power, we are dedicated to putting our customers at the
+                            forefront of everything we
+                            do. Our customer-centric approach drives our mission and vision, as we
+                            strive to empower our
+                            customers to transform their designs into reality.
+                        </p>
+                        <div class="mission-vision-wrapper col-12">
+                            <div class="card col-6">
+                                <div class="icon">
+                                    <img
+                                        src="/cr_web_portal/static/src/images/about_us/our_mission.webp"
+                                        alt="Mission Icon" />
+                                </div>
+                                <h3 class="card-title">Our Mission</h3>
+                                <p class="card-text">
+                                    Our mission is to provide a platform that empowers our customers
+                                    to bring their
+                                    innovative designs to life with precision and efficiency.
+                                </p>
+                            </div>
+                            <div class="card col-6">
+                                <div class="icon">
+                                    <img
+                                        src="/cr_web_portal/static/src/images/about_us/our_vission.webp"
+                                        alt="Vision Icon" />
+                                </div>
+                                <h3 class="card-title">Our Vision</h3>
+                                <p class="card-text">
+                                    We envision a future where the experience for designers is
+                                    redefined through the
+                                    seamless integration of visual technology into the manufacturing
+                                    of enclosures and
+                                    mechanical products, unlocking new possibilities and enhancing
+                                    the design process.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <div class="oe_structure oe_empty page-content our-values-container"
+                style="background-color: #F4FBF7; margin-top: 140px;">
+                <section class="our-values container">
+                    <div class="text-center">
+                        <span class="title">values</span>
+                        <br />
+                        <h1 class="section-title desktop-view"> O<span class="mp_underline_custom">ur
+                            Values</span>
+                        </h1>
+
+                        <h6 class="mobile-section-title d-none">
+                            <span class="mp_underline_custom">Our Values</span>
+                        </h6>
+                        <div class="our-values-wrapper col-12">
+                            <div class="our-values-content customer-centricity col-4">
+                                <div class="inner-content">
+                                    <img src="/cr_web_portal/static/src/images/mech-custom/icon_15.png"/>
+
+                                    <h4>Customer-Centricity</h4>
+                                    <p>
+                                        Placing our customers at the heart of our operations, we
+                                        prioritize their needs
+                                        and
+                                        satisfaction, providing exceptional experiences tailored to
+                                        their requirements.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="our-values-content ethical-integrity col-4">
+                                <div class="inner-content">
+                                    <img src="/cr_web_portal/static/src/images/mech-custom/icon_14.png"/>
+
+                                    <h4>Ethical Integrity</h4>
+                                    <p>
+                                        Upholding the highest standards of ethics, transparency and
+                                        honesty, we build
+                                        trust
+                                        and cultivate long-term relationships with our customers,
+                                        fostering a foundation
+                                        of
+                                        integrity.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="our-values-content pursuit-excellence col-4">
+                                <div class="inner-content">
+                                    <img src="/cr_web_portal/static/src/images/mech-custom/icon_17.png"/>
+
+                                    <h4>Pursuit of Excellence</h4>
+                                    <p>
+                                        Driven by a relentless commitment to excellence, we strive
+                                        to deliver products,
+                                        services and experiences that exceed expectations, ensuring
+                                        the highest levels
+                                        of
+                                        quality and performance.
+                                    </p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <section id="why-choose-mechpower"
+                class="container py-5 text-center why-choose-mechpower-aboutus">
+                <span class="title">WHY MECHPOWER</span>
+                <br />
+                <div class="text-center mb-5">
+                    <h2 class="section-title desktop-view">
+                        <span class="mp_underline_custom">Why Choose </span>MechPower? </h2>
+                    <h6 class="mobile-section-title d-none">
+                        <span class="mp_underline_custom">Why Choose </span>MechPower? </h6>
+                    <p class="section-description">
+                        Choose Mech Power and experience the power of simple solutions for complex
+                        problems, smart
+                        support and technology driven manufacturing. Let us empower your projects
+                        with our expertise,
+                        high-quality products and unwavering commitment to your success.
+                    </p>
+                </div>
+                <div class="feature-container">
+
+                    <div class="feature-box">
+                        <div class="feature-content">
+                            <img src="/cr_web_portal/static/src/images/mech-custom/icon_18.png"/>
+                            <h4>Where Innovation Meets Visualization</h4>
+                            <p>
+                                Revolutionize your custom enclosure design with our user-friendly
+                                web app. Customize dimensions, materials, colors, and see real-time
+                                visuals. Save time, eliminate guesswork, and ensure your product
+                                meets exact specifications with our powerful Visualizer.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="feature-box">
+                        <div class="feature-content">
+                            <img src="/cr_web_portal/static/src/images/mech-custom/3d-print_2.png"/>
+                            <h4>Customization designed for convenience</h4>
+                            <p>
+                                At Mech Power, we prioritize customization with a wide range of
+                                materials, including Stainless Steel, Carbon Steel, Aluminum, and
+                                more. We also offer custom color printing and barcoding, delivering
+                                a precisely finished product to meet your exact needs.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="feature-box">
+                        <div class="feature-content">
+                            <img src="/cr_web_portal/static/src/images/mech-custom/icon_19.png"/>
+                            <h4>Manufacturing Excellence</h4>
+                            <p>
+                                Our Ahmedabad, Gujarat manufacturing plant uses advanced technology
+                                to produce high-quality enclosures, adhering to global standards
+                                across design, development, and manufacturing.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="feature-box">
+                        <div class="feature-content">
+                            <img src="/cr_web_portal/static/src/images/mech-custom/icon_18.png"/>
+                            <h4>Diverse Market Verticals</h4>
+                            <p>
+                                Our comprehensive range of products finds applications across
+                                various market verticals, including consumer electronics,
+                                automotive, medical, aerospace, defense and more. We cater to
+                                diverse industries, offering solutions that meet industry-specific
+                                requirements and regulations.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="feature-box">
+                        <div class="feature-content">
+                            <img src="/cr_web_portal/static/src/images/mech-custom/3d-print_2.png"/>
+                            <h4>Quality and Certifications</h4>
+                            <p>
+                                At Mech Power, we prioritize quality. Our enclosures are designed,
+                                developed and manufactured with meticulous attention to detail,
+                                ensuring they meet global quality standards. Our products include
+                                NMEA, IP-rated and UL-listed enclosures, making them suitable for
+                                indoor and outdoor applications in all weather conditions.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <div class="oe_structure oe_empty page-content our-values-container"
+                 style="background-color: #F4FBF7; margin-top: 140px;">
+                <section class="leadership-team container">
+                    <span class="title">CORE TEAM</span>
+                    <br/>
+                    <div class="text-center">
+                        <h2 class="section-title desktop-view">Our Leadership
+                            <span
+                                    class="mp_underline_custom">Team
+                            </span>
+                        </h2>
+
+                        <h6 class="mobile-section-title d-none">Our
+                            <span class="mp_underline_custom">Leadership
+                                Team
+                            </span>
+                        </h6>
+                    </div>
+                    <div class="team-layout">
+                        <div class="team-group">
+                            <div class="team-member small">
+                                <img src="/cr_web_portal/static/src/images/about_us/paresh.webp" alt="Paresh Vasani"/>
+                                <h3>Paresh Vasani</h3>
+                                <p class="role">Managing Director &amp; CEO</p>
+                            </div>
+                            <div class="team-member small">
+                                <img src="/cr_web_portal/static/src/images/about_us/guarang.webp" alt="Gaurang Mehta"/>
+                                <h3>Gaurang Mehta</h3>
+                                <p class="role">Chief Operating Officer</p>
+                            </div>
+                            <div class="team-member small">
+                                <img src="/cr_web_portal/static/src/images/about_us/preeti.webp" alt="Preeti Chouksey"/>
+                                <h3>Preeti Chouksey</h3>
+                                <p class="role">Chief Financial Officer</p>
+                            </div>
+                            <div class="team-member small">
+                                <img src="/cr_web_portal/static/src/images/about_us/sapan.webp" alt="Sapan Chokshi"/>
+                                <h3>Sapan Chokshi</h3>
+                                <p class="role">Chief Engineering Officer</p>
+                            </div>
+                            <div class="team-member small">
+                                <img src="/cr_web_portal/static/src/images/about_us/aashay.webp" alt="Aashay Vasani"/>
+                                <h3>Aashay Vasani</h3>
+                                <p class="role">Chief Marketing Officer</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </t>
+    </template>
+
+</odoo>

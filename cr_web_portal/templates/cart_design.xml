@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<!--    CODE FOR POPOVER CART ONLY-->
+    <template id="total_custom">
+        <div id="cart_total" t-att-class="extra_class or ''" t-if="website_sale_order and website_sale_order.website_order_line">
+            <table class="table mb-0">
+                  <tr id="empty">
+                      <t t-if='not no_rowspan'><td rowspan="10" class="border-0"/></t>
+                      <td class="col-md-2 col-3 border-0"></td>
+                      <td class="col-md-2 col-3 border-0" ></td>
+                  </tr>
+                  <tr id="order_total_untaxed">
+                      <td class="text-end border-0"></td>
+                      <td class="text-xl-end border-0" style="padding:0px !important; font-size:14px !important;">
+                          Subtotal:
+                          <span t-field="website_sale_order.amount_untaxed" class="monetary_field" style="white-space: nowrap;" t-options="{'widget': 'monetary', 'display_currency': website_sale_order.currency_id}"/>
+                      </td>
+                  </tr>
+                  <tr id="order_total_taxes">
+                      <td class="text-end border-0"></td>
+                      <td class="text-xl-end border-0" style="font-size:14px !important; padding:0px !important;">
+                            GST:
+                           <span t-field="website_sale_order.amount_tax" class="monetary_field" style="white-space: nowrap;" t-options="{'widget': 'monetary', 'display_currency': website_sale_order.currency_id}" />
+                      </td>
+                  </tr>
+                  <tr id="order_total">
+                      <td class="text-end border-top border-bottom-0"></td>
+                      <td class="text-xl-end border-top border-bottom-0" style="font-size:14px !important;">
+                          <strong>Total:</strong>
+                          <strong t-field="website_sale_order.amount_total" class="monetary_field"
+                              t-options='{"widget": "monetary", "display_currency": website_sale_order.pricelist_id.currency_id}'/>
+                      </td>
+                  </tr>
+            </table>
+        </div>
+    </template>
+    <template id="cart_popover_inherit" inherit_id="website_sale.cart_popover">
+        <xpath expr="//div[hasclass('col-9')]" position="replace">
+            <div class="col-9">
+                <div>
+                    <t t-call="website_sale.cart_line_product_link">
+                        <span class="h3" style="font-size:15px !important;line-height: 30px !important;" t-esc="line.name_short" />
+                    </t>
+                </div>
+                <span style="font-size:15px !important;">Qty: <t t-esc="int(line.product_uom_qty) == line.product_uom_qty and int(line.product_uom_qty) or line.product_uom_qty" /></span>
+            </div>
+        </xpath>
+
+        <xpath expr="//t[@t-call='website_sale.total']" position="replace">
+            <t t-call="cr_web_portal.total_custom">
+                <t t-set="hide_promotions" t-value="True"/>
+            </t>
+        </xpath>
+        <xpath expr="//div[hasclass('cart_line')]//div[hasclass('text-center')]" position="replace">
+            <div class="col-3 text-center">
+                <t t-set="image_holder" t-value="line.product_id._get_image_holder()"/>
+                <span t-if="line._is_not_sellable_line() and line.product_id.image_128">
+                     <span t-field="image_holder.image_1920" t-options="{'widget': 'image', 'preview_image': image_type, 'itemprop': 'image', 'class': 'h-100 w-100 position-absolute'}" class="oe_product_image_img_wrapper d-flex h-100 justify-content-center align-items-center position-absolute"/>
+                </span>
+                <span t-else=""
+                    t-field="line.product_id.image_128"
+                    t-options="{'widget': 'image', 'qweb_img_responsive': True, 'class': 'rounded o_image_64_max mb-2'}"
+                />
+            </div>
+        </xpath>
+        <xpath expr="//a" position="replace">
+            <a role="button" class="btn custom-btn-green-round" href="/shop/cart">
+                View Cart (<span class="o_wsale_cart_quantity" t-esc="website_sale_order.cart_quantity" /> item(s))
+            </a>
+        </xpath>
+        <xpath expr="//div[hasclass('col-3')]" position="replace">
+            <div class="col-3 text-center">
+                <t t-set="image_holder" t-value="line.product_id._get_image_holder()"/>
+                <span t-if="line._is_not_sellable_line() and image_holder.image_128">
+                    <img t-att-src="image_data_uri(image_holder.image_128)"
+                         class="img o_image_64_max rounded mb-2 img-fluid" t-att-alt="line.name_short"/>
+                </span>
+                <span t-else=""
+                      t-field="image_holder.image_128"
+                      t-options="{'widget': 'image', 'qweb_img_responsive': True, 'class': 'rounded o_image_64_max mb-2'}"
+                />
+            </div>
+        </xpath>
+    </template>
+<!--    CODE FOR POPOVER CART ONLY-->
+
+<!--    CODE FOR SHORT CART SUMMARY ONLY-->
+    <template id="short_cart_summary_order_total_right" inherit_id="website_sale.short_cart_summary">
+        <xpath expr="//div[hasclass('js_cart_summary')]" position="replace">
+            <div class="js_cart_summary" t-if="website_sale_order and website_sale_order.website_order_line" >
+                <div t-if="not website_sale_order.is_customisable and not website_sale_order.is_place_inquiry" class="cart_summary_card show_in_laptop">
+<!--                <div t-if="not website_sale_order.is_customisable and not website_sale_order.is_place_inquiry" class="cart_summary_card custom_cart_summary">-->
+                    <h4 class="d-none d-xl-block cart_summary_card_title">Price Details</h4>
+                    <div>
+                        <t t-call="website_sale.total">
+                            <t t-set="no_rowspan" t-value="1"/>
+                        </t>
+                        <t t-set="redirect_to_sign_in" t-value="website.account_on_checkout == 'mandatory' and website.is_public_user()"/>
+                        <t t-set="redirect_url" t-value="'/web/login?redirect=/shop/checkout' if redirect_to_sign_in else '/shop/checkout?express=1'"/>
+                        <a role="button" t-if="website_sale_order and website_sale_order.website_order_line"
+                           class="btn btn-primary d-xl-block"
+                           t-attf-href="{{redirect_url}}">
+                            <t t-if="redirect_to_sign_in">
+                                <span>Sign In</span>
+                            </t>
+                            <t t-else="">
+                                <span t-if="website_sale_order.is_customisable or website_sale_order.is_place_inquiry">Place Inquiry</span>
+                                <span t-else="">Place Order</span>
+                            </t>
+                        </a>
+                    </div>
+                </div>
+                <div t-else="" class="cart_summary_card custom_cart_summary">
+                    <div>
+                        <t t-set="redirect_to_sign_in" t-value="website.account_on_checkout == 'mandatory' and website.is_public_user()"/>
+                        <t t-set="redirect_url" t-value="'/web/login?redirect=/shop/checkout' if redirect_to_sign_in else '/shop/checkout?express=1'"/>
+                        <a role="button" t-if="website_sale_order and website_sale_order.website_order_line"
+                           class="btn btn-primary d-xl-block"
+                           t-attf-href="{{redirect_url}}">
+                            <t t-if="redirect_to_sign_in">
+                                <span>Sign In</span>
+                            </t>
+                            <t t-else="">
+                                <span t-if="website_sale_order.is_customisable or website_sale_order.is_place_inquiry">Place Inquiry</span>
+                            </t>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </xpath>
+
+    </template>
+<!--    CODE FOR SHORT CART SUMMARY ONLY-->
+</odoo>

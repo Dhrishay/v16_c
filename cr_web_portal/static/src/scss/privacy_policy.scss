@@ -1,0 +1,151 @@
+// body {
+//     scroll-behavior: smooth;
+// }
+
+#tc-header {
+    .s_cover {
+        padding-top: 180px;
+        padding-bottom: 180px;
+    }
+} 
+.content-container {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 64px 0 20px 0;
+    scroll-behavior: smooth;
+
+    .table-of-contents {
+        flex: 0 0 250px;
+        background-color: #f9f9f9;
+        padding: 15px;
+        border-radius: 8px;
+        border: 1px solid #E6E6E6;
+        position: sticky;
+        top: 0;
+
+        h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+
+            li {
+                margin-bottom: 8px;
+
+                a {
+                    text-decoration: none;
+                    font-size: 14px;
+                    color: #474747;
+                    padding: 8px;
+                    border-radius: 4px;
+                    display: block;
+                    transition: background-color 0.3s;
+                    line-height: 22.4px;
+                }
+            }
+        }
+    }
+
+    .content {
+        flex: 1;
+        background-color: #fff;
+        padding: 0 24px 24px 24px;
+        border-radius: 8px;
+
+        .section-intro {
+            margin-top: 24px;
+        }
+
+        section {
+            margin-bottom: 24px;
+
+            h2 {
+                font-size: 20px;
+                margin-bottom: 10px;
+            }
+
+            p, ul {
+                font-size: 18px;
+                line-height: 1.6;
+            }
+
+            ol {
+				font-size: 18px;
+                list-style: disc;
+            }
+			strong {
+				color: var(--mp-color-dark-3);
+				letter-spacing: 0.0095in;
+			}
+        }
+    }
+}
+
+/* Table of Contents Links */
+.toc-link {
+    font-size: 14px;
+    color: #474747;
+    padding: 8px;
+    border-radius: 4px;
+    display: block;
+    transition: all 4s ease-in-out;
+}
+
+
+/* Hover Effect */
+.toc-link:hover {
+    letter-spacing: 0.5px;
+    background-color: #FFFFFF;
+    font-weight: 600;
+    border-left: 3px solid #E6E6E6;
+    box-shadow: 0px 0px 20px 0px #0000000D;
+    transition: all 4s ease-in-out;
+}
+
+/* Active Link Styling */
+.toc-link.active {
+    letter-spacing: 0.5px;
+    background-color: #FFFFFF;
+    font-weight: 600;
+    border-left: 3px solid #E6E6E6;
+    box-shadow: 0px 0px 20px 0px #0000000D;
+    transition: 2s, box-shadow 2s, background-color 2s;
+}
+
+
+@media (max-width: 768px) {
+
+    #tc-header {
+        .s_cover {
+            padding-top: 187.5px;
+            padding-bottom: 187.5px;
+        }
+    } 
+
+	.content-container {
+		padding: 0px;
+
+		.mobile_view{
+			display: block !important;
+		}
+
+		.content {
+			padding: 0px;
+			padding-top: 40px;
+
+			p, ol {
+				font-size: 16px !important;
+			}
+			ol {
+				padding-left: 1.5rem;
+			}
+			section h2 {
+				font-size: 18px;
+			}
+		}
+	}
+}

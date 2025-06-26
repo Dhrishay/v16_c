@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="invoice_form_inherit_l10n_in_mech_power" model="ir.ui.view">
+        <field name="name">invoice_form_inherit_l10n_in_mp</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="l10n_in.invoice_form_inherit_l10n_in"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='l10n_in_gst_treatment']" position="after">
+                <field name="is_scrap" widget="boolean_toggle" attrs="{'readonly': [('state','=','posted')]}"/>
+                <field name="service" readonly="1"/>
+                <field name="tag_ids" widget="many2many_tags" options="{'color_field': 'color'}" readonly="1"/>
+            </xpath>
+        </field>
+    </record>
+    <record id="view_out_invoice_tree_inherit_mp" model="ir.ui.view">
+        <field name="name">account.move.tree.inherit.mp</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_out_invoice_tree" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='invoice_date_due']" position="before">
+                <field name="service" optional="show"/>
+            </xpath>
+            <xpath expr="//field[@name='amount_residual_signed']" position="before">
+                <field name="tag_ids" widget="many2many_tags" optional="show" options="{'color_field': 'color'}"/>
+            </xpath>
+        </field>
+    </record>
+    <record id="sale.action_view_sale_advance_payment_inv" model="ir.actions.act_window">
+        <field name="name">Create invoices</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">sale.advance.payment.inv</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="context">{'add_tags_service': True}</field>
+        <field name="binding_model_id" ref="sale.model_sale_order"/>
+        <field name="binding_view_types">list</field>
+    </record>
+</odoo>

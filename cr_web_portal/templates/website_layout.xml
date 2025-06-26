@@ -1,0 +1,453 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="mechpower_header" inherit_id="portal.frontend_layout" active="True" name="MechPower Header">
+        <xpath expr="//div[@id='wrapwrap']//header" position="replace">
+            <div>
+                <p class="header_launch">Proudly Powered by <strong>PCB Power</strong> group - Igniting Innovation, Driving Excellence!
+                </p>
+            </div>
+<!--            Product Searchbar-->
+            <div class="pbmit-search-overlay">
+                <div class="pbmit-search-close">
+                    <button class="qodef-svg&#45;&#45;close qodef-m " width="28.163" height="28.163" style="background: transparent;border: none;"><img src="/cr_web_portal/static/src/images/new_design_resource/black_cross_btn.svg" alt="Customized plastic Enclosure design" title="Close Icon- Mech Power- Customized plastic Enclosure design" description="Mech power-an enclosure manufacturer in india offering various other products and services"  width="30px"/></button>
+                </div>
+                 <div class="pbmit-search-outer shop_header_search_box">
+                    <form method="get" class="pbmit-site-searchform o_searchbar_form s_searchbar_input o_wsale_products_searchbar_form me-auto flex-grow-1 d-lg-inline d-inline" action="/shop" data-snippet="s_searchbar_input">
+                        <div role="search" class="input-group ">
+                            <input type="search" name="search" data-oe-field="arch" class="form-control field searchform-s search-query oe_search_box border-0 text-bg-light no-radius" placeholder="Search..." value="" data-search-type="products" data-limit="5" data-display-image="true" data-display-description="true" data-display-extra-link="true" data-display-detail="true" data-order-by="name asc" autocomplete="off"/>
+                            <button type="submit" aria-label="Search" title="Search" class="btn oe_search_button btn btn-light">
+                                <i class="oi oi-search" ></i>
+                            </button>
+                        </div>
+                        <input name="order" type="hidden" class="o_search_order_by" value="name asc"/>
+                    </form>
+                </div>
+            </div>
+            <header class="site-header header-style-3" id="top">
+                <div class="pbmit-header-overlay">
+                    <div class="site-header-menu">
+                        <div class="container">
+                            <div class="row g-0">
+                                <div class="col-md-12">
+                                    <div class="d-flex align-items-center justify-content-between" style="color:white;">
+                                        <div class="d-flex align-items-center justify-content-between pbmit-header-content">
+                                            <div class="site-branding pbmit-logo-area">
+                                                <div class="site-title">
+                                                    <a href="/">
+                                                        <span t-field="website.logo"
+                                                              t-options="{'widget': 'image', 'style': 'max-width: 200px'}"
+                                                              role="img" t-att-aria-label="'Logo of %s' % website.name" alt="Mech Power - 3d Printing in India, Enclosure Manufacturer in India, 3d printing for prototyping, Injection Molding, Sheet metal Fabrication"
+                                                              title="Mech Power- An Enclosure Manufacturer in India-LOGO" descroption="Explore comprehensive products and services by Mech power"/>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="site-navigation">
+                                            <nav class="main-menu navbar-expand-xl">
+                                                <div class="pbmit-mobile-menu-bg"></div>
+                                                <div class="collapse navbar-collapse clearfix show" id="pbmit-menu">
+                                                    <div class="pbmit-menu-wrap">
+
+                                                        <ul class="navigation clearfix">
+<!--                                                            Required Don't Remove it-->
+                                                            <li/>
+                                                            <li class="home-li" id="home-li-user">
+                                                                <div class="d-flex align-items-center justify-content-between">
+                                                                    <div class="user-detail">
+                                                                        <a href="/">
+                                                                            <span t-field="website.logo"
+                                                                                t-options="{'widget': 'image', 'style': 'max-width: 200px'}"
+                                                                                role="img" t-att-aria-label="'Logo of %s' % website.name" alt="Mech Power - 3d Printing in India, Enclosure Manufacturer in India, 3d printing for prototyping, Injection Molding, Sheet metal Fabrication"
+                                                                                title="Mech Power- An Enclosure Manufacturer in India-LOGO" descroption="Explore comprehensive products and services by Mech power"/>
+                                                                        </a>
+                                                                    </div>
+                                                                    <div class="home-li-right-side">
+                                                                        <div class="pbmit-header-search-btn mr-15">
+                                                                            <a href="#">
+                                                                                <!--                                                    <i class="pbmit-base-icon-search-1"></i>-->
+                                                                                <img src="/cr_web_portal/static/src/images/homepage/search.svg" width="28" height="28"/>
+                                                                            </a>
+                                                                        </div>
+                                                                        <a href="/shop/cart">
+                                                                            <img src="/cr_web_portal/static/src/images/homepage/cart.svg" width="28" height="28"/>
+                                                                            <sup class="my_cart_quantity cart_q"
+                                                                                t-esc="website_sale_cart_quantity"
+                                                                                t-att-data-order-id="request.session.get('sale_order_id', '')"/>
+                                                                        </a>
+                                                                        <span class="closepanel">
+                                                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                            <path d="M6 18L18 6" stroke="#0A0A0A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                                            <path d="M18 18L6 6" stroke="#0A0A0A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                                            </svg>
+                                                                        </span>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                            <li class="home-li">
+                                                                <a href="/">Home</a>
+                                                            </li>
+                                                            <li t-if="request.httprequest.path == '/my'" class="home-li">
+                                                                <a href="/my">Dashboard</a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="/enclosure">Enclosure
+                                                                    Design
+                                                                </a>
+                                                            </li>
+                                                            <li class="dropdown">
+                                                                <a id="dropdown-menus" href="#"  >Services
+                                                                    <svg class="laptop-arrow" style="margin-left: 8px;" width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                        <path d="M4.79512 0.953125H8.94845C9.14156 0.953125 9.24239 1.18851 9.10656 1.32791C9.10625 1.32823 9.10594 1.32855 9.10562 1.32887L6.96823 3.46624L5.6549 4.77957C5.29683 5.13764 4.71341 5.13764 4.35534 4.77957L0.902006 1.32624C0.762728 1.18696 0.861881 0.953125 1.05512 0.953125H4.79512Z" fill="#0A0A0A" stroke="#0A0A0A"/>
+                                                                    </svg>
+                                                                    <svg class="mbl-arrow" width="16" height="8" viewBox="0 0 16 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                        <path d="M14.5984 0.958496L9.1651 6.39183C8.52344 7.0335 7.47344 7.0335 6.83177 6.39183L1.39844 0.958496" stroke="#0A0B0D" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                                                    </svg>
+                                                                    </a>
+                                                                <ul>
+<!--                                                                    <li style="padding: 8px 22px 12px 36px !important;">-->
+<!--                                                                        <a href="/enclosure-design">Enclosure Design-->
+<!--                                                                        </a>-->
+<!--                                                                    </li>-->
+                                                                    <li class="dropdown" style="padding: 8px 22px 12px 36px !important;">
+                                                                        <a href="/3d-printing" class="d-flex justify-content-between resouces">
+                                                                            3D Printing
+                                                                            
+                                                                            <svg class="desktop-view" width="12"  viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                                <path d="M7.45703 3.4001L12.8904 8.83343C13.532 9.4751 13.532 10.5251 12.8904 11.1668L7.45703 16.6001" stroke="#0A0B0D" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                                                            </svg>
+                                                                            
+                                                                            <svg class="righticon for-laptop-view extra-icon" style="height: 20px; width: 20px;"
+                                                                                    width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                                <path d="M7.45703 3.4001L12.8904 8.83343C13.532 9.4751 13.532 10.5251 12.8904 11.1668L7.45703 16.6001" stroke="#0A0B0D" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                                                            </svg>
+                                                                        </a>
+
+                                                                        <ul class="no_padd">
+                                                                            <li>
+                                                                                <a href="/fused-deposition-modeling">
+                                                                                    FDM Printing
+                                                                                </a>
+                                                                            </li>
+                                                                            <li>
+                                                                                <a href="/projection-printing-figure">
+                                                                                    Projection Printing
+                                                                                </a>
+                                                                            </li>
+                                                                        </ul>
+                                                                        
+                                                                    </li>
+                                                                    <li style="padding: 8px 22px 12px 36px !important;">
+                                                                        <a href="/sheet-metal-fabrication">Sheet
+                                                                            Metal Fabrication
+                                                                        </a>
+                                                                    </li>
+                                                                    <li style="padding: 8px 22px 12px 36px !important;">
+                                                                        <a href="/injection-molding">Injection Molding
+                                                                        </a>
+                                                                    </li>
+                                                                    <li style="padding: 8px 22px 12px 36px !important;">
+                                                                        <a href="/cnc-machining">CNC Machining</a>
+                                                                    </li>
+                                                                </ul>
+                                                            </li>
+                                                            <li>
+                                                                <a href="/shop">Products</a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="/blog">Blogs</a>
+                                                            </li>
+                                                            <li class="active">
+                                                                <a href="/about-us">About Us</a>
+                                                            </li>
+                                                            <li class="active">
+                                                                <a href="/contact-us">Contact Us</a>
+                                                            </li>
+                                                        </ul>
+
+                                                        <div class="mbl-footer-menu">
+                                                            <div class="insta-quote">
+                                                                <a href="/instant-quote" class="button instant-quote btn btn-primary" style="font-size: 16px !important;">
+                                                                    Instant Quote
+                                                                </a>
+                                                            </div>
+                                                            <div class="sign-in-up">
+                                                                <t t-if="not user_id._is_public()">
+                                                                    <div class="my-apps">
+                                                                            <a class="button button--secondary" href="/my">My Account</a>
+                                                                            <a class="button button--secondary" href="/web">Apps</a>
+                                                                            <a class="button button--secondary" href="/web/session/logout">Log Out</a>
+                                                                    </div>
+                                                                </t>
+                                                                <t t-else="">
+                                                                        <a class="button button--secondary" href="/web/sign/up">Sign Up</a>
+                                                                        <a class="button button--secondary" href="/web/login">Login</a>
+                                                                </t>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </nav>
+                                        </div>
+                                        <div class="pbmit-right-box">
+                                            <div class="pbmit-header-search-btn mr-15">
+                                                <img src="/cr_web_portal/static/src/images/homepage/search.svg" width="28" height="28"/>
+                                            </div>
+                                            <t t-set="website_sale_cart_quantity"
+                                               t-value="request.session['website_sale_cart_quantity'] if 'website_sale_cart_quantity' in request.session else website.sale_get_order().cart_quantity or 0"/>
+                                            <ul class="pbmit-social-links">
+                                                <li class="pbmit-social-li pbmit-social-facebook cart o_wsale_my_cart">
+                                                    <a href="/shop/cart">
+                                                        <img src="/cr_web_portal/static/src/images/homepage/cart.svg" width="28" height="28"/>
+                                                        <sup class="my_cart_quantity cart_q"
+                                                             t-esc="website_sale_cart_quantity"
+                                                             t-att-data-order-id="request.session.get('sale_order_id', '')"/>
+                                                    </a>
+                                                </li>
+                                            </ul>
+
+                                            <ul class="dis_pic">
+                                                <li>
+                                                    <a href="#" class="display-picture">
+                                                        <t t-if="user_id._is_public()">
+                                                            <img src="/cr_web_portal/static/src/images/portal/bx-user-circle.svg" alt="Customized Metal Enclosure design" title="User Icon- Mech Power- Customized Metal Enclosure design" description="Mech power-an enclosure manufacturer in india offering various other products and services" class="o_user_avatar public_user_img"/>
+                                                        </t>
+                                                        <t t-else="">
+                                                            <img t-if="user_id.partner_id.image_1920"  class="o_avatar o_user_avatar user_img" t-att-src="website.image_url(user_id.partner_id, 'image_1920')"/>
+                                                                <img t-else=""  class="o_avatar o_user_avatar user_img" src="/cr_web_portal/static/src/images/portal/bx-user-circle.svg"/>
+                                                        </t>
+                                                    </a>
+                                                    <div class="card hide-card" >
+                                                        <t t-if="user_id._is_public()">
+                                                            <ul class="signin_menu">
+                                                                <li>
+                                                                    <a href="/web/login">Sign In</a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="/web/sign/up">Sign Up</a>
+                                                                </li>
+                                                            </ul>
+                                                        </t>
+                                                        <t t-if="not user_id._is_public()">
+                                                            <ul class="login_menu">
+                                                                <li>
+                                                                    <a href="/my">My Account</a>
+                                                                </li>
+                                                                <li groups="base.group_user">
+                                                                    <a href="/web">Apps</a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="/web/session/logout">Log Out</a>
+                                                                </li>
+                                                            </ul>
+                                                        </t>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                            <ul class="insta-quote-ul">
+                                                <li>
+                                                    <div class="insta-quote">
+                                                        <a href="/instant-quote" class="button instant-quote btn btn-primary">
+                                                            Get instant quote
+                                                        </a>
+                                                        <sup>BETA</sup>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                            <div class="navbar-header">
+                                                <button class="navbar-toggler" type="button">
+                                                    <i class="pbmit-base-icon-menu-1 "><img src="/cr_web_portal/static/src/images/mech-custom/menu.png" alt="hamburger"/></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+        </xpath>
+
+
+        <!-- Existiing odoo footer Hide          	-->
+        <xpath expr="//div[@id='footer']" position="replace">
+            <footer class="footer container">
+                <div class="footer-container">
+                    <div class="footer-first-sec">
+                        <div class="footer-logo">
+                            <img src="/cr_web_portal/static/src/images/mech-custom/mech_power_home.png" alt="Mech Power Logo" />
+                        </div>
+                        <div class="text-end support-timing-mobile d-none">(Mon - Sat, 9AM - 6:30PM)</div>
+                        <div class="footer-contact">
+                            <p>
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M17 20.5H7C4 20.5 2 19 2 15.5V8.5C2 5 4 3.5 7 3.5H17C20 3.5 22 5 22 8.5V15.5C22 19 20 20.5 17 20.5Z" stroke="#125A2F" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M17 9L13.87 11.5C12.84 12.32 11.15 12.32 10.12 11.5L7 9" stroke="#125A2F" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                <a href="mailto:sales@mechpowertech.com">sales@mechpowertech.com</a>
+                            </p>
+                            <p>
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M21.97 18.33C21.97 18.69 21.89 19.06 21.72 19.42C21.55 19.78 21.33 20.12 21.04 20.44C20.55 20.98 20.01 21.37 19.4 21.62C18.8 21.87 18.15 22 17.45 22C16.43 22 15.34 21.76 14.19 21.27C13.04 20.78 11.89 20.12 10.75 19.29C9.6 18.45 8.51 17.52 7.47 16.49C6.44 15.45 5.51 14.36 4.68 13.22C3.86 12.08 3.2 10.94 2.72 9.81C2.24 8.67 2 7.58 2 6.54C2 5.86 2.12 5.21 2.36 4.61C2.6 4 2.98 3.44 3.51 2.94C4.15 2.31 4.85 2 5.59 2C5.87 2 6.15 2.06 6.4 2.18C6.66 2.3 6.89 2.48 7.07 2.74L9.39 6.01C9.57 6.26 9.7 6.49 9.79 6.71C9.88 6.92 9.93 7.13 9.93 7.32C9.93 7.56 9.86 7.8 9.72 8.03C9.59 8.26 9.4 8.5 9.16 8.74L8.4 9.53C8.29 9.64 8.24 9.77 8.24 9.93C8.24 10.01 8.25 10.08 8.27 10.16C8.3 10.24 8.33 10.3 8.35 10.36C8.53 10.69 8.84 11.12 9.28 11.64C9.73 12.16 10.21 12.69 10.73 13.22C11.27 13.75 11.79 14.24 12.32 14.69C12.84 15.13 13.27 15.43 13.61 15.61C13.66 15.63 13.72 15.66 13.79 15.69C13.87 15.72 13.95 15.73 14.04 15.73C14.21 15.73 14.34 15.67 14.45 15.56L15.21 14.81C15.46 14.56 15.7 14.37 15.93 14.25C16.16 14.11 16.39 14.04 16.64 14.04C16.83 14.04 17.03 14.08 17.25 14.17C17.47 14.26 17.7 14.39 17.95 14.56L21.26 16.91C21.52 17.09 21.7 17.3 21.81 17.55C21.91 17.8 21.97 18.05 21.97 18.33Z" stroke="#125A2F" stroke-width="1.5" stroke-miterlimit="10"/>
+                                </svg>
+                                <a href="tel:+917405221215">(+91) 7405221215</a>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="text-end support-timing ">(Mon - Sat, 9AM - 6:30PM)</div>
+                    <div class="footer-sections">
+                        <div class="footer-column">
+                            <h4>Products</h4>
+                            <t t-set="category" t-value="request.env['product.public.category'].search([('is_publish','=',True)])"/>
+                            <ul>
+                                <t t-foreach="category" t-as="categ">
+                                    <li>
+                                        <a t-attf-href="/shop/category/#{slug(categ)}" t-field="categ.name" target="_blank"/>
+
+                                    </li>
+                                </t>
+                            </ul>
+                        </div>
+                        <div class="footer-column">
+                            <h4>Services</h4>
+                            <ul>
+                            <li><a href="/enclosure">Enclosure Designing</a></li>
+                            <li><a href="/fused-deposition-modeling">FDM Printing (3D printing)</a></li>
+                            <li><a href="/projection-printing-figure">Projection Printing (3D printing)</a></li>
+                            <li><a href="/sheet-metal-fabrication">Sheet Metal Fabrication</a></li>
+                            <li><a href="/injection-molding">Injection Molding</a></li>
+                            <li><a href="/cnc-machining">CNC Machining</a></li>
+                            </ul>
+                        </div>
+                        <div class="footer-column">
+                            <h4>Quick Links</h4>
+                            <ul>
+                            <li><a href="/">Home</a></li>
+                            <li><a href="/about-us">About Us</a></li>
+                            <li><a href="/blog">Our Blog</a></li>
+                            <li><a href="/contact-us">Contact Us</a></li>
+                            <li><a href="/privacy/policy">Privacy Policy</a></li>
+                            <li><a href="/term/condition">Terms of Service</a></li>
+                            <li><a href="/shipping/policy">Shipping Policy</a></li>
+                            <li><a href="/cancellation/policy">Cancellation Policy</a></li>
+                            </ul>
+                        </div>
+                        <div class="footer-column certificate-del">
+                            <div>
+                                <h4>Certification</h4>
+                                <a href="/cr_web_portal/static/src/documents/iso_mechpower_certificate.pdf" class="iso-logo" target="_blank">
+                                    <img src="/cr_web_portal/static/src/images/mech-custom/iso.png" alt="ISO Certification" />
+                                </a>
+                            </div>
+                            <div>
+                                <h4>Delivery Partners</h4>
+                                <div class="footer-images">
+                                    <img src="/cr_web_portal/static/src/images/mech-custom/fed-ex.png" alt="FedEx" />
+                                    <img src="/cr_web_portal/static/src/images/mech-custom/blue-dart.png" alt="Blue Dart" />
+                                    <img src="/cr_web_portal/static/src/images/mech-custom/delhivery.png" alt="Delhivery" />
+                                    <img src="/cr_web_portal/static/src/images/mech-custom/xpress.png" alt="Xpress" />
+                                </div>
+                            </div>
+                            <div>
+                                <h4>Payment Methods</h4>
+                                <div class="footer-images">
+                                    <img src="/cr_web_portal/static/src/images/mech-custom/AmazonPay.png" alt="Amazon Pay" />
+                                    <img src="/cr_web_portal/static/src/images/mech-custom/GooglePay.png" alt="Google Pay" />
+                                    <img src="/cr_web_portal/static/src/images/mech-custom/Bitpay.png" alt="Paytm" />
+                                    <img src="/cr_web_portal/static/src/images/mech-custom/Visa.png" alt="Visa" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="footer-bottom">
+                        <p>© 2024 All rights reserved.</p>
+                        <div class="social-icons">
+                            <div class="icon facebook" style="background-color: #23B35D;">
+                                <a href="https://www.facebook.com/MechPowerofficial" target="_blank"><i class="fa fa-facebook-f" style="color: white !important;"></i></a>
+                            </div>
+                            <div class="icon youtube">
+                                <a href="https://www.youtube.com/@MechPower"><i class="fa fa-youtube"></i></a>
+                            </div>
+                            <div class="icon linkedin">
+                                <a href="https://www.linkedin.com/company/mech-power"><i class="fa fa-linkedin"></i></a>
+                            </div>
+                            <div class="icon instagram">
+                                <a href="https://www.instagram.com/mechpowerofficial/"><i class="fa fa-instagram"></i></a>
+                            </div>
+                            <div class="icon pinterest">
+                                <a href="#" target="_blank"><i class="fa fa-pinterest-p"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </xpath>
+
+        <!-- Existing odoo copyright section		-->
+        <xpath expr="//div[hasclass('o_footer_copyright')]" position="attributes">
+            <attribute name="class">d-none</attribute>
+        </xpath>
+
+    </template>
+    <template id="cr_web_portal_web_layout_inherit" inherit_id="web.layout">
+        <xpath expr="//head//script[@id='web.layout.odooscript']" position="after">
+            <script type="module" src="/cr_web_portal/static/lib/model_viwer.min.js"/>
+        </xpath>
+        <xpath expr="//head//*[1]" position="before">
+        <!-- Google Tag Manager -->
+        <script t-if="website and website.google_tag_manager_key">
+            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&amp;l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','<t t-esc="website.google_tag_manager_key"/>');
+        </script>
+        <!-- End Google Tag Manager -->
+        </xpath>
+        <xpath expr="//body//*[1]" position="before">
+        <noscript t-if="website and website.google_tag_manager_key">
+            <iframe t-attf-src="https://www.googletagmanager.com/ns.html?id={{ website.google_tag_manager_key }}"
+                    height="0" width="0" style="display:none;visibility:hidden"></iframe>
+        </noscript>
+        </xpath>
+        <xpath expr="//title" position="after">
+        <meta name="robots" content="index, follow" />
+        <meta name="p:domain_verify" content="9442c5350e03d197170f602d88da1aed"/>
+        <script type="application/ld+json">
+			[{
+					"@context": "http://schema.org",
+					"name": "Mech Power",
+					"url": "https://mechpowertech.com/",
+					"description": "Enclosure Design Services | Injection molding Manufacturer",
+					"image": "https://mechpowertech.com/cr_web_portal/static/src/img/logow.png",
+					"@type": "LocalBusiness",
+					"address": {
+						"@type": "PostalAddress",
+						"streetAddress": "Survey no. 407, Near Ram Hospital Sarkhej-Bavla Highway, Moraiya",
+						"addressLocality": "Ahmedabad",
+						"addressRegion": "Gujarat",
+						"postalCode":"382213",
+						"addressCountry": "IN",
+						"email": "sales@mechpowertech.com",
+						"telephone": "074052 21215"
+					},
+					"openingHours": ["Wed-Mon 09:00-6:00","Tue Closed"],
+					"priceRange": "INR",
+					"geo": {
+						"@type": "GeoCoordinates",
+						"latitude": "22.91059705351545",
+						"longitude": "72.42823390794427"
+					},
+					"aggregateRating": {
+						"@type": "AggregateRating",
+						"ratingValue": "4.9",
+						"reviewCount": "10"
+					},
+					"sameAs":[ "https://mechpowertech.com/","https://www.linkedin.com/company/mech-power","https://www.facebook.com/MechPowerofficial","https://www.instagram.com/mechpowerofficial/"]
+				}
+			]
+		</script>
+        </xpath>
+    </template>
+</odoo>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="view_product_image_form_inherit" model="ir.ui.view">
+        <field name="name">view_product_image_form_inherit</field>
+        <field name="model">product.image</field>
+        <field name="inherit_id" ref="website_sale.view_product_image_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('o_website_sale_image_modal_container')]" position="replace">
+                <div class="col-md-6 col-xl-7 text-center o_website_sale_image_modal_container">
+                    <div class="row">
+                        <div class="col ">
+                            <div class="d-flex">
+                                <label for="image_1920" string="PNG Image"/>
+                                <field name="image_1920" filename="image_1920_filename" style="margin-left: 5px;" />
+                                <field name="image_1920_filename" invisible="1" />
+                            </div>
+                            <div class="d-flex">
+                                <label for="glb_image" string="GLB Image"/>
+                                <field name="glb_image" filename="glb_image_filename" style="margin-left: 5px;"/>
+                                <field name="glb_image_filename" invisible="1"/>
+                            </div>
+                        </div>
+                        <div class="col" attrs="{'invisible': [('video_url', 'in', ['', False])]}">
+                            <div class="o_video_container p-2">
+                                <span>Video Preview</span>
+                                <field name="embed_code" class="mt-2" widget="video_preview"/>
+                                <h4 class="o_invalid_warning text-muted text-center" attrs="{'invisible': [('embed_code', '!=', False)]}">
+                                    Please enter a valid Video URL.
+                                </h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>

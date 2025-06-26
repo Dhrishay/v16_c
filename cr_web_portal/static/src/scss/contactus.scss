@@ -1,0 +1,76 @@
+/* Contact Us Page */
+.mp_underline_custom {
+    background-image: url(/cr_web_portal/static/src/images/mech-custom/mp_underline_custom.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center bottom 0%;
+}
+
+#contactus-header {
+	.pbmit-element-title{
+		font-size: 24px;
+	}
+}
+
+.customer-care-icon{
+    margin-right: 7px;
+}
+
+#contactus-content{
+	margin-top: 140px;
+	.pbmit-ihbox-box{
+		border-radius: 12px !important;
+		padding: 24px 24px;
+	}
+
+	.pbmit-ihbox-style-5:hover{
+		.pbmit-ihbox-box{
+			transition:0.5s;
+			border-radius: 12px;
+			border: 1px solid #FFF;
+			background: linear-gradient(180deg, #FFF 73.22%, #ECFFF4 91.87%, #EAFEF2 100%);
+			box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.10);
+		}
+		.pbmit-heading-desc{
+			color: #474747 !important;
+		}
+
+		.pbmit-element-title{
+			color: #474747 !important;
+		}
+	}
+}
+
+#contact-address{
+
+	.sub-heading-custom{
+		color: var(--mp-color-1);
+	    font-family: var(--pbmit-body-typography-font-family);
+	    font-weight: 500;
+	    font-size: 14px;
+	    line-height: 27px;
+	    letter-spacing: 4px;
+	}
+}
+
+@media (max-width: 768px) {
+	#contactus-header {
+		.s_cover {
+			padding-top: 151.5px !important;
+			padding-bottom: 151.5px !important;
+		}
+	}
+	#contact-address{
+		margin-top: 32px !important;
+	}
+
+	#contactus-content{
+		margin-top: 24px !important;
+	}
+}
+
+@media(min-width: 320px) and (max-width: 768px) {
+	.manuf-facility{
+		margin-bottom: 20px;
+	}
+}

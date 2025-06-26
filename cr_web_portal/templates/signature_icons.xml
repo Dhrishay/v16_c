@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="signature_icons_form_view" model="ir.ui.view">
+        <field name="name">signature_icons_form_view</field>
+        <field name="model">signature.icons</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name" required="1"/>
+                        <field name="icon_url" readonly="1"/>
+                        <field name="img_file_name" invisible="1"/>
+                        <field name="signature_image" filename="img_file_name" required="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="signature_icons_tree_view" model="ir.ui.view">
+        <field name="name">signature_icons_tree_view</field>
+        <field name="model">signature.icons</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" />
+                <field name="icon_url" readonly="1" />
+            </tree>
+        </field>
+    </record>
+    <record id="signature_icons_act" model="ir.actions.act_window">
+        <field name="name">Signature Icons</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">signature.icons</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="signature_icons_tree_view"/>
+    </record>
+
+    <menuitem  id="parent_signature_icons_acttion_menu" name="Signature Icons"  parent="sale.menu_sale_config"  />
+    <menuitem action="signature_icons_act" id="signature_icons_acttion_menu" name="Signature Icons"  parent="parent_signature_icons_acttion_menu"  />
+</odoo>

@@ -1,0 +1,2099 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <template id="message_notification_email_inherit_cr" inherit_id="mail.mail_notification_layout">
+            <xpath expr="//div[4]" position="replace">
+                <div style="margin-top:32px;">
+                    <hr width="100%"
+                        style="background-color:rgb(204,204,204);border:medium none;clear:both;display:block;font-size:0px;min-height:1px;line-height:0; margin: 16px 0px 4px 0px;"/>
+                    <td align="center" style="min-width: 590px;">
+                        <table border="0" cellpadding="0" cellspacing="0" width="590"
+                               style="min-width: 590px; background-color: white; font-size: 11px; padding: 0px 8px 0px 8px; border-collapse:separate;">
+                            <tr>
+                                <td valign="middle" align="left">
+                                    <a href="https://www.linkedin.com/company/mech-power">
+                                        <img t-att-src="'/logo.linkedin?company=%s' % (company.id or 0)"
+                                             class="img img-fluid shadow"
+                                             style="box-sizing: border-box; display: inline-block; box-shadow: rgb(216, 216, 216) 0px 6px 6px; max-width: 100%;"
+                                             width="21.25" height="20"
+                                             alt="linkedin"/>
+                                    </a>
+                                    <a href="https://www.facebook.com/MechPowerofficial/">
+                                        <img t-att-src="'/logo.facebook?company=%s' % (company.id or 0)"
+                                             class="img img-fluid shadow"
+                                             style="box-sizing: border-box; display: inline-block; box-shadow: rgb(216, 216, 216) 0px 6px 6px; max-width: 100%;"
+                                             width="21.25" height="20"/>
+                                    </a>
+                                    <a href="https://www.instagram.com/mechpowerofficial/">
+                                        <img t-att-src="'/logo.instagram?company=%s' % (company.id or 0)"
+                                             class="img img-fluid shadow"
+                                             style="box-sizing: border-box; display: inline-block; box-shadow: rgb(216, 216, 216) 0px 6px 6px; max-width: 100%;"
+                                             width="21.25" height="20"/>
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td valign="middle" align="left">
+                                    Mech Power Technology Private Limited
+                                </td>
+                            </tr>
+                            <tr>
+                                <td valign="middle" align="left">
+                                    Plot no.407, Sarkhej-Bavla Highway, Ahmedabad, Gujarat 382213
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    You Can
+                                    <a role="button" href="/unsubscribe_from_list"
+                                       class="btn btn-link">Unsubscribe
+                                    </a>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                    <!--                                    </tr>-->
+                </div>
+            </xpath>
+
+        </template>
+
+        <!-- Email template for Lead creation -->
+        <record id="lead_creation_email" model="mail.template">
+            <field name="name">Create: Lead Creation</field>
+            <field name="model_id" ref="cr_web_portal.model_crm_lead"/>
+            <field name="subject">Thank you for sharing your details | Mech Power</field>
+            <field name="email_from">{{ (object.company_id.email_formatted or user.email_formatted) }}</field>
+            <field name="body_html" type="html">
+                <table border="0" cellpadding="0" cellspacing="0"
+                       style="padding-top: 16px; background-color: #FFFFFF; font-family:Verdana, Arial,sans-serif; color: #454748; width: 100%; border-collapse:separate;">
+                    <tr>
+                        <td align="center">
+                            <table border="0" cellpadding="0" cellspacing="0" width="590"
+                                   style="padding: 16px; background-color: #FFFFFF; color: #454748; border-collapse:separate;">
+                                <tbody>
+                                    <!-- HEADER -->
+                                    <tr>
+                                        <td align="center" style="min-width: 590px;">
+                                            <table border="0" cellpadding="0" cellspacing="0" width="590"
+                                                   style="min-width: 590px; background-color: white; padding: 0px 8px 0px 8px; border-collapse:separate;">
+                                                <tr>
+                                                    <td valign="middle">
+                                                        <img t-attf-src="/logo.png?company={{ object.company_id.id }}"
+                                                             style="padding: 0px; margin: 0px; height: auto; width: 80px;"
+                                                             t-att-alt="object.company_id.name"/>
+
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="2" style="text-align:center;">
+                                                        <hr width="100%"
+                                                            style="background-color:rgb(204,204,204);border:medium none;clear:both;display:block;font-size:0px;min-height:1px;line-height:0; margin: 16px 0px 16px 0px;"/>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <!-- CONTENT -->
+                                    <tr>
+                                        <td align="center" style="min-width: 590px;">
+                                            <table border="0" cellpadding="0" cellspacing="0" width="590"
+                                                   style="min-width: 590px; background-color: white; padding: 0px 8px 0px 8px; border-collapse:separate;">
+                                                <tr>
+                                                    <td valign="top" style="font-size: 13px;">
+                                                        <div>
+                                                            Dear <t t-out="ctx.get('contact_name') or ''">Marc Demo</t>,
+                                                            <br/>
+                                                            Thank you for reaching out to Mech Power regarding your
+                                                            <b>
+                                                                <t t-out="ctx.get('service_list') or ''">services</t>
+                                                            </b>
+                                                            needs.
+                                                            <br/>
+                                                            We appreciate your interest in our services.
+                                                        </div>
+                                                        <br/>
+                                                        <div>
+                                                            Our team will review your requirements and reach out to you
+                                                            shortly to discuss your project in more detail.
+                                                            <br/>
+                                                            If you have any urgent questions or additional details to
+                                                            share,
+                                                            please feel free to contact us directly at (+91) 7405221215
+                                                            or
+                                                            sales@mechpowertech.com
+                                                            <br/>
+                                                        </div>
+                                                        <br/>
+                                                        <div>
+                                                            We're looking forward to collaborating with you to fulfill
+                                                            your
+                                                            enclosure requirements.
+                                                        </div>
+                                                        <br/>
+                                                        <div>
+                                                            Visit <a href="https://mechpowertech.com/" target="_blank">
+                                                            mechpowertech.com
+                                                        </a> now to explore our range of products and services to find
+                                                            the
+                                                            perfect solution for your enclosure needs!
+                                                        </div>
+                                                        <br/>
+                                                        <span>
+                                                            Regards,
+                                                            <br/>
+                                                            Sales &amp; support team,
+                                                            <br/>
+                                                            Mech Power
+                                                            <br/>
+                                                        </span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="text-align:center;">
+                                                        <hr width="100%"
+                                                            style="background-color:rgb(204,204,204);border:medium none;clear:both;display:block;font-size:0px;min-height:1px;line-height:0; margin: 16px 0px 16px 0px;"/>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td align="center" style="min-width: 590px;">
+                                            <table border="0" cellpadding="0" cellspacing="0" width="590"
+                                                   style="min-width: 590px; background-color: white; font-size: 11px; padding: 0px 8px 0px 8px; border-collapse:separate;">
+                                                <tr>
+                                                    <td valign="middle" align="left">
+                                                        <a href="https://www.linkedin.com/company/mech-power">
+                                                            <img t-att-src="'/logo.linkedin?company=%s' % (object.company_id.id or 0)"
+                                                                 class="img img-fluid shadow"
+                                                                 style="box-sizing: border-box; display: inline-block; box-shadow: rgb(216, 216, 216) 0px 6px 6px; max-width: 100%;"
+                                                                 width="21.25" height="20"
+                                                                 alt="linkedin"/>
+                                                        </a>
+                                                        <a href="https://www.facebook.com/MechPowerofficial/">
+                                                            <img t-att-src="'/logo.facebook?company=%s' % (object.company_id.id or 0)"
+                                                                 class="img img-fluid shadow"
+                                                                 style="box-sizing: border-box; display: inline-block; box-shadow: rgb(216, 216, 216) 0px 6px 6px; max-width: 100%;"
+                                                                 width="21.25" height="20"/>
+                                                        </a>
+                                                        <a href="https://www.instagram.com/mechpowerofficial/">
+                                                            <img t-att-src="'/logo.instagram?company=%s' % (object.company_id.id or 0)"
+                                                                 class="img img-fluid shadow"
+                                                                 style="box-sizing: border-box; display: inline-block; box-shadow: rgb(216, 216, 216) 0px 6px 6px; max-width: 100%;"
+                                                                 width="21.25" height="20"/>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td valign="middle" align="left">
+                                                        Mech Power Technology Private Limited
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td valign="middle" align="left">
+                                                        Plot no.407, Sarkhej-Bavla Highway, Ahmedabad, Gujarat 382213
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        You Can
+                                                        <a role="button" href="/unsubscribe_from_list"
+                                                           class="btn btn-link">Unsubscribe
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </field>
+        </record>
+
+        <!-- Email template for Contact Us Form -->
+        <record id="lead_creation_email_from_contact_us_form" model="mail.template">
+            <field name="name">Create: Lead Creation From Contact Us Form</field>
+            <field name="model_id" ref="cr_web_portal.model_crm_lead"/>
+            <field name="subject">Thank you for contacting us! | Mech Power</field>
+            <field name="email_from">{{ (object.company_id.email_formatted or user.email_formatted) }}</field>
+            <field name="body_html" type="html">
+                <table border="0" cellpadding="0" cellspacing="0"
+                       style="padding-top: 16px; background-color: #FFFFFF; font-family:Verdana, Arial,sans-serif; color: #454748; width: 100%; border-collapse:separate;">
+                    <tr>
+                        <td align="center">
+                            <table border="0" cellpadding="0" cellspacing="0" width="590"
+                                   style="padding: 16px; background-color: #FFFFFF; color: #454748; border-collapse:separate;">
+                                <tbody>
+                                    <!-- HEADER -->
+                                    <tr>
+                                        <td align="center" style="min-width: 590px;">
+                                            <table border="0" cellpadding="0" cellspacing="0" width="590"
+                                                   style="min-width: 590px; background-color: white; padding: 0px 8px 0px 8px; border-collapse:separate;">
+                                                <tr>
+                                                    <td valign="middle">
+                                                        <img t-attf-src="/logo.png?company={{ object.company_id.id }}"
+                                                             style="padding: 0px; margin: 0px; height: auto; width: 80px;"
+                                                             t-att-alt="object.company_id.name"/>
+
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="2" style="text-align:center;">
+                                                        <hr width="100%"
+                                                            style="background-color:rgb(204,204,204);border:medium none;clear:both;display:block;font-size:0px;min-height:1px;line-height:0; margin: 16px 0px 16px 0px;"/>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <!-- CONTENT -->
+                                    <tr>
+                                        <td align="center" style="min-width: 590px;">
+                                            <table border="0" cellpadding="0" cellspacing="0" width="590"
+                                                   style="min-width: 590px; background-color: white; padding: 0px 8px 0px 8px; border-collapse:separate;">
+                                                <tr>
+                                                    <td valign="top" style="font-size: 13px;">
+                                                        <div>
+                                                            Dear <t t-out="ctx.get('contact_name') or ''">Marc Demo</t>,
+                                                            <br/>
+                                                            Thank you for reaching out to Mech Power. We have received
+                                                            your
+                                                            inquiry and our team is currently reviewing the details.
+                                                        </div>
+                                                        <br/>
+                                                        <div>
+                                                            Inquiry details:
+                                                            <br/>
+                                                            Name:
+                                                            <t t-out="ctx.get('contact_name') or ''">Marc Demo</t>
+                                                            <br/>
+                                                            Contact number:
+                                                            <t t-out="ctx.get('phone') or ''">+91 77777777777</t>
+                                                            <br/>
+                                                            <t t-if="len(ctx.get('service_list')) > 0">
+                                                                Services:
+                                                                <t t-foreach="ctx.get('service_list')" t-as="service">
+                                                                    <span t-esc="service"/>
+                                                                    <t t-if="ctx.get('service_list')[-1] == service">.
+                                                                    </t>
+                                                                    <t t-else="">,</t>
+                                                                </t>
+                                                            </t>
+                                                            <br/>
+                                                            <t t-if="len(ctx.get('product_categories')) > 0">
+                                                                Products:
+                                                                <t t-foreach="ctx.get('product_categories')"
+                                                                   t-as="product">
+                                                                    <span t-esc="product.name"/>
+                                                                    <t t-if="ctx.get('product_categories')[-1].id == product.id">
+                                                                        .
+                                                                    </t>
+                                                                    <t t-else="">,</t>
+                                                                </t>
+                                                            </t>
+                                                        </div>
+                                                        <br/>
+                                                        <div>
+                                                            In the meantime, feel free to explore our website for more
+                                                            information about our products and services. Visit
+                                                            <a href="https://mechpowertech.com/" target="_blank">
+                                                                mechpowertech.com
+                                                            </a>
+                                                        </div>
+                                                        <br/>
+                                                        <div>
+                                                            If you have any urgent questions, please don't hesitate to
+                                                            contact us directly at (+91) 7405221215 or
+                                                            support@mechpowertech.com
+                                                        </div>
+                                                        <div>
+                                                            We appreciate your interest in Mech Power and look forward
+                                                            to
+                                                            assisting you.
+                                                        </div>
+                                                        <br/>
+                                                        <span>
+                                                            Regards,
+                                                            <br/>
+                                                            Sales &amp; support team,
+                                                            <br/>
+                                                            Mech Power
+                                                            <br/>
+                                                        </span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="text-align:center;">
+                                                        <hr width="100%"
+                                                            style="background-color:rgb(204,204,204);border:medium none;clear:both;display:block;font-size:0px;min-height:1px;line-height:0; margin: 16px 0px 16px 0px;"/>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td align="center" style="min-width: 590px;">
+                                            <table border="0" cellpadding="0" cellspacing="0" width="590"
+                                                   style="min-width: 590px; background-color: white; font-size: 11px; padding: 0px 8px 0px 8px; border-collapse:separate;">
+                                                <tr>
+                                                    <td valign="middle" align="left">
+                                                        <a href="https://www.linkedin.com/company/mech-power">
+                                                            <img t-att-src="'/logo.linkedin?company=%s' % (object.company_id.id or 0)"
+                                                                 class="img img-fluid shadow"
+                                                                 style="box-sizing: border-box; display: inline-block; box-shadow: rgb(216, 216, 216) 0px 6px 6px; max-width: 100%;"
+                                                                 width="21.25" height="20"
+                                                                 alt="linkedin"/>
+                                                        </a>
+                                                        <a href="https://www.facebook.com/MechPowerofficial/">
+                                                            <img t-att-src="'/logo.facebook?company=%s' % (object.company_id.id or 0)"
+                                                                 class="img img-fluid shadow"
+                                                                 style="box-sizing: border-box; display: inline-block; box-shadow: rgb(216, 216, 216) 0px 6px 6px; max-width: 100%;"
+                                                                 width="21.25" height="20"/>
+                                                        </a>
+                                                        <a href="https://www.instagram.com/mechpowerofficial/">
+                                                            <img t-att-src="'/logo.instagram?company=%s' % (object.company_id.id or 0)"
+                                                                 class="img img-fluid shadow"
+                                                                 style="box-sizing: border-box; display: inline-block; box-shadow: rgb(216, 216, 216) 0px 6px 6px; max-width: 100%;"
+                                                                 width="21.25" height="20"/>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td valign="middle" align="left">
+                                                        Mech Power Technology Private Limited
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td valign="middle" align="left">
+                                                        Plot no.407, Sarkhej-Bavla Highway, Ahmedabad, Gujarat 382213
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        You Can
+                                                        <a role="button" href="/unsubscribe_from_list"
+                                                           class="btn btn-link">Unsubscribe
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </field>
+        </record>
+
+        <!-- Email template for Inquiry Creation-->
+        <record id="inquiry_creation_email" model="mail.template">
+            <field name="name">Email: Inquiry creation</field>
+            <field name="model_id" ref="base.model_res_users"/>
+            <field name="subject">We have received your product customisation inquiry {{ctx.get('cus_value').get('inq_no')}} | Mech Power</field>
+            <field name="email_from">{{ (object.company_id.email_formatted or user.email_formatted) }}</field>
+            <field name="body_html" type="html">
+                <table border="0" cellpadding="0" cellspacing="0"
+                       style="padding-top: 16px; background-color: #FFFFFF; font-family:Verdana, Arial,sans-serif; color: #454748; width: 100%; border-collapse:separate;">
+                    <tr>
+                        <td align="center">
+                            <table border="0" cellpadding="0" cellspacing="0" width="590"
+                                   style="padding: 16px; background-color: #FFFFFF; color: #454748; border-collapse:separate;">
+                                <tbody>
+                                    <!-- HEADER -->
+                                    <tr>
+                                        <td align="center" style="min-width: 590px;">
+                                            <table border="0" cellpadding="0" cellspacing="0" width="590"
+                                                   style="min-width: 590px; background-color: white; padding: 0px 8px 0px 8px; border-collapse:separate;">
+                                                <tr>
+                                                    <td valign="middle">
+                                                        <img t-attf-src="/logo.png?company={{ object.company_id.id }}"
+                                                             style="padding: 0px; margin: 0px; height: auto; width: 80px;"
+                                                             t-att-alt="object.company_id.name"/>
+
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="2" style="text-align:center;">
+                                                        <hr width="100%"
+                                                            style="background-color:rgb(204,204,204);border:medium none;clear:both;display:block;font-size:0px;min-height:1px;line-height:0; margin: 16px 0px 16px 0px;"/>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <!-- CONTENT -->
+                                    <tr>
+                                        <td align="center" style="min-width: 590px;">
+                                            <table border="0" cellpadding="0" cellspacing="0" width="590"
+                                                   style="min-width: 590px; background-color: white; padding: 0px 8px 0px 8px; border-collapse:separate;">
+                                                <tr>
+                                                    <td valign="top" style="font-size: 13px;">
+                                                        <div>
+                                                            Dear
+                                                            <b>
+                                                                <t t-out="ctx.get('cus_value').get('contact_name')"></t>
+                                                            </b>
+                                                            ,
+                                                            <br/>
+                                                            Thank you for choosing Mech Power to customize your product.
+                                                            We've received your request for customisation and our team
+                                                            is looking forward to assisting you further.
+                                                            <br/>
+                                                        </div>
+                                                        <br/>
+                                                        <div>
+                                                            <b>Customisation inquiry details:</b>
+                                                            <br/>
+                                                            <b>Product:</b>
+                                                            <t t-esc="ctx.get('cus_value').get('product_name')"/>
+                                                            <t t-if="ctx.get('cus_value').get('addition_note')">
+                                                                <br/>
+                                                                <b>Customisation request:</b>
+                                                                <t t-esc="ctx.get('cus_value').get('addition_note')"/>
+                                                            </t>
+                                                            <br/>
+                                                            <b>Inquiry number:</b>
+                                                            <t t-esc="ctx.get('cus_value').get('inq_no')"/>
+                                                            <br/>
+                                                        </div>
+                                                        <br/>
+                                                        <div>Our team will promptly review your customisation
+                                                            requirements and get back to you shortly.
+                                                            <br/>
+                                                            If you have any urgent questions or additional details to
+                                                            share, please feel free to contact us directly at (+91)
+                                                            7405221215 or sales@mechpowertech.com
+                                                        </div>
+                                                        <div>
+                                                            We appreciate your trust in Mech Power and look forward to
+                                                            collaborating with you to fulfill your enclosure
+                                                            requirements.
+                                                        </div>
+                                                        <br/>
+                                                        <div>
+                                                            Visit <a href="mechpowertech.com">mechpowertech.com</a> now
+                                                            to explore our range of products and services to find the
+                                                            perfect solution for your enclosure needs!
+                                                        </div>
+                                                        <br/>
+                                                        <span>
+                                                            Regards,
+                                                            <br/>
+                                                            Sales support team,
+                                                            <br/>
+                                                            Mech Power
+                                                            <br/>
+                                                        </span>
+
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="text-align:center;">
+                                                        <hr width="100%"
+                                                            style="background-color:rgb(204,204,204);border:medium none;clear:both;display:block;font-size:0px;min-height:1px;line-height:0; margin: 16px 0px 16px 0px;"/>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <!-- FOOTER -->
+                                    <tr>
+                                        <td align="center" style="min-width: 590px;">
+                                            <table border="0" cellpadding="0" cellspacing="0" width="590"
+                                                   style="min-width: 590px; background-color: white; font-size: 11px; padding: 0px 8px 0px 8px; border-collapse:separate;">
+                                                <tr>
+                                                    <td valign="middle" align="left">
+                                                        <a href="https://www.linkedin.com/company/mech-power">
+                                                            <img t-att-src="'/logo.linkedin?company=%s' % (object.company_id.id or 0)"
+                                                                 class="img img-fluid shadow"
+                                                                 style="box-sizing: border-box; display: inline-block; box-shadow: rgb(216, 216, 216) 0px 6px 6px; max-width: 100%;"
+                                                                 width="21.25" height="20"
+                                                                 alt="linkedin"/>
+                                                        </a>
+                                                        <a href="https://www.facebook.com/MechPowerofficial/">
+                                                            <img t-att-src="'/logo.facebook?company=%s' % (object.company_id.id or 0)"
+                                                                 class="img img-fluid shadow"
+                                                                 style="box-sizing: border-box; display: inline-block; box-shadow: rgb(216, 216, 216) 0px 6px 6px; max-width: 100%;"
+                                                                 width="21.25" height="20"/>
+                                                        </a>
+                                                        <a href="https://www.instagram.com/mechpowerofficial/">
+                                                            <img t-att-src="'/logo.instagram?company=%s' % (object.company_id.id or 0)"
+                                                                 class="img img-fluid shadow"
+                                                                 style="box-sizing: border-box; display: inline-block; box-shadow: rgb(216, 216, 216) 0px 6px 6px; max-width: 100%;"
+                                                                 width="21.25" height="20"/>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td valign="middle" align="left">
+                                                        Mech Power Technology Private Limited
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td valign="middle" align="left">
+                                                        Plot no.407, Sarkhej-Bavla Highway, Ahmedabad, Gujarat 382213
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        You Can
+                                                        <a role="button" href="/unsubscribe_from_list"
+                                                           class="btn btn-link">Unsubscribe
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </field>
+        </record>
+
+        <!-- Email template for Inquiry Creation For Services -->
+        <record id="inquiry_creation_email_service" model="mail.template">
+            <field name="name">Email: Inquiry creation Service</field>
+            <field name="subject">We have received your {{ctx.get('cus_value').get('service')}} inquiry {{ctx.get('cus_value').get('inq_no')}} | Mech Power</field>
+            <field name="model_id" ref="base.model_res_users"/>
+            <field name="email_from">{{ (object.company_id.email_formatted or user.email_formatted) }}</field>
+            <field name="body_html" type="html">
+                <table border="0" cellpadding="0" cellspacing="0"
+                       style="padding-top: 16px; background-color: #FFFFFF; font-family:Verdana, Arial,sans-serif; color: #454748; width: 100%; border-collapse:separate;">
+                    <tr>
+                        <td align="center">
+                            <table border="0" cellpadding="0" cellspacing="0" width="590"
+                                   style="padding: 16px; background-color: #FFFFFF; color: #454748; border-collapse:separate;">
+                                <tbody>
+                                    <!-- HEADER -->
+                                    <tr>
+                                        <td align="center" style="min-width: 590px;">
+                                            <table border="0" cellpadding="0" cellspacing="0" width="590"
+                                                   style="min-width: 590px; background-color: white; padding: 0px 8px 0px 8px; border-collapse:separate;">
+                                                <tr>
+                                                    <td valign="middle">
+                                                        <img t-attf-src="/logo.png?company={{ object.company_id.id }}"
+                                                             style="padding: 0px; margin: 0px; height: auto; width: 80px;"
+                                                             t-att-alt="object.company_id.name"/>
+
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="2" style="text-align:center;">
+                                                        <hr width="100%"
+                                                            style="background-color:rgb(204,204,204);border:medium none;clear:both;display:block;font-size:0px;min-height:1px;line-height:0; margin: 16px 0px 16px 0px;"/>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <!-- CONTENT -->
+                                    <tr>
+                                        <td align="center" style="min-width: 590px;">
+                                            <table border="0" cellpadding="0" cellspacing="0" width="590"
+                                                   style="min-width: 590px; background-color: white; padding: 0px 8px 0px 8px; border-collapse:separate;">
+                                                <tr>
+                                                    <td valign="top" style="font-size: 13px;">
+                                                        <div>
+                                                            Dear
+                                                            <b>
+                                                                <t t-out="ctx.get('cus_value').get('contact_name')"></t>
+                                                            </b>
+                                                            ,
+                                                            <br/>
+                                                            Thank you for choosing Mech Power for your custom
+                                                            requirements. We've received your inquiry for <t
+                                                                t-out="ctx.get('cus_value').get('service')"></t> and
+                                                            our team is looking forward to assisting you further.
+                                                            <br/>
+                                                        </div>
+                                                        <br/>
+                                                        <div>
+                                                            <b>Service inquiry details:</b>
+                                                            <br/>
+                                                            <b>Service:</b>
+                                                            <t t-out="ctx.get('cus_value').get('service')"></t>
+                                                            <br/>
+                                                            <b>Inquiry number:</b>
+                                                            <t t-out="ctx.get('cus_value').get('inq_no')"></t>
+                                                            <br/>
+                                                        </div>
+                                                        <br/>
+                                                        <div>Our team will promptly review your requirements and get
+                                                            back to you shortly.
+                                                            <br/>
+                                                            If you have any urgent questions or additional details to
+                                                            share, please feel free to contact us directly at (+91)
+                                                            7405221215 or sales@mechpowertech.com
+                                                        </div>
+                                                        <br/>
+                                                        <div>
+                                                            We appreciate your trust in Mech Power and look forward to
+                                                            collaborating with you to fulfill your enclosure
+                                                            requirements.
+                                                        </div>
+                                                        <br/>
+                                                        <div>
+                                                            Visit <a href="mechpowertech.com">mechpowertech.com</a> now
+                                                            to explore our range of products and services to find the
+                                                            perfect solution for your enclosure needs!
+                                                        </div>
+                                                        <br/>
+                                                        <span>
+                                                            Regards,
+                                                            <br/>
+                                                            Sales support team,
+                                                            <br/>
+                                                            Mech Power
+                                                            <br/>
+                                                        </span>
+
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="text-align:center;">
+                                                        <hr width="100%"
+                                                            style="background-color:rgb(204,204,204);border:medium none;clear:both;display:block;font-size:0px;min-height:1px;line-height:0; margin: 16px 0px 16px 0px;"/>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <!-- FOOTER -->
+                                    <tr>
+                                        <td align="center" style="min-width: 590px;">
+                                            <table border="0" cellpadding="0" cellspacing="0" width="590"
+                                                   style="min-width: 590px; background-color: white; font-size: 11px; padding: 0px 8px 0px 8px; border-collapse:separate;">
+                                                <tr>
+                                                    <td valign="middle" align="left">
+                                                        <a href="https://www.linkedin.com/company/mech-power">
+                                                            <img t-att-src="'/logo.linkedin?company=%s' % (object.company_id.id or 0)"
+                                                                 class="img img-fluid shadow"
+                                                                 style="box-sizing: border-box; display: inline-block; box-shadow: rgb(216, 216, 216) 0px 6px 6px; max-width: 100%;"
+                                                                 width="21.25" height="20"
+                                                                 alt="linkedin"/>
+                                                        </a>
+                                                        <a href="https://www.facebook.com/MechPowerofficial/">
+                                                            <img t-att-src="'/logo.facebook?company=%s' % (object.company_id.id or 0)"
+                                                                 class="img img-fluid shadow"
+                                                                 style="box-sizing: border-box; display: inline-block; box-shadow: rgb(216, 216, 216) 0px 6px 6px; max-width: 100%;"
+                                                                 width="21.25" height="20"/>
+                                                        </a>
+                                                        <a href="https://www.instagram.com/mechpowerofficial/">
+                                                            <img t-att-src="'/logo.instagram?company=%s' % (object.company_id.id or 0)"
+                                                                 class="img img-fluid shadow"
+                                                                 style="box-sizing: border-box; display: inline-block; box-shadow: rgb(216, 216, 216) 0px 6px 6px; max-width: 100%;"
+                                                                 width="21.25" height="20"/>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td valign="middle" align="left">
+                                                        Mech Power Technology Private Limited
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td valign="middle" align="left">
+                                                        Plot no.407, Sarkhej-Bavla Highway, Ahmedabad, Gujarat 382213
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        You Can
+                                                        <a role="button" href="/unsubscribe_from_list"
+                                                           class="btn btn-link">Unsubscribe
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </field>
+        </record>
+
+        <!-- Send Quotation for advance payment  -->
+        <function name="write" model="ir.model.data">
+            <function name="search" model="ir.model.data">
+                <value eval="[('module', '=', 'sale'), ('name','=','email_template_edi_sale')] "/>
+            </function>
+            <value eval=" {'noupdate': False} "/>
+        </function>
+        <record id="sale.email_template_edi_sale" model="mail.template">
+            <field name="name">Sales: Send Quotation</field>
+            <field name="model_id" ref="sale.model_sale_order"/>
+            <field name="subject">Quotation for the Inquiry {{object.name}} | Mech Power
+            </field>
+            <field name="email_from">{{ (object.user_id.email_formatted or object.company_id.email_formatted or
+                user.email_formatted) }}
+            </field>
+            <field name="partner_to">{{ object.partner_id.id }}</field>
+            <field name="description">Used by salespeople when they send quotations or proforma to prospects</field>
+            <field name="body_html" type="html">
+                <div style="margin: 0px; padding: 0px;">
+                    <tr>
+                        <td align="center" style="min-width: 590px;">
+                            <table border="0" cellpadding="0" cellspacing="0" width="590"
+                                   style="min-width: 590px; background-color: white; padding: 0px 8px 0px 8px; border-collapse:separate;">
+                                <tr>
+                                    <td valign="top" style="font-size: 13px;">
+                                        <div>
+                                            Dear
+                                            <b>
+                                                <t t-esc="object.partner_id.name"/>
+                                            </b>
+                                            ,
+                                            <br/>
+                                            Thank you for choosing Mech Power for your enclosure requirements. We have
+                                            carefully reviewed your requirements and are pleased to provide you with a
+                                            quotation for your consideration.
+                                            <br/>
+                                        </div>
+                                        <br/>
+                                        <div>
+                                            Please find attached the quotation outlining the inquiry details, pricing,
+                                            terms
+                                            and conditions.
+                                        </div>
+                                        <div>
+                                            <t t-if="object.is_customisable or object.service">
+                                                <t t-if="object.state in ('sale', 'done')">
+                                                    <b>Sales Order number:</b>
+                                                </t>
+                                                <t t-else="">
+                                                    <b>Inquiry number:</b>
+                                                </t>
+                                                <t t-esc="object.name"/>
+                                            </t>
+                                            <t t-else="">
+                                                <b>Quotation number:</b>
+                                                <t t-esc="object.name"/>
+                                            </t>
+                                            <br/>
+                                            <t t-if="object.service">
+                                                <t t-set="service_or_product"
+                                                   t-if="object.service == 'enclosure_design'"
+                                                   t-value="'Enclosure Design'"/>
+                                                <t t-set="service_or_product" t-if="object.service == 'fdm_modeling'"
+                                                   t-value="'3D Printing (FDM)'"/>
+                                                <t t-set="service_or_product"
+                                                   t-if="object.service == 'projection_printing'"
+                                                   t-value="'3D Printing (Projection)'"/>
+                                                <t t-set="service_or_product"
+                                                   t-if="object.service == 'sheet_metal_fabrication'"
+                                                   t-value="'Sheet Metal Fabrication'"/>
+                                                <t t-set="service_or_product" t-if="object.service == 'cnc_machining'"
+                                                   t-value="'CNC Machining'"/>
+                                                <t t-set="service_or_product"
+                                                   t-if="object.service == 'injection_molding'"
+                                                   t-value="'Injection Molding'"/>
+                                                <t t-set="service_or_product" t-if="object.service == 'uv_printing'"
+                                                   t-value="'UV Printing'"/>
+                                                <t t-set="service_or_product"
+                                                   t-if="object.service == 'italtronic_enclosure'"
+                                                   t-value="'Italtronic'"/>
+                                                <b>Product/Service:</b>
+                                                <t t-esc="service_or_product"/>
+                                            </t>
+                                        </div>
+                                        <br/>
+                                        <div>
+                                            <span>
+                                                We request you to review the quotation attached.
+                                                <br/>
+                                                To proceed with the further process, please accept the quotation &amp;
+                                                complete the payment process.
+                                                <br/>
+                                                You can complete the process through your user portal.
+                                                <br/>
+                                                Log into your account > Quotations > Select quotation > Accept &amp;
+                                                Pay.
+                                            </span>
+                                        </div>
+                                        <br/>
+                                        <div>
+                                            If you have any urgent questions or additional details to share, please feel
+                                            free to contact us directly at (+91) 7405221215 or sales@mechpowertech.com
+                                        </div>
+                                        <br/>
+                                        <div>
+                                            Visit <a href="mechpowertech.com">mechpowertech.com</a>  now to explore our
+                                            range of products and services to find the perfect solution for your
+                                            enclosure needs!
+                                        </div>
+                                        <br/>
+                                        <span>
+                                            Regards,
+                                            <br/>
+                                            Sales &amp; support team,
+                                            <br/>
+                                            Mech Power
+                                            <br/>
+                                        </span>
+
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </div>
+            </field>
+            <field name="report_template" ref="sale.action_report_saleorder"/>
+            <field name="report_name">{{ (object.name or '').replace('/','_') }}</field>
+            <field name="lang">{{ object.partner_id.lang }}</field>
+            <field name="auto_delete" eval="True"/>
+        </record>
+        <function name="write" model="ir.model.data">
+            <function name="search" model="ir.model.data">
+                <value eval="[('module', '=', 'sale'), ('name','=','email_template_edi_sale')] "/>
+            </function>
+            <value eval=" {'noupdate': True} "/>
+        </function>
+
+        <!-- Email Send Quotation for customer have credit  -->
+        <record id="email_template_edi_sale_without_advance_payment" model="mail.template">
+            <field name="name">Sales: Send Quotation For Customer have Credit</field>
+            <field name="model_id" ref="sale.model_sale_order"/>
+            <field name="subject">Quotation for the Inquiry {{object.name}} | Mech Power
+            </field>
+            <field name="email_from">{{ (object.user_id.email_formatted or object.company_id.email_formatted or
+                user.email_formatted) }}
+            </field>
+            <field name="partner_to">{{ object.partner_id.id }}</field>
+            <field name="description">Used by salespeople when they send quotations for custom which have credit</field>
+            <field name="body_html" type="html">
+                <div style="margin: 0px; padding: 0px;">
+                    <tr>
+                        <td align="center" style="min-width: 590px;">
+                            <table border="0" cellpadding="0" cellspacing="0" width="590"
+                                   style="min-width: 590px; background-color: white; padding: 0px 8px 0px 8px; border-collapse:separate;">
+                                <tr>
+                                    <td valign="top" style="font-size: 13px;">
+                                        <div>
+                                            Dear
+                                            <b>
+                                                <t t-esc="object.partner_id.name"/>,
+                                            </b>
+                                            <br/>
+                                            Thank you for choosing Mech Power for your enclosure requirements. We have
+                                            carefully reviewed your requirements and are pleased to provide you with a
+                                            quotation for your consideration.
+                                            <br/>
+                                        </div>
+                                        <br/>
+                                        <div>
+                                            Please find attached the quotation outlining the inquiry details, pricing,
+                                            terms
+                                            and conditions.
+                                            <!--                                    <b>Product:</b> <t t-esc="ctx.get('cus_value').get('product_name')"/><br/>-->
+                                        </div>
+                                        <div>
+                                            <t t-if="object.is_customisable or object.service">
+                                                <t t-if="object.state in ('sale', 'done')">
+                                                    <b>Sales Order number:</b>
+                                                </t>
+                                                <t t-else="">
+                                                    <b>Inquiry number:</b>
+                                                </t>
+                                                <t t-esc="object.name"/>
+                                            </t>
+                                            <t t-else="">
+                                                <b>Quotation number:</b>
+                                                <t t-esc="object.name"/>
+                                            </t>
+                                            <br/>
+                                            <t t-if="object.service">
+                                                <t t-set="service_or_product"
+                                                   t-if="object.service == 'enclosure_design'"
+                                                   t-value="'Enclosure Design'"/>
+                                                <t t-set="service_or_product" t-if="object.service == 'fdm_modeling'"
+                                                   t-value="'3D Printing (FDM)'"/>
+                                                <t t-set="service_or_product"
+                                                   t-if="object.service == 'projection_printing'"
+                                                   t-value="'3D Printing (Projection)'"/>
+                                                <t t-set="service_or_product"
+                                                   t-if="object.service == 'sheet_metal_fabrication'"
+                                                   t-value="'Sheet Metal Fabrication'"/>
+                                                <t t-set="service_or_product" t-if="object.service == 'cnc_machining'"
+                                                   t-value="'CNC Machining'"/>
+                                                <t t-set="service_or_product"
+                                                   t-if="object.service == 'injection_molding'"
+                                                   t-value="'Injection Molding'"/>
+                                                <t t-set="service_or_product" t-if="object.service == 'uv_printing'"
+                                                   t-value="'UV Printing'"/>
+                                                <t t-set="service_or_product"
+                                                   t-if="object.service == 'italtronic_enclosure'"
+                                                   t-value="'Italtronic'"/>
+                                                <b>Product/Service:</b>
+                                                <t t-esc="service_or_product"/>
+                                            </t>
+                                        </div>
+                                        <br/>
+                                        <div>
+                                            <span>
+                                                We request you to review the quotation attached.
+                                                <br/>
+                                                To proceed with the further process, please accept the quotation &amp;
+                                                complete the payment process.
+                                                <br/>
+                                                You can complete the process through your user portal.
+                                                <br/>
+                                                Log into your account > Quotations > Select quotation > Accept &amp;
+                                                Sign.
+                                            </span>
+                                        </div>
+                                        <br/>
+                                        <div>
+                                            If you have any urgent questions or additional details to share, please feel
+                                            free to contact us directly at (+91) 7405221215 or sales@mechpowertech.com
+                                        </div>
+                                        <br/>
+                                        <div>
+                                            Visit <a href="mechpowertech.com">mechpowertech.com</a>  now to explore our
+                                            range of products and services to find the perfect solution for your
+                                            enclosure needs!
+                                        </div>
+                                        <br/>
+                                        <span>
+                                            Regards,
+                                            <br/>
+                                            Sales &amp; support team,
+                                            <br/>
+                                            Mech Power
+                                            <br/>
+                                        </span>
+
+                                    </td>
+                                </tr>
+                                <!--                            <tr><td style="text-align:center;">-->
+                                <!--                              <hr width="100%" style="background-color:rgb(204,204,204);border:medium none;clear:both;display:block;font-size:0px;min-height:1px;line-height:0; margin: 16px 0px 16px 0px;"/>-->
+                                <!--                            </td></tr>-->
+                            </table>
+                        </td>
+                    </tr>
+                </div>
+            </field>
+            <field name="report_template" ref="sale.action_report_saleorder"/>
+            <field name="report_name">{{ (object.name or '').replace('/','_') }}</field>
+            <field name="lang">{{ object.partner_id.lang }}</field>
+            <field name="auto_delete" eval="True"/>
+        </record>
+
+
+        <!-- Email Template For Forgot Password    -->
+        <function name="write" model="ir.model.data">
+            <function name="search" model="ir.model.data">
+                <value eval="[('module', '=', 'auth_signup'), ('name','=','reset_password_email')] "/>
+            </function>
+            <value eval=" {'noupdate': False} "/>
+        </function>
+        <record id="auth_signup.reset_password_email" model="mail.template">
+            <field name="name">Settings: User Reset Password</field>
+            <field name="model_id" ref="base.model_res_users"/>
+            <field name="subject">Password reset request for your Mech Power Account</field>
+            <field name="email_from">{{ (object.company_id.email_formatted or user.email_formatted) }}</field>
+            <field name="email_to">{{ object.email_formatted }}</field>
+            <field name="description">Sent to user who requested a password reset</field>
+            <field name="body_html" type="html">
+                <table border="0" cellpadding="0" cellspacing="0"
+                       style="padding-top: 16px; background-color: #FFFFFF; font-family:Verdana, Arial,sans-serif; color: #454748; width: 100%; border-collapse:separate;">
+                    <tr>
+                        <td align="center">
+                            <table border="0" cellpadding="0" cellspacing="0" width="590"
+                                   style="padding: 16px; background-color: #FFFFFF; color: #454748; border-collapse:separate;">
+                                <tbody>
+                                    <!-- HEADER -->
+                                    <tr>
+                                        <td align="center" style="min-width: 590px;">
+                                            <table border="0" cellpadding="0" cellspacing="0" width="590"
+                                                   style="min-width: 590px; background-color: white; padding: 0px 8px 0px 8px; border-collapse:separate;">
+                                                <tr>
+                                                    <!--                                                <td valign="middle">-->
+                                                    <!--                                                    <span style="font-size: 10px;">Your Account</span>-->
+                                                    <!--                                                    <br/>-->
+                                                    <!--                                                    <span style="font-size: 20px; font-weight: bold;">-->
+                                                    <!--                                                        <t t-out="object.name or ''">Marc Demo</t>-->
+                                                    <!--                                                    </span>-->
+                                                    <!--                                                </td>-->
+                                                    <td valign="middle">
+                                                        <img t-attf-src="/logo.png?company={{ object.company_id.id }}"
+                                                             style="padding: 0px; margin: 0px; height: auto; width: 80px;"
+                                                             t-att-alt="object.company_id.name"/>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="2" style="text-align:center;">
+                                                        <hr width="100%"
+                                                            style="background-color:rgb(204,204,204);border:medium none;clear:both;display:block;font-size:0px;min-height:1px;line-height:0; margin: 16px 0px 16px 0px;"/>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <!-- CONTENT -->
+                                    <tr>
+                                        <td align="center" style="min-width: 590px;">
+                                            <table border="0" cellpadding="0" cellspacing="0" width="590"
+                                                   style="min-width: 590px; background-color: white; padding: 0px 8px 0px 8px; border-collapse:separate;">
+                                                <tr>
+                                                    <td valign="top" style="font-size: 13px;">
+                                                        <div>
+                                                            <span>Dear <t t-out="object.name or ''">Marc Demo</t>,
+                                                            </span>
+                                                            <br/>
+                                                            <div>
+                                                                <span>We received a request to reset the password for
+                                                                    your
+                                                                    Mech Power account. If you made this request, please
+                                                                    click the link below to reset your password.
+                                                                </span>
+                                                            </div>
+                                                            <br/>
+                                                            <div>
+                                                                <span>Reset Password:</span>
+                                                                <br/>
+                                                                <a t-att-href="object.signup_url" t-out="object.signup_url or ''" style="text-decoration: underline!important;">url</a>
+
+                                                            </div>
+                                                            <!--                                                        <div style="margin: 16px 0px 16px 0px;">-->
+                                                            <!--                                                            <a t-att-href="object.signup_url"-->
+                                                            <!--                                                               style="background-color: #875A7B; padding: 8px 16px 8px 16px; text-decoration: none; color: #fff; border-radius: 5px; font-size:13px;">-->
+                                                            <!--                                                                Change password-->
+                                                            <!--                                                            </a>-->
+                                                            <!--                                                        </div>-->
+                                                            <br/>
+                                                            <div>
+                                                                <span>If you did not request a password reset, please
+                                                                    ignore
+                                                                    this email or contact our support team immediately
+                                                                    at
+                                                                    (+91) 7405221215 or support@mechpowertech.com
+                                                                </span>
+                                                            </div>
+                                                            <br/>
+                                                            <div>
+                                                                <span>For security reasons, the link will expire in 24
+                                                                    hours. If you need further assistance, feel free to
+                                                                    reach out to our support team.
+                                                                </span>
+                                                            </div>
+                                                            <br/>
+                                                            <div>
+                                                                <span>
+                                                                    Regards,
+                                                                    <br/>
+                                                                    Sales support team,
+                                                                    <br/>
+                                                                    Mech Power
+                                                                    <br/>
+                                                                </span>
+                                                            </div>
+                                                            <br/>
+                                                            <div>
+                                                                <span>Visit <a href="https://mechpowertech.com/">
+                                                                    mechpowertech.com
+                                                                </a> now to explore our range of products and services
+                                                                    to
+                                                                    find the perfect solution for your enclosure needs!
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="text-align:center;">
+                                                        <hr width="100%"
+                                                            style="background-color:rgb(204,204,204);border:medium none;clear:both;display:block;font-size:0px;min-height:1px;line-height:0; margin: 16px 0px 16px 0px;"/>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <!-- FOOTER -->
+                                    <tr>
+                                        <td align="center" style="min-width: 590px;">
+                                            <table border="0" cellpadding="0" cellspacing="0" width="590"
+                                                   style="min-width: 590px; background-color: white; font-size: 11px; padding: 0px 8px 0px 8px; border-collapse:separate;">
+                                                <tr>
+                                                    <td valign="middle" align="left">
+                                                        <a href="https://www.linkedin.com/company/mech-power">
+                                                            <img t-att-src="'/logo.linkedin?company=%s' % (object.company_id.id or 0)"
+                                                                 class="img img-fluid shadow"
+                                                                 style="box-sizing: border-box; display: inline-block; box-shadow: rgb(216, 216, 216) 0px 6px 6px; max-width: 100%;"
+                                                                 width="21.25" height="20"
+                                                                 alt="linkedin"/>
+                                                        </a>
+                                                        <a href="https://www.facebook.com/MechPowerofficial/">
+                                                            <img t-att-src="'/logo.facebook?company=%s' % (object.company_id.id or 0)"
+                                                                 class="img img-fluid shadow"
+                                                                 style="box-sizing: border-box; display: inline-block; box-shadow: rgb(216, 216, 216) 0px 6px 6px; max-width: 100%;"
+                                                                 width="21.25" height="20"/>
+                                                        </a>
+                                                        <a href="https://www.instagram.com/mechpowerofficial/">
+                                                            <img t-att-src="'/logo.instagram?company=%s' % (object.company_id.id or 0)"
+                                                                 class="img img-fluid shadow"
+                                                                 style="box-sizing: border-box; display: inline-block; box-shadow: rgb(216, 216, 216) 0px 6px 6px; max-width: 100%;"
+                                                                 width="21.25" height="20"/>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td valign="middle" align="left">
+                                                        Mech Power Technology Private Limited
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td valign="middle" align="left">
+                                                        Plot no.407, Sarkhej-Bavla Highway, Ahmedabad, Gujarat 382213
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        You Can
+                                                        <a role="button" href="/unsubscribe_from_list"
+                                                           class="btn btn-link">Unsubscribe
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                    <!-- POWERED BY -->
+                    <tr>
+                        <td align="center" style="min-width: 590px;">
+                            <table border="0" cellpadding="0" cellspacing="0" width="590"
+                                   style="min-width: 590px; background-color: #F1F1F1; color: #454748; padding: 8px; border-collapse:separate;">
+                                <tr>
+                                    <td style="text-align: center; font-size: 13px;">
+                                        Powered by
+                                        <a target="_blank" href="https://mechpowertech.com/"
+                                           style="color: #38ad3a;">Mech Power
+                                        </a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </field>
+            <field name="lang">{{ object.lang }}</field>
+            <field name="auto_delete" eval="True"/>
+        </record>
+        <function name="write" model="ir.model.data">
+            <function name="search" model="ir.model.data">
+                <value eval="[('module', '=', 'auth_signup'), ('name','=','reset_password_email')] "/>
+            </function>
+            <value eval=" {'noupdate': True} "/>
+        </function>
+
+        <!-- Email for Sale Order Confirmation -->
+        <function name="write" model="ir.model.data">
+            <function name="search" model="ir.model.data">
+                <value eval="[('module', '=', 'sale'), ('name','=','mail_template_sale_confirmation')] "/>
+            </function>
+            <value eval=" {'noupdate': False} "/>
+        </function>
+        <record id="sale.mail_template_sale_confirmation" model="mail.template">
+            <field name="name">Sales: Order Confirmation</field>
+            <field name="model_id" ref="sale.model_sale_order"/>
+            <field name="subject">Sales order confirmation for your inquiry {{ object.name or '' }} | Mech Power</field>
+            <field name="email_from">{{ (object.user_id.email_formatted or object.company_id.email_formatted or
+                user.email_formatted) }}
+            </field>
+            <field name="partner_to">{{ object.partner_id.id }}</field>
+            <field name="description">Sent to customers on order confirmation</field>
+            <field name="body_html" type="html">
+                <table border="0" cellpadding="0" cellspacing="0"
+                       style="padding-top: 16px; background-color: #FFFFFF; font-family:Verdana, Arial,sans-serif; color: #454748; width: 100%; border-collapse:separate;">
+                    <tr>
+                        <td align="center">
+                            <table border="0" cellpadding="0" cellspacing="0" width="590"
+                                   style="padding: 16px; background-color: #FFFFFF; color: #454748; border-collapse:separate;">
+                                <tbody>
+                                    <!-- CONTENT -->
+                                    <tr>
+                                        <td align="center" style="min-width: 590px;">
+                                            <table border="0" cellpadding="0" cellspacing="0" width="590"
+                                                   style="min-width: 590px; background-color: white; padding: 0px 8px 0px 8px; border-collapse:separate;">
+                                                <tr>
+                                                    <td valign="top" style="font-size: 13px;">
+                                                        <div>
+                                                            Dear<t t-out="object.partner_id.name or ''"/>,
+                                                            <br/>
+                                                            Thank you for accepting our quotation. Sales Order <t
+                                                                t-out="object.name or ''">S00049
+                                                        </t> has been generated for your inquiry.
+                                                        </div>
+                                                        <br/>
+                                                        <div style="margin: 0px; padding: 0px; font-size: 12px;">
+                                                            Please find attached the sales order outlining the order
+                                                            details, lead time, pricing, terms and conditions.
+                                                            <br/>
+                                                            Sales Order Number:
+                                                            <t t-out="object.name or ''">S00049</t>
+                                                            <br/>
+                                                            <t t-set="service_or_product"
+                                                               t-if="object.service == 'enclosure_design'"
+                                                               t-value="'Enclosure Design'"/>
+                                                            <t t-set="service_or_product"
+                                                               t-if="object.service == 'fdm_modeling'"
+                                                               t-value="'3D Printing (FDM)'"/>
+                                                            <t t-set="service_or_product"
+                                                               t-if="object.service == 'projection_printing'"
+                                                               t-value="'3D Printing (Projection)'"/>
+                                                            <t t-set="service_or_product"
+                                                               t-if="object.service == 'sheet_metal_fabrication'"
+                                                               t-value="'Sheet Metal Fabrication'"/>
+                                                            <t t-set="service_or_product"
+                                                               t-if="object.service == 'cnc_machining'"
+                                                               t-value="'CNC Machining'"/>
+                                                            <t t-set="service_or_product"
+                                                               t-if="object.service == 'injection_molding'"
+                                                               t-value="'Injection Molding'"/>
+                                                            <t t-set="service_or_product"
+                                                               t-if="object.service == 'uv_printing'"
+                                                               t-value="'UV Printing'"/>
+                                                            <t t-set="service_or_product"
+                                                               t-if="object.service == 'italtronic_enclosure'"
+                                                               t-value="'Italtronic'"/>
+                                                            Product/Service:
+                                                            <t t-out="service_or_product"/>
+                                                            <br/>
+                                                            Inquiry Number:
+                                                            <t t-out="object.name or ''">INQ0007</t>
+                                                            <br/>
+                                                            Our team is now moving forward with the production of your
+                                                            order.
+                                                        </div>
+                                                        <br/>
+                                                        <div>
+                                                            You can complete the process through your user portal;
+                                                            <br/>
+                                                            Log into your account > Quotations > Select quotation > Pay
+                                                            Now or
+                                                            <br/>
+                                                            Log into your account > Invoices &amp; Bills > Select
+                                                            Invoice > Pay Now
+                                                            <br/>
+                                                            Please ignore, if already paid.
+                                                        </div>
+                                                        <br/>
+                                                        <div>
+                                                            If you have any urgent questions or additional details to
+                                                            share,
+                                                            please feel free to contact us directly at (+91) 7405221215
+                                                            or
+                                                            sales@mechpowertech.com
+                                                        </div>
+                                                        <br/>
+                                                        <div>
+                                                            Thank you for choosing Mech Power.
+                                                        </div>
+                                                        <br/>
+                                                        <div>
+                                                            Visit <a href="https://mechpowertech.com/" target="_blank">
+                                                            mechpowertech.com
+                                                        </a> now to explore our range of products and services to find
+                                                            the
+                                                            perfect solution for your enclosure needs!
+                                                        </div>
+                                                        <br/>
+                                                        <span>
+                                                            Best Regards,
+                                                            <br/>
+                                                            Sales &amp; support team,
+                                                            <br/>
+                                                            Mech Power
+                                                            <br/>
+                                                        </span>
+
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </field>
+            <field name="report_template" ref="sale.action_report_saleorder"/>
+            <field name="report_name">{{ (object.name or '').replace('/','_') }}</field>
+            <field name="lang">{{ object.partner_id.lang }}</field>
+            <field name="auto_delete" eval="True"/>
+        </record>
+        <function name="write" model="ir.model.data">
+            <function name="search" model="ir.model.data">
+                <value eval="[('module', '=', 'sale'), ('name','=','mail_template_sale_confirmation')] "/>
+            </function>
+            <value eval=" {'noupdate': True} "/>
+        </function>
+
+        <!-- Email for Payment Confirmation -->
+        <record id="payment_confirmation_mail_template" model="mail.template">
+            <field name="name">Sales: Payment Confirmation</field>
+            <field name="model_id" ref="sale.model_sale_order"/>
+            <field name="subject">Payment confirmation for sales order {{ object.name or '' }} | Mech Power</field>
+            <field name="email_from">{{ (object.user_id.email_formatted or object.company_id.email_formatted or
+                user.email_formatted) }}
+            </field>
+            <field name="partner_to">{{ object.partner_id.id }}</field>
+            <field name="description">Sent to customers on order confirmation</field>
+            <field name="body_html" type="html">
+                <table border="0" cellpadding="0" cellspacing="0"
+                       style="padding-top: 16px; background-color: #FFFFFF; font-family:Verdana, Arial,sans-serif; color: #454748; width: 100%; border-collapse:separate;">
+                    <tr>
+                        <td align="center">
+                            <table border="0" cellpadding="0" cellspacing="0" width="590"
+                                   style="padding: 16px; background-color: #FFFFFF; color: #454748; border-collapse:separate;">
+                                <tbody>
+                                    <!-- CONTENT -->
+                                    <tr>
+                                        <td align="center" style="min-width: 590px;">
+                                            <table border="0" cellpadding="0" cellspacing="0" width="590"
+                                                   style="min-width: 590px; background-color: white; padding: 0px 8px 0px 8px; border-collapse:separate;">
+                                                <tr>
+                                                    <td valign="top" style="font-size: 13px;">
+                                                        <div>
+                                                            Dear<t t-out="object.partner_id.name or ''"/>,
+                                                            <br/>
+                                                            Thank you for your prompt payment against the Sales Order <t
+                                                                t-out="object.name or ''">S00049</t>. We have received
+                                                            your
+                                                            payment and are processing your order accordingly.
+                                                        </div>
+                                                        <br/>
+                                                        <div style="margin: 0px; padding: 0px; font-size: 12px;">
+                                                            <b>Payment Details:</b>
+                                                            <t t-set="payment_transaction"
+                                                               t-value="ctx.get('transaction_id')"/>
+                                                            <br/>
+                                                            Sales Order Number:
+                                                            <t t-out="object.name or ''">S00049</t>
+                                                            <br/>
+                                                            Amount Paid:
+                                                            <t t-out="payment_transaction.amount or ''">1449.00</t>
+                                                            <br/>
+                                                            Payment Method:
+                                                            <t t-out="payment_transaction.provider_id.name"/>
+                                                            <br/>
+                                                            Payment Date:
+                                                            <t t-esc="payment_transaction.last_state_change.strftime('%d %B, %Y')"/>
+                                                            <br/>
+                                                            Your payment has been successfully processed.
+                                                        </div>
+                                                        <br/>
+                                                        <div>
+                                                            If you have any urgent questions or additional details to
+                                                            share,
+                                                            please feel free to contact us directly at (+91) 7405221215
+                                                            or
+                                                            sales@mechpowertech.com
+                                                        </div>
+                                                        <br/>
+                                                        <div>
+                                                            Thank you for choosing Mech Power.
+                                                        </div>
+                                                        <br/>
+                                                        <div>
+                                                            Visit <a href="https://mechpowertech.com/" target="_blank">
+                                                            mechpowertech.com
+                                                        </a> now to explore our range of products and services to find
+                                                            the
+                                                            perfect solution for your enclosure needs!
+                                                        </div>
+                                                        <br/>
+                                                        <span>
+                                                            Best Regards,
+                                                            <br/>
+                                                            Sales &amp; support team,
+                                                            <br/>
+                                                            Mech Power
+                                                            <br/>
+                                                        </span>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </field>
+            <field name="report_name">{{ (object.name or '').replace('/','_') }}</field>
+            <field name="lang">{{ object.partner_id.lang }}</field>
+            <field name="auto_delete" eval="True"/>
+        </record>
+
+
+        <!-- Email Template styling For Digest    -->
+        <function name="write" model="ir.model.data">
+            <function name="search" model="ir.model.data">
+                <value eval="[('module', '=', 'digest'), ('name','=','digest_mail_layout')] "/>
+            </function>
+            <value eval=" {'noupdate': False} "/>
+        </function>
+        <template id="digest.digest_mail_layout">
+            &lt;!DOCTYPE html&gt;
+            <html xmlns="http://www.w3.org/1999/xhtml">
+                <head>
+                    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+                    <meta name="format-detection" content="telephone=no"/>
+                    <meta name="viewport"
+                          content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=no;"/>
+                    <meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE"/>
+
+                    <style type="text/css">
+                        <t t-set="company_color" t-value="company.secondary_color or '#875a7b'"/>
+                        body {
+                        margin: 0;
+                        padding: 0;
+                        font-family: Arial, Helvetica, Verdana, sans-serif;
+                        }
+                        #header_background {
+                        background-color:<t t-out="company_color"/>;
+                        }
+                        .global_layout {
+                        max-width: 588px;
+                        margin: 0 auto;
+                        border: 1px solid #eeeeee;
+                        border-top: 0;
+                        background-color: #ffffff;
+                        }
+                        .company_name {
+                        display: inline;
+                        vertical-align: middle;
+                        font-weight: bold;
+                        color: #8f8f8f;
+                        }
+                        .title_subtitle {
+                        font-weight: bold;
+                        color: #282f33;
+                        word-break: break-all;
+                        }
+                        .button {
+                        float: right;
+                        background-color:<t t-out="company_color"/>;
+                        color: #ffffff;
+                        border-radius: 5px;
+                        }
+                        #button_connect {
+                        text-align: center;
+                        }
+                        .date {
+                        color: #8f8f8f;
+                        }
+                        .tip_title {
+                        margin-top: 0;
+                        font-weight: bold;
+                        }
+                        .tip_content {
+                        margin: 0 auto;
+                        color:#333333;
+                        text-align: justify;
+                        text-justify: inter-word;
+                        }
+                        .tip_button {
+                        background-color:<t t-out="company_color"/>;
+                        border-radius: 5px;
+                        margin: 14px 16px 14px 0px;
+                        padding: 10px;
+                        text-decoration: none;
+                        }
+                        .tip_button_text {
+                        color: #ffffff;
+                        }
+                        .illustration_border {
+                        width: 100%;
+                        border: 1px solid grey;
+                        }
+                        .kpi_row_footer {
+                        padding-bottom: 20px;
+                        }
+                        .kpi_header {
+                        overflow: auto;
+                        padding-bottom: 10px;
+                        border-bottom: 1px solid #eeeeee;
+                        font-size: 15px;
+                        font-weight: bold;
+                        color: #282f33;
+                        }
+                        #button_open_report {
+                        padding: 5px 10px;
+                        font-size: 12px;
+                        font-weight: normal;
+                        }
+                        .kpi_cell {
+                        float: left;
+                        width: 33%;
+                        text-align: center;
+                        padding-top: 2px;
+                        }
+                        .kpi_cell_center {
+                        border-top: 2px solid #282f33;
+                        }
+                        .kpi_cell_border {
+                        border-top: 2px solid #282f33;
+                        }
+                        .kpi_value {
+                        color: #282f33;
+                        font-weight: bold;
+                        text-decoration: none;
+                        }
+                        .kpi_center_col {
+                        color:<t t-out="company_color"/>;
+                        }
+                        .kpi_border_col {
+                        color: #282f33;
+                        }
+                        .kpi_value_label {
+                        display: inline-block;
+                        margin-bottom: 10px;
+                        color: #888888;
+                        font-size: 12px;
+                        text-transform: uppercase;
+                        }
+                        .kpi_margin {
+                        width: 75px;
+                        padding: 5px 10px;
+                        text-decoration: none;
+                        border-radius: 5px;
+                        }
+                        .positive_kpi_margin {
+                        border: 1px solid #c4ecd7;
+                        background-color: #d5f1e2;
+                        color: #17613a;
+                        }
+                        .negative_kpi_margin {
+                        border: 1px solid #f4cfce;
+                        background-color: #f7dddc;
+                        color: #712b29;
+                        }
+                        .kpi_trick {
+                        clear: both;
+                        }
+                        .download_app {
+                        height: 40px;
+                        margin-bottom: 5px;
+                        display: inline-block;
+                        }
+                        .preference_div {
+                        clear: both;
+                        background-color: #eeeeee;
+                        text-align: center;
+                        }
+                        .preference {
+                        margin-bottom: 15px;
+                        color: #6b6d70;
+                        }
+                        .preference a {
+                        text-decoration: none;
+                        }
+                        .by_odoo {
+                        color: #8f8f8f;
+                        }
+                        .odoo_link {
+                        text-decoration: none;
+                        }
+                        .odoo_link_text {
+                        font-weight: bold;
+                        color:<t t-out="company_color"/>;
+                        }
+                        .run_business {
+                        color: #2d2a26;
+                        }
+                        #footer {
+                        background-color: #eeeeee;
+                        color: #8f8f8f;
+                        text-align: center;
+                        }
+
+                        @media only screen and (max-width: 650px) {
+                        .d-block {
+                        display: block !important;
+                        }
+                        #header_background {
+                        padding-top: 0px;
+                        }
+                        #header {
+                        padding: 15px 20px;
+                        border: 1px solid #eeeeee;
+                        }
+                        .global_layout {
+                        padding: 20px;
+                        }
+                        .company_name {
+                        font-size: 15px;
+                        }
+                        .title_subtitle {
+                        margin: 5px auto;
+                        }
+                        #button_connect {
+                        padding: 4px 10px;
+                        font-size: 12px;
+                        }
+                        .date {
+                        margin-top: 10px;
+                        font-size: 10px;
+                        }
+                        .tip_title {
+                        font-size: 14px;
+                        }
+                        .tip_content {
+                        margin: 10px auto 0 auto;
+                        font-size: 12px;
+                        line-height: 20px;
+                        }
+                        .illustration_border {
+                        margin-top: 15px;
+                        }
+                        .kpi_value {
+                        font-size: 20px;
+                        }
+                        .kpi_margin {
+                        font-size: 10px;
+                        }
+                        .kpi_margin_margin {
+                        margin-bottom: 5px;
+                        }
+                        .preference_div {
+                        padding: 15px;
+                        }
+                        .preference {
+                        font-size: 12px;
+                        }
+                        .by_odoo {
+                        font-size: 10px;
+                        }
+                        .run_business {
+                        margin: 20px auto;
+                        font-size: 12px;
+                        }
+                        #footer {
+                        font-size: 15px;
+                        }
+                        #powered {
+                        margin-top: 15px;
+                        }
+                        }
+
+                        @media only screen and (min-width: 651px) {
+                        #header_background {
+                        padding-top: 70px;
+                        }
+                        #header {
+                        padding: 20px 30px 25px 30px;
+                        border-left: 1px solid<t t-out="company_color"/>;
+                        border-right: 1px solid<t t-out="company_color"/>;
+                        }
+                        .global_layout {
+                        padding: 25px 30px 30px 30px;
+                        }
+                        .company_name {
+                        font-size: 25px;
+                        }
+                        .title_subtitle {
+                        margin: 10px auto;
+                        }
+                        .button {
+                        padding: 5px 10px;
+                        }
+                        #button_connect {
+                        padding: 6px 10px;
+                        font-size: 15px;
+                        }
+                        .date {
+                        margin-top: 15px;
+                        font-size: 12px;
+                        }
+                        .tip_title {
+                        font-size: 20px;
+                        }
+                        .tip_content {
+                        margin: 15px auto 0 auto;
+                        font-size: 15px;
+                        line-height: 25px;
+                        }
+                        .illustration_border {
+                        margin-top: 20px;
+                        }
+                        .kpi_value {
+                        font-size: 30px;
+                        }
+                        .kpi_margin {
+                        font-size: 12px;
+                        }
+                        .kpi_margin_margin {
+                        margin-bottom: 10px;
+                        }
+                        .preference_div {
+                        padding: 20px;
+                        }
+                        .preference {
+                        font-size: 15px;
+                        }
+                        .by_odoo {
+                        font-size: 12px;
+                        }
+                        .run_business {
+                        margin: 15px auto;
+                        font-size: 18px;
+                        }
+                        #footer {
+                        font-size: 20px;
+                        }
+                        #stock_tip {
+                        overflow: auto;
+                        margin-top: 20px;
+                        }
+                        #stock_div_img {
+                        text-align: center;
+                        }
+                        #stock_img {
+                        width: 70%;
+                        }
+                        }
+                    </style>
+                </head>
+                <body>
+                    <t t-out="body"/>
+                </body>
+            </html>
+        </template>
+        <function name="write" model="ir.model.data">
+            <function name="search" model="ir.model.data">
+                <value eval="[('module', '=', 'digest'), ('name','=','digest_mail_layout')] "/>
+            </function>
+            <value eval=" {'noupdate': True} "/>
+        </function>
+
+        <!-- Email Template For Digest Analysis    -->
+        <function name="write" model="ir.model.data">
+            <function name="search" model="ir.model.data">
+                <value eval="[('module', '=', 'digest'), ('name','=','digest_mail_main')] "/>
+            </function>
+            <value eval=" {'noupdate': False} "/>
+        </function>
+        <template id="digest.digest_mail_main">
+            <div id="header_background">
+                <div class="global_layout" id="header">
+                    <div style="overflow: auto;">
+                        <p t-field="company.name" class="company_name"/>
+                        <a t-att-href="top_button_url" target="_blank">
+                            <span t-esc="top_button_label" class="button" id="button_connect"/>
+                        </a>
+                    </div>
+                    <div class="title_subtitle">
+                        <p t-esc="title"/>
+                        <p t-if="sub_title" t-esc="sub_title"/>
+                    </div>
+                    <div t-esc="formatted_date" class="date"/>
+                </div>
+            </div>
+
+            <div style="background-color: #eeeeee;">
+                <div t-if="kpi_data" class="global_layout" style="padding-bottom: 0;">
+                    <t t-set="kpi_color" t-value="'kpi_border_col'"/>
+                    <div t-foreach="kpi_data" t-as="kpi_info" class="kpi_row_footer">
+                        <div t-if="kpi_info.get('kpi_col1') or kpi_info.get('kpi_col2') or kpi_info.get('kpi_col3')"
+                             t-att-data-field="kpi_info['kpi_name']">
+                            <div class="kpi_header">
+                                <span t-esc="kpi_info['kpi_fullname']" style="vertical-align: middle;"/>
+                                <a t-if="kpi_info['kpi_action']" t-att-href="'/web#action=%s' % kpi_info['kpi_action']">
+                                    <span class="button" id="button_open_report">Open Report</span>
+                                </a>
+                            </div>
+                            <div t-if="kpi_info.get('kpi_col1')" class="kpi_cell kpi_cell_border">
+                                <div t-call="digest.digest_tool_kpi">
+                                    <t t-set="kpi_value" t-value="kpi_info['kpi_col1']['value']"/>
+                                    <t t-set="kpi_margin" t-value="kpi_info['kpi_col1'].get('margin')"/>
+                                    <t t-set="kpi_subtitle" t-value="kpi_info['kpi_col1']['col_subtitle']"/>
+                                </div>
+                            </div>
+                            <div t-if="kpi_info.get('kpi_col2')" class="kpi_cell kpi_cell_center">
+                                <div t-call="digest.digest_tool_kpi">
+                                    <t t-set="kpi_value" t-value="kpi_info['kpi_col2']['value']"/>
+                                    <t t-set="kpi_margin" t-value="kpi_info['kpi_col2'].get('margin')"/>
+                                    <t t-set="kpi_subtitle" t-value="kpi_info['kpi_col2']['col_subtitle']"/>
+                                </div>
+                            </div>
+                            <div t-if="kpi_info.get('kpi_col3')" class="kpi_cell kpi_cell_border">
+                                <div t-call="digest.digest_tool_kpi">
+                                    <t t-set="kpi_value" t-value="kpi_info['kpi_col3']['value']"/>
+                                    <t t-set="kpi_margin" t-value="kpi_info['kpi_col3'].get('margin')"/>
+                                    <t t-set="kpi_subtitle" t-value="kpi_info['kpi_col3']['col_subtitle']"/>
+                                </div>
+                            </div>
+                            <div class="kpi_trick"/>
+                        </div>
+                    </div>
+                </div>
+
+                <t t-if="body" t-out="body"/>
+
+                <div>
+                    <div class="global_layout">
+                        <div class="preference_div">
+                            <div t-if="preferences" t-foreach="preferences" t-as="preference"
+                                 class="preference">
+                                <t t-out="preference"/>
+                            </div>
+                            <div class="by_odoo">
+                                Sent by
+                                <a href="https://mechpowertech.com/" target="_blank" class="odoo_link">
+                                    <span class="odoo_link_text">Mech Power</span>
+                                </a>
+                                <t t-if="unsubscribe_token">
+                                    –
+                                    <a t-attf-href="/digest/#{object.id}/unsubscribe?token=#{unsubscribe_token}&amp;user_id=#{user.id}"
+                                       target="_blank" style="text-decoration: none;">
+                                        <span style="color: #8f8f8f;">Unsubscribe</span>
+                                    </a>
+                                </t>
+                                <t t-elif="object and object._name == 'digest.digest'">
+                                    –
+                                    <a t-att-href="'/web#view_type=form&amp;model=digest.digest&amp;id=%s' % object.id"
+                                       target="_blank" style="text-decoration: none;">
+                                        <span style="color: #8f8f8f;">Unsubscribe</span>
+                                    </a>
+                                </t>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div t-if="display_mobile_banner" t-call="digest.digest_section_mobile"/>
+
+                <div class="global_layout" id="footer">
+                    <p style="font-weight: bold;" t-esc="company.name"/>
+                    <p class="by_odoo" id="powered">
+                        Powered by
+                        <a href="https://mechpowertech.com/" target="_blank" class="odoo_link">
+                            <span class="odoo_link_text">Mech Power</span>
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </template>
+        <function name="write" model="ir.model.data">
+            <function name="search" model="ir.model.data">
+                <value eval="[('module', '=', 'digest'), ('name','=','digest_mail_main')] "/>
+            </function>
+            <value eval=" {'noupdate': True} "/>
+        </function>
+
+        <!-- Header Footer Changes for Email Notification   -->
+        <template id="mechpower_mail_notification_light_inherit" inherit_id="mail.mail_notification_light">
+            <!-- Replace Header        -->
+            <xpath expr="//tbody//table" position="replace">
+                <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%"
+                       style="background-color: white; padding: 0; border-collapse:separate;">
+                    <tr>
+                        <td align="center" style="min-width: 590px;">
+                            <table border="0" cellpadding="0" cellspacing="0" width="590"
+                                   style="min-width: 590px; background-color: white; padding: 0px 8px 0px 8px; border-collapse:separate;">
+                                <tr>
+                                    <td valign="middle">
+                                        <img t-att-src="'/logo.png?company=%s' % (company.id or 0)"
+                                             style="padding: 0px; margin: 0px; height: auto; max-width: 200px; max-height: 36px;"
+                                             t-att-alt="'%s' % company.name"/>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" style="text-align:center;">
+                                        <hr width="100%"
+                                            style="background-color:rgb(204,204,204);border:medium none;clear:both;display:block;font-size:0px;min-height:1px;line-height:0; margin: 16px 0px 16px 0px;"/>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </xpath>
+
+            <!-- Replace Footer        -->
+            <xpath expr="//tbody//tr[3]" position="replace">
+                <tr>
+                    <td align="center" style="min-width: 590px;">
+                        <table border="0" cellpadding="0" cellspacing="0" width="590"
+                               style="min-width: 590px; background-color: white; font-size: 11px; padding: 0px 8px 0px 8px; border-collapse:separate;">
+                            <tr>
+                                <td valign="middle" align="left">
+                                    <a href="https://www.linkedin.com/company/mech-power">
+                                        <img t-att-src="'/logo.linkedin?company=%s' % (company.id or 0)"
+                                             class="img img-fluid shadow"
+                                             style="box-sizing: border-box; display: inline-block; box-shadow: rgb(216, 216, 216) 0px 6px 6px; max-width: 100%;"
+                                             width="21.25" height="20"
+                                             alt="linkedin"/>
+                                    </a>
+                                    <a href="https://www.facebook.com/MechPowerofficial/">
+                                        <img t-att-src="'/logo.facebook?company=%s' % (company.id or 0)"
+                                             class="img img-fluid shadow"
+                                             style="box-sizing: border-box; display: inline-block; box-shadow: rgb(216, 216, 216) 0px 6px 6px; max-width: 100%;"
+                                             width="21.25" height="20"/>
+                                    </a>
+                                    <a href="https://www.instagram.com/mechpowerofficial/">
+                                        <img t-att-src="'/logo.instagram?company=%s' % (company.id or 0)"
+                                             class="img img-fluid shadow"
+                                             style="box-sizing: border-box; display: inline-block; box-shadow: rgb(216, 216, 216) 0px 6px 6px; max-width: 100%;"
+                                             width="21.25" height="20"/>
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td valign="middle" align="left">
+                                    Mech Power Technology Private Limited
+                                </td>
+                            </tr>
+                            <tr>
+                                <td valign="middle" align="left">
+                                    Plot no.407, Sarkhej-Bavla Highway, Ahmedabad, Gujarat 382213
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    You Can
+                                    <a role="button" href="/unsubscribe_from_list"
+                                       class="btn btn-link">Unsubscribe
+                                    </a>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </xpath>
+        </template>
+
+         <!-- Email: Sending Pro-forma Invoice  -->
+        <record id="email_template_pro_forma_invoice" model="mail.template">
+            <field name="name">Sales: Sending Pro-forma Invoice</field>
+            <field name="model_id" ref="sale.model_sale_order"/>
+            <field name="subject">Pro-forma invoice for your order {{object.name}} | Mech Power</field>
+            <field name="email_from">{{ (object.user_id.email_formatted or object.company_id.email_formatted or user.email_formatted) }}</field>
+            <field name="partner_to">{{ object.partner_id.id }}</field>
+            <field name="body_html" type="html">
+                <div style="margin: 0px; padding: 0px;">
+                    <tr>
+                        <td align="center" style="min-width: 590px;">
+                            <table border="0" cellpadding="0" cellspacing="0" width="590"
+                                   style="min-width: 590px; background-color: white; padding: 0px 8px 0px 8px; border-collapse:separate;">
+                                <tr>
+                                    <td valign="top" style="font-size: 13px;">
+                                        <div>
+                                            Dear
+                                            <b>
+                                                <t t-esc="object.partner_id.name"/>,
+                                            </b>
+                                            <br/>
+                                            Thank you for choosing Mech Power for your enclosure requirements. As
+                                            requested, we have prepared a Pro-forma Invoice for your order.
+                                            <br/>
+                                        </div>
+                                        <br/>
+                                        <div>
+                                            Please find the attached Pro-forma Invoice with all the necessary details, including:
+                                            <!--                                    <b>Product:</b> <t t-esc="ctx.get('cus_value').get('product_name')"/><br/>-->
+                                        </div>
+                                        <div>
+                                            <t>
+                                                <b>Order number:</b>
+                                                <t t-esc="object.name"/>
+                                            </t>
+                                            <br/>
+                                            <t t-if="object.service">
+                                                <t t-set="service_or_product"
+                                                   t-if="object.service == 'enclosure_design'"
+                                                   t-value="'Enclosure Design'"/>
+                                                <t t-set="service_or_product" t-if="object.service == 'fdm_modeling'"
+                                                   t-value="'3D Printing (FDM)'"/>
+                                                <t t-set="service_or_product"
+                                                   t-if="object.service == 'projection_printing'"
+                                                   t-value="'3D Printing (Projection)'"/>
+                                                <t t-set="service_or_product"
+                                                   t-if="object.service == 'sheet_metal_fabrication'"
+                                                   t-value="'Sheet Metal Fabrication'"/>
+                                                <t t-set="service_or_product" t-if="object.service == 'cnc_machining'"
+                                                   t-value="'CNC Machining'"/>
+                                                <t t-set="service_or_product"
+                                                   t-if="object.service == 'injection_molding'"
+                                                   t-value="'Injection Molding'"/>
+                                                <t t-set="service_or_product" t-if="object.service == 'uv_printing'"
+                                                   t-value="'UV Printing'"/>
+                                                <t t-set="service_or_product"
+                                                   t-if="object.service == 'italtronic_enclosure'"
+                                                   t-value="'Italtronic'"/>
+                                                <b>Product/Service:</b>
+                                                <t t-esc="service_or_product"/>
+                                            </t>
+                                            <br/>
+                                            <t>
+                                                <b>Amount Payable:</b>
+                                                <t t-esc="object.amount_total"/>
+                                            </t>
+                                        </div>
+                                        <br/>
+                                        <div>
+                                            <span>
+                                                We request you to review the pro-forma invoice attached document and proceed with the payment process;
+                                                <br/>
+                                                Log into your account > Sales Order > Select sales order > Pay Now
+                                                <br/>
+                                                Please ignore, if already paid.
+                                            </span>
+                                        </div>
+                                        <br/>
+                                        <div>
+                                            If you have any urgent questions or additional details to share, please feel
+                                            free to contact us directly at (+91) 7405221215 or sales@mechpowertech.com
+                                        </div>
+                                        <br/>
+                                        <div>
+                                           We appreciate your trust in Mech Power and look forward to fulfilling your order.
+                                        </div>
+                                        <br/>
+                                        <span>
+                                            Regards,
+                                            <br/>
+                                            Sales &amp; support team,
+                                            <br/>
+                                            Mech Power
+                                            <br/>
+                                        </span>
+
+                                    </td>
+                                </tr>
+                                <!--                            <tr><td style="text-align:center;">-->
+                                <!--                              <hr width="100%" style="background-color:rgb(204,204,204);border:medium none;clear:both;display:block;font-size:0px;min-height:1px;line-height:0; margin: 16px 0px 16px 0px;"/>-->
+                                <!--                            </td></tr>-->
+                            </table>
+                        </td>
+                    </tr>
+                </div>
+            </field>
+            <field name="report_template" ref="sale.action_report_saleorder"/>
+            <field name="report_name">{{ (object.name or '').replace('/','_') }}</field>
+            <field name="lang">{{ object.partner_id.lang }}</field>
+            <field name="auto_delete" eval="True"/>
+        </record>
+    </data>
+</odoo>

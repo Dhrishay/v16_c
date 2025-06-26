@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="document_history_tree_view" model="ir.ui.view">
+        <field name="name">document.history.tree.view</field>
+        <field name="model">document.history</field>
+        <field name="arch" type="xml">
+            <tree create="0">
+                <field name="user_id"/>
+                <field name="product_id" invisible="1"/>
+                <field name="document" filename="name" widget="binary"/>
+                <field name="name" invisible="1"/>
+                <field name="file_type" invisible="1"/>
+                <field name="create_date"/>
+                <field name="write_date"/>
+                <button name="replace_document" confirm="Are You Sure Replace This Record?" class="btn btn-info" string="REPLACE" type="object" icon="fa-refresh" invisible="1"/>
+                <button name="delete_history" confirm="Are You Sure Delete This Record?" class="btn btn-danger" string="DELETE" type="object" icon="fa-trash" invisible="1"/>
+            </tree>
+        </field>
+    </record>
+</odoo>

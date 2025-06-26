@@ -1,0 +1,118 @@
+@font-face{
+    font-family: 'Poppins-Bolder';
+    src: url(/cr_web_portal/static/src/fonts/Poppins_Bold_800.ttf);
+}
+@font-face{
+    font-family: 'Poppins-Bold';
+    src: url(/cr_web_portal/static/src/fonts/Poppins_Bold_700.ttf);
+}
+@font-face{
+    font-family: 'Poppins-semibold';
+    src: url(/cr_web_portal/static/src/fonts/Poppins_SemiBold_600.ttf);
+}
+@font-face{
+    font-family: 'Poppins-regular';
+    src: url(/cr_web_portal/static/src/fonts/Poppins_Regular_400.ttf);
+}
+@font-face{
+    font-family: 'Poppins-medium';
+    src: url(/cr_web_portal/static/src/fonts/Poppins_Medium_500.ttf);
+}
+@font-face{
+    font-family: 'Jost-bold';
+    src: url(/cr_web_portal/static/src/fonts/Jost_SemiBold_800.ttf);
+}
+@font-face{
+    font-family: 'Jost-semibold';
+    src: url(/cr_web_portal/static/src/fonts/Jost_SemiBold_600.ttf);
+}
+@font-face{
+    font-family: 'Jost-medium';
+    src: url(/cr_web_portal/static/src/fonts/Jost_Medium_500.ttf);
+}
+@font-face{
+    font-family: 'Jost-light';
+    src: url(/cr_web_portal/static/src/fonts/Jost_Light_300.ttf);
+}
+
+ :root {
+     --pbmit-global-color: #57BB56;
+     --pbmit-secondary-color: #1f1d1d;
+     --pbmit-light-color: #f6f6f6;
+     --pbmit-white-color: #ffffff;
+     --pbmit-blackish-color: #000000;
+     --pbmit-link-color-normal: #000000;
+     --pbmit-link-color-hover: #525252;
+     --pbmit-global-color-rgb: 35, 179, 93;
+     --pbmit-secondary-color-rgb: 31, 29, 29;
+     --pbmit-responsive-breakpoint: 1200px;
+     --pbmit-body-typography-font-family: 'Jost-medium' ,sans-serif;
+     --pbmit-body-typography-variant: regular;
+     --pbmit-body-typography-font-size: 16px;
+     --pbmit-body-typography-line-height: 1.5;
+     --pbmit-body-typography-color: #666666;
+     --pbmit-heading-typography-font-family: 'Poppins-semibold', sans-serif;
+     --pbmit-heading-typography-font-bold-family: 'Poppins-Bold', sans-serif;
+     --pbmit-heading-color: #000000;
+     --pbmit-heading-font-variant: 700;
+     --pbmit-btn-typography-font-family:  'Poppins-regular', sans-serif;
+     --pbmit-btn-typography-variant: 600;
+     --pbmit-btn-typography-font-size: 15px;
+     --pbmit-btn-typography-line-height: 24px;
+     --alert-info-color: #717173;
+     --alert-info-background-color:  #f2f6f2;
+     --alert-info-border-color: #718183;
+
+
+    //     PRIMARY COLORS
+    --mp-color-1: #23B35D;
+    --mp-color-2: #041209;
+    --mp-color-3: #072413;
+    --mp-color-4: #0c3f21;
+    --mp-color-5: #125A2F;
+    --mp-color-6: #197E41;
+    --mp-color-7: #7BD19E;
+    --mp-color-8: #BDE8CE;
+    --mp-color-9: #DEF4E7;
+    --mp-color-10: #f4fbf7;
+
+//     DARK COLORS
+    --mp-color-dark-1: #0a0a0a;
+    --mp-color-dark-2: #282828;
+    --mp-color-dark-3: #474747;
+    --mp-color-dark-4: #787878;
+    --mp-color-dark-5: #9D9D9D;
+    --mp-color-dark-5: #C2C2C2;
+    --mp-color-dark-6: #CECECE;
+    --mp-color-dark-7: #E6E6E6;
+    --mp-color-dark-8: #F9F9F9;
+    --mp-color-dark-9: #FFFFFF;
+
+//      NOTIFICATION COLORS
+    --mp-notification-color-1: #0ba5ec;
+    --mp-notification-color-2: #12b76a;
+    --mp-notification-color-3: #fdb022;
+    --mp-notification-color-4: #f04438;
+
+//     EXTRA COLORS
+    --mp-color-extra-1: #668e68;
+    --mp-color-extra-2: #c0cc8d;
+    --mp-color-extra-3: #ef8b30;
+    --mp-color-extra-4: #ffcf66;
+
+    --mp-alert-color-1: #F23C2F;
+}
+
+/*----------------------------------------*/
+/* 01 - Typography 
+/*----------------------------------------*/
+h1, h2, h3, h4, h5, h6 {
+    font-family:var(--pbmit-heading-typography-font-family);
+    font-weight: 700;
+    color: var(--pbmit-heading-color);
+}
+.card.bg-danger{
+    color:  var(--alert-info-color);
+    background-color:  var(--alert-info-background-color) !important;
+    border: 1px var(--alert-info-border-color) !important;
+}

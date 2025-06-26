@@ -1,0 +1,1172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="mp_suggested_products_list" inherit_id="website_sale.suggested_products_list">
+        <xpath expr="//h5" position="replace">
+        </xpath>
+        <xpath expr="//table[@id='suggested_products']" position="replace">
+        </xpath>
+    </template>
+    <template id="mechpower_cart_lines" inherit_id="website_sale.cart_lines">
+        <xpath expr="//table[@id='cart_products']" position="replace">
+            <div t-if="website_sale_order and website_sale_order.website_order_line"
+                 class="mb16 js_cart_lines" id="cart_products">
+                <t t-set="show_qty" t-value="is_view_active('website_sale.product_quantity')"/>
+                <t t-foreach="website_sale_order.website_order_line" t-as="line">
+                    <div class="cart_order_line">
+                        <t t-if="line.product_id">
+                            <t t-set="combination_info"
+                               t-value="line.product_id._get_combination_info_variant(add_qty=int(line.product_uom_qty),pricelist=website_sale_order.pricelist_id)"/>
+                            <div class="col-lg-12 d-flex">
+                                <div class="shop_cart_product_img col-lg-4 col-4">
+                                    <t t-set="image_holder" t-value="line.product_id._get_image_holder()"/>
+                                    <div t-if="line._is_not_sellable_line() and line.product_id.image_128">
+                                        <img t-att-src="image_data_uri(line.product_id.image_128)"
+                                             class="img o_image_64_max rounded" t-att-alt="line.name_short"/>
+                                    </div>
+                                    <div t-else="" t-field="image_holder.image_1920"
+                                         t-options="{'widget': 'image', 'qweb_img_responsive': False, 'class': 'rounded o_image_64_max'}"/>
+                                </div>
+                                <div class="shop_cart_product_details col-lg-8 col-8">
+                                    <div t-if="len(line.product_id.public_categ_ids) &gt; 0"
+                                         class="product_tmp_category_name">
+                                        <t t-foreach="line.product_id.public_categ_ids" t-as="product_category">
+                                            <t t-esc="product_category.name"/>
+                                        </t>
+                                    </div>
+                                    <div class="d-flex justify-content-between mb-2">
+                                        <!--                                        <div>-->
+                                        <div class='td-product_name'>
+                                            <t t-if="not (line.product_id.is_enclosure_service or
+                                                        line.product_id.is_fdm_service or
+                                                        line.product_id.is_projection_service or
+                                                        line.product_id.is_metal_feb_service or
+                                                        line.product_id.is_cnc_machining_service or
+                                                        line.product_id.is_injection_mold_service)">
+                                                <t t-call="website_sale.cart_line_product_link">
+                                                    <strong t-field="line.name_short"/>
+                                                </t>
+                                            </t>
+                                            <t t-elif="line.product_id.is_fdm_service">
+                                                <strong>
+                                                    <t t-if="line.product_id.fdm_product_name">
+                                                        <t t-esc="line.product_id.fdm_product_name"/>
+                                                    </t>
+                                                    <t t-else="">
+                                                        <t t-esc="line.product_id.projection_product_name"/>
+                                                    </t>
+                                                </strong>
+                                                <div class="service_product_title mt-2">
+                                                    <t t-if="line.product_id.fdm_product_name">
+                                                        <p>Manufacturing Process:
+                                                            <span>FDM 3D Printing</span>
+                                                        </p>
+
+                                                        <p>Material:
+                                                            <span class="service_product_value"
+                                                                  t-esc="line.product_id.fdm_material"/>
+                                                        </p>
+                                                        <p>Print Quality:
+                                                            <span class="service_product_value"
+                                                                  t-esc="line.product_id.fdm_print_quality"/>
+                                                        </p>
+                                                        <p>Infll:
+                                                            <span class="service_product_value"
+                                                                  t-esc="line.product_id.fdm_infill"/>
+                                                        </p>
+                                                        <p>Colour:
+                                                            <span class="service_product_value"
+                                                                  t-esc="line.product_id.fdm_color"/>
+                                                        </p>
+                                                        <p t-if="line.x_studio_lead_time_in_days">Lead Time:
+                                                            <span class="service_product_value"
+                                                                  t-esc="line.x_studio_lead_time_in_days.x_name"/>
+                                                        </p>
+                                                        <p>UV printing:
+                                                            <span class="service_product_value"
+                                                                  t-if="line.product_id.fdm_is_uv_printing">Yes
+                                                            </span>
+                                                            <span class="service_product_value" t-else="">No</span>
+                                                        </p>
+                                                        <p t-if="line.product_id.fdm_is_uv_printing">UV Printing Side:
+                                                            <span class="service_product_value"
+                                                                  t-esc="line.product_id.uv_printing_side"/>
+                                                        </p>
+                                                    </t>
+                                                    <t t-else="">
+                                                        <p>Manufacturing Process:
+                                                            <span>Projection 3D Printing</span>
+                                                        </p>
+                                                        <p>Material:
+                                                            <span class="service_product_value"
+                                                                  t-esc="line.product_id.projection_material"/>
+                                                        </p>
+                                                        <p>Print Quality:
+                                                            <span class="service_product_value"
+                                                                  t-esc="line.product_id.projection_print_quality"/>
+                                                        </p>
+                                                        <p t-if="line.x_studio_lead_time_in_days">Lead Time:
+                                                            <span class="service_product_value"
+                                                                  t-esc="line.x_studio_lead_time_in_days.x_name"/>
+                                                        </p>
+                                                        <p>UV printing:
+                                                            <span class="service_product_value"
+                                                                  t-if="line.product_id.projection_is_uv_printing">Yes
+                                                            </span>
+                                                            <span class="service_product_value" t-else="">No</span>
+                                                        </p>
+                                                        <p t-if="line.product_id.projection_is_uv_printing">UV Printing
+                                                            Side:
+                                                            <span class="service_product_value"
+                                                                  t-esc="line.product_id.uv_printing_side"/>
+                                                        </p>
+                                                    </t>
+                                                </div>
+                                            </t>
+                                            <t t-else="">
+                                                <strong t-field="line.name_short"/>
+                                            </t>
+
+                                        </div>
+                                        <a href='#' aria-label="Remove from cart" title="Remove from cart"
+                                           class='js_delete_product no-decoration show_in_laptop'>
+                                            <img src="/cr_web_portal/static/src/images/new_design_resource/trash.svg"
+                                                 width="24px" height="24px"/>
+                                        </a>
+                                    </div>
+                                    <p class="default_code" t-if="line.product_id.default_code and not (line.product_id.is_enclosure_service or
+                                                                                line.product_id.is_fdm_service or
+                                                                                line.product_id.is_projection_service or
+                                                                                line.product_id.is_metal_feb_service or
+                                                                                line.product_id.is_cnc_machining_service or
+                                                                                line.product_id.is_injection_mold_service)"
+                                       t-out="line.product_id.default_code"/>
+                                    <div class="d-flex justify-content-between align-center">
+                                        <div class="shop_cart_line_qty">
+                                            <div class="css_quantity input-group d-inline-flex me-2 mb-2 align-middle input-group-lg">
+                                                <t t-if="not line._is_not_sellable_line()">
+                                                    <t t-if="show_qty">
+                                                        <a t-attf-href="#"
+                                                           class="btn btn-link js_add_cart_json quantity-arrow-minus d-none d-md-inline-block"
+                                                           aria-label="Remove one" title="Remove one">
+                                                            <i class="fa fa-minus" style="color:#787878;"></i>
+                                                        </a>
+                                                        <input type="text"
+                                                               class="js_quantity form-control quantity quantity-num"
+                                                               t-att-data-line-id="line.id"
+                                                               t-att-data-product-id="line.product_id.id"
+                                                               t-att-value="int(line.product_uom_qty) == line.product_uom_qty and int(line.product_uom_qty) or line.product_uom_qty"/>
+                                                        <t t-if="line._get_shop_warning(clear=False)">
+                                                            <a t-attf-href="#" class="btn btn-link">
+                                                                <i class='fa fa-warning text-warning'
+                                                                   t-att-title="line._get_shop_warning()" role="img"
+                                                                   aria-label="Warning"/>
+                                                            </a>
+                                                        </t>
+                                                        <a t-else='' t-attf-href="#"
+                                                           class="btn btn-link float_left js_add_cart_json quantity-arrow-plus d-none d-md-inline-block"
+                                                           aria-label="Add one" title="Add one">
+                                                            <i class="fa fa-plus" style="color:#787878;"></i>
+                                                        </a>
+                                                    </t>
+                                                    <t t-else="">
+                                                        <input type="hidden" class="js_quantity form-control quantity"
+                                                               t-att-data-line-id="line.id"
+                                                               t-att-data-product-id="line.product_id.id"
+                                                               t-att-value="int(line.product_uom_qty) == line.product_uom_qty and int(line.product_uom_qty) or line.product_uom_qty"/>
+                                                    </t>
+                                                </t>
+                                                <t t-else="">
+                                                    <span class="text-muted w-100" t-esc="int(line.product_uom_qty)"/>
+                                                    <input type="hidden" class="js_quantity form-control quantity"
+                                                           t-att-data-line-id="line.id"
+                                                           t-att-data-product-id="line.product_id.id"
+                                                           t-att-value="line.product_uom_qty"/>
+                                                </t>
+                                            </div>
+                                        </div>
+                                        <a href='#' aria-label="Remove from cart" title="Remove from cart"
+                                           class='js_delete_product no-decoration show_in_mobile'>
+                                            <img src="/cr_web_portal/static/src/images/new_design_resource/trash.svg"
+                                                 width="24px" height="24px"/>
+                                        </a>
+                                    </div>
+                                    <div t-if="(int(line.product_id.qty_available) - int(line.product_uom_qty)) &lt; 0 and not line.product_id.allow_out_of_stock_order and (not website_sale_order.is_customisable or not website_sale_order.is_place_inquiry)"
+                                         id="product_unavailable" class="d-flex">
+                                        <p>
+                                            The product you're interested in is currently
+                                            unavailable in the desired quantity. Expect a lead time of
+                                            <t t-if="line.product_id.sale_delay"
+                                               t-esc="int(line.product_id.sale_delay)"/>
+                                            days for delivery.
+                                        </p>
+                                        <h4 class="out_of_stock_text">Out of stock</h4>
+                                    </div>
+                                    <div class="product-price-discount show_in_laptop"
+                                         t-if="not website_sale_order.is_customisable and not website_sale_order.is_place_inquiry">
+                                        <t t-if="combination_info">
+                                            <h3 class="css_editable_mode_hidden">
+                                                <span class="oe_price" style="white-space: nowrap;"
+                                                      t-esc="combination_info['price']"
+                                                      t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
+                                                <span itemprop="price" style="display:none;"
+                                                      t-esc="combination_info['price']"/>
+                                                <span itemprop="priceCurrency" style="display:none;"
+                                                      t-esc="website.currency_id.name"/>
+                                                <span t-attf-class="text-danger oe_default_price ms-1 h5 {{'' if combination_info['has_discounted_price'] and not combination_info['compare_list_price'] else 'd-none'}}"
+                                                      style="text-decoration: line-through; white-space: nowrap;"
+                                                      t-esc="combination_info['list_price']"
+                                                      t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"
+                                                      itemprop="listPrice"
+                                                />
+                                                <t t-if="is_view_active('website_sale.tax_indication')"
+                                                   t-call="website_sale.tax_indication"/>
+                                                <del t-if="combination_info['compare_list_price'] and (combination_info['compare_list_price'] &gt; combination_info['price'])">
+                                                    <bdi dir="inherit">
+                                                        <span t-esc="combination_info['compare_list_price']"
+                                                              groups="website_sale.group_product_price_comparison"
+                                                              t-options='{
+                                   "widget": "monetary",
+                                   "display_currency": website.currency_id,
+                               }'/>
+                                                    </bdi>
+                                                </del>
+                                            </h3>
+                                            <h3 class="css_non_editable_mode_hidden decimal_precision"
+                                                t-att-data-precision="str(website.currency_id.decimal_places)">
+                                                <span t-field="line.product_id.list_price"
+                                                      t-options='{
+                               "widget": "monetary",
+                               "display_currency": line.product_id.currency_id,
+                        }'/>
+                                                <t t-if="is_view_active('website_sale.tax_indication')"
+                                                   t-call="website_sale.tax_indication"/>
+                                                <del t-if="combination_info['compare_list_price'] and (combination_info['compare_list_price'] &gt; combination_info['price'])">
+                                                    <bdi dir="inherit">
+                                                        <span t-field="line.product_id.compare_list_price"
+                                                              groups="website_sale.group_product_price_comparison"
+                                                              t-options='{
+                                    "widget": "monetary",
+                                    "display_currency": website.currency_id,
+                                }'/>
+                                                    </bdi>
+                                                </del>
+                                            </h3>
+                                            <div class="exclusive_price_tag">(Exc. of taxes)
+                                            </div>
+                                            <small t-if="combination_info['base_unit_price']"
+                                                   class="ms-1 text-muted o_base_unit_price_wrapper d-none"
+                                                   groups="website_sale.group_show_uom_price">
+                                                <t t-call="website_sale.base_unit_price"/>
+                                                <div class="exclusive_price_tag">(Exc. of taxes)
+                                                </div>
+                                            </small>
+                                        </t>
+
+
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="col-lg-12 mobile_price_cart_line show_in_mobile">
+                                <div class="product-price-discount d-flex justify-content-between align-center"
+                                     t-if="not website_sale_order.is_customisable or not website_sale_order.is_place_inquiry">
+                                    <t t-if="combination_info">
+                                        <h3 class="css_editable_mode_hidden">
+                                            <span class="oe_price" style="white-space: nowrap;"
+                                                  t-esc="combination_info['price']"
+                                                  t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
+                                            <span itemprop="price" style="display:none;"
+                                                  t-esc="combination_info['price']"/>
+                                            <span itemprop="priceCurrency" style="display:none;"
+                                                  t-esc="website.currency_id.name"/>
+                                            <span t-attf-class="text-danger oe_default_price ms-1 h5 {{'' if combination_info['has_discounted_price'] and not combination_info['compare_list_price'] else 'd-none'}}"
+                                                  style="text-decoration: line-through; white-space: nowrap;"
+                                                  t-esc="combination_info['list_price']"
+                                                  t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"
+                                                  itemprop="listPrice"
+                                            />
+                                            <t t-if="is_view_active('website_sale.tax_indication')"
+                                               t-call="website_sale.tax_indication"/>
+                                            <del t-if="combination_info['compare_list_price'] and (combination_info['compare_list_price'] &gt; combination_info['price'])">
+                                                <bdi dir="inherit">
+                                                    <span t-esc="combination_info['compare_list_price']"
+                                                          groups="website_sale.group_product_price_comparison"
+                                                          t-options='{
+                                   "widget": "monetary",
+                                   "display_currency": website.currency_id,
+                               }'/>
+                                                </bdi>
+                                            </del>
+                                        </h3>
+                                        <h3 class="css_non_editable_mode_hidden decimal_precision"
+                                            t-att-data-precision="str(website.currency_id.decimal_places)">
+                                            <span t-field="line.product_id.list_price"
+                                                  t-options='{
+                               "widget": "monetary",
+                               "display_currency": line.product_id.currency_id,
+                        }'/>
+                                            <t t-if="is_view_active('website_sale.tax_indication')"
+                                               t-call="website_sale.tax_indication"/>
+                                            <del t-if="combination_info['compare_list_price'] and (combination_info['compare_list_price'] &gt; combination_info['price'])">
+                                                <bdi dir="inherit">
+                                                    <span t-field="line.product_id.compare_list_price"
+                                                          groups="website_sale.group_product_price_comparison"
+                                                          t-options='{
+                                    "widget": "monetary",
+                                    "display_currency": website.currency_id,
+                                }'/>
+                                                </bdi>
+                                            </del>
+                                        </h3>
+                                        <div class="exclusive_price_tag">(Exc. of taxes)
+                                        </div>
+                                        <div t-if="combination_info['base_unit_price']"
+                                             class="ms-1 text-muted o_base_unit_price_wrapper d-none"
+                                             groups="website_sale.group_show_uom_price">
+                                            <t t-call="website_sale.base_unit_price"/>
+                                            <div class="exclusive_price_tag">(Exc. of taxes)
+                                            </div>
+                                        </div>
+                                    </t>
+                                </div>
+                            </div>
+                        </t>
+                    </div>
+                </t>
+                <t t-if="suggested_products">
+                    <div class="suggested_accessories personal-port-1-testimonial">
+                        <div class="header-box-custom  mt-4" style="max-width: 100% !important;">
+                            <h5 class="sub-heading-custom mp-caption-custom" style="text-align: left;">PRODUCTS</h5>
+                            <h2 class="main-heading-custom" style="text-align: left;">
+                                <span class="mp_underline_custom">Suggested Accessories</span>
+                            </h2>
+                        </div>
+                        <div class="container desktop_accessory_slider">
+                            <div class="swiper-container">
+                                <div class="swiper-slider pbmit-element-viewtype-carousel-1 "
+                                     data-arrows-class="digital-mrkt-arrow-testimonial" data-loop="false"
+                                     data-autoplay="false" data-dots="false" data-arrows="true" data-columns="1"
+                                     clickable="true" data-margin="30" data-effect="slide">
+
+                                    <div class="swiper-wrapper italtronics-products-carousel-new">
+                                        <t t-foreach="suggested_products" t-as="products">
+                                            <table t-if="suggested_products" id="suggested_products"
+                                                   class="swiper-slide carousel-item-italtronics show_in_laptop table table-striped table-sm">
+                                                <tbody>
+                                                    <tr t-foreach="products" t-as="product"
+                                                        t-att-data-publish="product.website_published and 'on' or 'off'">
+                                                        <t t-set="combination_info"
+                                                           t-value="product._get_combination_info_variant(pricelist=website_sale_order.pricelist_id)"/>
+                                                        <td class='td-img text-center'>
+                                                            <a t-att-href="product.website_url">
+                                                                <span t-field="product.image_128"
+                                                                      t-options="{'widget': 'image', 'qweb_img_responsive': False, 'class': 'rounded o_image_64_max'}"/>
+                                                            </a>
+                                                        </td>
+                                                        <td class='td-product_name d-grid'>
+                                                            <div class="d-grid">
+                                                                <div t-if="len(product.public_categ_ids) &gt; 0"
+                                                                     class="product_tmp_category_name">
+                                                                    <t t-foreach="product.public_categ_ids"
+                                                                       t-as="product_category">
+                                                                        <t t-esc="product_category.name"/>
+                                                                    </t>
+                                                                </div>
+                                                                <div>
+                                                                <a t-att-href="product.website_url"
+                                                                   class="accessories_product_name">
+                                                                    <span t-esc="combination_info['display_name']"/>
+                                                                </a>
+                                                            </div>
+                                                            </div>
+                                                            <div class="d-flex justify-content-between mt-30">
+                                                                <div class="d-flex td-price">
+                                                                    <del t-attf-class="text-danger mr8 {{'' if combination_info['has_discounted_price'] else 'd-none'}}"
+                                                                         style="white-space: nowrap;"
+                                                                         t-esc="combination_info['list_price']"
+                                                                         t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
+                                                                    <span t-esc="combination_info['price']"
+                                                                          style="white-space: nowrap;"
+                                                                          t-options="{'widget': 'monetary','display_currency': website.currency_id}"/>
+                                                                </div>
+                                                                <div class="d-flex td-add-cart">
+                                                                    <input class="js_quantity" name="product_id"
+                                                                           t-att-data-product-id="product.id"
+                                                                           type="hidden"/>
+                                                                    <a t-if="product._website_show_quick_add()"
+                                                                       role="button"
+                                                                       class="btn btn-secondary js_add_suggested_products">
+                                                                        <span>Add to Cart</span>
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </t>
+                                    </div>
+                                    <div class="row italtronics-footer-sec g-0">
+                                        <div class="col-md-2"/>
+                                        <div class="col-md-8"/>
+
+                                        <div class="col-md-2 o_colored_level">
+                                            <div class="personal-port-1-arrow-testimonial swiper-btn-custom d-flex flex-row-reverse">
+                                                <div class="swiper-buttons"/>
+                                                <div class="swiper-button-next swiper-button-next-1" tabindex="0"
+                                                     role="button"
+                                                     aria-label="Next slide"
+                                                     aria-controls="swiper-wrapper-3a252b2b574f9f85"/>
+                                                <div class="swiper-button-prev swiper-button-prev-1" tabindex="0"
+                                                     role="button"
+                                                     aria-label="Previous slide"
+                                                     aria-controls="swiper-wrapper-3a252b2b574f9f85"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <span class="swiper-notification" aria-live="assertive" aria-atomic="true"/>
+
+                                </div>
+                            </div>
+                        </div>
+                        <t t-if="suggested_products">
+                            <div class="show_in_mobile">
+                                <t t-foreach="suggested_products" t-as="products">
+                                    <t t-foreach="products" t-as="product">
+
+                                        <t t-set="combination_info"
+                                           t-value="product._get_combination_info_variant(pricelist=website_sale_order.pricelist_id)"/>
+                                        <div class="cart_order_line">
+                                            <t t-if="product">
+                                                <div class="col-lg-12 d-flex align-center">
+                                                    <div class="shop_cart_product_img col-lg-4">
+                                                        <t t-set="image_holder"
+                                                           t-value="product._get_image_holder()"/>
+                                                        <div t-if="product.image_128">
+                                                            <img t-att-src="image_data_uri(product.image_128)"
+                                                                 class="img o_image_64_max rounded"
+                                                                 t-att-alt="product.with_context(display_default_code=False).display_name"/>
+                                                        </div>
+                                                        <div t-else="" t-field="image_holder.image_1920"
+                                                             t-options="{'widget': 'image', 'qweb_img_responsive': False, 'class': 'rounded o_image_64_max'}"/>
+                                                    </div>
+                                                    <div class="shop_cart_product_details col">
+                                                        <div t-if="len(product.public_categ_ids) &gt; 0"
+                                                             class="product_tmp_category_name">
+                                                            <t t-foreach="product.public_categ_ids"
+                                                               t-as="product_category">
+                                                                <t t-esc="product_category.name"/>
+                                                            </t>
+                                                        </div>
+                                                        <div class='td-product_name'>
+                                                            <t t-call="website_sale.cart_line_product_link">
+                                                                <strong t-field="product.with_context(display_default_code=False).display_name"/>
+                                                            </t>
+                                                        </div>
+                                                        <div class="d-flex justify-content-between align-center">
+                                                            <div class="product-price-discount">
+                                                                <t t-if="combination_info">
+                                                                    <div class="css_editable_mode_hidden td-price">
+                                                                        <span class="oe_price"
+                                                                              style="white-space: nowrap;"
+                                                                              t-esc="combination_info['price']"
+                                                                              t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
+                                                                        <span itemprop="price" style="display:none;"
+                                                                              t-esc="combination_info['price']"/>
+                                                                        <span itemprop="priceCurrency"
+                                                                              style="display:none;"
+                                                                              t-esc="website.currency_id.name"/>
+                                                                        <span t-attf-class="text-danger oe_default_price ms-1 h5 {{'' if combination_info['has_discounted_price'] and not combination_info['compare_list_price'] else 'd-none'}}"
+                                                                              style="text-decoration: line-through; white-space: nowrap;"
+                                                                              t-esc="combination_info['list_price']"
+                                                                              t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"
+                                                                              itemprop="listPrice"
+                                                                        />
+                                                                        <t t-if="is_view_active('website_sale.tax_indication')"
+                                                                           t-call="website_sale.tax_indication"/>
+                                                                        <del t-if="combination_info['compare_list_price'] and (combination_info['compare_list_price'] &gt; combination_info['price'])">
+                                                                            <bdi dir="inherit">
+                                                                                <span t-esc="combination_info['compare_list_price']"
+                                                                                      groups="website_sale.group_product_price_comparison"
+                                                                                      t-options='{
+                                   "widget": "monetary",
+                                   "display_currency": website.currency_id,
+                               }'/>
+                                                                            </bdi>
+                                                                        </del>
+                                                                    </div>
+                                                                    <div class="css_non_editable_mode_hidden decimal_precision td-price"
+                                                                         t-att-data-precision="str(website.currency_id.decimal_places)">
+                                                                        <span t-field="line.product_id.list_price"
+                                                                              t-options='{
+                               "widget": "monetary",
+                               "display_currency": line.product_id.currency_id,
+                        }'/>
+                                                                        <t t-if="is_view_active('website_sale.tax_indication')"
+                                                                           t-call="website_sale.tax_indication"/>
+                                                                        <del t-if="combination_info['compare_list_price'] and (combination_info['compare_list_price'] &gt; combination_info['price'])">
+                                                                            <bdi dir="inherit">
+                                                                                <span t-field="line.product_id.compare_list_price"
+                                                                                      groups="website_sale.group_product_price_comparison"
+                                                                                      t-options='{
+                                    "widget": "monetary",
+                                    "display_currency": website.currency_id,
+                                }'/>
+                                                                            </bdi>
+                                                                        </del>
+                                                                    </div>
+                                                                </t>
+
+
+                                                            </div>
+                                                            <div class="text-center add_to_order_line">
+                                                                <input class="js_quantity" name="product_id"
+                                                                       t-att-data-product-id="product.id"
+                                                                       type="hidden"/>
+                                                                <a t-if="product._website_show_quick_add()"
+                                                                   role="button"
+                                                                   class="btn btn-secondary js_add_suggested_products">
+                                                                    <strong>Add to Cart</strong>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </t>
+                                        </div>
+                                    </t>
+                                </t>
+                            </div>
+                        </t>
+                    </div>
+                </t>
+            </div>
+
+        </xpath>
+
+        <xpath expr="//div[1][hasclass('js_cart_lines')]" position="replace">
+            <div t-if="not website_sale_order or not website_sale_order.website_order_line"
+                 class="js_cart_lines alert alert-info">
+                <div class="empty-cart">
+                    <div class="cart-content">
+                        <div class="cart-icon">
+                            <img src="/cr_web_portal/static/src/images/homepage/cart.svg" width="70" height="70"/>
+                        </div>
+                        <div class="cart-text">
+                            <h2>Your cart is empty!</h2>
+                            <a href="/shop" class="shop-now-link">Shop now
+                                <img src="/cr_web_portal/static/src/images/mech-custom/arrow-right.png"
+                                     alt="Right Arrow"/>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </xpath>
+    </template>
+
+    <template id="website_sale.total">
+        <div id="cart_total" t-att-class="extra_class or ''"
+             t-if="website_sale_order and website_sale_order.website_order_line and not (website_sale_order.is_customisable or  website_sale_order.is_place_inquiry)">
+            <table class="d-none">
+                <tr></tr>
+                <tr id="order_total_untaxed"></tr>
+            </table>
+            <div id="order_sub_total">
+                <div class="d-flex justify-content-between">
+                    <div class="text-start div-cell border-0 p-0">Price
+                    </div>
+                    <div t-if="not website_sale_order.carrier_id" class="text-xl-end div-cell border-0 p-0"
+                         style="font-size: larger !important;">
+                        <span t-field="website_sale_order.amount_untaxed" class="monetary_field"
+                              style="white-space: nowrap;"
+                              t-options="{'widget': 'monetary', 'display_currency': website_sale_order.currency_id}"/>
+                    </div>
+                    <div t-else="" class="text-xl-end div-cell border-0 p-0" style="font-size: larger !important;">
+                        <span t-esc="website_sale_order.get_without_delivery_amount()"
+                              style="white-space: nowrap;"
+                              t-options="{'widget': 'monetary', 'display_currency': website_sale_order.currency_id}"/>
+                    </div>
+                </div>
+            </div>
+            <div id="order_delivery" t-if="website_sale_order and website_sale_order.carrier_id">
+                <div class="d-flex justify-content-between">
+                    <div class="text-start div-cell border-0 p-0"
+                         title="Delivery will be updated after choosing a new delivery method">Delivery Charge
+                    </div>
+                    <div class="text-xl-end div-cell border-0 p-0" style="font-size: larger !important;">
+                        <span t-field="website_sale_order.amount_delivery" class="monetary_field"
+                              style="white-space: nowrap;"
+                              t-options='{"widget": "monetary","display_currency": website_sale_order.currency_id,}'/>
+                    </div>
+                </div>
+            </div>
+            <div id="order_total_untaxed" t-if="website_sale_order and website_sale_order.carrier_id">
+                <div class="d-flex justify-content-between">
+                    <div class="text-start div-cell border-0 p-0">Sub Total</div>
+                    <div class="text-xl-end div-cell border-0 p-0" style="font-size: larger !important;">
+                        <span t-field="website_sale_order.amount_untaxed" class="monetary_field"
+                              style="white-space: nowrap;"
+                              t-options="{'widget': 'monetary', 'display_currency': website_sale_order.currency_id}"/>
+                    </div>
+                </div>
+            </div>
+            <div id="order_total_taxes">
+                <div class="d-flex justify-content-between">
+                    <div class="text-start div-cell border-0 p-0">GST</div>
+                    <div class="text-xl-end div-cell border-0 p-0" style="font-size: larger !important;">
+                        <span t-field="website_sale_order.amount_tax" class="monetary_field"
+                              style="white-space: nowrap;"
+                              t-options="{'widget': 'monetary', 'display_currency': website_sale_order.currency_id}"/>
+                    </div>
+                </div>
+            </div>
+            <div id="order_total" class="border-top">
+                <div class="d-flex justify-content-between">
+                    <div class="text-start div-cell border-bottom-0 p-0">
+                        <strong class="p-0">Total Amount</strong>
+                    </div>
+                    <div class="text-xl-end div-cell border-bottom-0 p-0" style="font-size: larger !important;">
+                        <strong t-field="website_sale_order.amount_total" class="monetary_field"
+                                t-options='{"widget": "monetary", "display_currency": website_sale_order.pricelist_id.currency_id}'/>
+                    </div>
+                </div>
+            </div>
+            <input type="hidden" t-att-value="website_sale_order.amount_total" class="order_total_value"/>
+            <div t-if="website_sale_order and website_sale_order.payment_term_id and website_sale_order.payment_term_id.is_advance_payment"
+                 class="d-none amount_of_payable mb-3">
+                <div class="d-flex justify-content-between">
+                    <div class="text-start border-bottom-0 p-0 w-190">
+                        <strong style="color: #787878 !important" class="p-0">Advance payment</strong>
+                        <div t-if="not (website_sale_order.is_customisable or website_sale_order.is_place_inquiry)">
+                            <div class="summary_payment_term">
+                                <t t-esc="website_sale_order.payment_term_id.name"/>. As per payment terms.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-xl-end mp_input_field_web border-bottom-0 p-0">
+                        <t t-set="amount_dict" t-value="website_sale_order.get_payable_amount()"/>
+                        <input type="number" id="payable_amount" name="payable_amount"
+                               t-att-value="amount_dict.get('amount')" t-att-min="amount_dict.get('min')"
+                               t-att-max="amount_dict.get('max')" step="0.01"
+                               class="check_digits_quantity payable_amount form_input s_website_form_input"/>
+                    </div>
+                </div>
+            </div>
+            <div t-if="website_sale_order and website_sale_order.payment_term_id and website_sale_order.payment_term_id.is_advance_payment"
+                 id="order_total" class="d-none remaining_of_payable border-top">
+                <div class="d-flex justify-content-between">
+                    <div class="text-start div-cell border-bottom-0 p-0">
+                        <strong class="p-0">Remaining Amount</strong>
+                    </div>
+                    <div class="text-xl-end div-cell border-bottom-0 p-0" style="font-size: larger !important;">
+                        <strong class="remaining_amount"></strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+    <template id="mp_order_delivery_hide" inherit_id="website_sale_delivery.cart_delivery">
+        <xpath expr="//tr[@id='order_delivery']" position="replace">
+        </xpath>
+    </template>
+
+    <template id="mechpower_cart_summary" inherit_id="website_sale.cart_summary">
+        <xpath expr="//div[hasclass('card')]" position="replace">
+            <t t-if="website_sale_order">
+                <!--                <div class="cart_summary">-->
+                <div class="cart_summary show_in_laptop">
+                    <div t-if="not website_sale_order or not website_sale_order.website_order_line"
+                         class="alert alert-info">
+                        Your cart is empty!
+                    </div>
+                    <div class="toggle_summary_div cart_summary_card d-xl-block">
+                        <t t-if='website_sale_order'>
+                            <t t-set='warning' t-value='website_sale_order._get_shop_warning(clear=False)'/>
+                            <div t-if='warning' class="alert alert-warning" role="alert">
+                                <strong>Warning!</strong>
+                                <t t-esc='website_sale_order._get_shop_warning()'/>
+                            </div>
+                        </t>
+                        <h4 class="d-xl-block cart_summary_card_title"
+                            t-if="not website_sale_order.is_customisable and not website_sale_order.is_place_inquiry">
+                            Price Details
+                        </h4>
+                        <div>
+                            <t t-call="website_sale.total">
+                                <t t-set='redirect' t-value="redirect or '/shop/payment'"></t>
+                            </t>
+                        </div>
+                        <t t-set="redirect_url"
+                           t-value="'/web/login?redirect=/shop/checkout' if redirect_to_sign_in else '/shop/confirm_order'"/>
+                        <t t-if="website_sale_order.is_customisable or website_sale_order.is_place_inquiry">
+                            <a role="button"
+                               t-if="website_sale_order and website_sale_order.website_order_line and request.httprequest.path == '/shop/extra_info'"
+                               class="btn btn-primary d-none d-xl-block send_inquiry_button"
+                               t-attf-href="{{redirect_url}}"
+                               data-trigger="customisation-product-form">
+                                <t t-if="redirect_to_sign_in">
+                                    <span>Sign In</span>
+                                </t>
+                                <t t-else="">
+                                    <span t-if="website_sale_order.is_customisable or website_sale_order.is_place_inquiry">
+                                        Place Inquiry
+                                    </span>
+                                    <span t-else="">Place Order</span>
+                                </t>
+                            </a>
+                            <a role="button"
+                               t-elif="website_sale_order and website_sale_order.website_order_line and request.httprequest.path != '/shop/payment'"
+                               class="btn btn-primary d-none d-xl-block"
+                               t-attf-href="{{redirect_url}}"
+                               data-trigger="customisation-product-form">
+                                <t t-if="redirect_to_sign_in">
+                                    <span>Sign In</span>
+                                </t>
+                                <t t-else="">
+                                    <span t-if="website_sale_order.is_customisable or website_sale_order.is_place_inquiry">
+                                        Place Inquiry
+                                    </span>
+                                    <span t-else="">Place Order</span>
+                                </t>
+                            </a>
+                        </t>
+                        <t t-else="">
+                            <a role="button"
+                               t-if="website_sale_order and website_sale_order.website_order_line and request.httprequest.path != '/shop/payment'"
+                               class="btn btn-primary d-none d-xl-block"
+                               t-attf-href="{{redirect_url}}">
+                                <t t-if="redirect_to_sign_in">
+                                    <span>Sign In</span>
+                                </t>
+                                <t t-else="">
+                                    <span t-if="website_sale_order.is_customisable or website_sale_order.is_place_inquiry">
+                                        Place Inquiry
+                                    </span>
+                                    <span t-else="">Place Order</span>
+                                </t>
+                            </a>
+                        </t>
+                        <a role="button"
+                           t-if="website_sale_order and website_sale_order.website_order_line and request.httprequest.path == '/shop/payment' and (website_sale_order.is_customisable or website_sale_order.is_place_inquiry)"
+                           class="btn btn-primary d-none d-xl-block"
+                           t-attf-href="/customise_order_confirm/{{website_sale_order.id}}">
+                            <t t-if="redirect_to_sign_in">
+                                <span>Sign In</span>
+                            </t>
+                            <t t-else="">
+                                <span t-if="website_sale_order.is_customisable or website_sale_order.is_place_inquiry">
+                                    Place Inquiry
+                                </span>
+                                <span t-else="">Place Order</span>
+                            </t>
+                        </a>
+                    </div>
+                    <div class="cart_summary_order_lines">
+                        <t t-foreach="website_sale_order.website_order_line" t-as="line">
+                            <div class="col-lg-12 d-flex cart_order_line">
+                                <t t-if="line.product_id">
+                                    <div class="shop_cart_product_img col-lg-4 col-4">
+                                        <t t-set="image_holder" t-value="line.product_id._get_image_holder()"/>
+                                        <div t-if="line._is_not_sellable_line() and line.product_id.image_128">
+                                            <img t-att-src="image_data_uri(line.product_id.image_128)"
+                                                 class="img o_image_64_max rounded" t-att-alt="line.name_short"/>
+                                        </div>
+                                        <div t-else="" t-field="image_holder.image_1920"
+                                             t-options="{'widget': 'image', 'qweb_img_responsive': False, 'class': 'rounded o_image_64_max'}"/>
+                                    </div>
+                                    <div class="shop_cart_product_details col-lg-8 col-8">
+                                        <div class="product_line_product_name">
+                                            <div class='td-product_name'>
+                                                <t t-if="not (line.product_id.is_enclosure_service or
+                                                        line.product_id.is_fdm_service or
+                                                        line.product_id.is_projection_service or
+                                                        line.product_id.is_metal_feb_service or
+                                                        line.product_id.is_cnc_machining_service or
+                                                        line.product_id.is_injection_mold_service)">
+                                                    <t t-call="website_sale.cart_line_product_link">
+                                                        <strong t-field="line.name_short"/>
+                                                    </t>
+                                                </t>
+                                                <t t-else="">
+                                                    <strong t-field="line.product_id.name"/>
+                                                </t>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-between">
+                                            <div class="product_line_qty_cart_summary">
+                                                <t t-if="line.product_uom_qty">Qty:
+                                                    <t t-out="int(line.product_uom_qty)"/>
+                                                </t>
+                                            </div>
+                                            <div class="product-price-discount"
+                                                 t-if="not website_sale_order.is_customisable and not website_sale_order.is_place_inquiry">
+                                                <t t-set="combination_info"
+                                                   t-value="line.product_id._get_combination_info_variant(add_qty=int(line.product_uom_qty),pricelist=website_sale_order.pricelist_id)"/>
+                                                <t t-if="combination_info">
+                                                    <h5 class="css_editable_mode_hidden">
+                                                        <span class="oe_price" style="white-space: nowrap;"
+                                                              t-esc="combination_info['price']"
+                                                              t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
+                                                        <span itemprop="price" style="display:none;"
+                                                              t-esc="combination_info['price']"/>
+                                                        <span itemprop="priceCurrency" style="display:none;"
+                                                              t-esc="website.currency_id.name"/>
+                                                        <span t-attf-class="text-danger oe_default_price ms-1 h5 {{'' if combination_info['has_discounted_price'] and not combination_info['compare_list_price'] else 'd-none'}}"
+                                                              style="text-decoration: line-through; white-space: nowrap;"
+                                                              t-esc="combination_info['list_price']"
+                                                              t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"
+                                                              itemprop="listPrice"
+                                                        />
+                                                        <t t-if="is_view_active('website_sale.tax_indication')"
+                                                           t-call="website_sale.tax_indication"/>
+                                                        <del t-if="combination_info['compare_list_price'] and (combination_info['compare_list_price'] &gt; combination_info['price'])">
+                                                            <bdi dir="inherit">
+                                                                <span t-esc="combination_info['compare_list_price']"
+                                                                      groups="website_sale.group_product_price_comparison"
+                                                                      t-options='{"widget": "monetary","display_currency": website.currency_id,}'/>
+                                                            </bdi>
+                                                        </del>
+                                                        <t t-if="line.product_uom">/
+                                                            <t t-esc="line.product_uom.name"/>
+                                                        </t>
+                                                    </h5>
+                                                    <h5 class="css_non_editable_mode_hidden decimal_precision"
+                                                        t-att-data-precision="str(website.currency_id.decimal_places)">
+                                                        <span t-field="line.product_id.list_price"
+                                                              t-options='{"widget": "monetary","display_currency": line.product_id.currency_id,}'/>
+                                                        <t t-if="is_view_active('website_sale.tax_indication')"
+                                                           t-call="website_sale.tax_indication"/>
+                                                        <del t-if="combination_info['compare_list_price'] and (combination_info['compare_list_price'] &gt; combination_info['price'])">
+                                                            <bdi dir="inherit">
+                                                                <span t-field="line.product_id.compare_list_price"
+                                                                      groups="website_sale.group_product_price_comparison"
+                                                                      t-options='{"widget": "monetary","display_currency": website.currency_id,}'/>
+                                                            </bdi>
+                                                        </del>
+                                                        <t t-if="line.product_uom">/
+                                                            <t t-esc="line.product_uom.name"/>
+                                                        </t>
+                                                    </h5>
+                                                </t>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </t>
+                            </div>
+                        </t>
+                    </div>
+                </div>
+            </t>
+            <t t-else="">
+                <div t-if="not website_sale_order or not website_sale_order.website_order_line"
+                     class="alert alert-info">
+                    Your cart is empty!
+                </div>
+            </t>
+        </xpath>
+    </template>
+
+    <template id="website_sale.extra_info_option" name="Extra Step Option" inherit_id="website_sale.wizard_checkout"
+              active="False">
+        <!-- Add a "flag element" to trigger style variation -->
+        <xpath expr="//div[hasclass('wizard')]" position="replace">
+            <div class="cart_breadcrumb">
+                <nav aria-label="breadcrumb" class="breadcrumb flex-nowrap py-0 px-0 css_editable_mode_hidden">
+                    <li t-att-class="'breadcrumb-item %s' % (step == 10 and 'active' or step&gt;10 and 'complete' or 'disabled')">
+                        <a t-att-href="step&gt;=10 and '/shop/cart' or '#'">Cart</a>
+                        <img t-if="step == 10"
+                             src="/cr_web_portal/static/src/images/new_design_resource/arrow-right.svg" loading="lazy"
+                             class="breadcrumb-active-images"/>
+                        <img t-else="" src="/cr_web_portal/static/src/images/new_design_resource/arrow-down.svg"
+                             loading="lazy" class="breadcrumb-item-images"/>
+                    </li>
+                    <li t-att-class="'breadcrumb-item %s' % (step == 20 and 'active' or step&gt;20 and 'complete' or 'disabled')">
+                        <a t-att-href="step&gt;=20 and '/shop/checkout' or '#'">Address</a>
+                        <img t-if="step == 20"
+                             src="/cr_web_portal/static/src/images/new_design_resource/arrow-right.svg" loading="lazy"
+                             class="breadcrumb-active-images"/>
+                        <img t-else="" src="/cr_web_portal/static/src/images/new_design_resource/arrow-down.svg"
+                             loading="lazy" class="breadcrumb-item-images"/>
+                    </li>
+                    <li t-if="website_sale_order and website_sale_order.is_customisable and not website_sale_order.is_place_inquiry"
+                        t-att-class="'breadcrumb-item %s' % (step == 30 and 'active' or step&gt;30 and 'complete' or 'disabled')">
+                        <a t-att-href="step&gt;=30 and '/shop/extra_info' or '#'">Customization</a>
+                        <img t-if="step == 30"
+                             src="/cr_web_portal/static/src/images/new_design_resource/arrow-right.svg" loading="lazy"
+                             class="breadcrumb-active-images"/>
+                        <img t-else="" src="/cr_web_portal/static/src/images/new_design_resource/arrow-down.svg"
+                             loading="lazy" class="breadcrumb-item-images"/>
+                    </li>
+                    <li t-if="website_sale_order and not website_sale_order.is_customisable and not website_sale_order.is_place_inquiry"
+                        t-att-class="'breadcrumb-item %s' % (step == 40 and 'active' or step&gt;40 and 'complete' or 'disabled')">
+                        <a t-att-href="step&gt;=40 and '/shop/payment' or '#'">Payment</a>
+                        <img t-if="step == 40"
+                             src="/cr_web_portal/static/src/images/new_design_resource/arrow-right.svg" loading="lazy"
+                             class="breadcrumb-active-images"/>
+                        <img t-else="" src="/cr_web_portal/static/src/images/new_design_resource/arrow-down.svg"
+                             loading="lazy" class="breadcrumb-item-images"/>
+                    </li>
+                    <li t-elif="not website_sale_order or not website_sale_order.website_order_line"
+                        t-att-class="'breadcrumb-item %s' % (step == 40 and 'active' or step&gt;40 and 'complete' or 'disabled')">
+                        <a t-att-href="step&gt;=40 and '/shop/payment' or '#'">Payment</a>
+                        <img t-if="step == 40"
+                             src="/cr_web_portal/static/src/images/new_design_resource/arrow-right.svg" loading="lazy"
+                             class="breadcrumb-active-images"/>
+                        <img t-else="" src="/cr_web_portal/static/src/images/new_design_resource/arrow-down.svg"
+                             loading="lazy" class="breadcrumb-item-images"/>
+                    </li>
+                    <t t-if="website_sale_order.transaction_ids and not (website_sale_order.is_customisable or website_sale_order.is_place_inquiry)">
+                        <li t-if="website_sale_order.transaction_ids[-1].state in ['cancel','error']"
+                            t-att-class="'error-breadcrumb breadcrumb-item %s' % (step == 60 and 'active' or step&gt;60 and 'complete' or 'disabled')">
+                            <a href="#">Confirm</a>
+                        </li>
+                        <li t-if="website_sale_order.is_customisable or website_sale_order.is_place_inquiry and website_sale_order.transaction_ids[-1].state not in ['cancel','error']"
+                            t-att-class="'breadcrumb-item %s' % (step == 40 and 'active' or step&gt;40 and 'complete' or 'disabled')">
+                            <a href="#">Confirm</a>
+                        </li>
+                        <li t-if="not website_sale_order.is_customisable and website_sale_order.transaction_ids[-1].state not in ['cancel','error']"
+                            t-att-class="'breadcrumb-item %s' % (step == 60 and 'active' or step&gt;60 and 'complete' or 'disabled')">
+                            <a href="#">Confirm</a>
+                        </li>
+                    </t>
+                    <t t-else="">
+                        <li t-if="website_sale_order.is_customisable or website_sale_order.is_place_inquiry"
+                            t-att-class="'breadcrumb-item %s' % (step == 40 and 'active' or step&gt;40 and 'complete' or 'disabled')">
+                            <a href="#">Confirm</a>
+                        </li>
+                        <li t-if="not website_sale_order.is_customisable"
+                            t-att-class="'breadcrumb-item %s' % (step == 60 and 'active' or step&gt;60 and 'complete' or 'disabled')">
+                            <a href="#">Confirm</a>
+                        </li>
+                    </t>
+                </nav>
+            </div>
+        </xpath>
+    </template>
+
+
+    <template id="website_sale_delivery.payment_delivery" name="Delivery Costs custom"
+              inherit_id="website_sale.payment">
+        <xpath expr="//div[@id='wrap']" position="replace">
+            <div id="wrap">
+                <div class="container oe_website_sale py-2">
+                    <div class="row shop_cart_flow_page">
+                        <div class='col-12'>
+                            <t t-call="website_sale.wizard_checkout">
+                                <t t-set="step" t-value="40"/>
+                            </t>
+                        </div>
+                        <div class="col-12" t-if="errors">
+                            <t t-foreach="errors" t-as="error">
+                                <div class="alert alert-danger" t-if="error" role="alert">
+                                    <h4>
+                                        <t t-esc="error[0]"/>
+                                    </h4>
+                                    <t t-esc="error[1]"/>
+                                </div>
+                            </t>
+                        </div>
+                        <div class="col-12 col-xl-8 oe_cart">
+                            <div id='address_on_payment'>
+                                <t t-call="website_sale.address_on_payment"/>
+                            </div>
+
+                            <div class="oe_structure clearfix mt-3" id="oe_structure_website_sale_payment_1"/>
+
+                            <t t-if="website_sale_order.is_customisable != True">
+                                <div t-if="deliveries" id="delivery_carrier">
+                                    <t t-set="delivery_nb" t-value="len(deliveries)"/>
+                                    <div t-if="delivery_nb &gt; 1" class="white_card_cart_summary border-0"
+                                         id="delivery_method">
+                                        <p class="card_address_title_bar">Delivery method</p>
+                                        <ul class="list-group">
+                                            <t t-foreach="deliveries" t-as="delivery">
+                                                <div class=" o_delivery_carrier_select">
+                                                    <label class="custom-radio">
+                                                        <input t-att-value="delivery.id"
+                                                               t-att-id="'delivery_%i' % delivery.id" type="radio"
+                                                               name="delivery_type"
+                                                               t-att-checked="order.carrier_id and order.carrier_id.id == delivery.id and 'checked' or False"
+                                                               t-att-class="'d-none' if delivery_nb == 1 else ''"/>
+                                                        <span class="radio-mark"></span>
+                                                        <label class="label-optional" t-field="delivery.name"/>
+                                                    </label>
+                                                    <t t-set='badge_class'
+                                                       t-value="(delivery_nb != 1 and 'float-end ' or '') + 'badge text-bg-secondary'"/>
+                                                    <span t-attf-class="#{badge_class} o_wsale_delivery_badge_price">
+                                                        Select to compute delivery rate
+                                                    </span>
+                                                    <t t-if="delivery.website_description">
+                                                        <div t-field="delivery.website_description"
+                                                             class="text-muted mt8"/>
+                                                    </t>
+                                                </div>
+                                            </t>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </t>
+                            <div class="cart_summary show_in_mobile mt-4" t-if="not website_sale_order.is_customisable">
+                                <div class="toggle_summary_div cart_summary_card d-xl-block">
+                                    <h4 class="d-xl-block cart_summary_card_title">Price Details</h4>
+                                    <div>
+                                        <t t-call="website_sale.total">
+                                            <t t-set='redirect' t-value="redirect or '/shop/payment'"></t>
+                                        </t>
+                                    </div>
+                                    <t t-set="redirect_url"
+                                       t-value="'/web/login?redirect=/shop/checkout' if redirect_to_sign_in else '/shop/confirm_order'"/>
+                                    <a role="button"
+                                       t-if="website_sale_order and website_sale_order.website_order_line and request.httprequest.path != '/shop/payment'"
+                                       class="btn btn-primary d-none d-xl-block"
+                                       t-attf-href="{{redirect_url}}">
+                                    </a>
+                                </div>
+                            </div>
+                            <div t-if="providers or tokens" id="payment_method" class="">
+                                <h3 class="payment_provider_title" t-if="not order.is_customisable">Select payment
+                                    method
+                                </h3>
+                                <div class="payment_provider_section o_not_editable mb-3">
+                                    <t t-call="payment.checkout">
+                                        <t t-set="footer_template_id" t-value="'website_sale.payment_footer'"/>
+                                        <t t-set="submit_button_label">Pay Now</t>
+                                    </t>
+                                </div>
+                            </div>
+                            <div t-else="" class="alert alert-warning">
+                                <strong>No suitable payment option could be found.</strong>
+                                <br/>
+                                If you believe that it is an error, please contact the website administrator.
+                            </div>
+                            <div t-if="not providers" class="mt-2">
+                                <a role="button" class="btn-link"
+                                   groups="base.group_system"
+                                   t-attf-href="/web#action=#{payment_action_id}">
+                                    <i class="fa fa-arrow-right"></i>
+                                    Add payment providers
+                                </a>
+                            </div>
+                            <div class="js_payment mt-3" t-if="not errors and not website_sale_order.amount_total"
+                                 id="payment_method" name="o_website_sale_free_cart">
+                                <form name="o_wsale_confirm_order" target="_self" action="/shop/payment/validate"
+                                      method="post">
+                                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"
+                                           t-nocache="The csrf token must always be up to date."/>
+                                    <t t-call="website_sale.payment_footer">
+                                        <t t-set="submit_button_label">Confirm Order</t>
+                                    </t>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="d-xl-block col-xl-4">
+                            <t t-call="website_sale.cart_summary"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="oe_structure" id="oe_structure_website_sale_payment_2"/>
+            </div>
+        </xpath>
+    </template>
+
+    <template id="mech_address_kanban" name="Kanban address" inherit_id="website_sale.address_kanban">
+        <xpath expr="//div" position="replace">
+            <div t-attf-class="card card-size #{selected and 'border border-primary border-cart-line' or 'js_change_shipping'}">
+                <div class="card-body d-flex align-items-start">
+                    <div class="checkbox-div btn-billing">
+                        <input type="radio"/>
+                    </div>
+                    <div class="card-body-content">
+                        <t t-esc="contact"
+                           t-options="dict(widget='contact', fields=['name', 'address'], no_marker=True)"/>
+                        <br/>
+                        <div class="number-info">
+                            Mobile number:
+                            <strong>
+                                <t t-esc="contact"
+                                   t-options="dict(widget='contact', fields=['phone'], no_marker=True)"/>
+                            </strong>
+                        </div>
+                        <br/>
+                        <div class="edit-remove">
+                            <a role="button" href="#" class="button button--secondary js_edit_address edit">
+                                Edit
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </xpath>
+        <xpath expr="//t[@t-esc='contact']" position="replace">
+            <t t-if="contact.id == request.env.user.partner_id.id">
+                <t t-esc="contact" t-options="dict(widget='contact', fields=['name','address'], no_marker=True)"/>
+            </t>
+            <t t-else="">
+                <t t-esc="contact.name"/>
+                <t t-esc="contact" t-options="dict(widget='contact', fields=['address'], no_marker=True)"/>
+            </t>
+        </xpath>
+    </template>
+
+    <template id="mp_cart_payment_icon" name="MP Paymet Icons" inherit_id="payment.icon_list">
+        <xpath expr="//ul" position="replace">
+            <ul class="payment_icon_list list-inline d-none" data-max-icons="4">
+                <t t-set="icon_index" t-value="0"/>
+                <t t-set="MAX_ICONS" t-value="4"/>
+
+                <t t-foreach="provider.payment_icon_ids.filtered(lambda r: r.image_payment_form)" t-as="icon">
+                    <li t-attf-class="list-inline-item{{'' if (icon_index &lt; MAX_ICONS) else ' d-none'}}">
+                        <span t-field="icon.image_payment_form"
+                              t-options="{'widget': 'image', 'alt-field': 'name'}"
+                              data-bs-toggle="tooltip"
+                              t-att-title="icon.name"/>
+                    </li>
+                    <t t-set="icon_index" t-value="icon_index + 1"/>
+                </t>
+                <t t-if="icon_index > MAX_ICONS">
+
+                    <li class="list-inline-item">
+                        <span class=" more_option text-info">
+                            <a name="o_payment_icon_more"
+                               data-bs-toggle="tooltip"
+                               t-att-title="', '.join([icon.name for icon in provider.payment_icon_ids[MAX_ICONS:]])">
+                                show more
+                            </a>
+                        </span>
+                    </li>
+                    <li class="list-inline-item d-none">
+                        <span class="more_option text-info">
+                            <a name="o_payment_icon_less">show less</a>
+                        </span>
+                    </li>
+                </t>
+            </ul>
+        </xpath>
+    </template>
+
+    <template id="website.robots">
+        <t t-if="not request.website.sudo().robots_txt">
+            <t t-translation="off">
+                User-agent: *
+                <t t-if="website.domain and not website._is_indexable_url(url_root)">
+                    Disallow: /
+                </t>
+                <t t-else="">
+                    Sitemap:<t t-esc="url_root"/>sitemap.xml
+
+
+                    ##############
+                    # custom #
+                    ##############
+
+                    <t t-out="request.website.sudo().robots_txt"/>
+                </t>
+            </t>
+        </t>
+        <t t-else="">
+            <t t-out="request.website.sudo().robots_txt"/>
+        </t>
+    </template>
+</odoo>

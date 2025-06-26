@@ -1,0 +1,543 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="contact_us_page" name="Contact us">
+        <t t-call="web.frontend_layout">
+            <div class="oe_structure oe_empty" id="contactus-header">
+                <section class="s_cover parallax bg-black-50 s_parallax_no_overflow_hidden o_colored_level"
+                         data-scroll-background-ratio="1" data-snippet="s_cover" data-name="Cover" style="background-image: none; padding-top: 135px; padding-bottom: 135px;">
+                    <span class="s_parallax_bg oe_img_bg o_bg_img_center"
+                          style="background-image: url(&quot;cr_web_portal/static/src/images/contact-us/contactus_banner.webp&quot;); background-position: bottom;" />
+                    <div class="o_we_bg_filter bg-black-50"/>
+
+                    <div class="container s_allow_columns container-fluid">
+                        <div class="row">
+                            <div class="col o_colored_level col-lg-10">
+                                <div class="header-box-custom">
+                                    <h5 class="sub-heading-custom mp-caption-custom" style="font-size: 14px;">CONTACT US
+                                    </h5>
+                                    <h2 class="main-heading-custom desktop-view" style="color: white; font-size: 54px;">
+                                        <span class="mp_underline_custom">Let’s Stay Co</span>nnected!
+                                    </h2>
+                                    
+                                    <h2 class="main-heading-custom mobile_view d-none"
+                                        style="color: white; font-size: 30px;">
+                                        Let’s Stay<span class="mp_underline_custom"> Connected!</span>
+                                    </h2>
+                                    <p class="sub-heading-lines-custom mp-body-1-rg" style="color: white;">
+                                        Your questions, your projects, our expertise
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <!-- Contact Us Content -->
+
+                <div class="oe_structure oe_empty" id="contactus-content">
+                    <!-- Contact -->
+                    <div class="loader-modal d-none">
+                        <div class="loader-content">
+                            <div class="loader-icon">
+                                <img src="/cr_web_portal/static/src/img/spin.gif"/>
+                            </div>
+                            <h5>Processing Your Request...</h5>
+                        </div>
+                    </div>
+                    <div class="confirmation-modal d-none">
+                        <div class="confirmation-content">
+                            <div class="confirmation-icon">
+                                <img src="/cr_web_portal/static/src/img/done.gif"/>
+                            </div>
+                            <h5>Your Request Has Been Submitted!</h5>
+                            <p>Thank you for connecting! Our team will get back to you shortly to discuss your requirements further.</p>
+                            <a href="/contact-us" class="mp-btn-light-font-green">Continue to website</a>
+                        </div>
+                    </div>
+                <section class="contact-section-main contact_page bg-gray o_colored_level"
+                         style="background-color: rgb(255, 255, 255) !important;">
+                    <div class="container pb-50 ">
+                        <div class="row contact_info">
+                            <div class="pbmit-ihbox pbmit-ihbox-style-5 col-lg-6 col-md-6 o_colored_level">
+                                <div class="pbmit-ihbox-box">
+                                    <h2 class="pbmit-element-title main_title">
+                                        Sales team -
+                                        <span class="pbmit-globalcolor">Let's build together</span>
+                                    </h2>
+                                    <div class="pbmit-heading-desc pb-2 pt-20">Our sales team is dedicated to providing
+                                        you
+                                        with
+                                        information about our products and services. Whether you're seeking details
+                                        about
+                                        our custom enclosure solutions, manufacturing capabilities, or pricing, our team
+                                        is
+                                        here to help.
+                                    </div>
+                                    
+                                    <h2 class="pbmit-element-title text-700 mb-10 mt-20">Reach
+                                        out to us</h2>
+                                    <div class="pbmit-heading-desc">
+                                        <span class="text-700" style="font-size: 18px;">
+                                            <img class="customer-care-icon" src="/cr_web_portal/static/src/images/contact-us/sms.svg" width="24" height="24"/>
+                                        </span>
+                                        sales@mechpowertech.com
+                                        <br/>
+                                        <span class="text-700" style="font-size: 18px;">
+                                            <img class="customer-care-icon" src="/cr_web_portal/static/src/images/contact-us/call.svg" width="24" height="24"/>
+                                        </span>+91 7405221215
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="pbmit-ihbox pbmit-ihbox-style-5 col-lg-6 col-md-6 o_colored_level">
+                                <div class="pbmit-ihbox-box">
+                                    <h2 class="pbmit-element-title main_title">
+                                        Human resources -
+                                        <span class="pbmit-globalcolor">Join our team</span>
+                                    </h2>
+                                    <div class="pbmit-heading-desc pb-2 pt-20">If you're interested in becoming a
+                                        part of the
+                                        growing Mech Power family and exploring career opportunities with us, our Human
+                                        Resources team is here to guide you through the process.
+                                    </div>
+                                    
+                                    <h2 class="pbmit-element-title text-700 mb-10 mt-20">Reach
+                                        out to us</h2>
+                                    <div class="pbmit-heading-desc">
+                                        <span class="text-700" style="font-size: 18px;"><img class="customer-care-icon" src="/cr_web_portal/static/src/images/contact-us/sms.svg" width="24" height="24"/></span>
+                                            hradmin@mechpowertech.com
+                                        <br/>
+                                        <span class="text-700" style="font-size: 18px;"><img class="customer-care-icon" src="/cr_web_portal/static/src/images/contact-us/call.svg" width="24" height="24"/></span>
+                                        +91 7600934782
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+
+
+            <div class="oe_structure oe_empty mp-contactus-section" id="mp-contactus-section">
+                <section class=" container">
+                    <div class="mp-contactus-header-box">
+                        <h5 class="mp-contactus-sub-heading">CONTACT US</h5>
+                        <h2 class="mp-contactus-main-heading">Have other questions or inquiries?</h2>
+                        <h2 class="underline-box">
+                            <span class="mp-contactus-main-heading-with-underline">Contact us here</span>
+                        </h2>
+                    </div>
+                    <div class="mp-contactus-form-box s_website_form">
+                        <form id="contactus_form" action="/website/form/" method="post" enctype="multipart/form-data"
+                              class="o_mark_required " data-mark="*" data-model_name="crm.lead"
+                              data-success-mode="redirect" data-success-page="/contactus/thank-you"
+                              data-pre-fill="true">
+                            <input type="hidden" name="form_name" value="contactus"/>
+                            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                            <div class="s_website_form_rows row s_col_no_bgcolor">
+                                <div class="mp_input_field_web mp_select_web">
+                                    <select id="inquiry_as" aria-label="Default select example"
+                                            class="form-select form_input change_input s_website_form_input"
+                                            name="enquire_selection" placeholder=" "
+                                            required="required">
+                                        <option value="">Inquiry As</option>
+                                        <option value="Individual">Individual</option>
+                                        <option value="Company">Company</option>
+                                        <option value="Educational_Institution">Educational
+                                            Institution
+                                        </option>
+                                        <option value="Government_Organisation">Government
+                                            Organisation
+                                        </option>
+                                    </select>
+                                    <label for="inquiry_as" class="form_label o_input_required">Inquiry As</label>
+                                </div>
+
+                                <div class="col-md-6 contactus-short">
+                                    <div class="mp_input_field_web">
+                                        <input id="contact1"
+                                               class="form-control partner-name form_input s_website_form_input"
+                                               name="partner_name" required="required" data-fill-with="name"
+                                               placeholder=" " type="text"/>
+                                        <label for="contact1" class="form_label o_input_required">Your Name</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 contactus-short">
+                                    <div class="mp_input_field_web">
+                                        <input id="contact4"
+                                               class="form-control company-name form_input s_website_form_input"
+                                               name="company_name" data-fill-with="commercial_company_name"
+                                               placeholder=" " type="text"/>
+                                        <label for="contact4" class="form_label ">Company Name</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 contactus-short">
+                                    <div class="mp_input_field_web">
+                                        <input id="contact_us_emai_checking"
+                                               class="form-control contact_us_check_email form_input s_website_form_input"
+                                               name="email" required="required" data-fill-with="email"
+                                               placeholder=" " type="text"/>
+                                        <label for="contact_us_emai_checking" class="form_label o_input_required">
+                                            E-mail
+                                        </label>
+                                    </div>
+                                    <div class="email-validate-message d-none">
+                                        <p></p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 contactus-short">
+                                    <div class='d-flex mp_phone'>
+                                        <t t-set="countries" t-value="request.env['res.country'].sudo().search([])"/>
+                                        <t t-set="default_country"
+                                           t-value="request.env['res.country'].sudo().search([('phone_code','=','+91')])"/>
+                                        <t t-if="request.env.user.partner_id.mobile">
+                                            <t t-set="default_country"
+                                               t-value="request.env['res.country'].sudo().search([('id','=',request.env.user.partner_id.country_id.id)])"/>
+                                        </t>
+                                        <div class="input-group js_country_dropdown pr-0">
+                                            <div class="input-group-prepend flag-button">
+                                                <button type="button"
+                                                        id="btn_vat_code"
+                                                        t-att-disabled="readonly"
+                                                        class="btn dropdown btn-outline-secondary dropdown-toggle js_btn_country_code form-control country_button"
+                                                        data-bs-toggle="dropdown"
+                                                        data-bs-target="#dropdown-countries">
+
+                                                    <div id="img_code_vat" class="js_img_country_code country_img ">
+                                                        +
+                                                        <t t-esc="default_country.phone_code"/>
+                                                        <i class="fa fa-angle-down"></i>
+                                                    </div>
+                                                </button>
+                                                <div class="dropdown-menu scrollable-menu" id="dropdown-countries">
+                                                    <div class="country_id_searchbar mp_input_field_web">
+                                                        <input id="search_country"
+                                                               class="search_country s_website_form_input input_control form_input"
+                                                               placeholder=" " type="text"/>
+                                                        <label for="search_country" class="form_label ">Search Country
+                                                        </label>
+                                                    </div>
+                                                    <div id="country_id_list">
+                                                        <t t-foreach="countries" t-as="country">
+                                                            <a href="#"
+                                                               t-att-id="country.code"
+                                                               t-att-data-country_id="country.id"
+                                                               t-att-data-country_code="country.code"
+                                                               t-att-data-phone_code="country.phone_code"
+                                                               class="dropdown-item js_select_country_code">
+                                                                <img t-att-src="country.image_url"
+                                                                     class="country_name_img"/>
+                                                                <span class="form-country-name">
+                                                                    <t t-esc="country.name"/>
+                                                                    (<t t-esc="country.code"/>) +
+                                                                    <t t-esc="country.phone_code"/>
+                                                                </span>
+                                                            </a>
+                                                        </t>
+                                                    </div>
+                                                </div>
+                                                <input id="country_code_field"
+                                                       type="hidden"
+                                                       size="2"
+                                                       tabindex="-1"
+                                                       class="input-group-text  js_country_code_field s_website_form_input"
+                                                       name="country_id"
+                                                       t-att-value="default_country.id"
+                                                       readonly="1"/>
+                                            </div>
+                                        </div>
+                                        <t t-if="not request.env.user._is_public()">
+                                            <t t-if="request.env.user.partner_id.mobile">
+                                                <t t-set="old_mobile"
+                                                   t-value="'+' + str(request.env.user.partner_id.country_id.phone_code)"/>
+                                                <t t-set="old_mobile1"
+                                                   t-value="request.env.user.partner_id.mobile.replace(old_mobile, '')"/>
+                                                <input type="tel" id="phone" name="contact_no"
+                                                       placeholder="Contact Number"
+                                                       t-att-value="old_mobile1.replace(' ','')"
+                                                       required="required"
+                                                       class="form-control s_website_form_input check_digits"
+                                                       maxlength="15"/>
+                                            </t>
+                                            <t t-else="">
+                                                <input type="tel" id="phone" name="contact_no"
+                                                       placeholder="Contact Number"
+                                                       required="required"
+                                                       class="form-control s_website_form_input check_digits"
+                                                       maxlength="15"/>
+                                            </t>
+                                        </t>
+                                        <t t-else="">
+                                            <input type="tel" id="phone" name="contact_no"
+                                                   placeholder="Contact Number"
+                                                   required="required"
+                                                   class="form-control s_website_form_input check_digits"
+                                                   maxlength="15"/>
+                                        </t>
+                                    </div>
+                                </div>
+                                <t t-set="industry_segments"
+                                   t-value="request.env['industry.segment'].sudo().search([])"/>
+                                <div t-if="industry_segments" class="col-md-6 contactus-short">
+                                    <div class="mp_input_field_web mp_select_web">
+                                        <select id="industry_id" t-att-value="industry"
+                                                aria-label="Default select example"
+                                                class="form-select form_input form-control s_website_form_input"
+                                                name="industry_category" placeholder=" "
+                                                required="required">
+                                            <option value="">Select Industry Affiliation Category</option>
+                                            <t t-foreach="industry_segments" t-as="industry">
+                                                <option t-att-value="industry.main_category.id">
+                                                    <t t-esc="industry.main_category.name"/>
+                                                </option>
+                                            </t>
+                                        </select>
+                                        <label for="industry_id" class="form_label left_align o_input_required">
+                                            Industry
+                                        </label>
+                                    </div>
+                                </div>
+                                <div t-if="industry_segments" class="col-md-6 contactus-short">
+                                    <div class="mp_input_field_web mp_select_web">
+                                        <select id="sub_category_id"
+                                                class="form-select form_input form-control  s_website_form_input"
+                                                name="sub_category" placeholder=" "
+                                                required="required">
+                                            <option value="">Select Industry Affiliation Sub-category</option>
+                                        </select>
+                                        <label for="sub_category_id" class="form_label left_align o_input_required">
+                                            Category
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="full_width">
+                                    <div class="mp_input_field_web ">
+                                        <input id="customer_subject"
+                                               class="form-control  form_input s_website_form_input"
+                                               name="customer_subject" required="required"
+                                               placeholder=" " type="text"/>
+                                        <label for="customer_subject" class="form_label o_input_required">Subject
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="mp-contactus-product-and-service-section">
+                                    <div class="col-md-6">
+                                        <p class="mp-contactus-service">Services:</p>
+                                        <div class="d-flex for-responsive-block">
+                                            <div class="col-md-6">
+                                                <label class="mp-checkbox">
+                                                    <input type="checkbox"
+                                                           class="is_service_product_checked s_website_form_input"
+                                                           id="enc_design" name="Enclosure_designing"
+                                                           value="Enclosure designing "/>
+                                                    <span name="Enclosure_designing" class="checkmark"/>
+                                                    <span class="mp-service-name">Enclosure Designing</span>
+                                                </label>
+                                                <label class="mp-checkbox">
+                                                    <input type="checkbox"
+                                                           class="is_service_product_checked s_website_form_input"
+                                                           name="FDM_Printing" id="3d"
+                                                           value="FDM Printing (3D printing)"/>
+                                                    <span name="FDM_Printing" class="checkmark"/>
+                                                    <span class="mp-service-name">FDM Printing (3D printing)</span>
+                                                </label>
+                                                <label class="mp-checkbox">
+                                                    <input type="checkbox"
+                                                           class="is_service_product_checked s_website_form_input"
+                                                           name="Projection_Printing" id="3d"
+                                                           value="Projection Printing (3D printing)"/>
+                                                    <span name="Projection_Printing" class="checkmark"/>
+                                                    <span class="mp-service-name">Projection Printing (3D printing)
+                                                    </span>
+                                                </label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label class="mp-checkbox">
+                                                    <input type="checkbox"
+                                                           class="is_service_product_checked s_website_form_input"
+                                                           name="Sheet_metal_fabrication" id="sheet_metal"
+                                                           value="Sheet metal fabrication"/>
+                                                    <span name="Sheet_metal_fabrication" class="checkmark"/>
+                                                    <span class="mp-service-name">Sheet Metal Fabrication</span>
+                                                </label>
+                                                <label class="mp-checkbox">
+                                                    <input type="checkbox"
+                                                           class="is_service_product_checked s_website_form_input"
+                                                           name="Injection_Moulding" id="inj_mould"
+                                                           value="Injection moulding"/>
+                                                    <span name="Injection_Moulding" class="checkmark"/>
+                                                    <span class="mp-service-name">Injection Moulding</span>
+                                                </label>
+                                                <label class="mp-checkbox">
+                                                    <input type="checkbox"
+                                                           class="is_service_product_checked s_website_form_input"
+                                                           name="CNC_Machining" id="cnc" value="CNC machining"/>
+                                                    <span name="CNC_Machining" class="checkmark"/>
+                                                    <span class="mp-service-name">CNC Machining</span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--                                    <t t-set="category"-->
+                                    <!--                                           t-value="request.env['product.public.category'].search([('is_publish','=',True)])"/>-->
+                                    <div class="col-md-6">
+                                        <p class="mp-contactus-service">Products:</p>
+                                        <div class="d-flex for-responsive-block">
+                                            <div class="col-md-6">
+                                                <label class="mp-checkbox">
+                                                    <input type="checkbox"
+                                                           class="is_service_product_checked s_website_form_input"
+                                                           id="category" name="products_1"/>
+                                                    <span class="checkmark" name="products_1"></span>
+                                                    <span class="mp-service-name">Din Rail Enclosures</span>
+                                                </label>
+                                                <label class="mp-checkbox">
+                                                    <input type="checkbox"
+                                                           class="is_service_product_checked s_website_form_input"
+                                                           id="category" name="products_22"/>
+                                                    <span class="checkmark" name="products_22"></span>
+                                                    <span class="mp-service-name">19" Rack Mount Enclosure</span>
+                                                </label>
+                                                <label class="mp-checkbox">
+                                                    <input type="checkbox"
+                                                           class="is_service_product_checked s_website_form_input"
+                                                           id="category" name="products_33"/>
+                                                    <span class="checkmark" name="products_33"></span>
+                                                    <span class="mp-service-name">Desktop Enclosures</span>
+                                                </label>
+                                                <label class="mp-checkbox">
+                                                    <input type="checkbox"
+                                                           class="is_service_product_checked s_website_form_input"
+                                                           id="category" name="products_2"/>
+                                                    <span class="checkmark" name="products_2"></span>
+                                                    <span class="mp-service-name">Panel Mount Enclosures</span>
+                                                </label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label class="mp-checkbox">
+                                                    <input type="checkbox"
+                                                           class="is_service_product_checked s_website_form_input"
+                                                           id="category" name="products_3"/>
+                                                    <span class="checkmark" name="products_3"></span>
+                                                    <span class="mp-service-name">Wall Mount Enclosures</span>
+                                                </label>
+                                                <label class="mp-checkbox">
+                                                    <input type="checkbox"
+                                                           class="is_service_product_checked s_website_form_input"
+                                                           id="category" name="products_34"/>
+                                                    <span class="checkmark" name="products_34"></span>
+                                                    <span class="mp-service-name">Handheld Enclosures</span>
+                                                </label>
+                                                <label class="mp-checkbox">
+                                                    <input type="checkbox"
+                                                           class="is_service_product_checked s_website_form_input"
+                                                           id="category" name="products_35"/>
+                                                    <span class="checkmark" name="products_35"></span>
+                                                    <span class="mp-service-name">Flange Mount Enclosures</span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="full_width">
+                                    <div class="mp_input_field_web ">
+                                        <input id="message"
+                                               class="form-control  form_input s_website_form_input"
+                                               name="message"
+                                               placeholder=" " type="text"/>
+                                        <label for="message" class="form_label ">Write a message</label>
+                                    </div>
+                                    <div class="col-12 auth_recaptcha text-left">
+                                        <div class="col-sm">
+                                            <img class="secure_img"
+                                                 src="/cr_web_portal/static/src/images/new_design_resource/shield-security.svg"/>
+                                            <small class="o_recaptcha_legal_terms">
+                                                Protected by reCAPTCHA,
+                                                <a href="https://policies.google.com/privacy" class="recaptcha_url"
+                                                   target="_blank">
+                                                    Privacy Policy
+                                                </a>
+                                                &amp;
+                                                <a href="https://policies.google.com/terms" class="recaptcha_url"
+                                                   target="_blank">
+                                                    Terms of Service
+                                                </a>
+                                                apply.
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="full_width">
+                                    <button id="contactUsSubmitBtn" class="mp-primary-btn" type="submit"
+                                            disabled="disabled">Get In Touch
+                                    </button>
+                                    <span id="s_website_form_result"/>
+                                </div>
+                                <div class="col-md-12 col-lg-12 message-status" t-if="error">
+                                    <span t-esc="error"/>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </section>
+
+                <!-- Contact End -->
+            </div>
+            <div class="oe_structure oe_empty mt144" id="contact-address">
+                <section class="contact-maps-section map o_colored_level" style="background-image: none;">
+                    <div class="container">
+
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 o_colored_level">
+                                <div class="pbmit-heading-subheading animation-style2">
+                                    <h5 class="sub-heading-custom">CONTACT US
+                                    </h5>
+                                    <h2 class="pbmit-title desktop-view">
+                                        Interested i<span class="mp_underline_custom">n visiting
+                                            <span class="pbmit-globalcolor">us?  </span>
+                                        </span>
+                                    </h2>
+
+                                    <h2 class="pbmit-title mobile-section-title d-none">
+                                        <span class="mp_underline_custom">Interested in vis</span>iting
+                                        <span class="pbmit-globalcolor">us?</span>
+                                    </h2>
+
+                                    <div class="pbmit-heading-desc">
+                                        <div class="manuf-facility">
+                                            Our manufacturing facility and office are located at the following addresses:
+                                        </div>
+                                        <strong>Manufacturing facility:</strong>
+                                        <br/>Survey no. 407, Near Ram Hospital Sarkhej-Bavla Highway, Village: Moraiya&amp;nbsp;
+                                        <br/>Ta: Sanand, Dist: Ahmedabad, Gujarat 382213&amp;nbsp;
+                                        <br/>
+                                        <br/>
+                                        <strong>Sales Office:</strong>
+                                        <br/>One42 South Tower, 1002, Ambli Rd, off Bopal, Ashok Vatika,&amp;nbsp;<br/>
+                                        Ahmedabad, Gujarat 380058
+                                        <br/>
+                                        <br/>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 col-md-6">
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14700.439363590785!2d72.4289686!3d22.9093191!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e917abf1dcd3d%3A0xc3fa1a3f418232ba!2sMech%20Power!5e0!3m2!1sen!2sin!4v1695614064481!5m2!1sen!2sin"
+                                        width="100%" height="150" class="brd-0 gmap" allowfullscreen="" loading="lazy"
+                                        referrerpolicy="no-referrer-when-downgrade"/>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+            </div>
+
+            <div class="oe_structure oe_empty">
+                <section
+                        class="section-lgx about-us-about pbmit-bg-color-light ftr_top_bg bg-white oe_img_bg o_bg_img_center o_colored_level pt0 pb0"
+                        style="background-image: url(&quot;/cr_web_portal/static/src/img/home_footer.png&quot;);">
+                </section>
+            </div>
+        </t>
+    </template>
+</odoo>

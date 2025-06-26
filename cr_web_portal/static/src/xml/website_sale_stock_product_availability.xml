@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<templates>
+    <t t-name="cr_web_portal.product_availability">
+        <t t-if="product_type == 'product' and !prevent_zero_price_sale">
+            <p t-if="product_qty_available lt 0" id="out_of_stock_message">
+               The product you're interested in is currently unavailable in the desired quantity. Expect a lead time of <t t-if="sale_delay" t-esc="sale_delay"/> days for delivery.
+            </p>
+        </t>
+    </t>
+</templates>

@@ -1,0 +1,1163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="portal_my_shipping_edit" name="Shipping Address">
+        <t t-call="website.layout">
+                <div class="container">
+                    <t t-if="option == 'create'">
+                        <h2 class="mt-4">Add Shipping Address</h2>
+                    </t>
+                    <t t-else="">
+                        <h2 class="mt-4">Edit Shipping Address</h2>
+                    </t>
+                    <section class="s_website_form" data-vcss="001" data-snippet="s_website_form">
+                        <div class="container">
+                            <form action="/website/form/" method="post" enctype="multipart/form-data"
+                                  class="o_mark_required edit_shipping_address_form" data-mark="*" data-model_name="res.partner"
+                                  data-success-mode="redirect" data-success-page="/my/account"
+                                  data-pre-fill="true">
+                                <input type="hidden" name="form_name" value="shipping_address_thankyou"/>
+                                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                <div class="s_website_form_rows row s_col_no_bgcolor">
+                                    <div class="col-lg-9">
+                                        <div class="row">
+                                            <section class="s_website_form" data-snippet="s_website_form">
+                                                <div t-if="error_message" class="alert alert-danger mb-3 mt-3">
+                                                    <t t-esc="error_message"/>
+                                                    <br/>
+                                                </div>
+                                            </section>
+                                            <input type="hidden" name="id" t-att-value="partner.id"/>
+                                            <t t-if="error_message">
+                                                <div class="mb-3  col-xl-12">
+                                                    <div class="mp_input_field">
+                                                        <input type="text" name="name" class="form-control s_website_form_input form_input" required="True"
+                                                               t-att-value="value.get('name') if value.get('name') and option != 'create' else ''"/>
+                                                        <label class="col-form-label form_label o_input_required" for="name">Name</label>
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3  col-xl-6">
+                                                    <div class="mp_input_field">
+                                                        <input type="email" name="email" class="form-control s_website_form_input form_input" required="True"
+                                                               t-att-value="value.get('email') if value.get('email') and option != 'create' else ''"/>
+                                                        <label class="col-form-label form_label o_input_required" for="email">Email</label>
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3  col-xl-6">
+                                                    <div style="overflow: visible !important; position: relative;" class="d-flex mp_phone ">
+                                                        <t t-set="countries"
+                                                           t-value="request.env['res.country'].sudo().search([])"/>
+                                                        <t t-set="default_country"
+                                                           t-value="request.env['res.country'].sudo().search([('phone_code','=','+91')])"/>
+                                                        <t t-if="value.get('phone')">
+                                                            <t t-set="default_country"
+                                                               t-value="request.env['res.country'].sudo().search([('id','=',partner_country_id.id)])"/>
+                                                        </t>
+                                                        <div class="input-group js_country_dropdown pr-0">
+                                                            <div class="input-group-prepend flag-button">
+                                                                <button type="button"
+                                                                        id="btn_vat_code"
+                                                                        t-att-disabled="readonly"
+                                                                        class="btn dropdown btn-outline-secondary dropdown-toggle js_btn_country_code form-control country_button"
+                                                                        data-bs-toggle="dropdown"
+                                                                        data-bs-target="#dropdown-countries">
+
+                                                                    <div id="img_code_vat"
+                                                                         class="js_img_country_code country_img ">
+                                                                        +
+                                                                        <t t-esc="default_country.phone_code"/>
+                                                                        <i class="fa fa-chevron-down"></i>
+                                                                    </div>
+                                                                </button>
+                                                                <div class="dropdown-menu scrollable-menu"
+                                                                     id="dropdown-countries">
+                                                                    <div class="country_id_searchbar">
+                                                                        <input class="search_country input_control" type="text"
+                                                                               placeholder="Search..."/>
+                                                                    </div>
+                                                                    <div id="country_id_list">
+                                                                        <t t-foreach="countries" t-as="c">
+                                                                            <a href="#"
+                                                                               t-att-id="c.code"
+                                                                               t-att-data-c_id="c.id"
+                                                                               t-att-data-c_code="c.code"
+                                                                               t-att-data-phone_code="c.phone_code"
+                                                                               class="dropdown-item js_select_country_code">
+                                                                                <img t-att-src="c.image_url"
+                                                                                     class="country_name_img"/>
+                                                                                <span class="form-country-name">
+                                                                                    <t t-esc="c.name"/>
+                                                                                    (<t t-esc="c.code"/>) +
+                                                                                    <t t-esc="c.phone_code"/>
+                                                                                </span>
+                                                                            </a>
+                                                                        </t>
+                                                                    </div>
+                                                                </div>
+                                                                <input id="country_code_field"
+                                                                       type="hidden"
+                                                                       size="2"
+                                                                       tabindex="-1"
+                                                                       class="input-group-text js_country_code_field"
+                                                                       name="selected_phone_country_id"
+                                                                       t-att-value="default_country.id"
+                                                                       readonly="1"/>
+                                                            </div>
+                                                        </div>
+                                                        <t t-if="value.get('phone')">
+                                                            <t t-set="old_phone"
+                                                               t-value="'+' + str(partner_country_id.phone_code)"/>
+                                                            <t t-set="old_phone1"
+                                                               t-value="value.get('phone').replace(old_phone, '')"/>
+                                                            <input type="tel" id="phone" name="phone"
+                                                                   t-att-value="old_phone1.replace(' ','') if old_phone1.replace(' ','') and option != 'create' else ''"
+                                                                   t-attf-class="form-control check_digits s_website_form_input form_input"
+                                                                   required="1"
+                                                                   maxlength="15"/>
+                                                        </t>
+                                                        <t t-else="">
+                                                            <input type="tel" id="phone" name="phone"
+                                                                   t-attf-class="form-control check_digits s_website_form_input form_input"
+                                                                   required="1"
+                                                                   maxlength="15"/>
+                                                        </t>
+                                                        <label class="col-form-label form_label o_input_required" for="phone">Phone</label>
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3  col-xl-6">
+                                                    <div style="overflow: visible !important; position: relative;" class="d-flex mp_phone ">
+                                                        <t t-set="default_country"
+                                                           t-value="request.env['res.country'].sudo().search([('phone_code','=','+91')])"/>
+                                                        <t t-if="value.get('mobile')">
+                                                            <t t-set="default_country"
+                                                               t-value="request.env['res.country'].sudo().search([('id','=',partner_mobile_country_id.id)])"/>
+                                                        </t>
+                                                        <div class="input-group js_country_dropdown pr-0">
+                                                            <div class="input-group-prepend flag-button">
+                                                                <button type="button"
+                                                                        id="btn_vat_code"
+                                                                        t-att-disabled="readonly"
+                                                                        class="btn dropdown btn-outline-secondary dropdown-toggle js_btn_country_code form-control country_button"
+                                                                        data-bs-toggle="dropdown"
+                                                                        data-bs-target="#dropdown-countries">
+
+                                                                    <div id="img_code_vat"
+                                                                         class="js_img_country_code country_img ">
+                                                                        +
+                                                                        <t t-esc="default_country.phone_code"/>
+                                                                        <i class="fa fa-chevron-down"></i>
+                                                                    </div>
+                                                                </button>
+                                                                <div class="dropdown-menu scrollable-menu"
+                                                                     id="dropdown-countries">
+                                                                    <div class="country_id_searchbar">
+                                                                        <input class="search_country input_control" type="text"
+                                                                               placeholder="Search..."/>
+                                                                    </div>
+                                                                    <div id="country_id_list">
+                                                                        <t t-foreach="countries" t-as="contry">
+                                                                            <a href="#"
+                                                                               t-att-id="contry.code"
+                                                                               t-att-data-c_id="contry.id"
+                                                                               t-att-data-c_code="contry.code"
+                                                                               t-att-data-phone_code="contry.phone_code"
+                                                                               class="dropdown-item js_select_country_code">
+                                                                                <img t-att-src="contry.image_url"
+                                                                                     class="country_name_img"/>
+                                                                                <span class="form-country-name">
+                                                                                    <t t-esc="contry.name"/>
+                                                                                    (<t t-esc="contry.code"/>) +
+                                                                                    <t t-esc="contry.phone_code"/>
+                                                                                </span>
+                                                                            </a>
+                                                                        </t>
+                                                                    </div>
+                                                                </div>
+                                                                <input id="mobile_country_code_field"
+                                                                       type="hidden"
+                                                                       size="2"
+                                                                       tabindex="-1"
+                                                                       class="input-group-text js_country_code_field"
+                                                                       name="selected_mobile_country_id"
+                                                                       t-att-value="default_country.id"
+                                                                       readonly="1"/>
+                                                            </div>
+                                                        </div>
+                                                        <t t-if="value.get('mobile')">
+                                                            <t t-set="old_mobile"
+                                                               t-value="'+' + str(partner_mobile_country_id.phone_code)"/>
+                                                            <t t-set="old_mobile1"
+                                                               t-value="value.get('mobile').replace(old_mobile, '')"/>
+                                                            <input type="tel" id="phone" name="mobile"
+                                                                   t-att-value="old_mobile1.replace(' ','') if old_mobile1.replace(' ','') and option != 'create' else ''"
+                                                                   t-attf-class="form-control check_digits s_website_form_input form_input"
+                                                                   required="1"
+                                                                   maxlength="15"/>
+                                                        </t>
+                                                        <t t-else="">
+                                                            <input type="tel" id="phone" name="mobile"
+                                                                   t-attf-class="form-control check_digits s_website_form_input form_input"
+                                                                   required="1"
+                                                                   maxlength="15"/>
+                                                        </t>
+                                                        <label class="col-form-label form_label o_input_required" for="mobile">Mobile</label>
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3  col-xl-6">
+                                                    <div class="mp_input_field">
+                                                        <input type="text" name="company_name" class="form-control s_website_form_input form_input"
+                                                               t-att-required="True if partner.company_type != 'person' else False" placeholder=""
+                                                               t-att-value="value.get('company_name') if value.get('company_name') and option != 'create' else ''"/>
+                                                        <label class="col-form-label form_label o_input_required" for="company_name">Company Name</label>
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3  col-xl-6">
+                                                    <div class="mp_input_field">
+                                                        <input type="text" name="vat" class="form-control s_website_form_input form_input"
+                                                               t-att-required="True if partner.company_type != 'person' else False" placeholder=""
+                                                               t-att-value="value.get('vat') if value.get('vat') and option != 'create' else ''"/>
+                                                        <label class="col-form-label form_label o_input_required" for="vat">GST Number</label>
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3 col-xl-12">
+                                                    <div class="mp_input_field">
+                                                        <input type="text" name="street" class="form-control s_website_form_input form_input" required="True" placeholder=""
+                                                               t-att-value="value.get('street') if value.get('street') and option != 'create' else ''"/>
+                                                        <label class="col-form-label form_label o_input_required" for="street">Address Line 1</label>
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3 col-xl-12">
+                                                    <div class="mp_input_field">
+                                                        <input type="text" name="street2" class="form-control s_website_form_input form_input" placeholder=""
+                                                               t-att-value="value.get('street2') if value.get('street2') and option != 'create' else ''"/>
+                                                        <label class="col-form-label form_label" for="street2">Address Line 2</label>
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3 col-xl-6">
+                                                    <div class="mp_input_field_web mp_select_web">
+                                                        <select name="country_id" id="country_id"
+                                                                class="form-select country_onchange form_input"
+                                                                required="True">
+                                                            <option value="">Select Country...</option>
+                                                            <t t-foreach="countries" t-as="country">
+                                                                <option t-att-value="country.id" t-esc="country.name"
+                                                                        t-att-selected="value.get('country_id') == country.id and option != 'create'"/>
+                                                            </t>
+                                                        </select>
+                                                        <label class="col-form-label form_label o_input_required" for="country_id">Country</label>
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3 col-xl-6">
+                                                    <div class="mp_input_field_web mp_select_web">
+                                                        <t t-set="states"
+                                                           t-value="request.env['res.country.state'].sudo().search([])"/>
+                                                        <select name="state_id" id="state_id" class="form-select form_input" required="True">
+                                                            <option value="">Select State...</option>
+                                                            <t t-foreach="states" t-as="state">
+                                                                <option t-att-value="state.id" t-esc="state.name"
+                                                                        t-att-selected="value.get('state_id') == state.id and option != 'create'"/>
+                                                            </t>
+                                                        </select>
+                                                        <label class="col-form-label form_label o_input_required" for="state_id">State</label>
+                                                    </div>
+                                                </div>
+                                                <t t-if="partner.city_id">
+                                                    <input type="hidden" id="selected_city" t-att-value="partner.city_id.id"/>
+                                                </t>
+                                                <div class="mb-3 col-xl-8">
+                                                    <div class="mp_input_field_web mp_select_web">
+                                                        <select name="city_id" id="city_id"
+                                                                class="form-select form_input"
+                                                                data-init="1" >
+                                                            <option value="">Select City...</option>
+                                                        </select>
+                                                        <label class="col-form-label form_label o_input_required" for="city">City</label>
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3 col-xl-4">
+                                                    <div class="mp_input_field">
+                                                        <input type="text" name="zip" class="form-control s_website_form_input form_input" required="True"
+                                                               t-att-value="value.get('zip') if value.get('zip') and option != 'create' else ''"/>
+                                                        <label class="col-form-label form_label" for="zip">Pincode</label>
+                                                    </div>
+                                                </div>
+                                            </t>
+                                            <t t-else="">
+                                                <div class="mb-3  col-xl-12">
+                                                    <div class="mp_input_field">
+                                                        <input type="text" name="name" class="form-control s_website_form_input form_input" required="True" placeholder=""
+                                                               t-att-value="partner.name if partner.name and option != 'create' else ''"/>
+                                                        <label class="col-form-label form_label o_input_required" for="name">Name</label>
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3  col-xl-6">
+                                                    <div class="mp_input_field">
+                                                        <input type="email" name="email" class="form-control s_website_form_input form_input" required="True" placeholder=""
+                                                               t-att-value="partner.email if partner.email and option != 'create' else ''"/>
+                                                        <label class="col-form-label form_label o_input_required" for="email">Email</label>
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3  col-xl-6">
+                                                    <div style="overflow: visible !important; position: relative;" class="d-flex mp_phone ">
+                                                        <t t-set="countries"
+                                                           t-value="request.env['res.country'].sudo().search([])"/>
+                                                        <t t-set="default_country"
+                                                           t-value="request.env['res.country'].sudo().search([('phone_code','=','+91')])"/>
+                                                        <t t-if="partner.phone">
+                                                            <t t-set="default_country"
+                                                               t-value="request.env['res.country'].sudo().search([('id','=',partner.country_id.id)])"/>
+                                                        </t>
+                                                        <div class="input-group js_country_dropdown pr-0">
+                                                            <div class="input-group-prepend flag-button">
+                                                                <button type="button"
+                                                                        id="btn_vat_code"
+                                                                        t-att-disabled="readonly"
+                                                                        class="btn dropdown btn-outline-secondary dropdown-toggle js_btn_country_code form-control country_button"
+                                                                        data-bs-toggle="dropdown"
+                                                                        data-bs-target="#dropdown-countries">
+
+                                                                    <div id="img_code_vat"
+                                                                         class="js_img_country_code country_img ">
+                                                                        +
+                                                                        <t t-esc="default_country.phone_code"/>
+                                                                        <i class="fa fa-chevron-down"></i>
+                                                                    </div>
+                                                                </button>
+                                                                <div class="dropdown-menu scrollable-menu"
+                                                                     id="dropdown-countries">
+                                                                    <div class="country_id_searchbar">
+                                                                        <input class="search_country input_control" type="text"
+                                                                               placeholder="Search..."/>
+                                                                    </div>
+                                                                    <div id="country_id_list">
+                                                                        <t t-foreach="countries" t-as="c">
+                                                                            <a href="#"
+                                                                               t-att-id="c.code"
+                                                                               t-att-data-c_id="c.id"
+                                                                               t-att-data-c_code="c.code"
+                                                                               t-att-data-phone_code="c.phone_code"
+                                                                               class="dropdown-item js_select_country_code">
+                                                                                <img t-att-src="c.image_url"
+                                                                                     class="country_name_img"/>
+                                                                                <span class="form-country-name">
+                                                                                    <t t-esc="c.name"/>
+                                                                                    (<t t-esc="c.code"/>) +
+                                                                                    <t t-esc="c.phone_code"/>
+                                                                                </span>
+                                                                            </a>
+                                                                        </t>
+                                                                    </div>
+                                                                </div>
+                                                                <input id="country_code_field"
+                                                                       type="hidden"
+                                                                       size="2"
+                                                                       tabindex="-1"
+                                                                       class="input-group-text js_country_code_field"
+                                                                       name="selected_phone_country_id"
+                                                                       t-att-value="default_country.id"
+                                                                       readonly="1"/>
+                                                            </div>
+                                                        </div>
+                                                        <t t-if="partner.phone">
+                                                            <t t-set="old_phone"
+                                                               t-value="'+' + str(partner.country_id.phone_code)"/>
+                                                            <t t-set="old_old_phone1"
+                                                               t-value="partner.phone.replace(old_phone, '')"/>
+                                                            <input type="tel" id="phone" name="phone"
+                                                                   t-att-value="old_old_phone1.replace(' ','') if old_old_phone1.replace(' ','') and option != 'create' else ''"
+                                                                   t-attf-class="form-control check_digits s_website_form_input form_input"
+                                                                   required="1"
+                                                                   maxlength="15"/>
+                                                        </t>
+                                                        <t t-else="">
+                                                            <input type="tel" id="phone" name="phone"
+                                                                   t-attf-class="form-control check_digits s_website_form_input form_input"
+                                                                   required="1"
+                                                                   maxlength="15"/>
+                                                        </t>
+                                                        <label class="col-form-label form_label o_input_required" for="phone">Phone</label>
+
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3  col-xl-6">
+                                                    <div style="overflow: visible !important; position: relative;" class="d-flex mp_phone ">
+                                                        <t t-set="default_country"
+                                                           t-value="request.env['res.country'].sudo().search([('phone_code','=','+91')])"/>
+                                                        <t t-if="partner.mobile">
+                                                            <t t-set="default_country"
+                                                               t-value="request.env['res.country'].sudo().search([('id','=',partner.country_id.id)])"/>
+                                                        </t>
+                                                        <div class="input-group js_country_dropdown pr-0">
+                                                            <div class="input-group-prepend flag-button">
+                                                                <button type="button"
+                                                                        id="btn_vat_code"
+                                                                        t-att-disabled="readonly"
+                                                                        class="btn dropdown btn-outline-secondary dropdown-toggle js_btn_country_code form-control country_button"
+                                                                        data-bs-toggle="dropdown"
+                                                                        data-bs-target="#dropdown-countries">
+
+                                                                    <div id="img_code_vat"
+                                                                         class="js_img_country_code country_img ">
+                                                                        +
+                                                                        <t t-esc="default_country.phone_code"/>
+                                                                        <i class="fa fa-chevron-down"></i>
+                                                                    </div>
+                                                                </button>
+                                                                <div class="dropdown-menu scrollable-menu"
+                                                                     id="dropdown-countries">
+                                                                    <div class="country_id_searchbar">
+                                                                        <input class="search_country input_control" type="text"
+                                                                               placeholder="Search..."/>
+                                                                    </div>
+                                                                    <div id="country_id_list">
+                                                                        <t t-foreach="countries" t-as="contry">
+                                                                            <a href="#"
+                                                                               t-att-id="contry.code"
+                                                                               t-att-data-c_id="contry.id"
+                                                                               t-att-data-c_code="contry.code"
+                                                                               t-att-data-phone_code="contry.phone_code"
+                                                                               class="dropdown-item js_select_country_code">
+                                                                                <img t-att-src="contry.image_url"
+                                                                                     class="country_name_img"/>
+                                                                                <span class="form-country-name">
+                                                                                    <t t-esc="contry.name"/>
+                                                                                    (<t t-esc="contry.code"/>) +
+                                                                                    <t t-esc="contry.phone_code"/>
+                                                                                </span>
+                                                                            </a>
+                                                                        </t>
+                                                                    </div>
+                                                                </div>
+                                                                <input id="mobile_country_code_field"
+                                                                       type="hidden"
+                                                                       size="2"
+                                                                       tabindex="-1"
+                                                                       class="input-group-text js_country_code_field"
+                                                                       name="selected_mobile_country_id"
+                                                                       t-att-value="default_country.id"
+                                                                       readonly="1"/>
+                                                            </div>
+                                                        </div>
+                                                        <t t-if="partner.mobile">
+                                                            <t t-set="old_mobile"
+                                                               t-value="'+' + str(partner.country_id.phone_code)"/>
+                                                            <t t-set="old_mobile1"
+                                                               t-value="partner.mobile.replace(old_mobile, '')"/>
+                                                            <input type="tel" id="phone" name="mobile"
+                                                                   t-att-value="old_mobile1.replace(' ','') if old_mobile1.replace(' ','') and option != 'create' else ''"
+                                                                   t-attf-class="form-control check_digits s_website_form_input form_input"
+                                                                   required="1"
+                                                                   maxlength="15"/>
+                                                        </t>
+                                                        <t t-else="">
+                                                            <input type="tel" id="phone" name="mobile"
+                                                                   t-attf-class="form-control check_digits s_website_form_input form_input"
+                                                                   required="1"
+                                                                   maxlength="15"/>
+                                                        </t>
+                                                        <label class="col-form-label form_label o_input_required" for="mobile">Mobile</label>
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3  col-xl-6">
+                                                    <div class="mp_input_field">
+                                                        <input type="text" name="company_name" class="form-control s_website_form_input form_input"
+                                                               t-att-required="True if partner.company_type != 'person' else False" placeholder=""
+                                                               t-att-value="partner.commercial_company_name if partner.commercial_company_name and option != 'create' else ''"/>
+                                                        <label class="col-form-label form_label" for="company_name">Company Name</label>
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3  col-xl-6">
+                                                    <div class="mp_input_field">
+                                                        <input type="text" name="vat" class="form-control s_website_form_input form_input"
+                                                               t-att-required="True if partner.company_type != 'person' else False" placeholder=""
+                                                               t-att-value="partner.vat if partner.vat and option != 'create' else ''"/>
+                                                        <label class="col-form-label form_label" for="vat">GST Number</label>
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3 col-xl-12">
+                                                    <div class="mp_input_field">
+                                                        <input type="text" name="street" class="form-control s_website_form_input form_input" required="True" placeholder=""
+                                                               t-att-value="partner.street if partner.street and option != 'create' else ''"/>
+                                                        <label class="col-form-label form_label o_input_required" for="street">Address Line 1</label>
+
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3 col-xl-12">
+                                                    <div class="mp_input_field">
+                                                        <input type="text" name="street2" class="form-control s_website_form_input form_input" placeholder=""
+                                                               t-att-value="partner.street2 if partner.street2 and option != 'create' else ''"/>
+                                                        <label class="col-form-label form_label" for="street2">Address Line 2</label>
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3 col-xl-6">
+                                                    <div class="mp_input_field_web mp_select_web">
+                                                        <select name="country_id" id="country_id"
+                                                                class="form-select country_onchange form_input"
+                                                                required="True">
+                                                            <option value="">Select Country...</option>
+                                                            <t t-foreach="countries" t-as="country">
+                                                                <option t-att-value="country.id" t-esc="country.name"
+                                                                        t-att-selected="partner.country_id.id == country.id and option != 'create'"/>
+                                                            </t>
+                                                        </select>
+                                                        <label class="col-form-label form_label o_input_required" for="country_id">Country</label>
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3 col-xl-6">
+                                                    <div class="mp_input_field_web mp_select_web">
+                                                        <t t-set="states"
+                                                           t-value="request.env['res.country.state'].sudo().search([])"/>
+                                                        <select name="state_id" id="state_id" class="form-select form_input" required="True">
+                                                            <option value="">Select State...</option>
+                                                            <t t-foreach="states" t-as="state">
+                                                                <option t-att-value="state.id" t-esc="state.name"
+                                                                        t-att-selected="partner.state_id.id == state.id and option != 'create'"/>
+                                                            </t>
+                                                        </select>
+                                                        <label class="col-form-label form_label o_input_required" for="state_id">State</label>
+                                                    </div>
+                                                </div>
+                                                <t t-if="partner.city_id">
+                                                    <input type="hidden" id="selected_city" t-att-value="partner.city_id.id"/>
+                                                </t>
+                                                <div class="mb-3 col-xl-8">
+                                                    <div class="mp_input_field_web mp_select_web">
+                                                        <select name="city_id" id="city_id"
+                                                                class="form-select form_input"
+                                                                data-init="1">
+                                                            <option value="">Select City...</option>
+                                                        </select>
+                                                        <label class="col-form-label form_label o_input_required" for="city">City</label>
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3 col-xl-4">
+                                                    <div class="mp_input_field">
+                                                        <input type="text" name="zip" class="form-control s_website_form_input form_input" required="True" placeholder=""
+                                                               t-att-value="partner.zip if partner.zip and option != 'create' else ''"/>
+                                                        <label class="col-form-label form_label o_input_required" for="zip">Pincode</label>
+                                                    </div>
+                                                </div>
+                                            </t>
+                                            <div class="col-xl-12 s_website_form_recaptcha" data-name="Recaptcha Legal">
+                                                <div class="col-sm">
+                                                    <small class="o_recaptcha_legal_terms">
+                                                        Protected by reCAPTCHA,
+                                                        <a href="https://policies.google.com/privacy" target="_blank">
+                                                            Privacy Policy
+                                                        </a>
+                                                        &amp;
+                                                        <a href="https://policies.google.com/terms" target="_blank">
+                                                            Terms of Service
+                                                        </a>
+                                                        apply.
+                                                    </small>
+                                                </div>
+                                                <span id="s_website_form_result"/>
+                                            </div>
+
+                                            <div class="d-flex justify-content-between mt-3">
+                                                <a role="button" href="/my/account" class="btn custom-btn-green-round mb32">
+                                                    <i class="fa fa-chevron-left"></i>
+                                                    <span>Return to My Details</span>
+                                                </a>
+                                                <button type="submit" class="btn custom-btn-green-round mb32">
+                                                    <span>Submit</span>
+                                                    <i class="fa fa-chevron-right"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </section>
+                </div>
+        </t>
+    </template>
+
+    <template id="portal_my_billing_edit" name="Billing Address">
+        <t t-call="website.layout">
+            <t t-set="additional_title">Billing Address</t>
+                <div class="container">
+                    <t t-if="option == 'create'">
+                        <h2 class="mt-4">Add Billing Address</h2>
+                    </t>
+                    <t t-else="">
+                        <h2 class="mt-4">Edit Billing Address</h2>
+                    </t>
+                    <section class="s_website_form" data-vcss="001" data-snippet="s_website_form">
+                        <div class="container">
+                            <form action="/website/form/" method="post" enctype="multipart/form-data"
+                                  class="o_mark_required edit_billing_address_form" data-mark="*" data-model_name="res.partner"
+                                  data-success-mode="redirect" data-success-page="/my/account"
+                                  data-pre-fill="true">
+                                <input type="hidden" name="form_name" value="billing_address_thankyou"/>
+                                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                <div class="s_website_form_rows row s_col_no_bgcolor">
+                                    <div class="col-lg-9">
+                                        <div class="row">
+                                            <div t-if="error_message" class="alert alert-danger mb-3 mt-3">
+                                                <t t-esc="error_message"/>
+                                                <br/>
+                                            </div>
+                                            <input type="hidden" name="id" t-att-value="partner.id"/>
+                                            <t t-if="error_message">
+                                                <div class="mb-3 col-xl-12">
+                                                    <div class="mp_input_field">
+                                                        <input type="text" name="name" class="form-control s_website_form_input form_input" required="True"
+                                                               t-att-value="value.get('name') if value.get('name') and option != 'create' else ''"/>
+                                                        <label class="col-form-label form_label" for="name">Name</label>
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3  col-xl-6">
+                                                    <div class="mp_input_field">
+                                                        <input type="email" name="email" class="form-control s_website_form_input form_input" required="True"
+                                                               t-att-value="value.get('email') if value.get('email') and option != 'create' else ''"/>
+                                                        <label class="col-form-label form_label" for="email">Email</label>
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3 col-xl-6">
+                                                    <div style="overflow: visible !important; position: relative;" class="d-flex mp_phone ">
+                                                        <t t-set="countries"
+                                                           t-value="request.env['res.country'].sudo().search([])"/>
+                                                        <t t-set="default_country"
+                                                           t-value="request.env['res.country'].sudo().search([('phone_code','=','+91')])"/>
+                                                        <t t-if="value.get('phone')">
+                                                            <t t-set="default_country"
+                                                               t-value="request.env['res.country'].sudo().search([('id','=',partner_country_id.id)])"/>
+                                                        </t>
+                                                        <div class="input-group js_country_dropdown pr-0">
+                                                            <div class="input-group-prepend flag-button">
+                                                                <button type="button"
+                                                                        id="btn_vat_code"
+                                                                        t-att-disabled="readonly"
+                                                                        class="btn dropdown btn-outline-secondary dropdown-toggle js_btn_country_code form-control country_button"
+                                                                        data-bs-toggle="dropdown"
+                                                                        data-bs-target="#dropdown-countries">
+
+                                                                    <div id="img_code_vat" class="js_img_country_code country_img ">
+                                                                        +
+                                                                        <t t-esc="default_country.phone_code"/>
+                                                                        <i class="fa fa-chevron-down"></i>
+                                                                    </div>
+                                                                </button>
+                                                                <div class="dropdown-menu scrollable-menu" id="dropdown-countries">
+                                                                    <div class="country_id_searchbar">
+                                                                        <input class="search_country input_control" type="text"
+                                                                               placeholder="Search..."/>
+                                                                    </div>
+                                                                    <div id="country_id_list">
+                                                                        <t t-foreach="countries" t-as="c">
+                                                                            <a href="#"
+                                                                               t-att-id="c.code"
+                                                                               t-att-data-c_id="c.id"
+                                                                               t-att-data-c_code="c.code"
+                                                                               t-att-data-phone_code="c.phone_code"
+                                                                               class="dropdown-item js_select_country_code">
+                                                                                <img t-att-src="c.image_url"
+                                                                                     class="country_name_img"/>
+                                                                                <span class="form-country-name">
+                                                                                    <t t-esc="c.name"/>
+                                                                                    (<t t-esc="c.code"/>) +
+                                                                                    <t t-esc="c.phone_code"/>
+                                                                                </span>
+                                                                            </a>
+                                                                        </t>
+                                                                    </div>
+                                                                </div>
+                                                                <input id="country_code_field"
+                                                                       type="hidden"
+                                                                       size="2"
+                                                                       tabindex="-1"
+                                                                       class="input-group-text js_country_code_field"
+                                                                       name="selected_phone_country_id"
+                                                                       t-att-value="default_country.id"
+                                                                       readonly="1"/>
+                                                            </div>
+                                                        </div>
+                                                        <t t-if="value.get('phone')">
+                                                            <t t-set="old_phone"
+                                                               t-value="'+' + str(partner_country_id.phone_code)"/>
+                                                            <t t-set="old_phone1"
+                                                               t-value="value.get('phone').replace(old_phone, '')"/>
+                                                            <input type="tel" id="phone" name="phone"
+                                                                   t-att-value="old_phone1.replace(' ','') if old_phone1.replace(' ','') and option != 'create' else ''"
+                                                                   t-attf-class="form-control check_digits s_website_form_input form_input"
+                                                                   required="1"
+                                                                   maxlength="15"/>
+                                                        </t>
+                                                        <t t-else="">
+                                                            <input type="tel" id="phone" name="phone"
+                                                                   t-attf-class="form-control check_digits s_website_form_input form_input"
+                                                                   required="1"
+                                                                   maxlength="15"/>
+                                                        </t>
+                                                        <label class="col-form-label form_label o_input_required" for="phone">Phone</label>
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3 col-xl-6">
+                                                    <div style="overflow: visible !important; position: relative;" class="d-flex mp_phone ">
+                                                        <t t-set="default_country"
+                                                           t-value="request.env['res.country'].sudo().search([('phone_code','=','+91')])"/>
+                                                        <t t-if="value.get('mobile')">
+                                                            <t t-set="default_country"
+                                                               t-value="request.env['res.country'].sudo().search([('id','=',partner_mobile_country_id.id)])"/>
+                                                        </t>
+                                                        <div class="input-group js_country_dropdown pr-0">
+                                                            <div class="input-group-prepend flag-button">
+                                                                <button type="button"
+                                                                        id="btn_vat_code"
+                                                                        t-att-disabled="readonly"
+                                                                        class="btn dropdown btn-outline-secondary dropdown-toggle js_btn_country_code form-control country_button"
+                                                                        data-bs-toggle="dropdown"
+                                                                        data-bs-target="#dropdown-countries">
+
+                                                                    <div id="img_code_vat" class="js_img_country_code country_img ">
+                                                                        +
+                                                                        <t t-esc="default_country.phone_code"/>
+                                                                        <i class="fa fa-chevron-down"></i>
+                                                                    </div>
+                                                                </button>
+                                                                <div class="dropdown-menu scrollable-menu" id="dropdown-countries">
+                                                                    <div class="country_id_searchbar">
+                                                                        <input class="search_country input_control" type="text"
+                                                                               placeholder="Search..."/>
+                                                                    </div>
+                                                                    <div id="country_id_list">
+                                                                        <t t-foreach="countries" t-as="contry">
+                                                                            <a href="#"
+                                                                               t-att-id="contry.code"
+                                                                               t-att-data-c_id="contry.id"
+                                                                               t-att-data-c_code="contry.code"
+                                                                               t-att-data-phone_code="contry.phone_code"
+                                                                               class="dropdown-item js_select_country_code">
+                                                                                <img t-att-src="contry.image_url"
+                                                                                     class="country_name_img"/>
+                                                                                <span class="form-country-name">
+                                                                                    <t t-esc="contry.name"/>
+                                                                                    (<t t-esc="contry.code"/>) +
+                                                                                    <t t-esc="contry.phone_code"/>
+                                                                                </span>
+                                                                            </a>
+                                                                        </t>
+                                                                    </div>
+                                                                </div>
+                                                                <input id="mobile_country_code_field"
+                                                                       type="hidden"
+                                                                       size="2"
+                                                                       tabindex="-1"
+                                                                       class="input-group-text js_country_code_field"
+                                                                       name="selected_mobile_country_id"
+                                                                       t-att-value="default_country.id"
+                                                                       readonly="1"/>
+                                                            </div>
+                                                        </div>
+                                                        <t t-if="value.get('mobile')">
+                                                            <t t-set="old_mobile"
+                                                               t-value="'+' + str(partner_mobile_country_id.phone_code)"/>
+                                                            <t t-set="old_mobile1"
+                                                               t-value="value.get('mobile').replace(old_mobile, '')"/>
+                                                            <input type="tel" id="phone" name="mobile"
+                                                                   t-att-value="old_mobile1.replace(' ','') if old_mobile1.replace(' ','') and option != 'create' else ''"
+                                                                   t-attf-class="form-control check_digits s_website_form_input form_input"
+                                                                   required="1"
+                                                                   maxlength="15"/>
+                                                        </t>
+                                                        <t t-else="">
+                                                            <input type="tel" id="phone" name="mobile"
+                                                                   t-attf-class="form-control check_digits s_website_form_input form_input"
+                                                                   required="1"
+                                                                   maxlength="15"/>
+                                                        </t>
+                                                        <label class="col-form-label form_label o_input_required" for="mobile">Mobile</label>
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3 col-xl-6">
+                                                    <div class="mp_input_field">
+                                                        <input type="text" name="company_name" class="form-control s_website_form_input form_input"
+                                                               t-att-required="True if partner.company_type != 'person' else False" placeholder=""
+                                                               t-att-value="value.get('company_name') if value.get('company_name') and option != 'create' else ''"/>
+                                                        <label class="col-form-label form_label" for="company_name">Company Name</label>
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3 col-xl-6">
+                                                    <div class="mp_input_field">
+                                                        <input type="text" name="vat" class="form-control s_website_form_input form_input"
+                                                               t-att-required="True if partner.company_type != 'person' else False" placeholder=""
+                                                               t-att-value="value.get('vat') if value.get('vat') and option != 'create' else ''"/>
+                                                        <label class="col-form-label form_label" for="vat">GST Number</label>
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3 col-xl-12">
+                                                    <div class="mp_input_field">
+                                                        <input type="text" name="street" class="form-control s_website_form_input form_input" required="True"
+                                                               t-att-value="value.get('street') if value.get('street') and option != 'create' else ''"/>
+                                                        <label class="col-form-label form_label o_input_required" for="street">Address Line 1</label>
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3 col-xl-12">
+                                                    <div class="mp_input_field">
+                                                        <input type="text" name="street2" class="form-control s_website_form_input form_input"
+                                                               t-att-value="value.get('street2') if value.get('street2') and option != 'create' else ''"/>
+                                                        <label class="col-form-label form_label" for="street2">Address Line 2</label>
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3 col-xl-6">
+                                                    <div class="mp_input_field_web mp_select_web">
+                                                        <select name="country_id" id="country_id" class="form-select country_onchange form_input" required="True">
+                                                            <option value="">Select Country...</option>
+                                                            <t t-foreach="countries" t-as="country">
+                                                                <option t-att-value="country.id" t-esc="country.name"
+                                                                        t-att-selected="value.get('country_id') == country.id and option != 'create'"/>
+                                                            </t>
+                                                        </select>
+                                                        <label class="col-form-label form_label o_input_required" for="country_id">Country</label>
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3 col-xl-6">
+                                                    <div class="mp_input_field_web mp_select_web">
+                                                        <t t-set="states" t-value="request.env['res.country.state'].sudo().search([])"/>
+                                                        <select name="state_id" id="state_id" class="form-select form_input" required="True">
+                                                            <option value="">Select State...</option>
+                                                            <t t-foreach="states" t-as="state">
+                                                                <option t-att-value="state.id" t-esc="state.name"
+                                                                        t-att-selected="value.get('state_id') == state.id and option != 'create'"/>
+                                                            </t>
+                                                        </select>
+                                                        <label class="col-form-label form_label o_input_required" for="state_id">State</label>
+                                                    </div>
+                                                </div>
+                                                <t t-if="partner.city_id">
+                                                    <input type="hidden" id="selected_city" t-att-value="partner.city_id.id"/>
+                                                </t>
+                                                <div class="mb-3 col-xl-8">
+                                                    <div class="mp_input_field_web mp_select_web">
+                                                        <select name="city_id" id="city_id"
+                                                                class="form-select form_input"
+                                                                data-init="1">
+                                                            <option value="">Select City...</option>
+                                                        </select>
+                                                        <label class="col-form-label form_label o_input_required" for="city">City</label>
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3 col-xl-4">
+                                                    <div class="mp_input_field">
+                                                        <input type="text" name="zip" class="form-control s_website_form_input form_input" required="True"
+                                                               t-att-value="value.get('zip') if value.get('zip') and option != 'create' else ''"/>
+                                                        <label class="col-form-label form_label o_input_required" for="zip">Pincode</label>
+                                                    </div>
+                                                </div>
+                                            </t>
+                                            <t t-else="">
+                                                <div class="col-xl-12">
+                                                    <div class="mp_input_field">
+                                                        <input type="text" name="name" class="form-control s_website_form_input form_input" required="True"
+                                                               t-att-value="partner.name if partner.name and option != 'create' else ''" placeholder=""/>
+                                                        <label class="col-form-label form_label o_input_required" for="name">Name</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl-6">
+                                                    <div class="mp_input_field">
+                                                        <input type="email" name="email" class="form-control s_website_form_input form_input" required="True"
+                                                               t-att-value="partner.email if partner.email and option != 'create' else ''" placeholder=""/>
+                                                        <label class="col-form-label form_label o_input_required" for="email">Email</label>
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3  col-xl-6">
+                                                    <div style="overflow: visible !important; position: relative;" class="d-flex mp_phone ">
+                                                        <t t-set="countries"
+                                                           t-value="request.env['res.country'].sudo().search([])"/>
+                                                        <t t-set="default_country"
+                                                           t-value="request.env['res.country'].sudo().search([('phone_code','=','+91')])"/>
+                                                        <t t-if="partner.phone">
+                                                            <t t-set="default_country"
+                                                               t-value="request.env['res.country'].sudo().search([('id','=',partner.country_id.id)])"/>
+                                                        </t>
+                                                        <div class="input-group js_country_dropdown pr-0">
+                                                            <div class="input-group-prepend flag-button">
+                                                                <button type="button"
+                                                                        id="btn_vat_code"
+                                                                        t-att-disabled="readonly"
+                                                                        class="btn dropdown btn-outline-secondary dropdown-toggle js_btn_country_code form-control country_button"
+                                                                        data-bs-toggle="dropdown"
+                                                                        data-bs-target="#dropdown-countries">
+
+                                                                    <div id="img_code_vat" class="js_img_country_code country_img ">
+                                                                        +
+                                                                        <t t-esc="default_country.phone_code"/>
+                                                                        <i class="fa fa-chevron-down"></i>
+                                                                    </div>
+                                                                </button>
+                                                                <div class="dropdown-menu scrollable-menu" id="dropdown-countries">
+                                                                    <div class="country_id_searchbar">
+                                                                        <input class="search_country input_control" type="text"
+                                                                               placeholder="Search..."/>
+                                                                    </div>
+                                                                    <div id="country_id_list">
+                                                                        <t t-foreach="countries" t-as="c">
+                                                                            <a href="#"
+                                                                               t-att-id="c.code"
+                                                                               t-att-data-c_id="c.id"
+                                                                               t-att-data-c_code="c.code"
+                                                                               t-att-data-phone_code="c.phone_code"
+                                                                               class="dropdown-item js_select_country_code">
+                                                                                <img t-att-src="c.image_url"
+                                                                                     class="country_name_img"/>
+                                                                                <span class="form-country-name">
+                                                                                    <t t-esc="c.name"/>
+                                                                                    (<t t-esc="c.code"/>) +
+                                                                                    <t t-esc="c.phone_code"/>
+                                                                                </span>
+                                                                            </a>
+                                                                        </t>
+                                                                    </div>
+                                                                </div>
+                                                                <input id="country_code_field"
+                                                                       type="hidden"
+                                                                       size="2"
+                                                                       tabindex="-1"
+                                                                       class="input-group-text js_country_code_field"
+                                                                       name="selected_phone_country_id"
+                                                                       t-att-value="default_country.id"
+                                                                       readonly="1"/>
+                                                            </div>
+                                                        </div>
+                                                        <t t-if="partner.phone">
+                                                            <t t-set="old_phone"
+                                                               t-value="'+' + str(partner.country_id.phone_code)"/>
+                                                            <t t-set="old_old_phone1"
+                                                               t-value="partner.phone.replace(old_phone, '')"/>
+                                                            <input type="tel" id="phone" name="phone"
+                                                                   t-att-value="old_old_phone1.replace(' ','') if old_old_phone1.replace(' ','') and option != 'create' else ''"
+                                                                   t-attf-class="form-control check_digits s_website_form_input form_input"
+                                                                   required="1"
+                                                                   maxlength="15"/>
+                                                        </t>
+                                                        <t t-else="">
+                                                            <input type="tel" id="phone" name="phone"
+                                                                   t-attf-class="form-control check_digits s_website_form_input form_input"
+                                                                   required="1"
+                                                                   maxlength="15"/>
+                                                        </t>
+                                                        <label class="col-form-label form_label o_input_required" for="phone">Phone</label>
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3  col-xl-6">
+                                                    <div style="overflow: visible !important; position: relative;" class="d-flex mp_phone ">
+                                                        <t t-set="default_country"
+                                                           t-value="request.env['res.country'].sudo().search([('phone_code','=','+91')])"/>
+                                                        <t t-if="partner.mobile">
+                                                            <t t-set="default_country"
+                                                               t-value="request.env['res.country'].sudo().search([('id','=',partner.country_id.id)])"/>
+                                                        </t>
+                                                        <div class="input-group js_country_dropdown pr-0">
+                                                            <div class="input-group-prepend flag-button">
+                                                                <button type="button"
+                                                                        id="btn_vat_code"
+                                                                        t-att-disabled="readonly"
+                                                                        class="btn dropdown btn-outline-secondary dropdown-toggle js_btn_country_code form-control country_button"
+                                                                        data-bs-toggle="dropdown"
+                                                                        data-bs-target="#dropdown-countries">
+
+                                                                    <div id="img_code_vat" class="js_img_country_code country_img ">
+                                                                        +
+                                                                        <t t-esc="default_country.phone_code"/>
+                                                                        <i class="fa fa-chevron-down"></i>
+                                                                    </div>
+                                                                </button>
+                                                                <div class="dropdown-menu scrollable-menu" id="dropdown-countries">
+                                                                    <div class="country_id_searchbar">
+                                                                        <input class="search_country input_control" type="text"
+                                                                               placeholder="Search..."/>
+                                                                    </div>
+                                                                    <div id="country_id_list">
+                                                                        <t t-foreach="countries" t-as="contry">
+                                                                            <a href="#"
+                                                                               t-att-id="contry.code"
+                                                                               t-att-data-c_id="contry.id"
+                                                                               t-att-data-c_code="contry.code"
+                                                                               t-att-data-phone_code="contry.phone_code"
+                                                                               class="dropdown-item js_select_country_code">
+                                                                                <img t-att-src="contry.image_url"
+                                                                                     class="country_name_img"/>
+                                                                                <span class="form-country-name">
+                                                                                    <t t-esc="contry.name"/>
+                                                                                    (<t t-esc="contry.code"/>) +
+                                                                                    <t t-esc="contry.phone_code"/>
+                                                                                </span>
+                                                                            </a>
+                                                                        </t>
+                                                                    </div>
+                                                                </div>
+                                                                <input id="mobile_country_code_field"
+                                                                       type="hidden"
+                                                                       size="2"
+                                                                       tabindex="-1"
+                                                                       class="input-group-text js_country_code_field"
+                                                                       name="selected_mobile_country_id"
+                                                                       t-att-value="default_country.id"
+                                                                       readonly="1"/>
+                                                            </div>
+                                                        </div>
+                                                        <t t-if="partner.mobile">
+                                                            <t t-set="old_mobile"
+                                                               t-value="'+' + str(partner.country_id.phone_code)"/>
+                                                            <t t-set="old_mobile1"
+                                                               t-value="partner.mobile.replace(old_mobile, '')"/>
+                                                            <input type="tel" id="phone" name="mobile"
+                                                                   t-att-value="old_mobile1.replace(' ','') if old_mobile1.replace(' ','') and option != 'create' else ''"
+                                                                   t-attf-class="form-control check_digits s_website_form_input form_input"
+                                                                   required="1"
+                                                                   maxlength="15"/>
+                                                        </t>
+                                                        <t t-else="">
+                                                            <input type="tel" id="phone" name="mobile"
+                                                                   t-attf-class="form-control check_digits s_website_form_input form_input"
+                                                                   required="1"
+                                                                   maxlength="15"/>
+                                                        </t>
+                                                        <label class="col-form-label form_label o_input_required" for="mobile">Mobile</label>
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3  col-xl-6">
+                                                    <div class="mp_input_field">
+                                                        <input type="text" name="company_name" class="form-control s_website_form_input form_input"
+                                                               t-att-required="True if partner.company_type != 'person' else False" placeholder=""
+                                                               t-att-value="partner.commercial_company_name if partner.commercial_company_name and option != 'create' else ''"/>
+                                                        <label class="col-form-label form_label" for="company_name">Company Name</label>
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3  col-xl-6">
+                                                    <div class="mp_input_field">
+                                                        <input type="text" name="vat" class="form-control s_website_form_input form_input"
+                                                               t-att-required="True if partner.company_type != 'person' else False" placeholder=""
+                                                               t-att-value="partner.vat if partner.vat and option != 'create' else ''"/>
+                                                        <label class="col-form-label form_label" for="vat">GST Number</label>
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3 col-xl-12">
+                                                    <div class="mp_input_field">
+                                                        <input type="text" name="street" class="form-control s_website_form_input form_input" required="True" placeholder=""
+                                                               t-att-value="partner.street if partner.street and option != 'create' else ''"/>
+                                                        <label class="col-form-label form_label o_input_required" for="street">Address Line 1</label>
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3 col-xl-12">
+                                                    <div class="mp_input_field">
+                                                        <input type="text" name="street2" class="form-control s_website_form_input form_input" placeholder=""
+                                                               t-att-value="partner.street2 if partner.street2 and option != 'create' else ''"/>
+                                                        <label class="col-form-label form_label" for="street2">Address Line 2</label>
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3 col-xl-6">
+                                                    <div class="mp_input_field_web mp_select_web">
+                                                        <select name="country_id" id="country_id" class="form-select country_onchange form_input"
+                                                                 required="True">
+                                                            <option value="">Select Country...</option>
+                                                            <t t-foreach="countries" t-as="country">
+                                                                <option t-att-value="country.id" t-esc="country.name"
+                                                                        t-att-selected="partner.country_id.id == country.id and option != 'create'"/>
+                                                            </t>
+                                                        </select>
+                                                        <label class="col-form-label form_label o_input_required" for="country_id">Country</label>
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3 col-xl-6">
+                                                    <div class="mp_input_field_web mp_select_web">
+                                                        <t t-set="states" t-value="request.env['res.country.state'].sudo().search([])"/>
+                                                        <select name="state_id" id="state_id" class="form-select form_input"
+                                                                 required="True">
+                                                            <option value="">Select State...</option>
+                                                            <t t-foreach="states" t-as="state">
+                                                                <option t-att-value="state.id" t-esc="state.name"
+                                                                        t-att-selected="partner.state_id.id == state.id and option != 'create'"/>
+                                                            </t>
+                                                        </select>
+                                                        <label class="col-form-label form_label o_input_required" for="state_id">State</label>
+                                                    </div>
+                                                </div>
+                                                <t t-if="partner.city_id">
+                                                    <input type="hidden" id="selected_city" t-att-value="partner.city_id.id"/>
+                                                </t>
+                                                <div class="mb-3 col-xl-8">
+                                                    <div class="mp_input_field_web mp_select_web">
+                                                        <select name="city_id" id="city_id"
+                                                                class="form-select form_input"
+                                                                data-init="1">
+                                                            <option value="">Select City...</option>
+                                                        </select>
+                                                        <label class="col-form-label form_label o_input_required" for="city">City</label>
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3 col-xl-4">
+                                                    <div class="mp_input_field">
+                                                        <input type="text" name="zip" class="form-control s_website_form_input form_input" required="True" placeholder=""
+                                                               t-att-value="partner.zip if partner.zip and option != 'create' else ''"/>
+                                                        <label class="col-form-label form_label o_input_required" for="zip">Pincode</label>
+                                                    </div>
+                                                </div>
+                                            </t>
+                                            <div class="col-xl-12 s_website_form_recaptcha" data-name="Recaptcha Legal">
+                                                <div class="col-sm">
+                                                    <small class="o_recaptcha_legal_terms">
+                                                        Protected by reCAPTCHA,
+                                                        <a href="https://policies.google.com/privacy" target="_blank">
+                                                            Privacy Policy
+                                                        </a>
+                                                        &amp;
+                                                        <a href="https://policies.google.com/terms" target="_blank">
+                                                            Terms of Service
+                                                        </a>
+                                                        apply.
+                                                    </small>
+                                                </div>
+                                                <span id="s_website_form_result"/>
+                                            </div>
+                                            <div class="d-flex justify-content-between mt-3">
+                                                <a role="button" href="/my/account" class="btn custom-btn-green-round mb32">
+                                                    <i class="fa fa-chevron-left"></i>
+                                                    <span>Return to My Details</span>
+                                                </a>
+                                                <button type="submit" class="btn custom-btn-green-round mb32">
+                                                    <span>Submit</span>
+                                                    <i class="fa fa-chevron-right"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </section>
+            </div>
+        </t>
+    </template>
+        <!-- Error page -->
+<template id="error_page" name="Address Error">
+<t t-call="website.layout">
+    <div id="wrap">
+        <div class="oe_structure"/>
+        <div class="container">
+            <div class="row mt-10">
+                <div class="col-md-12">
+                    <div class="alert alert-danger">
+                        <t t-if="address=='shipping'">
+                            You cannot delete this Shipping Address.
+                        </t>
+                        <t t-else="address=='billing'">
+                            You cannot delete this Billing Address.
+                        </t>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <a href="/my/account" class="btn btn-primary mt-4 w-auto mb32">
+                    <span class="fa fa-long-arrow-left"/>
+                    Return to Profile
+                </a>
+            </div>
+        </div>
+        <div class="oe_structure"/>
+    </div>
+</t>
+</template>
+</odoo>

@@ -1,0 +1,600 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="powervis_page" name="PowerVis">
+        <t t-call="web.frontend_layout">
+            <div class="pbmit-title-bar-wrapper" style="background-image: url(/cr_web_portal/static/src/images/powervis-banner.jpg);">
+                <div class="container">
+                    <div class="pbmit-title-bar-content">
+                        <div class="pbmit-title-bar-content-inner">
+                            <div class="pbmit-tbar">
+                                <div class="pbmit-tbar-inner container mw-525">
+                                    <h1 class="pbmit-tbar-title">Transforming enclosure ordering with PowerVis</h1>
+                                    <p>One cloud tool to visualize, customize &amp; order plastic &amp; metal enclosures</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="page-content"/>
+
+
+            <section class="section-lgx demo1-about-1 benefits">
+                <div class="container">
+
+                    <div class="pbmit-heading-subheading animation-style2 mb-0">
+                        <h2 class="pbmit-title text-center">Benefits</h2>
+                    </div>
+
+                    <div class="row fidbox-wrapper pt-25">
+                        <div class="col-lg-3 col-md-6 pbmit-about-column">
+                            <div class="pbminfotech-ele-fid-style-8">
+                                <div class="pbmit-fld-contents">
+                                    <div class="pbmit-fld-wrap">
+                                        <div class="pbmit-sbox-icon-wrapper">
+                                            <div class="pbmit-icon-wrapper pbmit-icon-type-icon">
+                                                <img src="/cr_web_portal/static/src/images/benefits1.png"/>
+                                            </div>
+                                        </div>
+                                        <h3 class="pbmit-fid-title">Enhanced design precision</h3>
+                                        <p>PowerVis provides detailed 3D visualization, allowing users to assess and
+                                            refine their designs with precision, reducing the likelihood of errors or
+                                            design flaws.
+                                        </p>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 pbmit-about-column">
+                            <div class="pbminfotech-ele-fid-style-9">
+                                <div class="pbmit-fld-contents">
+                                    <div class="pbmit-fld-wrap">
+                                        <div class="pbmit-sbox-icon-wrapper">
+                                            <div class="pbmit-icon-wrapper pbmit-icon-type-icon">
+                                                <img src="/cr_web_portal/static/src/images/benefits2.png"/>
+                                            </div>
+                                        </div>
+                                        <h3 class="pbmit-fid-title">Customization flexibility</h3>
+                                        <p>Users can easily customize dimensions, cutouts, colors, and materials to
+                                            tailor designs to their specific needs, enabling a high degree of
+                                            flexibility and adaptability.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 pbmit-about-column">
+                            <div class="pbminfotech-ele-fid-style-8">
+                                <div class="pbmit-fld-contents">
+                                    <div class="pbmit-fld-wrap">
+                                        <div class="pbmit-sbox-icon-wrapper">
+                                            <div class="pbmit-icon-wrapper pbmit-icon-type-icon">
+                                                <img src="/cr_web_portal/static/src/images/benefits3.png"/>
+                                            </div>
+                                        </div>
+                                        <h3 class="pbmit-fid-title">Time savings</h3>
+                                        <p>The tool streamlines the design process, making it more efficient. Users can
+                                            see how designs will appear in real-time, reducing the need for multiple
+                                            iterations.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 pbmit-about-column">
+                            <div class="pbminfotech-ele-fid-style-9 ">
+                                <div class="pbmit-fld-contents">
+                                    <div class="pbmit-fld-wrap">
+                                        <div class="pbmit-sbox-icon-wrapper">
+                                            <div class="pbmit-icon-wrapper pbmit-icon-type-icon">
+                                                <img src="/cr_web_portal/static/src/images/benefits4.png"/>
+                                            </div>
+                                        </div>
+                                        <h3 class="pbmit-fid-title">Cost-effective design</h3>
+                                        <p>With real-time pricing transparency, users can make informed decisions based
+                                            on cost insights, ensuring that designs meet budgetary requirements.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 pbmit-about-column">
+                            <div class="pbminfotech-ele-fid-style-9 ">
+                                <div class="pbmit-fld-contents">
+                                    <div class="pbmit-fld-wrap">
+                                        <div class="pbmit-sbox-icon-wrapper">
+                                            <div class="pbmit-icon-wrapper pbmit-icon-type-icon">
+                                                <img src="/cr_web_portal/static/src/images/benefits5.png"/>
+                                            </div>
+                                        </div>
+                                        <h3 class="pbmit-fid-title">User-friendly online ordering</h3>
+                                        <p>The tool allows for seamless online ordering, simplifying the transition from
+                                            design to product creation and reducing the time and effort required to
+                                            bring designs to life.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 pbmit-about-column">
+                            <div class="pbminfotech-ele-fid-style-9 ">
+                                <div class="pbmit-fld-contents">
+                                    <div class="pbmit-fld-wrap">
+                                        <div class="pbmit-sbox-icon-wrapper">
+                                            <div class="pbmit-icon-wrapper pbmit-icon-type-icon">
+                                                <img src="/cr_web_portal/static/src/images/benefits6.png"/>
+                                            </div>
+                                        </div>
+                                        <h3 class="pbmit-fid-title">Versatile applicability</h3>
+                                        <p>PowerVis is a versatile solution that extends its benefits to a wide range of
+                                            industries, whether you're designing plastic and metal enclosures or
+                                            creating custom database products. Its adaptability knows no bounds.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 pbmit-about-column">
+                            <div class="pbminfotech-ele-fid-style-9 ">
+                                <div class="pbmit-fld-contents">
+                                    <div class="pbmit-fld-wrap">
+                                        <div class="pbmit-sbox-icon-wrapper">
+                                            <div class="pbmit-icon-wrapper pbmit-icon-type-icon">
+                                                <img src="/cr_web_portal/static/src/images/benefits7.png"/>
+                                            </div>
+                                        </div>
+                                        <h3 class="pbmit-fid-title">Innovation and creativity</h3>
+                                        <p>The tool fosters innovation by enabling users to experiment with different
+                                            design ideas, leading to more creative and unique enclosure solutions.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </section>
+
+
+            <section class="section-lgx web-development-tab bg-gray mt_30">
+                <div class="container">
+
+                    <div class="pbmit-heading-subheading animation-style2 mb-0">
+                        <h2 class="pbmit-title text-center">How it works</h2>
+                    </div>
+
+                    <ul class="nav nav-contents justify-center" id="pills-tab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="our-mission-tab" data-bs-toggle="pill"
+                                    data-bs-target="#tab-1" type="button" role="tab" aria-selected="true">What can RPA
+                                mean
+                                <br/>
+                                for your business?
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="honorable-and-awward" data-bs-toggle="pill"
+                                    data-bs-target="#tab-2" type="button" role="tab" aria-selected="false"
+                                    tabindex="-1">How to build<br/>an AI-driven bot
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="technology-partners" data-bs-toggle="pill"
+                                    data-bs-target="#tab-3" type="button" role="tab" aria-selected="false"
+                                    tabindex="-1">How to integrate
+                                <br/>
+                                a chatbot
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="our-values" data-bs-toggle="pill" data-bs-target="#tab-4"
+                                    type="button" role="tab" aria-selected="false" tabindex="-1">How to manage
+                                <br/>
+                                an IBM RPA bot
+                            </button>
+                        </li>
+                    </ul>
+                    <div class="pbmit-element-posts-wrapper row multi-columns-row">
+                        <div class="tab-content" id="pills-tabContent">
+                            <div class="tab-pane active show" id="tab-1" role="tabpanel">
+                                <div class="row align-items-center our-mission">
+                                    <div class="col-lg-8">
+                                        <div class="pbmit-wrap">
+                                            <img src="/cr_web_portal/static/src/img/vid1.jpg" alt=""/>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="pbmit-content-wrapper">
+                                            <h6 class="pbmit-title">What can RPA mean for your business?</h6>
+                                            <div class="pbmit-desc">Lorem ipsum dolor sit amet, consectetur adipiscing
+                                                elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                                Quis ipsum suspendisse ultrices gravida. Risus commodo viverra
+                                            </div>
+                                            <div class="justify-content-between align-items-center">
+                                                <ul class="pbmit-lists">
+                                                    <li><i class="pbmit-base-icon-check-mark-2"></i>consectetur
+                                                        adipiscing elit sed do.
+                                                    </li>
+                                                    <li><i class="pbmit-base-icon-check-mark-2"></i>eiusmod tempor
+                                                        incididunt labore.
+                                                    </li>
+                                                    <li><i class="pbmit-base-icon-check-mark-2"></i>suspendisse ultrices
+                                                        commodo.
+                                                    </li>
+                                                    <li><i class="pbmit-base-icon-check-mark-2"></i>Quis ipsum
+                                                        suspendisse ultrice.
+                                                    </li>
+                                                    <li><i class="pbmit-base-icon-check-mark-2"></i>Risus commodo
+                                                        viverra maecenas.
+                                                    </li>
+                                                </ul>
+                                                <div class="see_how">
+                                                    <a href="#">
+                                                        See how (2:37)
+                                                        <img src="/cr_web_portal/static/src/images/play-icon.png"/>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="tab-2" role="tabpanel">
+                                <div class="row align-items-center honorable-and-awward">
+                                    <div class="col-lg-8">
+                                        <div class="pbmit-wrap">
+                                            <img src="/cr_web_portal/static/src/img/vid2.jpg" alt=""/>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="pbmit-content-wrapper">
+                                            <h6 class="pbmit-title">How to build an AI-driven bot</h6>
+                                            <div class="pbmit-desc">consectetur adipiscing elit, sed do eiusmod tempor
+                                                Lorem ipsum Risus commodo viverra dolor sit amet, Quis ipsum suspendisse
+                                                ultrices gravida. incididunt ut labore et dolore magna aliqua.
+                                            </div>
+                                            <div class="justify-content-between align-items-center">
+                                                <ul class="pbmit-lists">
+                                                    <li><i class="pbmit-base-icon-check-mark-2"></i>suspendisse ultrices
+                                                        commodo viverra,
+                                                    </li>
+                                                    <li><i class="pbmit-base-icon-check-mark-2"></i>consectetur
+                                                        adipiscing elit sed do
+                                                    </li>
+                                                    <li><i class="pbmit-base-icon-check-mark-2"></i>Quis ipsum
+                                                        suspendisse ultrices
+                                                    </li>
+                                                    <li><i class="pbmit-base-icon-check-mark-2"></i>Risus commodo
+                                                        viverra maecenas
+                                                    </li>
+                                                    <li><i class="pbmit-base-icon-check-mark-2"></i>eiusmod tempor
+                                                        incididunt labore
+                                                    </li>
+                                                </ul>
+                                                <div class="see_how">
+                                                    <a href="#">
+                                                        See how (4:34)
+                                                        <img src="/cr_web_portal/static/src/images/play-icon.png"/>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="tab-3" role="tabpanel">
+                                <div class="row align-items-center technology-partners">
+                                    <div class="col-lg-8">
+                                        <div class="pbmit-wrap">
+                                            <img src="/cr_web_portal/static/src/img/vid3.jpg" alt=""/>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="pbmit-content-wrapper">
+                                            <h6 class="pbmit-title">How to integrate a chatbot</h6>
+                                            <div class="pbmit-desc">Nemo enim ipsam voluptatem quia voluptas sit
+                                                aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos
+                                                qui ratione voluptatem sequi nesciunt. Neque porro quisquam est,
+                                            </div>
+                                            <div class="justify-content-between align-items-center">
+                                                <ul class="pbmit-lists">
+                                                    <li><i class="pbmit-base-icon-check-mark-2"></i>eiusmod tempor
+                                                        incididunt labore
+                                                    </li>
+                                                    <li><i class="pbmit-base-icon-check-mark-2"></i>Quis ipsum
+                                                        suspendisse ultrices.
+                                                    </li>
+                                                    <li><i class="pbmit-base-icon-check-mark-2"></i>consectetur
+                                                        adipiscing elit sed do.
+                                                    </li>
+                                                    <li><i class="pbmit-base-icon-check-mark-2"></i>Risus commodo
+                                                        viverra maecenas.
+                                                    </li>
+                                                    <li><i class="pbmit-base-icon-check-mark-2"></i>suspendisse ultrices
+                                                        commodo viverra,
+                                                    </li>
+                                                </ul>
+                                                <div class="see_how">
+                                                    <a href="#">
+                                                        See how (1:49)
+                                                        <img src="/cr_web_portal/static/src/images/play-icon.png"/>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="tab-4" role="tabpanel">
+                                <div class="row align-items-center our-values">
+                                    <div class="col-lg-8">
+                                        <div class="pbmit-wrap">
+                                            <img src="/cr_web_portal/static/src/img/vid2.jpg" alt=""/>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="pbmit-content-wrapper">
+                                            <h6 class="pbmit-title">How to manage an IBM RPA bot</h6>
+                                            <div class="pbmit-desc">Inventore veritatis et quasi architecto beatae vitae
+                                                dicta sunt explicabo. aspernatur aut odit aut fugit, sed quia
+                                                consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
+                                            </div>
+                                            <div class=" justify-content-between align-items-center">
+                                                <ul class="pbmit-lists">
+                                                    <li><i class="pbmit-base-icon-check-mark-2"></i>Quis ipsum
+                                                        suspendisse ultrices
+                                                    </li>
+                                                    <li><i class="pbmit-base-icon-check-mark-2"></i>Risus commodo
+                                                        viverra maecenas
+                                                    </li>
+                                                    <li><i class="pbmit-base-icon-check-mark-2"></i>consectetur
+                                                        adipiscing elit sed do
+                                                    </li>
+                                                    <li><i class="pbmit-base-icon-check-mark-2"></i>eiusmod tempor
+                                                        incididunt labore
+                                                    </li>
+                                                    <li><i class="pbmit-base-icon-check-mark-2"></i>suspendisse ultrices
+                                                        commodo viverra
+                                                    </li>
+                                                </ul>
+                                                <div class="see_how">
+                                                    <a href="#">
+                                                        See how (1:43)
+                                                        <img src="/cr_web_portal/static/src/images/play-icon.png"/>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+            <section class="section-lgx demo1-about-1 benefits">
+                <div class="container">
+
+                    <div class="pbmit-heading-subheading animation-style2 mb-0">
+                        <h2 class="pbmit-title text-center">Features</h2>
+                    </div>
+
+                    <div class="row fidbox-wrapper pt-25">
+                        <div class="col-lg-3 col-md-6 pbmit-about-column">
+                            <div class="pbminfotech-ele-fid-style-8">
+                                <div class="pbmit-fld-contents">
+                                    <div class="pbmit-fld-wrap">
+                                        <div class="pbmit-sbox-icon-wrapper">
+                                            <div class="pbmit-icon-wrapper pbmit-icon-type-icon">
+                                                <img src="/cr_web_portal/static/src/images/benefits1.png"/>
+                                            </div>
+                                        </div>
+                                        <h3 class="pbmit-fid-title">Immersive 3D visualization</h3>
+                                        <p>See your designs come to life with detailed 3D models. Visualize your
+                                            projects from all angles and gain a new level of precision in design.
+                                        </p>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 pbmit-about-column">
+                            <div class="pbminfotech-ele-fid-style-9">
+                                <div class="pbmit-fld-contents">
+                                    <div class="pbmit-fld-wrap">
+                                        <div class="pbmit-sbox-icon-wrapper">
+                                            <div class="pbmit-icon-wrapper pbmit-icon-type-icon">
+                                                <img src="/cr_web_portal/static/src/images/benefits2.png"/>
+                                            </div>
+                                        </div>
+                                        <h3 class="pbmit-fid-title">Total customization at your fingertips</h3>
+                                        <p>PowerVis offers limitless customizability. Tailor dimensions, materials,
+                                            colors, and cutouts to bring your unique vision to life effortlessly.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 pbmit-about-column">
+                            <div class="pbminfotech-ele-fid-style-8">
+                                <div class="pbmit-fld-contents">
+                                    <div class="pbmit-fld-wrap">
+                                        <div class="pbmit-sbox-icon-wrapper">
+                                            <div class="pbmit-icon-wrapper pbmit-icon-type-icon">
+                                                <img src="/cr_web_portal/static/src/images/benefits3.png"/>
+                                            </div>
+                                        </div>
+                                        <h3 class="pbmit-fid-title">Real-time pricing transparency</h3>
+                                        <p>Make confident decisions with instant, accurate pricing insights. Stay within
+                                            your budget while creating the perfect design.
+                                        </p>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 pbmit-about-column">
+                            <div class="pbminfotech-ele-fid-style-9 ">
+                                <div class="pbmit-fld-contents">
+                                    <div class="pbmit-fld-wrap">
+                                        <div class="pbmit-sbox-icon-wrapper">
+                                            <div class="pbmit-icon-wrapper pbmit-icon-type-icon">
+                                                <img src="/cr_web_portal/static/src/images/benefits4.png"/>
+                                            </div>
+                                        </div>
+                                        <h3 class="pbmit-fid-title">Seamless online ordering</h3>
+                                        <p>With real-time pricing transparency, users can make informed decisions based
+                                            on cost insights, ensuring that designs meet budgetary requirements.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </section>
+
+
+            <section class="section-lgb grad-gray-white pt-60 mt_50">
+                <div class="container">
+
+                    <div class="pbmit-heading-subheading animation-style2">
+                        <h2 class="pbmit-title text-center">Resources</h2>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <article class="pbmit-blog-style-10">
+                                <div class="post-item">
+                                    <div class="pbminfotech-box-content">
+                                        <div class="pbmit-category-admin-wraper d-flex align-items-center">
+                                            <div class="pbmit-meta-cat-wrapper pbmit-meta-line">
+                                                <div class="pbmit-meta-category">
+                                                    <a href="#" rel="category tag">Development</a>
+                                                </div>
+                                            </div>
+                                            <div class="pbmit-meta-date pbmit-meta-line">
+                                                <span class="pbmit-date-wrap">17 Sep, 2023</span>
+                                            </div>
+                                        </div>
+                                        <div class="pbmit-content-wrapper">
+                                            <h3 class="pbmit-post-title">
+                                                <a href="#">The standard Lorem Ipsum passage since the 1500s</a>
+                                            </h3>
+                                        </div>
+                                        <div class="pbmit-svg-btn">
+                                            <a href="#" class="pbmit-btn">
+                                                <span class="pbmit-header-button2-text">Read more</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="pbmit-featured-img-wrapper">
+                                        <div class="pbmit-featured-wrapper">
+                                            <img src="/cr_web_portal/static/src/img/Fig-2.jpg" class="img-fluid" alt=""/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                        <div class="col-md-4">
+                            <article class="pbmit-blog-style-10">
+                                <div class="post-item">
+                                    <div class="pbminfotech-box-content">
+                                        <div class="pbmit-category-admin-wraper d-flex align-items-center">
+                                            <div class="pbmit-meta-cat-wrapper pbmit-meta-line">
+                                                <div class="pbmit-meta-category">
+                                                    <a href="#" rel="category tag">Designing</a>
+                                                </div>
+                                            </div>
+                                            <div class="pbmit-meta-date pbmit-meta-line">
+                                                <span class="pbmit-date-wrap">09 Aug, 2023</span>
+                                            </div>
+                                        </div>
+                                        <div class="pbmit-content-wrapper">
+                                            <h3 class="pbmit-post-title">
+                                                <a href="#">The standard Lorem Ipsum passage since the 1500s</a>
+                                            </h3>
+                                        </div>
+                                        <div class="pbmit-svg-btn">
+                                            <a href="#" class="pbmit-btn">
+                                                <span class="pbmit-header-button2-text">Read more</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="pbmit-featured-img-wrapper">
+                                        <div class="pbmit-featured-wrapper">
+                                            <img src="/cr_web_portal/static/src/img/Fig_1_computer.jpg" class="img-fluid" alt=""/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                        <div class="col-md-4">
+                            <article class="pbmit-blog-style-10">
+                                <div class="post-item">
+                                    <div class="pbminfotech-box-content">
+                                        <div class="pbmit-category-admin-wraper d-flex align-items-center">
+                                            <div class="pbmit-meta-cat-wrapper pbmit-meta-line">
+                                                <div class="pbmit-meta-category">
+                                                    <a href="#" rel="category tag">Branding</a>
+                                                </div>
+                                            </div>
+                                            <div class="pbmit-meta-date pbmit-meta-line">
+                                                <span class="pbmit-date-wrap">30 Jun, 2023</span>
+                                            </div>
+                                        </div>
+                                        <div class="pbmit-content-wrapper">
+                                            <h3 class="pbmit-post-title">
+                                                <a href="#">The standard Lorem Ipsum passage since the 1500s</a>
+                                            </h3>
+                                        </div>
+                                        <div class="pbmit-svg-btn">
+                                            <a href="#" class="pbmit-btn">
+                                                <span class="pbmit-header-button2-text">Read more</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="pbmit-featured-img-wrapper">
+                                        <div class="pbmit-featured-wrapper">
+                                            <img src="/cr_web_portal/static/src/img/Fig-2.jpg" class="img-fluid" alt=""/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+            <section class="section-lgx about-us-about pbmit-bg-color-light ftr_top_bg">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-lg-12">
+                            <h3 class="pbmit-element-title text-center">
+                                Embark on a modern era of enclosure solutions
+                            </h3>
+
+                            <div class="col-md-12 pt-4 mt-3 text-center">
+                                <div class="pbmit-svg-btn">
+                                    <a href="#" class="pbmit-btn pbmit-global-white-bg">
+                                        <span class="pbmit-header-button2-text">Start Exploring Now</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </t>
+    </template>
+</odoo>

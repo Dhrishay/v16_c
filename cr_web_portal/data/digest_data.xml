@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="daily_digest_digest_default" model="digest.digest">
+        <field name="name">Your Daily Odoo Periodic Digest</field>
+        <field name="periodicity">daily</field>
+        <field name="next_run_date" eval="DateTime.now().strftime('%Y-%m-%d')"/>
+        <field name="kpi_res_users_registered">True</field>
+        <field name="kpi_crm_lead_created">True</field>
+        <field name="kpi_crm_opportunities_created">True</field>
+        <field name="kpi_inquiry_created">True</field>
+        <field name="kpi_offer_created">True</field>
+        <field name="kpi_all_offer_total_amount">True</field>
+        <field name="kpi_sale_order_confirmed">True</field>
+        <field name="kpi_sale_order_confirmed_amount">True</field>
+        <field name="kpi_sale_order_delivery_done">True</field>
+        <field name="kpi_sale_order_delivery_done_amount">True</field>
+    </record>
+
+    <record forcecreate="True" id="ir_cron_daily_digest_scheduler_action" model="ir.cron">
+        <field name="name">Daily Digest Emails</field>
+        <field name="model_id" ref="model_digest_digest"/>
+        <field name="state">code</field>
+        <field name="code">model._cron_send_daily_digest_email()</field>
+        <field name="user_id" ref="base.user_root"/>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+    </record>
+
+</odoo>

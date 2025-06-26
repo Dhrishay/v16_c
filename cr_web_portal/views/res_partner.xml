@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="res_partner_view_inherit_form" model="ir.ui.view">
+            <field name="name">res.partner.view.inherit.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='category_id']" position="after">
+                    <field name="customer_rank" invisible="1"/>
+                    <field name="x_studio_category" invisible="1"/>
+                    <field name="industry_main_category" widget="many2one"
+                           attrs="{'required': ['|', ('customer_rank' ,'>', 0), ('x_studio_category', '=', 'Customer')]}"
+                           options="{'no_create': True}"/>
+                    <field name="industry_sub_category" widget="many2one"
+                           attrs="{'required': ['|', ('customer_rank' ,'>', 0), ('x_studio_category', '=', 'Customer')]}"
+                           domain="[('industry_segment.main_category', '=', industry_main_category)]"/>
+                    <field name="lead_source" required="1"/>
+                    <!--                    <field name="company_name"/>-->
+                </xpath>
+                <xpath expr="//field[@name='vat']" position="after">
+                    <field name="sez_classification" string="SEZ classification"
+                           attrs="{'invisible':[('l10n_in_gst_treatment','!=','special_economic_zone')]}"/>
+                </xpath>
+                <xpath expr="//field[@name='pan_number']" position="after">
+                    <field name="create_date" string="Registration Date" widget="date"/>
+                    <field name="registration_source" readonly="1"/>
+                </xpath>
+                <xpath expr="//notebook" position="inside">
+                <page string="Customer File">
+                    <group>
+                        <field name="nda_file" filename="nda_filename"/>
+                        <field name="nda_filename" invisible="1"/>
+                        <field name="mou_file" filename="mou_filename"/>
+                        <field name="mou_filename" invisible="1"/>
+                        <field name="gst_certificate_file" filename="gst_certificate_filename"/>
+                        <field name="gst_certificate_filename" invisible="1"/>
+                    </group>
+                </page>
+            </xpath>
+                <xpath expr="//div[hasclass('o_address_format')]" position="replace">
+                    <div class="o_address_format">
+                                <field name="street" placeholder="Street..." class="o_address_street" attrs="{'readonly': [('type', '=', 'contact'),('parent_id', '!=', False)]}"/>
+                                <field name="street2" placeholder="Street 2..." class="o_address_street" attrs="{'readonly': [('type', '=', 'contact'),('parent_id', '!=', False)]}"/>
+                                <div name="partner_address_country" class="d-flex justify-content-between">
+                                    <field name="country_id" placeholder="Country" class="o_address_country" options="{&quot;no_open&quot;: True, &quot;no_create&quot;: True}" attrs="{'readonly': [('type', '=', 'contact'),('parent_id', '!=', False)]}"/>
+                                </div>
+                                <field name="city" placeholder="City" class="o_address_city" attrs="{'readonly': [('type', '=', 'contact'),('parent_id', '!=', False)]}"/>
+                                <field name="state_id" class="o_address_state" placeholder="State" options="{'no_open': True, 'no_quick_create': True}" attrs="{'readonly': [('type', '=', 'contact'),('parent_id', '!=', False)]}" context="{'country_id': country_id, 'default_country_id': country_id, 'zip': zip}"/>
+                                <field name="zip" placeholder="ZIP" class="o_address_zip" attrs="{'readonly': [('type', '=', 'contact'),('parent_id', '!=', False)]}"/>
+
+                            </div>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="view_website_form_cr_web" model="ir.ui.view">
+            <field name="name">website.inherit.form</field>
+            <field name="model">website</field>
+            <field name="inherit_id" ref="website.view_website_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="after">
+                    <field name="prevent_zero_price_sale_text"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="mech_res_partner_view_search" model="ir.ui.view">
+            <field name="name">res.partner.search.inherit</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_res_partner_filter"/>
+            <field name="arch" type="xml">
+                <xpath expr="//filter[@name='type_company']" position="after">
+                    <filter string="Educational Institution" name="educational_institution" domain="[('is_educational_institution', '=', True)]"/>
+                    <filter string="Government Organisation" name="government_organisation" domain="[('is_government_organisation', '=', True)]"/>
+                   <separator/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

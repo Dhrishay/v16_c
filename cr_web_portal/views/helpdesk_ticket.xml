@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="helpdesk_ticket_view_search_inherit_custom" model="ir.ui.view">
+        <field name="name">helpdesk.ticket.search.inherit.custom</field>
+        <field name="model">helpdesk.ticket</field>
+        <field name="inherit_id" ref="helpdesk.helpdesk_tickets_view_search"/>
+        <field name="arch" type="xml">
+            <field name="name" position="after">
+                <field name="description_searchable" string="Description" filter_domain="[('description_searchable', 'ilike', self)]"/>
+            </field>
+            <xpath expr="//field[@name='name']" position="replace">
+                <field name="name" string="Ticket, Description, Tags, Customer, Email" filter_domain="['|', '|', '|','|','|','|', ('name', 'ilike', self), ('ticket_ref', 'ilike', self), ('description_searchable', 'ilike', self), ('tag_ids.name', 'ilike', self),('partner_id.name','ilike',self),('partner_email','ilike',self),('message_ids.body','ilike',self)]"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

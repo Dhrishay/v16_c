@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+    <t t-name="website.TitleDescription" owl="1">
+        <section>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="mb-3">
+                        <label for="website_meta_title">
+                            Title <i class="fa fa-question-circle-o" title="The title will take a default value unless you specify one."/>
+                        </label>
+                        <input type="text" t-model="seoContext.title" t-att-disabled="!props.canEditTitle" class="form-control" placeholder="Keep empty to use default value" size="70" t-ref="autofocus"/>
+                    </div>
+                    <div class="mb-3">
+                        <label for="website_meta_description">
+                            Description <i class="fa fa-question-circle-o" t-att-title="props.previewDescription"/>
+                        </label>
+                        <textarea t-model="seoContext.description" t-att-disabled="!props.canEditDescription" name="website_meta_description" placeholder="Keep empty to use default value" class="form-control"/>
+                        <div t-if="descriptionWarning.length" class="alert alert-warning mt16 mb0 small">
+                            <span t-esc="descriptionWarning"/>
+                        </div>
+                    </div>
+                    <div class="mb-3" t-if='props.canEditUrl'>
+                        <label for="website_seo_name">
+                            Custom Url <i class="fa fa-question-circle-o" t-att-title="props.seoNameHelp" />
+                        </label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text seo_name_pre" t-esc="seoNamePre"/>
+                            </div>
+                            <input type="text" class="form-control" t-att-placeholder="props.seoNameDefault"
+                                   t-on-input="_updateInputValue" t-att-value="seoContext.seoName"/>
+                            <div class="input-group-append" title="Unalterable unique identifier">
+                                <span class="input-group-text seo_name_post" t-esc="seoNamePost"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="card-header">Preview</div>
+                    <div class="card mb0 p-0">
+                        <div class="card-body">
+                            <SEOPreview isIndexed="props.isIndexed" title="title" description="description" url="url"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </t>
+    <t t-name="website.MetaKeywords" owl="1">
+    <section>
+        <label for="website_meta_keywords">
+            Keywords
+        </label>
+        <div class="d-flex" role="form">
+            <div class="input-group w-auto">
+                <input t-model="state.keyword" type="text" class="form-control" t-att-placeholder="isFull ? 'Remove a keyword first' : 'Keyword'" t-att-readonly="isFull" t-on-keyup="onKeyup"/>
+                <select title="The language of the keyword and related keywords."
+                        t-model="state.language" class="btn btn-outline-primary pe-5 form-select">
+                    <t t-foreach="languages" t-as="lang" t-key="lang[0]">
+                        <option t-att-value="lang[0]"><t t-esc="lang[2]"/></option>
+                    </t>
+                </select>
+                <button t-on-click="() => this.addKeyword(state.keyword)" t-att-disabled="isFull" class="btn btn-primary" type="button">Add</button>
+            </div>
+        </div>
+        <div t-if="seoContext.keywords.length" class="table-responsive mt16">
+            <table class="table table-sm">
+                <thead>
+                    <tr>
+                        <th>Keyword</th>
+                        <th class="text-center" title="Used in page first level heading">H1</th>
+                        <th class="text-center" title="Used in page second level heading">H2</th>
+                        <th class="text-center" title="Used in page title">T</th>
+                        <th class="text-center" title="Used in page description">D</th>
+                        <th class="text-center" title="Used in page content">C</th>
+                        <th title="Most searched topics related to your keyword, ordered by importance">Related keywords</th>
+                        <th class="text-center"></th>
+                    </tr>
+                </thead>
+                <t t-foreach="seoContext.keywords" t-as="keyword" t-key="keyword">
+                    <Keyword language="state.language" keyword="keyword" addKeyword="(keyword) => this.addKeyword(keyword)" removeKeyword="(keyword) => this.removeKeyword(keyword)"/>
+                </t>
+            </table>
+        </div>
+    </section>
+</t>
+</templates>

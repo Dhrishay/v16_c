@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-inherit="web.BinaryField" t-inherit-mode="extension">
+        <xpath expr="//div//FileUploader" position="after">
+            <t t-if="props.name == 'enclosure_design_product_file' or props.name == 'fcstd_file' or props.name == 'fdm_technical_drawings' or props.name == 'fdm_uv_printing_file' or props.name == 'projection_technical_drawings' or props.name == 'projection_uv_printing_file' or props.name == 'metal_feb_uv_printing_file' or props.name == 'metal_feb_technical_drawings' or props.name == 'injection_mold_upload_technical_drawing' or props.name == 'injection_uv_printing_file' or props.name == 'cnc_machining_upload_technical_drawing' or props.name == 'cnc_uv_printing_file' or props.name == 'product_step_file' or props.name == 'drawing_fcstd_file' or props.name == 'pdf_file'  or props.name == 'doc_file' or props.name == 'stl_file' or props.name == 'x_studio_customer_drawing_file' or props.name == 'x_studio_exception_file' or props.name == 'x_studio_exception_reply_file' or props.name =='technical_drawing_file' or props.name =='uv_printing_file'">
+                <button
+                    class="btn btn-secondary fa fa-history"
+                     t-on-click="() => this.openTreeView(props.name)"
+                />
+            </t>
+        </xpath>
+        <xpath expr="//t//label[hasclass('o_select_file_button')]" position="after">
+            <t t-if="props.name == 'enclosure_design_product_file' or props.name == 'fcstd_file' or props.name == 'fdm_technical_drawings' or props.name == 'fdm_uv_printing_file' or props.name == 'projection_technical_drawings' or props.name == 'projection_uv_printing_file' or props.name == 'metal_feb_uv_printing_file' or props.name == 'metal_feb_technical_drawings' or props.name == 'injection_mold_upload_technical_drawing' or props.name == 'injection_uv_printing_file' or props.name == 'cnc_machining_upload_technical_drawing' or props.name == 'cnc_uv_printing_file' or props.name == 'product_step_file' or props.name == 'drawing_fcstd_file' or props.name == 'pdf_file'  or props.name == 'doc_file' or props.name == 'stl_file' or props.name == 'x_studio_customer_drawing_file' or props.name == 'x_studio_exception_file' or props.name == 'x_studio_exception_reply_file' or props.name =='technical_drawing_file' or props.name =='uv_printing_file'">
+           <button
+               class="btn btn-secondary fa fa-history"
+                t-on-click="() => this.openTreeView(props.name)"
+           />
+           </t>
+       </xpath>
+         <xpath expr="//a[hasclass('o_form_uri')]" position="after">
+            <t t-if="props.name == 'enclosure_design_product_file' or props.name == 'fcstd_file' or props.name == 'fdm_technical_drawings' or props.name == 'fdm_uv_printing_file' or props.name == 'projection_technical_drawings' or props.name == 'projection_uv_printing_file' or props.name == 'metal_feb_uv_printing_file' or props.name == 'metal_feb_technical_drawings' or props.name == 'injection_mold_upload_technical_drawing' or props.name == 'injection_uv_printing_file' or props.name == 'cnc_machining_upload_technical_drawing' or props.name == 'cnc_uv_printing_file' or props.name == 'product_step_file' or props.name == 'drawing_fcstd_file' or props.name == 'pdf_file'  or props.name == 'doc_file' or props.name == 'stl_file' or props.name == 'x_studio_customer_drawing_file' or props.name == 'x_studio_exception_file' or props.name == 'x_studio_exception_reply_file' or props.name =='technical_drawing_file' or props.name =='uv_printing_file'">
+           <button
+               class="btn btn-secondary fa fa-history"
+                t-on-click="() => this.openTreeView(props.name)"
+           />
+           </t>
+       </xpath>
+        <xpath expr="//button[hasclass('o_clear_file_button')]" position="replace">
+            <t t-if="props.name == 'enclosure_design_product_file' or props.name == 'fcstd_file' or props.name == 'fdm_technical_drawings' or props.name == 'fdm_uv_printing_file' or props.name == 'projection_technical_drawings' or props.name == 'projection_uv_printing_file' or props.name == 'metal_feb_uv_printing_file' or props.name == 'metal_feb_technical_drawings' or props.name == 'injection_mold_upload_technical_drawing' or props.name == 'injection_uv_printing_file' or props.name == 'cnc_machining_upload_technical_drawing' or props.name == 'cnc_uv_printing_file' or props.name == 'product_step_file' or props.name == 'drawing_fcstd_file' or props.name == 'pdf_file'  or props.name == 'doc_file' or props.name == 'stl_file' or props.name == 'x_studio_customer_drawing_file' or props.name == 'x_studio_exception_file' or props.name == 'x_studio_exception_reply_file' or props.name =='technical_drawing_file' or props.name =='uv_printing_file'">
+              <button
+                class="btn btn-secondary fa fa-trash o_clear_file_button d-none"
+                data-tooltip="Clear"
+                aria-label="Clear"
+                t-on-click="() => this.update({})"
+            />
+            </t>
+                <t t-else="">
+                    <button
+                class="btn btn-secondary fa fa-trash o_clear_file_button"
+                data-tooltip="Clear"
+                aria-label="Clear"
+                t-on-click="() => this.update({})"
+            />
+           </t>
+       </xpath>
+   </t>
+</templates>
