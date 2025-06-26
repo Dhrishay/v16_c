@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="crm_lead_view_form" model="ir.ui.view">
+        <field name="name">crm.lead.view.form</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_lead_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="CRM Documents">
+                    <group>
+                        <field nolabel="1" colspan="2" name="document_ids">
+                            <tree editable="bottom">
+                                <field name="name" invisible="1"/>
+                                <field name="datas" filename="name" required="True" string="Document"
+                                       attrs="{'readonly':[('id', '!=', False)]}" widget="binary"/>
+                                <field name="crm_doc_map_id" required="True" string="Document Type"
+                                       attrs="{'readonly':[('id', '!=', False)]}" options="{'no_create': True, 'no_open': True}"/>
+                            </tree>
+                        </field>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>
