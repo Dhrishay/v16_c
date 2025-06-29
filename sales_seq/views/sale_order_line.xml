@@ -1,0 +1,28 @@
+<!-- views/sale_order_line.xml -->
+<!-- 
+<odoo>
+    <data>
+        <record id="view_sale_order_line_inherit" model="ir.ui.view">
+            <field name="name">sale.order.line.inherit</field>
+            <field name="model">sale.order.line</field>
+            <field name="inherit_id" ref="sale.view_order_form_inherit"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='product_template_id']" position="before">
+                    <field name="sequence_number" readonly="1"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo> -->
+
+
+<!-- <record id="view_sale_order_custom" model="ir.ui.view"> 
+<field name="name">sale.order.custom.form.inherited</field>
+     <field name="model">sale.order</field> 
+     <field name="inherit_id" ref="sale.view_order_form"/> 
+     <field name="arch" type="xml"> 
+          <xpath expr="//field[@name='product_template_id']" position="after"> 
+              <field name="sequence_number" readonly="1"/>
+          </xpath> 
+     </field> 
+</record> -->
