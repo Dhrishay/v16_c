@@ -1,0 +1,200 @@
+@media screen and (max-width: 991px) {
+    .section.is-hero {
+        padding-top: 90px;
+    }
+    .legal-bottom {
+        grid-row-gap: 44px;
+        flex-direction: column;
+        display: flex;
+    }
+
+    .legal-block {
+        grid-row-gap: 32px;
+    }
+
+    .heading-medium {
+        font-size: 24px;
+    }
+    .legal-block.is-gap24 {
+        grid-row-gap: 20px;
+    }
+
+    .legal-bottom {
+        grid-row-gap: 30px;
+        flex-direction: column;
+        display: flex;
+    }
+
+    .heading-regular {
+        font-size: 20px;
+    }
+
+    .legal-top-title {
+        font-size: 16px;
+    }
+//     .privacy_policy_page {
+//         max-width: 728px;
+//         margin-top: 2% !important;
+//     }
+    .privacy_policy_page .data_h3 {
+        font-size: 17px;
+        text-align: left;
+    }
+    .heading1 {
+            font-size: 32px !important;
+    }
+    .caption {
+        margin-bottom: 10px;
+        font-size: 40px;
+    }
+    .section.is-hero {
+        .legal-top {
+        }
+        .legal-bottom{
+            .legal-block{
+                .heading-regular {
+                    font-size: 20px;
+                }
+            }
+        }
+    }
+}
+
+.w-layout-blockcontainer:before, .w-layout-blockcontainer:after {
+    content: " ";
+    grid-area: 1 / 1 / 2 / 2;
+    display: table;
+}
+
+.legal-bottom {
+    grid-row-gap: 44px;
+    flex-direction: column;
+    display: flex;
+}
+.legal-rich-text h3 {
+    color: var(--black);
+    margin-top: 32px;
+    margin-bottom: 16px;
+    font-family: Instrument Sans, sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.legal-rich-text h4 {
+    margin-top: 32px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+    font-family: Instrument Sans, sans-serif;
+}
+
+
+@media screen and (max-width: 767px) {
+    .pricing-row-left {
+        grid-column-gap: 6px;
+        grid-row-gap: 6px;
+        box-shadow: none;
+        justify-content: flex-end;
+        align-items: center;
+        padding: 10px;
+        justify-content: left;
+    }
+    .section.is-hero {
+        padding-top: 90px;
+        .legal-top {
+            margin-bottom: 0;
+        }
+    }
+}
+
+
+@media screen and (max-width: 479px) {
+    .section.is-hero {
+        padding-top: 30px;
+        .legal-top {
+            text-align: center;
+            h2{
+                letter-spacing: -.4px;
+                font-size: 20px;
+                line-height: 26px;
+            }
+        }
+    }
+    .heading-medium{
+        letter-spacing: -.4px;
+    }
+    .legal-bottom {
+        grid-row-gap: 44px;
+        flex-direction: column;
+        display: flex;
+    }
+    .privacy_policy_page .general_h3 {
+        font-size: 16px;
+        text-align: left;
+    }
+    .privacy_policy_page .data_h3 {
+        font-size: 13px;
+        text-align: left;
+    }
+    .privacy_policy_page .general_h4{
+        font-size: 15px;
+        text-align: left;
+    }
+    .privacy_policy_page p {
+        text-align: left;
+    }
+    li {
+        margin-top: 5px;
+        text-align: left;
+    }
+    .caption {
+        margin-bottom: 10px;
+        text-align: center;
+        font-size: 40px;
+    }
+    .archive-tabs {
+        flex-direction: column;
+    }
+    .archive-tabs-menu {
+        width: auto;
+        margin-bottom: 64px;
+    }
+    .archive-tabs-content {
+        margin-left: 0;
+    }
+    .archive-tab-pane-wrapper {
+        grid-column-gap: 20px;
+        grid-row-gap: 20px;
+        h1{
+            font-size: 30px;
+            line-height: 40px;
+        }
+        .legal-subtitle {
+            font-size: 45px;
+            line-height: 50px;
+        }
+    }
+    .legal-top.is-archive{
+        margin-bottom: 0;
+    }
+}
+
+#website_cookies_bar{
+    .o_cookies_discrete{
+        .col-lg-8{
+            p{
+                font-size: larger;
+            }
+            a{
+                font-size: larger;
+            }
+        }
+        .modal-content{
+            align-items: flex-end;
+        }
+        .o_colored_level{
+            width: 75%;
+        }
+    }
+}

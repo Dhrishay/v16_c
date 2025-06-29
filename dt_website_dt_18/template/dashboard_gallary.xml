@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="dashboard_gallery" name="Dashboard Gallery">
+        <t t-call="web.frontend_layout">
+            <section class="global-header">
+                <div class="container global-heading">
+                    <h6 class="global-title">Dashboard Gallery</h6>
+                    <p class="global-subtitle">Check out our interactive demo dashboards and explore possible solutions</p>
+                </div>
+            </section>
+            <section class="dashboards-section">
+                <div class="w-layout-blockcontainer w-container">
+                    <div class="filters-block">
+                        <div id="filters-header" fs-cmsfilter-element="filters" class="filters-form w-form">
+                            <section class="collection-list-wrapper w-dyn-list">
+                                <div class="filters-list w-dyn-items">
+                                    <t t-foreach="request.env['dashboard.category'].sudo().search([])" t-as="category">
+                                        <div class="w-dyn-item">
+                                            <label class="w-checkbox filter-checkbox">
+                                                <div class="w-checkbox-input w-checkbox-input--inputType-custom filter-checkbox-btn"></div>
+                                                <input type="checkbox" class="category-filter" t-att-data-id="category.id" style="opacity:0;position:absolute;z-index:-1"/>
+                                                <span class="filter-checkbox-label w-form-label" for="Checkbox-4-B">
+                                                    <t t-esc="category.name"/>
+                                                </span>
+                                            </label>
+                                        </div>
+                                    </t>
+                                </div>
+                            </section>
+                            <div class="w-form-done" tabindex="-1" role="region" aria-label="Email Form success">
+                                <div>Thank you! Your submission has been received!</div>
+                            </div>
+                            <div class="w-form-fail" tabindex="-1" role="region" aria-label="Email Form failure">
+                                <div>Oops! Something went wrong while submitting the form.</div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <section class="cms-dash-wrapper w-dyn-list">
+                        <div id="dashboard-list" class="cms-dash-list w-dyn-items w-row">
+                            <t t-foreach="dashboards" t-as="dashboard">
+                                <div class="collection-item w-dyn-item">
+                                    <a t-att-href="dashboard['url']" target="_blank" class="link-block w-inline-block">
+                                        <img t-att-src="image_data_uri( dashboard['image'])" class="image-32"/>
+                                        <div class="solutions-card-top">
+                                            <h2 class="heading2 is-gradient"><t t-esc="dashboard['name']"/></h2>
+                                            <img src="/website_dt/static/src/images/purple-right-arrow.svg"/>
+                                        </div>
+                                        <p class="cms-dash-text is-tablet">
+                                            <t t-esc="dashboard['description']"/>
+                                        </p>
+                                        <div class="categories">
+                                            <t t-foreach="dashboard['categories']" t-as="categ">
+                                                <div class="category"><t t-esc="categ"/></div>
+                                            </t>
+                                        </div>
+                                    </a>
+                                </div>
+                            </t>
+                        </div>
+                    </section>
+                </div>
+            </section>
+
+            <section class="customer-success">
+                <div class="container success">
+                    <h2>Customer success stories:</h2>
+                    <div class="customer-success-grid">
+                        <a href="/cases/jicmail-discovery" class="customer-success-card jicmail w-inline-block">
+                            <div class="customer-success-top">
+                                <h2 class="heading2">JICMAIL</h2>
+                                <img src="/website_dt/static/src/images/white-right-arrow-2.svg"/>
+                            </div>
+                            <p class="body-large is-360width">DataTile’s role in the development of JICMAIL’s Discovery Portal.</p>
+                        </a>
+                        <a href="/cases/transformed-employee-satisfaction-analysis" class="customer-success-card employee w-inline-block">
+                            <div class="customer-success-top">
+                                <h2 class="heading2"><strong>Transformed Employee Satisfaction Analysis</strong></h2>
+                                <img src="/website_dt/static/src/images/white-right-arrow-2.svg"/>
+                            </div>
+                            <p class="body-large is-360width">A Game-Changer for HR team</p>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="talk-to-team">
+                <div class="container">
+                    <div class="contact-us">
+                        <h2>
+                            130+ dashboards for 1000+ users across the globe
+                        </h2>
+                        <p>
+                            Try DataTile for free and see how it can enhance your productivity with it’s thorough analysis, interactivity and speed.
+                        </p>
+                        <div class="buttons">
+                            <t t-call="website_dt.sandbox_button" />
+                            <a href="/contact-us" class="btn-contact">Contact us</a>
+                        </div>
+                    </div>
+                </div>
+                <img src="/website_dt/static/src/images/doughnut.svg" class="cta-image"/>
+            </section>
+        </t>
+    </template>
+</odoo>

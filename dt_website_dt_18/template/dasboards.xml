@@ -1,0 +1,713 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <template id="dashboards_hr_dashboard" name="DataTile">
+        <t t-call="web.frontend_layout">
+
+            <section class="global-header">
+                <div class="container global-heading">
+                    <h6 class="global-title">HR Dashboard</h6>
+                    <p class="global-subtitle">HR Dashboard tracks employee demographics, performance, engagement, retention, and recruitment
+                    trends, enabling data-driven decisions to improve organizational effectiveness and employee satisfaction
+                    </p>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="container-large">
+                    <div class="dash-embed w-embed w-iframe desktop_view">
+                        <iframe frameborder="0"
+                                src="https://cloud.datatile.eu/dashboard/embedded/af710580-e150-4e34-8dca-2d05a76b28ea"
+                                width="100%" height="100%"></iframe>
+                    </div>
+                    <div class="dash-embed mobile_view d-none">
+                        <p class="warning view_990">To view the full-featured dashboard, please visit this page on a device with a
+                            screen width of 990px or more
+                        </p>
+                        <img src="/website_dt/static/src/images/hr-1.png"
+                             loading="lazy" alt="" sizes="100vw"
+                             srcset="/website_dt/static/src/images/hr-1.png 500w,
+                             /website_dt/static/src/images/hr-1.png 800w, /website_dt/static/src/images/hr-1.png 1080w,
+                             /website_dt/static/src/images/hr-1.png 1200w" class="mobile-screen"/>
+                        <img src="/website_dt/static/src/images/hr-2.png"
+                             loading="lazy" alt="" sizes="100vw"
+                             srcset="/website_dt/static/src/images/hr-2.png 500w,
+                             /website_dt/static/src/images/hr-2.png 800w, /website_dt/static/src/images/hr-2.png 1080w, /website_dt/static/src/images/hr-2.png 1200w"
+                             class="mobile-screen is-second"/>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section is-bottom">
+                <div class="dash-long-text">
+                    <p class="body-large">HR dashboards require some functionality not usually used in regular marketing
+                        research dashboards. You need to balance the analytics depth and respondents' privacy and
+                        security. You need to create a lot of custom indices that can be calculated differently
+                        according to particular respondent groups. One more thing is that eNPS trackings are not
+                        conducted as often as marketing research studies, and the target audience is much less
+                        experienced in interacting with dashboards. That means that the perfect dashboard contains
+                        restrictions for the displayed data, synchronizes data from several sources, has advanced
+                        mathematics, has as simple user interface as possible. One more option - to embed the
+                        presentation generator to provide hundreds and thousands of branded ready-to-use reports in one
+                        click.
+                    </p>
+                </div>
+            </section>
+
+            <section class="talk-to-team">
+                <div class="container">
+                    <div class="contact-us">
+                        <h2>
+                            Try DataTile for free
+                        </h2>
+                        <p>
+                            Isn’t it time you transformed your business? Try DataTile for free and see how it can enhance your productivity with it’s thorough analysis, interactivity and speed.
+                        </p>
+                        <div class="buttons">
+                            <t t-call="website_dt.sandbox_button" />
+                            <a href="/contact-us" class="btn-contact">Contact us</a>
+                        </div>
+                    </div>
+                </div>
+                <img src="/website_dt/static/src/images/doughnut.svg" class="cta-image"/>
+            </section>
+
+        </t>
+    </template>
+
+    <template id="dashboards_energy_drink_bht" name="DataTile">
+        <t t-call="web.frontend_layout">
+
+            <section class="global-header">
+                <div class="container global-heading">
+                    <h6 class="global-title">Energy Drink BHT</h6>
+                    <p class="global-subtitle">Brand Health Tracking – the most common market research type, typical for all industries from e-commerce to heavy industries. The brand health
+                        tracking dashboard is focused on core metrics: awareness, consideration, and NPS. Brand Image contains both the residuals for brand image claims; and the image claims comparison
+                    </p>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="container-large">
+                    <div class="dash-embed w-embed w-iframe desktop_view">
+                        <iframe frameborder="0"
+                                src="https://cloud.datatile.eu/dashboard/embedded/3e4ab353-a9e7-4c57-9b2f-ca4b0010eb77"
+                                width="100%" height="100%"></iframe>
+                    </div>
+                    <div class="dash-embed mobile_view d-none">
+                        <p class="warning view_990">To view the full-featured dashboard, please visit this page on a device with a
+                            screen width of 990px or more
+                        </p>
+                        <img src="/website_dt/static/src/images/energy-1.png"
+                             loading="lazy" alt="" sizes="100vw"
+                             srcset="/website_dt/static/src/images/energy-1.png 500w,
+                             /website_dt/static/src/images/energy-1.png 800w, /website_dt/static/src/images/energy-1.png 1080w,
+                             /website_dt/static/src/images/energy-1.png 1200w" class="mobile-screen"/>
+                        <img src="/website_dt/static/src/images/energy-2.png"
+                             loading="lazy" alt="" sizes="100vw"
+                             srcset="/website_dt/static/src/images/energy-2.png 500w,
+                             /website_dt/static/src/images/energy-2.png 800w, /website_dt/static/src/images/energy-2.png 1080w, /website_dt/static/src/images/energy-2.png 1200w"
+                             class="mobile-screen is-second"/>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section is-bottom">
+                <div class="dash-long-text">
+                    <p class="body-large">Share your brand's performance metrics with your stakeholders with the brand
+                        health dashboard. Track key indicators such as brand awareness, image, and market position
+                        through an intuitive interface. The dashboard presents core brand metrics through clear
+                        visualizations and automated reporting features. Track NPS scores and basic brand associations
+                        to check and support your marketing strategy. Perfect for small to medium businesses and
+                        marketing teams starting to collect brand performance insights. Export reports and data
+                        visualizations for quick stakeholder updates and team alignment. Make confident decisions with
+                        accessible brand health monitoring focusing on the key brand metrics.
+                    </p>
+                </div>
+            </section>
+
+            <section class="talk-to-team">
+                <div class="container">
+                    <div class="contact-us">
+                        <h2>
+                            Try DataTile for free
+                        </h2>
+                        <p>
+                            Isn’t it time you transformed your business? Try DataTile for free and see how it can enhance your productivity with it’s thorough analysis, interactivity and speed.
+                        </p>
+                        <div class="buttons">
+                            <t t-call="website_dt.sandbox_button" />
+                            <a href="/contact-us" class="btn-contact">Contact us</a>
+                        </div>
+                    </div>
+                </div>
+                <img src="/website_dt/static/src/images/doughnut.svg" class="cta-image"/>
+            </section>
+        </t>
+    </template>
+
+    <template id="dashboards_global_brand_tracking" name="DataTile">
+        <t t-call="web.frontend_layout">
+            <section class="global-header">
+                <div class="container global-heading">
+                    <h6 class="global-title">Global Brand Tracking</h6>
+                    <p class="global-subtitle">Brand Health Tracking – the most common market research type, typical for all industries from e-commerce to heavy industries. The dashboard covers full set of metrics including awareness, consideration, NPS, brand attributes, marketing effectiveness, and competitive intel. Features advanced analytics,
+                        custom segmentation, trend analysis, and detailed reporting across markets and demographics
+                    </p>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="container-large">
+                    <div class="dash-embed w-embed w-iframe desktop_view">
+                        <iframe frameborder="0"
+                                src="https://cloud.datatile.eu/dashboard/embedded/948c3dd1-24b2-4ecc-8b05-f1ad3db65dcf"
+                                width="100%" height="100%"></iframe>
+                    </div>
+                    <div class="dash-embed mobile_view d-none">
+                        <p class="warning view_990">To view the full-featured dashboard, please visit this page on a device with a
+                            screen width of 990px or more
+                        </p>
+                        <img src="/website_dt/static/src/images/hr-1.png"
+                             loading="lazy" alt="" sizes="100vw"
+                             srcset="/website_dt/static/src/images/bht-1.png 500w,
+                             /website_dt/static/src/images/bht-1.png 800w, /website_dt/static/src/images/bht-1.png 1080w,
+                             /website_dt/static/src/images/bht-1.png 1200w" class="mobile-screen"/>
+                        <img src="/website_dt/static/src/images/bht-2.png"
+                             loading="lazy" alt="" sizes="100vw"
+                             srcset="/website_dt/static/src/images/bht-2.png 500w,
+                             /website_dt/static/src/images/bht-2.png 800w, /website_dt/static/src/images/bht-2.png 1080w, /website_dt/static/src/images/bht-2.png 1200w"
+                             class="mobile-screen is-second"/>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section is-bottom">
+                <div class="dash-long-text">
+                    <p class="body-large">A brand health tracking dashboard provides real-time monitoring of your
+                        brand's performance across key metrics. Track brand awareness, perception, and purchase intent
+                        through a unified interface. Monitor advertising effectiveness, customer assosiations, and
+                        competitive positioning to make data-driven decisions. Our customizable dashboard delivers
+                        actionable insights through interactive visualizations, trend analysis, and automated reporting.
+                        Compare brand metrics across different regions, demographics, and time periods. Features include
+                        NPS tracking, CSI tracking, brand association mapping, and purchase intent metrics. Ideal for
+                        marketing teams, brand managers, and executives who need comprehensive brand performance
+                        monitoring across markets and departments. Generate automated reports and export data for deeper
+                        analysis or stakeholder presentations.
+                    </p>
+                </div>
+            </section>
+
+            <section class="talk-to-team">
+                <div class="container">
+                    <div class="contact-us">
+                        <h2>
+                            Try DataTile for free
+                        </h2>
+                        <p>
+                            Isn’t it time you transformed your business? Try DataTile for free and see how it can enhance your productivity with it’s thorough analysis, interactivity and speed.
+                        </p>
+                        <div class="buttons">
+                            <t t-call="website_dt.sandbox_button" />
+                            <a href="/contact-us" class="btn-contact">Contact us</a>
+                        </div>
+                    </div>
+                </div>
+                <img src="/website_dt/static/src/images/doughnut.svg" class="cta-image"/>
+            </section>
+        </t>
+    </template>
+
+    <template id="dashboards_social_media_listening" name="DataTile">
+        <t t-call="web.frontend_layout">
+            <section class="global-header">
+                <div class="container global-heading">
+                    <h6 class="global-title">Social Media Listening</h6>
+                    <p class="global-subtitle">This dashboard represents social media conversations in the video game industry,
+                        focusing on the action-adventure game Avalon Adventure and its top competitors. Track mentions, reach,
+                        engagement, and sentiment to uncover audience behavior, industry trends, and brand performance
+                    </p>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="container-large">
+                    <div class="dash-embed w-embed w-iframe desktop_view">
+                        <iframe frameborder="0"
+                                src="https://cloud.datatile.eu/dashboard/embedded/edcf688e-65d4-4625-8718-546a48d3a09c"
+                                width="100%" height="100%"></iframe>
+                    </div>
+                    <div class="dash-embed mobile_view d-none">
+                        <p class="warning view_990">To view the full-featured dashboard, please visit this page on a device with a
+                            screen width of 990px or more
+                        </p>
+                        <img src="/website_dt/static/src/images/listening-1.png"
+                             loading="lazy" alt="" sizes="100vw"
+                             srcset="/website_dt/static/src/images/listening-1.png 500w,
+                             /website_dt/static/src/images/listening-1.png 800w, /website_dt/static/src/images/listening-1.png 1080w,
+                             /website_dt/static/src/images/listening-1.png 1200w" class="mobile-screen"/>
+                        <img src="/website_dt/static/src/images/listening-2.png"
+                             loading="lazy" alt="" sizes="100vw"
+                             srcset="/website_dt/static/src/images/listening-2.png 500w,
+                             /website_dt/static/src/images/listening-2.png 800w, /website_dt/static/src/images/listening-2.png 1080w, /website_dt/static/src/images/listening-2.png 1200w"
+                             class="mobile-screen is-second"/>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section is-bottom">
+                <div class="dash-long-text">
+                    <p class="body-large">This dashboard represents social media listening results across several social
+                        networks. Track audience behavior, net sentiment, and brand image. Powered by AI-driven
+                        analytics, this cutting-edge social listening dashboard delivers actionable intelligence through
+                        interactive visualizations and advanced logical and mathematical models. Featuring
+                        cross-platform metrics, and customisable KPI tracking, this comprehensive digital insights hub
+                        enables brands to leverage big data for strategic decision-making. Perfect for every industry
+                        seeking data-backed competitive intelligence, viral content identification, and audience
+                        sentiment mapping.
+                    </p>
+                </div>
+            </section>
+
+            <section class="talk-to-team">
+                <div class="container">
+                    <div class="contact-us">
+                        <h2>
+                            Try DataTile for free
+                        </h2>
+                        <p>
+                            Isn’t it time you transformed your business? Try DataTile for free and see how it can enhance your productivity with it’s thorough analysis, interactivity and speed.
+                        </p>
+                        <div class="buttons">
+                            <t t-call="website_dt.sandbox_button" />
+                            <a href="/contact-us" class="btn-contact">Contact us</a>
+                        </div>
+                    </div>
+                </div>
+                <img src="/website_dt/static/src/images/doughnut.svg" class="cta-image"/>
+            </section>
+        </t>
+    </template>
+
+    <template id="dashboards_tv_set_purchase" name="DataTile">
+        <t t-call="web.frontend_layout">
+            <section class="global-header">
+                <div class="container global-heading">
+                    <h6 class="global-title">TV-set Purchase Process</h6>
+                    <p class="global-subtitle">Track key drivers and barriers influencing people's decision-making across different brands,
+                        channels, and groups. Monitor purchase triggers, decision blockers, and consumer preferences through comprehensive
+                        visualizations. Identify critical factors in the buying journey with actionable insights adaptable to various consumer
+                        studies
+                    </p>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="container-large">
+                    <div class="dash-embed w-embed w-iframe desktop_view">
+                        <iframe frameborder="0"
+                                src="https://cloud.datatile.eu/dashboard/embedded/a331f1c8-3a04-4ed7-ae9d-5b1b97b46928"
+                                width="100%" height="100%"></iframe>
+                    </div>
+                    <div class="dash-embed mobile_view d-none">
+                        <p class="warning view_990">To view the full-featured dashboard, please visit this page on a device with a
+                            screen width of 990px or more
+                        </p>
+                        <img src="/website_dt/static/src/images/tv-purchase-1.png"
+                             loading="lazy" alt="" sizes="100vw"
+                             srcset="/website_dt/static/src/images/tv-purchase-1.png 500w,
+                             /website_dt/static/src/images/tv-purchase-1.png 800w, /website_dt/static/src/images/tv-purchase-1.png 1080w,
+                             /website_dt/static/src/images/tv-purchase-1.png 1200w" class="mobile-screen"/>
+                        <img src="/website_dt/static/src/images/tv-purchase-2.png"
+                             loading="lazy" alt="" sizes="100vw"
+                             srcset="/website_dt/static/src/images/tv-purchase-2.png 500w,
+                             /website_dt/static/src/images/tv-purchase-2.png 800w, /website_dt/static/src/images/tv-purchase-2.png 1080w, /website_dt/static/src/images/tv-purchase-2.png 1200w"
+                             class="mobile-screen is-second"/>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section is-bottom">
+                <div class="dash-long-text">
+                    <p class="body-large">Track consumer decision-making patterns for TV purchases with our category
+                        decision tree dashboard. Analyze key drivers and barriers influencing people's decision-making
+                        across different brands and channels. Monitor purchase triggers, decision blockers, and consumer
+                        preferences through comprehensive visualizations. Identify critical factors in the buying
+                        journey with actionable insights adaptable to various consumer studies. Perfect for
+                        manufacturers, retailers, and market research agencies studying consumer purchase behavior.
+                    </p>
+                </div>
+            </section>
+
+            <section class="talk-to-team">
+                <div class="container">
+                    <div class="contact-us">
+                        <h2>
+                            Try DataTile for free
+                        </h2>
+                        <p>
+                            Isn’t it time you transformed your business? Try DataTile for free and see how it can enhance your productivity with it’s thorough analysis, interactivity and speed.
+                        </p>
+                        <div class="buttons">
+                            <t t-call="website_dt.sandbox_button" />
+                            <a href="/contact-us" class="btn-contact">Contact us</a>
+                        </div>
+                    </div>
+                </div>
+                <img src="/website_dt/static/src/images/doughnut.svg" class="cta-image"/>
+            </section>
+        </t>
+    </template>
+
+    <template id="dashboards_renewable_energy_worldwide" name="DataTile">
+        <t t-call="web.frontend_layout">
+            <section class="global-header">
+                <div class="container global-heading">
+                    <h6 class="global-title">Renewable Energy</h6>
+                    <p class="global-subtitle">Based on non-survey data, the dashboard allows for tracking key metrics
+                        like energy output, carbon emissions avoided, grid contribution, and cost savings.
+                        The dashboard enables stakeholders to monitor sustainability goals, optimize energy production
+                    </p>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="container-large">
+                    <div class="dash-embed w-embed w-iframe desktop_view">
+                        <iframe frameborder="0"
+                                src="https://cloud.datatile.eu/dashboard/embedded/258ff2de-2e27-44e8-99b6-241e07766327"
+                                width="100%" height="100%"></iframe>
+                    </div>
+                    <div class="dash-embed mobile_view d-none">
+                        <p class="warning view_990">To view the full-featured dashboard, please visit this page on a device with a
+                            screen width of 990px or more
+                        </p>
+                        <img src="/website_dt/static/src/images/renew-1.png"
+                             loading="lazy" alt="" sizes="100vw"
+                             srcset="/website_dt/static/src/images/renew-1.png 500w,
+                             /website_dt/static/src/images/renew-1.png 800w, /website_dt/static/src/images/renew-1.png 1080w,
+                             /website_dt/static/src/images/renew-1.png 1200w" class="mobile-screen"/>
+                        <img src="/website_dt/static/src/images/renew-2.png"
+                             loading="lazy" alt="" sizes="100vw"
+                             srcset="/website_dt/static/src/images/renew2.png 500w,
+                             /website_dt/static/src/images/renew-2.png 800w, /website_dt/static/src/images/renew-2.png 1080w, /website_dt/static/src/images/renew-2.png 1200w"
+                             class="mobile-screen is-second"/>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section is-bottom">
+                <div class="dash-long-text">
+                    <p class="body-large">The dashboard shows global renewable energy usage statistics. This entry-level
+                        visualization solution showcases various chart types seamlessly embedded into websites, offering
+                        user-friendly data presentation without complex functionality. Featuring responsive design
+                        elements, mobile-optimized graphs, and lightweight widget integration, this dashboard
+                        demonstrates accessible data storytelling for businesses new to interactive reporting. Perfect
+                        for small to medium enterprises seeking cost-effective simple metric showcasing with minimal
+                        technical requirements. Ideal for companies beginning their digital transformation journey who
+                        need straightforward, plug-and-play visualization tools to enhance website content and broad
+                        audience communication.
+                    </p>
+                </div>
+            </section>
+
+            <section class="talk-to-team">
+                <div class="container">
+                    <div class="contact-us">
+                        <h2>
+                            Try DataTile for free
+                        </h2>
+                        <p>
+                            Isn’t it time you transformed your business? Try DataTile for free and see how it can enhance your productivity with it’s thorough analysis, interactivity and speed.
+                        </p>
+                        <div class="buttons">
+                            <t t-call="website_dt.sandbox_button" />
+                            <a href="/contact-us" class="btn-contact">Contact us</a>
+                        </div>
+                    </div>
+                </div>
+                <img src="/website_dt/static/src/images/doughnut.svg" class="cta-image"/>
+            </section>
+        </t>
+    </template>
+
+    <template id="dashboards_ocean_clean_up" name="DataTile">
+        <t t-call="web.frontend_layout">
+            <section class="global-header">
+                <div class="container global-heading">
+                    <h6 class="global-title">Ocean Clean-Up</h6>
+                    <p class="global-subtitle">The dashboard is based on non-survey data and shows how even organizations that
+                        don't conduct surveys can use DataTile capabilities to engage a broad audience in the results of their activities.
+                    </p>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="container-large">
+                    <div class="dash-embed w-embed w-iframe desktop_view">
+                        <iframe frameborder="0"
+                                src="https://cloud.datatile.eu/dashboard/embedded/4e9c67c0-e45e-491d-b31f-a4aeb4209bd6"
+                                width="100%" height="100%"></iframe>
+                    </div>
+                    <div class="dash-embed mobile_view d-none">
+                        <p class="warning view_990">To view the full-featured dashboard, please visit this page on a device with a
+                            screen width of 990px or more
+                        </p>
+                        <img src="/website_dt/static/src/images/ocean-1.png"
+                             loading="lazy" alt="" sizes="100vw"
+                             srcset="/website_dt/static/src/images/ocean-1.png 500w,
+                             /website_dt/static/src/images/ocean-1.png 800w, /website_dt/static/src/images/ocean-1.png 1080w,
+                             /website_dt/static/src/images/ocean-1.png 1200w" class="mobile-screen"/>
+                        <img src="/website_dt/static/src/images/ocean-2.png"
+                             loading="lazy" alt="" sizes="100vw"
+                             srcset="/website_dt/static/src/images/ocean-2.png 500w,
+                             /website_dt/static/src/images/ocean-2.png 800w, /website_dt/static/src/images/ocean-2.png 1080w, /website_dt/static/src/images/ocean-2.png 1200w"
+                             class="mobile-screen is-second"/>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section is-bottom">
+                <div class="dash-long-text">
+                    <p class="body-large">The cutting-edge visualization tool leverages interactive data and a
+                        cloud-based research intelligence dashboard. Featuring a user-friendly responsive design, this
+                        dashboard represents the next generation of digital transformation in environmental monitoring
+                        across the USA. It is perfect for stakeholders seeking data-driven decision-making and impactful
+                        CSR reporting through powerful data storytelling and user-centric design.
+                    </p>
+                </div>
+            </section>
+
+            <section class="talk-to-team">
+                <div class="container">
+                    <div class="contact-us">
+                        <h2>
+                            Try DataTile for free
+                        </h2>
+                        <p>
+                            Isn’t it time you transformed your business? Try DataTile for free and see how it can enhance your productivity with it’s thorough analysis, interactivity and speed.
+                        </p>
+                        <div class="buttons">
+                            <t t-call="website_dt.sandbox_button" />
+                            <a href="/contact-us" class="btn-contact">Contact us</a>
+                        </div>
+                    </div>
+                </div>
+                <img src="/website_dt/static/src/images/doughnut.svg" class="cta-image"/>
+            </section>
+        </t>
+    </template>
+
+    <template id="dashboards_bank_csi" name="DataTile">
+        <t t-call="web.frontend_layout">
+            <section class="global-header">
+                <div class="container global-heading">
+                    <h6 class="global-title">Bank CSI</h6>
+                    <p class="global-subtitle">Our specialized CSI dashboard provides a comprehensive view of customer satisfaction across banking services,
+                        enabling organizations to track the Client Satisfaction Index at every customer touchpoint
+                    </p>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="container-large">
+                    <div class="dash-embed w-embed w-iframe desktop_view">
+                        <iframe frameborder="0"
+                                src="https://cloud.datatile.eu/dashboard/embedded/63d10fa2-689c-47c1-aaa8-4b93c4d18c0b"
+                                width="100%" height="100%"></iframe>
+                    </div>
+                    <div class="dash-embed mobile_view d-none">
+                        <p class="warning view_990">To view the full-featured dashboard, please visit this page on a device with a
+                            screen width of 990px or more
+                        </p>
+                        <img src="/website_dt/static/src/images/bank-2.png"
+                             loading="lazy" alt="" sizes="100vw"
+                             srcset="/website_dt/static/src/images/bank-2.png 500w,
+                             /website_dt/static/src/images/bank-2.png 800w, /website_dt/static/src/images/bank-2.png 1080w, /website_dt/static/src/images/bank-2.png 1200w"
+                             class="mobile-screen"/>
+                        <img src="/website_dt/static/src/images/bank-1.png"
+                             loading="lazy" alt="" sizes="100vw"
+                             srcset="/website_dt/static/src/images/bank-1.png 500w,
+                             /website_dt/static/src/images/bank-1.png 800w, /website_dt/static/src/images/bank-1.png 1080w,
+                             /website_dt/static/src/images/bank-1.png 1200w" class="mobile-screen is-second"/>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section is-bottom">
+                <div class="dash-long-text">
+                    <p class="body-large">The CSI dashboard provides a comprehensive solution for monitoring customer
+                        satisfaction by tracking the Client Satisfaction Index at various customer touchpoints and
+                        allowing segmentation by demographics, customer groups, or custom audiences. It enables targeted
+                        service improvements based on real data. The platform offers instant generation of branded
+                        PowerPoint presentations for streamlined stakeholder reporting, while advanced satisfaction
+                        metrics and trend analysis provide valuable insights into the banking customer experience.
+                        Designed for marketing managers and service teams, the dashboard facilitates efficient
+                        measurement and reporting, helping organizations enhance customer engagement and optimize
+                        service quality.
+                    </p>
+                </div>
+            </section>
+
+            <section class="talk-to-team">
+                <div class="container">
+                    <div class="contact-us">
+                        <h2>
+                            Try DataTile for free
+                        </h2>
+                        <p>
+                            Isn’t it time you transformed your business? Try DataTile for free and see how it can enhance your productivity with it’s thorough analysis, interactivity and speed.
+                        </p>
+                        <div class="buttons">
+                            <t t-call="website_dt.sandbox_button" />
+                            <a href="/contact-us" class="btn-contact">Contact us</a>
+                        </div>
+                    </div>
+                </div>
+                <img src="/website_dt/static/src/images/doughnut.svg" class="cta-image"/>
+            </section>
+        </t>
+    </template>
+
+    <template id="dashboards_tv_series_audience" name="DataTile">
+        <t t-call="web.frontend_layout">
+            <section class="global-header">
+                <div class="container global-heading">
+                    <h6 class="global-title">TV Series Audience</h6>
+                    <p class="global-subtitle">Explore series viewing patterns through our media segmentation dashboard.
+                        Track how different audiences engage with TV series, analyzing popularity by genre and viewer segments.
+                        See emotional responses and viewing habits across demographics. This dashboard template can be adapted
+                        for audience segmentation studies in any industry based on proven media research methods.
+                    </p>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="container-large">
+                    <div class="dash-embed w-embed w-iframe desktop_view">
+                        <iframe frameborder="0"
+                                src="https://cloud.datatile.eu/dashboard/embedded/7afda8d8-181a-467d-b179-446f44b9112a"
+                                width="100%" height="100%"></iframe>
+                    </div>
+                    <div class="dash-embed mobile_view d-none">
+                        <p class="warning view_990">To view the full-featured dashboard, please visit this page on a device with a
+                            screen width of 990px or more
+                        </p>
+                        <img src="/website_dt/static/src/images/tv-aud-1.png"
+                             loading="lazy" alt="" sizes="100vw"
+                             srcset="/website_dt/static/src/images/tv-aud-1.png 500w,
+                             /website_dt/static/src/images/tv-aud-1.png 800w, /website_dt/static/src/images/tv-aud-1.png 1080w,
+                             /website_dt/static/src/images/tv-aud-1.png 1200w" class="mobile-screen"/>
+                        <img src="/website_dt/static/src/images/tv-aud-2.png"
+                             loading="lazy" alt="" sizes="100vw"
+                             srcset="/website_dt/static/src/images/tv-aud-2.png 500w,
+                             /website_dt/static/src/images/tv-aud-2.png 800w, /website_dt/static/src/images/tv-aud-2.png 1080w, /website_dt/static/src/images/tv-aud-2.png 1200w"
+                             class="mobile-screen  is-second"/>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section is-bottom">
+                <div class="dash-long-text">
+                    <p class="body-large">Track TV viewing behaviors and preferences with our comprehensive media
+                        consumption dashboard. Analyze series popularity across genres, viewer segments, and emotional
+                        reactions. Monitor affinity indices, viewing habits, and demographic patterns to understand your
+                        audience better. Explore viewer engagement trends with advanced segmentation and genre analysis.
+                        The dashboard is based on media effectiveness and user segmentation dashboards and can be easily
+                        adopted to segmentation studies in other industries
+                    </p>
+                </div>
+            </section>
+
+            <section class="talk-to-team">
+                <div class="container">
+                    <div class="contact-us">
+                        <h2>
+                            Try DataTile for free
+                        </h2>
+                        <p>
+                            Isn’t it time you transformed your business? Try DataTile for free and see how it can enhance your productivity with it’s thorough analysis, interactivity and speed.
+                        </p>
+                        <div class="buttons">
+                            <t t-call="website_dt.sandbox_button" />
+                            <a href="/contact-us" class="btn-contact">Contact us</a>
+                        </div>
+                    </div>
+                </div>
+                <img src="/website_dt/static/src/images/doughnut.svg" class="cta-image"/>
+            </section>
+        </t>
+    </template>
+
+    <template id="dashboards_freedom_of_the_net_2024" name="DataTile">
+        <t t-call="web.frontend_layout">
+            <section class="global-header">
+                <div class="container global-heading">
+                    <h6 class="global-title">Freedom of the Net 2024</h6>
+                    <p class="global-subtitle">The dashboard is based on the results of the Freedom House global annual survey on Internet Freedom.
+                        It demonstrates how non-survey data can be embedded in media materials to increase audience interest and engagement through
+                        a topic of public importance.
+                    </p>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="container-large">
+                    <div class="dash-embed w-embed w-iframe desktop_view">
+                        <iframe frameborder="0"
+                                src="https://cloud.datatile.eu/dashboard/embedded/de3e0fa9-b888-453a-a767-6eabcef521df"
+                                width="100%" height="100%"></iframe>
+                    </div>
+                    <div class="dash-embed mobile_view d-none">
+                        <p class="warning view_990">To view the full-featured dashboard, please visit this page on a device with a
+                            screen width of 990px or more
+                        </p>
+                        <img src="/website_dt/static/src/images/netfree-1.png"
+                             loading="lazy" alt="" sizes="100vw"
+                             srcset="/website_dt/static/src/images/netfree-1.png 500w,
+                             /website_dt/static/src/images/netfree-1.png 800w, /website_dt/static/src/images/netfree-1.png 1080w,
+                             /website_dt/static/src/images/netfree-1.png 1200w" class="mobile-screen "/>
+                        <img src="/website_dt/static/src/images/netfree-2.png"
+                             loading="lazy" alt="" sizes="100vw"
+                             srcset="/website_dt/static/src/images/netfree-2.png 500w,
+                             /website_dt/static/src/images/netfree-2.png 800w, /website_dt/static/src/images/netfree-2.png 1080w, /website_dt/static/src/images/netfree-2.png 1200w"
+                             class="mobile-screen is-second"/>
+
+                    </div>
+                </div>
+            </section>
+
+            <section class="section is-bottom">
+                <div class="dash-long-text">
+                    <p class="body-large">The Freedom House Internet Freedom Dashboard transforms complex global digital
+                        rights research into an accessible, engaging visual experience. By converting intricate survey
+                        data into compelling media materials, the dashboard offers insights into internet censorship,
+                        digital rights, and online accessibility. Also it provides an easy way to compare and visulize
+                        cross-country data. It empowers citizens, researchers, and policymakers to understand the global
+                        landscape of digital freedom through intuitive, interactive visualization that brings critical
+                        information to life.
+                    </p>
+                </div>
+            </section>
+
+            <section class="talk-to-team">
+                <div class="container">
+                    <div class="contact-us">
+                        <h2>
+                            Try DataTile for free
+                        </h2>
+                        <p>
+                            Isn’t it time you transformed your business? Try DataTile for free and see how it can enhance your productivity with it’s thorough analysis, interactivity and speed.
+                        </p>
+                        <div class="buttons">
+                            <t t-call="website_dt.sandbox_button" />
+                            <a href="/contact-us" class="btn-contact">Contact us</a>
+                        </div>
+                    </div>
+                </div>
+                <img src="/website_dt/static/src/images/doughnut.svg" class="cta-image"/>
+            </section>
+        </t>
+    </template>
+
+</odoo>

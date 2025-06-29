@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="footer" name="Footer - DataTile" inherit_id="web.frontend_layout">
+        <xpath expr="//div[@id='footer']" position="replace">
+            <footer class="footer">
+                <div class="container-large">
+                    <div class="footer-left">
+                        <img src="/website_dt/static/src/images/footer-logo.svg" alt="DataTile Logo" class="footer-logo"/>
+                        <p>© 2025 DataTile Ltd.</p>
+                    </div>
+                    <div class="footer-links">
+                        <ul>
+                            <li><a href="https://support.datatile.eu/" target="_blank">Help Center</a></li>
+                            <li><a href="/legal/license-agreement">License Agreement</a></li>
+                            <li><a href="/legal/terms-of-use">Terms of Use</a></li>
+                        </ul>
+                        <ul>
+                            <li><a href="/legal/privacy-policy">Privacy Policy</a></li>
+                            <li><a href="/cookie-policy">Cookie List</a></li>
+                            <li>
+                                <a href="#"  class="try-btn" data-bs-toggle="modal" data-bs-target="#subscribeToOurNewsletter">Subscribe
+                                    to our newsletter
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="footer-right">
+                        <p>3, Michael Koutsofta Street </p>
+                        <p>3031, Limassol</p>
+                        <p>Cyprus</p>
+                        <a href="mailto:info@datatile.eu" class="email">info@datatile.eu</a>
+                    </div>
+                    <div class="footer-social">
+                        <div class="social-icons">
+                            <a href="https://www.linkedin.com/company/datatile" target="_blank"><img src="/website_dt/static/src/images/in-logo.svg" alt="LinkedIn" title="LinkedIn"/></a>
+                            <a href="https://twitter.com/DataTile" target="_blank"><img src="/website_dt/static/src/images/x-logo.svg" alt="X" title="X"/></a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </xpath>
+
+        <!-- Existing odoo copyright section		-->
+        <xpath expr="//div[hasclass('o_footer_copyright')]" position="attributes">
+            <attribute name="class">d-none</attribute>
+        </xpath>
+    </template>
+</odoo>

@@ -1,0 +1,1613 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="pricing" name="Pricing">
+        <t t-call="web.frontend_layout">
+            <div class="desktop_view">
+                <section class="global-header">
+                <div class="container global-heading">
+                    <h1 class="global-title">Pricing Plans</h1>
+                    <p class="global-subtitle">Everything you need for your quantitative study analysis and visualization.<br/><br/>
+                    <b>Choose the most suitable option and calculate your price</b></p>
+                </div>
+            </section>
+
+                 <section class="section padding-small">
+                <div class="container">
+                    <div class="pricing-wrapper">
+                        <div class="pricing-row is-title-row">
+                            <div class="pricing-row-left is-title">
+                                <div class="div-block-29">
+                                    <div class="pricing-subtitle">Dedicated server plans</div>
+                                    <div class="currency-toggler">
+                                        <div class="body-tiny">Choose currency</div>
+                                        <div class="pricing-switch-wrapper">
+                                            <div class="pricing-switch-card">
+                                                <div id="switchEur" class="pricing-switch-btn is-active">
+                                                    <div>EUR</div>
+                                                </div>
+                                                <div class="pricing-switch-divider"></div>
+                                                <div id="switchGbp" class="pricing-switch-btn">
+                                                    <div>GBP</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="pricing-double-title">
+                                <div data-pricing="cloud" class="pricing-cell is-top is-active">
+                                    <div class="pricing-name">Cloud server</div>
+                                    <div class="pricing-toggle pricing-toggle-center" style="width: 205px;">
+                                        <div class="pricing-preloader-wrapper is-center">
+                                            <div class="body-tiny">Price starts from</div>
+                                            <div class="pricing-price">
+                                                <span id="cloudRate" class="text-span-2">€336.8</span>
+                                            </div>
+                                            <div class="pricing-preloader" style="transform: translate3d(-50%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d; display: none;"></div>
+                                            <div class="body-tiny">per month, paid annually</div>
+                                        </div>
+                                    </div>
+                                    <a id="orderNow" href="https://my.datatile.eu/order-now?currency=EUR" class="button-yellow is-xs w-button">Order now</a>
+                                </div>
+                                <div data-pricng="enterprise" class="pricing-cell is-top">
+                                    <div class="pricing-name">Enterprise</div>
+                                    <div class="pricing-toggle" style="width: 205px;">
+                                        <div class="body-tiny pricing-toggle-center">On-premises intallation</div>
+                                        <div class="body-tiny pricing-toggle-center">Unlimited capacity</div>
+                                        <div class="body-tiny pricing-toggle-center">White label &amp; OEM</div>
+                                    </div>
+                                    <a href="/contact-us" class="button-yellow is-xs w-button">Contact us</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pricing-top-wrapper">
+                            <div class="pricing-row">
+                                <div class="pricing-row-left">
+                                    <div>
+                                        <div class="body-small">Creator accounts included</div>
+                                        <div class="body-tiny">+ Additional creator accounts</div>
+                                    </div>
+                                    <div>
+                                        <img src="/website_dt/static/src/images/icon.svg" class="is-tooltip tooltipstered"/>
+                                    </div>
+                                </div>
+                                <div id="w-node-_8cfd71de-bd0b-464e-b128-49a8c69aea95-1184d86d" class="pricing-double-column">
+                                    <div class="pricing-cell has-border">
+                                        <div class="pricing-preloader-wrapper">
+                                            <div class="body-small">2</div>
+                                            <div class="body-tiny">+ <span id="creatorRate">€74
+                                            </span> each
+                                            </div>
+                                            <div class="pricing-preloader" style="transform: translate3d(-50%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d; display: none;"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="pricing-row">
+                                <div class="pricing-row-left">
+                                    <div>
+                                        <div class="body-small">Collaborator accounts included</div>
+                                        <div class="body-tiny">+ Additional collaborator accounts</div>
+                                    </div>
+                                    <div>
+                                        <img src="/website_dt/static/src/images/icon.svg" class="is-tooltip tooltipstered"/>
+                                    </div>
+                                </div>
+                                <div class="pricing-double-column">
+                                    <div class="pricing-cell has-border">
+                                        <div class="pricing-preloader-wrapper">
+                                            <div class="body-small">12</div>
+                                            <div class="body-tiny">+ <span id="collabRate">€7.4
+                                            </span> each
+                                            </div>
+                                            <div class="pricing-preloader" style="transform: translate3d(-50%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d; display: none;"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="pricing-row">
+                                <div class="pricing-row-left">
+                                    <div>
+                                        <div class="body-small">Capacity of interviews included</div>
+                                        <div class="body-tiny">+ Additional interview capacity</div>
+                                    </div>
+                                    <div>
+                                        <img src="/website_dt/static/src/images/icon.svg" class="is-tooltip tooltipstered"/>
+                                    </div>
+                                </div>
+                                <div class="pricing-double-column">
+                                    <div class="pricing-cell has-border">
+                                        <div class="pricing-preloader-wrapper">
+                                            <div class="body-small">200,000</div>
+                                            <div class="body-tiny">+ <span id="capacitycollabRate">€50
+                                            </span> per 100k
+                                            </div>
+                                            <div class="pricing-preloader" style="transform: translate3d(-50%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d; display: none;"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="pricing-enterprise-top">
+                                <div class="body-small">Detailed commercial and technical conditions are agreed
+                                    separately according to the customer's requirements
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion" id="accordionExample">
+                            <div class="pricing-accordion-trigger">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                <b>Quotas</b>
+                                </button>
+                            </div>
+                            <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+<!--                            <div class="pricing-accordion-content" style="height: 0px;">-->
+                                <div class="pricing-row">
+                                    <div class="pricing-row-left">
+                                        <div>Databases</div>
+                                        <div>
+                                            <img src="/website_dt/static/src/images/icon.svg" class="is-tooltip tooltipstered"/>
+                                        </div>
+                                    </div>
+                                    <div class="pricing-double-column">
+                                        <div class="pricing-cell">
+                                            <div>Unlimited</div>
+                                        </div>
+                                        <div class="pricing-cell">
+                                            <div>Unlimited</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pricing-row">
+                                    <div class="pricing-row-left">
+                                        <div>Dashboards</div>
+                                        <div>
+                                            <img src="/website_dt/static/src/images/icon.svg" class="is-tooltip tooltipstered"/>
+                                        </div>
+                                    </div>
+                                    <div class="pricing-double-column">
+                                        <div class="pricing-cell">
+                                            <div>Unlimited</div>
+                                        </div>
+                                        <div class="pricing-cell">
+                                            <div>Unlimited</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pricing-row">
+                                    <div class="pricing-row-left">
+                                        <div>Collaborators per entity</div>
+                                        <div>
+                                            <img src="/website_dt/static/src/images/icon.svg" class="is-tooltip tooltipstered"/>
+                                        </div>
+                                    </div>
+                                    <div class="pricing-double-column">
+                                        <div class="pricing-cell">
+                                            <div>200</div>
+                                        </div>
+                                        <div class="pricing-cell">
+                                            <div>200</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pricing-row">
+                                    <div class="pricing-row-left">
+                                        <div>Published entities</div>
+                                        <div>
+                                            <img src="/website_dt/static/src/images/icon.svg" class="is-tooltip tooltipstered"/>
+                                        </div>
+                                    </div>
+                                    <div class="pricing-double-column">
+                                        <div class="pricing-cell">
+                                            <div>Unlimited</div>
+                                        </div>
+                                        <div class="pricing-cell">
+                                            <div>Unlimited</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pricing-row">
+                                    <div class="pricing-row-left">
+                                        <div>Max. number of variables in a survey</div>
+                                        <div>
+                                            <img src="/website_dt/static/src/images/icon.svg" class="is-tooltip tooltipstered"/>
+                                        </div>
+                                    </div>
+                                    <div class="pricing-double-column">
+                                        <div class="pricing-cell">
+                                            <div>30,000</div>
+                                        </div>
+                                        <div class="pricing-cell">
+                                            <div>Unlimited</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pricing-row">
+                                    <div class="pricing-row-left">
+                                        <div>Interviews per survey</div>
+                                        <div>
+                                            <img src="/website_dt/static/src/images/icon.svg" class="is-tooltip tooltipstered"/>
+                                        </div>
+                                    </div>
+                                    <div class="pricing-double-column">
+                                        <div class="pricing-cell">
+                                            <div>2,000,000</div>
+                                        </div>
+                                        <div class="pricing-cell">
+                                            <div>Unlimited</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pricing-row">
+                                    <div class="pricing-row-left">
+                                        <div>Interviews in all surveys</div>
+                                        <div>
+                                            <img src="/website_dt/static/src/images/icon.svg" class="is-tooltip tooltipstered"/>
+                                        </div>
+                                    </div>
+                                    <div class="pricing-double-column">
+                                        <div class="pricing-cell">
+                                            <div>5,000,000</div>
+                                        </div>
+                                        <div class="pricing-cell">
+                                            <div>Unlimited</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion" id="accordionExample">
+                            <div class="pricing-accordion-trigger">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                <b>Functionality</b>
+                                </button>
+                            </div>
+                            <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+<!--                            <div class="pricing-accordion-content" style="height: 0px;">-->
+                                <div class="pricing-row">
+                                    <div class="pricing-row-left">
+                                        <div>Charting</div>
+                                        <div>
+                                            <img src="/website_dt/static/src/images/icon.svg" class="is-tooltip tooltipstered"/>
+                                        </div>
+                                    </div>
+                                    <div class="pricing-double-column">
+                                        <div class="pricing-cell">
+                                            <img src="/website_dt/static/src/images/blue-right.svg"/>
+                                        </div>
+                                        <div class="pricing-cell">
+                                            <img src="/website_dt/static/src/images/blue-right.svg"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pricing-row">
+                                    <div class="pricing-row-left">
+                                        <div>Dashboards</div>
+                                        <div>
+                                            <img src="/website_dt/static/src/images/icon.svg" class="is-tooltip tooltipstered"/>
+                                        </div>
+                                    </div>
+                                    <div class="pricing-double-column">
+                                        <div class="pricing-cell">
+                                            <img src="/website_dt/static/src/images/blue-right.svg"/>
+                                        </div>
+                                        <div class="pricing-cell">
+                                            <img src="/website_dt/static/src/images/blue-right.svg"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pricing-row">
+                                    <div class="pricing-row-left">
+                                        <div>Crosstabs</div>
+                                        <div>
+                                            <img src="/website_dt/static/src/images/icon.svg" class="is-tooltip tooltipstered"/>
+                                        </div>
+                                    </div>
+                                    <div class="pricing-double-column">
+                                        <div class="pricing-cell">
+                                            <img src="/website_dt/static/src/images/blue-right.svg"/>
+                                        </div>
+                                        <div class="pricing-cell">
+                                            <img src="/website_dt/static/src/images/blue-right.svg"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pricing-row">
+                                    <div class="pricing-row-left">
+                                        <div>Grid-requests</div>
+                                        <div>
+                                            <img src="/website_dt/static/src/images/icon.svg" class="is-tooltip tooltipstered"/>
+                                        </div>
+                                    </div>
+                                    <div class="pricing-double-column">
+                                        <div class="pricing-cell">
+                                            <img src="/website_dt/static/src/images/blue-right.svg"/>
+                                        </div>
+                                        <div class="pricing-cell">
+                                            <img src="/website_dt/static/src/images/blue-right.svg"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pricing-row">
+                                    <div class="pricing-row-left">
+                                        <div>Export to PowerPoint, Excel, PDF, PNG, JPG</div>
+                                        <div>
+                                            <img src="/website_dt/static/src/images/icon.svg" class="is-tooltip tooltipstered"/>
+                                        </div>
+                                    </div>
+                                    <div class="pricing-double-column">
+                                        <div class="pricing-cell">
+                                            <img src="/website_dt/static/src/images/blue-right.svg"/>
+                                        </div>
+                                        <div class="pricing-cell">
+                                            <img src="/website_dt/static/src/images/blue-right.svg"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pricing-row">
+                                    <div class="pricing-row-left">
+                                        <div>Significance testing</div>
+                                        <div>
+                                            <img src="/website_dt/static/src/images/icon.svg" class="is-tooltip tooltipstered"/>
+                                        </div>
+                                    </div>
+                                    <div class="pricing-double-column">
+                                        <div class="pricing-cell">
+                                            <img src="/website_dt/static/src/images/blue-right.svg"/>
+                                        </div>
+                                        <div class="pricing-cell">
+                                            <img src="/website_dt/static/src/images/blue-right.svg"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pricing-row">
+                                    <div class="pricing-row-left">
+                                        <div>Logical codes and expressions</div>
+                                        <div>
+                                            <img src="/website_dt/static/src/images/icon.svg" class="is-tooltip tooltipstered"/>
+                                        </div>
+                                    </div>
+                                    <div class="pricing-double-column">
+                                        <div class="pricing-cell">
+                                            <img src="/website_dt/static/src/images/blue-right.svg"/>
+                                        </div>
+                                        <div class="pricing-cell">
+                                            <img src="/website_dt/static/src/images/blue-right.svg"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pricing-row">
+                                    <div class="pricing-row-left">
+                                        <div>Retail, ad contact, aggregated data specific statistics</div>
+                                        <div>
+                                            <img src="/website_dt/static/src/images/icon.svg" class="is-tooltip tooltipstered"/>
+                                        </div>
+                                    </div>
+                                    <div class="pricing-double-column">
+                                        <div class="pricing-cell">
+                                            <img src="/website_dt/static/src/images/blue-right.svg"/>
+                                        </div>
+                                        <div class="pricing-cell">
+                                            <img src="/website_dt/static/src/images/blue-right.svg"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pricing-row">
+                                    <div class="pricing-row-left">
+                                        <div>Granular access management of users and data</div>
+                                        <div>
+                                            <img src="/website_dt/static/src/images/icon.svg" class="is-tooltip tooltipstered"/>
+                                        </div>
+                                    </div>
+                                    <div class="pricing-double-column">
+                                        <div class="pricing-cell">
+                                            <img src="/website_dt/static/src/images/blue-right.svg"/>
+                                        </div>
+                                        <div class="pricing-cell">
+                                            <img src="/website_dt/static/src/images/blue-right.svg"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pricing-row">
+                                    <div class="pricing-row-left">
+                                        <div>Deck generator</div>
+                                        <div>
+                                            <img src="/website_dt/static/src/images/icon.svg" class="is-tooltip tooltipstered"/>
+                                        </div>
+                                    </div>
+                                    <div class="pricing-double-column">
+                                        <div class="pricing-cell">
+                                            <img src="/website_dt/static/src/images/blue-right.svg"/>
+                                        </div>
+                                        <div class="pricing-cell">
+                                            <img src="/website_dt/static/src/images/blue-right.svg"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pricing-row">
+                                    <div class="pricing-row-left">
+                                        <div>Publications</div>
+                                        <div>
+                                            <img src="/website_dt/static/src/images/icon.svg" class="is-tooltip tooltipstered"/>
+                                        </div>
+                                    </div>
+                                    <div class="pricing-double-column">
+                                        <div class="pricing-cell">
+                                            <img src="/website_dt/static/src/images/blue-right.svg"/>
+                                        </div>
+                                        <div class="pricing-cell">
+                                            <img src="/website_dt/static/src/images/blue-right.svg"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pricing-row">
+                                    <div class="pricing-row-left">
+                                        <div>Context-aware access management for dashboards</div>
+                                        <div>
+                                            <img src="/website_dt/static/src/images/icon.svg" class="is-tooltip tooltipstered"/>
+                                        </div>
+                                    </div>
+                                    <div class="pricing-double-column">
+                                        <div class="pricing-cell">
+                                            <img src="/website_dt/static/src/images/blue-right.svg"/>
+                                        </div>
+                                        <div class="pricing-cell">
+                                            <img src="/website_dt/static/src/images/blue-right.svg"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pricing-row">
+                                    <div class="pricing-row-left">
+                                        <div>Cleaning and coding of titles and open-ended questions</div>
+                                        <div>
+                                            <img src="/website_dt/static/src/images/icon.svg" class="is-tooltip tooltipstered"/>
+                                        </div>
+                                    </div>
+                                    <div class="pricing-double-column">
+                                        <div class="pricing-cell">
+                                            <img src="/website_dt/static/src/images/blue-right.svg"/>
+                                        </div>
+                                        <div class="pricing-cell">
+                                            <img src="/website_dt/static/src/images/blue-right.svg"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pricing-row">
+                                    <div class="pricing-row-left">
+                                        <div>Branding</div>
+                                        <div>
+                                            <img src="/website_dt/static/src/images/icon.svg" class="is-tooltip tooltipstered"/>
+                                        </div>
+                                    </div>
+                                    <div class="pricing-double-column">
+                                        <div class="pricing-cell">
+                                            <img src="/website_dt/static/src/images/blue-right.svg"/>
+                                        </div>
+                                        <div class="pricing-cell">
+                                            <img src="/website_dt/static/src/images/blue-right.svg"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pricing-row">
+                                    <div class="pricing-row-left">
+                                        <div>Corporate mailbox for user notifications</div>
+                                        <div>
+                                            <img src="/website_dt/static/src/images/icon.svg" class="is-tooltip tooltipstered"/>
+                                        </div>
+                                    </div>
+                                    <div class="pricing-double-column">
+                                        <div class="pricing-cell">
+                                            <img src="/website_dt/static/src/images/blue-right.svg"/>
+                                        </div>
+                                        <div class="pricing-cell">
+                                            <img src="/website_dt/static/src/images/blue-right.svg"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pricing-row">
+                                    <div class="pricing-row-left">
+                                        <div>Report Automation</div>
+                                        <div>
+                                            <img src="/website_dt/static/src/images/icon.svg" class="is-tooltip tooltipstered"/>
+                                        </div>
+                                    </div>
+                                    <div class="pricing-double-column">
+                                        <div class="pricing-cell">
+                                            <img src="/website_dt/static/src/images/blue-right.svg"/>
+                                        </div>
+                                        <div class="pricing-cell">
+                                            <img src="/website_dt/static/src/images/blue-right.svg"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pricing-row">
+                                    <div class="pricing-row-left">
+                                        <div>On-premises installation</div>
+                                        <div>
+                                            <img src="/website_dt/static/src/images/icon.svg" class="is-tooltip tooltipstered"/>
+                                        </div>
+                                    </div>
+                                    <div class="pricing-double-column">
+                                        <div class="pricing-cell">
+                                            <img src="/website_dt/static/src/images/blue-right.svg"/>
+                                        </div>
+                                        <div class="pricing-cell">
+                                            <img src="/website_dt/static/src/images/blue-right.svg"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pricing-row">
+                                    <div class="pricing-row-left">
+                                        <div>Single sign-on</div>
+                                        <div>
+                                            <img src="/website_dt/static/src/images/icon.svg" class="is-tooltip tooltipstered"/>
+                                        </div>
+                                    </div>
+                                    <div class="pricing-double-column">
+                                        <div class="pricing-cell">
+                                            <img src="/website_dt/static/src/images/blue-right.svg"/>
+                                        </div>
+                                        <div class="pricing-cell">
+                                            <img src="/website_dt/static/src/images/blue-right.svg"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pricing-row">
+                                    <div class="pricing-row-left">
+                                        <div>API for integration with BI systems</div>
+                                        <div>
+                                            <img src="/website_dt/static/src/images/icon.svg" class="is-tooltip tooltipstered"/>
+                                        </div>
+                                    </div>
+                                    <div class="pricing-double-column">
+                                        <div class="pricing-cell">
+                                            <img src="/website_dt/static/src/images/blue-right.svg"/>
+                                        </div>
+                                        <div class="pricing-cell">
+                                            <img src="/website_dt/static/src/images/blue-right.svg"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pricing-row">
+                                    <div class="pricing-row-left">
+                                        <div>Custom legal agreement</div>
+                                        <div>
+                                            <img src="/website_dt/static/src/images/icon.svg" class="is-tooltip tooltipstered"/>
+                                        </div>
+                                    </div>
+                                    <div class="pricing-double-column">
+                                        <div class="pricing-cell">
+                                            <img src="/website_dt/static/src/images/blue-right.svg"/>
+                                        </div>
+                                        <div class="pricing-cell">
+                                            <img src="/website_dt/static/src/images/blue-right.svg"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pricing-row">
+                                    <div class="pricing-row-left">
+                                        <div>Cyber liability coverage</div>
+                                        <div>
+                                            <img src="/website_dt/static/src/images/icon.svg" class="is-tooltip tooltipstered"/>
+                                        </div>
+                                    </div>
+                                    <div class="pricing-double-column">
+                                        <div class="pricing-cell">
+                                            <img src="/website_dt/static/src/images/blue-right.svg"/>
+                                        </div>
+                                        <div class="pricing-cell">
+                                            <img src="/website_dt/static/src/images/blue-right.svg"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pricing-row">
+                                    <div class="pricing-row-left">
+                                        <div>Custom domain name</div>
+                                        <div>
+                                            <img src="/website_dt/static/src/images/icon.svg" class="is-tooltip tooltipstered"/>
+                                        </div>
+                                    </div>
+                                    <div class="pricing-double-column">
+                                        <div class="pricing-cell">
+                                            <img src="/website_dt/static/src/images/blue-right.svg"/>
+                                        </div>
+                                        <div class="pricing-cell">
+                                            <img src="/website_dt/static/src/images/blue-right.svg"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pricing-row">
+                                    <div class="pricing-row-left">
+                                        <div>Additional dedicated server per project/client/region</div>
+                                        <div>
+                                            <img src="/website_dt/static/src/images/icon.svg" class="is-tooltip tooltipstered"/>
+                                        </div>
+                                    </div>
+                                    <div class="pricing-double-column">
+                                        <div class="pricing-cell">
+                                            <img src="/website_dt/static/src/images/blue-right.svg"/>
+                                        </div>
+                                        <div class="pricing-cell">
+                                            <img src="/website_dt/static/src/images/blue-right.svg"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion" id="accordionExample">
+                            <div class="pricing-accordion-trigger">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    <b>Support</b>
+                                </button>
+                            </div>
+                            <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                                <div class="pricing-row">
+                                    <div class="pricing-row-left">
+                                        <div>SLA 99.5%</div>
+                                        <div>
+                                            <img src="/website_dt/static/src/images/icon.svg" class="is-tooltip tooltipstered"/>
+                                        </div>
+                                    </div>
+                                    <div class="pricing-double-column">
+                                        <div class="pricing-cell">
+                                            <img src="/website_dt/static/src/images/blue-right.svg"/>
+                                        </div>
+                                        <div class="pricing-cell">
+                                            <img src="/website_dt/static/src/images/blue-right.svg"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pricing-row">
+                                    <div class="pricing-row-left">
+                                        <div>Helpdesk &amp; email support</div>
+                                        <div>
+                                            <img src="/website_dt/static/src/images/icon.svg" class="is-tooltip tooltipstered"/>
+                                        </div>
+                                    </div>
+                                    <div class="pricing-double-column">
+                                        <div class="pricing-cell">
+                                            <img src="/website_dt/static/src/images/blue-right.svg"/>
+                                        </div>
+                                        <div class="pricing-cell">
+                                            <img src="/website_dt/static/src/images/blue-right.svg"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pricing-row">
+                                    <div class="pricing-row-left">
+                                        <div>Live support</div>
+                                        <div>
+                                            <img src="/website_dt/static/src/images/icon.svg" class="is-tooltip tooltipstered"/>
+                                        </div>
+                                    </div>
+                                    <div class="pricing-double-column">
+                                        <div class="pricing-cell">
+                                            <img src="/website_dt/static/src/images/blue-right.svg"/>
+                                        </div>
+                                        <div class="pricing-cell">
+                                            <img src="/website_dt/static/src/images/blue-right.svg"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pricing-row">
+                                    <div class="pricing-row-left">
+                                        <div>Resolution of critical issues within 2 business days</div>
+                                        <div>
+                                            <img src="/website_dt/static/src/images/icon.svg" class="is-tooltip tooltipstered"/>
+                                        </div>
+                                    </div>
+                                    <div class="pricing-double-column">
+                                        <div class="pricing-cell">
+                                            <img src="/website_dt/static/src/images/blue-right.svg"/>
+                                        </div>
+                                        <div class="pricing-cell">
+                                            <img src="/website_dt/static/src/images/blue-right.svg"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div data-w-id="655101ec-af48-d667-d216-5214096c5582" class="pricing-trigger"></div>
+                    </div>
+                </div>
+            </section>
+
+                    <section class="section">
+                <div class="container">
+                    <div class="add-on-wrapper">
+                        <div class="add-on-top">
+                            <div>Server add-ons:</div>
+                            <div class="add-on-border"></div>
+                        </div>
+                        <div class="add-on-grid">
+                            <div class="add-on-card">
+                                <div class="body-large is-medium">Correspondence Analysis</div>
+                                <div class="body-small is-add-on-desc">The Correspondence Analysis (CA) module is used
+                                    to explore relationships between multiple categorical variables. It transforms
+                                    multifaceted data into a simple graphical representation with the ability to export
+                                    as a chart, part of a dashboard, or a presentation
+                                </div>
+                                <div class="pricing-preloader-wrapper is-addon">
+                                    <div class="body-large is-add-on-price">+ <span id="analysisRate">€100
+                                    </span> /month to your plan
+                                    </div>
+                                    <div class="pricing-preloader" style="transform: translate3d(-46.825%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d; display: none; will-change: transform;"></div>
+                                </div>
+                            </div>
+                            <div class="add-on-divider"></div>
+                            <div class="add-on-card">
+                                <div class="body-large is-medium">AI-assisted Reporting</div>
+                                <div class="body-small is-add-on-desc">The AI-assisted Reporting (AIR) module is used to
+                                    convert a templated summary into natural text
+                                </div>
+                                <div class="pricing-preloader-wrapper is-addon">
+                                    <div class="body-large is-add-on-price">+ <span id="reportRate">
+                                        €100
+                                    </span> /month to your plan
+                                    </div>
+                                    <div class="pricing-preloader" style="transform: translate3d(-46.825%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d; display: none; will-change: transform;"></div>
+                                </div>
+                            </div>
+                            <div class="add-on-divider"></div>
+                            <div class="add-on-card">
+                                <div class="body-large is-medium">Text Refiner</div>
+                                <div class="body-small is-add-on-desc">The Text Refiner (TR) module is used to code
+                                    open-ended questions and create dictionaries
+                                </div>
+                                <div class="pricing-preloader-wrapper is-addon">
+                                    <div class="body-large is-add-on-price">+ <span id="refinerRate">€100
+                                    </span> /month to your plan
+                                    </div>
+                                    <div class="pricing-preloader" style="transform: translate3d(-46.825%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d; display: none; will-change: transform;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="add-on-grid bottom">
+                            <div class="add-on-card">
+                                <div class="body-large is-medium">Reach &amp; Frequency</div>
+                                <div class="body-small is-add-on-desc">The Reach&amp;Frequency Analysis (R&amp;F) module
+                                    is used to analyze the measurements of the total audience in television and print.
+                                    It uses Reach (the estimated number of people or households exposed to a given
+                                    medium at a given point in time) and Frequency (the number of times viewers are
+                                    exposed to the same Ad during a campaign)
+                                </div>
+                                <div class="pricing-preloader-wrapper is-addon">
+                                    <div class="body-large is-add-on-price">+ <span id="rnfRate">€100
+                                    </span> /month to your plan
+                                    </div>
+                                    <div class="pricing-preloader" style="transform: translate3d(-46.825%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d; display: none; will-change: transform;"></div>
+                                </div>
+                            </div>
+                            <div class="add-on-divider"></div>
+                            <div class="add-on-card">
+                                <div class="body-large is-medium">Publications</div>
+                                <div class="body-small is-add-on-desc">The Publication (PUB) module is used to create
+                                    separate charts intended for embedding into third-party sources (e.g. websites,
+                                    research spaces etc.) The charts are linked to the database and can be easily
+                                    updated with the new data
+                                </div>
+                                <div class="pricing-preloader-wrapper is-addon">
+                                    <div class="body-large is-add-on-price">+ <span id="pubRate">€100
+                                    </span> /month to your plan
+                                    </div>
+                                    <div class="pricing-preloader" style="transform: translate3d(-46.825%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d; display: none; will-change: transform;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            </div>
+
+
+            <div class="mobile_view d-none">
+                <section class="global-header">
+                <div class="container global-heading">
+                    <h1 class="global-title">Pricing Plans</h1>
+                    <p class="global-subtitle">Everything you need for your quantitative study analysis and visualization.<br/><br/>
+                    <b>Choose the most suitable option and calculate your price</b></p>
+                </div>
+            </section>
+
+                <section class="section padding-small">
+                <div class="container">
+                    <div class="pricing-wrapper">
+                        <div class="pricing-row is-title-row">
+                            <div class="pricing-row-left is-title">
+                                <div class="div-block-29">
+                                    <div class="pricing-subtitle">Dedicated server plans</div>
+                                    <div class="currency-toggler">
+                                        <div class="body-tiny">Choose currency</div>
+                                        <div class="pricing-switch-wrapper">
+                                            <div class="pricing-switch-card">
+                                                <div id="mobileswitchEur" class="pricing-switch-btn is-active">
+                                                    <div>EUR</div>
+                                                </div>
+                                                <div class="pricing-switch-divider"></div>
+                                                <div id="mobileswitchGbp" class="pricing-switch-btn">
+                                                    <div>GBP</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="pricing-double-title">
+                                <div data-pricing="cloud" class="pricing-cell is-top is-active">
+                                    <div class="pricing-name">Cloud server</div>
+                                    <div class="pricing-toggle pricing-toggle-center">
+                                        <div class="pricing-preloader-wrapper is-center">
+                                            <div class="body-tiny">Price starts from</div>
+                                            <div class="pricing-price">
+                                                <span id="mobcloudRate" class="text-span-2">€336.8</span>
+                                            </div>
+                                            <div class="pricing-preloader" style="transform: translate3d(-50%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d; display: none;"></div>
+                                            <div class="body-tiny">per month, paid annually</div>
+                                        </div>
+                                    </div>
+                                    <a id="orderNow" href="https://my.datatile.eu/order-now?currency=EUR" class="button-yellow is-xs w-button">Order now</a>
+                                </div>
+                                <div data-pricng="enterprise" class="pricing-cell is-top">
+                                    <div class="pricing-name">Enterprise</div>
+                                    <div class="pricing-toggle">
+                                        <div class="body-tiny pricing-toggle-center">On-premises intallation</div>
+                                        <div class="body-tiny pricing-toggle-center">Unlimited capacity</div>
+                                        <div class="body-tiny pricing-toggle-center">White label &amp; OEM</div>
+                                    </div>
+                                    <a href="/contact-us" class="button-yellow is-xs w-button">Contact us</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pricing-top-wrapper">
+                            <div class="pricing-row">
+                                <div class="pricing-row-left">
+<!--                                    <div>-->
+                                        <img src="/website_dt/static/src/images/icon.svg" class="is-tooltip tooltipstered"/>
+<!--                                    </div>-->
+                                    <div>
+                                        <div class="body-small">Creator accounts included</div>
+                                        <div class="body-tiny">+ Additional creator accounts</div>
+                                    </div>
+
+                                </div>
+                                <div id="w-node-_8cfd71de-bd0b-464e-b128-49a8c69aea95-1184d86d" class="pricing-double-column">
+                                    <div class="has-border">
+                                        <div class="pricing-preloader-wrapper">
+                                            <div class="body-small">2</div>
+                                            <div class="body-tiny">+ <span id="mobcreatorRate">€74
+                                            </span> each
+                                            </div>
+                                            <div class="pricing-preloader" style="transform: translate3d(-50%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d; display: none;"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="pricing-row">
+                                <div class="pricing-row-left">
+                                    <div>
+                                        <img src="/website_dt/static/src/images/icon.svg" class="is-tooltip tooltipstered"/>
+                                    </div>
+                                    <div>
+                                        <div class="body-small">Collaborator accounts included</div>
+                                        <div class="body-tiny">+ Additional collaborator accounts</div>
+                                    </div>
+
+                                </div>
+                                <div class="pricing-double-column">
+                                    <div class="has-border">
+                                        <div class="pricing-preloader-wrapper">
+                                            <div class="body-small">12</div>
+                                            <div class="body-tiny">+ <span id="mobcollabRate">€7.4
+                                            </span> each
+                                            </div>
+                                            <div class="pricing-preloader" style="transform: translate3d(-50%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d; display: none;"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="pricing-row">
+                                <div class="pricing-row-left">
+                                    <div>
+                                        <img src="/website_dt/static/src/images/icon.svg" class="is-tooltip tooltipstered"/>
+                                    </div>
+                                    <div>
+                                        <div class="body-small">Capacity of interviews included</div>
+                                        <div class="body-tiny">+ Additional interview capacity</div>
+                                    </div>
+
+                                </div>
+                                <div class="pricing-double-column">
+                                    <div class="has-border">
+                                        <div class="pricing-preloader-wrapper">
+                                            <div class="body-small">200,000</div>
+                                            <div class="body-tiny">+ <span id="mobcapacitycollabRate">€50
+                                            </span> per 100k
+                                            </div>
+                                            <div class="pricing-preloader" style="transform: translate3d(-50%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d; display: none;"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="pricing-enterprise-top">
+                                <div class="body-small">Detailed commercial and technical conditions are agreed
+                                    separately according to the customer's requirements
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion" id="accordionExample">
+                            <div class="pricing-accordion-trigger">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                <b>Quotas</b>
+                                </button>
+                            </div>
+                            <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+<!--                            <div class="pricing-accordion-content" style="height: 0px;">-->
+                                <div class="pricing-row">
+                                    <div class="pricing-row-left">
+                                        <div>
+                                            <img src="/website_dt/static/src/images/icon.svg" class="is-tooltip tooltipstered"/>
+                                        </div>
+                                        <div>Databases</div>
+                                    </div>
+                                    <div class="pricing-double-column">
+                                        <div class="pricing-cell">
+                                            <div>Unlimited</div>
+                                        </div>
+                                        <div class="pricing-cell">
+                                            <div>Unlimited</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pricing-row">
+                                    <div class="pricing-row-left">
+                                        <div>
+                                            <img src="/website_dt/static/src/images/icon.svg" class="is-tooltip tooltipstered"/>
+                                        </div>
+                                        <div>Dashboards</div>
+                                    </div>
+                                    <div class="pricing-double-column">
+                                        <div class="pricing-cell">
+                                            <div>Unlimited</div>
+                                        </div>
+                                        <div class="pricing-cell">
+                                            <div>Unlimited</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pricing-row">
+                                    <div class="pricing-row-left">
+                                        <div>
+                                            <img src="/website_dt/static/src/images/icon.svg" class="is-tooltip tooltipstered"/>
+                                        </div>
+                                        <div>Collaborators per entity</div>
+
+                                    </div>
+                                    <div class="pricing-double-column">
+                                        <div class="pricing-cell">
+                                            <div>200</div>
+                                        </div>
+                                        <div class="pricing-cell">
+                                            <div>200</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pricing-row">
+                                    <div class="pricing-row-left">
+                                        <div>
+                                            <img src="/website_dt/static/src/images/icon.svg" class="is-tooltip tooltipstered"/>
+                                        </div>
+                                        <div>Published entities</div>
+                                    </div>
+                                    <div class="pricing-double-column">
+                                        <div class="pricing-cell">
+                                            <div>Unlimited</div>
+                                        </div>
+                                        <div class="pricing-cell">
+                                            <div>Unlimited</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pricing-row">
+                                    <div class="pricing-row-left">
+                                        <div>
+                                            <img src="/website_dt/static/src/images/icon.svg" class="is-tooltip tooltipstered"/>
+                                        </div>
+                                        <div>Max. number of variables in a survey</div>
+
+                                    </div>
+                                    <div class="pricing-double-column">
+                                        <div class="pricing-cell">
+                                            <div>30,000</div>
+                                        </div>
+                                        <div class="pricing-cell">
+                                            <div>Unlimited</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pricing-row">
+                                    <div class="pricing-row-left">
+                                        <div>
+                                            <img src="/website_dt/static/src/images/icon.svg" class="is-tooltip tooltipstered"/>
+                                        </div>
+                                        <div>Interviews per survey</div>
+
+                                    </div>
+                                    <div class="pricing-double-column">
+                                        <div class="pricing-cell">
+                                            <div>2,000,000</div>
+                                        </div>
+                                        <div class="pricing-cell">
+                                            <div>Unlimited</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pricing-row">
+                                    <div class="pricing-row-left">
+                                        <div>
+                                            <img src="/website_dt/static/src/images/icon.svg" class="is-tooltip tooltipstered"/>
+                                        </div>
+                                        <div>Interviews in all surveys</div>
+                                    </div>
+                                    <div class="pricing-double-column">
+                                        <div class="pricing-cell">
+                                            <div>5,000,000</div>
+                                        </div>
+                                        <div class="pricing-cell">
+                                            <div>Unlimited</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion" id="accordionExample">
+                            <div class="pricing-accordion-trigger">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                <b>Functionality</b>
+                                </button>
+                            </div>
+                            <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+<!--                            <div class="pricing-accordion-content" style="height: 0px;">-->
+                                <div class="pricing-row">
+                                    <div class="pricing-row-left">
+                                        <div>
+                                            <img src="/website_dt/static/src/images/icon.svg" class="is-tooltip tooltipstered"/>
+                                        </div>
+                                        <div>Charting</div>
+
+                                    </div>
+                                    <div class="pricing-double-column">
+                                        <div class="pricing-cell">
+                                            <img src="/website_dt/static/src/images/blue-right.svg"/>
+                                        </div>
+                                        <div class="pricing-cell">
+                                            <img src="/website_dt/static/src/images/blue-right.svg"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pricing-row">
+                                    <div class="pricing-row-left">
+                                        <div>
+                                            <img src="/website_dt/static/src/images/icon.svg" class="is-tooltip tooltipstered"/>
+                                        </div>
+                                        <div>Dashboards</div>
+
+                                    </div>
+                                    <div class="pricing-double-column">
+                                        <div class="pricing-cell">
+                                            <img src="/website_dt/static/src/images/blue-right.svg"/>
+                                        </div>
+                                        <div class="pricing-cell">
+                                            <img src="/website_dt/static/src/images/blue-right.svg"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pricing-row">
+                                    <div class="pricing-row-left">
+                                        <div>
+                                            <img src="/website_dt/static/src/images/icon.svg" class="is-tooltip tooltipstered"/>
+                                        </div>
+                                        <div>Crosstabs</div>
+
+                                    </div>
+                                    <div class="pricing-double-column">
+                                         <div class="pricing-cell">
+                                            <img src="/website_dt/static/src/images/blue-right.svg"/>
+                                        </div>
+                                         <div class="pricing-cell">
+                                            <img src="/website_dt/static/src/images/blue-right.svg"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pricing-row">
+                                    <div class="pricing-row-left">
+                                        <div>
+                                            <img src="/website_dt/static/src/images/icon.svg" class="is-tooltip tooltipstered"/>
+                                        </div>
+                                        <div>Grid-requests</div>
+                                    </div>
+                                    <div class="pricing-double-column">
+                                         <div class="pricing-cell">
+                                            <img src="/website_dt/static/src/images/blue-right.svg"/>
+                                        </div>
+                                         <div class="pricing-cell">
+                                            <img src="/website_dt/static/src/images/blue-right.svg"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pricing-row">
+                                    <div class="pricing-row-left">
+                                        <div>
+                                            <img src="/website_dt/static/src/images/icon.svg" class="is-tooltip tooltipstered"/>
+                                        </div>
+                                        <div>Export to PowerPoint, Excel, PDF, PNG, JPG</div>
+                                    </div>
+                                    <div class="pricing-double-column">
+                                         <div class="pricing-cell">
+                                            <img src="/website_dt/static/src/images/blue-right.svg"/>
+                                        </div>
+                                         <div class="pricing-cell">
+                                            <img src="/website_dt/static/src/images/blue-right.svg"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pricing-row">
+                                    <div class="pricing-row-left">
+                                        <div>
+                                            <img src="/website_dt/static/src/images/icon.svg" class="is-tooltip tooltipstered"/>
+                                        </div>
+                                        <div>Significance testing</div>
+                                    </div>
+                                    <div class="pricing-double-column">
+                                         <div class="pricing-cell">
+                                            <img src="/website_dt/static/src/images/blue-right.svg"/>
+                                        </div>
+                                         <div class="pricing-cell">
+                                            <img src="/website_dt/static/src/images/blue-right.svg"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pricing-row">
+                                    <div class="pricing-row-left">
+                                        <div>
+                                            <img src="/website_dt/static/src/images/icon.svg" class="is-tooltip tooltipstered"/>
+                                        </div>
+                                        <div>Logical codes and expressions</div>
+x                                    </div>
+                                    <div class="pricing-double-column">
+                                         <div class="pricing-cell">
+                                            <img src="/website_dt/static/src/images/blue-right.svg"/>
+                                        </div>
+                                         <div class="pricing-cell">
+                                            <img src="/website_dt/static/src/images/blue-right.svg"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pricing-row">
+                                    <div class="pricing-row-left">
+                                        <div>
+                                            <img src="/website_dt/static/src/images/icon.svg" class="is-tooltip tooltipstered"/>
+                                        </div>
+                                        <div>Retail, ad contact, aggregated data specific statistics</div>
+
+                                    </div>
+                                    <div class="pricing-double-column">
+                                         <div class="pricing-cell">
+                                            <img src="/website_dt/static/src/images/blue-right.svg"/>
+                                        </div>
+                                         <div class="pricing-cell">
+                                            <img src="/website_dt/static/src/images/blue-right.svg"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pricing-row">
+                                    <div class="pricing-row-left">
+                                        <div>
+                                            <img src="/website_dt/static/src/images/icon.svg" class="is-tooltip tooltipstered"/>
+                                        </div>
+                                        <div>Granular access management of users and data</div>
+                                    </div>
+                                    <div class="pricing-double-column">
+                                         <div class="pricing-cell">
+                                            <img src="/website_dt/static/src/images/blue-right.svg"/>
+                                        </div>
+                                         <div class="pricing-cell">
+                                            <img src="/website_dt/static/src/images/blue-right.svg"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pricing-row">
+                                    <div class="pricing-row-left">
+                                        <div>
+                                            <img src="/website_dt/static/src/images/icon.svg" class="is-tooltip tooltipstered"/>
+                                        </div>
+                                        <div>Deck generator</div>
+                                    </div>
+                                    <div class="pricing-double-column">
+                                         <div class="pricing-cell">
+                                            <img src="/website_dt/static/src/images/blue-right.svg"/>
+                                        </div>
+                                         <div class="pricing-cell">
+                                            <img src="/website_dt/static/src/images/blue-right.svg"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pricing-row">
+                                    <div class="pricing-row-left">
+                                        <div>
+                                            <img src="/website_dt/static/src/images/icon.svg" class="is-tooltip tooltipstered"/>
+                                        </div>
+                                        <div>Publications</div>
+                                    </div>
+                                    <div class="pricing-double-column">
+                                         <div class="pricing-cell">
+                                            <img src="/website_dt/static/src/images/blue-right.svg"/>
+                                        </div>
+                                         <div class="pricing-cell">
+                                            <img src="/website_dt/static/src/images/blue-right.svg"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pricing-row">
+                                    <div class="pricing-row-left">
+                                        <div>
+                                            <img src="/website_dt/static/src/images/icon.svg" class="is-tooltip tooltipstered"/>
+                                        </div>
+                                        <div>Context-aware access management for dashboards</div>
+                                    </div>
+                                    <div class="pricing-double-column">
+                                         <div class="pricing-cell">
+                                            <img src="/website_dt/static/src/images/blue-right.svg"/>
+                                        </div>
+                                         <div class="pricing-cell">
+                                            <img src="/website_dt/static/src/images/blue-right.svg"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pricing-row">
+                                    <div class="pricing-row-left">
+                                        <div>
+                                            <img src="/website_dt/static/src/images/icon.svg" class="is-tooltip tooltipstered"/>
+                                        </div>
+                                        <div>Cleaning and coding of titles and open-ended questions</div>
+
+                                    </div>
+                                    <div class="pricing-double-column">
+                                         <div class="pricing-cell">
+                                            <img src="/website_dt/static/src/images/blue-right.svg"/>
+                                        </div>
+                                         <div class="pricing-cell">
+                                            <img src="/website_dt/static/src/images/blue-right.svg"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pricing-row">
+                                    <div class="pricing-row-left">
+                                        <div>
+                                            <img src="/website_dt/static/src/images/icon.svg" class="is-tooltip tooltipstered"/>
+                                        </div>
+                                        <div>Branding</div>
+                                    </div>
+                                    <div class="pricing-double-column">
+                                         <div class="pricing-cell">
+                                            <img src="/website_dt/static/src/images/blue-right.svg"/>
+                                        </div>
+                                         <div class="pricing-cell">
+                                            <img src="/website_dt/static/src/images/blue-right.svg"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pricing-row">
+                                    <div class="pricing-row-left">
+                                        <div>
+                                            <img src="/website_dt/static/src/images/icon.svg" class="is-tooltip tooltipstered"/>
+                                        </div>
+                                        <div>Corporate mailbox for user notifications</div>
+                                    </div>
+                                    <div class="pricing-double-column">
+                                         <div class="pricing-cell">
+                                            <img src="/website_dt/static/src/images/blue-right.svg"/>
+                                        </div>
+                                         <div class="pricing-cell">
+                                            <img src="/website_dt/static/src/images/blue-right.svg"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pricing-row">
+                                    <div class="pricing-row-left">
+                                        <div>
+                                            <img src="/website_dt/static/src/images/icon.svg" class="is-tooltip tooltipstered"/>
+                                        </div>
+                                        <div>Report Automation</div>
+                                    </div>
+                                    <div class="pricing-double-column">
+                                         <div class="pricing-cell">
+                                            <img src="/website_dt/static/src/images/cros_Icon-1.svg"/>
+                                        </div>
+                                         <div class="pricing-cell">
+                                            <img src="/website_dt/static/src/images/blue-right.svg"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pricing-row">
+                                    <div class="pricing-row-left">
+                                        <div>
+                                            <img src="/website_dt/static/src/images/icon.svg" class="is-tooltip tooltipstered"/>
+                                        </div>
+                                        <div>On-premises installation</div>
+                                    </div>
+                                    <div class="pricing-double-column">
+                                         <div class="pricing-cell">
+                                            <img src="/website_dt/static/src/images/cros_Icon-1.svg"/>
+                                        </div>
+                                         <div class="pricing-cell">
+                                            <img src="/website_dt/static/src/images/blue-right.svg"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pricing-row">
+                                    <div class="pricing-row-left">
+                                        <div>
+                                            <img src="/website_dt/static/src/images/icon.svg" class="is-tooltip tooltipstered"/>
+                                        </div>
+                                        <div>Single sign-on</div>
+                                    </div>
+                                    <div class="pricing-double-column">
+                                         <div class="pricing-cell">
+                                            <img src="/website_dt/static/src/images/cros_Icon-1.svg"/>
+                                        </div>
+                                         <div class="pricing-cell">
+                                            <img src="/website_dt/static/src/images/blue-right.svg"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pricing-row">
+                                    <div class="pricing-row-left">
+                                        <div>
+                                            <img src="/website_dt/static/src/images/icon.svg" class="is-tooltip tooltipstered"/>
+                                        </div>
+                                        <div>API for integration with BI systems</div>
+                                    </div>
+                                    <div class="pricing-double-column">
+                                         <div class="pricing-cell">
+                                            <img src="/website_dt/static/src/images/cros_Icon-1.svg"/>
+                                        </div>
+                                         <div class="pricing-cell">
+                                            <img src="/website_dt/static/src/images/blue-right.svg"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pricing-row">
+                                    <div class="pricing-row-left">
+                                        <div>
+                                            <img src="/website_dt/static/src/images/icon.svg" class="is-tooltip tooltipstered"/>
+                                        </div>
+                                        <div>Custom legal agreement</div>
+                                    </div>
+                                    <div class="pricing-double-column">
+                                         <div class="pricing-cell">
+                                            <img src="/website_dt/static/src/images/cros_Icon-1.svg"/>
+                                        </div>
+                                         <div class="pricing-cell">
+                                            <img src="/website_dt/static/src/images/blue-right.svg"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pricing-row">
+                                    <div class="pricing-row-left">
+                                        <div>
+                                            <img src="/website_dt/static/src/images/icon.svg" class="is-tooltip tooltipstered"/>
+                                        </div>
+                                        <div>Cyber liability coverage</div>
+                                    </div>
+                                    <div class="pricing-double-column">
+                                         <div class="pricing-cell">
+                                            <img src="/website_dt/static/src/images/cros_Icon-1.svg"/>
+                                        </div>
+                                         <div class="pricing-cell">
+                                            <img src="/website_dt/static/src/images/blue-right.svg"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pricing-row">
+                                    <div class="pricing-row-left">
+                                        <div>
+                                            <img src="/website_dt/static/src/images/icon.svg" class="is-tooltip tooltipstered"/>
+                                        </div>
+                                        <div>Custom domain name</div>
+                                    </div>
+                                    <div class="pricing-double-column">
+                                         <div class="pricing-cell">
+                                            <img src="/website_dt/static/src/images/cros_Icon-1.svg"/>
+                                        </div>
+                                         <div class="pricing-cell">
+                                            <img src="/website_dt/static/src/images/blue-right.svg"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pricing-row">
+                                    <div class="pricing-row-left">
+                                        <div>
+                                            <img src="/website_dt/static/src/images/icon.svg" class="is-tooltip tooltipstered"/>
+                                        </div>
+                                        <div>Additional dedicated server per project/client/region</div>
+                                    </div>
+                                    <div class="pricing-double-column">
+                                         <div class="pricing-cell">
+                                            <img src="/website_dt/static/src/images/cros_Icon-1.svg"/>
+                                        </div>
+                                         <div class="pricing-cell">
+                                            <img src="/website_dt/static/src/images/blue-right.svg"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion" id="accordionExample">
+                            <div class="pricing-accordion-trigger">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    <b>Support</b>
+                                </button>
+                            </div>
+                            <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                                <div class="pricing-row">
+                                    <div class="pricing-row-left">
+                                        <div>
+                                            <img src="/website_dt/static/src/images/icon.svg" class="is-tooltip tooltipstered"/>
+                                        </div>
+                                        <div>SLA 99.5%</div>
+                                    </div>
+                                    <div class="pricing-double-column">
+                                         <div class="pricing-cell">
+                                            <img src="/website_dt/static/src/images/blue-right.svg"/>
+                                        </div>
+                                        <div class="pricing-cell">
+                                            <img src="/website_dt/static/src/images/blue-right.svg"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pricing-row">
+                                    <div class="pricing-row-left">
+                                        <div>
+                                            <img src="/website_dt/static/src/images/icon.svg" class="is-tooltip tooltipstered"/>
+                                        </div>
+                                        <div>Helpdesk &amp; email support</div>
+                                    </div>
+                                    <div class="pricing-double-column">
+                                         <div class="pricing-cell">
+                                            <img src="/website_dt/static/src/images/blue-right.svg"/>
+                                        </div>
+                                         <div class="pricing-cell">
+                                            <img src="/website_dt/static/src/images/blue-right.svg"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pricing-row">
+                                    <div class="pricing-row-left">
+                                        <div>
+                                            <img src="/website_dt/static/src/images/icon.svg" class="is-tooltip tooltipstered"/>
+                                        </div>
+                                        <div>Live support</div>
+                                    </div>
+                                    <div class="pricing-double-column">
+                                         <div class="pricing-cell">
+                                            <img src="/website_dt/static/src/images/blue-right.svg"/>
+                                        </div>
+                                         <div class="pricing-cell">
+                                            <img src="/website_dt/static/src/images/blue-right.svg"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pricing-row">
+                                    <div class="pricing-row-left">
+                                        <div>
+                                            <img src="/website_dt/static/src/images/icon.svg" class="is-tooltip tooltipstered"/>
+                                        </div>
+                                        <div>Resolution of critical issues within 2 business days</div>
+                                    </div>
+                                    <div class="pricing-double-column">
+                                         <div class="pricing-cell">
+                                            <img src="/website_dt/static/src/images/blue-right.svg"/>
+                                        </div>
+                                         <div class="pricing-cell">
+                                            <img src="/website_dt/static/src/images/blue-right.svg"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div data-w-id="655101ec-af48-d667-d216-5214096c5582" class="pricing-trigger"></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="container">
+                    <div class="add-on-wrapper">
+                        <div class="add-on-top">
+                            <div>Server add-ons:</div>
+                            <div class="add-on-border"></div>
+                        </div>
+                        <div class="add-on-grid">
+                            <div class="add-on-card">
+                                <div class="body-large is-medium">Correspondence Analysis</div>
+                                <div class="body-small is-add-on-desc">The Correspondence Analysis (CA) module is used
+                                    to explore relationships between multiple categorical variables. It transforms
+                                    multifaceted data into a simple graphical representation with the ability to export
+                                    as a chart, part of a dashboard, or a presentation
+                                </div>
+                                <div class="pricing-preloader-wrapper is-addon">
+                                    <div class="body-large is-add-on-price">+ <span id="analysisRate">€100
+                                    </span> /month to your plan
+                                    </div>
+                                    <div class="pricing-preloader" style="transform: translate3d(-46.825%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d; display: none; will-change: transform;"></div>
+                                </div>
+                            </div>
+                            <div class="add-on-divider"></div>
+                            <div class="add-on-card">
+                                <div class="body-large is-medium">AI-assisted Reporting</div>
+                                <div class="body-small is-add-on-desc">The AI-assisted Reporting (AIR) module is used to
+                                    convert a templated summary into natural text
+                                </div>
+                                <div class="pricing-preloader-wrapper is-addon">
+                                    <div class="body-large is-add-on-price">+ <span id="reportRate">
+                                        €100
+                                    </span> /month to your plan
+                                    </div>
+                                    <div class="pricing-preloader" style="transform: translate3d(-46.825%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d; display: none; will-change: transform;"></div>
+                                </div>
+                            </div>
+                            <div class="add-on-divider"></div>
+                            <div class="add-on-card">
+                                <div class="body-large is-medium">Text Refiner</div>
+                                <div class="body-small is-add-on-desc">The Text Refiner (TR) module is used to code
+                                    open-ended questions and create dictionaries
+                                </div>
+                                <div class="pricing-preloader-wrapper is-addon">
+                                    <div class="body-large is-add-on-price">+ <span id="refinerRate">€100
+                                    </span> /month to your plan
+                                    </div>
+                                    <div class="pricing-preloader" style="transform: translate3d(-46.825%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d; display: none; will-change: transform;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="add-on-grid bottom">
+                            <div class="add-on-card">
+                                <div class="body-large is-medium">Reach &amp; Frequency</div>
+                                <div class="body-small is-add-on-desc">The Reach&amp;Frequency Analysis (R&amp;F) module
+                                    is used to analyze the measurements of the total audience in television and print.
+                                    It uses Reach (the estimated number of people or households exposed to a given
+                                    medium at a given point in time) and Frequency (the number of times viewers are
+                                    exposed to the same Ad during a campaign)
+                                </div>
+                                <div class="pricing-preloader-wrapper is-addon">
+                                    <div class="body-large is-add-on-price">+ <span id="rnfRate">€100
+                                    </span> /month to your plan
+                                    </div>
+                                    <div class="pricing-preloader" style="transform: translate3d(-46.825%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d; display: none; will-change: transform;"></div>
+                                </div>
+                            </div>
+                            <div class="add-on-divider"></div>
+                            <div class="add-on-card">
+                                <div class="body-large is-medium">Publications</div>
+                                <div class="body-small is-add-on-desc">The Publication (PUB) module is used to create
+                                    separate charts intended for embedding into third-party sources (e.g. websites,
+                                    research spaces etc.) The charts are linked to the database and can be easily
+                                    updated with the new data
+                                </div>
+                                <div class="pricing-preloader-wrapper is-addon">
+                                    <div class="body-large is-add-on-price">+ <span id="pubRate">€100
+                                    </span> /month to your plan
+                                    </div>
+                                    <div class="pricing-preloader" style="transform: translate3d(-46.825%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d; display: none; will-change: transform;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+                <br/>
+
+            </div>
+        </t>
+
+    </template>
+</odoo>

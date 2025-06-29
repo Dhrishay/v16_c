@@ -1,0 +1,157 @@
+.customer-success{
+//     margin: 60px 0;
+    .success{
+        display: grid;
+        justify-content: center;
+        h2{
+            font-family: Instrument Sans, sans-serif;
+            font-size: 30px;
+            font-weight: 600;
+            line-height: 36px;
+            text-align: center;
+            letter-spacing: -.5px;
+        }
+        .customer-success-grid {
+            grid-column-gap: 16px;
+            grid-row-gap: 16px;
+            grid-template-rows: auto;
+            grid-template-columns: 1fr 1fr;
+            grid-auto-columns: 1fr;
+            display: grid;
+            margin-top: 40px;
+            .customer-success-card {
+                grid-row-gap: 12px;
+                color: var(--white);
+                background-image: url('/website_dt/static/src/images/jicmail.png');
+                background-position: 50%;
+                background-size: cover;
+                flex-direction: column;
+                min-height: 280px;
+                padding: 32px;
+                display: flex;
+                text-decoration: none;
+                .customer-success-top {
+                    grid-column-gap: 16px;
+                    justify-content: space-between;
+                    align-items: center;
+                    display: flex;
+                    h2{
+                        letter-spacing: -.5px;
+                        font-family: Instrument Sans, sans-serif;
+                        font-size: 30px;
+                        font-weight: 600;
+                        line-height: 120%;
+                        display: block;
+                        text-align: left;
+                    }
+                    .body-large.is-360width {
+                        max-width: 360px;
+                    }
+                }
+            }
+            .customer-success-card.employee {
+                background-image: url('/website_dt/static/src/images/employee.png');
+            }
+            .customer-success-card.is-right {
+                color: var(--black);
+                background-color: #ffce00;
+                background-image: none;
+                position: relative;
+                .customer-success-card-image {
+                    position: absolute;
+                    inset: auto 0% 0% auto;
+                }
+            }
+            .customer-success-card.sinomonitor {
+                background-image: url('/website_dt/static/src/images/monitor.png');
+            }
+            .customer-success-card.global {
+                background-image: url('/website_dt/static/src/images/global-media.png');
+            }
+        }
+    }
+}
+
+.brand-tracking{
+//     margin: 60px 0;
+    .bht-text-section-wrapper {
+        grid-column-gap: 12px;
+        justify-content: center;
+        align-items: flex-start;
+        margin-bottom: 70px;
+        display: flex;
+    }
+    .body-regular {
+        font-size: 16px;
+        line-height: 24px;
+    }
+    .body-regular.is-bht {
+        max-width: 594px;
+    }
+    .solutions-embed {
+        aspect-ratio: 1.25;
+        display: flex;
+        box-shadow: 0 2px 60px #cad2e44d, 0 1px 4px #cad2e480;
+    }
+    .w-embed:before, .w-embed:after {
+        content: " ";
+        grid-area: 1 / 1 / 2 / 2;
+        display: table;
+    }
+    .w-embed:after {
+        clear: both;
+    }
+}
+@media screen and (max-width: 991px) {
+    .filter-checkbox-label{
+        font-size: 15px;
+        font-weight: 500;
+        line-height: 1.2;
+    }
+    .customer-success{
+        .success{
+            .customer-success-grid{
+                margin-top: 32px;
+            }
+        }
+    }
+    .brand-tracking{
+        .body-regular.is-bht {
+            max-width: 526px;
+            font-size: 14px;
+        }
+    }
+}
+
+@media (max-width: 767px) {
+    .filter-checkbox-label{
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 1.2;
+    }
+    .customer-success{
+        .success{
+            .customer-success-grid{
+                grid-template-columns: 1fr;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 479px) {
+    .customer-success{
+        .success{
+            .customer-success-grid{
+                grid-template-columns: 1fr;
+            }
+        }
+    }
+    .brand-tracking{
+        .bht-text-section-wrapper{
+            align-items: flex-end;
+            .body-regular.is-bht {
+                max-width: 279px;
+            }
+        }
+    }
+}

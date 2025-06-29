@@ -1,0 +1,310 @@
+.heading-medium {
+    font-family: Instrument Sans, sans-serif;
+    font-size: 30px;
+    font-weight: 600;
+    line-height: 130%;
+}
+.jickmail-discovery{
+    padding-top: 0;
+    .discovery-grid {
+        grid-column-gap: 20px;
+        grid-template-rows: auto;
+        grid-template-columns: 1fr 1fr;
+        grid-auto-columns: 1fr;
+//         margin-top: 30px;
+        display: grid;
+        position: relative;
+        .discovery-grid-card {
+            grid-row-gap: 20px;
+            text-align: left;
+            flex-direction: column;
+            grid-template-rows: auto auto;
+            grid-template-columns: 1fr 1fr;
+            grid-auto-columns: 1fr;
+            // max-width: 511px;
+            padding: 52px 60px;
+            display: flex
+        ;
+        }
+        .discovery-grid-card.is-left {
+            box-shadow: 0 2px 60px 0 var(--secondary-10), 0 1px 4px 0 #cad2e480;
+            background-color: #fff;
+        }
+        .discovery-grid-card.is-right {
+            padding-bottom: 0;
+        }
+        .heading-medium {
+            font-family: Instrument Sans, sans-serif;
+            font-size: 30px;
+            font-weight: 600;
+            line-height: 36px;
+        }
+        .discovery-grid-card-image {
+            margin-top: 20px;
+            display: block;
+        }
+    }
+}
+
+.campaign-calculator{
+//     margin: 60px 0;
+    .project{
+        .project-wrapper {
+            z-index: 2;
+            grid-row-gap: 80px;
+            flex-direction: column;
+            display: flex;
+            position: relative;
+            .screen-image-wrapper {
+                z-index: 2;
+                display: block;
+                position: relative;
+                img{
+                    max-width: 100%;
+                }
+            }
+        }
+        .project-details {
+            grid-column-gap: 60px;
+            grid-template-rows: auto;
+            grid-template-columns: 1.25fr 1fr;
+            grid-auto-columns: 1fr;
+            justify-content: space-between;
+            align-items: center;
+            display: flex;
+            .project-details-card {
+                grid-row-gap: 20px;
+                flex-direction: column;
+                max-width: 530px;
+                display: flex;
+                .heading-medium {
+                    font-family: Instrument Sans, sans-serif;
+                    font-size: 30px;
+                    font-weight: 600;
+                    line-height: 130%;
+                    
+                }
+            }
+            .project-details-grid {
+                z-index: 2;
+                grid-row-gap: 16px;
+                grid-template-rows: auto auto auto;
+                grid-template-columns: 1fr;
+                grid-auto-columns: 1fr;
+                min-width: 390px;
+                display: grid;
+                position: relative;
+                .project-details-grid-card {
+                    grid-row-gap: 16px;
+                    background-color: #fff;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: flex-start;
+                    padding: 32px;
+                    display: flex;
+                    box-shadow: 0 2px 60px #cad3de66;
+                    .heading-medium {
+                        font-family: Instrument Sans, sans-serif;
+                        font-size: 30px;
+                        font-weight: 600;
+                        line-height: 130%;
+                        
+                    }
+                    .project-cards-span-text {
+                        color: var(--primary-light);
+                    }
+                }
+            }
+            
+        }
+    }
+}
+
+.discovery3-0{
+//     margin: 60px 0;
+    .discovery3-0-wrapper {
+        z-index: 2;
+        grid-row-gap: 80px;
+        flex-direction: column;
+        display: flex;
+        position: relative;
+        .discovery3-0-content {
+            z-index: 2;
+            grid-row-gap: 40px;
+            flex-direction: column;
+            max-width: 644px;
+            margin-left: auto;
+            margin-right: auto;
+            display: flex;
+            position: relative;
+            .solution-text-block {
+                z-index: 2;
+                grid-row-gap: 20px;
+                flex-direction: column;
+                display: flex;
+                position: relative;
+            }
+            .discovery3-0-details-holder {
+                grid-row-gap: 12px;
+                flex-direction: column;
+                display: flex;
+                .discovery3-0-details {
+                    grid-column-gap: 12px;
+                    justify-content: flex-start;
+                    align-items: flex-start;
+                    display: flex;
+                }
+                .discovery3-0-details.is-first {
+                    margin-top: 8px;
+                }
+            }
+        }
+        .screen-image-wrapper {
+            z-index: 2;
+            display: block;
+            position: relative;
+        }
+    }
+}
+.body-large {
+    font-size: 18px !important;
+    margin-bottom: 0;
+
+}
+
+@media screen and (min-width: 1280px) {
+    .body-large {
+        line-height: 26px;
+    }
+    .heading-medium {
+        line-height: 36px;
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .heading-medium {
+        font-size: 24px !important;
+        margin-bottom: 0;
+    }
+    .body-large {
+        font-size: 16px !important;
+        margin-bottom: 0;
+    }
+    .jickmail-discovery{
+        .discovery-grid {
+            grid-column-gap: 16px;
+            .discovery-grid-card, .discovery-grid-card.is-left {
+                padding: 36px 40px;
+            }
+        }
+    }
+    .campaign-calculator{
+        .project-wrapper{
+            .project-details {
+                grid-column-gap: 52px;
+                .project-details-card {
+                    max-width: 480px;
+                }
+                .project-details-grid {
+                    .project-details-grid-card {
+                        grid-row-gap: 12px;
+                        padding-top: 28px;
+                        padding-bottom: 28px;
+                    }
+                }
+            }
+        }
+    }
+    .reason{
+        padding-bottom: 0;
+        .reason-wrapper {
+            grid-column-gap: 44px;
+            grid-row-gap: 44px;
+            .reason-image {
+                width: 76px;
+                height: 62px;
+            }
+        }
+        .reason-image.is-second {
+            width: 111px;
+            height: 92px;
+            top: auto;
+            left: 87%;
+        }
+    }
+}
+
+@media (max-width: 767px) {
+    .jickmail-discovery{
+        .discovery-grid {
+            grid-row-gap: 26px;
+            grid-template-rows: auto auto;
+            grid-template-columns: 1fr;
+            align-self: center;
+            .discovery-grid-card, .discovery-grid-card.is-left {
+                max-width: none;
+                padding: 20px 24px;
+            }
+            .discovery-grid-card-image {
+                display: none;
+            }
+        }
+    }
+    .campaign-calculator{
+        .project{
+            .project-wrapper{
+                grid-row-gap: 50px;
+                .project-details {
+                    grid-row-gap: 24px;
+                    flex-direction: column;
+                    .project-details-card {
+                        max-width: none;
+                        padding-left: 20px;
+                        padding-right: 20px;
+                    }
+                    .project-details-grid {
+                        .project-details-grid-card {
+                            padding: 24px 20px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .reason{
+        padding-bottom: 0;
+        margin: 30px 0;
+        .reason-wrapper {
+            padding: 20px 0;
+            grid-column-gap: 28px;
+            grid-row-gap: 28px;
+            flex-direction: column;
+        }
+        .reason-image.is-second {
+            display: none;
+        }
+    }
+    .discovery3-0{
+        .discovery3-0-wrapper {
+            grid-row-gap: 50px;
+        }
+    }
+}
+
+@media screen and (max-width: 479px) {
+    .jickmail-discovery{
+        .discovery-grid {
+//             margin: 20px 0;
+        }
+    }
+    .campaign-calculator{
+        margin: 20px 0;
+        .project-wrapper{
+
+        }
+    }
+    .reason{
+        .reason-wrapper {
+        }
+    }
+}

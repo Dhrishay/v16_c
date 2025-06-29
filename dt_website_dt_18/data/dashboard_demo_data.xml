@@ -1,0 +1,123 @@
+<odoo>
+    <!-- Demo Categories -->
+    <record id="dashboard_category_survey" model="dashboard.category">
+        <field name="name">Survey Data</field>
+    </record>
+    <record id="dashboard_category_mixed" model="dashboard.category">
+        <field name="name">Mixed Data</field>
+    </record>
+    <record id="dashboard_category_operational" model="dashboard.category">
+        <field name="name">Operational Data</field>
+    </record>
+    <record id="dashboard_category_market_research" model="dashboard.category">
+        <field name="name">Market Research</field>
+    </record>
+    <record id="dashboard_category_brand_health" model="dashboard.category">
+        <field name="name">Brand Health</field>
+    </record>
+    <record id="dashboard_category_performance" model="dashboard.category">
+        <field name="name">Performance Tracking</field>
+    </record>
+    <record id="dashboard_category_customer_experience" model="dashboard.category">
+        <field name="name">Customer Experience</field>
+    </record>
+    <record id="dashboard_category_hr_analytics" model="dashboard.category">
+        <field name="name">HR Analytics</field>
+    </record>
+    <record id="dashboard_category_consumer_goods" model="dashboard.category">
+        <field name="name">Consumer Goods</field>
+    </record>
+    <record id="dashboard_category_media" model="dashboard.category">
+        <field name="name">Media</field>
+    </record>
+    <record id="dashboard_category_financial" model="dashboard.category">
+        <field name="name">Financial</field>
+    </record>
+    <record id="dashboard_category_public_sector" model="dashboard.category">
+        <field name="name">Public Sector</field>
+    </record>
+    <record id="dashboard_category_social_impact" model="dashboard.category">
+        <field name="name">Social Impact</field>
+    </record>
+    <record id="dashboard_category_basic" model="dashboard.category">
+        <field name="name">Basic</field>
+    </record>
+    <record id="dashboard_category_intermediate" model="dashboard.category">
+        <field name="name">Intermediate</field>
+    </record>
+    <record id="dashboard_category_advanced" model="dashboard.category">
+        <field name="name">Advanced</field>
+    </record>
+
+    <!-- Demo Dashboards -->
+     <record id="dashboard_hr_demo" model="dashboard.record">
+        <field name="name">HR Dashboard</field>
+        <field name="url">/dashboards/hr-dashboard</field>
+        <field name="image_url">/website_dt/static/src/images/hr_cover.png</field>
+        <field name="description">HR Dashboard tracks employee demographics, performance, engagement, retention, and recruitment trends, enabling data-driven decisions to improve organizational effectiveness and employee satisfaction</field>
+        <field name="category_ids" eval="[(6, 0, [ref('dashboard_category_mixed'), ref('dashboard_category_hr_analytics'), ref('dashboard_category_performance'), ref('dashboard_category_advanced')])]"/>
+    </record>
+    <record id="dashboard_energy_demo" model="dashboard.record">
+        <field name="name">Energy Drink BHT</field>
+        <field name="url">/dashboards/energy-drink-bht</field>
+        <field name="image_url">/website_dt/static/src/images/energy_cover.png</field>
+        <field name="description">Energy Drinks Brand Tracking 2024 provides comprehensive insights into market performance, consumer preferences, brand awareness, and competitive positioning</field>
+        <field name="category_ids" eval="[(6, 0, [ref('dashboard_category_survey'), ref('dashboard_category_consumer_goods'), ref('dashboard_category_brand_health'), ref('dashboard_category_advanced')])]"/>
+    </record>
+    <record id="dashboard_brand_demo" model="dashboard.record">
+        <field name="name">Global Brand Tracking</field>
+        <field name="url">/dashboards/global-brand-tracking</field>
+        <field name="image_url">/website_dt/static/src/images/bht_cover.png</field>
+        <field name="description">The research module is designed to assess a brand's effectiveness, perception, and overall health, providing valuable insights into its performance and market position</field>
+        <field name="category_ids" eval="[(6, 0, [ref('dashboard_category_survey'), ref('dashboard_category_consumer_goods'), ref('dashboard_category_brand_health'), ref('dashboard_category_advanced')])]"/>
+    </record>
+    <record id="dashboard_social_demo" model="dashboard.record">
+        <field name="name">Social Media Listening</field>
+        <field name="url">/dashboards/social-media-listening</field>
+        <field name="image_url">/website_dt/static/src/images/listening_cover.png</field>
+        <field name="description">Provides actionable insights into the intersection of gaming and social media. It tracks key metrics such as player engagement, content reach, campaign performance, and community sentiment across platforms like Reddit, YouTube, and Twitter</field>
+        <field name="category_ids" eval="[(6, 0, [ref('dashboard_category_operational'), ref('dashboard_category_performance'), ref('dashboard_category_media'), ref('dashboard_category_advanced')])]"/>
+    </record>
+    <record id="dashboard_purchase_demo" model="dashboard.record">
+        <field name="name">TV-set Purchase Process</field>
+        <field name="url">/dashboards/tv-set-purchase</field>
+        <field name="image_url">/website_dt/static/src/images/tv_purchase_cover.png</field>
+        <field name="description">Includes key insights and metrics to analyze and understand the customer journey, market trends, and sales performance</field>
+        <field name="category_ids" eval="[(6, 0, [ref('dashboard_category_survey'), ref('dashboard_category_consumer_goods'), ref('dashboard_category_market_research'), ref('dashboard_category_intermediate')])]"/>
+    </record>
+    <record id="dashboard_renewable_demo" model="dashboard.record">
+        <field name="name">Renewable Energy</field>
+        <field name="url">/dashboards/renewable-energy-worldwide</field>
+        <field name="image_url">/website_dt/static/src/images/renew_cover.png</field>
+        <field name="description">Includes key insights and metrics to analyze and understand the customer journey, market trends, and sales performance</field>
+        <field name="category_ids" eval="[(6, 0, [ref('dashboard_category_operational'), ref('dashboard_category_public_sector'), ref('dashboard_category_social_impact'), ref('dashboard_category_basic')])]"/>
+    </record>
+    <record id="dashboard_ocean_demo" model="dashboard.record">
+        <field name="name">Ocean Clean-Up</field>
+        <field name="url">/dashboards/ocean-clean-up</field>
+        <field name="image_url">/website_dt/static/src/images/ocean_cover.png</field>
+        <field name="description">Includes key insights and metrics to analyze and understand the customer journey, market trends, and sales performance</field>
+        <field name="category_ids" eval="[(6, 0, [ref('dashboard_category_operational'), ref('dashboard_category_public_sector'), ref('dashboard_category_social_impact'), ref('dashboard_category_basic')])]"/>
+    </record>
+    <record id="dashboard_bank_demo" model="dashboard.record">
+        <field name="name">Bank CSI</field>
+        <field name="url">/dashboards/bank-csi</field>
+        <field name="image_url">/website_dt/static/src/images/bank_cover.png</field>
+        <field name="description">Provides a comprehensive view of customer satisfaction levels across banking services and touchpoints. It tracks metrics such as Net Promoter Score (NPS), customer feedback, resolution time, and service quality ratings</field>
+        <field name="category_ids" eval="[(6, 0, [ref('dashboard_category_survey'), ref('dashboard_category_financial'), ref('dashboard_category_customer_experience'), ref('dashboard_category_advanced')])]"/>
+    </record>
+    <record id="dashboard_series_demo" model="dashboard.record">
+        <field name="name">TV Series Audience</field>
+        <field name="url">/dashboards/tv-series-audience</field>
+        <field name="image_url">/website_dt/static/src/images/tv_aud_cover.png</field>
+        <field name="description">Provides detailed insights into viewer engagement and demographics for TV series. It tracks metrics such as audience size, viewing trends, episode popularity, and completion rates</field>
+        <field name="category_ids" eval="[(6, 0, [ref('dashboard_category_survey'), ref('dashboard_category_media'), ref('dashboard_category_market_research'), ref('dashboard_category_intermediate')])]"/>
+    </record>
+    <record id="dashboard_freedom_demo" model="dashboard.record">
+        <field name="name">Freedom of the Net 2024</field>
+        <field name="url">/dashboards/freedom-of-the-net-2024</field>
+        <field name="image_url">/website_dt/static/src/images/netfree_cover.png</field>
+        <field name="description">Provides a comprehensive view of customer satisfaction levels across banking services and touchpoints. It tracks metrics such as Net Promoter Score (NPS), customer feedback, resolution time, and service quality ratings</field>
+        <field name="category_ids" eval="[(6, 0, [ref('dashboard_category_operational'), ref('dashboard_category_public_sector'), ref('dashboard_category_social_impact'), ref('dashboard_category_basic')])]"/>
+    </record>
+</odoo>

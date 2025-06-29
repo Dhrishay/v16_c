@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="sandbox_access_modal" inherit_id="web.frontend_layout">
+        <xpath expr="//div[@id='wrapwrap']" position="inside">
+            <div class="modal fade sandbox-access-modal" id="sandboxAccessModal" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h2 class="modal-title heading2">Sandbox access</h2>
+                            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                                <img src="/website_dt/static/src/images/hamburger.svg"/>
+                            </button>
+                        </div>
+                        <form class="access-form" enctype="multipart/form-data">
+                            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                            <div class="modal-body">
+                                <div class="popup-form-block">
+                                    <!-- Company email address -->
+                                    <div class="form-group">
+                                        <label>Company email address</label>
+                                        <input type="email" class="form-control" name="email" placeholder="Email address"/>
+                                    </div>
+
+                                    <!-- Company name and Country -->
+                                    <div class="row">
+                                        <div class="form-group col-md-6">
+                                            <label>Company name</label>
+                                            <input type="text" class="form-control" name="company" placeholder="Company" required="required"/>
+                                        </div>
+                                        <t t-set="countries" t-value="request.env['res.country'].sudo().search([])"/>
+                                        <div class="form-group col-md-6">
+                                            <label>Country</label>
+                                            <select class="form-control" name="country_id" required="required">
+                                                <option value="">Select country</option>
+                                                <t t-foreach="countries" t-as="country">
+                                                    <option t-att-value="country.id">
+                                                        <t t-esc="country.name"/>
+                                                    </option>
+                                                </t>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <!--  Full name  -->
+                                    <div class="row">
+                                        <div class="form-group col-md-6">
+                                            <label>First name</label>
+                                            <input type="text" class="form-control" name="first_name"
+                                                   placeholder="First name" required="required"/>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label>Last name</label>
+                                            <input type="text" class="form-control" name="last_name"
+                                                   placeholder="Last name" required="required"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="popup-form-block is-checkbox">
+                                    <!--  Agreement checkboxes  -->
+                                    <div class="form-group d-flex">
+                                        <input type="checkbox" id="agree_policy" class="check-box" required="required"/>
+                                        <label for="agree_policy">
+                                            I read and agree to
+                                            <a href="/legal/privacy-policy" class="policy-link">Privacy Policy</a>
+                                            and
+                                            <a href="/legal/terms-of-use" class="terms-link">Terms of Use*</a>
+                                        </label>
+                                    </div>
+                                    <div class="form-group d-flex">
+                                        <input type="checkbox" id="agree_newsletter" class="check-box"/>
+                                        <label for="agree_newsletter">
+                                            I agree to receive newsletters and accept the data privacy statement
+                                            <br/>
+                                            <a href="#" class="body-small is-grey">You may unsubscribe at any time using
+                                                the link in our newsletter
+                                            </a>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn-submit sandbox disabled">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade sandbox-access-modal" id="sandboxAccessThankyou" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog sandbox-success" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h2 class="modal-title heading2">Sandbox access</h2>
+                            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                                <img src="/website_dt/static/src/images/hamburger.svg"/>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <h1>Request submitted!</h1>
+                            <div class="body-xl">We will let you know when your Sandbox is ready via provided email
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-success" data-bs-dismiss="modal">Got it!</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade sandbox-access-modal" id="subscribeToOurNewsletter" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h2 class="modal-title heading2">Stay Informed</h2>
+                            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                                <img src="/website_dt/static/src/images/hamburger.svg"/>
+                            </button>
+                        </div>
+                        <form class="access-form" enctype="multipart/form-data">
+                            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                            <div class="modal-body">
+                                <div class="popup-form-block">
+                                    <!--  Company email address  -->
+                                    <div class="form-group">
+                                        <label>Enter your email address</label>
+                                        <input type="email" required="required" class="form-control" name="email"
+                                               placeholder="Email address"/>
+                                    </div>
+                                </div>
+                                <div class="form-group d-flex">
+                                    <input type="checkbox" id="agree_newsletter" required="required" class="check-box"/>
+                                    <label for="agree_newsletter">
+                                        I agree to receive newsletters and accept DataTile
+                                        <a href="/legal/privacy-policy" class="terms-link" target="_blank">
+                                            <span class="text-span-3">privacy policy</span>
+                                        </a>
+                                        <br/>
+                                        <a href="#" class="body-small is-grey">You may unsubscribe at any time using the
+                                            link in our newsletter
+                                        </a>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn-submit newsletter disabled">Subscribe</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade sandbox-access-modal" id="NewsletterThankyou" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog sandbox-success" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h2 class="modal-title heading2">Stay Informed</h2>
+                            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                                <img src="/website_dt/static/src/images/hamburger.svg"/>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <h1>Thank you for subscribing!</h1>
+                            <div class="body-xl text-center">Check your inbox for a confirmation email</div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-success" data-bs-dismiss="modal">Got it!</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </xpath>
+    </template>
+    <template id="website_dt.sandbox_button" name="Try for Free" >
+        <t t-set="sandbox_url" t-value="env['ir.config_parameter'].sudo().get_param('website.sandbox_registration_url')"/>
+        <a t-att-href="sandbox_url" target="_blank" class="btn btn-yellow try-btn">Try for free</a>
+    </template>
+    <template id="website_dt.demo_button" name="Try free demo" >
+        <t t-set="sandbox_url" t-value="env['ir.config_parameter'].sudo().get_param('website.sandbox_registration_url')"/>
+        <a t-att-href="sandbox_url" target="_blank" class="btn btn-yellow">Try free demo</a>
+    </template>
+    <template id="website_dt.header_demo_button" name="Try for Free Header" >
+        <t t-set="sandbox_url" t-value="env['ir.config_parameter'].sudo().get_param('website.sandbox_registration_url')"/>
+        <a t-att-href="sandbox_url" target="_blank" class="btn-yellow try-button">Try &amp;nbsp;for&amp;nbsp; free</a>
+    </template>
+
+<!--    <template id="gtm_script" inherit_id="web.frontend_layout">-->
+<!--        <xpath expr="//body//*[1]" position="inside">-->
+<!--            &lt;!&ndash; Google Tag Manager (noscript) &ndash;&gt;-->
+<!--            <noscript>-->
+<!--                <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-57W656Z " height="0" width="0" style="display:none;visibility:hidden"></iframe>-->
+<!--            </noscript>-->
+<!--            &lt;!&ndash; End Google Tag Manager (noscript) &ndash;&gt;-->
+<!--        </xpath>-->
+<!--    </template>-->
+</odoo>

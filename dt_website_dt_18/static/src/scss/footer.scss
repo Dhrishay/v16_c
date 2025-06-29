@@ -1,0 +1,99 @@
+.footer {
+    background: #fff;
+    padding: 40px 40px 60px;
+    color: #333;
+    font-size: 14px;
+    
+    .container-large {
+        display: flex;
+        justify-content: space-between;
+        grid-column-gap: 16px;
+        grid-row-gap: 16px;
+    }
+
+    .footer-left {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        .footer-logo {
+            max-width: 120px;
+            margin-bottom: 5px;
+        }
+        p{
+            color: var(--grey-80);
+            font-size: 14px;
+            margin-bottom: 0;
+        }
+    }
+
+    .footer-links {
+        display: flex;
+
+        ul {
+            list-style: none;
+            grid-row-gap: 16px;
+            flex-direction: column;
+            min-width: 223px;
+            display: flex;
+            li {
+                margin-bottom: 5px;
+                grid-row-gap: 16px;
+                flex-direction: column;
+                min-width: 223px;
+                display: flex;
+                margin-bottom: 0;
+                a {
+                    color: #000000b3;
+                    font-size: 14px;
+                    text-decoration: none;
+                    transition: color 0.3s ease-in-out;
+
+                    &:hover {
+                        color: var(--primary-default);
+                    }
+                }
+            }
+        }
+    }
+
+    .footer-right {
+        text-align: left;
+
+        p {
+            color: #69696e;
+            font-size: 14px;
+            line-height: 140%;
+            transition: all .2s;
+            margin-bottom: 0;
+        }
+
+        .email {
+            margin-top: 5px;
+            display: block;
+            font-size: 14px;
+            color: var(--primary-default);
+            text-decoration: none;
+
+            &:hover {
+                color: var(--black);
+            }
+        }
+
+        
+    }
+    .footer-social{
+        .social-icons {
+            display: flex;
+            gap: 10px;
+
+            a {
+                display: inline-block;
+
+                img {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}

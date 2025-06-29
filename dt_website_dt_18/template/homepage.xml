@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+        <template id="homepage" name="Homepage - DataTile" inherit_id="website.homepage">
+            <xpath expr="//t[@t-set='pageName']" position="replace">
+                <t t-set="pageName" t-value="'homepage'"/>
+                <div class="oe_homepage">
+                    <div class="oe_structure oe_empty">
+
+                        <!-- Homepage Banner -->
+                        <section class="research-solution">
+                            <div class="container research">
+                                <div class="content">
+                                    <h1>The Research  Intelligence Solution</h1>
+                                    <p>
+                                        Effortlessly analyze data, unveil growth opportunities, and collaborate through 
+                                        intuitive survey dashboards and automated reports for future-focused strategies.
+                                    </p>
+                                    <div class="buttons">
+                                        <t t-call="website_dt.sandbox_button" />
+                                        <a href="/contact-us" class="btn btn-contact">Contact us</a>
+                                    </div>
+                                </div>
+                                <div class="image">
+                                    <img src="/website_dt/static/src/images/home-banner.png" alt="Dashboard preview"/>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Trusted Partners -->
+                        <section class="trusted-section">
+                            <div class="container">
+                                <div class="trusted">
+                                    <h2>Trusted by</h2>
+                                    <div class="logo-container">
+                                        <img src="/website_dt/static/src/images/company-1.svg" alt="Global" title="Global"/>
+                                        <img src="/website_dt/static/src/images/company-2.svg" alt="Bloomberg" title="Bloomberg" class="v2"/>
+                                        <img src="/website_dt/static/src/images/company-3.svg" alt="Ipsos" title="Ipsos"/>
+                                        <img src="/website_dt/static/src/images/company-4.svg" alt="HUMAN8" title="HUMAN8" class="v2"/>
+                                        <img src="/website_dt/static/src/images/company-5.svg" alt="JICMAIL" title="JICMAIL"/>
+                                        <img src="/website_dt/static/src/images/company-6.svg" alt="Fastuna" title="Fastuna" class="v2"/>
+                                        <img src="/website_dt/static/src/images/company-7.svg" alt="KANTAR" title="KANTAR" class="v2"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Datatile Dashboard -->
+                        <section class="datatile-dashboard">
+                            <div class="container dashboard">
+                                <a href="/solutions" class="dashboard-section">
+                                    <div class="dashboard-content">
+                                        <h2>Explore DataTile interactive dashboards</h2>
+                                    </div>
+                                    <div class="arrow-icon"><img src="/website_dt/static/src/images/white-right-arrow.svg"/></div>
+                                    <div class="dashboard-images">
+                                        <img src="/website_dt/static/src/images/explore-datatile.png" alt="Dashboard" title="Dashboard"/>
+                                    </div>
+
+                                </a>
+                            </div>
+                        </section>
+
+                        <!-- Suite Of Feature -->
+                        <section class="suite-of-feature" id="features">
+                            <div class="feature-navbar">
+                                <h2 class="feature-heading">Suite of features for quick and sophisticated insights</h2>
+                                <!-- Fixed Navigation (Only for this Section) -->
+                                <nav class="feature-nav container">
+                                    <a href="#data-analytics">Data Analytics &amp; Crosstabs</a>
+                                    <a href="#interactive-dashboards">Interactive Dashboards</a>
+                                    <a href="#research-automation">Research Automation</a>
+                                    <a href="#collaboration">Collaboration</a>
+                                    <a href="#integration">Integration</a>
+                                    <a href="#security">Reliable Security</a>
+                                </nav>
+<!--                                <hr/>-->
+                            </div>
+
+                            <!-- Feature Content -->
+                            <div class="feature-contents">
+                                <div class="feature-content">
+                                    <div class="container-large">
+                                        <div class="text-content">
+                                            <h2 id="data-analytics">Create custom crosstabs with powerful statistical analysis capabilities</h2>
+                                            <p>
+                                                With one click, DataTile's crosstabs provide efficient data analytics, revealing research trends and audience insights without spending days in SPSS or Excel.
+                                                <br/>
+                                                <br/>
+                                                The platform's math functions and statistical metrics help develop the right strategy at the right time.
+                                            </p>
+                                            <ul>
+                                                <li>Comprehensive crosstabs</li>
+                                                <li>Significance tests</li>
+                                                <li>Cluster analysis and segmentation</li>
+                                                <li>Topline reports</li>
+                                                <li>Exports to PPTX, XLSX, and PDF</li>
+                                            </ul>
+                                        </div>
+                                        <div class="feature-image">
+                                            <img src="/website_dt/static/src/images/crosstab.png" alt="Crosstab" class="png-img dsk-img"/>
+                                            <img src="/website_dt/static/src/images/crosstab-mbl.png" alt="Crosstab" class="mbl-image png-img"/>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="feature-content">
+                                    <div class="container-large is-second">
+
+                                        <div class="feature-image">
+                                            <img src="/website_dt/static/src/images/intrective-dashboard.png" alt="Dashboard" class="png-img dsk-img"/>
+                                            <img src="/website_dt/static/src/images/intrective-dashboard-mbl.png" alt="Dashboard" class="mbl-image png-img"/>
+                                        </div>
+                                        <div class="text-content">
+                                        <h2 id="interactive-dashboards">Easily share key insights with interactive dashboards</h2>
+                                        <p>
+                                            Effortlessly create a DataTile dashboard for instant, crucial answers with customizable research analytics, charting, and visualizations that bring goals to life through essential graphics.
+                                        </p>
+                                        <ul>
+                                            <li>Fast creation and complete data integration with easy updates</li>
+                                            <li>AI-assisted inferences, report automation, and PowerPoint generation</li>
+                                            <li>Focused updates for improved tracking</li>
+                                            <li>Significance test indicators</li>
+                                            <li>Suite of data visualisation options</li>
+                                        </ul>
+                                    </div>
+                                    </div>
+                                </div>
+
+                                <div class="feature-content">
+                                    <div class="container-large">
+                                        <div class="text-content">
+                                            <h2 id="research-automation">Automate your research for deeper data reflections</h2>
+                                            <p>
+                                                With DataTile, you can easily navigate through the intricacies of data processing and analysis.
+                                                <br/>
+                                                <br/>
+                                                Smart data tracking helps you find all the answers to any audience question—no more complexities of traditional data analysis tools.
+                                            </p>
+                                        </div>
+                                        <div class="feature-image">
+                                        <img src="/website_dt/static/src/images/research.png" alt="Research" class="png-img dsk-img"/>
+                                        <img src="/website_dt/static/src/images/research-mbl.png" alt="Research" class="mbl-image png-img"/>
+                                    </div>
+                                    </div>
+                                </div>
+
+                                <section class="business-banner">
+                                    <div class="container">
+                                        <div class="banner-content">
+                                            <div class="banner-content-left">
+                                                <h2>Isn't it time you transformed your business?</h2>
+                                            </div>
+                                            <div class="banner-content-right">
+                                                <p>
+                                                    Explore how our platform can solve your specific business needs and optimize your 
+                                                    processes by getting in touch with the DataTile team today!
+                                                </p>
+                                                <div class="banner-buttons">
+                                                    <t t-call="website_dt.sandbox_button" />
+                                                    <a href="/contact-us" class="btn-contact">Contact us</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+
+                                <div class="feature-content">
+                                    <div class="container-large is-second">
+                                        <div class="feature-image">
+                                        <img src="/website_dt/static/src/images/collaborate.png" alt="Collaborate" class="png-img dsk-img"/>
+                                        <img src="/website_dt/static/src/images/collaborate-mbl.png" alt="Collaborate" class="mbl-image png-img"/>
+                                        </div>
+                                        <div class="text-content">
+                                            <h2 id="collaboration">Connect and collaborate to create new data narratives</h2>
+                                            <p>
+                                                DataTile facilitates data as a single source of truth across your team, clients and suppliers.
+                                            </p>
+                                            <ul>
+                                                <li>Access easy data management and collaboration</li>
+                                                <li>Orchestrate comprehensive supplier or audience research</li>
+                                                <li>Distribute syndicated databases without operational burden</li>
+                                                <li>Maximise a variety of industrial and common data formats</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="feature-content">
+                                    <div class="container-large">
+                                        <div class="text-content">
+                                            <h2 id="integration">Effortless integration into your team’s workflow</h2>
+                                            <p>
+                                                DataTile seamlessly enhances your team's existing technology, serving as a smart data source and a crucial addition for improved data handling, completing your in-depth project understanding.
+                                                <br/>
+                                                <br/>
+                                                Embed DataTile dashboards or individual charts as white-label solutions into your CRM, ERP, and other internal systems.
+                                                <br/>
+                                                <br/>
+                                                Blend external apps and microservices into DataTile dashboards to create a flawless user experience.
+                                            </p>
+                                        </div>
+                                        <div class="feature-image">
+                                        <img src="/website_dt/static/src/images/integration.png" alt="Integration" class="png-img dsk-img"/>
+                                        <img src="/website_dt/static/src/images/integration-mbl.png" alt="Integration" class="mbl-image png-img"/>
+                                    </div>
+                                    </div>
+                                </div>
+
+                                <div class="feature-content">
+                                    <div class="container-large is-second">
+                                        <div class="feature-image">
+                                            <img src="/website_dt/static/src/images/security.png" alt="Security" class="png-img dsk-img"/>
+                                            <img src="/website_dt/static/src/images/security-mbl.png" alt="Security" class="mbl-image png-img"/>
+                                        </div>
+                                        <div class="text-content">
+                                        <h2 id="security">Reliable security</h2>
+                                        <p>
+                                            DataTile is customly designed to cater to your requirements with robust security and compliance features. We supply advanced data protection with a raft of security measures, including:
+                                        </p>
+                                        <ul>
+                                            <li>Complete isolation of B2B clients during runtime, maintenance, and backup infrastructure.</li>
+                                            <li>Data belonging to different user accounts is kept separate and inaccessible to other users</li>
+                                            <li>Excellent visibility of user activity, usage, and monitoring, along with granular data management access.</li>
+                                        </ul>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="member">
+                            <div class="container">
+                                <div class="esomar-member">
+                                    <div class="image">
+                                        <img src="/website_dt/static/src/images/esomar.svg" alt="Esomar"/>
+                                    </div>
+                                    <div class="content">
+                                        <p>
+                                            As a member of ESOMAR, DataTile is fully committed to maintaining methodological, professional and ethical standards in research.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="talk-to-team">
+                            <div class="container">
+                                <div class="contact-us">
+                                    <h2>
+                                        Talk to our team
+                                    </h2>
+                                    <p>
+                                        DataTile professionals will answer all your questions and help you choose the best option for your business.
+                                    </p>
+                                    <a href="/contact-us" class="btn-contact">Send an email</a>
+                                </div>
+                            </div>
+                            <img src="/website_dt/static/src/images/cta.webp"/>
+                        </section>
+                    </div>
+                </div>
+            </xpath>
+        </template>
+    </data>
+</odoo>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="cookies_bar_dt" inherit_id="website.cookies_bar" name="Cookies Bar">
+        <xpath expr="//a[hasclass('o_cookies_bar_text_policy')]" position="replace">
+            <a href="/legal/cookie-list" class="o_cookies_bar_text_policy btn btn-link btn-sm px-0">Cookie Policy</a>
+        </xpath>
+    </template>
+</odoo>

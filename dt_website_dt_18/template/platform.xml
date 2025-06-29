@@ -1,0 +1,779 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="digital_analytics_platform" name="Digital Analytics Platform">
+        <t t-call="web.frontend_layout">
+            <section class="global-header">
+                <div class="container global-heading">
+                    <h1 class="global-title">Digital Analytics Platform</h1>
+                    <p class="global-subtitle">Created by researchers for researchers</p>
+                </div>
+            </section>
+
+            <section class="suite-of-feature" id="features">
+
+                <!-- Feature Content -->
+                <div class="feature-contents">
+                    <div class="feature-content no-padding">
+                        <div class="container-large is-second">
+                            <div class="feature-image">
+                                <img src="/website_dt/static/src/images/digital.png" alt="Crosstab" class="png-img dsk-img"/>
+                                <img src="/website_dt/static/src/images/digital-mbl.png" alt="Crosstab" class="mbl-image png-img"/>
+                            </div>
+                            <div class="text-content">
+                                <p>
+                                    Smart DataTile system with automation and market research industry-specific functionality saves time for researchers and money for customers. We automate and optimize every stage of your work.
+                                </p>
+                                <ul>
+                                    <li>No programming skills required</li>
+                                    <li>Teamwork in the cloud or on-premises, role management</li>
+                                    <li>Full automation of data processing, metrics and reporting</li>
+                                    <li>Flexible pricing and individual support</li>
+                                    <li>Exports to PPTX, XLSX, and PDF, web embedding</li>
+                                </ul>
+                                <div class="feature-footer">
+                                    <t t-call="website_dt.demo_button" />
+                                    <div class="feature-tooltip">
+                                        <img src="/website_dt/static/src/images/feature-tooltip.svg"/>
+                                        <p>What I will get</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="digital-info">
+                <div class="container">
+                    <div class="info-container">
+                        <div class="info-section-left">
+                            <div class="info-section is-first">
+                                <h2 class="info-title">Data Processing</h2>
+                                <ul class="info-list">
+                                    <li>Centralized repository of research results</li>
+                                    <li>Automated processing and access control, anchored back to the raw data</li>
+                                    <li>Simple web interface which does not require training or special skills</li>
+                                </ul>
+                            </div>
+
+                            <div class="info-section is-second">
+                                <h2 class="info-title">Results</h2>
+                                <ul class="info-list">
+                                    <li>Interactive dashboards</li>
+                                    <li>Automation of reporting, uploading to Excel, PowerPoint</li>
+                                    <li>Flexible configuration to meet rapidly changing market decision-making</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="info-section-right">
+                            <div class="info-section">
+                                <h2 class="info-title">Analysis</h2>
+                                <ul class="info-list">
+                                    <li>Intelligent, automated support of research tracking surveys</li>
+                                    <li>Syndicated business management capabilities</li>
+                                    <li>DIY analysis</li>
+                                    <li>Create norms and integrate data from various studies for context</li>
+                                    <li>Dynamic visualizations and charts, no manual data update needed</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <img src="/website_dt/static/src/images/round-arrow-right.svg" class="data-image"/>
+                        <img src="/website_dt/static/src/images/round-arrow-left.svg" class="data-image is-second"/>
+                    </div>
+                </div>
+            </section>
+
+            <section class="talk-to-team">
+                <div class="container">
+                    <div class="contact-us">
+                        <h2>
+                            Try DataTile for free
+                        </h2>
+                        <p>
+                            Isn’t it time you transformed your business? Try DataTile for free and see how it can enhance your productivity with it’s thorough analysis, interactivity and speed.
+                        </p>
+                        <div class="buttons">
+                            <t t-call="website_dt.sandbox_button" />
+                            <a href="/contact-us" class="btn-contact">Contact us</a>
+                        </div>
+                    </div>
+                </div>
+                <img src="/website_dt/static/src/images/doughnut.svg" class="cta-image"/>
+            </section>
+
+            <section class="suite-of-feature" id="features">
+
+                <!-- Feature Content -->
+                <div class="feature-contents">
+                    <div class="feature-content">
+                        <div class="container-large">
+                        <div class="text-content">
+                            <h2>Many formats &amp; data types</h2>
+                            <h3>Support for any data types and specific calculations on a wide variety of configurations:</h3>
+                            <ul>
+                                <li>Survey data</li>
+                                <li>Retail audit</li>
+                                <li>Advertising and contact details</li>
+                                <li>Aggregated business data</li>
+                            </ul>
+                        </div>
+                        <div class="feature-image">
+                            <div class="split-grid">
+                                <div class="split-card">
+                                    <img src="/website_dt/static/src/images/spss.svg"/>
+                                    <div class="split-card-title">Statistics</div>
+                                </div>
+                                <div class="split-card">
+                                    <img src="/website_dt/static/src/images/spreadsheet.svg"/>
+                                    <div class="split-card-title">Speadsheet</div>
+                                </div>
+                                <div class="split-card">
+                                    <img src="/website_dt/static/src/images/parquet.svg"/>
+                                    <div class="split-card-title">Parquet</div>
+                                </div>
+                                <div class="split-card">
+                                    <img src="/website_dt/static/src/images/ibm.svg"/>
+                                    <div class="split-card-title">IBM360</div>
+                                </div>
+                                <div class="split-card">
+                                    <img src="/website_dt/static/src/images/csv.svg"/>
+                                    <div class="split-card-title">Text</div>
+                                </div>
+                                <div class="split-card">
+                                    <img src="/website_dt/static/src/images/zip.svg"/>
+                                    <div class="split-card-title">Archive</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+
+                    <div class="feature-content padding-small">
+                        <div class="container-large is-second">
+                            <div class="feature-image">
+                                <img src="/website_dt/static/src/images/stored-data.png" alt="Stored Data" class="png-img dsk-img"/>
+                                <img src="/website_dt/static/src/images/stored-data-mbl.png" alt="Stored Data" class="mbl-image png-img"/>
+                            </div>
+                            <div class="text-content">
+                                <h2>Real-time processing of centrally stored data</h2>
+                                <ul class="purple-arrow">
+                                    <li>Always available and ready for data analysis, updated reports, and easy-to-understand visualizations</li>
+                                    <li>Reduces the human error factor – transparency and automatization of calculations allows you to track each figure directly from the report back to the raw data</li>
+                                    <li>Powerful data processing capabilities available out of the box replace SPSS and a staff of engineers</li>
+                                    <li>Easily control user-access rights based on variables, categories and individual records</li>
+                                    <li>Manage availability of specific functionality and the nuances of statistical calculations for the end users</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="feature-content padding-small">
+                        <div class="container-large">
+                            <div class="text-content">
+                                <h2>Simple management of tracking studies</h2>
+                                <ul>
+                                    <li>Reports and dashboards created for the first wave of a tracking study are automatically reproduced on subsequent ones, fast updating</li>
+                                    <li>The correctness of the new waves' data loading is ensured by verifying the consistency of the data structure</li>
+                                    <li>Automatic trending</li>
+                                    <li>Rich visualization of data changes. All affected reports and dashboards are clearly marked</li>
+                                </ul>
+                            </div>
+                            <div class="feature-image">
+                                <img src="/website_dt/static/src/images/tracking.png" alt="Tracking" class="png-img dsk-img"/>
+                                <img src="/website_dt/static/src/images/tracking-mbl.png" alt="Tracking" class="mbl-image png-img"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="feature-content padding-small">
+                        <div class="container-large is-second">
+                            <div class="feature-image">
+                                <img src="/website_dt/static/src/images/steroids.png" alt="Steroids" class="png-img dsk-img"/>
+                                <img src="/website_dt/static/src/images/steroids-mbl.png" alt="Steroids" class="mbl-image png-img"/>
+                            </div>
+                            <div class="text-content">
+                                <h2>Dashboards on steroids</h2>
+                                <ul class="purple-arrow">
+                                    <li>The most customizable &amp; friendly research dashboards available out of the box</li>
+                                    <li>Does not require programming &amp; special training</li>
+                                    <li>You can create by yourself or order a turnkey solution from the DataTile team</li>
+                                    <li>Flexible hierarchical access settings allow you to define data access and controls depending on the user group</li>
+                                    <li>ExAbility to publish on the web and embed in external pages on the web, such as press releases and blogs. PDF, Excel &amp; PowerPoint reports.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="talk-to-team">
+                <div class="container">
+                    <div class="contact-us">
+                        <h2>
+                            Talk to our team
+                        </h2>
+                        <p>
+                            DataTile professionals will answer all your questions and help you choose the best option for your business.
+                        </p>
+                        <a href="/contact-us" class="btn-contact">Send an email</a>
+                    </div>
+                </div>
+                <img src="/website_dt/static/src/images/cta.webp"/>
+            </section>
+        </t>
+    </template>
+
+    <template id="turn_key_reporting_implementation" name="Turn-key Reporting Implementation">
+        <t t-call="web.frontend_layout">
+            <section class="global-header">
+                <div class="container global-heading">
+                    <h1 class="global-title">Turn-key Reporting Implementation</h1>
+                    <p class="global-subtitle">We help your teams to create complex analytical and data visualization projects</p>
+                </div>
+            </section>
+
+            <section class="suite-of-feature" id="features">
+
+                <!-- Feature Content -->
+                <div class="feature-contents">
+                    <div class="feature-content no-padding">
+                        <div class="container-large">
+                            <div class="text-content">
+                                <h2>Dashboards are essential</h2>
+                                <ul>
+                                    <li>When previous results are available as several separate documents, tables, or presentations and you have no idea how and where the indices were calculated</li>
+                                    <li>When you become weary of rigid business intelligence tools and sluggish visualization solutions</li>
+                                    <li>When it takes a lot of time and a highly skilled team of analysts to extract and present insights from the data</li>
+                                    <li>When you need to make numerous slightly varied presentations with the same structure</li>
+                                </ul>
+                            </div>
+                            <div class="feature-image">
+                                <img src="/website_dt/static/src/images/dashboard.png" alt="Dashboard" class="png-img dsk-img"/>
+                                <img src="/website_dt/static/src/images/dashboard-mbl.png" alt="Dashboard" class="mbl-image png-img"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="feature-content">
+                        <div class="container-large is-second">
+                            <div class="feature-image">
+                                <img src="/website_dt/static/src/images/comparison.png" alt="Comparison" class="png-img dsk-img"/>
+                                <img src="/website_dt/static/src/images/comparison-mbl.png" alt="Comparison" class="mbl-image png-img"/>
+                            </div>
+                            <div class="text-content">
+                                <p>DataTile provides a reliable, flexible and easy-to-deploy tool for market research results delivery. However, sometimes our clients don’t have the time or resources to deep dive into data preparation and technical nuances of specific dashboard creation and setup.</p>
+                                <h2>Implementation can be taken care of</h2>
+                                <p>DataTile offers a team of highly experienced professionals with extensive expertise in data analysis, research, and UI/UX. Our team can take care of implementation - from your datasets to you having rich and impactful dashboards in production for lightning fast insights.</p>
+                                <div class="feature-footer">
+                                    <a href="/dashboard-gallery" class="btn btn-yellow dashboard">Dashboard Gallery</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="talk-to-team">
+                <div class="container">
+                    <div class="contact-us">
+                        <h2>
+                            Try DataTile for free
+                        </h2>
+                        <p>
+                            Isn’t it time you transformed your business? Try DataTile for free and see how it can enhance your productivity with it’s thorough analysis, interactivity and speed.
+                        </p>
+                        <div class="buttons">
+                            <t t-call="website_dt.sandbox_button" />
+                            <a href="/contact-us" class="btn-contact">Contact us</a>
+                        </div>
+                    </div>
+                </div>
+                <img src="/website_dt/static/src/images/doughnut.svg" class="cta-image"/>
+            </section>
+
+            <section class="suite-of-feature" id="features">
+                <!-- Feature Content -->
+                <div class="feature-contents">
+                    <div class="feature-content">
+                        <div class="container-large">
+                            <div class="text-content is-steps">
+                                <h2>Basic implementation steps</h2>
+                                <div class="step-list">
+                                    <div class="step-item">
+                                        <img src="/website_dt/static/src/images/1.svg"/>
+                                        <p>Initial project setup</p>
+                                    </div>
+
+                                    <div class="step-item is-second">
+                                        <img src="/website_dt/static/src/images/2.svg"/>
+                                        <p>Data analysis, preparation and loading into DataTile platform</p>
+                                    </div>
+
+                                    <div class="step-item">
+                                        <img src="/website_dt/static/src/images/3.svg"/>
+                                        <p>Design and deployment of more efficient underlying data structures and datasets for further enhanced analytics</p>
+                                    </div>
+
+                                    <div class="step-item is-second">
+                                        <img src="/website_dt/static/src/images/4.svg"/>
+                                        <p>Dashboard mockups</p>
+                                    </div>
+
+                                    <div class="step-item">
+                                        <img src="/website_dt/static/src/images/5.svg"/>
+                                        <p>Dashboards in production</p>
+                                    </div>
+
+                                    <img src="/website_dt/static/src/images/down-right.svg" class="step-image is-second"/>
+                                    <img src="/website_dt/static/src/images/down-left.svg" class="step-image is-fourth"/>
+                                    <img src="/website_dt/static/src/images/down-left.svg" class="step-image is-third"/>
+                                    <img src="/website_dt/static/src/images/down-right.svg" class="step-image"/>
+                                </div>
+                            </div>
+                            <div class="feature-image">
+                                <img src="/website_dt/static/src/images/chart.png" alt="Chart" class="png-img dsk-img"/>
+                                <img src="/website_dt/static/src/images/chart-mbl.png" alt="Chart" class="mbl-image png-img"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="feature-content">
+                        <div class="container-large is-second">
+                            <div class="feature-image">
+                                <img src="/website_dt/static/src/images/dashboard-name.png" alt="Dashboard" class="png-img dsk-img"/>
+                                <img src="/website_dt/static/src/images/dashboard-name.png" alt="Dashboard" class="mbl-image png-img"/>
+                            </div>
+                            <div class="text-content">
+                                <h2>You get ready-to-use...</h2>
+                                <ul class="purple-arrow">
+                                    <li>Dashboards for combining data from various sources</li>
+                                    <li>Dashboards for visualizing data in a user-friendly manner</li>
+                                    <li>Dashboards for sharing the results with stakeholders</li>
+                                    <li>Dashboards for skipping the routine and focusing on key survey results</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="feature-content">
+                        <div class="container-large">
+                            <div class="text-content">
+                                <h2>... and advanced DataTile platform capabilities allowing to ...</h2>
+                                <ul>
+                                    <li>Effortlessly transfer data between providers, preserving backups, and seamlessly integrate multiple data sources without the need for time-consuming manual matching.</li>
+                                    <li>Quickly integrate new data, compare it with existing information, and share it to stakeholders based on their access levels.</li>
+                                    <li>Load data into Excel and PowerPoint seamlessly, with no extra customization, including for batches of similar presentations using a common template with our Report Generator.</li>
+                                </ul>
+                            </div>
+                            <div class="feature-image">
+                                <img src="/website_dt/static/src/images/country.png" alt="Country Map" class="png-img dsk-img"/>
+                                <img src="/website_dt/static/src/images/country-mbl.png" alt="Country Map" class="mbl-image png-img"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="datatile-solution">
+                <div class="solution container">
+                    <h2>Discover DataTile Solutions</h2>
+                    <div class="solutions-grid">
+                        <a href="/solutions/brand-health-tracking" class="solutions-card-wrapper w-inline-block">
+                            <div class="solutions-card">
+                                <div class="solutions-card-top">
+                                    <h2 class="is-gradient">Brand Health Tracking</h2>
+                                    <img src="/website_dt/static/src/images/purple-gradient-arrow.svg"/>
+                                </div>
+                                <p>Research model used to assess the effectiveness, perception and overall health of a brand.</p>
+                                <div class="solutions-card-border"></div>
+                            </div>
+                            <div class="solutions-card is-hover">
+                                <div class="solutions-card-top">
+                                    <h2>Brand Health Tracking</h2>
+                                    <img src="/website_dt/static/src/images/white-right-arrow-2.svg"/>
+                                </div>
+                                <p>Research model used to assess the effectiveness, perception and overall health of a brand.</p>
+                            </div>
+                        </a>
+                        <a href="/solutions/net-promoter-score" class="solutions-card-wrapper w-inline-block">
+                            <div class="solutions-card">
+                                <div class="solutions-card-top">
+                                    <h2 class="is-gradient is-second">NPS/CSI</h2>
+                                    <img src="/website_dt/static/src/images/gradient-right.svg"/>
+                                </div>
+                                <p>Ready-to use dashboard for Net Promoter Score/Customer Satisfaction Index studies</p>
+                                <div class="solutions-card-border is-second"></div>
+                            </div>
+                            <div class="solutions-card is-hover is-second">
+                                <div class="solutions-card-top">
+                                    <h2>NPS/CSI</h2>
+                                    <img src="/website_dt/static/src/images/white-right-arrow-2.svg"/>
+                                </div>
+                                <p>Ready-to use dashboard for Net Promoter Score/Customer Satisfaction Index studies</p>
+                            </div>
+                        </a>
+                        <a href="/solutions/hr-tracking" class="solutions-card-wrapper w-inline-block">
+                            <div class="solutions-card">
+                                <div class="solutions-card-top">
+                                    <h2 class="is-gradient is-third">HR Tracking</h2>
+                                    <img src="/website_dt/static/src/images/gradient-blue-right.svg"/>
+                                </div>
+                                <p>Employee satisfaction studies and employee NPS (eNPS)</p>
+                                <div class="solutions-card-border is-third"></div>
+                            </div>
+                            <div class="solutions-card is-hover is-third">
+                                <div class="solutions-card-top">
+                                    <h2>HR Tracking</h2>
+                                    <img src="/website_dt/static/src/images/white-right-arrow-2.svg"/>
+                                </div>
+                                <p>Employee satisfaction studies and employee NPS (eNPS)</p>
+                            </div>
+                        </a>
+                        <a href="/contact-us" class="solutions-card-wrapper w-inline-block">
+                            <div class="solutions-card">
+                                <div class="solutions-card-top">
+                                    <h2 class="is-gradient is-second">Custom Solution</h2>
+                                    <img src="/website_dt/static/src/images/gradient-right.svg"/>
+                                </div>
+                                <p>Reach out to our team to get a customized dashboard</p>
+                                <div class="solutions-card-border is-second"></div>
+                            </div>
+                            <div class="solutions-card is-hover is-second">
+                                <div class="solutions-card-top">
+                                    <h2>Custom Solution</h2>
+                                    <img src="/website_dt/static/src/images/white-right-arrow-2.svg"/>
+                                </div>
+                                <p>Reach out to our team to get a customized dashboard</p>
+                            </div>
+                        </a>
+                        </div>
+                </div>
+            </section>
+
+            <section class="talk-to-team">
+                <div class="container">
+                    <div class="contact-us">
+                        <h2>
+                            Talk to our team
+                        </h2>
+                        <p>
+                            DataTile professionals will answer all your questions and help you choose the best option for your business.
+                        </p>
+                        <a href="/contact-us" class="btn-contact">Send an email</a>
+                    </div>
+                </div>
+                <img src="/website_dt/static/src/images/cta.webp"/>
+            </section>
+        </t>
+    </template>
+
+    <template id="self_analytics_solution" name="DIY Solution">
+        <t t-call="web.frontend_layout">
+            <section class="global-header">
+                <div class="container global-heading">
+                    <h1 class="global-title">Self Analytics Solution</h1>
+                    <p class="global-subtitle">Simplifies data processing and analysis, reducing time for valuable insights</p>
+                </div>
+            </section>
+
+            <section class="suite-of-feature" id="features">
+
+                <!-- Feature Content -->
+                <div class="feature-contents">
+                    <div class="feature-content padding-small">
+                        <div class="container-large is-second">
+                            <div class="text-content">
+                                <h2>What our clients need</h2>
+                                <p>Simple <strong>DIY analysis or self-service studies</strong> in addition to large tracking studies for getting quick and useful insights by an in-house team.</p>
+                                <h2>What DataTile can offer</h2>
+                                <p>DataTile provides the DIY solution that <strong>simplifies the processing and analysis of data</strong>, ultimately reducing the time typically spent providing stakeholders and decision-makers with <strong>useful insights.</strong></p>
+                                <div class="feature-footer">
+                                    <a href="/dashboard-gallery" class="btn btn-yellow dashboard">Dashboard Gallery</a>
+                                </div>
+                            </div>
+                            <div class="feature-image">
+                                <img src="/website_dt/static/src/images/formating.png" alt="Formating" class="png-img dsk-img"/>
+                                <img src="/website_dt/static/src/images/formating-mbl.png" alt="Formating" class="mbl-image png-img"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="strategy-datatile">
+                <div class="container strategy">
+                    <div class="strategy-wrapper is-product">
+                        <div class="strategy-card is-second is-product">
+                            <h2 class="strategy-card-heading is-gradient">Upload</h2>
+                            <p class="body-small is-strategy">a database in any supported format to DataTile</p>
+                            <div class="solutions-card-border"></div>
+                            <img src="/website_dt/static/src/images/down-right-2.svg" class="strategy-arrow is-third is-product"/>
+                            <img src="/website_dt/static/src/images/down-right.svg" class="strategy-arrow-v2 is-first is-product"/>
+                        </div>
+                        <div id="w-node-_1d3f4eec-c153-aaa9-1c95-6d30a809acc5-3d5ae1aa" class="strategy-card is-third is-product">
+                            <h2 class="strategy-card-heading is-gradient">Make crosstabs</h2>
+                            <p class="body-small is-strategy">with all requirements – simple or statistical significant comparison, residuals, heatmap, mathematical or logical expressions, etc.</p>
+                            <div class="solutions-card-border"></div>
+                            <img src="/website_dt/static/src/images/up-right.svg" class="strategy-arrow is-second is-product"/>
+                            <img src="/website_dt/static/src/images/down-left.svg" class="strategy-arrow-v2 is-second is-product"/>
+                        </div>
+                        <div class="strategy-card is-product">
+                            <h2 class="strategy-card-heading is-gradient">Export</h2>
+                            <p class="body-small is-strategy">the results to Excel, images, and presentations</p>
+                            <div class="solutions-card-border"></div>
+                            <img src="/website_dt/static/src/images/down-right-2.svg"  class="strategy-arrow is-third is-product"/>
+                            <img src="/website_dt/static/src/images/down-right.svg" class="strategy-arrow-v2 is-first is-product"/>
+                        </div>
+                        <div id="w-node-_1d3f4eec-c153-aaa9-1c95-6d30a809acd9-3d5ae1aa" class="strategy-card is-third is-product">
+                            <h2 class="strategy-card-heading is-gradient">Share</h2>
+                            <p class="body-small is-strategy">easily with colleagues and stakeholders</p>
+                            <div class="solutions-card-border"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="talk-to-team">
+                <div class="container">
+                    <div class="contact-us">
+                        <h2>
+                            Try DataTile for free
+                        </h2>
+                        <p>
+                            Isn’t it time you transformed your business? Try DataTile for free and see how it can enhance your productivity with it’s thorough analysis, interactivity and speed.
+                        </p>
+                        <div class="buttons">
+                            <t t-call="website_dt.sandbox_button" />
+                            <a href="/contact-us" class="btn-contact">Contact us</a>
+                        </div>
+                    </div>
+                </div>
+                <img src="/website_dt/static/src/images/doughnut.svg" class="cta-image"/>
+            </section>
+
+            <section class="suite-of-feature" id="features">
+
+                <!-- Feature Content -->
+                <div class="feature-contents">
+                    <div class="feature-content">
+                        <div class="container-large is-second">
+                            <div class="feature-image">
+                                <img src="/website_dt/static/src/images/variable.png" alt="Variable" class="png-img dsk-img"/>
+                                <img src="/website_dt/static/src/images/variable-mbl.png" alt="Variable" class="png-img mbl-image"/>
+                            </div>
+                            <div class="text-content">
+                                <h1 class="heading1">Quick testing of product features and market niche ideas</h1>
+                                <p>When developing new products or features, companies require quick feedback from potential customers. Rapid quantitative studies can help to understand user preferences, needs, and pain points, providing quick and actionable insights.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="feature-content">
+                        <div class="container-large">
+                            <div class="text-content">
+                                <h1 class="heading1">More precise analysis</h1>
+                                <p>While working with studies' results you need to do a quick check of some hypotheses related to different audiences/groups/criteria. DataTile allows you to get insights on the go, you can filter the new target audience, change the required metrics or period right in the process of discussion with the customer.</p>
+                            </div>
+                            <div class="feature-image">
+                                <img src="/website_dt/static/src/images/precise.png" alt="Precise" class="png-img dsk-img"/>
+                                <img src="/website_dt/static/src/images/precise-mbl.png" alt="Precise" class="png-img mbl-image"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="feature-content">
+                        <div class="container-large is-second">
+                            <div class="feature-image">
+                                <img src="/website_dt/static/src/images/risk.png" alt="Risk" class="png-img dsk-img"/>
+                                <img src="/website_dt/static/src/images/risk-mbl.png" alt="Risk" class="png-img mbl-image"/>
+                            </div>
+                            <div class="text-content">
+                                <h1 class="heading1">Risk assessment and iterative studies</h1>
+                                <p>Risk assessment is necessary before entering a new market or launching a new product, the same applies even to a new product idea. Quantitative research can provide general insights and help to develop strategies.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="is-reasons">
+                <div class="container">
+                    <h2 class="heading2 is-solutions">Tailored solution for diverse industry needs</h2>
+                    <p class="body-xl is-centered">DataTile is ideally positioned to meet this challenge across a wide range of industries – from local research agencies to multinational corporations and media owners. We deliver the optimal solution for small teams with insufficient staff resources, as well as for large companies with a huge number of business lines and an overloaded research department.</p>
+                    <div class="benefit-grid">
+                        <div class="solutions-card benefit">
+                            <div class="solutions-card-top">
+                            <h2 class="heading2 is-gradient">Speed</h2>
+                            </div>
+                            <p>Less than an hour from data uploading to getting first valuable insights without involving Data Engineers or BI analytics.</p>
+                            <div class="solutions-card-border"></div>
+                        </div>
+                        <div class="solutions-card benefit">
+                            <div class="solutions-card-top">
+                            <h2 class="heading2 is-gradient is-second">Agility</h2>
+                            </div>
+                            <p>In data preparation and reporting formats. Just load one of the supported files (sav/zsav, xlsx or csv) and start working.</p>
+                            <div class="solutions-card-border is-second"></div>
+                        </div>
+                        <div class="solutions-card benefit">
+                            <div class="solutions-card-top">
+                            <h2 class="heading2 is-gradient is-third">Collaboration</h2>
+                            </div>
+                            <p>Various departments (marketing, product development, sales) access research results from a single, version conflict-proofed point, facilitating seamless data sharing and referencing figures in business routines.</p>
+                            <div class="solutions-card-border is-third"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-decor benefit"></div>
+            </section>
+
+            <section class="talk-to-team">
+                <div class="container">
+                    <div class="contact-us">
+                        <h2>
+                            Talk to our team
+                        </h2>
+                        <p>
+                            DataTile professionals will answer all your questions and help you choose the best option for your business.
+                        </p>
+                        <a href="/contact-us" class="btn-contact">Send an email</a>
+                    </div>
+                </div>
+                <img src="/website_dt/static/src/images/cta.webp"/>
+            </section>
+
+            
+        </t>
+    </template>
+
+    <template id="dashboard_builder" name="Dashboard Builder">
+        <t t-call="web.frontend_layout">
+            <section class="global-header">
+                <div class="container global-heading">
+                    <h1 class="global-title">Dashboard Builder</h1>
+                    <p class="global-subtitle">Helping your teams to create complex analytical and data visualization projects</p>
+                </div>
+            </section>
+
+            <section class="suite-of-feature" id="features">
+
+                <!-- Feature Content -->
+                <div class="feature-contents">
+                    <div class="container feature-content is-second">
+                        <div class="feature-image">
+                            <img src="/website_dt/static/src/images/region.svg" alt="Region" class="dsk-img"/>
+                            <img src="/website_dt/static/src/images/region-mbl.svg" alt="Region" class="mbl-image"/>
+                        </div>
+                        <div class="text-content">
+                            <p class="body-large">DataTile provides a comprehensive suite of tools to support all participants in the research delivery process. We offer a range of features that streamline the workflows of all involved teams on the agency side (data processing, analysts, and client service) and on the client side (research department, C-suite, and end users). We enhance data utilization and add significant value to research outputs.</p>
+                            <div class="feature-footer">
+                                <a href="/dashboard-gallery" class="btn btn-yellow dashboard">Dashboard Gallery</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="container feature-content">
+                        <div class="text-content">
+                            <h2 class="heading1">Intuitive Web Intrface</h2>
+                            <ul>
+                                <li class="body-large">User-friendly design for dashboard creation</li>
+                                <li class="body-large">Everything, from raw data to dashboard widgets, is in one place, fully transparent and user-friendly</li>
+                                <li class="body-large">WYSIWYG (What You See Is What You Get) editing and updates</li>
+                            </ul>
+                        </div>
+                        <div class="feature-image">
+                            <img src="/website_dt/static/src/images/total-world.svg" alt="Total World" class="dsk-img"/>
+                            <img src="/website_dt/static/src/images/total-world-mbl.svg" alt="Total World" class="mbl-image"/>
+                        </div>
+                    </div>
+
+                    <!-- Datatile Dashboard -->
+                    <section class="datatile-dashboard">
+                        <div class="container dashboard">
+                            <a href="/solutions" class="dashboard-section">
+                                <div class="dashboard-content">
+                                    <h2>Explore DataTile interactive dashboards</h2>
+                                </div>
+                                <div class="arrow-icon"><img src="/website_dt/static/src/images/white-right-arrow.svg"/></div>
+                                <div class="dashboard-images">
+                                    <img src="/website_dt/static/src/images/explore-datatile.png" alt="Dashboard" title="Dashboard"/>
+                                </div>
+                            </a>
+                        </div>
+                    </section>
+
+                    <div class="container feature-content is-second">
+                        <div class="feature-image">
+                            <img src="/website_dt/static/src/images/no-code-platform.svg" alt="No Code" class="dsk-img"/>
+                            <img src="/website_dt/static/src/images/no-code-platform-mbl.svg" alt="No Code" class="mbl-image"/>
+                        </div>
+
+                        <div class="text-content">
+                            <h2 class="heading1">No-Code Platform</h2>
+                            <ul>
+                                <li class="body-large">Low learning curve for researchers and analysts who create dashboards</li>
+                                <li class="body-large">Zero-effort experience for client-side consumers</li>
+                                <li class="body-large">Empowers efficient work across all user levels</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="container feature-content">
+                        <div class="text-content">
+                            <h2 class="heading1">Time-Saving Capabilities</h2>
+                            <ul class="purple-arrow">
+                                <li class="body-large">Significantly reduces time to achieve results</li>
+                                <li class="body-large">Effortlessly merges data from various sources</li>
+                                <li class="body-large">Significance tests, heatmaps, weight implementation, and other research routines in one click</li>
+                                <li class="body-large">AI-augmented inferences</li>
+                                <li class="body-large">Automated PowerPoint report generation</li>
+                            </ul>
+                        </div>
+
+                        <div class="feature-image">
+                            <img src="/website_dt/static/src/images/capabilities.svg" alt="Capabilities" class="dsk-img"/>
+                            <img src="/website_dt/static/src/images/capabilities-mbl.svg" alt="Capabilities" class="mbl-image"/>
+                        </div>
+                    </div>
+
+                    <div class="container feature-content is-second">
+                        <div class="feature-image">
+                            <img src="/website_dt/static/src/images/easy-of-update.svg" alt="Capabilities" class="dsk-img"/>
+                            <img src="/website_dt/static/src/images/easy-of-update-mbl.svg" alt="Capabilities" class="mbl-image"/>
+                        </div>
+                        <div class="text-content">
+                            <h2 class="heading1">Ease of Update</h2>
+                            <ul>
+                                <li class="body-large">Built-in tracking automation: data from new waves in tracking studies can be simultaneously implemented in the dashboard</li>
+                                <li class="body-large">Seamless addition of new data waves and reloading: automated database comparison, automatically updated labels across the database</li>
+                                <li class="body-large">Easy logical expression creation and powerful math allow avoiding scripts for custom audience creation or index calculations</li>
+                                <li class="body-large">Replaces weeks of manual PowerPoint reporting</li>
+                                <li class="body-large">Substitutes months-long Business Intelligence implementations</li>
+                            </ul>
+                        </div>
+
+                        
+                    </div>
+                </div>
+            </section>
+
+            <section class="talk-to-team">
+                <div class="container">
+                    <div class="contact-us">
+                        <h2>
+                            Try DataTile for free
+                        </h2>
+                        <p>
+                            Isn’t it time you transformed your business? Try DataTile for free and see how it can enhance your productivity with it’s thorough analysis, interactivity and speed.
+                        </p>
+                        <div class="buttons">
+                            <t t-call="website_dt.sandbox_button" />
+                            <a href="/contact-us" class="btn-contact">Contact us</a>
+                        </div>
+                    </div>
+                </div>
+                <img src="/website_dt/static/src/images/doughnut.svg" class="cta-image"/>
+            </section>
+        </t>
+    </template>
+</odoo>

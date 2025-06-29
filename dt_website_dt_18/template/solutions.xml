@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="solutions" name="Solutions">
+        <t t-call="web.frontend_layout">
+            <section class="global-header">
+                <div class="container global-heading">
+                    <h6 class="global-title">Turn any research into powerful insights</h6>
+                    <p class="global-subtitle">How will you use DataTile?</p>
+                </div>
+            </section>
+
+            <section class="datatile-solution">
+                <div class="solution container">
+                    <div class="solutions-grid">
+                        <a href="/solutions/brand-health-tracking" class="solutions-card-wrapper w-inline-block">
+                            <div class="solutions-card">
+                                <div class="solutions-card-top">
+                                    <h2 class="is-gradient">Brand Health Tracking</h2>
+                                    <img src="/website_dt/static/src/images/purple-gradient-arrow.svg"/>
+                                </div>
+                                <p>Research model used to assess the effectiveness, perception and overall health of a brand.</p>
+                                <div class="solutions-card-border"></div>
+                            </div>
+                            <div class="solutions-card is-hover">
+                                <div class="solutions-card-top">
+                                    <h2>Brand Health Tracking</h2>
+                                    <img src="/website_dt/static/src/images/white-right-arrow-2.svg"/>
+                                </div>
+                                <p>Research model used to assess the effectiveness, perception and overall health of a brand.</p>
+                            </div>
+                        </a>
+                        <a href="/solutions/net-promoter-score" class="solutions-card-wrapper w-inline-block">
+                            <div class="solutions-card">
+                                <div class="solutions-card-top">
+                                    <h2 class="is-gradient is-second">NPS/CSI</h2>
+                                    <img src="/website_dt/static/src/images/gradient-right.svg"/>
+                                </div>
+                                <p>Ready-to use dashboard for Net Promoter Score/Customer Satisfaction Index studies</p>
+                                <div class="solutions-card-border is-second"></div>
+                            </div>
+                            <div class="solutions-card is-hover is-second">
+                                <div class="solutions-card-top">
+                                    <h2>NPS/CSI</h2>
+                                    <img src="/website_dt/static/src/images/white-right-arrow-2.svg"/>
+                                </div>
+                                <p>Ready-to use dashboard for Net Promoter Score/Customer Satisfaction Index studies</p>
+                            </div>
+                        </a>
+                        <a href="/solutions/hr-tracking" class="solutions-card-wrapper w-inline-block">
+                            <div class="solutions-card">
+                                <div class="solutions-card-top">
+                                    <h2 class="is-gradient is-third">HR Tracking</h2>
+                                    <img src="/website_dt/static/src/images/gradient-blue-right.svg"/>
+                                </div>
+                                <p>Employee satisfaction studies and employee NPS (eNPS)</p>
+                                <div class="solutions-card-border is-third"></div>
+                            </div>
+                            <div class="solutions-card is-hover is-third">
+                                <div class="solutions-card-top">
+                                    <h2>HR Tracking</h2>
+                                    <img src="/website_dt/static/src/images/white-right-arrow-2.svg"/>
+                                </div>
+                                <p>Employee satisfaction studies and employee NPS (eNPS)</p>
+                            </div>
+                        </a>
+                        <a href="/contact-us" class="solutions-card-wrapper w-inline-block">
+                            <div class="solutions-card">
+                                <div class="solutions-card-top">
+                                    <h2 class="is-gradient is-second">Custom Solution</h2>
+                                    <img src="/website_dt/static/src/images/gradient-right.svg"/>
+                                </div>
+                                <p>Reach out to our team to get a customized dashboard</p>
+                                <div class="solutions-card-border is-second"></div>
+                            </div>
+                            <div class="solutions-card is-hover is-second">
+                                <div class="solutions-card-top">
+                                    <h2>Custom Solution</h2>
+                                    <img src="/website_dt/static/src/images/white-right-arrow-2.svg"/>
+                                </div>
+                                <p>Reach out to our team to get a customized dashboard</p>
+                            </div>
+                        </a>
+                        </div>
+                </div>
+            </section>
+
+            <section class="customer-success">
+                <div class="container success">
+                    <h2>Customer success stories:</h2>
+                    <div class="customer-success-grid">
+                        <a href="/cases/jicmail-discovery" class="customer-success-card jicmail w-inline-block">
+                            <div class="customer-success-top">
+                                <h2 class="heading2">JICMAIL</h2>
+                                <img src="/website_dt/static/src/images/white-right-arrow-2.svg"/>
+                            </div>
+                            <p class="body-large is-360width">DataTile’s role in the development of JICMAIL’s Discovery Portal.</p>
+                        </a>
+                        <a href="/cases/transformed-employee-satisfaction-analysis" class="customer-success-card employee w-inline-block">
+                            <div class="customer-success-top">
+                                <h2 class="heading2"><strong>Transformed Employee Satisfaction Analysis</strong></h2>
+                                <img src="/website_dt/static/src/images/white-right-arrow-2.svg"/>
+                            </div>
+                            <p class="body-large is-360width">A Game-Changer for HR team</p>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="talk-to-team">
+                <div class="container">
+                    <div class="contact-us">
+                        <h2>
+                            130+ dashboards for 1000+ users across the globe
+                        </h2>
+                        <p>
+                            Try DataTile for free and see how it can enhance your productivity with it’s thorough analysis, interactivity and speed.
+                        </p>
+                        <div class="buttons">
+                            <t t-call="website_dt.sandbox_button" />
+                            <a href="/contact-us" class="btn-contact">Contact us</a>
+                        </div>
+                    </div>
+                </div>
+                <img src="/website_dt/static/src/images/doughnut.svg" class="cta-image"/>
+            </section>
+        </t>
+    </template>
+
+    <template id="brand_health_tracking" name="Brand Health Tracking">
+        <t t-call="web.frontend_layout">
+            <section class="global-header">
+                <div class="container-large health-hero-warpper global-heading">
+                    <a href="/solutions" class="health-link w-inline-block">
+                        <img src="/website_dt/static/src/images/purple-left.svg" alt=""/>All solutions
+                    </a>
+                    <h6 class="global-title">Brand Health Tracking</h6>
+                    <p class="global-subtitle">BHT dashboard is a research model used to assess the effectiveness, perception and overall health of a brand in the market. It’s possible to customize it for different questionnaire structures – the solution can be adapted for various industries from pharma to telecommunications.</p>
+                </div>
+            </section>
+
+            <section class="suite-of-feature" id="features">
+                <!-- Feature Content -->
+                <div class="feature-contents">
+                    <div class="feature-content bht-dashboard padding-small">
+                        <div class="container-large">
+                            <div class="feature-image">
+                                <img src="/website_dt/static/src/images/health-variable.png" alt="Health variable" class="png-img dsk-img"/>
+                                <img src="/website_dt/static/src/images/health-variable-mbl.png" alt="Health variable" class="mbl-image png-img"/>
+                            </div>
+                            <div class="text-content">
+                                <h2>BHT dashboard includes a range of key brand metrics, including but not limited to:</h2>
+                                <ul>
+                                    <li><strong>Brand Awareness.</strong> The level of brand recognition among the target audience.</li>
+                                    <li><strong>Brand Perception.</strong> How consumers perceive the brand in terms of attributes, quality, and trustworthiness.</li>
+                                    <li><strong>Brand Loyalty.</strong> The degree of customer loyalty and advocacy towards the brand.</li>
+                                    <li><strong>Purchase Intent.</strong> The likelihood of consumers choosing the brand over competitors.</li>
+                                    <li><strong>Brand Equity.</strong> The overall value of the brand in the minds of consumers and its impact on business performance.</li>
+                                    <li><strong>Shopper Profile.</strong> Split on gender, income etc.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="brand-tracking">
+                <div class="container-large brand">
+                    <div class="bht-text-section-wrapper">
+                        <p class="body-regular is-bht">In some industries the Brand Health measurement is closely linked to Advertising visibility evaluation. This page shows how brand's advertising activities perform, what are the most effective channels of communication. Also you can visualize the Ad emotional perception</p>
+                        <img src="/website_dt/static/src/images/purple-down.svg"/>
+                    </div>
+                    <div class="solutions-embed w-embed w-iframe">
+                        <iframe frameborder="0" src="https://cloud.datatile.eu/dashboard/embedded/948c3dd1-24b2-4ecc-8b05-f1ad3db65dcf" width="100%" height="100%">
+                        </iframe>
+                    </div>
+                </div>
+            </section>
+
+            <section class="talk-to-team">
+                <div class="container">
+                    <div class="contact-us">
+                        <h2>
+                            Try DataTile for free
+                        </h2>
+                        <p>
+                            Isn’t it time you transformed your business? Try DataTile for free and see how it can enhance your productivity with it’s thorough analysis, interactivity and speed.
+                        </p>
+                        <div class="buttons">
+                            <t t-call="website_dt.sandbox_button" />
+                            <a href="/contact-us" class="btn-contact">Contact us</a>
+                        </div>
+                    </div>
+                </div>
+                <img src="/website_dt/static/src/images/doughnut.svg" class="cta-image"/>
+            </section>
+        </t>
+    </template>
+
+    <template id="net_promoter_score" name="Net Promoter Score">
+        <t t-call="web.frontend_layout">
+            <section class="global-header">
+                <div class="container-large health-hero-warpper global-heading">
+                    <a href="/solutions" class="health-link w-inline-block">
+                        <img src="/website_dt/static/src/images/purple-left.svg" alt=""/>All solutions
+                    </a>
+                    <h6 class="global-title">Net Promoter Score &amp; Customer Satisfaction Index</h6>
+                    <p class="global-subtitle">DataTile provides a fast and flexible solution for Voice of Customer solutions. Net Promoter Score (NPS) and Customer Satisfaction (CSI or CSat) dashboards can provide both general picture and detailed feedback frequently and granularly, sometimes even using daily data</p>
+                </div>
+            </section>
+
+            <section class="suite-of-feature" id="features">
+                <!-- Feature Content -->
+                <div class="feature-contents">
+                    <div class="feature-content bht-dashboard padding-small">
+                        <div class="container-large">
+                            <div class="feature-image">
+                                <img src="/website_dt/static/src/images/target-group.png" alt="Target Group" class="png-img dsk-img"/>
+                                <img src="/website_dt/static/src/images/target-group-mbl.png" alt="Target Group" class="mbl-image png-img"/>
+                            </div>
+                            <div class="text-content">
+                                <h2>The dashboard structure both for NPS and CSI survey types  is similar and usually contains the following tabs:</h2>
+                                <ul>
+                                    <li><strong>KPI page (or C-suite page),</strong> where the main KPIs and their changes are displayed;</li>
+                                    <li><strong>The detailed tab,</strong> where you can drill down to the lowest level of the data hierarchy;</li>
+                                    <li><strong>The trend tab.</strong></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="brand-tracking">
+                <div class="container-large brand">
+                    <div class="bht-text-section-wrapper">
+                        <p class="body-regular is-bht">Here we present you an example of a dynamic dashboard designed for customer satisfaction research, meticulously created by our team specifically for the banking sector.</p>
+                        <img src="/website_dt/static/src/images/purple-down.svg"/>
+                    </div>
+                    <div class="solutions-embed w-embed w-iframe">
+                        <iframe frameborder="0" src="https://cloud.datatile.eu/dashboard/embedded/63d10fa2-689c-47c1-aaa8-4b93c4d18c0b" width="100%" height="100%">
+                        </iframe>
+                    </div>
+                </div>
+            </section>
+
+            <section class="talk-to-team">
+                <div class="container">
+                    <div class="contact-us">
+                        <h2>
+                            Try DataTile for free
+                        </h2>
+                        <p>
+                            Isn’t it time you transformed your business? Try DataTile for free and see how it can enhance your productivity with it’s thorough analysis, interactivity and speed.
+                        </p>
+                        <div class="buttons">
+                            <t t-call="website_dt.sandbox_button" />
+                            <a href="/contact-us" class="btn-contact">Contact us</a>
+                        </div>
+                    </div>
+                </div>
+                <img src="/website_dt/static/src/images/doughnut.svg" class="cta-image"/>
+            </section>
+        </t>
+    </template>
+
+    <template id="hr_tracking" name="HR Tracking">
+        <t t-call="web.frontend_layout">
+            <section class="global-header">
+                <div class="container-large health-hero-warpper global-heading">
+                    <a href="/solutions" class="health-link w-inline-block">
+                        <img src="/website_dt/static/src/images/purple-left.svg" alt=""/>All solutions
+                    </a>
+                    <h6 class="global-title">HR Tracking</h6>
+                    <p class="global-subtitle">When it comes to employee surveys, the main goal is to provide users, who are often time-constrained and not inclined to explore new tools in depth, with both a comprehensive snapshot and accessible analytics.</p>
+                </div>
+            </section>
+
+            <section class="suite-of-feature" id="features">
+                <!-- Feature Content -->
+
+                <div class="solution-wrapper">
+                    <div class="solution-details container">
+                        <p class="body-large">In this HR Tracking, especially those aimed at measuring employee satisfaction and employee evaluations (eNPS), there is a need to be more precise about what, how and from whom to ask. More attention must be paid to protecting confidentiality in order to shield employees with "wrong opinion" from potential administrative pressures.</p>
+                        <p class="body-large">By tackling this issue in DataTile we can easily set up the minimum group size for which the data is displayed.</p>
+                        <p class="body-large">This is even more important for huge international companies, where you need to cope also with multilanguage surveys and databases. The main goal is to provide both a general overview and detailed analytics easily and understandably to the final users, who have no time and desire to deep dive into the new tool. This is the way we solved the task for <a href="/cases/transformed-employee-satisfaction-analysis" target="_blank"><span class="link-text">the building materials manufacturer</span></a>.</p>
+                    </div>
+                </div>
+
+                <div class="feature-contents">
+                    <div class="feature-content bht-dashboard">
+                        <div class="container-large">
+                            <div class="feature-image">
+                                <img src="/website_dt/static/src/images/performance.png" alt="Performance" class="png-img dsk-img"/>
+                                <img src="/website_dt/static/src/images/performance-mbl.png" alt="Performance" class="mbl-image png-img"/>
+                            </div>
+                            <div class="text-content">
+                                <h2>Our typical eNPS/eCSI dashboard for these surveys contains the following tabs:</h2>
+                                <ul>
+                                    <li><strong>KPI page (or C-suite page),</strong> where the main KPIs and their changes are displayed;</li>
+                                    <li><strong>The statistics tab,</strong> where you can see the employee turnover and compare the figures with your key indicator;</li>
+                                    <li><strong>The detailed tab,</strong> where you cancompare the detailed results across departments.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="brand-tracking">
+                <div class="container-large brand">
+                    <div class="bht-text-section-wrapper">
+                        <p class="body-regular is-bht">Here you can explore the dynamic design of the dashboard created by our team for HR Tracking. Utilizing the controls on the left, you can manage the data, filtering its display in various ways.</p>
+                        <img src="/website_dt/static/src/images/purple-down.svg"/>
+                    </div>
+                    <div class="solutions-embed w-embed w-iframe">
+                        <iframe frameborder="0" src="https://cloud.datatile.eu/dashboard/embedded/16a74e1b-b56c-4284-a6a5-a9b468f46e56" width="100%" height="100%">
+                        </iframe>
+                    </div>
+                </div>
+            </section>
+
+            <section class="talk-to-team">
+                <div class="container">
+                    <div class="contact-us">
+                        <h2>
+                            Try DataTile for free
+                        </h2>
+                        <p>
+                            Isn’t it time you transformed your business? Try DataTile for free and see how it can enhance your productivity with it’s thorough analysis, interactivity and speed.
+                        </p>
+                        <div class="buttons">
+                            <t t-call="website_dt.sandbox_button" />
+                            <a href="/contact-us" class="btn-contact">Contact us</a>
+                        </div>
+                    </div>
+                </div>
+                <img src="/website_dt/static/src/images/doughnut.svg" class="cta-image"/>
+            </section>
+        </t>
+    </template>
+
+</odoo>

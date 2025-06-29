@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="contact_us" name="Contact Us">
+        <t t-call="web.frontend_layout">
+            <section class="section is-hero">
+                <div class="container">
+                    <div class="form-block w-form">
+                        <form id="email-form" name="email-form" data-name="Email Form" method="post" enctype="multipart/form-data"
+                              class="contact-wrapper" aria-label="Email Form"
+                              action="/contact-us/thankyou">
+
+                            <!-- CSRF Token for protection -->
+                            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+
+                            <h1 class="heading1 is-centered">Send us an email</h1>
+                            <div class="contact-block">
+                                <div class="contact-group">
+                                    <label for="companyName" class="contact-label">Your company name</label>
+                                    <input class="contact-input w-input" maxlength="256" name="companyName"
+                                           data-name="companyName" placeholder="Company name" type="text"
+                                           id="companyName"
+                                           required=""/>
+                                </div>
+                                <div class="contact-group">
+                                    <label for="email" class="contact-label">Company email address</label>
+                                    <input class="contact-input w-input" maxlength="256" name="email" data-name="email"
+                                           placeholder="Email address" type="email" id="email" required=""/>
+                                </div>
+                                <div class="contact-grid">
+                                    <div class="contact-group">
+                                        <label for="fullName" class="contact-label">Your name</label>
+                                        <input class="contact-input w-input" maxlength="256" name="fullName"
+                                               data-name="fullName" placeholder="Full name" type="text" id="fullName"
+                                               required=""/>
+                                    </div>
+                                    <div class="contact-group">
+                                        <label for="jobTitle" class="contact-label">Your job title</label>
+                                        <input class="contact-input w-input" maxlength="256" name="jobTitle"
+                                               data-name="jobTitle" placeholder="Job title" type="text" id="jobTitle"
+                                               required=""/>
+                                    </div>
+                                </div>
+                                <div class="contact-group">
+                                    <label for="message" class="contact-label">Your message</label>
+                                    <textarea placeholder="Type your message here" maxlength="5000" id="message" name="message" data-name="message" class="contact-input is-textarea w-input" required=""></textarea>
+                                </div>
+                            </div>
+                            <div class="contact-block">
+                                <label class="w-checkbox check-wrapper">
+                                    <div class="w-checkbox-input w-checkbox-input--inputType-custom check-box"></div>
+                                    <input type="checkbox" name="terms" id="terms" data-name="terms" required=""
+                                           style="opacity:0;position:absolute;z-index:-1"/>
+                                    <span class="contact-label w-form-label" for="terms">I read and agree to <a
+                                            href="/legal/privacy-policy" class="text-link">Privacy Policy
+                                    </a> and
+                                        <a href="/legal/terms-of-use" class="text-link">Terms of Use*</a>
+                                    </span>
+                                </label>
+                                <label class="w-checkbox check-wrapper">
+                                    <div class="w-checkbox-input w-checkbox-input--inputType-custom check-box"></div>
+                                    <input type="checkbox" name="promo" id="promo" data-name="promo"
+                                           style="opacity:0;position:absolute;z-index:-1"/>
+                                    <span class="contact-label w-form-label" for="promo">I agree to receive newsletters
+                                        and
+                                        accept the data privacy statement
+                                    </span>
+                                </label>
+                            </div>
+
+                        <!-- Submit Button -->
+                        <input type="submit" value="Submit your message" class="button is-large is-email w-button"/>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </t>
+    </template>
+
+    <template id="thank_you_template" name="Thank you">
+        <t t-call="web.frontend_layout">
+            <div class="success-message container">
+                <div class="message">
+                    <div class="text-block-50">Thank you! Your submission has been received!</div>
+                </div>
+                <section class="customer-success">
+                    <div class="container success">
+                        <h2>Customer success stories:</h2>
+                        <div class="customer-success-grid">
+                            <a href="/cases/jicmail-discovery" class="customer-success-card jicmail w-inline-block">
+                                <div class="customer-success-top">
+                                    <h2 class="heading2">JICMAIL</h2>
+                                    <img src="/website_dt/static/src/images/white-right-arrow-2.svg"/>
+                                </div>
+                                <p class="body-large is-360width">DataTile’s role in the development of JICMAIL’s Discovery Portal.</p>
+                            </a>
+                            <a href="/cases/fastuna" class="customer-success-card is-right w-inline-block">
+                                <div class="customer-success-top">
+                                    <h2 class="heading2">Fastuna</h2>
+                                    <img src="/website_dt/static/src/images/white-right-arrow-2.svg"/>
+                                </div>
+                                <p class="body-large is-360width">Streamlining the analysis of hundreds of ad tests. The synergy for the Client's needs: DataTile—Fastuna collaboration</p>
+                                <img src="/website_dt/static/src/images/bulb.svg" class="customer-success-card-image"/>
+                            </a>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </t>
+    </template>
+
+    <template id="page_404" inherit_id="website.page_404">
+        <xpath expr="//div[@class='o_not_editable bg-100 pt40']" position="replace">
+        </xpath>
+    </template>
+
+    <template id="404" inherit_id="http_routing.404">
+       <xpath expr="//div[@id='wrap']" position="replace">
+            <section class="section-v2 is-404">
+                <div class="container-v2">
+                    <div class="_404-wrapper">
+                        <img src="/website_dt/static/src/images/404_blue.svg" loading="eager" width="290.5" alt="" class="_404-image"
+                        style="text-align:center;"/>
+                        <h2 class="_404-heading">Page not found</h2>
+                        <div class="_404-title">The page you’re looking for doesn’t exist. Please check the URL and try
+                            again or go back to Homepage.
+                        </div>
+                        <a data-w-id="f7a2264e-43e5-1330-0e8a-8121c6ec0e90" href="/" class="button is-large is-email w-button">Go
+                            to Homepage
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </xpath>
+    </template>
+</odoo>

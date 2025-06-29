@@ -1,0 +1,8 @@
+<odoo>
+  <data noupdate="1">
+    <record id="website-sandbox_registration_url" model="ir.config_parameter">
+      <field name="key">website.sandbox_registration_url</field>
+      <field name="value">https://sso.datatile.eu/realms/datatile/protocol/openid-connect/auth?prompt=create&amp;client_id=datatile-cloud&amp;response_type=code&amp;scope=email&amp;redirect_uri=https://cloud.datatile.eu</field>
+    </record>
+  </data>
+</odoo>

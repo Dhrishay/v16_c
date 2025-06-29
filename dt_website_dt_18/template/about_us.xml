@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="about_us" name="About us">
+        <t t-call="web.frontend_layout">
+            <section class="global-header">
+                <div class="container global-heading">
+                    <h1 class="global-title">About us</h1>
+                    <p class="global-subtitle">DataTile streamlines research productivity, empowering your organization with precision-calibrated data for optimal decision-making.</p>
+                </div>
+            </section>
+
+            <section class="about-us">
+                <div class="container about-datatile">
+                    <div class="about-us-bottom">
+                        <div class="about-us-card is-second">
+                            <div class="about-us-card-content is-second">
+                                <h2 class="heading2">DataTile’s story</h2>
+                                <p><span class="text-bold">Founded in 2012</span> by mathematician and entrepreneur Alex Chilingaryan, DataTile has evolved from a selection of data experts into a <span class="text-bold">data platform that covers the complete lifecycle of survey data processing.</span></p>
+                                <p>Our journey was driven by <span class="text-bold">our clients' needs in a rapidly changing data landscape.</span> Along the way, we’ve moved from pure analytics to user-friendly solutions, creating <span class="text-bold">some of the best dashboard control systems</span> around.</p>
+                                <p>We faced an exciting new challenge when we <span class="text-bold">entered the Chinese market:</span> new languages, new user behavior, new database requirements. However, DataTile’s nimble attitude toward change enabled us to effectively manage this move and has proven that we are a <span class="text-bold">reliable, trusted partner for clients across the globe.</span></p>
+                            </div>
+                        </div>
+                        <div class="about-us-card">
+                            <div class="about-us-card-content">
+                                <h2 class="heading2">Who we are</h2>
+                                <p>We are a team dedicated to our customers’ success, none more so than in our customer services. A while back, we realized that it was time to strengthen our smart service team by transforming from a software vendor to a full-service delivery company.</p>
+                                <p>The impact of this change has been huge. Not only are we now much more agile and proactive, but we have also completely changed our mindset and ways of working. We like to listen, collaborate, and respond effectively and efficiently to our customers’ needs.</p>
+                            </div>
+                            <div class="about-us-card-content">
+                                <h2 class="heading2">What we offer</h2>
+                                <p>Smart DataTile platform with automation, industry-specific functionality and service that saves time for researchers and money for customers</p>
+                                <a href="/platform/digital-analytics-platform" class="text-link">Learn more about DataTile</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="strategy-datatile">
+                <div class="container strategy">
+                    <div class="strategy-wrapper">
+                        <div class="strategy-card is-second">
+                            <h2 class="strategy-card-heading is-gradient">2012</h2>
+                            <p class="body-small is-strategy">DataTile was <span class="text-bold">founded</span></p>
+                            <div class="solutions-card-border"></div>
+                            <img src="/website_dt/static/src/images/down-right-2.svg" class="strategy-arrow is-first"/>
+                            <img src="/website_dt/static/src/images/down-right.svg" class="strategy-arrow-v2 is-first"/>
+                        </div>
+                        <div class="strategy-card is-third">
+                            <h2 class="strategy-card-heading is-gradient">2017</h2>
+                            <p class="body-small is-strategy">Visualizing functionality transformed DataTile from the pure analytical and crosstab tool to a <span class="text-bold">complex dashboarding solution</span></p>
+                            <div class="solutions-card-border"></div>
+                            <img src="/website_dt/static/src/images/up-right.svg" class="strategy-arrow is-second"/>
+                            <img src="/website_dt/static/src/images/down-left.svg" class="strategy-arrow-v2 is-second"/>
+                        </div>
+                        <div class="strategy-card">
+                            <h2 class="strategy-card-heading is-gradient">2017</h2>
+                            <p class="body-small is-strategy">Expansion to Chinese market proved that DataTile is a <span class="text-bold">scalable global player</span></p>
+                            <div class="solutions-card-border"></div>
+                            <img src="/website_dt/static/src/images/down-right-2.svg"  class="strategy-arrow is-third"/>
+                            <img src="/website_dt/static/src/images/down-right.svg" class="strategy-arrow-v2 is-first"/>
+                        </div>
+                        <div class="strategy-card is-third">
+                            <h2 class="strategy-card-heading is-gradient">2019</h2>
+                            <p class="body-small is-strategy">A service team creation changed DataTile from a pure software vendor to a <span class="text-bold">full cycle company</span></p>
+                            <div class="solutions-card-border"></div>
+                            <img src="/website_dt/static/src/images/purple-right-down.svg"  class="strategy-arrow is-fourth"/>
+                            <img src="/website_dt/static/src/images/down-left.svg" class="strategy-arrow-v2 is-second"/>
+                        </div>
+                        <div class="strategy-card is-second">
+                            <h2 class="strategy-card-heading is-gradient">2021</h2>
+                            <p class="body-small is-strategy"><span class="text-bold">Powerpoint report generator</span> was added</p>
+                            <div class="solutions-card-border"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="talk-to-team">
+                <div class="container">
+                    <div class="contact-us">
+                        <h2>
+                            Try DataTile for free
+                        </h2>
+                        <p>
+                            Isn’t it time you transformed your business? Try DataTile for free and see how it can enhance your productivity with it’s thorough analysis, interactivity and speed.
+                        </p>
+                        <div class="buttons">
+                            <t t-call="website_dt.sandbox_button" />
+                            <a href="/contact-us" class="btn-contact">Contact us</a>
+                        </div>
+                    </div>
+                </div>
+                <img src="/website_dt/static/src/images/doughnut.svg" class="cta-image"/>
+            </section>
+
+            <section class="customer-success">
+                <div class="container success">
+                    <h2>Customer success stories:</h2>
+                    <div class="customer-success-grid">
+                        <a href="/cases/jicmail-discovery" class="customer-success-card jicmail w-inline-block">
+                            <div class="customer-success-top">
+                                <h2 class="heading2">JICMAIL</h2>
+                                <img src="/website_dt/static/src/images/white-right-arrow-2.svg"/>
+                            </div>
+                            <p class="body-large is-360width">DataTile’s role in the development of JICMAIL’s Discovery Portal.</p>
+                        </a>
+                        <a href="/cases/transformed-employee-satisfaction-analysis" class="customer-success-card employee w-inline-block">
+                            <div class="customer-success-top">
+                                <h2 class="heading2"><strong>Transformed Employee Satisfaction Analysis</strong></h2>
+                                <img src="/website_dt/static/src/images/white-right-arrow-2.svg"/>
+                            </div>
+                            <p class="body-large is-360width">A Game-Changer for HR team</p>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Trusted Partners -->
+            <section class="trusted-section">
+                <div class="container trusted">
+                    <h2>Trusted by</h2>
+                    <div class="logo-container is-about">
+                        <img src="/website_dt/static/src/images/company-1.svg" alt="Global" title="Global"/>
+                        <img src="/website_dt/static/src/images/company-2.svg" alt="Bloomberg" title="Bloomberg"/>
+                        <img src="/website_dt/static/src/images/company-3.svg" alt="Ipsos" title="Ipsos"/>
+                        <img src="/website_dt/static/src/images/company-4.svg" alt="HUMAN8" title="HUMAN8"/>
+                        <img src="/website_dt/static/src/images/company-13.svg" alt="DFK" title="GFK"/>
+                        <img src="/website_dt/static/src/images/company-14.svg" alt="CIVITTA" title="CIVITTA"/>
+                        <img src="/website_dt/static/src/images/company-7.svg" alt="KANTAR" title="KANTAR"/>
+
+                        <img src="/website_dt/static/src/images/company-5.svg" alt="JICMAIL" title="JICMAIL"/>
+                        <img src="/website_dt/static/src/images/company-8.svg" alt="WARGAMING.NET" title="WARGAMING.NET"/>
+                        <img src="/website_dt/static/src/images/company-9.svg" alt="PIXEL &amp; SENSE" title="PIXEL &amp; SENSE"/>
+                        <img src="/website_dt/static/src/images/company-10.svg" alt="RAM" title="RAM"/>
+                        <img src="/website_dt/static/src/images/company-6.svg" alt="fastuna" title="fastuna"/>
+                        <img src="/website_dt/static/src/images/company-11.svg" alt="SINOMONITOR" title="SINOMONITOR"/>
+                        <img src="/website_dt/static/src/images/company-12.svg" alt="ALL IN MARKET" title="ALL IN MARKET"/>
+                    </div>
+                </div>
+            </section>
+
+            <section class="reason">
+                <div class="container">
+                    <div class="reason-wrapper">
+                        <img src="/website_dt/static/src/images/up-quote.svg" class="reason-image"/>
+                        <div class="reason-content">
+                            <h2 class="reason-heading">Why do people buy DataTile? When they try to process their survey results in popular BI tools, they fail, and then they turn to DataTile for the solution that works.
+                            </h2>
+                            <p class="body-regular is-reason">– German Safonov, Head of UX research <a href="https://uzumtezkor.uz/" target="_blank">Uzum Tezkor</a></p>
+                        </div>
+                    </div>
+                    <img src="/website_dt/static/src/images/down-quote.svg" class="reason-image is-second"/>
+                </div>
+                <div class="bg-decor"></div>
+                <div class="bg-decor is-second"></div>
+            </section>
+
+            <section class="our-team">
+                <div class="container">
+                    <div class="team-wrapper">
+                        <h2 class="heading-medium">Meet the DataTile team</h2>
+                        <div class="team-grid">
+                            <div class="team-grid-card">
+                                <div class="team-grid-card-top">
+                                <img src="/website_dt/static/src/images/founder.png" width="80" class="team-grid-card-image"/>
+                                <div class="team-grid-card-top-content">
+                                    <div class="team-grid-card-heading">Alex Chilingaryan</div>
+                                    <div class="body-small is-grey">Founder</div>
+                                </div>
+                                </div>
+                                <div class="team-grid-card-bottom">
+                                <p class="body-small">A mathematician, technical visionary, and social research entrepreneur, Alex relishes building world-class systems to change the way we work for the better.</p>
+                                <p class="body-small">With 20 years of hands-on experience in software development for scientific applications, data analysis, and integration, Alex also brings DataTile many years of experience in market research innovation and automation, and solutions that can revolutionize your business.</p>
+                                </div>
+                            </div>
+                            <div class="team-grid-card">
+                                <div class="team-grid-card-top">
+                                <img src="/website_dt/static/src/images/partner.png" width="80" class="team-grid-card-image"/>
+                                <div class="team-grid-card-top-content">
+                                    <div class="team-grid-card-heading">Alex Maddox</div>
+                                    <div class="body-small is-grey">Senior Partner</div>
+                                </div>
+                                </div>
+                                <div class="team-grid-card-bottom">
+                                <p class="body-small">One of the UK's top research professionals and a smart analytics champion, Alex brings a wealth of exceptional experience to the DataTile team.</p>
+                                <p class="body-small">Alex has also been a Global Client Service Director and Managing Director for Telmar UK, focusing on developing enhanced creative analysis and improving client satisfaction levels.</p>
+                                </div>
+                            </div>
+                            <div class="team-grid-card">
+                                <div class="team-grid-card-top">
+                                <img src="/website_dt/static/src/images/partner-2.png" width="80" class="team-grid-card-image"/>
+                                <div class="team-grid-card-top-content">
+                                    <div class="team-grid-card-heading">Steve Garton</div>
+                                    <div class="body-small is-grey">Senior Partner</div>
+                                </div>
+                                </div>
+                                <div class="team-grid-card-bottom">
+                                <p class="body-small">Steve is a renowned innovator in world-first projects. With dynamic positions as the Global Head of Media at Synavate and Board Director of Media and IT at ACNielsen, Steve has delivered transformative change across organizations.</p>
+                                <p class="body-small">Steve has also pioneered global-first surveys on a wide range of topics, including climate change.</p>
+                                </div>
+                            </div>
+                            <div class="team-grid-card">
+                                <div class="team-grid-card-top">
+                                <img src="/website_dt/static/src/images/bde.png" width="80" class="team-grid-card-image"/>
+                                <div class="team-grid-card-top-content">
+                                    <div class="team-grid-card-heading">Valentin Sokolovsky</div>
+                                    <div class="body-small is-grey">Business Development Director</div>
+                                </div>
+                                </div>
+                                <div class="team-grid-card-bottom">
+                                <p class="body-small">Talented sales and marketing professional with extensive experience in the analytical and research sphere. </p>
+                                <p class="body-small">9 years as a retail director in one of the local ACNielsen offices, and massive experience as an independent consulter in Business Intelligence, marketing, and research.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="talk-to-team">
+                <div class="container">
+                    <div class="contact-us">
+                        <h2>
+                            Talk to our team
+                        </h2>
+                        <p>
+                            DataTile professionals will answer all your questions and help you choose the best option for your business.
+                        </p>
+                        <a href="/contact-us" class="btn-contact">Send an email</a>
+                    </div>
+                </div>
+                <img src="/website_dt/static/src/images/cta.webp"/>
+            </section>
+        </t>
+    </template>
+</odoo>

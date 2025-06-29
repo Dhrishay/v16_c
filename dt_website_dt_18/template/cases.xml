@@ -1,0 +1,763 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="case_studies" name="Case Studies">
+        <t t-call="web.frontend_layout">
+            <section class="global-header">
+                <div class="container global-heading">
+                    <h1 class="global-title">Customer success stories:</h1>
+                </div>
+            </section>
+
+            <section class="customer-success mt-0">
+                <div class="container success">
+                    <div class="customer-success-grid">
+                        <a href="/cases/jicmail-discovery" class="customer-success-card jicmail w-inline-block">
+                            <div class="customer-success-top">
+                                <h2 class="heading2">JICMAIL</h2>
+                                <img src="/website_dt/static/src/images/white-right-arrow-2.svg"/>
+                            </div>
+                            <p class="body-large is-360width">DataTile’s role in the development of JICMAIL’s Discovery Portal.</p>
+                        </a>
+                        <a href="/cases/fastuna" class="customer-success-card is-right w-inline-block">
+                            <div class="customer-success-top">
+                                <h2 class="heading2">Fastuna</h2>
+                                <img src="/website_dt/static/src/images/white-right-arrow-2.svg"/>
+                            </div>
+                            <p class="body-large is-360width">Streamlining the analysis of hundreds of ad tests. The synergy for the Client's needs: DataTile—Fastuna collaboration</p>
+                            <img src="/website_dt/static/src/images/bulb.svg" class="customer-success-card-image"/>
+                        </a>
+                        <a href="/cases/sinomonitor" class="customer-success-card sinomonitor w-inline-block">
+                            <div class="customer-success-top">
+                                <h2 class="heading2">SINOMONITOR</h2>
+                                <img src="/website_dt/static/src/images/white-right-arrow-2.svg"/>
+                            </div>
+                            <p class="body-large is-360width">Vivid, comprehensive data-driven insights for SINOMONITOR China Syndicated Research</p>
+                        </a>
+                        <a href="/cases/global" class="customer-success-card global w-inline-block">
+                            <div class="customer-success-top">
+                                <h2 class="heading2">Global Media &amp; <br/> Entertainment</h2>
+                                <img src="/website_dt/static/src/images/white-right-arrow-2.svg"/>
+                            </div>
+                            <p class="body-large is-360width">Transforming how Global Media &amp; Entertainment shares the results of its bespoke and tracking surveys</p>
+                        </a>
+                        <a href="/cases/transformed-employee-satisfaction-analysis" class="customer-success-card employee w-inline-block">
+                            <div class="customer-success-top">
+                                <h2 class="heading2"><strong>Transformed Employee Satisfaction Analysis</strong></h2>
+                                <img src="/website_dt/static/src/images/white-right-arrow-2.svg"/>
+                            </div>
+                            <p class="body-large is-360width">A Game-Changer for HR team</p>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Trusted Partners -->
+            <section class="trusted-section">
+                <div class="container trusted">
+                    <h2>Trusted by</h2>
+                    <div class="logo-container is-about">
+                        <img src="/website_dt/static/src/images/company-1.svg" alt="Global" title="Global"/>
+                        <img src="/website_dt/static/src/images/company-2.svg" alt="Bloomberg" title="Bloomberg"/>
+                        <img src="/website_dt/static/src/images/company-3.svg" alt="Ipsos" title="Ipsos"/>
+                        <img src="/website_dt/static/src/images/company-4.svg" alt="HUMAN8" title="HUMAN8"/>
+                        <img src="/website_dt/static/src/images/company-13.svg" alt="DFK" title="GFK"/>
+                        <img src="/website_dt/static/src/images/company-14.svg" alt="CIVITTA" title="CIVITTA"/>
+                        <img src="/website_dt/static/src/images/company-7.svg" alt="KANTAR" title="KANTAR"/>
+
+                        <img src="/website_dt/static/src/images/company-5.svg" alt="JICMAIL" title="JICMAIL"/>
+                        <img src="/website_dt/static/src/images/company-8.svg" alt="WARGAMING.NET" title="WARGAMING.NET"/>
+                        <img src="/website_dt/static/src/images/company-9.svg" alt="PIXEL &amp; SENSE" title="PIXEL &amp; SENSE"/>
+                        <img src="/website_dt/static/src/images/company-10.svg" alt="RAM" title="RAM"/>
+                        <img src="/website_dt/static/src/images/company-6.svg" alt="fastuna" title="fastuna"/>
+                        <img src="/website_dt/static/src/images/company-11.svg" alt="SINOMONITOR" title="SINOMONITOR"/>
+                        <img src="/website_dt/static/src/images/company-12.svg" alt="ALL IN MARKET" title="ALL IN MARKET"/>
+                    </div>
+                </div>
+            </section>
+
+            <section class="talk-to-team">
+                <div class="container">
+                    <div class="contact-us">
+                        <h2>
+                            Try DataTile for free
+                        </h2>
+                        <p>
+                            Isn’t it time you transformed your business? Try DataTile for free and see how it can enhance your productivity with it’s thorough analysis, interactivity and speed.
+                        </p>
+                        <div class="buttons">
+                            <t t-call="website_dt.sandbox_button" />
+                            <a href="/contact-us" class="btn-contact">Contact us</a>
+                        </div>
+                    </div>
+                </div>
+                <img src="/website_dt/static/src/images/doughnut.svg" class="cta-image"/>
+            </section>
+        </t>
+    </template>
+
+    <template id="jicmail_discovery" name="Jicmail Discovery 3.0">
+        <t t-call="web.frontend_layout">
+            <section class="global-header">
+                <div class="container global-heading">
+                    <h1 class="global-title">JICMAIL Discovery</h1>
+                    <p class="global-subtitle">DataTile’s role in the development of JICMAIL’s Discovery Portal</p>
+                </div>
+            </section>
+
+            <section class="jickmail-discovery">
+                <div class="discovery">
+                    <div class="container">
+                        <div class="discovery-grid">
+                            <div class="discovery-grid-card is-left">
+                                <h2 class="heading-medium">Industry</h2>
+                                <p class="body-large">Advertising mail is the third largest media channel by spend in the UK. It is used across all business and public sectors and by all sizes of organisations, from the smallest local charity to the largest financial institutions in the country. With huge volumes of mail being sent each day, it is imperative that organisations have a way to measure the effectiveness and efficiency of their mail activities; from the campaign planning stages through to evaluating the success of their marketing. An independent, industry-accredited and accepted source of data was required to establish and justify mail’s place within media campaigns.</p>
+                                <p class="body-large">Since 2017, JICMAIL has been providing the advertising mail industry, advertisers and agencies with the data and analysis tools to make informed planning and marketing decisions.</p>
+                            </div>
+                            <div class="discovery-grid-card is-right">
+                                <h2 class="heading-medium">Client</h2>
+                                <p class="body-large">JICMAIL (the Joint Industry Committee for Mail) is a not-for-profit organisation that conducts and curates the gold standard independent audience research into mail. Joint Industry Committees (JICs) provide currency data: the single version of truth for the media channel.</p>
+                                <p class="body-large">There was a need to replace the current Discovery system that had served JICMAIL and its subscribers so well for many years but was now struggling with the growing size and complexity of the datasets.</p>
+                                <img src="/website_dt/static/src/images/jicmail-logo.png" width="111.5" class="discovery-grid-card-image"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="campaign-calculator">
+                <div class="project container">
+                    <div class="project-wrapper">
+                        <div class="screen-image-wrapper">
+                            <img src="/website_dt/static/src/images/campaign-calculator.png"/>
+                        </div>
+                        <div class="project-details">
+                            <div class="project-details-card">
+                                <h2 class="heading-medium">Project</h2>
+                                <p class="body-large">Our job was to craft the JICMAIL Discovery 3.0 portal, which entailed a comprehensive overhaul of the existing Discovery Portal. While it was imperative to retain its user-centric design and familiar interface, we needed to augment its functionalities. This enhancement was not only about adding features but also about ensuring the portal’s scalability and equipping it with the agility for advanced statistical analyses.</p>
+                                <p class="body-large">The portal masterfully amalgamates multiple datasets, presenting them coherently within an interactive dashboard.</p>
+                                <p class="body-large">These datasets in SPSS format are shipped quarterly by KANTAR together with anonymised visuals of ad mail. The ingestion of this data has been meticulously streamlined, clocking in at under 5 minutes. Notably, this process isn’t just swift — it's designed to be scalable and future-ready.</p>
+                            </div>
+                            <div class="project-details-grid">
+                                <div class="project-details-grid-card">
+                                    <div class="body-large">Survey results from nearly</div>
+                                    <h2 class="heading-medium"><span class="project-cards-span-text">24,000</span> households</h2>
+                                </div>
+                                <div class="project-details-grid-card">
+                                    <div class="body-large">Comprehensive Mail Item database detailing the journey of</div>
+                                    <h2 class="heading-medium"><span class="project-cards-span-text">280,000</span> mail items</h2>
+                                </div>
+                                <div class="project-details-grid-card">
+                                    <div class="body-large">An advertiser attribution database linking Mail Items to over</div>
+                                    <h2 class="heading-medium"><span class="project-cards-span-text">6,000</span> advertisers</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="reason">
+                <div class="container">
+                    <div class="reason-wrapper">
+                        <img src="/website_dt/static/src/images/up-quote.svg" class="reason-image"/>
+                        <div class="reason-content">
+                            <h2 class="quote_case">We chose to work with DataTile because they have a fast, flexible and dynamic dashboarding system that promised to take the delivery of mail insights to our expanding user-base of advertisers and agencies to the next level. In that, DataTile have not disappointed. The system is intuitive, the team are responsive, and the new insights that we’ve been able to deliver related to customisable target audiences and mail attention metrics have transformed the pace at which our award-winning data is harnessed in to planning and measurement insight. The addition of an “Advanced Analytics” tool to enable our users to dive even deeper in to our data, has been another key development and sets JICMAIL Discovery apart as an example of a best-in-class insight delivery system for a Joint Industry Currency
+                            </h2>
+                            <p class="body-regular quote_case">– Ian Gibbs, JICMAIL’s Director of Data Leadership and Learning</p>
+                        </div>
+                    </div>
+                    <img src="/website_dt/static/src/images/down-quote.svg" class="reason-image is-second"/>
+                </div>
+                <div class="bg-decor"></div>
+                <div class="bg-decor is-second"></div>
+            </section>
+
+            <section class="suite-of-feature" id="features">
+                <div class="container">
+                    <div class="solution-wrapper">
+                        <div class="solution-text-block">
+                            <h2 class="heading-medium">The DataTile solution</h2>
+                            <p class="body-large">The journey from the initial conversation to the final delivery of the JICMAIL Discovery Portal spanned six months. Adopting an agile development approach, we held weekly meetings that facilitated real-time adjustments to technical specifications. This iterative process was instrumental in accommodating the evolving feedback from the JICMAIL team.While the DataTile platform's inherent capabilities met most of JICMAIL’s needs, certain gaps remained. To bridge these, we enhanced and expanded the platform's functionalities. This adaptability not only addressed JICMAIL's specific requirements but also positioned us to handle even the most specialised requests in the future.</p>
+                            <p class="body-large">Key pillars of our solution:</p>
+                        </div>
+                        <div class="solution-details">
+                            <p class="body-large is-bold">Scalability</p>
+                            <p class="body-large">This was a non-negotiable requirement. As new data is continuously incremented in time, the DataTile team architected an automated, robust pipeline that involves auto-coding and classifying hundreds of thousands of brand titles. This ensures that the latest data is available to users as soon as possible without causing any interruptions to their tasks.</p>
+                        </div>
+                        <div class="solution-details">
+                            <p class="body-large is-bold">Extensibility</p>
+                            <p class="body-large">Thanks to DataTile's inherent functionality, updating or introducing new dashboards, analytics, and reports to the JICMAIL Discovery Platform is straightforward. This ease of use eliminates the need for intricate scripting or high-cost development in the future.</p>
+                        </div>
+                        <div class="solution-details">
+                            <p class="body-large is-bold">Customisation</p>
+                            <p class="body-large">While a significant majority (90%) of the Discovery Portal leveraged DataTile's standard WYSIWYG capabilities, JICMAIL had specific methodological calculations tailored to their clientele. To cater for these unique needs, we introduced highly specialised sub-applications termed 'Portlets'. Designed specifically by the DataTile team for this project, Portlets facilitate the embedding of third-party microservices into dashboards, ensuring data security and consistency are uncompromised.</p>
+                        </div>
+                        <div class="solution-details">
+                            <p class="body-large is-bold">Data Consistency and Reliability</p>
+                            <p class="body-large">The heartbeat of the DataTile platform is its bespoke vectorised statistical database. This foundational element guarantees not only scalability and performance but also unwavering consistency between raw research data and the figures showcased on a user's screen or numbers exported to PowerPoint slides.</p>
+                        </div>
+                    </div>
+                    <div class="screen-image-wrapper is-solution">
+                        <img src="/website_dt/static/src/images/action_banchmark.png" sizes="100vw"/>
+                    </div>
+                </div>
+            </section>
+
+            <section class="discovery3-0">
+                <div class="container">
+                    <div class="discovery3-0-wrapper">
+                        <div class="discovery3-0-content">
+                            <div class="solution-text-block">
+                                <h2 class="heading-medium">JICMAIL Discovery 3.0</h2>
+                                <p class="body-large">The platform can support hundreds of users simultaneously and effortlessly scales to handle increased load. With a user base already in the thousands, it was crucial for the system to maintain an intuitive and recognisable interface, thereby reducing the need for extensive re-training.A standout addition is the innovative crosstab feature, which expands the analytical possibilities. This enhancement goes beyond the confines of pre-set reports and dashboards, delivering added value to both subscribers and the client.</p>
+                            </div>
+                            <div class="discovery3-0-details-holder is-first">
+                                <p class="body-large is-bold">Functionality of the JICMAIL Discovery Portal:</p>
+                                <div class="discovery3-0-details is-first">
+                                    <img src="/website_dt/static/src/images/blue-right.svg" />
+                                    <div class="body-large">Comprehensive dashboards for fast and effective decision-making;</div>
+                                </div>
+                                <div class="discovery3-0-details">
+                                    <img src="/website_dt/static/src/images/blue-right.svg" />
+                                    <div class="body-large">Tailored ROI and ACT partner tools;</div>
+                                </div>
+                                <div class="discovery3-0-details">
+                                    <img src="/website_dt/static/src/images/blue-right.svg" />
+                                    <div class="body-large">Detailed audience and competitor insights;</div>
+                                </div>
+                                <div class="discovery3-0-details">
+                                    <img src="/website_dt/static/src/images/blue-right.svg" />
+                                    <div class="body-large">“Mail Journey” reporting;</div>
+                                </div>
+                                <div class="discovery3-0-details">
+                                    <img src="/website_dt/static/src/images/blue-right.svg" />
+                                    <div class="body-large">Do-it-yourself crosstab analysis for advanced data analysis;</div>
+                                </div>
+                                <div class="discovery3-0-details">
+                                    <img src="/website_dt/static/src/images/blue-right.svg" />
+                                    <div class="body-large">Automated PowerPoint report generation;</div>
+                                </div>
+                                <div class="discovery3-0-details">
+                                    <img src="/website_dt/static/src/images/blue-right.svg" />
+                                    <div class="body-large">Convenient Excel data exports;</div>
+                                </div>
+                                <div class="discovery3-0-details">
+                                    <img src="/website_dt/static/src/images/blue-right.svg" />
+                                    <div class="body-large">Granular access management, including a self-registration option for end-users.</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="screen-image-wrapper">
+                            <img src="/website_dt/static/src/images/journey.png" sizes="100vw"/>
+                        </div>
+                        <div class="discovery3-0-content">
+                            <div class="solution-text-block">
+                                <h2 class="heading-medium">Outcome and the Path Ahead</h2>
+                                <p class="body-large">DataTile didn't just deliver Discovery 3.0; they surpassed the stipulated project specifications. Designed with an eye on future expansion, the platform features</p>
+                            </div>
+                            <div class="discovery3-0-details-holder">
+                                <div class="discovery3-0-details">
+                                    <img src="/website_dt/static/src/images/blue-right.svg"/>
+                                    <div class="body-large">Cutting-edge market research analytics.</div>
+                                </div>
+                                <div class="discovery3-0-details">
+                                    <img src="/website_dt/static/src/images/blue-right.svg"/>
+                                    <div class="body-large">Agile and interactive reporting mechanisms.</div>
+                                </div>
+                                <div class="discovery3-0-details">
+                                    <img src="/website_dt/static/src/images/blue-right.svg"/>
+                                    <div class="body-large">Swift, automated report generation.</div>
+                                </div>
+                                <div class="discovery3-0-details">
+                                    <img src="/website_dt/static/src/images/blue-right.svg"/>
+                                    <div class="body-large">Flexibility in loading and processing additional data sets as necessary.</div>
+                                </div>
+                            </div>
+                            <p class="body-large">With this foundation, JICMAIL is poised to continually enhance its analytical prowess, ensuring it remains attuned to the evolving needs of its subscribers for years to come.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="talk-to-team">
+                <div class="container">
+                    <div class="contact-us">
+                        <h2>
+                            Try DataTile for free
+                        </h2>
+                        <p>
+                            Isn’t it time you transformed your business? Try DataTile for free and see how it can enhance your productivity with it’s thorough analysis, interactivity and speed.
+                        </p>
+                        <div class="buttons">
+                            <t t-call="website_dt.sandbox_button" />
+                            <a href="/contact-us" class="btn-contact">Contact us</a>
+                        </div>
+                    </div>
+                </div>
+                <img src="/website_dt/static/src/images/doughnut.svg" class="cta-image"/>
+            </section>
+        </t>
+    </template>
+
+    <template id="employee_satisfaction" name="DataTile's perfect Solution for an HR Team’s needs">
+        <t t-call="web.frontend_layout">
+            <section class="global-header">
+                <div class="container global-heading">
+                    <h1 class="global-title">Transformed Employee Satisfaction Analysis</h1>
+                    <p class="global-subtitle">A Game-Changer for HR team</p>
+                </div>
+            </section>
+
+            <section class="jickmail-discovery">
+                <div class="discovery">
+                    <div class="container">
+                        <div class="discovery-grid">
+                            <div class="discovery-grid-card is-left">
+                                <h2 class="heading-medium">Key objective</h2>
+                                <p class="body-large">The primary mission of a regional division HR department is to monitor employee progress and activities, including satisfaction metrics.</p>
+                                <p class="body-large">Before adopting DataTile, employees used a global platform which had notable limitations on filters. This system also had restricted capabilities for forming groups and reports, with predefined conditions for tracked indices sets.</p>
+                                <p class="body-large">Report generation was also a challenging task due to the platform's lack of localization; as a result, presentations often combined local and English phrases. In addition, corrections and amendments consumed a considerable amount of time and resources.</p>
+                            </div>
+                            <div class="discovery-grid-card is-right">
+                                <h2 class="heading-medium">Client</h2>
+                                <p class="body-large">The regional division is part of a prominent international corporation. It specializes in the production and sale of construction materials and is a leader in cutting-edge solutions for construction and industry.</p>
+                                <p class="body-large">They conduct annual staff surveys to explore workforce engagement. Post-survey, result analysis is completed to create over 100 individual departmental presentations illustrating the research findings.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="suite-of-feature" id="features">
+                <div class="container">
+                    <div class="screen-image-wrapper is-solution">
+                            <img src="/website_dt/static/src/images/datatile-solution.png" sizes="100vw"/>
+                        </div>
+                    <div class="solution-wrapper">
+                        <div class="solution-text-block">
+                            <h2 class="heading-medium">The DataTile solution</h2>
+                            <p class="body-large">To solve these problems and improve the efficiency of reporting employee satisfaction metrics, the company implemented the DataTile platform. The DataTile team swiftly immersed themselves in this new business sector, adapting to the company's specific requirements and acquiring requisite terminology and information about operational processes. This helped to create the perfect solution that achieved all of Client's goals.</p>
+                            <p class="body-large">One of DataTile’s key features is the ability to process, structure, and store large volumes of data from SPSS files. This significantly simplifies and speeds up data processing for research.</p>
+                            <p class="body-large">Additionally, there is an intuitive presentation export function. This empowers company HR specialists to swiftly generate visually appealing and well-organized presentations, leveraging processed data within a predefined template.</p>
+                        </div>
+                        <div class="solution-text-block">
+                            <h2 class="heading-medium">Outcome</h2>
+                            <p class="body-large">With DataTile, Client’s HR team not only found a versatile solution for analyzing and processing information but also significantly reduced data processing time.</p>
+                            <p class="body-large">It has been a game-changer for strategic planning and effective personnel management. Our ongoing two-year collaboration showcases the transformative power of technology in fostering company growth. Plus, it ensures reassuringly efficient and precise resource management.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="suite-of-feature" id="features">
+                <div class="container">
+                    <div class="solution-wrapper">
+                        <div class="solution-details">
+                            <h2 class="heading-medium"><strong>DataTile Implementation Business Impact</strong></h2>
+                            <p class="body-large is-bold"><strong>Enhanced efficiency</strong></p>
+                            <p class="body-large">Reduces data processing time. Presentation export to PowerPoint now takes less than 10 minutes, regardless of parameters and filters.</p>
+                        </div>
+                        <div class="solution-details">
+                            <p class="body-large is-bold"><strong>Accuracy and instant data availability</strong></p>
+                            <p class="body-large">Automated analysis and presentation of data both ensure high accuracy and clarity of information. Once all databases are loaded into the platform, they are stored in one place and available for use and comparison at any time.</p>
+                        </div>
+                        <div class="solution-details">
+                            <p class="body-large is-bold">Customization</p>
+                            <p class="body-large">The flexibility and adaptability of the DataTile team allow for rapid customization, adding new metrics and calculations according to each company’s requirements.</p>
+                        </div>
+                        <div class="solution-details">
+                            <p class="body-large is-bold"><strong>Comparison and flexibility</strong></p>
+                            <p class="body-large">Long-term monitoring and change analysis are important for decision-making. The platform's capabilities easily fulfill this role. DataTile’s nimble functionality enables the combination or segmentation of variables through logical operations, providing complete flexibility in data management. This ensures accurate indices, such as eNPS, even with changes in measurement methodology or structural changes within the company.</p>
+                        </div>
+                        <div class="solution-details">
+                            <p class="body-large is-bold"><strong>User-friendly interface and user support</strong></p>
+                            <p class="body-large">The platform is easy and convenient to use, even when implementing complex data operations. This allows for quick result access. A collaboration with DataTile includes proactive and effective platform training.</p>
+                        </div>
+                    </div>
+                    <div class="screen-image-wrapper is-solution">
+                        <img src="/website_dt/static/src/images/index.png" sizes="100vw"/>
+                    </div>
+                </div>
+            </section>
+
+            <section class="talk-to-team">
+                <div class="container">
+                    <div class="contact-us">
+                        <h2>
+                            Try DataTile for free
+                        </h2>
+                        <p>
+                            Isn’t it time you transformed your business? Try DataTile for free and see how it can enhance your productivity with it’s thorough analysis, interactivity and speed.
+                        </p>
+                        <div class="buttons">
+                            <t t-call="website_dt.sandbox_button" />
+                            <a href="/contact-us" class="btn-contact">Contact us</a>
+                        </div>
+                    </div>
+                </div>
+                <img src="/website_dt/static/src/images/doughnut.svg" class="cta-image"/>
+            </section>
+        </t>
+    </template>
+
+    <template id="fastuna" name="Fastuna">
+        <t t-call="web.frontend_layout">
+            <section class="global-header">
+                <div class="container global-heading">
+                    <h1 class="global-title">Streamlining the Analysis of Hundreds of Ad Tests</h1>
+                    <p class="global-subtitle">The synergy for the Client's needs: DataTile—Fastuna collaboration</p>
+                </div>
+            </section>
+
+            <section class="jickmail-discovery">
+                <div class="discovery">
+                    <div class="container">
+                        <div class="discovery-grid">
+                            <div class="discovery-grid-card is-left">
+                                <h2 class="heading-medium"><strong>Project background</strong></h2>
+                                <p class="body-large">Managing ad tests across various markets and products can be overwhelming. Traditional methods, like PowerPoints or Crosstabs, work for smaller projects. While handling several hundreds of creative materials requires a research automation tool to navigate this journey efficiently. Fastuna, an online platform, offers comprehensive testing tools for creative materials, and DataTile revolutionises data analysis for marketers and researchers.</p>
+                                <h2 class="heading-medium"><strong>Key objective</strong></h2>
+                                <p class="body-large">Create a central data hub to streamline the analysis of test results, incorporating additional data sets for a comprehensive view of marketing efforts.</p>
+                            </div>
+                            <div class="discovery-grid-card is-right">
+                                <h2 class="heading-medium">Client</h2>
+                                <p class="body-large">Fastuna addressed us on behalf of their client – a large technological corporation which operates as an umbrella brand in different market segments (Taxi, food delivery services, media services). Their marketing efforts include idea validations, followed by data analytics activities, resulting in making data-driven decisions and enhancing their brand performance.</p>
+                                <p class="body-large">Their team was faced with analyzing results from a thousand materials tested through 9 distinct types of testing with the <a href="https://fastuna.com/solutions" target="_blank"><span class="red">Fastuna platform</span></a>. They needed a centralized data repository enriched with additional client-specific information, such as TRPs, advertisement costs etc.</p>
+                                <img src="/website_dt/static/src/images/fastuna.svg" width="200" height="Auto" alt="" class="discovery-grid-card-image"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="suite-of-feature" id="features">
+                <div class="container">
+                    <div class="screen-image-wrapper is-solution">
+                        <img src="/website_dt/static/src/images/fastuna-ad.png"/>
+                    </div>
+                    <div class="solution-wrapper">
+                        <div class="solution-text-block">
+                            <h2 class="heading-medium">Project Outline and Solution - Streamlining Data analysis</h2>
+                            <p class="body-large is-bold"><strong>Data preparation and validation</strong></p>
+                            <p class="body-large">DataTile data processing tools were used to clean up the files, recode the materials' naming. Additionally the codebook was composed to ensure the correct choice of variables’ names and types. Received data was loaded into the targeted DataTile databases and linked to other sources of information.</p>
+                            <p class="body-large is-bold"><strong>Data representation</strong></p>
+                            <p class="body-large">DataTile created nine dashboards linked to proper business streams as well as to the multimedia.</p>
+                            <p class="body-large is-bold"><strong>Data accessibility</strong></p>
+                            <p class="body-large">The team developed a portal, where the client can share all the necessary data in one click or set up the access groups according to their security policy.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="reason">
+                <div class="container">
+                    <div class="reason-wrapper">
+                        <img src="/website_dt/static/src/images/up-quote.svg" class="reason-image"/>
+                        <div class="reason-content">
+                            <h2 class="quote_case">We’re happy with our collaboration with DataTile. Our strategic client was able to achieve greater flexibility and has significantly improved the speed of obtaining operational data. Moreover, it streamlined access to research data for final users and as a result accelerated their business-decision making process. On our side, this collaboration enabled us to relieve ourmanagers from routine tasks and increase customer loyalty
+                            </h2>
+                            <p class="body-regular quote_case">– Rimantas Reimontas, Managing Director at Fastuna EU</p>
+                        </div>
+                    </div>
+                    <img src="/website_dt/static/src/images/down-quote.svg" class="reason-image is-second"/>
+                </div>
+                <div class="bg-decor"></div>
+                <div class="bg-decor is-second"></div>
+            </section>
+
+            <section class="suite-of-feature" id="features">
+                <div class="container">
+                    <div class="solution-wrapper">
+                        <div class="solution-details">
+                            <h2 class="heading-medium"><strong>Business Impact</strong></h2>
+                            <p class="body-large is-bold"><strong>Customer loyalty</strong></p>
+                            <p class="body-large">By minimizing the routine, focusing on strategic tasks and leaving the technical challenges of handling the tested data to DataTile, Fastuna bolstered their client’s loyalty.</p>
+                        </div>
+                        <div class="solution-details">
+                            <p class="body-large is-bold"><strong>Improved workability</strong></p>
+                            <p class="body-large">Research automation positively impacts the performance of analysts and product owners, as it frees their time and speeds up their decision-making process.</p>
+                        </div>
+                        <div class="solution-details">
+                            <p class="body-large is-bold">Scalability</p>
+                            <p class="body-large">Collaboration with DataTIle and Fastuna ensured quick and responsible management of large data streams, which created a solid foundation for conducting more extensive research in the future.</p>
+                        </div>
+                        <p class="body-large">This cooperation provided the client with a comprehensive and reliable solution, which facilitated their smooth and confident product launch. With the Fastuna platform the client was able to test their creative materials and with DataTile they obtained automated results delivery and the visual representation of the tested data within the plausible amount of time. Thousands of materials are now accessible in a single repository, the client can swiftly compare data from various sources and share new data with end-users.</p>
+                    </div>
+                    <div class="screen-image-wrapper is-solution">
+                        <img src="/website_dt/static/src/images/fastuna-kpi.png" />
+                    </div>
+                </div>
+            </section>
+
+            <section class="talk-to-team">
+                <div class="container">
+                    <div class="contact-us">
+                        <h2>
+                            Try DataTile for free
+                        </h2>
+                        <p>
+                            Isn’t it time you transformed your business? Try DataTile for free and see how it can enhance your productivity with it’s thorough analysis, interactivity and speed.
+                        </p>
+                        <div class="buttons">
+                            <t t-call="website_dt.sandbox_button" />
+                            <a href="/contact-us" class="btn-contact">Contact us</a>
+                        </div>
+                    </div>
+                </div>
+                <img src="/website_dt/static/src/images/doughnut.svg" class="cta-image"/>
+            </section>
+        </t>
+    </template>
+
+    <template id="sinomonitor" name="Sinomonitor">
+        <t t-call="web.frontend_layout">
+            <section class="global-header">
+                <div class="container global-heading">
+                    <h1 class="global-title">Sinomonitor case study: <br/>
+                                           a Research Agency</h1>
+                    <p class="global-subtitle">Vivid, comprehensive data-driven insights for SINOMONITOR China Syndicated Research</p>
+                </div>
+            </section>
+            <section class="jickmail-discovery">
+                <div class="discovery">
+                    <div class="container">
+                        <div class="discovery-grid">
+                            <div class="discovery-grid-card is-left">
+                                <h2 class="heading-medium">
+                                    <strong>Challenge</strong>
+                                </h2>
+                                <p class="body-large">Sinomonitor’s single-source consumer research databases, such as
+                                    CMMS and H3, required a lot of time and labor to package and upload. The complex
+                                    data analysis and inflexible presentation of results wasted considerable time and
+                                    energy for both researchers and customers. A lack of collaboration tools increased
+                                    communication costs and slowed down the overall project.
+                                </p>
+                            </div>
+                            <div class="discovery-grid-card is-right">
+                                <h2 class="heading-medium">Client</h2>
+                                <p class="body-large">Founded in 1998, Sinomonitor has developed into a leading
+                                    market research institution in China. It has the largest single source consumer
+                                    research database, contacting more than 1 million consumers every year across
+                                    more than 500 cities in China.
+                                </p>
+                                <p class="body-large">Sinomonitor is committed to providing clients with
+                                    professional market research, data-driven insights and advisory services,
+                                    including survey sciences, media research, consumer and social research, and
+                                    marketing strategy consulting.
+                                </p>
+                                <img src="/website_dt/static/src/images/SINOMONITOR-LOGO.png" width="200" class="discovery-grid-card-image"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="suite-of-feature" id="features">
+                <div class="container">
+                    <div class="solution-wrapper">
+                        <div class="solution-text-block">
+                            <h2 class="heading-medium">Project Solution</h2>
+                            <p class="body-large">For massive survey databases such as CMMS and H3,
+                                DataTile enables high-speed end-to-end automation from data loading
+                                to results delivery. Data processing can even be done in multiple
+                                languages. This used to be labor-intensive, but now millions of
+                                sample sizes can be loaded directly into the DataTile with minimal
+                                involvement of researchers or data processing.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="reason">
+                <div class="container">
+                    <div class="reason-wrapper">
+                        <img src="/website_dt/static/src/images/up-quote.svg" class="reason-image"/>
+                        <div class="reason-content">
+                            <h2 class="quote_case">It makes research more convenient, more secure and more visual</h2>
+                            <p class="body-regular quote_case">– Leon Liu, General Manager of SINOMONITOR of China</p>
+                        </div>
+                    </div>
+                    <img src="/website_dt/static/src/images/down-quote.svg" class="reason-image is-second"/>
+                </div>
+                <div class="bg-decor"></div>
+                <div class="bg-decor is-second"></div>
+            </section>
+            <section class="suite-of-feature" id="features">
+                <div class="container">
+                    <div class="solution-wrapper">
+                        <div class="solution-details">
+                            <h2 class="heading-medium">
+                                <strong>Transformation</strong>
+                            </h2>
+                            <p class="body-large">DataTile greatly reduces the amount of preparation before data
+                                release. By loading large amounts of research data onto the DataTile platform, we can
+                                collaborate and interact on consistent data sources.
+                            </p>
+                        </div>
+                        <div class="solution-details">
+                            <p class="body-large">It provides customers with special segmentation and more complex
+                                computing functions directly in the cloud. The server location in China provides a
+                                guarantee for data security, and its friendly user interface and interactivity allow
+                                researchers and customers to fully enjoy the process of data analysis.
+                            </p>
+                        </div>
+                        <div class="solution-details">
+                            <p class="body-large">Thanks to DataTile, we can supply more vivid and comprehensive
+                                data-driven insights. Interactive dashboards provide an intuitive data presentation to
+                                customers and display research results in multiple dimensions.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <br/>
+            <section class="talk-to-team">
+                <div class="container">
+                    <div class="contact-us">
+                        <h2>
+                            Try DataTile for free
+                        </h2>
+                        <p>
+                            Isn’t it time you transformed your business? Try DataTile for free and see how it can enhance your productivity with it’s thorough analysis, interactivity and speed.
+                        </p>
+                        <div class="buttons">
+                            <t t-call="website_dt.sandbox_button" />
+                            <a href="/contact-us" class="btn-contact">Contact us</a>
+                        </div>
+                    </div>
+                </div>
+                <img src="/website_dt/static/src/images/doughnut.svg" class="cta-image"/>
+            </section>
+        </t>
+    </template>
+
+    <template id="global_cases" name="Global">
+        <t t-call="web.frontend_layout">
+            <section class="global-header">
+                <div class="container global-heading">
+                    <h1 class="global-title">Global case study: <br/>
+                                           a Media Owner</h1>
+                    <p class="body-xl is-discovery">Transforming how Global Media &amp; Entertainment shares the results of its bespoke and tracking surveys</p>
+                </div>
+            </section>
+            <section class="jickmail-discovery">
+                <div class="discovery">
+                    <div class="container">
+                        <div class="discovery-grid">
+                            <div class="discovery-grid-card is-left">
+                                <h2 class="heading-medium">
+                                    <strong>Challenge</strong>
+                                </h2>
+                                <p class="body-large">Global conducts hundreds of research projects every year.
+                                    Living in a turbulent, fast-paced world, it is more important than ever to
+                                    ensure a full understanding of audiences, clients’ brands and the relationship between them.
+                                </p>
+                                <p class="body-large">Global regularly needs to share the results of media surveys with
+                                    various stakeholders. This involves creating presentations that demonstrate the size
+                                    and value of their audiences, quickly and efficiently.
+                                </p>
+                                <p class="body-large">Compiling these results, then creating presentations for various
+                                    audiences, is extremely labour-intensive and consumes countless hours of valuable
+                                    analyst time.
+                                </p>
+                            </div>
+                            <div class="discovery-grid-card is-right">
+                                <h2 class="heading-medium">Client</h2>
+                                <p class="body-large">UK company, Global (Global Media &amp; Entertainment Ltd) is one
+                                    of Europe’s foremost media and entertainment groups.
+                                </p>
+                                <p class="body-large">It is Europe’s largest radio company with market-leading media
+                                    brands including Capital, Heart and Classic FM. And one of the leading Outdoor
+                                    companies in both the UK &amp; Europe reaching over 235,000 sites.
+                                </p>
+                                <p class="body-large">DAX is also the market leader in programmatic audio and outdoor
+                                    advertising, connecting advertisers with an audience of more than 130 million people
+                                    worldwide listening to music streaming services, digital radio and podcasts.
+                                </p>
+                                <img src="/website_dt/static/src/images/global.svg" width="90" class="discovery-grid-card-image"/>
+<!--                                <img src="https://cdn.prod.website-files.com/61e95bdc5d19474896dacbb6/61e96535e0521080839d458f_h-global.svg"-->
+<!--                                     loading="lazy" width="90" height="Auto" alt="Client logo"-->
+<!--                                     class="discovery-grid-card-image is-global"/>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="suite-of-feature" id="features">
+                <div class="container">
+                    <div class="solution-wrapper">
+                        <div class="solution-text-block">
+                            <h2 class="heading-medium">Project Solution</h2>
+                            <p class="body-large">DataTile’s intelligent platform is perfect for large-scale surveys and
+                                for rapidly analyzing large volumes of survey data. Data loading is fully automated, and
+                                the system can automatically update dashboards as new waves of data are loaded.
+                            </p>
+                            <p class="body-large">Data can be viewed in dashboards where multiple data sources can be
+                                layered to provide the full context. Stunning data visualizations can be instantly
+                                output to any major format.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="reason">
+                <div class="container">
+                    <div class="reason-wrapper">
+                        <img src="/website_dt/static/src/images/up-quote.svg" class="reason-image"/>
+                        <div class="reason-content">
+                            <h2 class="quote_case">DataTile is a revolution in the research industry. They’ve thought of
+                                everything to make life simpler and easier for a researcher to analyse and visualise by
+                                eliminating the heavy lifting and giving back time that can be spent getting the
+                                insights out of data. DataTile has allowed us to deal with a huge increase in internal
+                                and advertiser requests in a timely manner and the exports require no extra work.<br/>In
+                                today’s fast paced and constantly changing world, it’s absolutely vital that media
+                                owners put more effort into understanding people and behaviour to connect with them
+                                authentically and with empathy. Agility is key for us. Being able to collect and analyse
+                                consumer feedback ensures that we always have our finger on the pulse and DataTile helps
+                                us do this. We can now analyse and present our data with speed and ease, often within
+                                hours of fieldwork closing.
+                            </h2>
+                            <p class="body-regular quote_case">– Sarah Gale, Director of Research &amp; Insight</p>
+                        </div>
+                    </div>
+                    <img src="/website_dt/static/src/images/down-quote.svg" class="reason-image is-second"/>
+                </div>
+                <div class="bg-decor"></div>
+                <div class="bg-decor is-second"></div>
+            </section>
+            <section class="suite-of-feature" id="features">
+                <div class="container">
+                    <div class="solution-wrapper">
+                        <div class="solution-details">
+                            <h2 class="heading-medium">
+                                <strong>Transformation</strong>
+                            </h2>
+                            <p class="body-large">The transition from manual workflow to an automated solution
+                                significantly enhanced both the reliability of data and the speed of data processing,
+                                leaving a lasting impression.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <br/>
+            <section class="talk-to-team">
+                <div class="container">
+                    <div class="contact-us">
+                        <h2>
+                            Try DataTile for free
+                        </h2>
+                        <p>
+                            Isn’t it time you transformed your business? Try DataTile for free and see how it can enhance your productivity with it’s thorough analysis, interactivity and speed.
+                        </p>
+                        <div class="buttons">
+                            <t t-call="website_dt.sandbox_button" />
+                            <a href="/contact-us" class="btn-contact">Contact us</a>
+                        </div>
+                    </div>
+                </div>
+                <img src="/website_dt/static/src/images/doughnut.svg" class="cta-image"/>
+            </section>
+        </t>
+    </template>
+
+</odoo>

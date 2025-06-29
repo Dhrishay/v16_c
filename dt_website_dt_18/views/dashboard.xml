@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="view_dashboard_form" model="ir.ui.view">
+        <field name="name">dashboard.form</field>
+        <field name="model">dashboard.record</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="icon_image" widget="image"/>
+                        <field name="url"/>
+                        <field name="description"/>
+                        <field name="category_ids" widget="many2many_tags"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_dashboard_list" model="ir.ui.view">
+        <field name="name">dashboard.list</field>
+        <field name="model">dashboard.record</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="category_ids" widget="many2many_tags"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_dashboard_category_list" model="ir.ui.view">
+        <field name="name">dashboard.category.list</field>
+        <field name="model">dashboard.category</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="action_dashboard" model="ir.actions.act_window">
+        <field name="name">Dashboards</field>
+        <field name="res_model">dashboard.record</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="action_dashboard_category" model="ir.actions.act_window">
+        <field name="name">Dashboard Categories</field>
+        <field name="res_model">dashboard.category</field>
+        <field name="view_mode">list</field>
+    </record>
+
+    <menuitem id="dashboard_gallery_menu" parent="website.menu_website_global_configuration" name="Dashboards Gallery" sequence="10" />
+
+    <menuitem id="dashboard_category_menu" name="Categories"
+              parent="dashboard_gallery_menu"
+              action="action_dashboard_category"/>
+    <menuitem id="dashboard_menu" name="Dashboards"
+              parent="dashboard_gallery_menu"
+              action="action_dashboard"/>
+</odoo>
