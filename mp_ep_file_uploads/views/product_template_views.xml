@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="plm_product_product_normal_form_view_inherit" model="ir.ui.view">
+        <field name="name">product.template.file_uploads</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_only_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="Files Linked Documents" name="file_linked_documents">
+                    <group>
+                        <group>
+                            <field name="product_original_step_file" filename="step_file_name"
+                                   context="{'allowed_type': '.step'}"/>
+                            <field name="product_original_step_file_name" invisible="1"/>
+                            <field name='fcstd_file' context="{'allowed_type':'.fcstd'}" filename="fcstd_file_name"/>
+                            <field name='fcstd_file_name' invisible='1'/>
+                            <field name='product_step_file' context="{'allowed_type':'.product_step'}"
+                                   filename="product_step_file_name"/>
+                            <field name='product_step_file_name' invisible='1'/>
+                            <field name='drawing_fcstd_file' context="{'allowed_type':'.drawing_fcstd'}"
+                                   filename="drawing_fcstd_file_name"/>
+                            <field name='drawing_fcstd_file_name' invisible='1'/>
+                            <field name='pdf_file' context="{'allowed_type':'.pdf'}" filename="pdf_file_name"/>
+                            <field name='pdf_file_name' invisible='1'/>
+                            <field name='image_file' context="{'allowed_type':'.image'}" filename="image_file_name"/>
+                            <field name='image_file_name' invisible='1'/>
+                            <field name='dxf_file' context="{'allowed_type':'.dxf'}" filename="dxf_file_name"/>
+                            <field name='dxf_file_name' invisible='1'/>
+                            <field name='doc_file' context="{'allowed_type':'.doc'}" filename="doc_file_name"/>
+                            <field name='doc_file_name' invisible='1'/>
+                            <field name='outsource_pdf_file' context="{'allowed_type':'.outsource_pdf'}"
+                                   filename="outsource_pdf_file_name"/>
+                            <field name='outsource_pdf_file_name' invisible='1'/>
+                            <field name='tap_file' context="{'allowed_type':'.tap'}" filename="tap_file_name"/>
+                            <field name='tap_file_name' invisible='1'/>
+                            <field name='stl_file' context="{'allowed_type':'.stl'}" filename="stl_file_name"/>
+                            <field name='stl_file_name' invisible='1'/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+    <template id="product_view_sftp_doc" inherit_id="website_sale.product" name="View SFTP Doc">
+        <xpath expr="//div[@id='add_to_cart_wrap']" position="after">
+            <t t-set="view_sftp" t-value="product.product_original_step_file_url"/>
+            <div id="view_sftp_doc" t-attf-class="mb-2 me-auto"
+                 t-if="product.product_original_step_file_url">
+                <a role="button" id="add_to_cart1"
+                   t-attf-class="btn btn-primary  flex-grow-1 #{'btn-lg' if ctaSizeBig else ''}" t-att-href="view_sftp"
+                   target="_blank">
+                    <!--<i class="fa fa-shopping-cart me-2"/>-->
+                    <span style="font-weight: bold">View Document</span>
+                </a>
+            </div>
+        </xpath>
+    </template>
+
+</odoo>

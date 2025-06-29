@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="product_normal_form_view" model="ir.ui.view">
+        <field name="name">product.product.file_uploads</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_normal_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="Files" name="file_linked_documents">
+                    <group>
+                        <group>
+                            <field name="is_customisable" invisible="1"/>
+                            <field name="is_service" invisible="1"/>
+                            <field name='fcstd_file' context="{'allowed_type':'.zip'}" filename="fcstd_file_name" string="Prepared Data [.zip]" attrs="{'required': ['&amp;', '|', ('default_code', 'ilike', 'CFG'),('default_code', 'ilike', 'MFG'), ('is_fdm_service', '=', False)]}"/>
+                            <field name='fcstd_file_name' invisible='1'/>
+                            <field name='product_step_file' context="{'allowed_type':'.product_step'}"
+                                   filename="product_step_file_name" string="Step File [.step / .stp ]" attrs="{'invisible': [('is_service', '=', True)],'required': [('default_code', 'ilike', 'MFG'), ('is_fdm_service', '=', False)]}"/>
+                            <field name='product_step_file_name' invisible='1'/>
+                            <field name='drawing_fcstd_file' context="{'allowed_type':'.drawing_fcstd'}"
+                                   filename="drawing_fcstd_file_name" string="PCB Outline [.dxf]" attrs="{'invisible': [('is_service', '=', True)]}"/>
+<!--                            <field name='drawing_fcstd_file' context="{'allowed_type':'.drawing_fcstd'}"-->
+<!--                                   filename="drawing_fcstd_file_name" string="PCB Outline [.dxf]" attrs="{'invisible': [('is_service', '=', True)],'required': [('is_service', '!=', True),('is_customisable', '=', False)]}"/>-->
+                            <field name='drawing_fcstd_file_name' invisible='1'/>
+                            <field name='pdf_file' context="{'allowed_type':'.pdf'}" filename="pdf_file_name" string="Data Sheet [.pdf]" attrs="{'invisible': [('is_service', '=', True)],'required': [('default_code', 'ilike', 'MFG')]}"/>
+                            <field name='pdf_file_name' invisible='1'/>
+<!--                            <field name='doc_file' context="{'allowed_type':'.doc_1'}" filename="doc_file_name" string="DFM Checklist [.xls / .doc / .docx]" attrs="{'invisible': ['|',('is_service', '=', True),('is_customisable', '=', False),('is_service', '=', False),],'required': ['|',('is_service', '=', True),('is_customisable', '!=', False)]}"/>-->
+                            <field name='doc_file' context="{'allowed_type':'.doc_1'}" filename="doc_file_name" string="DFM Checklist [.xls / .doc / .docx]" attrs="{'invisible': ['|', '!',('default_code', 'ilike', 'CFG'),('default_code', 'ilike', 'MFG')] ,'required': ['&amp;', ('default_code', 'ilike', 'CFG'), ('is_fdm_service', '=', False)]}"/>
+<!--                            <field name='doc_file' context="{'allowed_type':'.doc_2'}" filename="doc_file_name" string="DFM Checklist [.xls / .doc / ]" attrs="{'invisible': ['|',('is_service', '=', False),('is_customisable', '=', True)], 'required': [('is_customisable', '!=', False)]}"/>-->
+                            <field name='doc_file_name' invisible='1'/>
+<!--                            <field name='technical_drawing_file' filename="technical_drawing_file_name" string="Technical Drawing File" attrs="{'invisible': [('is_customisable', '=', False)]}"/>-->
+                            <field name='technical_drawing_file' context="{'allowed_type':'.technical_drawing_file'}" filename="technical_drawing_file_name" string="Technical Drawing File" attrs="{'invisible': ['|',('is_customisable', '=', False),'!',('default_code', 'ilike', 'CFG')]}"/>
+                            <field name='technical_drawing_file_name' invisible='1'/>
+<!--                            <field name='uv_printing_file' filename="uv_printing_file_name" string="UV Printing File" attrs="{'invisible': [('is_customisable', '=', False)]}"/>-->
+                            <field name='uv_printing_file' context="{'allowed_type':'.uv_printing_file'}" filename="uv_printing_file_name" string="UV Printing File" attrs="{'invisible': ['|',('is_customisable', '=', False),'!',('default_code', 'ilike', 'CFG')]}"/>
+                            <field name='uv_printing_file_name' invisible='1'/>
+<!--                            <field name="additional_notes" attrs="{'invisible': [('is_customisable', '=', False)]}"/>-->
+                            <field name="additional_notes" attrs="{'invisible': ['|',('is_customisable', '=', False),'!',('default_code', 'ilike', 'CFG')]}"/>
+
+                        </group>
+                        <group>
+                            <field name='stl_file' context="{'allowed_type':'.stl'}" filename="stl_file_name" string="Production Data [.zip]" attrs="{'required': ['&amp;', '|', ('default_code', 'ilike', 'CFG'),('default_code', 'ilike', 'MFG'), ('is_fdm_service', '=', False)]}"/>
+                            <field name='stl_file_name' invisible='1'/>
+<!--                            <field name="x_studio_customer_drawing_file" string="Customization Form For Database Product" attrs="{'invisible': [('is_customisable', '=', False)]}"/>-->
+                            <field name="x_studio_customer_drawing_file" string="Customization Form For Database Product" invisible="1"/>
+<!--                            <field name="x_studio_exception_file" filename="exception_file_name" context="{'allowed_type':'.tech_query_1'}" string="Technical Query [.xls / .doc / .docx/ .pdf]" attrs="{'invisible': ['|',('is_service', '=', True),('is_customisable', '=', False),('is_service', '=', False),]}"/>-->
+                            <field name="x_studio_exception_file" filename="exception_file_name" context="{'allowed_type':'.tech_query_1'}" string="Technical Query [.xls / .doc / .docx/ .pdf]" attrs="{'invisible': ['|','!',('default_code', 'ilike', 'CFG'),'|',('is_service', '=', True),('is_customisable', '=', False),('is_service', '=', False),]}"/>
+
+<!--                            <field name="x_studio_exception_file" filename="exception_file_name" context="{'allowed_type':'.tech_query_2'}" string="Technical Query [.xls / .doc ]" attrs="{'invisible': ['|',('is_service', '=', False),('is_customisable', '=', True)]}"/>-->
+                            <field name='exception_file_name' invisible='1'/>
+<!--                            <field name="x_studio_exception_reply_file" context="{'allowed_type':'.tech_reply_1'}" filename="exception_reply_file_name" string="Technical Query Response [.xls / .doc / .docx/ .pdf]" attrs="{'invisible': ['|',('is_service', '=', True),('is_customisable', '=', False),('is_service', '=', False),]}"/>-->
+                            <field name="x_studio_exception_reply_file" context="{'allowed_type':'.tech_reply_1'}" filename="exception_reply_file_name" string="Technical Query Response [.xls / .doc / .docx/ .pdf]" attrs="{'invisible': ['|','!',('default_code', 'ilike', 'CFG'),'|',('is_service', '=', True),('is_customisable', '=', False),('is_service', '=', False),]}"/>
+
+<!--                            <field name="x_studio_exception_reply_file" context="{'allowed_type':'.tech_reply_2'}" filename="exception_reply_file_name" string="Technical Query Response [.xls / .doc / .docx/ ]" attrs="{'invisible': ['|',('is_service', '=', False),('is_customisable', '=', True)]}"/>-->
+                            <field name='exception_reply_file_name' invisible='1'/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>
