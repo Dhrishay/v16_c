@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="sale_close_reason_view_form" model="ir.ui.view">
+        <field name="name">sale.close.reason.form</field>
+        <field name="model">sale.close.reason.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Cancellation Reasons">
+                <group class="oe_title">
+                    <field name="close_reason_id" string="Reason"/>
+                </group>
+                <footer>
+                    <button name="set_close" string="Submit" type="object" class="btn-primary" data-hotkey="q"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel" data-hotkey="z"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>

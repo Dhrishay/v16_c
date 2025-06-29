@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_partner_mail_list" model="ir.actions.act_window">
+        <field name="name">Add to mailing list</field>
+        <field name="res_model">partner.mail.list.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="binding_model_id" ref="base.model_res_partner"/>
+    </record>
+
+    <record model="ir.ui.view" id="partner_mail_list_wizard_form">
+        <field name="name">partner.mail.list.form</field>
+        <field name="model">partner.mail.list.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Create contact mailing list">
+                <group>
+                    <field name="mail_list_id" required="1"/>
+                </group>
+                <footer>
+                    <button string="Add contacts to mailing list" name="add_to_mail_list"
+                            type="object" class="oe_highlight"/>
+                    <button string="Cancel" class="oe_link" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+
+    <record id="action_crm_partner_mail_list" model="ir.actions.act_window">
+        <field name="name">Add to mailing list</field>
+        <field name="res_model">crm.mail.list.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="binding_model_id" ref="crm.model_crm_lead"/>
+    </record>
+
+    <record model="ir.ui.view" id="crm_mail_list_wizard_form">
+        <field name="name">crm.mail.list.form</field>
+        <field name="model">crm.mail.list.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Create contact mailing list">
+                <group>
+                    <field name="mail_list_id" required="1"/>
+                </group>
+                <footer>
+                    <button string="Add contacts to mailing list" name="add_to_mail_list"
+                            type="object" class="oe_highlight"/>
+                    <button string="Cancel" class="oe_link" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_sale_order_partner_mail_list" model="ir.actions.act_window">
+        <field name="name">Add to mailing list</field>
+        <field name="res_model">sale.order.mail.list.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="binding_model_id" ref="sale.model_sale_order"/>
+    </record>
+
+    <record model="ir.ui.view" id="sale_order_list_wizard_form">
+        <field name="name">sale.order.mail.list.form</field>
+        <field name="model">sale.order.mail.list.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Create contact mailing list">
+                <group>
+                    <field name="mail_list_id" required="1"/>
+                </group>
+                <footer>
+                    <button string="Add contacts to mailing list" name="add_to_mail_list"
+                            type="object" class="oe_highlight"/>
+                    <button string="Cancel" class="oe_link" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+</odoo>

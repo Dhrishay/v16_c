@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="sale_close_reason_view_tree" model="ir.ui.view">
+        <field name="name">sale close reason view tree </field>
+        <field name="model">sale.close.reason</field>
+        <field name="arch" type="xml">
+            <tree string="Cancellation Reasons" editable="bottom">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="sale_close_reason_view_form" model="ir.ui.view">
+        <field name="name">sale close reason view form</field>
+        <field name="model">sale.close.reason</field>
+        <field name="arch" type="xml">
+            <form string="Cancellation Reasons">
+                <sheet>
+                    <group>
+                            <field name="name"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- model.name action window -->
+        <record id="sale_close_reason_action" model="ir.actions.act_window">
+            <field name="name">Cancellation Reasons</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sale.close.reason</field>
+            <field name="view_mode">tree</field>
+        </record>
+
+        <menuitem id="parent_menu_sale_close_reason" parent="sale.menu_sale_config" groups="sales_team.group_sale_manager" name="Cancellation Reason"/>
+        <menuitem action="mechpower_base_extended.sale_close_reason_action" id="menu_sale_close_reason" parent="parent_menu_sale_close_reason" groups="sales_team.group_sale_manager"/>
+
+</odoo>

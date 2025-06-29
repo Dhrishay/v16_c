@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="mech_crm_lead_view_form" model="ir.ui.view">
+        <field name="name">view_lead_form</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_lead_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='action_set_won_rainbowman']" position="replace">
+                <field name="show_analysis_button" invisible="1"/>
+                <field name="show_new_followup_button" invisible="1"/>
+                <field name="show_won_lost_button" invisible="1"/>
+                <field name="show_only_won_button" invisible="1"/>
+                <button name="action_set_new" string="Set as New " type="object" class="oe_highlight" data-hotkey="a"
+                        attrs="{'invisible': [('show_new_followup_button', '=', False)]}"/>
+                <button name="action_set_follow_up" string="Follow Up" type="object" class="oe_highlight" data-hotkey="a"
+                        attrs="{'invisible': [('show_new_followup_button', '=', False)]}"/>
+                <button name="action_set_analysis" string="Analysis " type="object" class="oe_highlight" data-hotkey="a"
+                        attrs="{'invisible': [('show_analysis_button', '=', False)]}"/>
+                <button name="action_set_won_rainbowman" string="Won" type="object" class="oe_highlight" data-hotkey="w"
+                        title="Mark as won"
+                        attrs="{'invisible': [('show_only_won_button', '=', False)]}"/>
+                <button name="action_set_won_rainbowman" string="Won" type="object" class="oe_highlight" data-hotkey="w"
+                        title="Mark as won"
+                        attrs="{'invisible': [('show_won_lost_button', '=', False)]}"/>
+            </xpath>
+
+            <xpath expr="//button[@name='%(crm.crm_lead_lost_action)d']" position="replace">
+                <button name="%(crm.crm_lead_lost_action)d" string="Lost" data-hotkey="l" title="Mark as lost"
+                        type="action" context="{'default_lead_id': active_id}"
+                       attrs="{'invisible': [('show_won_lost_button', '=', False)]}"/>
+            </xpath>
+
+            <xpath expr="//button[@name='action_set_lost']" position="replace"/>
+
+            <xpath expr="//header/field[@name='stage_id']" position="replace">
+                <field name="stage_id" widget="statusbar" class="o_field_statusbar"
+                       domain="['|', ('team_id', '=', team_id), ('team_id', '=', False)]"
+                       attrs="{'invisible': ['|', ('active', '=', False), ('type', '=', 'lead')]}"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="crm.action_mark_as_lost" model="ir.actions.server">
+        <field name="binding_view_types">list,form</field>
+    </record>
+</odoo>

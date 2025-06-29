@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem
+        id="quality_control.menu_config_quality_tags"
+        name="Quality Tags"
+        groups="base.group_user"
+        action="quality_control.quality_tag_action"
+        parent="quality_control.menu_quality_configuration"
+        sequence="25"/>
+</odoo>

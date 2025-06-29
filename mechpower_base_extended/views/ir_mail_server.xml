@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_ir_mail_server_inherit" model="ir.ui.view">
+        <field name="name">ir.mail_server.view.form</field>
+        <field name="model">ir.mail_server</field>
+        <field name="priority" eval="20"/>
+        <field name="inherit_id" ref="base.ir_mail_server_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='sequence']" position="after">
+                <field name="model_ids" widget="many2many_tags"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

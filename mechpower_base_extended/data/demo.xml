@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="reject_by_customer" model="sale.close.reason">
+        <field name="name">Rejected by the customer</field>
+    </record>
+
+    <record id="offer_is_expired" model="sale.close.reason">
+        <field name="name">The offer is expired</field>
+    </record>
+
+    <record id="public_user_quotation_reason" model="sale.close.reason">
+        <field name="name">Public user inquiry</field>
+    </record>
+
+<!--    ================Mailing List========================     -->
+
+    <record id="product_and_service_mailing_list" model="mailing.list">
+        <field name="name"> Product &amp; Service Updates</field>
+    </record>
+    <record id="design_best_practices_mailing_list" model="mailing.list">
+        <field name="name">Design Best Practices</field>
+    </record>
+    <record id="industry_insights_mailing_list" model="mailing.list">
+        <field name="name">Industry Trends &amp; Insights</field>
+    </record>
+    <record id="events_mailing_list" model="mailing.list">
+        <field name="name">Events</field>
+    </record>
+
+     <record id="customer_mailing_list" model="mailing.list">
+        <field name="name">Registered Customers</field>
+    </record>
+    <record id="lead_mailing_list" model="mailing.list">
+        <field name="name">Leads</field>
+    </record>
+    <record id="never_connected_customer_mailing_list" model="mailing.list">
+        <field name="name"> Incomplete Registrations</field>
+    </record>
+</odoo>

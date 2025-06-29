@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="mechpower_base_extended.product_category_extra_link" name="Product Category Extra Link"
+              inherit_id="website_sale.product_category_extra_link">
+        <xpath expr="//button" position="replace">
+            <button class="btn  btn-sm pe-0" disabled="disabled" >
+                <t t-if="len(categories) == 1">Category:</t>
+                <t t-else="">Categories:</t>
+            </button>
+        </xpath>
+        <xpath expr="//t[@t-foreach='categories']" position="replace">
+            <t t-foreach="categories" t-as="category">
+                <button class="btn btn-sm p-0" t-out="category.name" disabled="disabled"
+                t-attf-onclick="location.href='/shop/category/#{slug(category)}';return false;"/>
+        </t>
+        </xpath>
+    </template>
+    <template id="transaction_status_custom" inherit_id="payment.transaction_status">
+        <xpath expr="//div[@t-if='status_message or tx.state_message']" position="attributes">
+            <attribute name="class">d-none</attribute>
+        </xpath>
+    </template>
+</odoo>

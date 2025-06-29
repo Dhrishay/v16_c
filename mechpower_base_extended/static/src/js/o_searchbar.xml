@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+
+    <!-- Search Bar autocomplete item -->
+    <div t-name="website.s_searchbar.autocomplete"
+         class="o_dropdown_menu show w-100">
+    <t t-if="fuzzySearch and results.length">
+        <span class="dropdown-item-text">
+            <span class="text-muted">No results found for '<t t-esc="search"/>'. Showing results for '
+                <a href="#"
+                   class="s_searchbar_fuzzy_submit"
+                   t-esc="fuzzySearch"/>
+                '.</span>
+        </span>
+    </t>
+        <t t-elif="!results.length">
+        <span class="dropdown-item-text">
+            <span class="text-muted">No results found. Please try another search.</span>
+        </span>
+    </t>
+        <a t-foreach="results" t-as="result"
+           t-att-href="result['website_url']" class="dropdown-item p-2 text-wrap">
+        <div class="d-flex align-items-center o_search_result_item">
+            <t t-if="widget.displayImage">
+                <t t-if="widget.searchType == 'blogs' and result['web_bg']">
+                    <img  t-att-src="result['web_bg']" class="flex-shrink-0" style="border-radius: 8px; border: 0px; height: 100px; width: 100px;object-fit: cover;"/>
+                </t>
+                <t t-else="">
+                    <img t-if="result['image_url']" t-att-src="result['image_url']"
+                     class="flex-shrink-0 o_image_64_contain searchbar_readult_img"/>
+                    <i t-else="" t-attf-class="o_image_64_contain text-center pt16 fa #{result['_fa']}"
+                       style="font-size: 34px;"/>
+                </t>
+            </t>
+            <div class="o_search_result_item_detail px-3">
+                <t t-set="description"
+                   t-value="parts['description'] and widget.displayDescription and result['description']"/>
+                <t t-set="extra_link"
+                   t-value="parts['extra_link'] and widget.displayExtraLink and result['extra_link_url'] and result['extra_link']"/>
+                <t t-set="extra_link_html"
+                   t-value="parts['extra_link'] and widget.displayExtraLink and !result['extra_link_url'] and result['extra_link']"/>
+                <div t-if="extra_link_html" class="s_product_category" t-out="extra_link_html"/>
+                <div t-attf-class="h6 fw-bold s_product_name #{description ? '' : 'mb-0'}" t-out="result['name']"/>
+                <p t-if="description" class="mb-0 s_product_description" t-out="description"/>
+                <button t-if="extra_link" class="extra_link btn btn-link btn-sm"
+                        t-att-data-target="result['extra_link_url']" t-out="extra_link"/>
+                <button t-if="result['VariantCount']" class="btn s_product_variant_count btn-sm pe-0" disabled="disabled" >
+                     <t t-out="result['VariantCount']"/> variant(s) available
+                </button>
+            </div>
+            <div t-if="parts['detail'] and widget.displayDetail and result['detail_strike']" class="flex-shrink-0">
+                <span class="text-danger text-nowrap" style="text-decoration: line-through;">
+                    <t t-out="result['detail_strike']"/>
+                </span>
+                <br/>
+            </div>
+            <div t-if="parts['detail'] and widget.displayDetail and result['detail_strike'] and result['detail_extra']" class="flex-shrink-0">
+                <br/>
+                <span class="text-nowrap" t-out="result['detail_extra']"/>
+            </div>
+        </div>
+    </a>
+    <t t-if="hasMoreResults">
+        <button type="submit" class="dropdown-item btn btn-secondary text-center text-primary">All results</button>
+    </t>
+</div>
+
+
+</templates>

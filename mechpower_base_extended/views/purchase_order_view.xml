@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="purchase_stock_order_view_form_inherit" model="ir.ui.view">
+        <field name="name">purchase.order.form.inherit</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase_stock.purchase_order_view_form_inherit"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='picking_type_id']" position="after">
+                <field name="purchase_group_ids" widget="many2many_tags" options="{'color_field': 'color', 'no_create_edit': True}"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="inherit_purchase_order_kpis_tree" model="ir.ui.view">
+        <field name="name">purchase.order.kpis.tree.inherit</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_kpis_tree"/>
+        <field name="arch" type="xml">
+            <field name="state" position="before">
+                <field name="purchase_group_ids" widget="many2many_tags" options="{'color_field': 'color', 'no_create_edit': True}"/>
+            </field>
+        </field>
+    </record>
+    <record id="inherit_purchase_order_tree" model="ir.ui.view">
+        <field name="name">purchase.order.tree.inherit</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_view_tree"/>
+        <field name="arch" type="xml">
+            <field name="state" position="before">
+                <field name="purchase_group_ids" widget="many2many_tags" options="{'color_field': 'color', 'no_create_edit': True}"/>
+            </field>
+        </field>
+    </record>
+
+     <record id="purchase_group_tree" model="ir.ui.view">
+        <field name="name">purchase.group.tree</field>
+        <field name="model">purchase.group</field>
+        <field name="arch" type="xml">
+            <tree editable="bottom">
+                <field name="name"/>
+                <field name="color" widget="color_picker"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_purchase_group" model="ir.actions.act_window">
+        <field name="name">Purchase Group</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">purchase.group</field>
+        <field name="view_mode">tree</field>
+    </record>
+
+    <menuitem
+           action="mechpower_base_extended.action_purchase_group"
+           id="menu_purchase_group"
+           parent="purchase.menu_purchase_config"
+           sequence="2"/>
+</odoo>

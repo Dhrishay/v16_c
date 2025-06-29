@@ -1,0 +1,48 @@
+<odoo noupdate="1">
+    <record id="_cron_cancel_expire_quotation" model="ir.cron">
+        <field name="name">Cancel Expired Quotation</field>
+        <field name="model_id" ref="model_sale_order"/>
+        <field name="state">code</field>
+        <field name="code">model._cron_cancel_expire_quotation()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field name="active">True</field>
+    </record>
+
+    <record id="_cron_cancel_public_user_quotation" model="ir.cron">
+        <field name="name">Cancel Public User Quotation</field>
+        <field name="model_id" ref="model_sale_order"/>
+        <field name="state">code</field>
+        <field name="code">model._cron_cancel_public_user_quotation()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field name="active">True</field>
+    </record>
+
+     <record id="cron_add_to_mailing_list" model="ir.cron">
+        <field name="name">Add To Mailing List</field>
+        <field name="model_id" ref="model_res_partner"/>
+        <field name="state">code</field>
+        <field name="code">model.cron_add_to_mailing_list()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field name="active">True</field>
+    </record>
+
+    <record id="ir_cron_sent_mail_delivery_done" model="ir.cron">
+        <field name="name">Inventory: Sent Mail Delivery Done</field>
+        <field name="model_id" ref="model_stock_picking"/>
+        <field name="state">code</field>
+        <field name="code">model._sent_mail_delivery_done()</field>
+        <field name="user_id" ref="base.user_root" />
+        <field name="interval_number">4</field>
+        <field name="interval_type">hours</field>
+        <field name="numbercall">-1</field>
+        <field name="doall" eval="False"/>
+        <field name="priority">5</field>
+        <field name="active">True</field>
+    </record>
+</odoo>

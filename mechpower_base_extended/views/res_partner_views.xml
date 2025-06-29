@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_partner_form" model="ir.ui.view">
+        <field name="name">view.partner.form.view.mp</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <div name="button_box" position="inside">
+                <button class="oe_stat_button" type="object" name="open_customer_product_list" icon="fa-list">
+                    <field string="Products" name="product_count" widget="statinfo"/>
+                </button>
+            </div>
+            <xpath expr="//field[@name='vat']" position="after">
+                <field name="pan_number"/>
+            </xpath>
+            <xpath expr="//field[@name='street']" position="attributes">
+                <attribute name="required">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='city']" position="attributes">
+                <attribute name="required">1</attribute>
+            </xpath>
+
+            <xpath expr="//field[@name='state_id']" position="attributes">
+                <attribute name="required">1</attribute>
+            </xpath>
+
+            <xpath expr="//field[@name='country_id']" position="attributes">
+                <attribute name="required">1</attribute>
+            </xpath>
+
+            <xpath expr="//field[@name='zip']" position="attributes">
+                <attribute name="required">1</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="mp_custom_res_company_form_inherit" model="ir.ui.view">
+        <field name="name">res.company.form.inherit</field>
+        <field name="model">res.company</field>
+        <field name="inherit_id" ref="base.view_company_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='email']" position="after">
+                <field name="po_email" widget="email"/>
+                <field name="po_phone"/>
+                <field name="bill_signature" widget="image" class="float-start oe_avatar"/>
+            </xpath>
+            <xpath expr="//field[@name='social_instagram']" position="after">
+                <field name="linkedin_logo" widget="image" class="float-start oe_avatar" invisible="1"/>
+                <field name="facebook_logo" widget="image" class="float-start oe_avatar" invisible="1"/>
+                <field name="instagram_logo" widget="image" class="float-start oe_avatar" invisible="1"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="customer_products_list" model="ir.ui.view">
+        <field name="name">product.list.tree</field>
+        <field name="model">product.product</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="inherit_res_partner_view_search" model="ir.ui.view">
+            <field name="name">res.partner.search.inherit</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_res_partner_filter"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group" position="before">
+                    <filter string="Last Inquiry Date" name="last_inquiry_date" date="last_inquiry_date"/>
+                    <filter string="Last Order Date" name="last_order_date" date="last_order_date"/>
+                   <separator/>
+                </xpath>
+            </field>
+        </record>
+
+    <record id="action_partner_mail_list" model="ir.actions.act_window">
+        <field name="name">Add to mailing list</field>
+        <field name="res_model">partner.mail.list.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="binding_model_id" ref="base.model_res_partner"/>
+        <!-- <field name="binding_view_types">form</field> -->
+    </record>
+
+</odoo>

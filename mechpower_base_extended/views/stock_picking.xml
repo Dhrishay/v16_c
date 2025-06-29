@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="mechpower_view_picking_withcarrier_out_form_inherit" model="ir.ui.view">
+        <field name="name">stock.picking.form.inherit.ups</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="delivery.view_picking_withcarrier_out_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='carrier_data']" position="replace">
+                <group name="carrier_data" string="Shipping Information">
+                    <field name="is_return_picking" invisible="1"/>
+                    <field name="carrier_id" attrs="{'readonly': [('state', 'in', ('cancel'))]}"
+                           options="{'no_create': True, 'no_open': True}"/>
+                    <field name="delivery_type" attrs="{'invisible':True}"/>
+                    <label for="carrier_tracking_ref"/>
+                    <div name="tracking">
+                        <field name="carrier_tracking_ref" class="oe_inline"
+                               attrs="{'readonly': [('state', 'in', ('cancel'))]}"/>
+                        <button type="object" class="fa fa-arrow-right oe_link"
+                                confirm="Cancelling a delivery may not be undoable. Are you sure you want to continue?"
+                                name="cancel_shipment" string="Cancel"
+                                attrs="{'invisible':['|','|','|',('carrier_tracking_ref','=',False),('delivery_type','in', ['fixed', 'base_on_rule']),('delivery_type','=',False),('state','not in',('done'))]}"/>
+                    </div>
+                    <field name="box_size"/>
+                    <label for="weight" string="Weight"/>
+                    <div>
+                        <field name="weight" class="oe_inline"/>
+                        <field name="weight_uom_name" nolabel="1" class="oe_inline" style="margin-left:5px"/>
+                        <button type="object" class="btn btn-primary oe_inline ml32" string="Calculate Weight"
+                                name="calculate_weight"/>
+                    </div>
+                    <label for="shipping_weight" string="Weight for shipping" invisible="1"/>
+                    <div invisible="1">
+                        <field name="shipping_weight" class="oe_inline"/>
+                        <field name="weight_uom_name" nolabel="1" class="oe_inline" style="margin-left:5px"/>
+                    </div>
+                    <label for="package_weight"/>
+                    <div>
+                        <field name="package_weight" class="oe_inline"/>
+                        <field name="weight_uom_name" nolabel="1" class="oe_inline" style="margin-left:5px"/>
+                    </div>
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>

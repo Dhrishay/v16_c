@@ -1,0 +1,9 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+mechpower_base_extended.access_sale_close_reason,access_sale_close_reason,mechpower_base_extended.model_sale_close_reason,,1,1,1,1
+mechpower_base_extended.access_sale_close_reason_wizard,access_sale_close_reason_wizard,mechpower_base_extended.model_sale_close_reason_wizard,,1,1,1,1
+mechpower_base_extended.access_customer_files,access_customer_files,mechpower_base_extended.model_customer_files,,1,1,1,1
+mechpower_base_extended.access_attachment_type,access_attachment_type,mechpower_base_extended.model_attachment_type,,1,1,1,1
+access_partner_mail_list_wizard,partner.mail.list.wizard,model_partner_mail_list_wizard,,1,1,1,1
+access_crm_mail_list_wizard,crm.mail.list.wizard,model_crm_mail_list_wizard,,1,1,1,1
+access_sale_order_mail_list_wizard,sale.order.mail.list.wizard,model_sale_order_mail_list_wizard,,1,1,1,1
+access_purchase_group,purchase.group,model_purchase_group,,1,1,1,1

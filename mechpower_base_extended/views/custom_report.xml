@@ -1,0 +1,2076 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="mp_custom_external_layout_boxed" inherit_id="web.external_layout_boxed">
+                <xpath expr="//div[hasclass('o_boxed_header')]" position="replace">
+            <div class="o_boxed_header">
+                <div class="row mb8">
+                    <div class="col-4 d-flex">
+                        <img t-if="company.logo" t-att-src="image_data_uri(company.logo)" alt="Logo"/>
+                    </div>
+                    <div class="col-4 text-center mt-5" style="font-size:22px; ">
+                        <t t-if="o and o._name == 'sale.order'">
+                            <span t-if="env.context.get('proforma', False) or is_pro_forma">Pro-Forma Invoice</span>
+                            <span t-elif="env.context.get('validate_analytic', False) or is_pro_forma or o.state == 'sent'">
+                                OFFER
+                            </span>
+                            <span t-elif="o.state in ['draft','inquiry','engineering_review', 'data_feedback', 'prepared_for_pricing', 'cancel']">
+                                Inquiry
+                            </span>
+                            <span t-else="">Sales Order</span>
+                        </t>
+                        <t t-if="o and o._name == 'account.move'">
+                            <span>Tax Invoice</span>
+                        </t>
+                        <t t-if="o and o._name == 'stock.picking'">
+                            <span>Delivery Order</span>
+                        </t>
+                        <t t-if="o and o._name == 'purchase.order'">
+                            <t t-if="o.state in ['draft', 'sent', 'to approve']">Request for Quotation</t>
+                            <t t-if="o.state in ['purchase', 'done']">Purchase Order</t>
+                            <t t-if="o.state == 'cancel'">Cancelled Purchase Order #</t>
+                        </t>
+                    </div>
+                    <div class="col-4 mb4">
+                        <div class="mt0 h4" t-field="company.report_header"/>
+                        <div name="company_address" class="float-end mb4">
+                            <ul class="list-unstyled">
+                                <li t-if="company.is_company_details_empty">
+                                    <t t-esc="company.partner_id" t-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;, &quot;name&quot;], &quot;no_marker&quot;: true}"/>
+                                </li>
+                                <li t-else="">
+                                    <t t-esc="company.company_details"/>
+                                    Email:
+                                    <t t-if="o and o._name == 'purchase.order'" t-esc="company.po_email"/>
+                                    <t t-else="" t-esc="company.email"/>
+                                </li>
+                                <!--                                <li t-if="forced_vat">-->
+                                <!--                                    <t t-esc="company.country_id.vat_label or 'Tax ID'"/>:-->
+                                <!--                                    <span t-esc="forced_vat"/>-->
+                                <!--                                </li>-->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </xpath>
+        <xpath expr="//*[contains(@t-attf-class, 'o_boxed_footer')]" position="replace">
+            <div t-attf-class="footer o_boxed_footer o_company_#{company.id}_layout">
+                <div class="text-center">
+                    <t t-if="o and o._name == 'purchase.order'">
+                        <p style="margin-bottom: 0px;">GSTIN: 24AAPCM8268C1Z7 | Web : <a href="https://www.mechpowertech.com">www.mechpowertech.com
+                        </a> | Phone:
+                            <t t-esc="o.company_id.po_phone"/>
+                        </p>
+                        <p style="margin-bottom: 0px;">
+                            <br/>
+                        </p>
+                        <p style="margin-bottom: 0px;">Regd. Office : South Tower, 10th Floor, 1003, ONE42 B/H Ashok
+                            Vatika, NR. Jayantilal Park BRTS,<br/>Ahmedabad Gujarat - 380058,
+                            <br/>
+                            <br/>
+                        </p>
+                        <p>As this is a system generated document, a signature is not required.
+                            <br/>
+                        </p>
+                        <img src="/cr_web_portal/static/src/img/iso_footer_blue.png" style="position:absolute;right:1rem;top:5rem;display:block; width:50px;"/>
+                    </t>
+                    <t t-else="">
+                        <div t-field="company.report_footer"/>
+                        <img src="/cr_web_portal/static/src/img/iso_footer_blue.png" style="position:absolute;right:1rem;top:5rem;display:block; width:50px;"/>
+                    </t>
+                    <div t-if="report_type == 'pdf'">
+                        Page:
+                        <span class="page"/>
+                        /
+                        <span class="topage"/>
+                    </div>
+                    <div t-if="report_type == 'pdf' and display_name_in_footer" class="text-muted">
+                        <span t-field="o.name"/>
+                    </div>
+                </div>
+            </div>
+        </xpath>
+    </template>
+
+    <template id="mp_custom_report_purchase_order_document" inherit_id="purchase_stock.report_purchaseorder_document">
+        <xpath expr="//t[@t-else='']" position="replace">
+            <t t-set="information_block">
+                <strong>Shipping address:</strong>
+                <div t-if="o.picking_type_id and o.picking_type_id.warehouse_id">
+                    <span t-field="o.picking_type_id.warehouse_id.name"/>
+                    <div t-field="o.picking_type_id.warehouse_id.partner_id"
+                         t-options='{"widget": "contact", "fields": ["address"], "no_marker": True}'/>
+                    <t t-if="o and o._name == 'purchase.order'">
+                        <i class="fa fa-phone fa-lg fa-fw"/>
+                        <t t-esc="o.company_id.po_phone"/>
+                    </t>
+                    <t t-else="">
+                        <i class="fa fa-phone fa-lg fa-fw"/>
+                        <t t-esc="o.picking_type_id.warehouse_id.partner_id.phone"/>
+                    </t>
+                </div>
+            </t>
+        </xpath>
+        <xpath expr="//div[@t-if='o.incoterm_id']" position="after">
+            <div t-if="o.payment_term_id" class="col-3 bm-2">
+                <strong>Payment terms:</strong>
+                <p t-field="o.payment_term_id.name" class="m-0"/>
+            </div>
+        </xpath>
+    </template>
+
+    <template id="mp_custom_report_purchaseorder_document" inherit_id="purchase.report_purchaseorder_document">
+        <xpath expr="//table" position="replace">
+            <style type="text/css">
+                th {
+                text-align: center;
+                vertical-align: middle;
+                line-height: 1.5;
+                }
+
+            </style>
+            <table class="table table-sm o_main_table table-borderless mt-4">
+                <thead style="display: table-row-group">
+                    <tr>
+                        <th class="text-capitalize text-center" name="th_sr_no">
+                            <strong>Sr. no.</strong>
+                        </th>
+                        <th class="text-capitalize text-center" name="th_part_no">
+                            <strong>Product Part no.</strong>
+                        </th>
+                        <th class="text-capitalize text-center" name="th_description">
+                            <strong>Description</strong>
+                        </th>
+                        <th name="th_quantity" class="text-center text-capitalize">
+                            <strong>Qty.</strong>
+                        </th>
+                        <th name="th_price_unit" class="text-center text-capitalize">
+                            <strong>Rate</strong>
+                        </th>
+                        <th class="text-center text-capitalize">
+                            <strong>Disc.(%)</strong>
+                        </th>
+                        <th name="th_net_amount" class="text-center text-capitalize">
+                            <strong>Net Amount</strong>
+                        </th>
+                        <th class="text-capitalize text-center" name="th_taxes">
+                            <strong>Taxes</strong>
+                        </th>
+                        <th name="th_amount text-capitalize" class="text-center text-capitalize">
+                            <strong>Amount</strong>
+                        </th>
+
+                    </tr>
+                </thead>
+                <t t-set="count" t-value="1"/>
+                <tbody>
+                    <t t-set="current_subtotal" t-value="0"/>
+                    <t t-foreach="o.order_line" t-as="line">
+                        <t t-set="current_subtotal" t-value="current_subtotal + line.price_subtotal"
+                           groups="account.group_show_line_subtotals_tax_excluded"/>
+                        <t t-set="current_subtotal" t-value="current_subtotal + line.price_total"
+                           groups="account.group_show_line_subtotals_tax_included"/>
+
+                        <tr t-att-class="'bg-200 fw-bold o_line_section' if line.display_type == 'line_section' else 'fst-italic o_line_note' if line.display_type == 'line_note' else ''">
+                            <td class="text-center" t-esc="count"/>
+                            <t t-set="count" t-value="count + 1"/>
+                            <t t-if="not line.display_type">
+                                <td id="part_no">
+                                    <t t-if="line.product_id.default_code">
+                                        <span t-field="line.product_id and line.product_id.default_code"/>
+                                    </t>
+                                    <t t-else="">
+                                        -
+                                    </t>
+                                </td>
+                                <td id="product">
+                                    <span t-field="line.name"/>
+                                    <t t-if="line.product_id and line.product_id.l10n_in_hsn_code">
+                                        <br/>
+                                        HSN:
+                                        <t t-esc="line.product_id.l10n_in_hsn_code"/>
+                                    </t>
+                                </td>
+                                <td class="text-end">
+                                    <span t-field="line.product_qty"/>
+                                    <span t-field="line.product_uom.name" groups="uom.group_uom"/>
+                                </td>
+                                <td class="text-end">
+                                    <span t-field="line.price_unit"/>
+                                </td>
+                                <td class="text-end">
+                                    <span t-field="line.discount"/>
+                                </td>
+                                <td class="text-end">
+                                    <span t-field="line.price_subtotal"
+                                          t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
+                                </td>
+                                <t t-set="taxes"
+                                   t-value="', '.join([(tax.description or tax.name) for tax in line.taxes_id])"/>
+                                <td name="td_taxes"
+                                    t-attf-class="text-end {{ 'text-nowrap' if len(taxes) &lt; 10 else '' }}">
+                                    <span t-out="taxes">Tax 15%</span>
+                                </td>
+                                <td class="text-end">
+                                    <span t-field="line.price_total"/>
+                                </td>
+                            </t>
+                            <t t-if="line.display_type == 'line_section'">
+                                <td colspan="99" id="section">
+                                    <span t-field="line.name"/>
+                                </td>
+                                <t t-set="current_section" t-value="line"/>
+                                <t t-set="current_subtotal" t-value="0"/>
+                            </t>
+                            <t t-if="line.display_type == 'line_note'">
+                                <td colspan="99" id="note">
+                                    <span t-field="line.name"/>
+                                </td>
+                            </t>
+                        </tr>
+                        <t t-if="current_section and (line_last or o.order_line[line_index+1].display_type == 'line_section')">
+                            <tr class="is-subtotal text-end">
+                                <td colspan="99" id="subtotal">
+                                    <strong class="mr16">Subtotal</strong>
+                                    <span
+                                            t-esc="current_subtotal"
+                                            t-options='{"widget": "monetary", "display_currency": o.currency_id}'
+                                    />
+                                </td>
+                            </tr>
+                        </t>
+                    </t>
+                </tbody>
+            </table>
+        </xpath>
+        <xpath expr="//div[hasclass('page')]" position="inside">
+            <span>
+                <div style="page-break-before:always;">
+                    <strong>
+                        <strong>Terms and Conditions</strong>
+                    </strong>
+                    <p>
+                        <br/>
+                    </p>
+                    <p>
+                        <b>1. Date Code and Shelf Life:</b>
+                        All the deliverables shall be newly manufactured or a minimum of 90%
+                        of the shelf life should be remaining at the time of shipment. Material LOT code no. and Batch
+                        code no. should be mentioned in the Shipping Invoice.
+                    </p>
+                    <p>
+                        <b>2. Inspection and acceptance:</b>
+                        <span style="font-weight: normal">The deliverables will be accepted based on In-house sampling
+                            inspection and upon receipt of applicable documents. In case of any deviation in quality,
+                            our QA may reject items. A rejection note with incoming QA findings will be shared
+                            electronically with an intimation to arrange for rejected material pick up. All expenses
+                            will be borne by the Seller for this.
+                        </span>
+                    </p>
+                    <p>
+                        <b>3. Packing and Shipping:</b>
+                        Pricing is inclusive of packaging or storage unless otherwise agreed in
+                        writing by the buyer. Buyer&#39;s order numbers must be marked on all packages and shipping
+                        documents. Seller shall not ship in advance of schedule or make partial shipment unless
+                        otherwise
+                        agreed in writing by the buyer. Packing should be such that material is protected from
+                        Indentation,
+                        scratch or any kind of damage during transportation &amp; unloading.
+                    </p>
+                    <p>
+                        <b>4. Warranty:</b>
+                        Seller warrants that all deliverables will conform to applicable specifications, drawings,
+                        descriptions, and samples. All the deliverables will carry a warranty of 12 months from the date
+                        of
+                        receipt unless otherwise specified in the order. If the deliverables delivered under this
+                        purchase
+                        order fails under warranty, the Buyer may return at Seller&#39;s expense. The defective or
+                        nonconforming products to be corrected or replaced by the Seller at no cost to the buyer.
+                    </p>
+                    <p>
+                        <b>5. Default:</b>
+                        Buyer may, by written notice to Seller, cancel this purchase order for default, (a) if Seller
+                        fails to deliver the deliverables strictly within the time specified in this purchase order, or
+                        if no time
+                        is specified, within a reasonable limit. (b) if the deliverables delivered do not conform to
+                        this
+                        purchase order or if Seller fails to perform any of the other provisions of this purchase order,
+                        or so
+                        fails to make progress as to endanger performance of this purchase order in accordance with its
+                        terms. Upon such cancellation, Buyer shall not be liable to Seller for any amount.
+                    </p>
+                    <p>
+                        <b>6. Confidential Information:</b>
+                        Seller shall not disclose to any third party or use any confidential
+                        information of Buyer&#39;s concerning this purchase order or other material intended for use in
+                        connection with this purchase order without prior written consent.
+                    </p>
+                    <p>
+                        <b>7. Price:</b>
+                        All prices are firm and fixed for the entire quantity and duration of the Purchase Order.
+                    </p>
+                    <p>
+                        <b>8. Jurisdiction:</b>
+                        This Purchase Order is subjected to Ahmadabad-Gujarat Jurisdiction only.
+                    </p>
+                </div>
+            </span>
+        </xpath>
+    </template>
+
+    <template id="mp_custom_report_purchasequotation_document" inherit_id="purchase.report_purchasequotation_document">
+        <xpath expr="/t/t/div/div[3]" position="after">
+            <div class="row">
+                <div class="col">
+                    <span>New Text Block</span>
+                </div>
+            </div>
+        </xpath>
+        <xpath expr="/t/t/div/div[4]/div/span" position="replace">
+            <span>
+                <div style="page-break-before:always;">
+                    <strong>
+                        <strong>Terms and Conditions</strong>
+                    </strong>
+                    <p>
+                        <br/>
+                    </p>
+                    <p>
+                        <b>1. Date Code and Shelf Life:</b>
+                        All the deliverables shall be newly manufactured or a minimum of 90%
+                        of the shelf life should be remaining at the time of shipment. Material LOT code no. and Batch
+                        code no. should be mentioned in the Shipping Invoice.
+                    </p>
+                    <p>
+                        <b>2. Inspection and acceptance:</b>
+                        <span style="font-weight: normal">The deliverables will be accepted based on In-house sampling
+                            inspection and upon receipt of applicable documents. In case of any deviation in quality,
+                            our QA may reject items. A rejection note with incoming QA findings will be shared
+                            electronically with an intimation to arrange for rejected material pick up. All expenses
+                            will be borne by the Seller for this.
+                        </span>
+                    </p>
+                    <p>
+                        <b>3. Packing and Shipping:</b>
+                        Pricing is inclusive of packaging or storage unless otherwise agreed in
+                        writing by the buyer. Buyer&#39;s order numbers must be marked on all packages and shipping
+                        documents. Seller shall not ship in advance of schedule or make partial shipment unless
+                        otherwise
+                        agreed in writing by the buyer. Packing should be such that material is protected from
+                        Indentation,
+                        scratch or any kind of damage during transportation &amp; unloading.
+                    </p>
+                    <p>
+                        <b>4. Warranty:</b>
+                        Seller warrants that all deliverables will conform to applicable specifications, drawings,
+                        descriptions, and samples. All the deliverables will carry a warranty of 12 months from the date
+                        of
+                        receipt unless otherwise specified in the order. If the deliverables delivered under this
+                        purchase
+                        order fails under warranty, the Buyer may return at Seller&#39;s expense. The defective or
+                        nonconforming products to be corrected or replaced by the Seller at no cost to the buyer.
+                    </p>
+                    <p>
+                        <b>5. Default:</b>
+                        Buyer may, by written notice to Seller, cancel this purchase order for default, (a) if Seller
+                        fails to deliver the deliverables strictly within the time specified in this purchase order, or
+                        if no time
+                        is specified, within a reasonable limit. (b) if the deliverables delivered do not conform to
+                        this
+                        purchase order or if Seller fails to perform any of the other provisions of this purchase order,
+                        or so
+                        fails to make progress as to endanger performance of this purchase order in accordance with its
+                        terms. Upon such cancellation, Buyer shall not be liable to Seller for any amount.
+                    </p>
+                    <p>
+                        <b>6. Confidential Information:</b>
+                        Seller shall not disclose to any third party or use any confidential
+                        information of Buyer&#39;s concerning this purchase order or other material intended for use in
+                        connection with this purchase order without prior written consent.
+                    </p>
+                    <p>
+                        <b>7. Price:</b>
+                        All prices are firm and fixed for the entire quantity and duration of the Purchase Order.
+                    </p>
+                    <p>
+                        <b>8. Jurisdiction:</b>
+                        This Purchase Order is subjected to Ahmadabad-Gujarat Jurisdiction only.
+                    </p>
+                </div>
+            </span>
+        </xpath>
+        <xpath expr="/t/t/div/div[4]/div/span" position="replace">
+            <span>
+                <div style="page-break-before:always;">
+                    <strong>
+                        <strong>Terms and Conditions</strong>
+                    </strong>
+                    <p>
+                        <br/>
+                    </p>
+                    <p>
+                        <b>1. Date Code and Shelf Life:</b>
+                        All the deliverables shall be newly manufactured or a minimum of 90%
+                        of the shelf life should be remaining at the time of shipment. Material LOT code no. and Batch
+                        code no. should be mentioned in the Shipping Invoice.
+                    </p>
+                    <p>
+                        <b>2. Inspection and acceptance:</b>
+                        <span style="font-weight: normal">The deliverables will be accepted based on In-house sampling
+                            inspection and upon receipt of applicable documents. In case of any deviation in quality,
+                            our QA may reject items. A rejection note with incoming QA findings will be shared
+                            electronically with an intimation to arrange for rejected material pick up. All expenses
+                            will be borne by the Seller for this.
+                        </span>
+                    </p>
+                    <p>
+                        <b>3. Packing and Shipping:</b>
+                        Pricing is inclusive of packaging or storage unless otherwise agreed in
+                        writing by the buyer. Buyer&#39;s order numbers must be marked on all packages and shipping
+                        documents. Seller shall not ship in advance of schedule or make partial shipment unless
+                        otherwise
+                        agreed in writing by the buyer. Packing should be such that material is protected from
+                        Indentation,
+                        scratch or any kind of damage during transportation &amp; unloading.
+                    </p>
+                    <p>
+                        <b>4. Warranty:</b>
+                        Seller warrants that all deliverables will conform to applicable specifications, drawings,
+                        descriptions, and samples. All the deliverables will carry a warranty of 12 months from the date
+                        of
+                        receipt unless otherwise specified in the order. If the deliverables delivered under this
+                        purchase
+                        order fails under warranty, the Buyer may return at Seller&#39;s expense. The defective or
+                        nonconforming products to be corrected or replaced by the Seller at no cost to the buyer.
+                    </p>
+                    <p>
+                        <b>5. Default:</b>
+                        Buyer may, by written notice to Seller, cancel this purchase order for default, (a) if Seller
+                        fails to deliver the deliverables strictly within the time specified in this purchase order, or
+                        if no time
+                        is specified, within a reasonable limit. (b) if the deliverables delivered do not conform to
+                        this
+                        purchase order or if Seller fails to perform any of the other provisions of this purchase order,
+                        or so
+                        fails to make progress as to endanger performance of this purchase order in accordance with its
+                        terms. Upon such cancellation, Buyer shall not be liable to Seller for any amount.
+                    </p>
+                    <p>
+                        <b>6. Confidential Information:</b>
+                        Seller shall not disclose to any third party or use any confidential
+                        information of Buyer&#39;s concerning this purchase order or other material intended for use in
+                        connection with this purchase order without prior written consent.
+                    </p>
+                    <p>
+                        <b>7. Price:</b>
+                        All prices are firm and fixed for the entire quantity and duration of the Purchase Order.
+                    </p>
+                    <p>
+                        <b>8. Jurisdiction:</b>
+                        This Purchase Order is subjected to Ahmadabad-Gujarat Jurisdiction only.
+                    </p>
+                </div>
+            </span>
+        </xpath>
+        <xpath expr="/t[1]/t[1]/t[5]/t[1]/div[1]/div[1]" position="attributes">
+            <attribute name="t-options-no_marker">False</attribute>
+        </xpath>
+        <xpath expr="/t[1]/t[1]/t[3]/div[1]" position="attributes">
+            <attribute name="t-options-no_marker">False</attribute>
+        </xpath>
+    </template>
+
+
+    <template id="mp_custom_report_saleorder_document_inherit_sale_stock" inherit_id="sale.report_saleorder_document">
+        <xpath expr="//table" position="before">
+            <style type="text/css">
+                th {
+                text-align: center;
+                vertical-align: middle;
+                line-height: 1.5;
+                }
+
+            </style>
+        </xpath>
+        <xpath expr="/t[1]/t[1]/t[3]/div[1]" position="attributes">
+            <attribute name="t-options-no_marker">False</attribute>
+        </xpath>
+        <xpath expr="/t[1]/t[1]/t[3]/div[1]" position="attributes">
+            <attribute name="t-options-fields">['address', 'name', 'email']</attribute>
+        </xpath>
+        <xpath expr="/t[1]/t[1]/t[3]/div[1]" position="attributes">
+            <attribute name="t-options-fields">['address', 'name', 'email', 'mobile']</attribute>
+        </xpath>
+        <xpath expr="/t[1]/t[1]/t[3]/div[1]" position="attributes">
+            <attribute name="t-options-separator">" "</attribute>
+        </xpath>
+        <xpath expr="/t/t/div/h2/span[1]" position="replace">
+            <span t-if="env.context.get('proforma', False) or is_pro_forma">Pro-Forma Invoice No #
+                <br/>
+            </span>
+        </xpath>
+        <xpath expr="/t[1]/t[1]/div[1]/div[2]/div[1]" position="attributes">
+            <attribute name="class">col-auto col-3 mw-100 mb-2</attribute>
+        </xpath>
+        <xpath expr="/t/t/div/div[2]/div[1]/strong" position="replace">
+            <strong>Quotation Ref No:
+                <br/>
+            </strong>
+
+        </xpath>
+        <xpath expr="/t/t/div/h2" position="after">
+            <div class="row">
+                <div class="col">
+                    <span>New Text Block</span>
+                </div>
+            </div>
+        </xpath>
+        <xpath expr="/t/t/div/div[2]/div/span" position="replace">
+            <span>Thank you for choosing Mech Power. Please find your order details and payment information below. We
+                look forward to serving you.
+                <br/>
+            </span>
+        </xpath>
+        <!--        <xpath expr="/t[1]/t[1]/div[1]/div[7]" position="replace"/>-->
+        <xpath expr="/t/t/div/div[4]" position="after">
+            <div class="row">
+                <div class="col">
+                    <span>New Text Block</span>
+                </div>
+            </div>
+        </xpath>
+        <xpath expr="/t/t/div/div[5]/div/span" position="replace">
+            <span>
+                <ol>
+                    <li>Pricing: The pricing stated is Ex-works, Ahmedabad, Gujarat, reflecting our competitive rates
+                        for the products and services offered.
+                    </li>
+                    <li>Freight: Please note that freight charges will be calculated separately based on actual
+                        transportation costs incurred.
+                    </li>
+                    <li>Validity: This quotation is valid for a period of 30 days from the date of issuance. After this
+                        period, pricing and availability are subject to review and confirmation.
+                    </li>
+                    <li>Taxes: All prices indicated are exclusive of taxes. <a>An additional 18% tax</a> will be
+                        applicable, as specified in the calculation, in accordance with the prevailing tax regulations.
+                    </li>
+                    <li>Payment Terms: To proceed with the order, we kindly request <a>full payment in advance.</a> This
+                        helps streamline the process and ensures prompt delivery of your requested products and
+                        services.
+                    </li>
+                    <li>Mode of Dispatch: For efficient and reliable transportation, we utilize a trusted network of
+                        standard courier services that align with industry best practices.
+                    </li>
+                    <li>Warranty: Our products are accompanied by a comprehensive one-year warranty. However, it is
+                        important to note that the warranty does not cover damages resulting from improper handling or
+                        usage beyond recommended guidelines.
+                    </li>
+                    <li>Delivery Time: The delivery time mentioned in this quotation pertains to the dispatch from our
+                        premises. Please be aware that the duration required for safe transportation is excluded and
+                        subject to potential changes based on logistical considerations.
+                    </li>
+                    <li>Delivery Schedule: Delivery will be scheduled based on the availability of stock at the time of
+                        order placement. Our team will promptly communicate any deviations or adjustments to the
+                        estimated delivery timeline.
+                    </li>
+                    <li>Delivery Time Deviations: While our dedicated team is committed to ensuring timely delivery of
+                        your orders, it is important to acknowledge that unforeseen circumstances and external factors
+                        beyond our direct control can occasionally impact logistics. Consequently, we cannot accept
+                        liability or claims for minor deviations from the stated delivery schedule.
+                    </li>
+                    <li>Order Placement: We kindly request that all orders be addressed exclusively to Mech Power
+                        Technology Private Limited. This ensures accurate processing and enables us to provide you with
+                        the utmost attention and service.
+                    </li>
+                    <li>We request you place all your orders addressing Mech Power Technology Private Limited.
+                        <br/>
+                    </li>
+                </ol>
+                <p>
+                    <br/>
+                </p>
+                <p>
+                    <b style="font-weight: bolder">Company Bank Details -</b>
+                </p>
+                <p>A/C Holder Name -                MECH POWER TECHNOLOGY PRIVATE LIMITED</p>
+                <p>Bank Name -                           HDFC BANK LTD</p>
+                <p>A/C No -                                  59209898039173</p>
+                <p>Branch &amp; IFS Code -              AHMEDABAD &amp; HDFC0007153</p>
+                <p>SWIFT Code -                         HDFCINBBXXX</p>
+                <br/>
+            </span>
+        </xpath>
+        <xpath expr="/t/t/div/div[4]" position="after">
+            <div class="row">
+                <div class="col">
+                    <span>New Text Block</span>
+                </div>
+            </div>
+        </xpath>
+        <xpath expr="/t/t/div/div[5]/div/span" position="replace">
+            <span>
+                <br/>
+                <br/>Terms &amp; Condition
+                <br/>
+                <br/>
+                <br/>
+            </span>
+        </xpath>
+        <xpath expr="/t/t/div/div[5]/div/span" position="replace">
+            <span>
+                <br/>
+                <br/>
+                <strong>Terms &amp; Condition</strong>
+                <br/>
+                <br/>
+                <br/>
+            </span>
+        </xpath>
+        <xpath expr="/t/t/div/div[5]/div/span" position="replace">
+            <span>
+                <div style="page-break-before:always;">
+                    <!--                    <br/>-->
+                    <!--                    <br/>-->
+                    <strong>Terms &amp; Condition</strong>
+                    <br/>
+                    <br/>
+                </div>
+            </span>
+        </xpath>
+        <xpath expr="/t/t/div/div[6]" position="after">
+            <div class="row">
+                <div class="col">
+                    <span>New Text Block</span>
+                </div>
+            </div>
+        </xpath>
+        <xpath expr="/t/t/div/div[7]/div/span" position="replace">
+            <span>
+                <br/>
+                <br/>Kind regards,<br/>Mech Power Technology Private Limited
+                <br/>
+                <br/>
+                <br/>
+            </span>
+        </xpath>
+        <xpath expr="/t/t/div/div[7]/div/span" position="replace">
+            <span>
+                <br/>
+                <br/>
+                <strong>Kind regards,</strong>
+                <br/>Mech Power Technology Private Limited
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+            </span>
+        </xpath>
+        <xpath expr="/t/t/div/div[7]/div/span" position="replace">
+            <span>
+                <br/>
+                <br/>
+                <strong>Kind regards,</strong>
+                <br/>Mech Power Technology Private Limited
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+            </span>
+        </xpath>
+        <xpath expr="/t/t/div/div[7]/div/span" position="replace">
+            <span>
+                <br/>
+                <br/>
+                <strong>Kind regards,</strong>
+                <br/>Mech Power Technology Private Limited
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+            </span>
+        </xpath>
+        <xpath expr="/t/t/div/div[7]/div/span" position="replace">
+            <span>
+                <!--                <br/>-->
+                <!--                <br/>-->
+                <strong>Kind regards,</strong>
+                <br/>
+                <strong>Mech Power Technology Private Limited</strong>
+                <!--                <br/>-->
+                <!--                <br/>-->
+                <!--                <br/>-->
+                <!--                <br/>-->
+            </span>
+        </xpath>
+        <xpath expr="/t[1]/t[1]/t[4]/t[1]/div[1]" position="attributes">
+            <attribute name="t-options-no_marker">False</attribute>
+        </xpath>
+        <xpath expr="/t/t/div/table/thead/tr/th[2]" position="after">
+            <th>
+                <span>Lead Time</span>
+            </th>
+        </xpath>
+        <xpath expr="/t/t/div/table/tbody/t[2]/tr/t[1]/td[2]" position="after">
+            <td>
+                <span t-field="line.customer_lead"/>
+            </td>
+        </xpath>
+        <xpath expr="/t/t/div/table/tbody/t[2]/t[3]/tr/td" position="attributes">
+            <attribute name="colspan">100</attribute>
+        </xpath>
+        <xpath expr="/t[1]/t[1]/div[1]/table[1]/thead[1]/tr[1]/th[3]" position="replace"/>
+        <xpath expr="/t[1]/t[1]/div[1]/table[1]/tbody[1]/t[2]/tr[1]/t[1]/td[3]" position="replace"/>
+        <xpath expr="/t/t/div/table/thead/tr/th[2]" position="after">
+            <th>
+                <span>Lead Time</span>
+            </th>
+        </xpath>
+        <xpath expr="/t/t/div/table/tbody/t[2]/tr/t[1]/td[2]" position="after">
+            <td>
+                <span t-field="line.customer_lead"/>
+            </td>
+        </xpath>
+        <xpath expr="/t/t/div/table/tbody/t[2]/t[3]/tr/td" position="attributes">
+            <attribute name="colspan">101</attribute>
+        </xpath>
+        <xpath expr="/t[1]/t[1]/t[4]/t[1]/div[1]" position="replace"/>
+        <xpath expr="/t[1]/t[1]/t[3]/div[2]" position="attributes">
+            <attribute name="t-options-no_marker">False</attribute>
+        </xpath>
+        <xpath expr="/t/t/div/table/thead/tr/th[2]" position="replace">
+            <th name="th_quantity" class="text-end">Quantity (PCS)</th>
+        </xpath>
+        <xpath expr="/t/t/div/table/thead/tr/th[3]/span" position="replace">
+            <span>Lead Time (IN DAYS)</span>
+        </xpath>
+        <xpath expr="/t[1]/t[1]/div[1]/table[1]/thead[1]/tr[1]/th[3]" position="replace"/>
+        <xpath expr="/t[1]/t[1]/div[1]/table[1]/thead[1]/tr[1]/th[3]" position="replace"/>
+        <xpath expr="/t/t/div/table/thead/tr/th[2]" position="after">
+            <th>
+                <span>Display Name</span>
+            </th>
+        </xpath>
+        <xpath expr="/t/t/div/table/tbody/t[2]/tr/t[1]/td[2]" position="after">
+            <td>
+                <span t-field="line.x_studio_lead_time_in_days.display_name"/>
+            </td>
+        </xpath>
+        <xpath expr="/t/t/div/table/tbody/t[2]/t[3]/tr/td" position="attributes">
+            <attribute name="colspan">102</attribute>
+        </xpath>
+        <xpath expr="/t[1]/t[1]/div[1]/table[1]/thead[1]/tr[1]/th[3]" position="replace"/>
+        <xpath expr="/t[1]/t[1]/div[1]/table[1]/tbody[1]/t[2]/tr[1]/t[1]/td[3]" position="replace"/>
+        <xpath expr="/t[1]/t[1]/div[1]/table[1]/tbody[1]/t[2]/tr[1]/t[1]/td[3]" position="replace"/>
+        <xpath expr="/t[1]/t[1]/div[1]/table[1]/tbody[1]/t[2]/tr[1]/t[1]/td[3]" position="replace"/>
+        <xpath expr="/t/t/div/table/thead/tr/th[2]" position="after">
+            <th>
+                <span>Unit Price</span>
+            </th>
+        </xpath>
+        <xpath expr="/t/t/div/table/tbody/t[2]/tr/t[1]/td[2]" position="after">
+            <td class="text-end">
+                <span t-field="line.price_unit"/>
+            </td>
+        </xpath>
+        <xpath expr="/t/t/div/table/tbody/t[2]/t[3]/tr/td" position="attributes">
+            <attribute name="colspan">103</attribute>
+        </xpath>
+        <xpath expr="/t/t/div/table/thead/tr/th[2]" position="after">
+            <th>
+                <span>Display Name</span>
+            </th>
+        </xpath>
+        <xpath expr="/t/t/div/table/tbody/t[2]/tr/t[1]/td[2]" position="after">
+            <td class="text-end">
+                <span t-field="line.x_studio_lead_time_in_days.display_name"/>
+            </td>
+        </xpath>
+        <xpath expr="/t/t/div/table/tbody/t[2]/t[3]/tr/td" position="attributes">
+            <attribute name="colspan">104</attribute>
+        </xpath>
+        <xpath expr="/t[1]/t[1]/t[4]/t[1]/t[1]/div[1]" position="attributes">
+            <attribute name="t-options-no_marker">False</attribute>
+        </xpath>
+        <xpath expr="/t/t/div/table/thead/tr/th[3]/span" position="replace">
+            <span>Display Name</span>
+        </xpath>
+        <xpath expr="/t/t/div/table/thead/tr/th[3]/span" position="replace">
+            <span>Lead Time (In Days)</span>
+        </xpath>
+        <xpath expr="/t/t/div/table/thead/tr/th[1]" position="before">
+            <th>
+                <span>Display Name</span>
+            </th>
+        </xpath>
+        <xpath expr="/t/t/div/table/tbody/t[2]/tr/t[1]/td[1]" position="before">
+            <td>
+                <span t-field="line.display_name"/>
+            </td>
+        </xpath>
+        <xpath expr="/t/t/div/table/tbody/t[2]/t[3]/tr/td" position="before">
+            <td>
+                <span t-field="line.display_name"/>
+            </td>
+        </xpath>
+        <xpath expr="/t[1]/t[1]/div[1]/table[1]/tbody[1]/t[2]/tr[1]/t[1]/td[1]/span[1]" position="attributes">
+            <attribute name="t-field">line.product_id.default_code</attribute>
+        </xpath>
+        <xpath expr="/t/t/div/table/thead/tr/th[1]/span" position="replace">
+            <span>PRODUCT / SERVICE</span>
+        </xpath>
+        <xpath expr="/t/t/div/div[2]/div/span" position="replace">
+            <span>
+                <t t-if="not doc.env.context.get('proforma', False) or not is_pro_forma">
+                    <t t-if="doc.state in ['draft','sent']">
+                        We acknowledge with thanks the
+                        receipt of your valued Inquiry. Please find below our competitive enclosure
+                        offer.
+                        <br/>
+                    </t>
+                </t>
+            </span>
+        </xpath>
+        <xpath expr="/t/t/div/div[3]/div[4]/strong" position="replace">
+            <strong>Expiry Date</strong>
+        </xpath>
+        <xpath expr="/t/t/div/div[3]/div[4]/strong" position="replace">
+            <strong>Expiry Date</strong>
+        </xpath>
+        <xpath expr="/t[1]/t[1]/div[1]/h2[1]" position="attributes">
+            <attribute name="class">mt-2</attribute>
+        </xpath>
+        <xpath expr="/t[1]/t[1]/div[1]/h2[1]" position="attributes">
+            <attribute name="class">mt-4</attribute>
+        </xpath>
+        <xpath expr="/t/t/div/table/thead/tr/th[1]/span" position="replace">
+            <span>Product Part No.</span>
+        </xpath>
+        <xpath expr="/t/t/div/table/thead/tr/th[2]" position="replace">
+            <th name="th_description" class="text-start">Description</th>
+        </xpath>
+        <xpath expr="/t/t/div/table/thead/tr/th[3]" position="replace">
+            <th name="th_quantity" class="text-end">Quantity (NoS)</th>
+        </xpath>
+        <xpath expr="/t/t/div/table/thead/tr/th[3]" position="replace">
+            <th name="th_quantity" class="text-end">Quantity (NoS)</th>
+        </xpath>
+        <xpath expr="/t/t/div/div[3]/div[2]/strong" position="replace">
+            <strong>Your Reference:</strong>
+        </xpath>
+        <xpath expr="/t/t/div/div[3]/div[2]/strong" position="replace">
+            <strong class="mr-2">
+                Purchase Order No:
+            </strong>
+        </xpath>
+
+
+        <xpath expr="/t[1]/t[1]/div[1]/table[1]/thead[1]/tr[1]/th[1]" position="attributes">
+            <attribute name="class">text-center text-capitalize</attribute>
+        </xpath>
+        <xpath expr="/t[1]/t[1]/div[1]/table[1]/thead[1]/tr[1]/th[2]" position="attributes">
+            <attribute name="class">text-center text-capitalize</attribute>
+        </xpath>
+        <xpath expr="/t[1]/t[1]/div[1]/table[1]/thead[1]/tr[1]/th[3]" position="attributes">
+            <attribute name="class">text-center text-capitalize</attribute>
+        </xpath>
+        <xpath expr="/t[1]/t[1]/div[1]/table[1]/thead[1]/tr[1]/th[4]" position="attributes">
+            <attribute name="class">text-center text-capitalize</attribute>
+        </xpath>
+        <xpath expr="/t[1]/t[1]/div[1]/table[1]/thead[1]/tr[1]/th[5]" position="attributes">
+            <attribute name="class">text-center text-capitalize</attribute>
+        </xpath>
+        <xpath expr="/t[1]/t[1]/div[1]/table[1]/thead[1]/tr[1]/th[6]" position="attributes">
+            <attribute name="class">text-center text-capitalize</attribute>
+        </xpath>
+        <xpath expr="/t[1]/t[1]/div[1]/table[1]/thead[1]/tr[1]/th[7]" position="attributes">
+            <attribute name="class">text-center text-capitalize</attribute>
+        </xpath>
+        <xpath expr="/t[1]/t[1]/div[1]/table[1]/thead[1]/tr[1]/th[8]" position="attributes">
+            <attribute name="class">text-center text-capitalize</attribute>
+        </xpath>
+        <xpath expr="/t/t/div/table/thead/tr/th[1]" position="before">
+            <t t-set="count" t-value="1"/>
+            <th class="text-center text-capitalize">Sr. No.</th>
+        </xpath>
+        <xpath expr="/t/t/div/table/tbody/t[2]/tr/t[1]/td[1]" position="before">
+            <td class="text-center">
+                <t t-esc="count"/>
+                <t t-set="count" t-value="count + 1"/>
+            </td>
+        </xpath>
+
+        <xpath expr="/t/t/div/table/thead/tr/th[3]" position="replace">
+            <th name="th_quantity" class="text-center text-capitalize">Description</th>
+        </xpath>
+        <xpath expr="/t/t/div/table/thead/tr/th[3]" position="replace">
+            <th name="th_quantity" class="text-center text-capitalize">Description</th>
+        </xpath>
+        <xpath expr="/t[1]/t[1]/div[1]/h2[1]" position="attributes">
+            <attribute name="class">mt-6</attribute>
+        </xpath>
+        <xpath expr="/t[1]/t[1]/div[1]/h2[1]" position="attributes">
+            <attribute name="class">mt-4</attribute>
+        </xpath>
+        <!--        <xpath expr="/t[1]/t[1]/div[1]/div[3]/div[10]" position="replace"/>-->
+        <xpath expr="/t/t/div/h2" position="attributes">
+            <attribute name="style" separator=";" add="width:50px"/>
+        </xpath>
+        <xpath expr="/t/t/div/h2" position="attributes">
+            <attribute name="style" separator=";" add="width:80px" remove="width:50px"/>
+        </xpath>
+        <xpath expr="/t/t/div/h2" position="attributes">
+            <attribute name="style" separator=";" add="width:200px" remove="width:80px"/>
+        </xpath>
+        <xpath expr="/t/t/div/h2" position="attributes">
+            <attribute name="style" separator=";" add="width:300px" remove="width:200px"/>
+        </xpath>
+        <xpath expr="/t/t/div/h2" position="attributes">
+            <attribute name="style" separator=";" add="width:400px" remove="width:300px"/>
+        </xpath>
+        <xpath expr="/t/t/div/h2/span[4]" position="attributes">
+            <attribute name="class" separator=" " add="small"/>
+        </xpath>
+        <xpath expr="/t/t/div/h2" position="attributes">
+            <attribute name="style" separator=";" add="width:500px" remove="width:400px"/>
+        </xpath>
+        <xpath expr="/t/t/div/h2" position="attributes">
+            <attribute name="style" separator=";" add="width:900px" remove="width:500px"/>
+        </xpath>
+        <xpath expr="/t/t/div/h2/span[1]/br" position="before">
+            <span>New Text Block</span>
+        </xpath>
+        <xpath expr="/t/t/div/h2/span[1]/span" position="before">
+            <span t-field="doc.name"/>
+        </xpath>
+        <xpath expr="/t[1]/t[1]/div[1]/h2[1]/span[1]/span[2]" position="replace"/>
+        <xpath expr="/t/t/div/h2" position="attributes">
+            <attribute name="style" separator=";" remove="width:900px"/>
+        </xpath>
+        <xpath expr="/t[1]/t[1]/div[1]/h2[1]/span[4]" position="replace"/>
+        <xpath expr="/t/t/div/h2/span[3]" position="after">
+            <span t-field="doc.name"/>
+        </xpath>
+        <xpath expr="/t[1]/t[1]/div[1]/h2[1]/span[4]" position="attributes">
+            <attribute name="t-if">env.context.get('proforma', False) or is_pro_forma</attribute>
+        </xpath>
+        <xpath expr="/t[1]/t[1]/div[1]/h2[1]/span[4]" position="attributes">
+            <attribute name="t-if">doc.state != "draft"</attribute>
+        </xpath>
+        <xpath expr="/t[1]/t[1]/div[1]/h2[1]/span[4]" position="attributes">
+            <attribute name="t-if">doc.state == "sale"</attribute>
+        </xpath>
+        <xpath expr="/t[1]/t[1]/div[1]/h2[1]/span[4]" position="attributes">
+            <attribute name="t-if"/>
+        </xpath>
+        <xpath expr="/t[1]/t[1]/div[1]/h2[1]/span[4]" position="attributes">
+            <attribute name="t-if">env.context.get('proforma', True) or is_pro_forma</attribute>
+        </xpath>
+        <xpath expr="/t[1]/t[1]/div[1]/h2[1]/span[4]" position="attributes">
+            <attribute name="t-if"/>
+        </xpath>
+        <xpath expr="/t[1]/t[1]/div[1]/h2[1]/span[4]" position="attributes">
+            <attribute name="t-if">doc.state != "draft"</attribute>
+        </xpath>
+        <xpath expr="/t[1]/t[1]/div[1]/h2[1]/span[4]" position="attributes">
+            <attribute name="t-if">doc.state == "draft"</attribute>
+        </xpath>
+        <xpath expr="/t/t/div/h2/span[3]" position="after">
+            <span t-field="doc.name"/>
+        </xpath>
+        <xpath expr="/t[1]/t[1]/div[1]/h2[1]/span[4]" position="attributes">
+            <attribute name="t-if">doc.state == "sale"</attribute>
+        </xpath>
+        <xpath expr="/t[1]/t[1]/div[1]/h2[1]/span[4]" position="attributes">
+            <attribute name="t-if">env.context.get('proforma', False) or is_pro_forma</attribute>
+        </xpath>
+        <xpath expr="/t[1]/t[1]/div[1]/h2[1]/span[4]" position="attributes">
+            <attribute name="t-if">env.context.get('proforma', Ture) or not is_pro_forma</attribute>
+        </xpath>
+        <xpath expr="/t[1]/t[1]/div[1]/h2[1]/span[5]" position="attributes">
+            <attribute name="t-if">doc.state == "sale"</attribute>
+        </xpath>
+        <xpath expr="/t[1]/t[1]/div[1]/h2[1]/span[5]" position="attributes">
+            <attribute name="t-if">doc.state == "sale" and doc.state == "draft"</attribute>
+        </xpath>
+
+        <xpath expr="/t[1]/t[1]/div[1]/h2[1]/span[3]" position="replace">
+            <span t-else="">Sales Order #</span>
+        </xpath>
+        <xpath expr="//t[@t-set='address']" position="replace">
+            <t t-set="address" style="margin-left:0px!important">
+                <t t-if="doc.partner_invoice_id.id == doc.partner_shipping_id.id">
+                    <div>
+                        <strong>Billing and Shipping Address:</strong>
+                    </div>
+                    <span style="margin-left:px;" t-field="doc.partner_invoice_id.name"/>
+                    <br/>
+                    <div class="d-flex align-items-baseline">
+                        <div>
+                            <i class="fa fa-map-marker fa-fw" role="img" aria-label="Address" title="Address"/>
+                        </div>
+                        <div class="w-100 d-block">
+                            <t t-if="doc.partner_invoice_id.street">
+                                <span style="margin-left:px;" t-field="doc.partner_id.street"/>
+                                <br/>
+                            </t>
+                            <t t-if="doc.partner_invoice_id.street2">
+                                <span style="margin-left:px;" t-field="doc.partner_id.street2"/>
+                                <br/>
+                            </t>
+                            <t t-if="doc.partner_invoice_id.city">
+                                <span style="margin-left:px;" t-field="doc.partner_id.city"/>
+                            </t>
+                            <t t-if="doc.partner_invoice_id.zip">
+                                <span style="margin-left:px;" t-field="doc.partner_id.zip"/>
+                                ,
+                            </t>
+                            <t t-if="doc.partner_invoice_id.state_id">
+                                <span style="margin-left:px;" t-field="doc.partner_id.state_id"/>
+
+                            </t>
+                            <t t-if="doc.partner_invoice_id.country_id">
+                                <span style="margin-left:px;" t-field="doc.partner_id.country_id"/>
+                            </t>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-baseline">
+                        <div t-if="doc.partner_invoice_id.phone or doc.partner_invoice_id.mobile">
+                            <i class="fa fa fa-phone fa-fw" role="img" aria-label="call" title="Call"/>
+                        </div>
+                        <div class="w-100 d-block">
+                            <t t-if="doc.partner_invoice_id.phone or doc.partner_invoice_id.mobile">
+                                <t t-if="doc.partner_invoice_id.phone">
+                                    <span style="margin-left:px;" t-field="doc.partner_id.phone"/>
+                                </t>
+                                <t t-if="doc.partner_invoice_id.mobile">
+                                    <t t-if="doc.partner_invoice_id.phone and doc.partner_invoice_id.mobile">
+                                        ,
+                                    </t>
+                                    <span style="margin-left:px;" t-field="doc.partner_invoice_id.mobile"/>
+                                </t>
+                            </t>
+                        </div>
+                    </div>
+                    <p t-if="doc.partner_invoice_id.vat">
+                        <t t-out="doc.company_id.account_fiscal_country_id.vat_label or 'Tax ID'"/>:
+                        <span t-field="doc.partner_invoice_id.vat"/>
+                    </p>
+                </t>
+                <t t-else="">
+                    <div>
+                        <strong>Billing Address:</strong>
+                    </div>
+                    <span style="margin-left:px;" t-field="doc.partner_invoice_id.name"/>
+                    <br/>
+                    <div class="d-flex align-items-baseline">
+                        <div>
+                            <i class="fa fa-map-marker fa-fw" role="img" aria-label="Address" title="Address"/>
+                        </div>
+                        <div class="w-100 d-block">
+                            <t t-if="doc.partner_invoice_id.street">
+                                <span style="margin-left:px;" t-field="doc.partner_id.street"/>
+                                <br/>
+                            </t>
+                            <t t-if="doc.partner_invoice_id.street2">
+                                <span style="margin-left:px;" t-field="doc.partner_id.street2"/>
+                                <br/>
+                            </t>
+                            <t t-if="doc.partner_invoice_id.city">
+                                <span style="margin-left:px;" t-field="doc.partner_id.city"/>
+                            </t>
+                            <t t-if="doc.partner_invoice_id.zip">
+                                <span style="margin-left:px;" t-field="doc.partner_id.zip"/>
+                                ,
+                            </t>
+                            <t t-if="doc.partner_invoice_id.state_id">
+                                <span style="margin-left:px;" t-field="doc.partner_id.state_id"/>
+
+                            </t>
+                            <t t-if="doc.partner_invoice_id.country_id">
+                                <span style="margin-left:px;" t-field="doc.partner_id.country_id"/>
+                            </t>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-baseline">
+                        <div t-if="doc.partner_invoice_id.phone or doc.partner_invoice_id.mobile">
+                            <i class="fa fa fa-phone fa-fw" role="img" aria-label="call" title="Call"/>
+                        </div>
+                        <div class="w-100 d-block">
+                            <t t-if="doc.partner_invoice_id.phone or doc.partner_invoice_id.mobile">
+                                <t t-if="doc.partner_invoice_id.phone">
+                                    <span style="margin-left:px;" t-field="doc.partner_id.phone"/>
+                                </t>
+                                <t t-if="doc.partner_invoice_id.mobile">
+                                    <t t-if="doc.partner_invoice_id.phone and doc.partner_invoice_id.mobile">
+                                        ,
+                                    </t>
+                                    <span style="margin-left:px;" t-field="doc.partner_invoice_id.mobile"/>
+                                </t>
+                            </t>
+                        </div>
+                    </div>
+                    <p t-if="doc.partner_invoice_id.vat">
+                        <t t-out="doc.company_id.account_fiscal_country_id.vat_label or 'Tax ID'"/>:
+                        <span t-field="doc.partner_invoice_id.vat"/>
+                    </p>
+                </t>
+            </t>
+        </xpath>
+        <xpath expr="//t[@t-if='doc.partner_shipping_id != doc.partner_invoice_id']" position="replace">
+            <div class="row">
+                <div t-if="doc.partner_shipping_id.id != doc.partner_invoice_id.id">
+                    <div>
+                        <strong>Shipping Address:</strong>
+                    </div>
+                    <span style="margin-left:px;" t-field="doc.partner_shipping_id.name"/>
+                    <br/>
+                    <div class="d-flex align-items-baseline">
+                        <div>
+                            <i class="fa fa-map-marker fa-fw" role="img" aria-label="Address" title="Address"/>
+                        </div>
+                        <div class="w-100 d-block">
+                            <t t-if="doc.partner_shipping_id.street">
+                                <span style="margin-left:px;" t-field="doc.partner_shipping_id.street"/>
+                                <br/>
+                            </t>
+                            <t t-if="doc.partner_shipping_id.street2">
+                                <span style="margin-left:px;" t-field="doc.partner_shipping_id.street2"/>
+                                <br/>
+                            </t>
+                            <t t-if="doc.partner_shipping_id.city">
+                                <span style="margin-left:px;" t-field="doc.partner_shipping_id.city"/>
+                            </t>
+                            <t t-if="doc.partner_shipping_id.zip">
+                                <span style="margin-left:px;" t-field="doc.partner_shipping_id.zip"/>
+                                ,
+                            </t>
+                            <t t-if="doc.partner_shipping_id.state_id">
+                                <span style="margin-left:px;" t-field="doc.partner_shipping_id.state_id"/>
+
+                            </t>
+                            <t t-if="doc.partner_shipping_id.country_id">
+                                <span style="margin-left:px;" t-field="doc.partner_shipping_id.country_id"/>
+                            </t>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-baseline">
+                        <div t-if="doc.partner_shipping_id.phone or doc.partner_shipping_id.mobile">
+                            <i class="fa fa fa-phone fa-fw" role="img" aria-label="call" title="Call"/>
+                        </div>
+                        <div class="w-100 d-block">
+                            <t t-if="doc.partner_shipping_id.phone or doc.partner_shipping_id.mobile">
+                                <t t-if="doc.partner_shipping_id.phone">
+                                    <span style="margin-left:px;" t-field="doc.partner_shipping_id.phone"/>
+                                </t>
+                                <t t-if="doc.partner_shipping_id.mobile">
+                                    <t t-if="doc.partner_shipping_id.phone and doc.partner_shipping_id.mobile">
+                                        ,
+                                    </t>
+                                    <span style="margin-left:px;" t-field="doc.partner_shipping_id.mobile"/>
+                                </t>
+                            </t>
+                        </div>
+                    </div>
+                    <p t-if="doc.partner_shipping_id.vat">
+                        <t t-out="doc.company_id.account_fiscal_country_id.vat_label or 'Tax ID'"/>:
+                        <span t-field="doc.partner_shipping_id.vat"/>
+                    </p>
+                </div>
+            </div>
+        </xpath>
+        <xpath expr="//p[@t-field='doc.x_studio_services']/parent::div" position="replace">
+            <div class="col-auto col-3 mw-100 mb-2" t-if="doc.service">
+                <strong>Services:</strong>
+                <p class="m-0" t-field="doc.service"/>
+            </div>
+        </xpath>
+        <xpath expr="//p[contains(@t-if, 'is_html_empty(doc.payment_term_id.note)')]" position="replace"/>
+        <xpath expr="//h2[hasclass('mt-4')]" position="replace">
+            <h2 class="mt-4">
+                <span t-if="env.context.get('proforma', False) or is_pro_forma">Pro-Forma Invoice #</span>
+                <span t-elif="env.context.get('validate_analytic', False) or is_pro_forma or doc.state == 'sent'">
+                    Quotation #
+                </span>
+                <span t-elif="doc.state in ['draft','inquiry','engineering_review', 'data_feedback', 'prepared_for_pricing', 'cancel']">
+                    Inquiry #
+                </span>
+                <span t-elif="doc.state in ['sale','done']">Sales Order #</span>
+                <span t-else="">Inquiry #</span>
+                <span t-field="doc.name"/>
+            </h2>
+        </xpath>
+        <xpath expr="//div[@t-if='doc.date_order']" position="replace">
+            <div t-if="doc.date_order" class="col-auto col-3 mw-100 mb-2" name="informations_date">
+                <strong t-if="doc.state in ['sale','done']">Order Date:</strong>
+                <strong t-else="">Inquiry Date:</strong>
+                <p class="m-0" t-field="doc.date_order" t-options="{&quot;widget&quot;: &quot;date&quot;}"/>
+            </div>
+        </xpath>
+        <xpath expr="//div[hasclass('clearfix')]//div[@id='total']" position="replace">
+            <div id="total" class="row" name="total">
+                <div id="disclaimer_note" class="col-6" style="line-height:20px;">
+                    <t t-if="doc.order_line and doc.order_line.filtered(lambda x: x.order_line_image)">
+                        Please Note: Product images shown in the table are for reference only. Your order/inquiry will
+                        be processed for the selected variant.
+                    </t>
+                </div>
+                <div t-attf-class="#{'col-6' if report_type != 'html' else 'col-sm-7 col-md-6'}">
+                    <table class="table table-sm table-borderless">
+                        <!-- Tax totals -->
+                        <t t-set="tax_totals" t-value="doc.tax_totals"/>
+                        <t t-call="account.document_tax_totals"/>
+                    </table>
+                </div>
+            </div>
+        </xpath>
+    </template>
+
+    <template id="mechpower_invoice_report_invoice_document_inherit"
+              inherit_id="l10n_in.l10n_in_report_invoice_document_inherit">
+        <!--        <xpath expr="/t[1]/t[1]/div[1]/t[1]/div[2]/t[1]/address[1]" position="attributes">-->
+        <!--            <attribute name="t-options-no_marker">False</attribute>-->
+        <!--        </xpath>-->
+        <!--        <xpath expr="/t[1]/t[1]/div[1]/t[1]/div[2]/t[1]/span[1]" position="replace"/>-->
+        <xpath expr="/t[1]/t[1]/div[2]/div[1]/div[4]" position="replace"/>
+        <xpath expr="/t/t/div[2]/div/t[1]/h2" position="after">
+            <div class="row">
+                <div class="col-3">
+                    <span>
+                        <strong>Number:</strong>
+                        <br/>
+                    </span>
+                    <span t-field="o.name"/>
+                </div>
+                <div class="col-3"/>
+                <div class="col-3"/>
+                <div class="col-3"/>
+            </div>
+        </xpath>
+        <xpath expr="/t[1]/t[1]/div[2]/div[1]/t[1]/div[1]/div[1]" position="attributes">
+            <attribute name="class">col-6</attribute>
+        </xpath>
+        <xpath expr="/t[1]/t[1]/div[2]/div[1]/t[1]/div[1]/div[1]" position="attributes">
+            <attribute name="class">col-12</attribute>
+        </xpath>
+        <xpath expr="/t[1]/t[1]/div[2]/div[1]/t[1]/div[1]/div[1]" position="attributes">
+            <attribute name="class">mt-4</attribute>
+        </xpath>
+        <xpath expr="/t[1]/t[1]/div[2]/div[1]/t[1]/div[1]/div[1]/span[1]/strong[1]" position="attributes">
+            <attribute name="class">mt-4</attribute>
+        </xpath>
+        <xpath expr="/t[1]/t[1]/div[2]/div[1]/t[1]/div[1]/div[1]" position="replace"/>
+        <xpath expr="/t/t/div[2]/div/t[6]/p" position="after">
+            <div class="row">
+                <div class="col">
+                    <span>New Text Block</span>
+                </div>
+            </div>
+        </xpath>
+        <xpath expr="/t/t/div[2]/div/t[6]/div/div/span" position="replace">
+            <span>
+                <div style="page-break-before:always;">
+                    <strong>Terms &amp; Conditions
+                        <br/>
+                        <br/>
+                    </strong>
+                    <ol>
+                        <li>Payment and Transaction Documents: All payments and transaction-related documents are to be
+                            released in the name of Mech Power Technology Private Limited. You can choose from the
+                            following
+                            payment options: A/C Payee Cheques, Demand Drafts, NEFT/RTGS, and various digital payment
+                            options available on our website.
+                            <br/>
+                            <br/>
+                        </li>
+                        <li>Late Payment Interest: Any payments received after the due date mentioned in the invoice
+                            will
+                            automatically attract a non-negotiable 18% interest charge.
+                            <br/>
+                            <br/>
+                        </li>
+                        <li>Lien on Goods and Services: Mech Power Technology Private Limited shall possess a lien on
+                            all
+                            goods, services, and other deliverables until outstanding invoices are paid in full or in
+                            part.
+                            <br/>
+                            <br/>
+                        </li>
+                        <li>Jurisdiction: Any and all disputes shall be addressed only in the Ahmedabad jurisdiction in
+                            the
+                            State of Gujarat.
+                            <br/>
+                            <br/>
+                        </li>
+                        <li>Claims Period: Claims received by our team after 15 days from the date of the invoice will
+                            not
+                            be entertained.
+                            <br/>
+                            <br/>
+                        </li>
+                        <li>Handling Disclaimer: Any damages resulting from improper handling or usage beyond
+                            recommended
+                            guidelines will not be covered.
+                            <br/>
+                            <br/>
+                        </li>
+                        <li>Transit Damage Disclaimer: Our team takes all the necessary measures to ensure safe and
+                            timely
+                            transport. However, if any damage is incurred to the goods in the process of transit, Mech
+                            Power
+                            Technology Private Limited, its associates, or any of its employees will not be liable for
+                            claims of damage or related expenses/charges.
+                            <br/>
+                            <br/>
+                        </li>
+                        <li>Applicability of Terms: All the Terms &amp; Conditions mentioned in the Quotation and the
+                            Pro
+                            Forma Invoice are applicable to this invoice, its associated transactions, and all future
+                            transactions unless specifically changed by Mech Power Technology Private Limited.
+                        </li>
+                    </ol>
+                    <p>
+                        <br/>
+                    </p>
+                    <p>Company Bank Details -</p>
+                    <p>A/C Holder Name - MECHPOWER TECHNOLOGY PRIVATE LIMITED</p>
+                    <p>Bank Name - HDFC BANK LTD A/C59209898039173</p>
+                    <p>A/C No - 59209898039173</p>
+                    <p>Branch &amp; IFS Code - AHMEDABAD &amp; HDFC0007153</p>
+                    <p>SWIFT Code - HDFCINBBXXX</p>
+                    <br/>
+                </div>
+            </span>
+        </xpath>
+        <xpath expr="/t/t/div[2]/div/t[6]/div/div/span" position="replace">
+            <span>
+                <div style="page-break-before:always;">
+                    <strong>Terms &amp; Conditions
+                        <br/>
+                        <br/>
+                    </strong>
+                    <ol>
+                        <li>Payment and Transaction Documents: All payments and transaction-related documents are to be
+                            released in the name of Mech Power Technology Private Limited. You can choose from the
+                            following
+                            payment options: A/C Payee Cheques, Demand Drafts, NEFT/RTGS, and various digital payment
+                            options available on our website.
+                            <br/>
+                            <br/>
+                        </li>
+                        <li>Late Payment Interest: Any payments received after the due date mentioned in the invoice
+                            will
+                            automatically attract a non-negotiable 18% interest charge.
+                            <br/>
+                            <br/>
+                        </li>
+                        <li>Lien on Goods and Services: Mech Power Technology Private Limited shall possess a lien on
+                            all
+                            goods, services, and other deliverables until outstanding invoices are paid in full or in
+                            part.
+                            <br/>
+                            <br/>
+                        </li>
+                        <li>Jurisdiction: Any and all disputes shall be addressed only in the Ahmedabad jurisdiction in
+                            the
+                            State of Gujarat.
+                            <br/>
+                            <br/>
+                        </li>
+                        <li>Claims Period: Claims received by our team after 15 days from the date of the invoice will
+                            not
+                            be entertained.
+                            <br/>
+                            <br/>
+                        </li>
+                        <li>Handling Disclaimer: Any damages resulting from improper handling or usage beyond
+                            recommended
+                            guidelines will not be covered.
+                            <br/>
+                            <br/>
+                        </li>
+                        <li>Transit Damage Disclaimer: Our team takes all the necessary measures to ensure safe and
+                            timely
+                            transport. However, if any damage is incurred to the goods in the process of transit, Mech
+                            Power
+                            Technology Private Limited, its associates, or any of its employees will not be liable for
+                            claims of damage or related expenses/charges.
+                            <br/>
+                            <br/>
+                        </li>
+                        <li>Applicability of Terms: All the Terms &amp; Conditions mentioned in the Quotation and the
+                            Pro
+                            Forma Invoice are applicable to this invoice, its associated transactions, and all future
+                            transactions unless specifically changed by Mech Power Technology Private Limited.
+                        </li>
+                    </ol>
+                    <p>
+                        <br/>
+                    </p>
+                    <p>Company Bank Details -</p>
+                    <p>A/C Holder Name - MECHPOWER TECHNOLOGY PRIVATE LIMITED</p>
+                    <p>Bank Name - HDFC BANK LTD A/C59209898039173</p>
+                    <p>A/C No - 59209898039173</p>
+                    <p>Branch &amp; IFS Code - AHMEDABAD &amp; HDFC0007153</p>
+                    <p>SWIFT Code - HDFCINBBXXX</p>
+                    <br/>
+                </div>
+            </span>
+        </xpath>
+        <xpath expr="/t/t/div[2]/div/t[6]/div/div/span" position="replace">
+            <span>
+                <div style="page-break-before:always;">
+                    <strong>Terms &amp; Conditions
+                        <br/>
+                        <br/>
+                    </strong>
+                    <ol>
+                        <li>Payment and Transaction Documents: All payments and transaction-related documents are to be
+                            released in the name of Mech Power Technology Private Limited. You can choose from the
+                            following
+                            payment options: A/C Payee Cheques, Demand Drafts, NEFT/RTGS, and various digital payment
+                            options available on our website.
+                            <br/>
+                            <br/>
+                        </li>
+                        <li>Late Payment Interest: Any payments received after the due date mentioned in the invoice
+                            will
+                            automatically attract a non-negotiable 18% interest charge.
+                            <br/>
+                            <br/>
+                        </li>
+                        <li>Lien on Goods and Services: Mech Power Technology Private Limited shall possess a lien on
+                            all
+                            goods, services, and other deliverables until outstanding invoices are paid in full or in
+                            part.
+                            <br/>
+                            <br/>
+                        </li>
+                        <li>Jurisdiction: Any and all disputes shall be addressed only in the Ahmedabad jurisdiction in
+                            the
+                            State of Gujarat.
+                            <br/>
+                            <br/>
+                        </li>
+                        <li>Claims Period: Claims received by our team after 15 days from the date of the invoice will
+                            not
+                            be entertained.
+                            <br/>
+                            <br/>
+                        </li>
+                        <li>Handling Disclaimer: Any damages resulting from improper handling or usage beyond
+                            recommended
+                            guidelines will not be covered.
+                            <br/>
+                            <br/>
+                        </li>
+                        <li>Transit Damage Disclaimer: Our team takes all the necessary measures to ensure safe and
+                            timely
+                            transport. However, if any damage is incurred to the goods in the process of transit, Mech
+                            Power
+                            Technology Private Limited, its associates, or any of its employees will not be liable for
+                            claims of damage or related expenses/charges.
+                            <br/>
+                            <br/>
+                        </li>
+                        <li>Applicability of Terms: All the Terms &amp; Conditions mentioned in the Quotation and the
+                            Pro
+                            Forma Invoice are applicable to this invoice, its associated transactions, and all future
+                            transactions unless specifically changed by Mech Power Technology Private Limited.
+                        </li>
+                    </ol>
+                    <p>
+                        <br/>
+                    </p>
+                    <p>Company Bank Details -</p>
+                    <p>A/C Holder Name - MECHPOWER TECHNOLOGY PRIVATE LIMITED</p>
+                    <p>Bank Name - HDFC BANK LTD A/C59209898039173</p>
+                    <p>A/C No - 59209898039173</p>
+                    <p>Branch &amp; IFS Code - AHMEDABAD &amp; HDFC0007153</p>
+                    <p>SWIFT Code - HDFCINBBXXX</p>
+                    <br/>
+                </div>
+            </span>
+        </xpath>
+        <xpath expr="//div[@id='informations']" position="replace">
+            <div id="informations" class="row mt-4 mb-4">
+                <div class="col-auto col-3 mw-100 mb-2" t-if="o.invoice_date" name="invoice_date">
+                    <t t-if="o.move_type == 'out_invoice'">
+                        <strong>Invoice Date:</strong>
+                    </t>
+                    <t t-elif="o.move_type == 'out_refund'">
+                        <strong>Credit Note Date:</strong>
+                    </t>
+                    <t t-elif="o.move_type == 'out_receipt'">
+                        <strong>Receipt Date:</strong>
+                    </t>
+                    <t t-else="">
+                        <strong>Date:</strong>
+                    </t>
+                    <p class="m-0" t-field="o.invoice_date"/>
+                </div>
+                <div class="col-auto col-3 mw-100 mb-2"
+                     t-if="o.invoice_date_due and o.move_type == 'out_invoice' and o.state == 'posted'" name="due_date">
+                    <strong>Payment Due Date:</strong>
+                    <p class="m-0" t-field="o.invoice_date_due"/>
+                </div>
+                <div class="col-auto col-3 mw-100 mb-2" t-if="o.invoice_origin" name="origin">
+                    <strong>Source:</strong>
+                    <p class="m-0" t-field="o.invoice_origin"/>
+                </div>
+                <div class="col-auto col-3 mw-100 mb-2" t-if="o.partner_id.ref" name="customer_code">
+                    <strong>Customer Code:</strong>
+                    <p class="m-0" t-field="o.partner_id.ref"/>
+                </div>
+                <div class="col-auto col-3 mw-100 mb-2" t-if="o.ref" name="reference">
+                    <strong>PO No.:</strong>
+                    <p class="m-0" t-field="o.ref"/>
+                </div>
+                <div class="col-auto col-3 mw-100 mb-2" t-if="o.invoice_payment_term_id" name="invoice_payment_term">
+                    <strong>Payment Term:</strong>
+                    <p class="m-0" t-field="o.invoice_payment_term_id.name"/>
+                </div>
+            </div>
+        </xpath>
+        <xpath expr="//t[@t-set='payment_term_details']" position="replace"/>
+        <xpath expr="//div[@name='payment_term']" position="replace"/>
+        <xpath expr="//p[@id='total_in_words']" position="replace">
+            <div class="row">
+                <div class="col-8">
+                    <t t-if="o.company_id.account_fiscal_country_id.code == 'IN'">
+                        <p id="total_in_words" class="mb16">
+                            <strong>Total (In Words):</strong>
+                            <span t-field="o.amount_total_words"/>
+                        </p>
+                    </t>
+                    <t t-if="o.partner_id.l10n_in_gst_treatment == 'special_economic_zone'">
+                        <p style="margin-top:10px;">
+                            SUPPLY MEANT FOR EXPORT/SUPPLY TO SEZ UNIT OR SEZ DEVELOPER
+                            FOR AUTHORISED OPERATIONS ON PAYMENT OF INTEGRATED TAX LUT
+                            NO. AD240324159132H DTD.29.03.2024
+                        </p>
+                    </t>
+                </div>
+                <div t-if="o.company_id and o.company_id.bill_signature" class="col-4 text-end"
+                     style="margin-top: -40px;">
+                    <img t-att-src="image_data_uri(o.company_id.bill_signature)" style="width:150px; height:80px;"/>
+                </div>
+            </div>
+        </xpath>
+        <xpath expr="//th" position="attributes">
+            <attribute name="class">text-center text-capitalize</attribute>
+        </xpath>
+        <xpath expr="//th[2]" position="attributes">
+            <attribute name="class">text-center text-capitalize</attribute>
+        </xpath>
+        <xpath expr="//th[3]" position="attributes">
+            <attribute name="t-attf-class">text-center text-capitalize</attribute>
+        </xpath>
+        <xpath expr="//th[4]" position="attributes">
+            <attribute name="t-attf-class">text-center text-capitalize</attribute>
+        </xpath>
+        <xpath expr="//th[5]" position="attributes">
+            <attribute name="t-attf-class">text-center text-capitalize</attribute>
+        </xpath>
+        <xpath expr="//th[6]" position="attributes">
+            <attribute name="class">text-center text-capitalize</attribute>
+        </xpath>
+
+
+        <xpath expr="//table/thead/tr/th[1]" position="before">
+            <th class="text-capitalize text-center" name="th_sr_no">
+                <strong>Sr. no.</strong>
+                <t t-set="count" t-value="1"/>
+            </th>
+            <th class="text-capitalize text-center" name="th_sr_no">
+                <strong>Product Part No.</strong>
+            </th>
+        </xpath>
+
+        <xpath expr="//t[@name='account_invoice_line_accountable']/td[1]" position="before">
+            <td class="text-center" t-esc="count"/>
+            <t t-set="count" t-value="count + 1"/>
+            <td>
+                <t t-if='line.product_id' t-esc="line.product_id.default_code"/>
+                <t t-else="">-</t>
+            </td>
+        </xpath>
+
+        <xpath expr="//table" position="before">
+            <style type="text/css">
+                th {
+                text-align: center;
+                vertical-align: middle;
+                line-height: 1.5;
+                }
+
+            </style>
+        </xpath>
+    </template>
+
+
+    <template id="mech_report_invoice_document" inherit_id="account.report_invoice_document">
+        <xpath expr="//t[@t-if='o.partner_shipping_id and (o.partner_shipping_id != o.partner_id)']" position="replace">
+
+            <t t-if="o.partner_id.l10n_in_gst_treatment == 'special_economic_zone'">
+                <div class="col-6">
+                    <t t-set="information_block">
+                        <div groups="account.group_delivery_invoice_address" name="shipping_address_block">
+                            <div>
+                            <strong>Shipping Address:</strong>
+                        </div>
+                        <span style="margin-left:px;" t-field="o.partner_shipping_id.name"/>
+                        <br/>
+                        <div class="d-flex align-items-baseline">
+                            <div>
+                                <i class="fa fa-map-marker fa-fw" role="img" aria-label="Address" title="Address"/>
+                            </div>
+                            <div class="w-100 d-block">
+                                <t t-if="o.partner_shipping_id.street">
+                                    <span style="margin-left:px;" t-field="o.partner_shipping_id.street"/>
+                                    <br/>
+                                </t>
+                                <t t-if="o.partner_shipping_id.street2">
+                                    <span style="margin-left:px;" t-field="o.partner_shipping_id.street2"/>
+                                    <br/>
+                                </t>
+                                <t t-if="o.partner_shipping_id.city">
+                                    <span style="margin-left:px;" t-field="o.partner_shipping_id.city"/>
+                                </t>
+                                <t t-if="o.partner_shipping_id.zip">
+                                    <span style="margin-left:px;" t-field="o.partner_shipping_id.zip"/>
+                                    ,
+                                </t>
+                                <t t-if="o.partner_shipping_id.state_id">
+                                    <span style="margin-left:px;" t-field="o.partner_shipping_id.state_id"/>
+
+                                </t>
+                                <t t-if="o.partner_shipping_id.country_id">
+                                    <span style="margin-left:px;" t-field="o.partner_shipping_id.country_id"/>
+                                </t>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-baseline">
+                            <div t-if="o.partner_shipping_id.phone or o.partner_shipping_id.mobile">
+                                <i class="fa fa fa-phone fa-fw" role="img" aria-label="call" title="Call"/>
+                            </div>
+                            <div class="w-100 d-block">
+                                <t t-if="o.partner_shipping_id.phone or o.partner_shipping_id.mobile">
+                                    <t t-if="o.partner_shipping_id.phone">
+                                        <span style="margin-left:px;" t-field="o.partner_shipping_id.phone"/>
+                                    </t>
+                                    <t t-if="o.partner_shipping_id.mobile">
+                                        <t t-if="o.partner_shipping_id.phone and o.partner_shipping_id.mobile">
+                                            ,
+                                        </t>
+                                        <span style="margin-left:px;" t-field="o.partner_shipping_id.mobile"/>
+                                    </t>
+                                </t>
+                            </div>
+                        </div>
+                        <p t-if="o.partner_shipping_id.vat">
+                            <t t-out="o.company_id.account_fiscal_country_id.vat_label or 'Tax ID'"/>:
+                            <span t-field="o.partner_shipping_id.vat"/>
+                        </p>
+                        </div>
+                    </t>
+                </div>
+                <div class="col-6" name="address_not_same_as_shipping">
+                    <t t-set="address">
+                        <div>
+                            <strong>Billing Address:</strong>
+                        </div>
+                        <span style="margin-left:px;" t-field="o.partner_id.name"/>
+                        <br/>
+                        <div class="d-flex align-items-baseline">
+                            <div>
+                                <i class="fa fa-map-marker fa-fw" role="img" aria-label="Address" title="Address"/>
+                            </div>
+                            <div class="w-100 d-block">
+                                <t t-if="o.partner_id.street">
+                                    <span style="margin-left:px;" t-field="o.partner_id.street"/>
+                                    <br/>
+                                </t>
+                                <t t-if="o.partner_id.street2">
+                                    <span style="margin-left:px;" t-field="o.partner_id.street2"/>
+                                    <br/>
+                                </t>
+                                <t t-if="o.partner_id.city">
+                                    <span style="margin-left:px;" t-field="o.partner_id.city"/>
+                                </t>
+                                <t t-if="o.partner_id.zip">
+                                    <span style="margin-left:px;" t-field="o.partner_id.zip"/>
+                                    ,
+                                </t>
+                                <t t-if="o.partner_id.state_id">
+                                    <span style="margin-left:px;" t-field="o.partner_id.state_id"/>
+
+                                </t>
+                                <t t-if="o.partner_id.country_id">
+                                    <span style="margin-left:px;" t-field="o.partner_id.country_id"/>
+                                </t>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-baseline">
+                            <div t-if="o.partner_id.phone or o.partner_id.mobile">
+                                <i class="fa fa fa-phone fa-fw" role="img" aria-label="call" title="Call"/>
+                            </div>
+                            <div class="w-100 d-block">
+                                <t t-if="o.partner_id.phone or o.partner_id.mobile">
+                                    <t t-if="o.partner_id.phone">
+                                        <span style="margin-left:px;" t-field="o.partner_id.phone"/>
+                                    </t>
+                                    <t t-if="o.partner_id.mobile">
+                                        <t t-if="o.partner_id.phone and o.partner_id.mobile">
+                                            ,
+                                        </t>
+                                        <span style="margin-left:px;" t-field="o.partner_id.mobile"/>
+                                    </t>
+                                </t>
+                            </div>
+                        </div>
+                        <p t-if="o.partner_id.vat">
+                            <t t-out="o.company_id.account_fiscal_country_id.vat_label or 'Tax ID'"/>:
+                            <span t-field="o.partner_id.vat"/>
+                        </p>
+                    </t>
+                </div>
+            </t>
+            <t t-elif="o.partner_shipping_id and (o.partner_shipping_id != o.partner_id)">
+                <div class="col-6">
+                    <t t-set="information_block">
+                        <div groups="account.group_delivery_invoice_address" name="shipping_address_block">
+                            <div>
+                            <strong>Shipping Address:</strong>
+                        </div>
+                        <span style="margin-left:px;" t-field="o.partner_shipping_id.name"/>
+                        <br/>
+                        <div class="d-flex align-items-baseline">
+                            <div>
+                                <i class="fa fa-map-marker fa-fw" role="img" aria-label="Address" title="Address"/>
+                            </div>
+                            <div class="w-100 d-block">
+                                <t t-if="o.partner_shipping_id.street">
+                                    <span style="margin-left:px;" t-field="o.partner_shipping_id.street"/>
+                                    <br/>
+                                </t>
+                                <t t-if="o.partner_shipping_id.street2">
+                                    <span style="margin-left:px;" t-field="o.partner_shipping_id.street2"/>
+                                    <br/>
+                                </t>
+                                <t t-if="o.partner_shipping_id.city">
+                                    <span style="margin-left:px;" t-field="o.partner_shipping_id.city"/>
+                                </t>
+                                <t t-if="o.partner_shipping_id.zip">
+                                    <span style="margin-left:px;" t-field="o.partner_shipping_id.zip"/>
+                                    ,
+                                </t>
+                                <t t-if="o.partner_shipping_id.state_id">
+                                    <span style="margin-left:px;" t-field="o.partner_shipping_id.state_id"/>
+
+                                </t>
+                                <t t-if="o.partner_shipping_id.country_id">
+                                    <span style="margin-left:px;" t-field="o.partner_shipping_id.country_id"/>
+                                </t>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-baseline">
+                            <div t-if="o.partner_shipping_id.phone or o.partner_shipping_id.mobile">
+                                <i class="fa fa fa-phone fa-fw" role="img" aria-label="call" title="Call"/>
+                            </div>
+                            <div class="w-100 d-block">
+                                <t t-if="o.partner_shipping_id.phone or o.partner_shipping_id.mobile">
+                                    <t t-if="o.partner_shipping_id.phone">
+                                        <span style="margin-left:px;" t-field="o.partner_shipping_id.phone"/>
+                                    </t>
+                                    <t t-if="o.partner_shipping_id.mobile">
+                                        <t t-if="o.partner_shipping_id.phone and o.partner_shipping_id.mobile">
+                                            ,
+                                        </t>
+                                        <span style="margin-left:px;" t-field="o.partner_shipping_id.mobile"/>
+                                    </t>
+                                </t>
+                            </div>
+                        </div>
+                        <p t-if="o.partner_shipping_id.vat">
+                            <t t-out="o.company_id.account_fiscal_country_id.vat_label or 'Tax ID'"/>:
+                            <span t-field="o.partner_shipping_id.vat"/>
+                        </p>
+                        </div>
+                    </t>
+                </div>
+                <div class="col-6" name="address_not_same_as_shipping">
+                    <t t-set="address">
+                        <div>
+                            <strong>Billing Address:</strong>
+                        </div>
+                        <span style="margin-left:px;" t-field="o.partner_id.name"/>
+                        <br/>
+                        <div class="d-flex align-items-baseline">
+                            <div>
+                                <i class="fa fa-map-marker fa-fw" role="img" aria-label="Address" title="Address"/>
+                            </div>
+                            <div class="w-100 d-block">
+                                <t t-if="o.partner_id.street">
+                                    <span style="margin-left:px;" t-field="o.partner_id.street"/>
+                                    <br/>
+                                </t>
+                                <t t-if="o.partner_id.street2">
+                                    <span style="margin-left:px;" t-field="o.partner_id.street2"/>
+                                    <br/>
+                                </t>
+                                <t t-if="o.partner_id.city">
+                                    <span style="margin-left:px;" t-field="o.partner_id.city"/>
+                                </t>
+                                <t t-if="o.partner_id.zip">
+                                    <span style="margin-left:px;" t-field="o.partner_id.zip"/>
+                                    ,
+                                </t>
+                                <t t-if="o.partner_id.state_id">
+                                    <span style="margin-left:px;" t-field="o.partner_id.state_id"/>
+
+                                </t>
+                                <t t-if="o.partner_id.country_id">
+                                    <span style="margin-left:px;" t-field="o.partner_id.country_id"/>
+                                </t>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-baseline">
+                            <div t-if="o.partner_id.phone or o.partner_id.mobile">
+                                <i class="fa fa fa-phone fa-fw" role="img" aria-label="call" title="Call"/>
+                            </div>
+                            <div class="w-100 d-block">
+                                <t t-if="o.partner_id.phone or o.partner_id.mobile">
+                                    <t t-if="o.partner_id.phone">
+                                        <span style="margin-left:px;" t-field="o.partner_id.phone"/>
+                                    </t>
+                                    <t t-if="o.partner_id.mobile">
+                                        <t t-if="o.partner_id.phone and o.partner_id.mobile">
+                                            ,
+                                        </t>
+                                        <span style="margin-left:px;" t-field="o.partner_id.mobile"/>
+                                    </t>
+                                </t>
+                            </div>
+                        </div>
+                        <p t-if="o.partner_id.vat">
+                            <t t-out="o.company_id.account_fiscal_country_id.vat_label or 'Tax ID'"/>:
+                            <span t-field="o.partner_id.vat"/>
+                        </p>
+                    </t>
+                </div>
+            </t>
+            <t t-elif="o.partner_shipping_id and (o.partner_shipping_id == o.partner_id)">
+                <div class="offset-col-6 col-6" name="address_same_as_shipping">
+                    <t t-set="address">
+                        <div>
+                            <strong>Billing and Shipping Address:</strong>
+                        </div>
+                        <span style="margin-left:px;" t-field="o.partner_id.name"/>
+                        <br/>
+                        <div class="d-flex align-items-baseline">
+                            <div>
+                                <i class="fa fa-map-marker fa-fw" role="img" aria-label="Address" title="Address"/>
+                            </div>
+                            <div class="w-100 d-block">
+                                <t t-if="o.partner_id.street">
+                                    <span style="margin-left:px;" t-field="o.partner_id.street"/>
+                                    <br/>
+                                </t>
+                                <t t-if="o.partner_id.street2">
+                                    <span style="margin-left:px;" t-field="o.partner_id.street2"/>
+                                    <br/>
+                                </t>
+                                <t t-if="o.partner_id.city">
+                                    <span style="margin-left:px;" t-field="o.partner_id.city"/>
+                                </t>
+                                <t t-if="o.partner_id.zip">
+                                    <span style="margin-left:px;" t-field="o.partner_id.zip"/>
+                                    ,
+                                </t>
+                                <t t-if="o.partner_id.state_id">
+                                    <span style="margin-left:px;" t-field="o.partner_id.state_id"/>
+
+                                </t>
+                                <t t-if="o.partner_id.country_id">
+                                    <span style="margin-left:px;" t-field="o.partner_id.country_id"/>
+                                </t>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-baseline">
+                            <div t-if="o.partner_id.phone or o.partner_id.mobile">
+                                <i class="fa fa fa-phone fa-fw" role="img" aria-label="call" title="Call"/>
+                            </div>
+                            <div class="w-100 d-block">
+                                <t t-if="o.partner_id.phone or o.partner_id.mobile">
+                                    <t t-if="o.partner_id.phone">
+                                        <span style="margin-left:px;" t-field="o.partner_id.phone"/>
+                                    </t>
+                                    <t t-if="o.partner_id.mobile">
+                                        <t t-if="o.partner_id.phone and o.partner_id.mobile">
+                                            ,
+                                        </t>
+                                        <span style="margin-left:px;" t-field="o.partner_id.mobile"/>
+                                    </t>
+                                </t>
+                            </div>
+                        </div>
+                        <p t-if="o.partner_id.vat">
+                            <t t-out="o.company_id.account_fiscal_country_id.vat_label or 'Tax ID'"/>:
+                            <span t-field="o.partner_id.vat"/>
+                        </p>
+                    </t>
+                </div>
+            </t>
+        </xpath>
+        <xpath expr="//p[@name='payment_communication']" position="replace">
+            <p t-if="o.move_type in ('out_invoice', 'in_refund') and o.payment_reference" name="payment_communication"
+               class="mt-4">
+                Please use the following communication for your payment :
+                <b>
+                    Tax Invoice #
+                    <span t-field="o.name"/>
+                </b>
+            </p>
+        </xpath>
+        <xpath expr="//div[hasclass('clearfix')]//div[@id='total']" position="replace">
+            <div id="total" class="row">
+                <div id="disclaimer_note" class="col-6" style="line-height:20px;">
+                    Please Note: Product images shown in the table are for reference only. Your order/inquiry will be
+                    processed for the selected variant.
+                </div>
+                <div t-attf-class="#{'col-6' if report_type != 'html' else 'col-sm-7 col-md-6'}">
+                    <table class="table table-sm table-borderless" style="page-break-inside: avoid;">
+                        <!--Tax totals-->
+                        <t t-set="tax_totals" t-value="o.tax_totals"/>
+                        <t t-call="account.document_tax_totals"/>
+                        <!--Payments-->
+                        <t t-if="print_with_payments">
+                            <t t-if="o.payment_state != 'invoicing_legacy'">
+                                <t t-set="payments_vals"
+                                   t-value="o.sudo().invoice_payments_widget and o.sudo().invoice_payments_widget['content'] or []"/>
+                                <t t-foreach="payments_vals" t-as="payment_vals">
+                                    <tr t-if="payment_vals['is_exchange'] == 0">
+                                        <td>
+                                            <i class="oe_form_field text-end oe_payment_label">Paid on
+
+                                                <t t-esc="payment_vals['date']"
+                                                   t-options="{&quot;widget&quot;: &quot;date&quot;}"/>
+                                            </i>
+                                        </td>
+                                        <td class="text-end">
+                                            <span t-esc="payment_vals['amount']"
+                                                  t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>
+                                        </td>
+                                    </tr>
+                                </t>
+                                <t t-if="len(payments_vals) &gt; 0">
+                                    <tr class="border-black fw-bold">
+                                        <td>Amount Due</td>
+                                        <td class="text-end">
+                                            <span t-field="o.amount_residual"/>
+                                        </td>
+                                    </tr>
+                                </t>
+                            </t>
+                        </t>
+                    </table>
+                </div>
+            </div>
+        </xpath>
+    </template>
+
+    <template id="report_delivery_document3" inherit_id="stock.report_delivery_document">
+        <xpath expr="//table[@name='stock_move_table']" position="before">
+          <div t-if="o.box_size" class="row mt32 mb32">
+            <div class="col-5">
+                <strong>Box Size:</strong>
+                <p t-field="o.box_size"/>
+            </div>
+          </div>
+        </xpath>
+
+    </template>
+
+
+    <template id="purchase_order_portal_content_custom" inherit_id="purchase.purchase_order_portal_content">
+        <xpath expr="//section[@t-if='order.notes']" position="replace">
+            <h3 class="">Terms &amp; Conditions</h3>
+            <br/>
+            <br/>
+            <p>
+                <b>1. Date Code and Shelf Life:</b>
+                All the deliverables shall be newly manufactured or a minimum of 90%
+                of the shelf life should be remaining at the time of shipment. Material LOT code no. and Batch
+                code no. should be mentioned in the Shipping Invoice.
+            </p>
+            <p>
+                <b>2. Inspection and acceptance:</b>
+                <span style="font-weight: normal">The deliverables will be accepted based on In-house sampling
+                    inspection and upon receipt of applicable documents. In case of any deviation in quality,
+                    our QA may reject items. A rejection note with incoming QA findings will be shared
+                    electronically with an intimation to arrange for rejected material pick up. All expenses
+                    will be borne by the Seller for this.
+                </span>
+            </p>
+            <p>
+                <b>3. Packing and Shipping:</b>
+                Pricing is inclusive of packaging or storage unless otherwise agreed in
+                writing by the buyer. Buyer&#39;s order numbers must be marked on all packages and shipping
+                documents. Seller shall not ship in advance of schedule or make partial shipment unless
+                otherwise
+                agreed in writing by the buyer. Packing should be such that material is protected from
+                Indentation,
+                scratch or any kind of damage during transportation &amp; unloading.
+            </p>
+            <p>
+                <b>4. Warranty:</b>
+                Seller warrants that all deliverables will conform to applicable specifications, drawings,
+                descriptions, and samples. All the deliverables will carry a warranty of 12 months from the date
+                of
+                receipt unless otherwise specified in the order. If the deliverables delivered under this
+                purchase
+                order fails under warranty, the Buyer may return at Seller&#39;s expense. The defective or
+                nonconforming products to be corrected or replaced by the Seller at no cost to the buyer.
+            </p>
+            <p>
+                <b>5. Default:</b>
+                Buyer may, by written notice to Seller, cancel this purchase order for default, (a) if Seller
+                fails to deliver the deliverables strictly within the time specified in this purchase order, or
+                if no time
+                is specified, within a reasonable limit. (b) if the deliverables delivered do not conform to
+                this
+                purchase order or if Seller fails to perform any of the other provisions of this purchase order,
+                or so
+                fails to make progress as to endanger performance of this purchase order in accordance with its
+                terms. Upon such cancellation, Buyer shall not be liable to Seller for any amount.
+            </p>
+            <p>
+                <b>6. Confidential Information:</b>
+                Seller shall not disclose to any third party or use any confidential
+                information of Buyer&#39;s concerning this purchase order or other material intended for use in
+                connection with this purchase order without prior written consent.
+            </p>
+            <p>
+                <b>7. Price:</b>
+                All prices are firm and fixed for the entire quantity and duration of the Purchase Order.
+            </p>
+            <p>
+                <b>8. Jurisdiction:</b>
+                This Purchase Order is subjected to Ahmadabad-Gujarat Jurisdiction only.
+            </p>
+        </xpath>
+    </template>
+
+
+    <template id="report_shipping3" inherit_id="delivery.report_delivery_document2">
+        <xpath expr="//div[@t-if='o.shipping_weight']" position="replace">
+            <div t-if="o.weight or o.package_weight" class="col-auto">
+                <strong>Weight for shipping:</strong>
+                <br/>
+                <span t-esc="o.weight + o.package_weight" t-options="{'widget': 'float', 'precision': 2}"/>
+                <span t-field="o.weight_uom_name"/>
+            </div>
+        </xpath>
+    </template>
+
+</odoo>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.ui.view" id="res_users_model_ids">
+        <field name="name">res.users</field>
+        <field name="model">res.users</field>
+        <field name="inherit_id" ref="base.view_users_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[2]" position='after'>
+                <page string="Delete &amp; Archive">
+                    <group>
+                        <field name="show_model_ids" string="Select Model to View Archive and Delete" widget="many2many_tags" options="{'edit': False, 'create': False}"/>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>
