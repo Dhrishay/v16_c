@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!--        REMOVE A MATRIX TABLE WHICH IS EARLIER APPEAR ON BEFORE SALE ORDER LINE-->
+        <template id="product_matrix_table_inherit" inherit_id="sale_product_matrix.grid_report_saleorder_inherit">
+            <xpath expr='//t[@t-call="product_matrix.matrix"]' position="replace">
+
+            </xpath>
+        </template>
+        <!--        CUSTOMIZED SALE PREVIEW PAGE WITH CUSTOM PERCENTAGE TAX AND TOTAL-->
+<!--        <template id="sale_order_portal_view_inherit" inherit_id="sale.sale_order_portal_content_totals_table">-->
+<!--            <xpath expr='//t[@t-call="account.document_tax_totals"]' position="replace">-->
+
+<!--                &lt;!&ndash;                    Default value&ndash;&gt;-->
+<!--                &lt;!&ndash;                    <t t-set="tax_totals" t-value="json.loads(o.tax_totals_json)"/>&ndash;&gt;-->
+<!--                <t t-if="not tax_totals['subtotals']">-->
+<!--                    <t t-set="cost" t-value="0.0"/>-->
+<!--                    <t t-set="after_sale_cost" t-value="0.0"/>-->
+<!--                    &lt;!&ndash;                    Load Jason Of tax_totals_json&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                <t t-set="json" t-value="json.loads(doc.tax_totals_json)"/>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                    GET VALUE FROM RES_CONFIG&ndash;&gt;-->
+<!--                    <t t-set="office_cost_feature" t-value="request.env['ir.config_parameter'].sudo().get_param(-->
+<!--                                                'custom_attribute_placeholder_cr.office_cost') or False"/>-->
+
+<!--                    <t t-set="percentage" t-value="request.env['ir.config_parameter'].sudo().get_param(-->
+<!--                                                'custom_attribute_placeholder_cr.percentage') or False"/>-->
+
+<!--                    <t t-set="max_amount" t-value="request.env['ir.config_parameter'].sudo().get_param(-->
+<!--                                                'custom_attribute_placeholder_cr.max_amount') or False"/>-->
+
+<!--                    <t t-if="office_cost_feature and percentage">-->
+<!--                        <t t-set="cost"-->
+<!--                           t-value="tax_totals['amount_untaxed'] + (tax_totals['amount_untaxed'] * float(percentage)/ 100)"/>-->
+<!--                        <tr>-->
+<!--                            <t t-if="percentage and float(percentage).is_integer()">-->
+<!--                                <td>-->
+<!--                                    <span>Office Costs<t-->
+<!--                                            t-esc="'%.0f'% float(percentage)"/>%-->
+<!--                                    </span>-->
+<!--                                </td>-->
+<!--                            </t>-->
+<!--                            <t t-else="">-->
+<!--                                <td>-->
+<!--                                    <span>Office Costs<t t-esc="percentage"/>%-->
+<!--                                    </span>-->
+<!--                                </td>-->
+<!--                            </t>-->
+<!--                            <td class="text-right o_price_total">-->
+<!--                                <span class="text-nowrap">-->
+<!--                                    <span t-field="sale_order.currency_id.symbol"/>-->
+<!--                                    <t t-if="tax_totals['amount_untaxed'] * float(percentage)/ 100 > float(max_amount)">-->
+<!--                                        <t t-esc="float(max_amount)"-->
+<!--                                           t-options='{"widget": "float", "precision": 2}'/>-->
+<!--                                    </t>-->
+<!--                                    <t t-else="">-->
+<!--                                        <t t-esc="tax_totals['amount_untaxed'] * float(percentage)/ 100"-->
+<!--                                           t-options='{"widget": "float", "precision": 2}'/>-->
+<!--                                    </t>-->
+<!--                                </span>-->
+<!--                            </td>-->
+<!--                        </tr>-->
+<!--                    </t>-->
+<!--                </t>-->
+<!--                <t t-foreach="tax_totals['subtotals']" t-as="subtotal">-->
+<!--                    <tr class="border-black o_subtotal">-->
+<!--                        <td>-->
+<!--                            <strong t-esc="subtotal['name']"/>-->
+<!--                        </td>-->
+
+<!--                        <td class="text-right">-->
+<!--                            <span-->
+<!--                                    t-att-class="oe_subtotal_footer_separator"-->
+<!--                                    t-esc="subtotal['formatted_amount']"-->
+<!--                            />-->
+<!--                        </td>-->
+<!--                    </tr>-->
+<!--                    <t t-set="subtotal_to_show" t-value="subtotal['name']"/>-->
+<!--                    <t t-set="cost" t-value="0.0"/>-->
+<!--                    &lt;!&ndash;                    Load Jason Of tax_totals_json&ndash;&gt;-->
+<!--                    &lt;!&ndash;                    <t t-set="json" t-value="json.loads(o.tax_totals_json)"/>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                    GET VALUE FROM RES_CONFIG&ndash;&gt;-->
+<!--                    <t t-set="office_cost_feature" t-value="request.env['ir.config_parameter'].sudo().get_param(-->
+<!--                                                'custom_attribute_placeholder_cr.office_cost') or False"/>-->
+
+<!--                    <t t-set="percentage" t-value="request.env['ir.config_parameter'].sudo().get_param(-->
+<!--                                                'custom_attribute_placeholder_cr.percentage') or False"/>-->
+
+<!--                    <t t-set="max_amount" t-value="request.env['ir.config_parameter'].sudo().get_param(-->
+<!--                                                'custom_attribute_placeholder_cr.max_amount') or False"/>-->
+
+<!--                    <t t-if="office_cost_feature and percentage">-->
+<!--                        <t t-set="cost"-->
+<!--                           t-value="tax_totals['amount_untaxed'] + (tax_totals['amount_untaxed'] * float(percentage)/ 100)"/>-->
+<!--                        <tr>-->
+<!--                            <t t-if="percentage and float(percentage).is_integer()">-->
+<!--                                <td>-->
+<!--                                    <span>Office Costs <t t-esc="'%.0f'% float(percentage)"/>%-->
+<!--                                    </span>-->
+<!--                                </td>-->
+<!--                            </t>-->
+<!--                            <t t-else="">-->
+<!--                                <td>-->
+<!--                                    <span>Office Costs<t t-esc="percentage"/>%-->
+<!--                                    </span>-->
+<!--                                </td>-->
+<!--                            </t>-->
+<!--                            <td class="text-right o_price_total">-->
+<!--                                <span class="text-nowrap">-->
+<!--                                    <span t-field="sale_order.currency_id.symbol"/>-->
+<!--                                    <t t-if="tax_totals['amount_untaxed'] * float(percentage)/ 100 > float(max_amount)">-->
+<!--                                        <t t-esc="float(max_amount)"-->
+<!--                                           t-options='{"widget": "float", "precision": 2}'/>-->
+<!--                                    </t>-->
+<!--                                    <t t-else="">-->
+<!--                                        <t t-esc="tax_totals['amount_untaxed'] * float(percentage)/ 100"-->
+<!--                                           t-options='{"widget": "float", "precision": 2}'/>-->
+<!--                                    </t>-->
+<!--                                </span>-->
+<!--                            </td>-->
+<!--                        </tr>-->
+<!--                    </t>-->
+
+<!--                    <t t-set="subtotal_to_show" t-value="subtotal['name']"/>-->
+<!--                    <t t-foreach="tax_totals['groups_by_subtotal'][subtotal_to_show]" t-as="amount_by_group">-->
+<!--                        <tr>-->
+<!--                            <t t-if="len(tax_totals['groups_by_subtotal'][subtotal_to_show]) > 1 or (tax_totals['amount_untaxed'] != amount_by_group['tax_group_base_amount'])">-->
+<!--                                <td>-->
+<!--                                    <span t-esc="amount_by_group['tax_group_name']"/>-->
+<!--                                    <span class="text-nowrap">on-->
+<!--                                        <t t-esc="amount_by_group['formatted_tax_group_base_amount']"/>-->
+<!--                                    </span>-->
+<!--                                </td>-->
+<!--                                <td class="text-right o_price_total">-->
+<!--                                    <span class="text-nowrap"-->
+<!--                                          t-esc="amount_by_group['formatted_tax_group_amount']"/>-->
+<!--                                </td>-->
+<!--                            </t>-->
+<!--                            <t t-else="">-->
+<!--                                <td>-->
+<!--                                    <span class="text-nowrap" t-esc="amount_by_group['tax_group_name']"/>-->
+<!--                                </td>-->
+<!--                                <td class="text-right o_price_total">-->
+<!--                                    <span class="text-nowrap"-->
+<!--                                          t-esc="amount_by_group['formatted_tax_group_amount']"/>-->
+<!--                                </td>-->
+<!--                            </t>-->
+<!--                        </tr>-->
+<!--                    </t>-->
+
+<!--                </t>-->
+<!--                <tr class="border-black o_total">-->
+<!--                    <td>-->
+<!--                        <strong>Total</strong>-->
+<!--                    </td>-->
+<!--                    <td class="text-right">-->
+<!--                        <span t-esc="tax_totals['formatted_amount_total']"/>-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--            </xpath>-->
+<!--        </template>-->
+
+        <!--        CUSTOMIZED ORDER LINE DESCRIPTION WITH ATTRIBTES IN SALE ORDER PREVIEW PAGE-->
+        <template id="sale_portal_view_inherit" inherit_id="sale.sale_order_portal_content">
+            <xpath expr="//tbody/t/tr/t/td[@id='product_name']" position="replace">
+                <td id="product_name">
+                    <t t-if="line.product_template_id.attribute_line_ids">
+                        <t t-if="len(line.product_template_id.attribute_line_ids) == 1">
+                            <t t-set="attribute_name_count" t-value="len(line.product_id.name)"/>
+                            <t t-set="attribute_value" t-value="line.name[attribute_name_count:].split(',')"/>
+                            <t t-set="attribute_value_1" t-value="attribute_value[0].split('(')"/>
+                            <t t-if="len(attribute_value_1) > 1">
+                                <t t-set="attribute_value_2" t-value="attribute_value_1[-1].split(')')"/>
+                            </t>
+                            <t t-else="">
+                                <t t-set="attribute_value_2" t-value="attribute_value_1[0].split(')')"/>
+                            </t>
+
+                            <span>
+                                <t t-esc="attribute_value_2[0]"/>
+                            </span>
+                        </t>
+                        <t t-if="len(line.product_template_id.attribute_line_ids) >= 2">
+                            <t t-set="attribute_name_count" t-value="len(line.product_id.name) + 1"/>
+                            <t t-set="attribute_value" t-value="line.name[attribute_name_count:]"/>
+                            <t t-set="attribute_value_1" t-value="attribute_value.split('(')"/>
+                            <t t-if="len(attribute_value_1) > 1">
+                                <t t-set="attribute_value_2" t-value="attribute_value_1[-1].split(')')"/>
+                            </t>
+                            <t t-else="">
+                                <t t-set="attribute_value_2" t-value="attribute_value_1[0].split(')')"/>
+                            </t>
+                            <t t-set="attribute_value_3" t-value="attribute_value_2[0].split(',')"/>
+                            <t t-set="product_name" t-value=""/>
+                            <t t-foreach="attribute_value_3[1:]" t-as="name">
+                                <t t-if="product_name">
+                                    <t t-set="product_name" t-value="product_name + ',' + name"/>
+                                </t>
+                                <t t-else="">
+                                    <t t-set="product_name" t-value="name"/>
+                                </t>
+                            </t>
+
+                            <span>
+                                <t t-esc="product_name"/>
+                            </span>
+
+                        </t>
+                    </t>
+                    <t t-else="">
+                        <span t-field="line.name"/>
+                    </t>
+                </td>
+
+            </xpath>
+            <xpath expr="//table/thead/tr/th[2]" position="replace"/>
+            <xpath expr="//table/thead/tr/th[2]" position="replace"/>
+            <xpath expr="//table/thead/tr/th[2]" position="replace"/>
+
+            <xpath expr="//table/tbody//td[2]" position="replace"/>
+            <xpath expr="//tbody/t/tr/t//td[contains(@t-attf-class, 'd-none')]" position="replace"/>
+            <xpath expr="//tbody/t/tr/t/td[@t-if='display_discount']" position="replace"/>
+        </template>
+
+        <!--        CUSTOMIZE TOP LEFT TOTAL INCLUDING WITH NEW PERCENTAGE AND OFFICE COST IN SALE ORDER PREVIEW -->
+
+
+        <!-- <template id="sale_order_portal_template_custom" inherit_id="sale.sale_order_portal_template">
+            <xpath expr="//div[hasclass('o_portal_sale_sidebar')]/t/t[@t-set='title']" position="replace">
+                <t t-foreach="sale_order" t-as="o">
+
+                    <t t-set="json" t-value="json.loads(o.tax_totals_json)"/>
+
+                    <t t-set="office_cost_feature" t-value="request.env['ir.config_parameter'].sudo().get_param(
+                                                        'custom_attribute_placeholder_cr.office_cost') or False"/>
+
+                    <t t-set="percentage" t-value="request.env['ir.config_parameter'].sudo().get_param(
+                                                        'custom_attribute_placeholder_cr.percentage') or False"/>
+
+                    <t t-set="max_amount" t-value="request.env['ir.config_parameter'].sudo().get_param(
+                                                        'custom_attribute_placeholder_cr.max_amount') or False"/>
+
+                    <t t-set="final_office_cost" t-value="json['amount_untaxed'] * float(percentage)/ 100"/>
+
+                    <t t-set="cost"
+                       t-value="json['amount_untaxed'] + (json['amount_untaxed'] * float(percentage)/ 100)"/>
+
+                    <t t-if="office_cost_feature and percentage">
+                        <t t-set="title">
+
+                            <t t-if="json['amount_untaxed'] * float(percentage)/ 100 > float(max_amount)">
+                                <h2 class="mb-0">
+                                    <b>
+                                        <span t-field="sale_order.currency_id.symbol"/>
+                                        <t t-esc="json['amount_total']"
+                                           t-options='{"widget": "float", "precision": 2}'/>
+                                    </b>
+                                </h2>
+                            </t>
+                            <t t-else="">
+                                <h2 class="mb-0">
+                                    <b>
+                                        <span t-field="sale_order.currency_id.symbol"/>
+                                        <t t-esc="json['amount_total']"
+                                           t-options='{"widget": "float", "precision": 2}'/>
+                                    </b>
+                                </h2>
+                            </t>
+                        </t>
+                    </t>
+                    <t t-else="">
+                        <t t-set="title">
+                            <h2 class="mb-0">
+                                <b t-field="sale_order.amount_total" data-id="total_amount"/>
+
+                            </h2>
+                        </t>
+                    </t>
+                </t>
+            </xpath>
+        </template> -->
+    </data>
+</odoo>

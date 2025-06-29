@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-inherit="account.TaxTotalsField" t-inherit-mode="extension">
+        <xpath expr="//table/tbody/t[1]" position="after">
+            <t t-if="totals.value.cost_feature == True">
+                <t t-foreach="totals.value.groups_by_subtotal1['Untaxed Amount1']" t-as="taxGroup" t-key="taxGroup.group_key">
+                        <TaxGroupComponent
+                            taxGroup="taxGroup"
+                            record="record"
+                            allowTaxEdition="totals.value.allow_tax_edition"
+                            t-on-change-tax-group="_onChangeTaxValueByTaxGroup"
+                        />
+                </t>
+            </t>
+
+        </xpath>
+    </t>
+</templates>
