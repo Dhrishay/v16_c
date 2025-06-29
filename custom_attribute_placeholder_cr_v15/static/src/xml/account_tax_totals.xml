@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-inherit="account.TaxTotalsField" t-inherit-mode="extension">
+        <xpath expr="//table/tbody/t" position="after">
+            <tr t-if="totals.value.formatted_office_cost">
+                <td>
+                    <span
+                        name="office_cost"
+                        t-esc="totals.value.office_cost_string"
+                        style="white-space: nowrap; font-weight: bold; font-size: 1em;"
+                    />
+
+                </td>
+
+                <td>
+                    <span
+                        name="office_cost_amount"
+                        t-esc="totals.value.formatted_office_cost"
+                        style="white-space: nowrap; font-weight: bold; font-size: 1em;"
+                    />
+                </td>
+            </tr>
+        </xpath>
+        <xpath expr="//table/tbody/t/tr" position="after">
+            <!-- <t t-if="totals.value.cost_feature == true">
+                <t t-foreach="totals.value.groups_by_subtotal1['Untaxed Amount1']" t-as="taxGroup" t-key="taxGroup.group_key">
+                        <TaxGroupComponent
+                            taxGroup="taxGroup"
+                            record="record"
+                            allowTaxEdition="totals.value.allow_tax_edition"
+                            t-on-change-tax-group="_onChangeTaxValueByTaxGroup"
+                        />
+                </t>
+            </t> -->
+<!--            <t t-else="">-->
+<!--                <t t-foreach="totals.value.groups_by_subtotal['Untaxed Amount']" t-as="taxGroup" t-key="taxGroup.group_key">-->
+<!--                        <TaxGroupComponent-->
+<!--                            taxGroup="taxGroup"-->
+<!--                            record="record"-->
+<!--                            allowTaxEdition="totals.value.allow_tax_edition"-->
+<!--                            t-on-change-tax-group="_onChangeTaxValueByTaxGroup"-->
+<!--                        />-->
+<!--                </t>-->
+<!--            </t>-->
+        </xpath>
+    </t>
+</templates>

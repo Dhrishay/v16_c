@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="office_cost_sccount" model="account.account">
+        <field name="code">1628</field>
+        <field name="name">Te betalen omzetbelasting FTM</field>
+        <field name="account_type">liabitlity_current</field>
+    </record>
+</odoo>

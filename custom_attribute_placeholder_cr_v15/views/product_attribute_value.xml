@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="product_template_attribute_value_view_form_inh" model="ir.ui.view">
+          <field name="name">product.template.attribute.value.form</field>
+          <field name="model">product.template.attribute.value</field>
+          <field name="inherit_id" ref="product.product_template_attribute_value_view_form" />
+          <field name="arch" type="xml">
+              <xpath expr="//field[@name='exclude_for']" position="before">
+                  <field name="is_placeholder"/>
+              </xpath>
+          </field>
+        </record>
+
+        <record id="product_template_attribute_value_view_tree_inh" model="ir.ui.view">
+          <field name="name">product.template.attribute.value.form</field>
+          <field name="model">product.template.attribute.value</field>
+          <field name="inherit_id" ref="product.product_template_attribute_value_view_tree" />
+          <field name="arch" type="xml">
+              <xpath expr="//field[@name='price_extra']" position="after">
+                  <field name="is_placeholder"/>
+              </xpath>
+          </field>
+        </record>
+
+    </data>
+</odoo>
