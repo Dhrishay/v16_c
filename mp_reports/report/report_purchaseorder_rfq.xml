@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="report_purchasequotation_document" inherit_id="purchase.report_purchasequotation_document">
+        <xpath expr="//t[@t-call='web.external_layout']" position="replace">
+            <t t-call="web.external_layout">
+                <t t-set="o" t-value="o.with_context(lang=o.partner_id.lang)"/>
+                <div class="row">
+                    <div class="col-6 justify-content-left">
+                        <div t-field="o.partner_id"
+                             t-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;, &quot;name&quot;, &quot;phone&quot;, &quot;vat&quot;], &quot;no_marker&quot;: True, &quot;phone_icons&quot;: True}"/>
+                    </div>
+
+                    <div class="col-6 justify-content-left">
+                        <table class="table table-borderless">
+                            <tr>
+                                <td>
+                                    <b>Inquiry:</b>
+                                    #
+                                    <span t-field="o.name"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <b>Inquiry Date:</b>
+                                    <span t-field="o.date_order" t-options="{&quot;widget&quot;:&quot;date&quot;}"/>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="page">
+                    <div class="oe_structure"/>
+                    <table class="table table-sm o_main_table table-borderless mt-4">
+                        <thead style="display: table-row-group">
+                            <tr>
+                                <th name="th_srno">
+                                    <strong>Sr.no</strong>
+                                </th>
+                                <th name="th_item_code">
+                                    <strong>Item Code</strong>
+                                </th>
+                                <th name="th_description">
+                                    <strong>Description</strong>
+                                </th>
+                                <th name="th_quantity" class="text-end">
+                                    <strong>Quantity</strong>
+                                </th>
+                                <th name="th_uom" class="text-end">
+                                    <strong>UOM</strong>
+                                </th>
+                                <th name="th_rate" class="text-end">
+                                    <strong>Rate</strong>
+                                </th>
+                                <th name="th_disc" class="text-end">
+                                    <strong>Disc%</strong>
+                                </th>
+                                <th name="th_net_amount" class="text-end">
+                                    <strong>Net Amount</strong>
+                                </th>
+                                <th name="th_hsn" class="text-end">
+                                    <strong>HSN/SAC</strong>
+                                </th>
+                                <th name="th_taxes">
+                                    <strong>GST%</strong>
+                                </th>
+                                <th name="th_amount" class="text-end">
+                                    <strong>Amount</strong>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-set="current_subtotal" t-value="0"/>
+                            <t t-set="row_count" t-value="1"/>
+                            <t t-foreach="o.order_line" t-as="line">
+                                <t t-set="current_subtotal" t-value="current_subtotal + line.price_subtotal"
+                                   groups="account.group_show_line_subtotals_tax_excluded"/>
+                                <t t-set="current_subtotal" t-value="current_subtotal + line.price_total"
+                                   groups="account.group_show_line_subtotals_tax_included"/>
+
+                                <tr t-att-class="'bg-200 fw-bold o_line_section' if line.display_type == 'line_section' else 'fst-italic o_line_note' if line.display_type == 'line_note' else ''">
+                                    <t t-if="not line.display_type">
+                                        <td class="text-center">
+                                            <span t-esc="row_count"/>
+                                            <t t-set="row_count" t-value="row_count + 1"/>
+                                        </td>
+                                        <td class="text-center">
+                                            <span t-field="line.product_id.default_code"/>
+                                        </td>
+                                        <td id="product">
+                                            <span t-field="line.name"/>
+                                        </td>
+                                        <td class="text-end">
+                                            <span t-field="line.product_qty"/>
+                                        </td>
+                                        <td class="text-end">
+                                            <span t-field="line.product_uom.name" groups="uom.group_uom"/>
+                                        </td>
+                                        <td class="text-end">
+                                            <span t-field="line.price_unit"/>
+                                        </td>
+                                        <td class="text-end">
+                                            <span t-field="line.discount"/>%
+                                        </td>
+                                        <td class="text-end">
+                                            <span t-field="line.price_unit"/>
+                                        </td>
+                                        <td class="text-end">
+                                            <span t-field="line.product_id.l10n_in_hsn_code"/>
+                                        </td>
+                                        <td name="td_taxes">
+                                            <span t-esc="', '.join(map(lambda x: x.description or x.name, line.taxes_id))"/>
+                                        </td>
+                                        <td class="text-end">
+                                            <span t-field="line.price_subtotal"
+                                                  t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>
+                                        </td>
+                                    </t>
+                                    <t t-if="line.display_type == 'line_section'">
+                                        <td colspan="99" id="section">
+                                            <span t-field="line.name"/>
+                                        </td>
+                                        <t t-set="current_section" t-value="line"/>
+                                        <t t-set="current_subtotal" t-value="0"/>
+                                    </t>
+                                    <t t-if="line.display_type == 'line_note'">
+                                        <td colspan="99" id="note">
+                                            <span t-field="line.name"/>
+                                        </td>
+                                    </t>
+                                </tr>
+                                <t t-if="current_section and (line_last or o.order_line[line_index+1].display_type == 'line_section')">
+                                    <tr class="is-subtotal text-end">
+                                        <td colspan="99" id="subtotal">
+                                            <strong class="mr16">Subtotal</strong>
+                                            <span t-esc="current_subtotal"
+                                                  t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>
+                                        </td>
+                                    </tr>
+                                </t>
+                            </t>
+                        </tbody>
+                    </table>
+
+                    <div id="total" class="row justify-content-left">
+                        <div class="col-4">
+                            <table class="table table-sm table-borderless">
+                                <t t-set="tax_totals" t-value="o.tax_totals"/>
+                                <t t-call="account.document_tax_totals"/>
+                            </table>
+                        </div>
+                    </div>
+
+                    <p t-field="o.notes" class="mt-4"/>
+
+                    <div class="oe_structure"/>
+                    <div class="mt-3">
+                        <dl>
+                            <dt>Special Notes:</dt>
+                            <dd>All standard terms and conditions will be applicable as per buyer company policy and
+                                will be mentioned in the purchase order. Quoted items should meet required
+                                specifications. Sellers need to clarify with the buyer before quoting about all
+                                specifications. Sellers need to mention accurate lead time in their quotations.
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
+            </t>
+        </xpath>
+    </template>
+</odoo>
+

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_order_form" model="ir.ui.view">
+            <field name="name">sale.order.form.download-proforma</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[hasclass('oe_button_box')]" position="inside">
+                    <button name="action_is_proforma_downloaded" type="object" class="oe_stat_button text-success"
+                            icon="fa-check" attrs="{'invisible': [('is_proforma_downloaded', '=', False)]}">
+                        <div class="o_field_widget o_stat_info">
+                            <span class="o_stat_text">PRO-FORMA</span>
+                            <span class="o_stat_text">Downloaded</span>
+                            <field name="is_proforma_downloaded" string="PRO-FORMA Downloaded" invisible="1"/>
+                        </div>
+                    </button>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
